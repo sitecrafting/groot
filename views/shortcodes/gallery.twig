@@ -1,0 +1,11 @@
+{% if gallery_images %}
+	<div class="gallery flexslider">
+		<ul class="slides">
+			{% for image in gallery_images %}
+				<li data-thumb="{{ image.get_src | resize('thumbnail') }}">
+					<img src="{{ image.get_src | resize('gallery') }}" alt="{{ image.title }}">
+				</li>
+			{% endfor %}
+		</ul>
+	</div>
+{% endif %}

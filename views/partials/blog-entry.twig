@@ -1,0 +1,27 @@
+{# just a template for a blog entry, shouldn't be used directly #}
+
+<article class="{{ post.class }}">
+	{% block post_header %}
+		<header>
+			<h1>{{ post.title }}</h1>
+			<div class="post-publish-info">
+				<span class="post-author">By {{ post.author }}</span>
+				<span class="post-publish-date">{{ post.date }}</span>
+			</div>
+			<div class="post-terms post-categories">
+				{% include 'partials/post-categories.twig' %}
+			</div>
+			<div class="post-terms post-tags">
+				{% include 'partials/post-tags.twig' %}
+			</div>
+		</header>
+	{% endblock %}
+
+	{% block before_content %}{# nothing here by default #}{% endblock %}
+
+	{% block post_content %}
+		<div class="post-content">{{ post.content }}</div>
+	{% endblock %}
+
+	{% block after_content %}{# nothing here by default #}{% endblock %}
+</article>

@@ -1,0 +1,24 @@
+<nav class="side-nav level1">
+	<ul id="side-menu" class="menu">
+		{% for item in menu.get_items %}
+
+			<li class="{{ item.classes | join(' ') }}">
+				<a href="{{ item.get_path }}">{{ item.title }}</a>
+
+				{% if item.display_children %}
+					<ul class="sub-menu">
+
+						{% for sub_item in item.get_children %}
+							<li class="sub-item {{ sub_item.classes | join(' ') }}">
+								<a href="{{ sub_item.get_path }}">{{ sub_item.title }}</a>
+							</li>
+						{% endfor %}
+
+					</ul>
+				{% endif %}
+
+			</li>
+
+		{% endfor %}
+	</ul>
+</nav>

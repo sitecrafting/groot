@@ -1,0 +1,63 @@
+// Reset
+@import "normalize.less";
+
+// Core variables and mixins
+@import "variables.less";
+@import "mixins.less";
+
+@import "global.less";
+@import "forms.less";
+
+@import "header.less";
+@import "navigation.less";
+@import "footer.less";
+
+
+/***** STRUCTURE *****/
+.container{
+	max-width: @container-main;
+	margin: 0 auto;
+	padding-left: 20px;
+	padding-right: 20px;
+	.clearfix;
+}
+
+
+.site-wrapper{
+	position: relative;
+	overflow: hidden;
+	height: 100%;
+}
+.site-pusher{
+	@media @tablet, @mobile-lg, @mobile{
+		position: relative;
+		height: 100%;
+		left: 0;
+		.transition(left @trans-speed ease);
+
+		.menu-open &{
+			left: -(@off-canvas-width); //off canvas menu width
+		}
+	}//end media
+}
+
+
+section.page{
+	min-height: 500px;
+	background: @white;
+
+	&.top_bottom_gutters{ padding-top: 20px; padding-bottom: 20px; }
+
+	.main-content{
+
+	}
+
+	nav.sideNav{
+		width: 20%;
+		float: left;
+
+		+ .main-content{ width: 80%; float: right; padding-left: 30px; }
+	}
+
+
+}//end section.pag

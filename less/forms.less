@@ -1,0 +1,362 @@
+//
+// Forms
+// --------------------------------------------------
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+// Position radios and checkboxes better [default styles]
+input[type="radio"], input[type="checkbox"] {
+	margin: 4px 5px 0;
+	margin-top: 1px \9; /* IE8-9 */
+	line-height: normal;
+}
+input[type="radio"] + label, input[type="checkbox"] + label{
+	display: inline-block;
+	margin: 0 0 0 5px;
+	font-weight: normal;
+}
+
+// Common form controls
+//
+// Shared size and type resets for form controls. Apply `.form-control` to any
+// of the following form controls:
+//
+// select
+// textarea
+// input[type="text"]
+// input[type="password"]
+// input[type="datetime"]
+// input[type="datetime-local"]
+// input[type="date"]
+// input[type="month"]
+// input[type="time"]
+// input[type="week"]
+// input[type="number"]
+// input[type="email"]
+// input[type="url"]
+// input[type="search"]
+// input[type="tel"]
+// input[type="color"]
+
+input[type=text], input[type=password], input[type="email"], input[type="tel"], input[type="url"]{ -webkit-appearance: none; }
+
+input[type=text], input[type=password], input[type="email"], input[type="tel"], input[type="url"], select, textarea, .form-control {
+  display: block;
+  .box-sizing(border-box);
+  width: 100%;
+  height: @input-height; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
+  
+  padding: @input-padding;
+  margin-bottom: @padding-base;
+  
+  font-size: @input-font-size;
+  line-height: @input-font-size+1;
+  
+  color: @input-color;
+  vertical-align: middle;
+  
+  background-color: @input-bg;
+  background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
+  
+  border: 1px solid @input-border;
+
+  // Customize the `:focus` state to imitate native WebKit styles.
+  .form-control-focus();
+
+  // Placeholder
+  // Placeholder text gets special styles because when browsers invalidate entire
+  // lines if it doesn't understand a selector/
+  .placeholder();
+
+  // Disabled and read-only inputs
+  // Note: HTML5 says that controls under a fieldset > legend:first-child won't
+  // be disabled if the fieldset is disabled. Due to implementation difficulty,
+  // we don't honor that edge case; we style them as disabled anyway.
+  &[disabled],
+  &[readonly],
+  fieldset[disabled] & {
+    cursor: not-allowed;
+    background-color: @input-bg-disabled;
+  }
+
+}
+
+textarea{
+	height: 150px;
+}
+
+// CUSTSOMIZE STYLED - Checkboxes and radios
+/*input[type=checkbox],input[type=radio]{ position: absolute; left: -9999em; opacity: 0; }
+.lt-ie9 input[type=checkbox], .lt-ie9 input[type=radio]{ position: relative; left: auto; opacity: 1; }
+
+input[type=checkbox] + label,
+input[type=radio] + label{
+	position: relative;
+	display: inline-block !important;
+	margin: 0 5px @padding-base 0;
+	padding: 0 0 0 20px !important;
+	font-weight: normal;
+	
+	&:before{
+    	content: "";
+    	display: block;
+    	width: 15px;
+    	height: 15px;
+    	position: absolute;
+    	top: 2px;
+    	left: 0;
+    	background: #fff;
+    }
+    
+    &.checked:before{ background: #000; }
+}
+
+input[type=checkbox]:checked + label,
+input[type=radio]:checked + label{
+	&:before{ background: #000; }
+}
+
+.lt-ie9 input[type=checkbox] + label,
+.lt-ie9 input[type=radio] + label{
+	padding: 0;
+	&:before{ display: none; }
+}*/
+
+// Apply same disabled cursor tweak as for inputs
+//
+// Note: Neither radios nor checkboxes can be readonly.
+input[type="radio"],
+input[type="checkbox"],
+.radio,
+.radio-inline,
+.checkbox,
+.checkbox-inline {
+  &[disabled],
+  fieldset[disabled] & {
+    cursor: not-allowed;
+  }
+}
+
+//SUBMIT BUTTON
+input[type="submit"], input[type="button"], button, .btn{
+	-webkit-appearance: none;
+    display: block;
+    margin: @padding-base 0;
+	padding: @padding-small @padding-large;
+    background-color: @input-bg;
+ 	border: 1px solid @input-border;
+	.transition(all @trans-speed ease);
+    
+    &:hover{
+        
+    }
+}
+
+
+/*======================================
+  CUSTOM SELECT BOX - Selectric v1.9.2
+======================================*/
+.selectric-wrapper { position: relative; cursor: pointer; }
+
+.selectric-responsive { width: 100%; }
+
+.selectric {
+	border: 1px solid @input-border;
+	background: @input-bg;
+	position: relative;
+  
+	.label {
+		display: block;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		margin: 0 38px 0 0;
+		padding: @input-padding 0 @input-padding @input-padding;
+		font-size: @input-font-size;
+		line-height: (@input-font-size+1);
+		color: #444;
+		height: @input-height;
+	}
+	
+	.button {
+		display: block;
+		position: absolute;
+		right: 0;
+		top: 0;
+		width: 38px;
+		height: 38px;
+		padding: 0;
+		margin: 0;
+		color: @gray-dark;
+		text-align: center;
+		font: 0/0 a;
+		*font: 20px/38px Lucida Sans Unicode, Arial Unicode MS, Arial;
+		
+		&:after {
+			content: " ";
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			margin: auto;
+			width: 0;
+			height: 0;
+			border: 4px solid transparent;
+			border-top-color: @gray-dark;
+			border-bottom: none;
+		}
+	}//end .button
+  
+}//end .selectric
+
+//hover
+.selectric-hover .selectric {
+	border-color: #C4C4C4;
+	
+	.button {
+		color: #A2A2A2;
+		&:after {
+			border-top-color: #A2A2A2;
+		}
+	}
+}
+
+//open
+.selectric-open {
+	z-index: 9999;
+	.selectric {
+		border-color: #C4C4C4;
+	}
+	.selectric-items {
+		display: block;
+	}
+}
+
+.selectric-disabled {
+  filter: alpha(opacity=50);
+  opacity: 0.5;
+  cursor: default;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.selectric-hide-select {
+	position: relative;
+	overflow: hidden;
+	width: 0;
+	height: 0;
+}
+.selectric-hide-select select {
+	position: absolute;
+	left: -100%;
+	display: none;
+}
+
+.selectric-input {
+	position: absolute !important;
+	top: 0 !important;
+	left: 0 !important;
+	overflow: hidden !important;
+	clip: rect(0, 0, 0, 0) !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	width: 1px !important;
+	height: 1px !important;
+	outline: none !important;
+	border: none !important;
+	*font: 0/0 a !important;
+	background: none !important;
+}
+
+.selectric-temp-show {
+	position: absolute !important;
+	visibility: hidden !important;
+	display: block !important;
+}
+
+/* Items box */
+.selectric-items {
+	display: none;
+	position: absolute;
+	top: 100%;
+	left: 0;
+	background: #F8F8F8;
+	border: 1px solid #C4C4C4;
+	z-index: -1;
+	box-shadow: 0 0 10px -6px;
+	
+	.selectric-scroll {
+		height: 100%;
+		overflow: auto;
+	}
+	
+	ul, li {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		font-size: 12px;
+		line-height: 20px;
+		min-height: 20px;
+	}
+	li {
+		display: block;
+		padding: 8px;
+		border-top: 1px solid #FFF;
+		border-bottom: 1px solid #EEE;
+		color: #666;
+		cursor: pointer;
+		&.selected {
+			background: #EFEFEF;
+			color: #444;
+		}
+		&:hover {
+			background: #F0F0F0;
+			color: #444;
+		}
+	}
+	
+	.disabled {
+		filter: alpha(opacity=50);
+		opacity: 0.5;
+		cursor: default !important;
+		background: none !important;
+		color: #666 !important;
+		-webkit-user-select: none;
+		   -moz-user-select: none;
+			-ms-user-select: none;
+				user-select: none;
+	}
+	
+	.selectric-group{
+		.selectric-group-label {
+			font-weight: bold;
+			padding-left: 10px;
+			cursor: default;
+			-webkit-user-select: none;
+			   -moz-user-select: none;
+				-ms-user-select: none;
+					user-select: none;
+			background: none;
+			color: #444;
+		}
+		
+		&.disabled li {
+			filter: alpha(opacity=100);
+			opacity: 1;
+		}
+		
+		li { padding-left: 25px; }
+	}
+
+}//end .selectric-items
+
+.selectric-above .selectric-items {
+  top: auto;
+  bottom: 100%;
+}

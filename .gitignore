@@ -1,0 +1,8 @@
+# Ignore artifacts/ghost files
+.DS_Store
+._*
+
+# Ignore dev dependencies
+/node_modules
+/bower_components
+/doc

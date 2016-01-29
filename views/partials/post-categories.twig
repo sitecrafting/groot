@@ -1,0 +1,10 @@
+{% if post.get_categories %}
+	Categorized under:
+	{% for category in post.get_categories %}
+		<span class="category category-{{category.slug}}">
+			<a href="{{category.link}}">
+				{{category}}
+			</a>
+		</span>{{ loop.last ? '' : ',' }}
+	{% endfor %}
+{% endif %}

@@ -1,0 +1,21 @@
+{% extends 'partials/blog-entry.twig' %}
+
+{# We don't want to redefine the entire blog entry article layout,
+we just want to define how certain pieces of the template behave.
+In this case, we might want some extra navigation at the bottom #}
+
+{% block after_content %}
+	<div class="post-previous-wrap">
+		{% if post.prev %}
+			<a href="{{ post.prev.link }}" title="{{ post.prev.title }}">Previous</a>
+		{% endif %}
+	</div>
+	<div class="post-back-to-blog-wrap">
+		<a href="{{ get_blog_url() }}" class="post-link">Back to Blog</a>
+	</div>
+	<div class="post-next-wrap">
+		{% if post.next %}
+			<a href="{{ post.next.link }}" title="{{ post.next.title }}">Next</a>
+		{% endif %}
+	</div>
+{% endblock %}

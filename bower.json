@@ -1,0 +1,21 @@
+{
+  "name": "sitecrafting-starter",
+  "version": "1.0.0",
+  "authors": [
+    "Coby Tamayo <ctamayo@sitecrafting.com>"
+  ],
+  "description": "WordPress Starter theme by SiteCrafting",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "flexslider": "2.5.0",
+    "jquery-selectric": "1.9.3",
+    "jquery-placeholder": "~2.1.3"
+  }
+}
