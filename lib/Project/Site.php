@@ -44,6 +44,9 @@ class Site extends \TimberSite {
 
 		add_action( 'wp_enqueue_scripts', [$this, 'enqueue_scripts_and_styles'] );
 
+		add_action( 'admin_init', ['\Project\Admin', 'init'] );
+		add_action( 'init', ['\Project\Admin', 'add_theme_settings_page'] );
+
 		// Add default Twig filters/functions
 		\TwigWrapper\Filters\Number::add_twig_filters( $this );
 		\TwigWrapper\Filters\TextHelper::add_twig_filters( $this );

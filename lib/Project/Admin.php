@@ -6,7 +6,7 @@ class Admin {
 	const PLUGIN_ACF_PRO = 'advanced-custom-fields-pro/acf.php';
 
 	public static function add_theme_settings_page() {
-		if( function_exists('acf_add_options_page') ) {
+		if( is_admin() && function_exists('acf_add_options_page') ) {
 			acf_add_options_page([
 				'page_title' => 'Theme Settings',
 				'menu_slug' => 'theme-settings',
