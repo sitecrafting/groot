@@ -3,14 +3,10 @@
 
 {% block main_content %}
 
-<section class="page top_bottom_gutters">
-	<div class="container">
 
-		{% include 'partials/side-nav.twig' with { menu: primary_menu, post: post } only %}
+	{% include 'partials/side-nav.twig' with { menu: primary_menu, post: post } only %}
 
-		{% block interior_content %}{% endblock %}
+	{% block interior_content %}{% endblock %}
 
-	</div>
-</section>
 
 {% endblock %}

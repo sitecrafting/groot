@@ -1,3 +1,11 @@
+/*!
+ * Theme Name: Groot
+ * Theme URI: http://bitbucket.org/sitecrafting/start-wp-theme-groot
+ * Author: Coby Tamayo
+ * Author URI: http://sitecrafting.com
+ * Description: The official SiteCrafting Starter WordPress Theme
+ * Version: 0.1.0
+ */
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 *,
 *:before,
@@ -379,9 +387,9 @@ th {
   padding: 0;
 }
 body {
-  background: #000000;
+  background: #000;
   font: normal 16px/1.4 arial, sans-serif;
-  color: #333333;
+  color: #333;
 }
 h1,
 h2,
@@ -457,7 +465,7 @@ dd {
 }
 hr {
   border: 0;
-  border-bottom: 1px solid #333333;
+  border-bottom: 1px solid #333;
   height: 0px;
   margin: 20px 0;
   padding: 0;
@@ -483,7 +491,7 @@ hr {
   margin-right: auto;
 }
 .placeholder {
-  color: #999999;
+  color: #999;
 }
 /*used for js placeholder fix for ie*/
 .clearfix:before,
@@ -500,7 +508,7 @@ hr {
   clear: both;
 }
 .hide,
-.no_display {
+.no-display {
   display: none !important;
 }
 .hidden {
@@ -745,12 +753,12 @@ textarea,
   margin-bottom: 20px;
   font-size: 16px;
   line-height: 17px;
-  color: #333333;
+  color: #333;
   vertical-align: middle;
-  background-color: #ffffff;
+  background-color: #fff;
   background-image: none;
-  border: 1px solid #999999;
-  color: #999999;
+  border: 1px solid #999;
+  color: #999;
 }
 input[type=text]:focus,
 input[type=password]:focus,
@@ -773,7 +781,7 @@ input[type="url"]:-moz-placeholder,
 select:-moz-placeholder,
 textarea:-moz-placeholder,
 .form-control:-moz-placeholder {
-  color: #999999;
+  color: #999;
 }
 input[type=text]::-moz-placeholder,
 input[type=password]::-moz-placeholder,
@@ -783,7 +791,7 @@ input[type="url"]::-moz-placeholder,
 select::-moz-placeholder,
 textarea::-moz-placeholder,
 .form-control::-moz-placeholder {
-  color: #999999;
+  color: #999;
 }
 input[type=text]:-ms-input-placeholder,
 input[type=password]:-ms-input-placeholder,
@@ -793,7 +801,7 @@ input[type="url"]:-ms-input-placeholder,
 select:-ms-input-placeholder,
 textarea:-ms-input-placeholder,
 .form-control:-ms-input-placeholder {
-  color: #999999;
+  color: #999;
 }
 input[type=text]::-webkit-input-placeholder,
 input[type=password]::-webkit-input-placeholder,
@@ -803,7 +811,7 @@ input[type="url"]::-webkit-input-placeholder,
 select::-webkit-input-placeholder,
 textarea::-webkit-input-placeholder,
 .form-control::-webkit-input-placeholder {
-  color: #999999;
+  color: #999;
 }
 input[type=text][disabled],
 input[type=password][disabled],
@@ -830,7 +838,7 @@ fieldset[disabled] select,
 fieldset[disabled] textarea,
 fieldset[disabled] .form-control {
   cursor: not-allowed;
-  background-color: #eeeeee;
+  background-color: #eee;
 }
 textarea {
   height: 150px;
@@ -892,8 +900,8 @@ button,
   display: block;
   margin: 20px 0;
   padding: 10px 50px;
-  background-color: #ffffff;
-  border: 1px solid #999999;
+  background-color: #fff;
+  border: 1px solid #999;
   -webkit-transition: all 0.25s ease;
   transition: all 0.25s ease;
 }
@@ -908,8 +916,8 @@ button,
   width: 100%;
 }
 .selectric {
-  border: 1px solid #999999;
-  background: #ffffff;
+  border: 1px solid #999;
+  background: #fff;
   position: relative;
 }
 .selectric .label {
@@ -933,7 +941,7 @@ button,
   height: 38px;
   padding: 0;
   margin: 0;
-  color: #333333;
+  color: #333;
   text-align: center;
   font: 0/0 a;
   *font: 0.52631579px Lucida Sans Unicode, Arial Unicode MS, Arial;
@@ -949,7 +957,7 @@ button,
   width: 0;
   height: 0;
   border: 4px solid transparent;
-  border-top-color: #333333;
+  border-top-color: #333;
   border-bottom: none;
 }
 .selectric-hover .selectric {
@@ -1085,7 +1093,7 @@ button,
 }
 header.site-header {
   position: relative;
-  background: #555555;
+  background: #555;
   z-index: 501;
 }
 header.site-header .logo {
@@ -1117,14 +1125,14 @@ header.site-header .menu-btn {
     width: 100%;
     height: 3px;
     margin-bottom: 6px;
-    background: #ffffff;
+    background: #fff;
     -webkit-transition: all 0.25s ease;
     transition: all 0.25s ease;
   }
   header.site-header .menu-btn > span {
     display: block;
     margin: 5px 0 0 0;
-    color: #ffffff;
+    color: #fff;
     text-transform: uppercase;
   }
   header.site-header .menu-btn.active .toggle {
@@ -1178,7 +1186,7 @@ nav.main-nav ul > li > ul {
   position: absolute;
   left: -9999em;
   width: 250px;
-  background: #555555;
+  background: #555;
   opacity: 0;
   filter: alpha(opacity=0);
   -webkit-transition: opacity 0.25s ease;
@@ -1189,7 +1197,7 @@ nav.main-nav ul > li > ul > li {
   display: block;
 }
 nav.main-nav ul > li:hover > a {
-  color: #ffffff;
+  color: #fff;
 }
 nav.main-nav ul > li:hover > ul {
   left: auto;
@@ -1205,7 +1213,7 @@ nav.main-nav ul > li:hover > ul {
     left: auto;
     bottom: auto;
     padding: 20px;
-    background: #555555;
+    background: #555;
   }
   nav.main-nav ul {
     float: none;
@@ -1225,7 +1233,7 @@ nav.main-nav ul > li:hover > ul {
 footer.site-footer {
   padding: 50px 20px;
   text-align: center;
-  color: #999999;
+  color: #999;
 }
 /***** STRUCTURE *****/
 .container {
@@ -1271,19 +1279,19 @@ footer.site-footer {
     left: -250px;
   }
 }
-section.page {
+.site-main {
   min-height: 500px;
-  background: #ffffff;
+  background: #fff;
 }
-section.page.top_bottom_gutters {
+.site-main.top-bottom-gutters {
   padding-top: 20px;
   padding-bottom: 20px;
 }
-section.page nav.sideNav {
+.site-main nav.side-nav {
   width: 20%;
   float: left;
 }
-section.page nav.sideNav + .main-content {
+.site-main nav.side-nav + .main-content {
   width: 80%;
   float: right;
   padding-left: 30px;

@@ -3,7 +3,7 @@
 <article class="{{ post.class }}">
 	{% block post_header %}
 		<header>
-			<h1>{{ post.title }}</h1>
+			<a href={{ post.link }} title="{{ post.title }}"><h1>{{ post.title }}</h1></a>
 			<div class="post-publish-info">
 				<span class="post-author">By {{ post.author }}</span>
 				<span class="post-publish-date">{{ post.date }}</span>

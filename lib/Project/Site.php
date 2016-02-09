@@ -35,10 +35,10 @@ class Site extends \TimberSite {
 	 * @return Project\Site the Site object it was called on
 	 */
 	public function configure() {
-		add_theme_support( 'post-formats' );
 		add_theme_support( 'post-thumbnails' );
 		add_theme_support( 'menus' );
 
+		// configure Twig/Timber
 		add_filter( 'timber_context', [$this, 'add_to_context'] );
 		add_filter( 'get_twig', [$this, 'add_to_twig'] );
 

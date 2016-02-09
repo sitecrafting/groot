@@ -1,8 +1,6 @@
 {% extends 'layouts/main.twig' %}
 
 {% block main_content %}
-	<h2>index.twig</h2>
-
 	{% for post in posts %}
 		{% include 'partials/blog-entry-archive.twig' %}
 	{% endfor %}
