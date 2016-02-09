@@ -5,13 +5,7 @@
 		<p>{{ posts | length }} result(s) for <strong>{{ search_query }}</strong>:</p>
 
 		{% for post in posts %}
-			<article class="search-result">
-				<a href="{{ post.permalink }}"><h2>{{ post.title }}</h2></a>
-				<div class="post-content post-excerpt">{{ post.content | excerpt }}</div>
-				<div class="post-read-more-wrap">
-					<a href="{{ post.link }}" class="post-link">Read More</a>
-				</div>
-			</article>
+			{% include 'partials/blog-entry-archive.twig' %}
 		{% endfor %}
 
 	{% else %}
