@@ -1,0 +1,9 @@
+{# Get chunk length #}
+{% set col_len = (items|length) / num_chunks %}
+
+{# Divide the items into chunks #}
+{% set chunks = ( items | batch( col_len ) ) %}
+
+{% for chunk in chunks %}
+	{% include single_template with { chunk: chunk } only %}
+{% endfor %}
