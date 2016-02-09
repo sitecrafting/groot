@@ -2,7 +2,7 @@
 
 {% block main_content %}
 	{% if posts %}
-		<p>{{ posts | length }} result(s) for <strong>{{ search_query }}</strong>:</p>
+		<p>{{ posts | length }} {{ 'result' | pluralize(posts|length)}} for <strong>{{ search_query }}</strong>:</p>
 
 		{% for post in posts %}
 			{% include 'partials/blog-entry-archive.twig' %}
