@@ -23,17 +23,27 @@ class MenuItem extends \TimberMenuItem {
 	 * represents the current page or an ancestor of the current page
 	 */
 	public function display_children() {
-		$indicatorClasses = [
-			static::CLASS_HAS_CHILDREN,
-			static::CLASS_CURRENT,
-			static::CLASS_CURRENT_ANCESTOR,
-		];
+		// If this item has children,
+		// and it points to the current top-level post in the nav structure,
+		// display its children
+		return $this->has_children() && $this->points_to_current_post_or_ancestor();
+	}
 
-		// If one or more "indicator" classes have been applied to
-		// this MenuItem, show its children
-		return count(
-			array_intersect( $this->classes, $indicatorClasses )
-		) >= 1;
+	/**
+	 * Whether this item points to the current post, or an ancestor of the current post
+	 * @return boolean
+	 */
+	public function points_to_current_post_or_ancestor() {
+		return 	in_array( static::CLASS_CURRENT, $this->classes )
+				||	in_array( static::CLASS_CURRENT_ANCESTOR, $this->classes );
+	}
+
+	/**
+	 * Whether this MenuItem has child MenuItems or not.
+	 * @return boolean true if this MenuItem has children.
+	 */
+	public function has_children() {
+		return in_array( static::CLASS_HAS_CHILDREN, $this->classes );
 	}
 }
 
