@@ -32,10 +32,11 @@
 						<span>Menu</span>
 					</a>
 
-					{% include 'partials/nav.twig' with { menu: primary_menu } only %}
 
 					{# {{ get_search_form() }} #}
 				</header>
+
+				{% include 'partials/nav.twig' with { menu: primary_menu } only %}
 
 				<main class="site-main top-bottom-gutters">
 					<div class="container">
