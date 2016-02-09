@@ -45,10 +45,6 @@ module.exports = function(grunt) {
         files: 'less/*.less',
         tasks: ['less', 'cssmin:stylesheet', 'assets_version']
       },
-      php: {
-        files: 'lib/**/*.php',
-        tasks: ['phpdocumentor']
-      }
     },
     phpdocumentor: {
       dist: {

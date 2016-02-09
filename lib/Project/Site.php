@@ -44,11 +44,12 @@ class Site extends \TimberSite {
 
 		add_action( 'wp_enqueue_scripts', [$this, 'enqueue_scripts_and_styles'] );
 
-		add_image_size( 'gallery', 900, 600, true );
-
+		// Add default Twig filters/functions
 		\TwigWrapper\Filters\Number::add_twig_filters( $this );
 		\TwigWrapper\Functions\WordPress::add_twig_functions( $this );
 
+		// Override how native WP galleries work
+		add_image_size( 'gallery', 900, 600, true );
 		remove_shortcode( 'gallery' );
 		\Shortcode\Gallery::register( 'gallery' );
 
@@ -64,6 +65,8 @@ class Site extends \TimberSite {
 			'name' => 'Main Sidebar',
 			'id' => 'main-sidebar'
 		]);
+
+
 
 		return $this;
 	}
@@ -125,8 +128,6 @@ class Site extends \TimberSite {
 	public function add_to_context( $context ) {
 		$context['site'] = $this;
 		$context['primary_menu'] = new Menu( 'primary' );
-		$context['global_menu'] = new Menu( 'global' );
-		$context['footer_menu'] = new Menu( 'footer' );
 		$context['main_sidebar'] = \Timber::get_widgets( 'main-sidebar' );
 		$context['body_classes'] = get_body_class();
 		$context['search_query'] = get_search_query();
