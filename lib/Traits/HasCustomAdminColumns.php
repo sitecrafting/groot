@@ -42,8 +42,10 @@ trait HasCustomAdminColumns {
 		});
 
 		// register a callback to display the value for this column
-		add_action($displayHook, function($column, $id) use($getValue) {
-			echo $getValue($id);
+		add_action($displayHook, function($column, $id) use($key, $getValue) {
+			if( $column === $key ) {
+				echo $getValue($id);
+			}
 		}, $priority = 10, $numArgs = 2 );
 	}
 }
