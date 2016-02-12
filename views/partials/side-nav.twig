@@ -1,6 +1,6 @@
 <nav class="side-nav level1">
 	<ul id="side-menu" class="menu">
-		{% for item in menu.get_items %}
+		{% for item in menu.get_current_top_level_item().get_children() %}
 
 			<li class="{{ item.classes | join(' ') }}">
 				<a href="{{ item.get_path }}">{{ item.title }}</a>
