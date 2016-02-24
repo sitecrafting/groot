@@ -91,8 +91,12 @@ class Site extends \TimberSite {
 			'project-common',
 			$this->get_script_uri('project-common.min.js'),
 			$dependencies = [],
-			$version = $this->get_assets_version()
+			$version = $this->get_assets_version(),
+			$inFooter = true
 		);
+
+		// NOTE: If you do need to enqueue additional scripts here, please enqueue them in the footer
+		// unless there's a very good reason not to.
 
 		wp_enqueue_style(
 			'project-css',
