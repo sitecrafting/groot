@@ -43,7 +43,7 @@ module.exports = function(grunt) {
       },
       less: {
         files: 'less/*.less',
-        tasks: ['less', 'cssmin:stylesheet', 'assets_version']
+        tasks: ['less', 'assets_version']
       },
     },
     phpdocumentor: {
@@ -120,15 +120,11 @@ module.exports = function(grunt) {
     },
     less: {
       development: {
+        options: {
+          compress: true
+        },
         files: {
           'style.css': 'less/style.less'
-        }
-      }
-    },
-    cssmin: {
-      stylesheet: {
-        files: {
-          'style.min.css': ['style.css']
         }
       }
     },
@@ -162,11 +158,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-modernizr');
 
   // Default task.
   grunt.registerTask('default', ['jshint']);
-  grunt.registerTask('front-end', ['bower:install', 'modernizr:dist', 'less', 'cssmin:stylesheet', 'jshint', 'concat:js', 'uglify:js']);
+  grunt.registerTask('front-end', ['bower:install', 'modernizr:dist', 'less', 'jshint', 'concat:js', 'uglify:js']);
   grunt.registerTask('doc', ['phpdocumentor']);
 };

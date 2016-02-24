@@ -100,7 +100,7 @@ class Site extends \TimberSite {
 
 		wp_enqueue_style(
 			'project-css',
-			$this->get_stylesheet_uri('style.min.css'),
+			$this->get_stylesheet_uri('style.css'),
 			$dependencies = [],
 			$version = $this->get_assets_version()
 		);
