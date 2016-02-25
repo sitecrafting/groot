@@ -1,6 +1,8 @@
 /*global module:false*/
 module.exports = function(grunt) {
 
+  var AutoPrefix = require('less-plugin-autoprefix');
+
   // Project configuration.
   grunt.initConfig({
     // Task configuration.
@@ -23,6 +25,7 @@ module.exports = function(grunt) {
           'document': true,
           'alert': true,
           'console': true,
+          'require': true,
         }
       },
       gruntfile: {
@@ -121,7 +124,10 @@ module.exports = function(grunt) {
     less: {
       development: {
         options: {
-          compress: true
+          compress: true,
+          plugins: [
+            new AutoPrefix({browsers: '> 10%'})
+          ]
         },
         files: {
           'style.css': 'less/style.less'
