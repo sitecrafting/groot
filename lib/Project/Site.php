@@ -70,6 +70,9 @@ class Site extends \TimberSite {
 			'id' => 'main-sidebar'
 		]);
 
+		// Banish the Yoast SEO meta box to the bottom of the post edit screen, where it belongs
+		add_filter( 'wpseo_metabox_prio', function() { return 'low';});
+
 
 
 		return $this;
