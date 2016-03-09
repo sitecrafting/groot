@@ -1,0 +1,16 @@
+{% extends 'layouts/main.twig' %}
+
+
+{% block main_content %}
+
+
+  {% block side_content %}
+    {% include 'partials/blog-sidebar.twig' with { post: post } only %}
+  {% endblock %}
+
+  <section class="main-content">
+    {% block blog_content %}{% endblock %}
+  </section>
+
+
+{% endblock %}

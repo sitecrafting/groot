@@ -8,12 +8,6 @@
 				<span class="post-author">By {{ post.author }}</span>
 				<span class="post-publish-date">{{ post.date }}</span>
 			</div>
-			<div class="post-terms post-categories">
-				{% include 'partials/post-categories.twig' %}
-			</div>
-			<div class="post-terms post-tags">
-				{% include 'partials/post-tags.twig' %}
-			</div>
 		</header>
 	{% endblock %}
 
@@ -23,5 +17,12 @@
 		<div class="post-content">{{ post.content }}</div>
 	{% endblock %}
 
-	{% block after_content %}{# nothing here by default #}{% endblock %}
+	{% block after_content %}
+		<div class="post-terms post-categories">
+			{% include 'partials/post-categories.twig' %}
+		</div>
+		<div class="post-terms post-tags">
+			{% include 'partials/post-tags.twig' %}
+		</div>
+	{% endblock %}
 </article>

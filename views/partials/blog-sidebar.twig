@@ -1,0 +1,25 @@
+<nav class="side-nav level1">
+  <h2 class="nav-title">Tags</h2>
+
+  <ul id="side-menu" class="menu">
+
+    {% for tag in get_terms('tag') %}
+      <li class="{{ tag | term_item_class(post) }}">
+        <a href="{{ tag.link() }}" rel="tag">{{ tag.name }} ({{ tag.get_posts()|length}})</a>
+      </li>
+    {% endfor %}
+
+  </ul>
+
+  <h2 class="nav-title">Categories</h2>
+
+  <ul id="side-menu" class="menu">
+
+    {% for cat in get_terms('category') %}
+      <li class="{{ cat | term_item_class(post) }}">
+        <a href="{{ cat.link() }}" rel="category">{{ cat.name }} ({{ cat.get_posts()|length}})</a>
+      </li>
+    {% endfor %}
+
+  </ul>
+</nav>

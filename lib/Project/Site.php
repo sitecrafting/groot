@@ -50,6 +50,7 @@ class Site extends \TimberSite {
 		// Add default Twig filters/functions
 		\TwigWrapper\Filters\Number::add_twig_filters( $this );
 		\TwigWrapper\Filters\TextHelper::add_twig_filters( $this );
+		\TwigWrapper\Filters\TermHelper::add_twig_filters( $this );
 		\TwigWrapper\Functions\WordPress::add_twig_functions( $this );
 
 		// Override how native WP galleries work

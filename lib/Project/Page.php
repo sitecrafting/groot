@@ -19,5 +19,13 @@ class Page extends Post {
 		return $menu->get_current_top_level_item_by_nav_hierarchy( $this )
 			?: $this->title;
 	}
+
+	/**
+	 * Get the Blog Landing Page.
+	 * @return  Project\Page
+	 */
+	public static function get_blog_page() {
+		return new static( get_option('page_for_posts') );
+	}
 }
 

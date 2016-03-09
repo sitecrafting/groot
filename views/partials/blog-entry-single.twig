@@ -5,6 +5,8 @@ we just want to define how certain pieces of the template behave.
 In this case, we might want some extra navigation at the bottom #}
 
 {% block after_content %}
+	{{ parent() }}
+
 	<div class="post-previous-wrap">
 		{% if post.prev %}
 			<a href="{{ post.prev.link }}" title="{{ post.prev.title }}">Previous</a>

@@ -2,6 +2,8 @@
 
 namespace TwigWrapper\Functions;
 
+use Timber;
+
 /**
  * Twig Wrapper around generic or global functions, such as WordPress
  * template tags.
@@ -26,6 +28,9 @@ class WordPress extends AbstractBase {
 				wp_nav_menu( $args );
 				return ob_get_clean();
 			},
+			'get_terms' => function( $taxonomy, $opts = ['hide_empty' => true] ) {
+				return Timber::get_terms($taxonomy, $opts);
+			}
 		];
 	}
 }

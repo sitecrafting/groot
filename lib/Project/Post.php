@@ -25,8 +25,7 @@ class Post extends \TimberPost {
 	public static function get_blog_url() {
 		if( ! static::$BLOG_URL ) {
 			// haven't fetched the URL yet...go get it
-			$id = get_option('page_for_posts');
-			$page = new Page( $id );
+			$page = Page::get_blog_page();
 
 			// cache it
 			static::$BLOG_URL = $page->link();
