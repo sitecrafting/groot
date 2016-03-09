@@ -4,9 +4,13 @@
 {% block main_content %}
 
 
-	{% include 'partials/side-nav.twig' with { menu: primary_menu, post: post } only %}
+  {% block side_content %}
+    {% include 'partials/side-nav.twig' with { menu: primary_menu, post: post } only %}
+  {% endblock %}
 
-	{% block interior_content %}{% endblock %}
+  <section class="main-content">
+    {% block interior_content %}{% endblock %}
+  </section>
 
 
 {% endblock %}
