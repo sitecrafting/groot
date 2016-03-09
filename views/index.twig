@@ -4,4 +4,8 @@
 	{% for post in posts %}
 		{% include 'partials/blog-entry-archive.twig' %}
 	{% endfor %}
+
+  <div class="pagination">
+    {{ paginate_links() }}
+  </div>
 {% endblock %}

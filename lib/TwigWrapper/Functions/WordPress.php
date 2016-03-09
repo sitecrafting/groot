@@ -30,6 +30,9 @@ class WordPress extends AbstractBase {
 			},
 			'get_terms' => function( $taxonomy, $opts = ['hide_empty' => true] ) {
 				return Timber::get_terms($taxonomy, $opts);
+			},
+			'paginate_links' => function( $args = [] ) {
+				return paginate_links($args);
 			}
 		];
 	}

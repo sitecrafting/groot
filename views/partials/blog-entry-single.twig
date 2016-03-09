@@ -4,6 +4,14 @@
 we just want to define how certain pieces of the template behave.
 In this case, we might want some extra navigation at the bottom #}
 
+{% block before_content %}
+	{% if post.thumbnail() %}
+		<div class="post-thumb-container">
+			<img src="{{ post.thumbnail().get_src() }}" alt="{{ post.thumbnail().alt() }}">
+		</div>
+	{% endif %}
+{% endblock %}
+
 {% block after_content %}
 	{{ parent() }}
 

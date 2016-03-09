@@ -5,13 +5,22 @@
 		<header>
 			<a href={{ post.link }} title="{{ post.title }}"><h1>{{ post.title }}</h1></a>
 			<div class="post-publish-info">
-				<span class="post-author">By {{ post.author }}</span>
+				<span class="post-author">
+					By
+					<a href="{{ post.author.link() }}" rel="author">{{ post.author }}</a>
+				</span>
 				<span class="post-publish-date">{{ post.date }}</span>
 			</div>
 		</header>
 	{% endblock %}
 
-	{% block before_content %}{# nothing here by default #}{% endblock %}
+	{% block before_content %}
+		{% if post.thumbnail() %}
+			<div class="post-thumb-container">
+				<img src="{{ post.thumbnail().get_src('small') }}" alt="{{ post.thumbnail().alt() }}">
+			</div>
+		{% endif %}
+	{% endblock %}
 
 	{% block post_content %}
 		<div class="post-content">{{ post.content }}</div>
