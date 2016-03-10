@@ -126,7 +126,7 @@ module.exports = function(grunt) {
         options: {
           compress: true,
           plugins: [
-            new AutoPrefix({browsers: '> 10%'})
+            new AutoPrefix()
           ]
         },
         files: {
