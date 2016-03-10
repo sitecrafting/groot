@@ -45,7 +45,7 @@ module.exports = function(grunt) {
         tasks: ['jshint:theme', 'concat:js', 'uglify:js', 'assets_version']
       },
       less: {
-        files: 'less/*.less',
+        files: 'less/**/*.less',
         tasks: ['less', 'assets_version']
       },
     },
