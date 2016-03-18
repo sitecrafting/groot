@@ -126,7 +126,7 @@ module.exports = function(grunt) {
         options: {
           compress: true,
           plugins: [
-            new AutoPrefix()
+            new AutoPrefix({browsers: '> 1%, last 2 versions, Firefox ESR, Opera 12.1'})
           ]
         },
         files: {
@@ -167,7 +167,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-modernizr');
 
   // Default task.
-  grunt.registerTask('default', ['jshint']);
+  grunt.registerTask('default', ['jshint', 'concat:js', 'uglify:js', 'less', 'watch']);
   grunt.registerTask('front-end', ['bower:install', 'modernizr:dist', 'less', 'jshint', 'concat:js', 'uglify:js']);
   grunt.registerTask('doc', ['phpdocumentor']);
 };
