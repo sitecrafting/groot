@@ -83,9 +83,6 @@ class Site extends \TimberSite {
 	 * Enqueue custom JS/CSS
 	 */
 	public function enqueue_scripts_and_styles() {
-		// Include our own jQuery
-		wp_dequeue_script( 'jquery' );
-
 		/*
 		 * Enqueue our own project-specific JavaScript, including dependencies.
 		 * If you need to add a script to be enqueued and it's ok to do so site-wide, please consider doing so via Grunt
@@ -94,7 +91,7 @@ class Site extends \TimberSite {
 		wp_enqueue_script(
 			'project-common',
 			$this->get_script_uri('project-common.min.js'),
-			$dependencies = [],
+			$dependencies = ['jquery'],
 			$version = $this->get_assets_version(),
 			$inFooter = true
 		);

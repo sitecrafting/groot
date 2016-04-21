@@ -110,7 +110,6 @@ module.exports = function(grunt) {
         // should be declared here first, e.g. jQuery UI would be declared after jQuery core.
         src: [
           'js/modernizr/modernizr-custom-build.js',
-          'bower_components/jquery/dist/jquery.js',
           'bower_components/flexslider/jquery.flexslider.js',
           'bower_components/jquery-selectric/public/jquery.selectric.js',
           'bower_components/jquery-placeholder/jquery.placeholder.js',
