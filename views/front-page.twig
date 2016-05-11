@@ -1,17 +1,23 @@
 {% extends 'layouts/main.twig' %}
 
 {% block main_content %}
-	{% for post in posts %}
-		<article class="{{post.class}}">
-			<h1>{{ post.title }}</h1>
 
-			<h2>front-page.twig</h2>
+	<section class="page page top_bottom_gutters">
+		<div class="container">
+			{% for post in posts %}
+				<article class="{{post.class}}">
+					<h1>{{ post.title }}</h1>
 
-			<div class="post-content">{{ post.content }}</div>
+					<h2>front-page.twig</h2>
 
-			<p>
-				Using Timber version with Twig version: {{ constant('Twig_Environment::VERSION') }}</tt>
-			</p>
-		</article>
-	{% endfor %}
+					<div class="post-content">{{ post.content }}</div>
+
+					<p>
+						Using Timber version with Twig version: {{ constant('Twig_Environment::VERSION') }}</tt>
+					</p>
+				</article>
+			{% endfor %}
+		</div>
+	</section>
+
 {% endblock %}

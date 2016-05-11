@@ -24,11 +24,7 @@
 				<header class="site-header">
 					<a class="logo" href="/" title="{{ site.name }}">{{ site.name }}</a>
 					<a class="menu-btn">
-						<div class="toggle">
-							<span class="l1"></span>
-							<span class="l2"></span>
-							<span class="l3"></span>
-						</div>
+						<div class="toggle"><span></span><span></span><span></span><span></span></div>
 						<span>Menu</span>
 					</a>
 
@@ -38,12 +34,10 @@
 
 				{% include 'partials/nav.twig' with { menu: primary_menu } only %}
 
-				<main class="site-main top-bottom-gutters">
-					<div class="container">
+				<main class="site-main">
 						{% block main_content %}
 							Default main content
 						{% endblock %}
-					</div>
 				</main>
 
 				<aside class="sidebar">

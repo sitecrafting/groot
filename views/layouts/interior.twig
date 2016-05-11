@@ -2,7 +2,8 @@
 
 
 {% block main_content %}
-
+<section class="page">
+    <div class="container">
 
   {% block side_content %}
     {% include 'partials/side-nav.twig' with { menu: primary_menu, post: post } only %}
@@ -12,5 +13,6 @@
     {% block interior_content %}{% endblock %}
   </section>
 
-
+</div>
+</section>
 {% endblock %}

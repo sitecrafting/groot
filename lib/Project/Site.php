@@ -105,6 +105,13 @@ class Site extends \TimberSite {
 			$dependencies = [],
 			$version = $this->get_assets_version()
 		);
+		wp_enqueue_style(
+			'project-print-css',
+			$this->get_stylesheet_uri('print.css'),
+			$dependencies = [],
+			$version = $this->get_assets_version(),
+			'print'
+		);
 	}
 
 	/**

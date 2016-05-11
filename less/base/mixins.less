@@ -54,16 +54,26 @@
   white-space: nowrap;
 }
 
-.hide-text(){
+.hide-text{
   overflow: hidden;
-  text-indent: 101%;
   white-space: nowrap;
+  text-indent: 101%;
 }
-
 .plain-list(){
   list-style-type: none;
   margin: 0;
   padding: 0;
+}
+
+.visuallyhidden { 
+  position: absolute; 
+  overflow: hidden; 
+  clip: rect(0 0 0 0); 
+  height: 0px;
+  width: 0px; 
+  margin: -1px; 
+  padding: 0; 
+  border: 0; 
 }
 
 // CSS3 PROPERTIES
@@ -308,7 +318,7 @@
   &:focus {
     border-color: @color;
     outline: 0;
-    .box-shadow(~"inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px @{color-rgba}");
+    //.box-shadow(~"inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px @{color-rgba}");
   }
   
 }

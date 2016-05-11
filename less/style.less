@@ -38,22 +38,26 @@
  */
 
 // Reset
-@import "normalize.less";
+@import "base/normalize.less";
 
 // Core variables and mixins
-@import "variables.less";
-@import "mixins.less";
+@import "base/variables.less";
+@import "base/mixins.less";
 
-@import "global.less";
-@import "forms.less";
+@import "base/global.less";
+@import "base/flexboxgrid.less";
+@import "base/buttons.less";
+@import "base/datepicker.less";
+@import "base/forms.less";
 
-@import "header.less";
-@import "navigation.less";
-@import "footer.less";
+@import "structure/header.less";
+@import "structure/navigation.less";
+@import "structure/footer.less";
 
 
 /***** STRUCTURE *****/
 .container{
+	position: relative;
 	max-width: @container-main;
 	margin: 0 auto;
 	padding-left: 20px;
@@ -68,35 +72,41 @@
 	height: 100%;
 }
 .site-pusher{
-	@media @tablet, @mobile-lg, @mobile{
+	@media @tablet-sml, @mobile-all{
 		position: relative;
 		height: 100%;
 		left: 0;
-		.transition(left @trans-speed ease);
+		.transition(transform .5s);
+
 
 		.menu-open &{
-			left: -(@off-canvas-width); //off canvas menu width
+			transform: translate3d(-(@off-canvas-width), 0, 0);
 		}
+
 	}//end media
 }
 
 
-.site-main {
+.page{
+	position: relative;
 	min-height: 500px;
 	background: @white;
-
-	&.top-bottom-gutters { padding-top: 20px; padding-bottom: 20px; }
-
-	.main-content {
-
+	
+	&.top_bottom_gutters{ 
+		padding-top: 20px; 
+		padding-bottom: 20px; 
 	}
-
-	nav.side-nav {
+	
+	.main-content{
+			
+	}
+	
+	nav.sideNav{
 		width: 20%;
 		float: left;
-
+		
 		+ .main-content{ width: 80%; float: right; padding-left: 30px; }
 	}
-
-
-}// .site-main
+	
+	
+}//end .page

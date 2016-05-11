@@ -1,11 +1,13 @@
 <nav class="main-nav">
-	<ul>
+	<ul class="menu">
         {% for item in menu.get_items %}
             <li class="nav-main-item {{item.classes | join(' ')}}">
+
             	<a class="nav-main-link" href="{{ item.get_link }}">
                 	{{item.title}}
             	</a>
 
+                {# SECOND LEVE #}
                 {% if item.get_children %}
                     <ul class="nav-drop">
                       {% for child in item.get_children %}
@@ -15,7 +17,8 @@
                       {% endfor %}
                     </ul>
                  {% endif %}
-        </li>
+
+            </li>
         {% endfor %}
 	</ul>
 </nav>

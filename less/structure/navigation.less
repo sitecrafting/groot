@@ -1,0 +1,147 @@
+
+nav.main-nav{
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	z-index: (@zindex-base + 5);
+
+	
+	ul{
+		.plain-list;
+		float: left;
+		
+		li{ //top level li
+			display: inline-block;
+			vertical-align: top;
+			a{
+				display: block;
+				padding: 15px 20px;
+				font-size: @nav-font-size;
+				
+				&:hover{ text-decoration: none; }
+				
+			}
+			
+			//second level
+			ul{
+				float: none;
+				position: absolute;
+				left: -9999em;
+				width: 250px;
+				background: @gray;
+				.opacity(0);
+				.transition(opacity @trans-speed ease);
+				
+				z-index: (@zindex-base + 10);
+				
+				li{ 
+					display: block; 
+					a{
+						font-size: (@nav-font-size + -2);
+					}
+				}
+
+				ul{ display: none; } //hide all other levels
+				
+			}//end second level ul
+			
+			&.active{
+				> a{ color: @white; }
+			}
+			&:hover{
+				> a{ color: @white; }
+				ul{
+					left: auto;
+					.opacity(1);
+				}
+			}
+			
+		}//end li
+		
+	}//end ul
+	
+	
+	@media @tablet-sml, @mobile-all{
+		position: absolute;
+		width: @off-canvas-width;
+		height: 100%;
+		top: 0;
+		right: -(@off-canvas-width);
+		left: auto; bottom: auto;
+		
+		padding: 20px;
+		
+		background: @black;
+		
+		ul{
+			float: none;
+
+			li{
+				display: block;
+				margin: 0 0 5px 0;
+				
+				a{ 
+					position: relative;
+					z-index: @zindex-base; 
+					padding: 10px 15px;
+				}
+
+				&.menu-item-has-children{
+					a{
+						margin-right: 35px;
+						span.dropper{
+							display: block;
+							position: absolute;
+							top: 0;
+							right: -35px;
+							width: 35px;
+							height: 100%;
+							cursor: pointer;
+							z-index: (@zindex-base + 100);
+							border-left: 1px solid @gray;
+							&:after{
+								content: "+";
+								display: block;
+								position: absolute;
+								width: 100%;
+								padding: 10px 0;
+								text-align: center;
+							}
+						}//end span.dropper
+					}
+					&.toggle{
+						> a > span.dropper{
+							&:after{ content: "-"; }
+						}
+					}
+				}
+				
+				//second level
+				ul{
+					position: relative;
+					left: auto;
+					width: 100%;
+					.opacity(1);
+					display: none;
+					margin: 5px 0 0 15px;
+					background: none;
+
+					li{
+						a{
+							padding: 5px 15px;
+						}
+						&.has_kids{
+							a{
+								span.dropper:after{ padding: 5px 0; }
+							}
+						}
+					}//end second level li
+				}
+				
+			}//end li
+		}//end ul
+		
+		
+	}//end media
+	
+}//end nav.mainNav

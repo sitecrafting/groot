@@ -111,8 +111,6 @@ module.exports = function(grunt) {
         src: [
           'js/modernizr/modernizr-custom-build.js',
           'bower_components/flexslider/jquery.flexslider.js',
-          'bower_components/jquery-selectric/public/jquery.selectric.js',
-          'bower_components/jquery-placeholder/jquery.placeholder.js',
           'js/project/responsive-nav.jquery.js',
           'js/project/common.js'
         ],
@@ -129,7 +127,8 @@ module.exports = function(grunt) {
           ]
         },
         files: {
-          'style.css': 'less/style.less'
+          'style.css': 'less/style.less',
+          'print.css': 'less/style-print.less'
         }
       }
     },
