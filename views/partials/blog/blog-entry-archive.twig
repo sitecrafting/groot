@@ -9,9 +9,9 @@ In this case, we might just want a "Read More" button at the bottom #}
 {% endblock %}
 
 {% block after_content %}
-  {{ parent() }}
+  	{{ parent() }}
 
 	<div class="post-read-more-wrap">
-		<a href="{{ post.link }}" class="post-link">Read More</a>
+		<a href="{{ post.link }}" class="btn">Read More</a>
 	</div>
 {% endblock %}

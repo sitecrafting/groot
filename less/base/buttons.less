@@ -1,23 +1,26 @@
 .btn, input[type="submit"], button {
-  
+
   display: inline-block;
   padding: 15px 20px;
-  margin-right: 10px;
+  min-width: 120px;
   border: 1px solid @gray-light;
+  border-radius: 0;
 
+  text-align: center;
   font-size: @input-font-size;
   line-height: 1;
   font-family: @font-family-base;
   color: @black;
-  
+
   background: @gray-lighter;
   cursor: pointer;
+  -webkit-appearance: none;
 
   .transition(all .25s ease);
-  
+
 	&.sml { font-size: @input-font-size + -3; }
 	&.lg { font-size: @input-font-size + 3; }
-	
+
 	&:hover {
 	  text-decoration: none;
 	  background: darken(@gray-lighter,5%);

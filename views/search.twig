@@ -1,14 +1,26 @@
 {% extends 'layouts/main.twig' %}
 
 {% block main_content %}
-	{% if posts %}
-		<p>{{ posts | length }} {{ 'result' | pluralize(posts|length)}} for <strong>{{ search_query }}</strong>:</p>
+<section class="page-layout interior-layout">
 
-		{% for post in posts %}
-			{% include 'partials/blog-entry-archive.twig' %}
-		{% endfor %}
+	<section class="main-content-area">
 
-	{% else %}
-		<p>Sorry, we couldn't find anything about <strong>{{ search_query }}</strong></p>
-	{% endif %}
+		<div class="main-content full">
+
+				{% if posts %}
+					<p>{{ posts | length }} {{ 'result' | pluralize(posts|length)}} for <strong>{{ search_query }}</strong>:</p>
+
+					{% for post in posts %}
+						{% include 'partials/blog/blog-entry-archive.twig' %}
+					{% endfor %}
+
+				{% else %}
+					<p>Sorry, we couldn't find anything about <strong>{{ search_query }}</strong></p>
+				{% endif %}
+
+		</div>
+	</section>
+
+</section>
+
 {% endblock %}

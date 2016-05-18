@@ -4,10 +4,22 @@
 we just want to define how certain pieces of the template behave.
 In this case, we might want some extra navigation at the bottom #}
 
+{% block post_header %}
+	<header>
+		<h1 class="title">{{ post.title }}</h1>
+		<div class="post-publish-info">
+			<span class="post-author">
+				By <a href="{{ post.author.link() }}" rel="author">{{ post.author }}</a>
+			</span>
+			<span class="post-publish-date">{{ post.date }}</span>
+		</div>
+	</header>
+{% endblock %}
+
 {% block before_content %}
 	{% if post.thumbnail() %}
 		<div class="post-thumb-container">
-			<img src="{{ post.thumbnail().get_src() }}" alt="{{ post.thumbnail().alt() }}">
+			<img src="{{ post.thumbnail().get_src('large') }}" alt="{{ post.thumbnail().alt() }}">
 		</div>
 	{% endif %}
 {% endblock %}
@@ -15,17 +27,22 @@ In this case, we might want some extra navigation at the bottom #}
 {% block after_content %}
 	{{ parent() }}
 
-	<div class="post-previous-wrap">
-		{% if post.prev %}
-			<a href="{{ post.prev.link }}" title="{{ post.prev.title }}">Previous</a>
-		{% endif %}
+	<div class="post-navigation">
+
+		<div class="nav-previous">
+			{% if post.prev %}
+				<a class="btn" href="{{ post.prev.link }}" title="{{ post.prev.title }}">Previous</a>
+			{% endif %}
+		</div>
+		<div class="nav-next">
+			{% if post.next %}
+				<a class="btn" href="{{ post.next.link }}" title="{{ post.next.title }}">Next</a>
+			{% endif %}
+		</div>
+
 	</div>
+
 	<div class="post-back-to-blog-wrap">
 		<a href="{{ get_blog_url() }}" class="post-link">Back to Blog</a>
-	</div>
-	<div class="post-next-wrap">
-		{% if post.next %}
-			<a href="{{ post.next.link }}" title="{{ post.next.title }}">Next</a>
-		{% endif %}
 	</div>
 {% endblock %}

@@ -2885,7 +2885,7 @@ $.fn.responsiveNav = function( options ) {
 		$menuButton.removeClass( options.menuButtonActiveClass );
 
 		//remove any inline styles from subnavigation
-		$this.find( 'ul' ).removeAttr( 'style' );
+		//$this.find( 'ul' ).removeAttr( 'style' );
 
 		menuOpen = false;
 	};
@@ -2894,7 +2894,7 @@ $.fn.responsiveNav = function( options ) {
 		//if not nav container or a decendant of nav container
 		if( !$this.is(evt.target) && $this.has(evt.target).length === 0 ) {
 			closeNav();
-			$(document).unbind( 'touchstart, click', bodyClickFn );
+			$('.site-wrapper').unbind( 'touchstart, click', bodyClickFn );
 		}
 	};
 
@@ -2913,6 +2913,7 @@ $.fn.responsiveNav = function( options ) {
 				$(this).addClass( options.menuButtonActiveClass );
 
 				menuOpen = true;
+				$('.site-wrapper').bind( 'touchstart, click', bodyClickFn );
 			}
 		}); //end button bind
 
@@ -2944,8 +2945,6 @@ $.fn.responsiveNav = function( options ) {
 
 				}
 				else if ( menuOpen && $(this).parent().next('ul').is(':visible') ) {
-						
-								
 						//close this item
 						$(this).parent().parent().removeClass('toggle');
 						$(this).parent().next('ul').slideUp(250);
@@ -2964,7 +2963,6 @@ $.fn.responsiveNav = function( options ) {
 
 				if ( menuOpen && !$(this).parent().next().is(':visible') && $(this).parent().next().length > 0) {
 
-
 					//close what's already open
 					$this.find('ul.menu > li ul > li').removeClass('toggle');
 					$this.find('ul.menu > li ul > li ul').slideUp(250);
@@ -2975,7 +2973,7 @@ $.fn.responsiveNav = function( options ) {
 
 				}
 				else if ( menuOpen && $(this).parent().next('ul').is(':visible') ) {
-						
+
 						//close this item
 						$(this).parent().parent().removeClass('toggle');
 						$(this).parent().next('ul').slideUp(250);
@@ -2988,7 +2986,7 @@ $.fn.responsiveNav = function( options ) {
 	var activeToggleFn = function(){
 		//on mobile check for active navigation and set open accordingly
 		if( $menuButton.is(':visible') ){
-			
+
 			$this.find('ul.menu li.current_page_item, ul.menu li.current_page_ancestor').each(function(){
 					if( !$(this).hasClass('toggle') ){
 						$(this).addClass('toggle');
@@ -3002,7 +3000,6 @@ $.fn.responsiveNav = function( options ) {
 
 		}
 	}; //end activeToggleFn
-
 
 	menuBtnFn();
 	secondlevelNav();
@@ -3022,6 +3019,7 @@ $.fn.responsiveNav = function( options ) {
 	return this;
 };
 })(jQuery);
+
 (function($) {
 $(document).ready(function() {
 

@@ -3,7 +3,7 @@
 <article class="{{ post.class }}">
 	{% block post_header %}
 		<header>
-			<a href={{ post.link }} title="{{ post.title }}"><h1>{{ post.title }}</h1></a>
+			<h2 class="title"><a href={{ post.link }} title="{{ post.title }}">{{ post.title }}</a></h2>
 			<div class="post-publish-info">
 				<span class="post-author">
 					By
@@ -17,7 +17,7 @@
 	{% block before_content %}
 		{% if post.thumbnail() %}
 			<div class="post-thumb-container">
-				<img src="{{ post.thumbnail().get_src('small') }}" alt="{{ post.thumbnail().alt() }}">
+				<img src="{{ post.thumbnail().get_src('large') }}" alt="{{ post.thumbnail().alt() }}">
 			</div>
 		{% endif %}
 	{% endblock %}
@@ -27,11 +27,13 @@
 	{% endblock %}
 
 	{% block after_content %}
-		<div class="post-terms post-categories">
-			{% include 'partials/blog/post-categories.twig' %}
-		</div>
-		<div class="post-terms post-tags">
-			{% include 'partials/blog/post-tags.twig' %}
+		<div class="post-meta">
+			<div class="post-terms post-categories">
+				{% include 'partials/blog/post-categories.twig' %}
+			</div>
+			<div class="post-terms post-tags">
+				{% include 'partials/blog/post-tags.twig' %}
+			</div>
 		</div>
 	{% endblock %}
 </article>

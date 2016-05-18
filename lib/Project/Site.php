@@ -71,6 +71,12 @@ class Site extends \TimberSite {
 			'id' => 'main-sidebar'
 		]);
 
+		//blog sidebar
+		register_sidebar([
+			'name' => 'Blog Sidebar',
+			'id' => 'blog-sidebar'
+		]);
+
 		// Banish the Yoast SEO meta box to the bottom of the post edit screen, where it belongs
 		add_filter( 'wpseo_metabox_prio', function() { return 'low';});
 
@@ -145,6 +151,7 @@ class Site extends \TimberSite {
 		$context['site'] = $this;
 		$context['primary_menu'] = new Menu( 'primary' );
 		$context['main_sidebar'] = \Timber::get_widgets( 'main-sidebar' );
+		$context['blog_sidebar'] = \Timber::get_widgets( 'blog-sidebar' );
 		$context['body_classes'] = get_body_class();
 		$context['search_query'] = get_search_query();
 		return $context;
