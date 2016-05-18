@@ -1,11 +1,15 @@
 {% extends 'layouts/blog.twig' %}
 
 {% block blog_content %}
-	{% for post in posts %}
-		{% include 'partials/blog-entry-archive.twig' %}
-	{% endfor %}
+	<div class="main-content full">
 
-  <div class="pagination">
-    {{ paginate_links() }}
-  </div>
+		{% for post in posts %}
+			{% include 'partials/blog/blog-entry-archive.twig' %}
+		{% endfor %}
+
+	  <div class="pagination">
+	    {{ paginate_links() }}
+	  </div>
+
+	</div>
 {% endblock %}

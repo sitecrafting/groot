@@ -7,42 +7,42 @@ label {
   font-weight: bold;
 }
 
-
-
 // Common form controls
 //
 // Shared size and type resets for form controls. Apply `.form-control`
 // to any input type not listed here
 
-input[type=text], 
-input[type=password], 
-input[type="email"], 
-input[type="tel"], 
-input[type="url"], 
+input[type=text],
+input[type=password],
+input[type="email"],
+input[type="tel"],
+input[type="url"],
 input[type="number"],
-.selectbox-container, 
-textarea, 
+.selectbox-container,
+textarea,
 .form-control {
-	-webkit-appearance: none;
-  		-moz-appearance: none;
+
+    -webkit-appearance: none;
+  	-moz-appearance: none;
+    border-radius: 0;
 
   display: block;
   .box-sizing(border-box);
   width: 100%;
   height: @input-height; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
-  
+
   padding: @input-padding;
-  margin-bottom: @padding-base;
-  
+  margin-bottom: @input-margin-bottom;
+
   font-size: @input-font-size;
   line-height: @input-font-size+1;
-  
+
   color: @input-color;
   vertical-align: middle;
-  
+
   background-color: @input-bg;
   background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
-  
+
   border: 1px solid @input-border;
 
   // Customize the `:focus` state to imitate native WebKit styles.
@@ -69,11 +69,12 @@ textarea,
 .selectbox-container{
 	position: relative;
 	padding: 0;
+    margin-bottom: @input-margin-bottom;
 
-	select{ 
-		position: relative; 
-		z-index: 1; 
-		background: transparent; 
+	select{
+		position: relative;
+		z-index: 1;
+		background: transparent;
 		margin: 0;
 		width: 100%;
   		height: @input-height;
@@ -134,7 +135,7 @@ input[type=radio] + label{
 	margin: 0 5px @padding-base 0;
 	padding: 0 0 0 20px !important;
 	font-weight: normal;
-	
+
 	&:before{
     	content: "";
     	display: block;
@@ -145,7 +146,7 @@ input[type=radio] + label{
     	left: 0;
     	background: #fff;
     }
-    
+
     &.checked:before{ background: #000; }
 }
 
@@ -170,4 +171,3 @@ input[type="checkbox"],
     cursor: not-allowed;
   }
 }
-

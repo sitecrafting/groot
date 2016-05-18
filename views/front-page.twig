@@ -2,8 +2,8 @@
 
 {% block main_content %}
 
-	<section class="page page top_bottom_gutters">
-		<div class="container">
+	<section class="page-layout home-layout">
+
 			{% for post in posts %}
 				<article class="{{post.class}}">
 					<h1>{{ post.title }}</h1>
@@ -17,7 +17,7 @@
 					</p>
 				</article>
 			{% endfor %}
-		</div>
+
 	</section>
 
 {% endblock %}
