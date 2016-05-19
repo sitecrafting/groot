@@ -16,7 +16,7 @@ class Page extends Post {
 	 * @return string the title to display
 	 */
 	public function get_title_from_nav_or_post( Menu $menu ) {
-		return $menu->get_current_top_level_item_by_nav_hierarchy( $this )
+		return $menu->get_current_top_level_item( $this )
 			?: $this->title;
 	}
 
