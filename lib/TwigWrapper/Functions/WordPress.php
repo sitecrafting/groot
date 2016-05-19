@@ -34,8 +34,17 @@ class WordPress extends AbstractBase {
 			'paginate_links' => function( $args = [] ) {
 				return paginate_links($args);
 			},
+			/**
+			 * Twig function for getting a global WP option
+			 */
 			'get_option' => function($name) {
 				return get_option($name);
+			},
+			/**
+			 * Like get_option, but applies ACF filters, e.g. if need to return an object. Only works with ACF-configured option fields.
+			 */
+			'get_theme_setting' => function($name) {
+				return get_field($name, 'option');
 			},
 			'get_sidebar_widgets' => function($name) {
 				return Timber::get_widgets($name);
