@@ -150,8 +150,6 @@ class Site extends \TimberSite {
 	public function add_to_context( $context ) {
 		$context['site'] = $this;
 		$context['primary_menu'] = new Menu( 'primary' );
-		$context['main_sidebar'] = \Timber::get_widgets( 'main-sidebar' );
-		$context['blog_sidebar'] = \Timber::get_widgets( 'blog-sidebar' );
 		$context['body_classes'] = get_body_class();
 		$context['search_query'] = get_search_query();
 		return $context;

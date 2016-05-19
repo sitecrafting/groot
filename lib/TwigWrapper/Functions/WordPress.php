@@ -33,7 +33,13 @@ class WordPress extends AbstractBase {
 			},
 			'paginate_links' => function( $args = [] ) {
 				return paginate_links($args);
-			}
+			},
+			'get_option' => function($name) {
+				return get_option($name);
+			},
+			'get_sidebar_widgets' => function($name) {
+				return Timber::get_widgets($name);
+			},
 		];
 	}
 }

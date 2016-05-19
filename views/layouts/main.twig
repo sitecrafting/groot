@@ -41,7 +41,7 @@
 				</main>
 
 				{#<aside class="sidebar">
-					{{ main_sidebar }}
+					{{ get_sidebar_widgets('main-sidebar') }}
 				</aside>#}
 
 				<footer class="site-footer">
@@ -54,7 +54,7 @@
 
 		</div>
 	</div>
-	
+
 	<!-- everything below here is included automagically by WP -->
 	{{ wp_footer }}
 </body>
