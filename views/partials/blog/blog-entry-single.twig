@@ -19,7 +19,7 @@ In this case, we might want some extra navigation at the bottom #}
 {% block before_content %}
 	{% if post.thumbnail() %}
 		<div class="post-thumb-container">
-			<img src="{{ post.thumbnail().get_src('large') }}" alt="{{ post.thumbnail().alt() }}">
+			<img src="{{ post.thumbnail().src('large') }}" alt="{{ post.thumbnail().alt() }}">
 		</div>
 	{% endif %}
 {% endblock %}

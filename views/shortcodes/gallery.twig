@@ -2,8 +2,8 @@
 	<div class="gallery flexslider">
 		<ul class="slides">
 			{% for image in gallery_images %}
-				<li data-thumb="{{ image.get_src | resize('thumbnail') }}">
-					<img src="{{ image.get_src | resize('gallery') }}" alt="{{ image.caption | default(image.title) }}">
+				<li data-thumb="{{ image.src('thumbnail') }}">
+					<img src="{{ image.src('gallery') }}" alt="{{ image.caption | default(image.title) }}">
 				</li>
 			{% endfor %}
 		</ul>
