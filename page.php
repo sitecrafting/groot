@@ -1,6 +1,5 @@
 <?php
 /**
- * Template Name: Blog Archive
  * Author: Coby Tamayo
  */
 
@@ -10,4 +9,3 @@ $data = $site->get_context_with_post( new Project\Page() );
 // Render the default view
 Timber::render( 'page.twig', $data );
 
-?>
