@@ -1,4 +1,8 @@
 {
+  "repository": {
+    "type": "git",
+    "url": "https://bitbucket.org/sitecrafting/start-wp-theme-groot"
+  },
   "engines": {
     "node": ">= 0.10.0"
   },
@@ -13,5 +17,6 @@
     "grunt-modernizr": "^1.0.0",
     "grunt-phpdocumentor": "^0.4.1",
     "less-plugin-autoprefix": "^1.5.1"
-  }
+  },
+  "license": "UNLICENSED"
 }
