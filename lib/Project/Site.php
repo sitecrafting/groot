@@ -2,6 +2,12 @@
 
 namespace Project;
 
+use TwigWrapper\Filters;
+use TwigWrapper\Functions;
+
+use Project\Image;
+use Shortcode\Gallery;
+
 /**
  * Wrapper for any and all theme-specific behavior.
  *
@@ -48,18 +54,18 @@ class Site extends \TimberSite {
 		add_action( 'init', ['\Project\Admin', 'add_theme_settings_page'] );
 
 		// Add default Twig filters/functions
-		\TwigWrapper\Filters\Number::add_twig_filters( $this );
-		\TwigWrapper\Filters\TextHelper::add_twig_filters( $this );
-		\TwigWrapper\Filters\TermHelper::add_twig_filters( $this );
-		\TwigWrapper\Filters\Image::add_twig_filters( $this );
+		Filters\Number::add_twig_filters( $this );
+		Filters\TextHelper::add_twig_filters( $this );
+		Filters\TermHelper::add_twig_filters( $this );
+		Filters\Image::add_twig_filters( $this );
 
-		\TwigWrapper\Functions\WordPress::add_twig_functions( $this );
-		\TwigWrapper\Functions\Image::add_twig_functions( $this );
+		Functions\WordPress::add_twig_functions( $this );
+		Functions\Image::add_twig_functions( $this );
 
 		// Override how native WP galleries work
-		add_image_size( 'gallery', 900, 600, true );
+		Image::add_size( 'gallery', 900, 600, true );
 		remove_shortcode( 'gallery' );
-		\Shortcode\Gallery::register( 'gallery' );
+		Gallery::register( 'gallery' );
 
 		// register common nav menus
 		register_nav_menus([

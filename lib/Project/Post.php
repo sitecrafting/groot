@@ -2,6 +2,8 @@
 
 namespace Project;
 
+use Project\Image;
+
 /**
  * Override
  *
@@ -10,6 +12,8 @@ namespace Project;
  */
 class Post extends \TimberPost {
 	use \Traits\HasTerms;
+
+	public $ImageClass = '\Project\Image';
 
 	protected static $BLOG_URL;
 
