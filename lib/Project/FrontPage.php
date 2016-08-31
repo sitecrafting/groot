@@ -1,4 +1,7 @@
 <?php
+/**
+ * Home page class
+ */
 
 namespace Project;
 
@@ -7,6 +10,7 @@ namespace Project;
  *
  * @copyright 2015 SiteCrafting, Inc.
  * @author Coby Tamayo
+ * @package  Groot
  */
 class FrontPage extends Post {
 	public static function get() {

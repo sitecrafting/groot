@@ -13,6 +13,7 @@ use TimberImage;
  *
  * @copyright 2015 SiteCrafting, Inc.
  * @author Coby Tamayo
+ * @package  Groot
  */
 class Image extends TimberImage {
   /**

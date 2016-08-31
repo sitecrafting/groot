@@ -1,9 +1,16 @@
 <?php
+/**
+ * Custom gallery functionality
+ */
 
 namespace Shortcode;
 
 /**
  * Implements a custom gallery shortcode that overrides the native shortcode.
+ *
+ * @copyright 2015 SiteCrafting, Inc.
+ * @author Coby Tamayo
+ * @package  Groot
  */
 class Gallery extends AbstractBase {
 	/**

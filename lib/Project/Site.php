@@ -1,4 +1,7 @@
 <?php
+/**
+ * Central Site class
+ */
 
 namespace Project;
 
@@ -13,8 +16,13 @@ use Shortcode\Gallery;
  *
  * @copyright 2015 SiteCrafting, Inc.
  * @author Coby Tamayo
+ * @package  Groot
  */
 class Site extends \TimberSite {
+	/**
+	 * Assets version timestamp, used for cache-busting
+	 * @var string
+	 */
 	protected $assets_version;
 
 	/**

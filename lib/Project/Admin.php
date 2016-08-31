@@ -1,7 +1,17 @@
 <?php
+/**
+ * Customize the WP Admin
+ */
 
 namespace Project;
 
+/**
+ * Utility class for configuring WP Admin behavior.
+ *
+ * @copyright 2015 SiteCrafting, Inc.
+ * @author Coby Tamayo
+ * @package  Groot
+ */
 class Admin {
 	const PLUGIN_ACF_PRO = 'advanced-custom-fields-pro/acf.php';
 

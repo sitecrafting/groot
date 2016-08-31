@@ -1,10 +1,17 @@
 <?php
+/**
+ * Abstract base class for declarative, OO Twig functions
+ */
 
 namespace TwigWrapper\Functions;
 
 /**
  * Easily define custom functions to add to Twig by extending this class.
  * Then just call YourCustomFunctionClass::add_twig_functions( $site );
+ *
+ * @copyright 2015 SiteCrafting, Inc.
+ * @author Coby Tamayo
+ * @package  Groot
  */
 abstract class AbstractBase {
 	protected $site;

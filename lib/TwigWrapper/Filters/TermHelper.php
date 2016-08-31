@@ -1,4 +1,7 @@
 <?php
+/**
+ * Twig filters for WP terms
+ */
 
 namespace TwigWrapper\Filters;
 
@@ -7,6 +10,10 @@ use TimberCoreInterface;
 
 /**
  * Twig Wrapper around filters for WP/Timber terms and taxonomies
+ *
+ * @copyright 2015 SiteCrafting, Inc.
+ * @author Coby Tamayo
+ * @package  Groot
  */
 class TermHelper extends AbstractBase {
 	/**

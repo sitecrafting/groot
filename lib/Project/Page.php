@@ -1,4 +1,7 @@
 <?php
+/**
+ * Custom page class
+ */
 
 namespace Project;
 
@@ -7,6 +10,7 @@ namespace Project;
  *
  * @copyright 2015 SiteCrafting, Inc.
  * @author Coby Tamayo
+ * @package  Groot
  */
 class Page extends Post {
 	/**

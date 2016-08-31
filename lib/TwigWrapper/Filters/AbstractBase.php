@@ -1,10 +1,17 @@
 <?php
+/**
+ * Abstract base class for declarative, OO Twig functions
+ */
 
 namespace TwigWrapper\Filters;
 
 /**
  * Easily define custom filters to add to Twig by extending this class.
  * Then just call YourCustomFilterClass::add_twig_filters( $site );
+ *
+ * @copyright 2015 SiteCrafting, Inc.
+ * @author Coby Tamayo
+ * @package  Groot
  */
 abstract class AbstractBase {
 	protected $site;

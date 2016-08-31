@@ -1,4 +1,7 @@
 <?php
+/**
+ * Custom MenuItem class
+ */
 
 namespace Project;
 
@@ -8,6 +11,7 @@ namespace Project;
  *
  * @copyright 2015 SiteCrafting, Inc.
  * @author Coby Tamayo
+ * @package  Groot
  */
 class MenuItem extends \TimberMenuItem {
 	const CLASS_HAS_CHILDREN 			= 'menu-item-has-children';

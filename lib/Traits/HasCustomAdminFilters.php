@@ -1,4 +1,7 @@
 <?php
+/**
+ * Powerful utility trait for adding custom filters in the WP Admin
+ */
 
 namespace Traits;
 
@@ -7,6 +10,7 @@ namespace Traits;
  *
  * @copyright 2015 SiteCrafting, Inc.
  * @author Coby Tamayo
+ * @package  Groot
  */
 trait HasCustomAdminFilters {
 	/**

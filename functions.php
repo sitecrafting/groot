@@ -1,9 +1,5 @@
 <?php
 
-/*
- *
- */
-
 // Autoload classes
 require_once 'autoload.php';
 $loader = new Project\Autoloader();
