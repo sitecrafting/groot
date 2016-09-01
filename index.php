@@ -3,6 +3,7 @@
  * Author: Coby Tamayo
  */
 
+use Timber\Timber;
 use Project\Page;
 
 // Get common/site-wide data

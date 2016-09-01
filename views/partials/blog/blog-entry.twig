@@ -19,6 +19,7 @@
 					<meta itemprop="name" content="{{ site.name }}">
 					<span itemscope itemprop="logo" itemtype="http://schema.org/ImageObject">
 						<meta itemprop="url" content="{{ img_url('logo.png') }}">
+						<!-- if logo gets updated, make sure to update dimensions here -->
 						<meta itemprop="width" content="395">
 						<meta itemprop="height" content="60">
 					</span>
@@ -32,8 +33,8 @@
 			<!-- Rich Snippet markup for the Featured Image. Note: Google won't display a Rich Snippet without one of these -->
 			<div class="post-thumb-container" itemscope itemprop="image" itemtype="http://schema.org/ImageObject">
 				<img src="{{ post.thumbnail().src('large') }}" alt="{{ post.thumbnail().alt() | default(post.title) }}" itemprop="url">
-				<meta itemprop="width" content="{{ post.thumbnail().get_width('large') }}">
-				<meta itemprop="height" content="{{ post.thumbnail().get_height('large') }}">
+				<meta itemprop="width" content="{{ post.thumbnail().width('large') }}">
+				<meta itemprop="height" content="{{ post.thumbnail().height('large') }}">
 			</div>
 		{% endif %}
 	{% endblock %}

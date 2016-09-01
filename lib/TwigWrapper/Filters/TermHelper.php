@@ -5,8 +5,8 @@
 
 namespace TwigWrapper\Filters;
 
-use TimberTerm;
-use TimberCoreInterface;
+use Timber\Term;
+use Timber\CoreInterface as TimberCoreInterface;
 
 /**
  * Twig Wrapper around filters for WP/Timber terms and taxonomies
@@ -35,10 +35,10 @@ class TermHelper extends AbstractBase {
 	 * the current archive page (e.g. a category listing)
 	 * @return string the formatted phone number
 	 */
-	public function term_item_class( TimberTerm $term, TimberCoreInterface $currentPostOrArchive ) {
+	public function term_item_class( Term $term, TimberCoreInterface $currentPostOrArchive ) {
     // If $postOrArchive is a TimberTerm instance, we're on an archive page for that term.
     // In that case, compare it to $term to get the class(es) for the <li> being rendered
-    $currentTermItem = ($currentPostOrArchive instanceof TimberTerm)
+    $currentTermItem = ($currentPostOrArchive instanceof Term)
     										&& $term->ID === $currentPostOrArchive->ID;
 
     return $currentTermItem

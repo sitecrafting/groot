@@ -5,6 +5,8 @@
 
 namespace Project;
 
+use Timber\Menu as TimberMenu;
+
 /**
  * Custom Menu class to add special nav behavior on top of
  * TimberMenu instances.
@@ -13,7 +15,7 @@ namespace Project;
  * @author Coby Tamayo
  * @package  Groot
  */
-class Menu extends \TimberMenu {
+class Menu extends TimberMenu {
 	/**
 	 * When instantiating MenuItems that belong to this Menu, create instances of this class.
 	 * @var string

@@ -5,6 +5,8 @@
 
 namespace Project;
 
+use Timber\Post as TimberPost;
+
 use Project\Image;
 
 /**
@@ -14,7 +16,7 @@ use Project\Image;
  * @author Coby Tamayo
  * @package  Groot
  */
-class Post extends \TimberPost {
+class Post extends TimberPost {
 	use \Traits\HasTerms;
 
 	/**

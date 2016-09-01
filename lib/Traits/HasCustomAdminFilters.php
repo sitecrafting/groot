@@ -5,6 +5,8 @@
 
 namespace Traits;
 
+use Timber\Timber;
+
 /**
  * Declaratively add custom admin filter options.
  *
@@ -54,7 +56,7 @@ trait HasCustomAdminFilters {
 	 * @param array $data the view data
 	 */
 	protected static function render_custom_filter_select( array $data ) {
-		\Timber::render( 'admin/custom-filter-select.twig', $data );
+		Timber::render( 'admin/custom-filter-select.twig', $data );
 	}
 
 	/**

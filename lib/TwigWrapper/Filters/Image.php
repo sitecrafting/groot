@@ -5,9 +5,6 @@
 
 namespace TwigWrapper\Filters;
 
-use Timber;
-use TimberImage;
-
 /**
  * Twig Wrapper around high-level image filters
  *

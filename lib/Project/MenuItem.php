@@ -5,6 +5,8 @@
 
 namespace Project;
 
+use Timber\MenuItem as TimberMenuItem;
+
 /**
  * Custom MenuItem class for adding special nav behavior to
  * TimberMenuItem instances
@@ -13,7 +15,7 @@ namespace Project;
  * @author Coby Tamayo
  * @package  Groot
  */
-class MenuItem extends \TimberMenuItem {
+class MenuItem extends TimberMenuItem {
 	const CLASS_HAS_CHILDREN 			= 'menu-item-has-children';
 	const CLASS_CURRENT 					= 'current-menu-item';
 	const CLASS_CURRENT_ANCESTOR 	= 'current-menu-ancestor';

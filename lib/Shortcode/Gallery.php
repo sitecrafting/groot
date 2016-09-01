@@ -5,6 +5,10 @@
 
 namespace Shortcode;
 
+use Timber\Timber;
+
+use Project\Image;
+
 /**
  * Implements a custom gallery shortcode that overrides the native shortcode.
  *
@@ -24,7 +28,7 @@ class Gallery extends AbstractBase {
 			$data['gallery_images'] = $this->get_images( $ids );
 		}
 
-		return \Timber::compile( 'shortcodes/gallery.twig', $data );
+		return Timber::compile( 'shortcodes/gallery.twig', $data );
 	}
 
 	/**
@@ -40,7 +44,7 @@ class Gallery extends AbstractBase {
 
 		// Get a TimberImage for each valid ID
 		return array_map( function( $id ) {
-			return new \TimberImage($id);
+			return new Image($id);
 		}, $ids );
 	}
 }

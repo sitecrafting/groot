@@ -5,7 +5,7 @@
 
 namespace TwigWrapper\Functions;
 
-use Timber;
+use Timber\Timber;
 
 /**
  * Twig Wrapper around generic or global functions, such as WordPress

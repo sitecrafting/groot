@@ -5,7 +5,7 @@
 
 namespace Project;
 
-use TimberImage;
+use Timber\Image as TimberImage;
 
 /**
  * Custom Image class for maintaining image sizes.
@@ -95,11 +95,11 @@ class Image extends TimberImage {
    * @param  string $customSize if specified
    * @return int
    */
-  public function get_width( $customSize = false ) {
+  public function width( $customSize = false ) {
     if ($customSize && $dimensions = static::get_size($customSize)) {
       $width = $dimensions['width'];
     } else {
-      $width = parent::get_width();
+      $width = parent::width();
     }
 
     return $width;
@@ -110,16 +110,16 @@ class Image extends TimberImage {
    * @param  string $customSize if specified
    * @return int
    */
-  public function get_height( $customSize = false ) {
-    $originalWidth = parent::get_width();
-    $width = $this->get_width($customSize);
+  public function height( $customSize = false ) {
+    $originalWidth = parent::width();
+    $width = $this->width($customSize);
 
     if ($width != $originalWidth) {
       // distinct custom dimensions; calculate new based on aspect ratio
       $height = floor( $width / $this->aspect() );
     } else {
       // not a custom size; just return the original height
-      $height = parent::get_height();
+      $height = parent::height();
     }
 
     return $height;
