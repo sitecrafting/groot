@@ -18,6 +18,7 @@ use TwigWrapper\Functions;
 
 use Project\Image;
 use Shortcode\Gallery;
+use Shortcode\Button;
 
 /**
  * Wrapper for any and all theme-specific behavior.
