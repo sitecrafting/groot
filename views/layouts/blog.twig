@@ -2,17 +2,17 @@
 
 
 {% block main_content %}
-<section class="page-layout blog-layout">
-
+<section class="page blog-layout">
+  <div class="container">
 
   {% block side_content %}
     {% include 'partials/blog/blog-sidebar.twig' %}
   {% endblock %}
 
-    <section class="main-content-area">
+
     {% block blog_content %}{% endblock %}
-  </section>
 
 
-  </section>
+  </div>
+</section>
 {% endblock %}

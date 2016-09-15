@@ -7,6 +7,15 @@ label {
   font-weight: bold;
 }
 
+form{
+    margin: 30px 0;
+    padding: 30px 0;
+    border-top: 1px solid @gray-lighter;
+    border-bottom: 1px solid @gray-lighter;
+
+    button{ margin: 25px 0 0 0; }
+}
+
 // Common form controls
 //
 // Shared size and type resets for form controls. Apply `.form-control`
@@ -32,7 +41,7 @@ textarea,
   height: @input-height; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
 
   padding: @input-padding;
-  margin-bottom: @input-margin-bottom;
+  margin-bottom: @input-bottom-margin;
 
   font-size: @input-font-size;
   line-height: @input-font-size+1;
@@ -69,7 +78,6 @@ textarea,
 .selectbox-container{
 	position: relative;
 	padding: 0;
-    margin-bottom: @input-margin-bottom;
 
 	select{
 		position: relative;

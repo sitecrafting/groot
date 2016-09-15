@@ -128,6 +128,16 @@ class Site extends TimberSite {
 			$inFooter = true
 		);
 
+		//modernizr
+		wp_enqueue_script(
+			'project-modernizr',
+			$this->get_script_uri('modernizr/modernizr.custom.53630.js'),
+			$dependencies = [],
+			$version = $this->get_assets_version(),
+			$inFooter = false
+		);
+
+
 		// NOTE: If you do need to enqueue additional scripts here, please enqueue them in the footer
 		// unless there's a very good reason not to.
 

@@ -23,20 +23,20 @@
 		<div class="site-pusher">
 
 			{% block container_content %}
-				<header class="site-header" itemscope itemtype="http://schema.org/Organization">
-					<a class="logo" href="/" title="{{ site.name }}">{{ site.name }}</a>
-					<a class="menu-btn">
-						<div class="toggle"><span></span><span></span><span></span><span></span></div>
-						<span>Menu</span>
-					</a>
-
+				<header class="site-header outer-gutter" itemscope itemtype="http://schema.org/Organization">
 					<!-- Rich Snippet/schema.org markup about this Organization -->
 					<meta itemprop="name" content="{{ site.name }}">
 					<meta itemprop="url" content="{{ site.url }}">
 					<meta itemprop="description" content="{{ site.description }}">
-					<span itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+					<a class="logo" href="/" title="{{ site.name }}" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+						{{ site.name }}
 						<meta itemprop="url" content="{{ img_url('logo.png') }}">
-					</span>
+					</a>
+
+					<a class="menu-btn">
+						<div class="toggle"><span></span><span></span><span></span><span></span></div>
+						<span>Menu</span>
+					</a>
 
 					{# {{ get_search_form() }} #}
 				</header>
@@ -49,7 +49,7 @@
 						{% endblock %}
 				</main>
 
-				<footer class="site-footer">
+				<footer class="site-footer outer-gutter">
 					{% block footer %}
 						&copy; {{ 'now' | date('Y') }} Company Name
 					{% endblock %}

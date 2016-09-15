@@ -50,116 +50,50 @@
 @import "base/datepicker.less";
 @import "base/forms.less";
 
+@import "elements/widgets.less";
 @import "elements/wp-blog.less";
 
-@import "structure/side-panel.less";
 @import "structure/header.less";
 @import "structure/navigation.less";
+@import "structure/side-nav.less";
 @import "structure/footer.less";
 
+@import "structure/structure.less";
 
-/***** STRUCTURE *****/
 
-.site-wrapper{
-	position: relative;
-	overflow: hidden;
-	height: 100%;
-
-	max-width: @container-main;
+.container{
 	margin: 0 auto;
 }
-.site-pusher{
-	@media @tablet-sml, @mobile-all{
-		position: relative;
-		height: 100%;
-		left: 0;
-		.transition(transform .5s);
 
-		&:after{
-		    content: '';
-		    z-index: 1000;
-			position: absolute;
-		    top: 0;
-		    right: 0;
-		    width: 0;
-		    height: 0;
-		    background: rgba(0,0,0,0.6);
-		    opacity: 0;
-		    transition: opacity 0.5s, width 0.1s 0.5s, height 0.1s 0.5s;
-		}
-
-		.menu-open &{
-			transform: translate3d(-(@off-canvas-width), 0, 0);
-
-			&:after{
-			    width: 100%;
-			    height: 100%;
-			    opacity: 1;
-				transition: opacity 0.5s;
-			}
-		}
-
-	}//end media
+.outer-gutter{
+	padding-left: @gutter;
+	padding-right: @gutter;
+	@media @tablet-all{
+		padding-left: @gutter-tablet;
+		padding-right: @gutter-tablet;
+	}
+	@media @mobile-all{
+		padding-left: @gutter-mobile;
+		padding-right: @gutter-mobile;
+	}
 }
 
-
-.page-layout{
-	position: relative;
-	display: flex;
-	min-height: 420px;
-	background: @white;
-
-	&.home-layout{
-		display: block;
-		padding: 40px @gutter;
+.outer-gutter-left{
+	padding-left: @gutter;
+	@media @tablet-all{
+		padding-left: @gutter-tablet;
 	}
+	@media @mobile-all{
+		padding-left: @gutter-mobile;
+	}
+}
 
-	.main-content-area{
-		display: flex;
-		flex-flow: row wrap;
-		width: 100%;
-		max-width: 1005px;
-		margin: 0 auto;
-
-		@media @mobile-all{
-			display: block;
-		}
-
-		.main-content{
-			position: relative;
-			width: 73%;
-			padding: 40px @gutter;
-
-			&.full{ width: 100%; }
-
-			@media @tablet-all{
-				width: 65%;
-				padding: 40px @gutter-tablet;
-			}
-			@media @mobile-all{
-				flex: none;
-				width: 100%;
-				padding: 30px @gutter-mobile;
-			}
-
-
-		}
-
-
-	}//end .main-content-area
-
-	nav.side-nav{
-		width: 23%;
-		background: @gray-lighter;
-		padding: 25px 0;
-
-		+ .main-content-area{ width: 77%; }
-
-
-		@media @tablet-all, @mobile-all{
-			display: none;
-			+ .main-content-area{ width: 100%; }
-		}
-	}//end nav.side-nav
-
-}//end section.page
+.outer-gutter-right{
+	padding-right: @gutter;
+	@media @tablet-all{
+		padding-right: @gutter-tablet;
+	}
+	@media @mobile-all{
+		padding-right: @gutter-mobile;
+	}
+}

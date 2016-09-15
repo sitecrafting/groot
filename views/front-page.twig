@@ -2,19 +2,19 @@
 
 {% block main_content %}
 
-	<section class="page-layout home-layout">
+	<section class="home-layout outer-gutter">
 
 			{% for post in posts %}
 				<article class="{{post.class}}">
+
 					<h1>{{ post.title }}</h1>
-
-					<h2>front-page.twig</h2>
-
 					<div class="post-content">{{ post.content }}</div>
 
+					<h2>front-page.twig</h2>
 					<p>
 						Using Timber with Twig version: <tt>{{ constant('Twig_Environment::VERSION') }}</tt>
 					</p>
+					
 				</article>
 			{% endfor %}
 
