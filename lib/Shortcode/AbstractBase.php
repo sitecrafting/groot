@@ -1,10 +1,17 @@
 <?php
+/**
+ * Declarative-style WP shortcodes
+ */
 
 namespace Shortcode;
 
 /**
  * Easily add shortcodes by calling register() on a class that implements this
  * abstract class
+ *
+ * @copyright 2015 SiteCrafting, Inc.
+ * @author Coby Tamayo
+ * @package  Groot
  */
 abstract class AbstractBase {
 	/**

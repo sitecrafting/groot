@@ -1,13 +1,16 @@
 <?php
+/**
+ * Custom Twig filters for dealing with images
+ */
 
 namespace TwigWrapper\Filters;
 
-use Timber;
-use TimberImage;
-
 /**
  * Twig Wrapper around high-level image filters
- * @package default
+ *
+ * @copyright 2015 SiteCrafting, Inc.
+ * @author Coby Tamayo
+ * @package  Groot
  */
 class Image extends AbstractBase {
 	/**

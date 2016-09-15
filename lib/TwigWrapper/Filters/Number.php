@@ -1,9 +1,16 @@
 <?php
+/**
+ * Custom Twig filters for formatting numbers
+ */
 
 namespace TwigWrapper\Filters;
 
 /**
  * Twig Wrapper around generic filters for numbers
+ *
+ * @copyright 2015 SiteCrafting, Inc.
+ * @author Coby Tamayo
+ * @package  Groot
  */
 class Number extends AbstractBase {
 	/**

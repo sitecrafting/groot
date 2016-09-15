@@ -23,13 +23,20 @@
 		<div class="site-pusher">
 
 			{% block container_content %}
-				<header class="site-header">
+				<header class="site-header" itemscope itemtype="http://schema.org/Organization">
 					<a class="logo" href="/" title="{{ site.name }}">{{ site.name }}</a>
 					<a class="menu-btn">
 						<div class="toggle"><span></span><span></span><span></span><span></span></div>
 						<span>Menu</span>
 					</a>
 
+					<!-- Rich Snippet/schema.org markup about this Organization -->
+					<meta itemprop="name" content="{{ site.name }}">
+					<meta itemprop="url" content="{{ site.url }}">
+					<meta itemprop="description" content="{{ site.description }}">
+					<span itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+						<meta itemprop="url" content="{{ img_url('logo.png') }}">
+					</span>
 
 					{# {{ get_search_form() }} #}
 				</header>

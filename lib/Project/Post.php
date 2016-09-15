@@ -1,18 +1,41 @@
 <?php
+/**
+ * High-level WP Post behavior
+ */
 
 namespace Project;
 
+use Timber\Post as TimberPost;
+
+use Project\Image;
+
 /**
- * Override
+ * High-level behavior for WP Posts, on top of TimberPost class
  *
  * @copyright 2015 SiteCrafting, Inc.
  * @author Coby Tamayo
+ * @package  Groot
  */
-class Post extends \TimberPost {
+class Post extends TimberPost {
 	use \Traits\HasTerms;
 
+	/**
+	 * When instantiating TimberImages, create instances of this class
+	 * @var string
+	 */
+	public $ImageClass = '\Project\Image';
+
+	/**
+	 * The default blog landing page URL
+	 * @var string
+	 */
 	protected static $BLOG_URL;
 
+	/**
+	 * Get all the posts matching the given query (defaults to the current/global WP query constraints)
+	 * @param  array|string $query any valid Timber query
+	 * @return array         an array of all matching post objects
+	 */
 	public static function get_all( $query = false ) {
 		return \Timber::get_posts( $query, __CLASS__ );
 	}

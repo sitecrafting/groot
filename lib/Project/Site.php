@@ -1,14 +1,37 @@
 <?php
+/**
+ * Central Site class
+ */
 
 namespace Project;
+
+use Timber\Timber;
+use Timber\Site as TimberSite;
+
+use Twig_Extension_StringLoader;
+use Twig_Extension_Debug;
+use Twig_SimpleFunction;
+use Twig_SimpleFilter;
+
+use TwigWrapper\Filters;
+use TwigWrapper\Functions;
+
+use Project\Image;
+use Shortcode\Gallery;
+use Shortcode\Button;
 
 /**
  * Wrapper for any and all theme-specific behavior.
  *
  * @copyright 2015 SiteCrafting, Inc.
  * @author Coby Tamayo
+ * @package  Groot
  */
-class Site extends \TimberSite {
+class Site extends TimberSite {
+	/**
+	 * Assets version timestamp, used for cache-busting
+	 * @var string
+	 */
 	protected $assets_version;
 
 	/**
@@ -48,18 +71,18 @@ class Site extends \TimberSite {
 		add_action( 'init', ['\Project\Admin', 'add_theme_settings_page'] );
 
 		// Add default Twig filters/functions
-		\TwigWrapper\Filters\Number::add_twig_filters( $this );
-		\TwigWrapper\Filters\TextHelper::add_twig_filters( $this );
-		\TwigWrapper\Filters\TermHelper::add_twig_filters( $this );
-		\TwigWrapper\Filters\Image::add_twig_filters( $this );
+		Filters\Number::add_twig_filters( $this );
+		Filters\TextHelper::add_twig_filters( $this );
+		Filters\TermHelper::add_twig_filters( $this );
+		Filters\Image::add_twig_filters( $this );
 
-		\TwigWrapper\Functions\WordPress::add_twig_functions( $this );
-		\TwigWrapper\Functions\Image::add_twig_functions( $this );
+		Functions\WordPress::add_twig_functions( $this );
+		Functions\Image::add_twig_functions( $this );
 
 		// Override how native WP galleries work
-		add_image_size( 'gallery', 900, 600, true );
+		Image::add_size( 'gallery', 900, 600, true );
 		remove_shortcode( 'gallery' );
-		\Shortcode\Gallery::register( 'gallery' );
+		Gallery::register( 'gallery' );
 
 		// register common nav menus
 		register_nav_menus([
@@ -129,7 +152,7 @@ class Site extends \TimberSite {
 	 * @return array the Timber context
 	 */
 	public function get_context_with_post( Post $post ) {
-		$context = \Timber::get_context();
+		$context = Timber::get_context();
 		$context['post'] = $post;
 		return $context;
 	}
@@ -140,7 +163,7 @@ class Site extends \TimberSite {
 	 * @return array the Timber context
 	 */
 	public function get_context_with_posts( array $posts ) {
-		$context = \Timber::get_context();
+		$context = Timber::get_context();
 		$context['posts'] = $posts;
 		return $context;
 	}
@@ -188,20 +211,20 @@ class Site extends \TimberSite {
 	 * @return Twig_Environment the extended Twig instance
 	 */
 	public function add_to_twig( $twig ) {
-		$twig->addExtension( new \Twig_Extension_StringLoader() );
+		$twig->addExtension( new Twig_Extension_StringLoader() );
 
 		// Make debugging available through Twig
 		// Note: in order for Twig's dump() function to work,
 		// the WP_DEBUG constant must be set to true in wp-config.php
-		$twig->addExtension( new \Twig_Extension_Debug() );
+		$twig->addExtension( new Twig_Extension_Debug() );
 
 		foreach( $this->twig_functions as $name => $callable ) {
-			$function = new \Twig_SimpleFunction( $name, $callable );
+			$function = new Twig_SimpleFunction( $name, $callable );
 			$twig->addFunction( $function );
 		}
 
 		foreach( $this->twig_filters as $name => $callable ) {
-			$filter = new \Twig_SimpleFilter( $name, $callable );
+			$filter = new Twig_SimpleFilter( $name, $callable );
 			$twig->addFilter( $filter );
 		}
 

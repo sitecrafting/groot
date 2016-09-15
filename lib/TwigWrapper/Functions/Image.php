@@ -1,4 +1,7 @@
 <?php
+/**
+ * Custom Twig functions for dealing with images
+ */
 
 namespace TwigWrapper\Functions;
 
@@ -7,7 +10,10 @@ use TimberImage;
 
 /**
  * Twig Wrapper around high-level image functions
- * @package default
+ *
+ * @copyright 2015 SiteCrafting, Inc.
+ * @author Coby Tamayo
+ * @package  Groot
  */
 class Image extends AbstractBase {
 	/**

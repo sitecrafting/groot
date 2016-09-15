@@ -1,15 +1,28 @@
 <?php
+/**
+ * Custom gallery functionality
+ */
 
 namespace Shortcode;
 
+use Timber\Timber;
+
+use Project\Image;
+
 /**
  * Implements a custom gallery shortcode that overrides the native shortcode.
+ *
+ * @copyright 2015 SiteCrafting, Inc.
+ * @author Coby Tamayo
+ * @package  Groot
  */
 class Gallery extends AbstractBase {
 	/**
 	 * Render the gallery
 	 */
 	public function render( $atts = [] ) {
+		$data = [];
+
 		if( $atts['ids'] ) {
 			// Get an array of IDs
 			$ids = explode( ',', $atts['ids'] );
@@ -17,7 +30,7 @@ class Gallery extends AbstractBase {
 			$data['gallery_images'] = $this->get_images( $ids );
 		}
 
-		return \Timber::compile( 'shortcodes/gallery.twig', $data );
+		return Timber::compile( 'shortcodes/gallery.twig', $data );
 	}
 
 	/**
@@ -33,7 +46,7 @@ class Gallery extends AbstractBase {
 
 		// Get a TimberImage for each valid ID
 		return array_map( function( $id ) {
-			return new \TimberImage($id);
+			return new Image($id);
 		}, $ids );
 	}
 }

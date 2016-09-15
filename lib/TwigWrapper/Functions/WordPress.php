@@ -1,13 +1,19 @@
 <?php
+/**
+ * General-purpose WordPress functions in Twig
+ */
 
 namespace TwigWrapper\Functions;
 
-use Timber;
+use Timber\Timber;
 
 /**
  * Twig Wrapper around generic or global functions, such as WordPress
  * template tags.
- * @package default
+ *
+ * @copyright 2015 SiteCrafting, Inc.
+ * @author Coby Tamayo
+ * @package  Groot
  */
 class WordPress extends AbstractBase {
 	/**

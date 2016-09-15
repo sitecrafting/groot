@@ -1,10 +1,16 @@
 <?php
+/**
+ * Custom Twig filters for manipulating text
+ */
 
 namespace TwigWrapper\Filters;
 
 /**
  * Twig Wrapper for helpful linguistic filters, such as pluralize
- * @package default
+ *
+ * @copyright 2015 SiteCrafting, Inc.
+ * @author Coby Tamayo
+ * @package  Groot
  */
 class TextHelper extends AbstractBase {
 	static protected $PLURALS = [
