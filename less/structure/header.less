@@ -1,7 +1,6 @@
 //--------------------
 // HEADER STYLES
 //--------------------
-
 header.site-header{
 	width: 100%;
 	position: relative;
@@ -19,9 +18,7 @@ header.site-header{
 		&:hover{ text-decoration: none; }
 	}
 
-	.menu-btn{
-		display: none;
-	}
+	.menu-btn{ display: none; }
 
 
 
@@ -47,9 +44,9 @@ header.site-header{
 					height: 3px;
 					position: absolute;
 					left: 0;
-					.opacity(1);
+					opacity: 1;
 					background: @white;
-					.transition(all .5s ease);
+					transition: all .5s ease;
 
 					&:nth-child(1){
 						top: 0;
@@ -81,10 +78,10 @@ header.site-header{
 							left: 50%;
 						}
 						&:nth-child(2){
-							.rotate(45deg);
+							transform: rotate(45deg);
 						}
 						&:nth-child(3){
-							.rotate(-45deg);
+							transform: rotate(-45deg);
 						}
 						&:nth-child(4){
 							top: 9px;

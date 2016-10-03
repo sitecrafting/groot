@@ -29,8 +29,8 @@ nav.main-nav{
 				left: -9999em;
 				width: 250px;
 				background: @gray;
-				.opacity(0);
-				.transition(opacity @trans-speed ease);
+				opacity: 0;
+				transition: opacity @trans-speed ease;
 
 				z-index: (@zindex-base + 10);
 
@@ -52,7 +52,7 @@ nav.main-nav{
 				> a{ color: @white; }
 				ul{
 					left: auto;
-					.opacity(1);
+					opacity: 1;
 				}
 			}
 
@@ -121,7 +121,7 @@ nav.main-nav{
 					position: relative;
 					left: auto;
 					width: 100%;
-					.opacity(1);
+					opacity: 1;
 					display: none;
 					margin: 5px 0 0 15px;
 					background: none;
@@ -130,7 +130,7 @@ nav.main-nav{
 						a{
 							padding: 5px 15px;
 						}
-						&.has_kids{
+						&.menu-item-has-children{
 							a{
 								span.dropper:after{ padding: 5px 0; }
 							}
