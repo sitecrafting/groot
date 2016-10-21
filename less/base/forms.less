@@ -7,6 +7,15 @@ label {
   font-weight: bold;
 }
 
+form{
+    margin: 30px 0;
+    padding: 30px 0;
+    border-top: 1px solid @gray-lighter;
+    border-bottom: 1px solid @gray-lighter;
+
+    button{ margin: 25px 0 0 0; }
+}
+
 // Common form controls
 //
 // Shared size and type resets for form controls. Apply `.form-control`
@@ -22,17 +31,17 @@ input[type="number"],
 textarea,
 .form-control {
 
-    -webkit-appearance: none;
-  	-moz-appearance: none;
-    border-radius: 0;
+  -webkit-appearance: none; //to make sure IOS default styling is removed
+  -webkit-border-radius: 0; //to make sure IOS default round corners is removed - this can be removed if there are supposed to be rounded corners
+  border-radius: 0;
 
   display: block;
-  .box-sizing(border-box);
+  box-sizing: border-box;
   width: 100%;
   height: @input-height; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
 
   padding: @input-padding;
-  margin-bottom: @input-margin-bottom;
+  margin-bottom: @input-bottom-margin;
 
   font-size: @input-font-size;
   line-height: @input-font-size+1;
@@ -54,12 +63,8 @@ textarea,
   .placeholder();
 
   // Disabled and read-only inputs
-  // Note: HTML5 says that controls under a fieldset > legend:first-child won't
-  // be disabled if the fieldset is disabled. Due to implementation difficulty,
-  // we don't honor that edge case; we style them as disabled anyway.
   &[disabled],
-  &[readonly],
-  fieldset[disabled] & {
+  &[readonly]{
     cursor: not-allowed;
     background-color: @input-bg-disabled;
   }
@@ -69,7 +74,6 @@ textarea,
 .selectbox-container{
 	position: relative;
 	padding: 0;
-    margin-bottom: @input-margin-bottom;
 
 	select{
 		position: relative;
@@ -77,13 +81,13 @@ textarea,
 		background: transparent;
 		margin: 0;
 		width: 100%;
-  		height: @input-height;
-  		padding: @input-padding;
-  		border: 0;
-  		-webkit-appearance: none;
-  		-moz-appearance: none;
+		height: @input-height;
+		padding: @input-padding;
+		border: 0;
+		-webkit-appearance: none;
+		-moz-appearance: none;
 
-  		.placeholder();
+		.placeholder();
 	}
 
 	//using before to keep it behind the actual select element being clicked
@@ -109,7 +113,6 @@ textarea{
 }
 
 
-
 // Position radios and checkboxes better [default styles]
 input[type="radio"], input[type="checkbox"] {
 	margin: 4px 5px 0 1px;
@@ -123,6 +126,22 @@ input[type="radio"] + label, input[type="checkbox"] + label{
 	font-size: @input-font-size;
 	color: @input-color;
 }
+// Apply same disabled cursor tweak as for inputs
+//
+// Note: Neither radios nor checkboxes can be readonly.
+input[type="radio"],
+input[type="checkbox"]{
+  &[disabled]{
+    cursor: not-allowed;
+
+    /* if customized styles
+    & + label:before{
+      cursor: not-allowed;
+    }
+    */
+  }
+
+}
 
 // CUSTSOMIZE STYLED - Checkboxes and radios
 /*
@@ -132,7 +151,7 @@ input[type=checkbox] + label,
 input[type=radio] + label{
 	position: relative;
 	display: inline-block !important;
-	margin: 0 5px @padding-base 0;
+	margin: 0 5px @input-bottom-margin 0;
 	padding: 0 0 0 20px !important;
 	font-weight: normal;
 
@@ -156,18 +175,3 @@ input[type=radio]:checked + label{
 }
 
 */
-
-// Apply same disabled cursor tweak as for inputs
-//
-// Note: Neither radios nor checkboxes can be readonly.
-input[type="radio"],
-input[type="checkbox"],
-.radio,
-.radio-inline,
-.checkbox,
-.checkbox-inline {
-  &[disabled],
-  fieldset[disabled] & {
-    cursor: not-allowed;
-  }
-}

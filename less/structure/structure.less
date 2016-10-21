@@ -1,0 +1,151 @@
+
+.container{
+	margin: 0 auto;
+}
+
+.outer-gutter{
+	padding-left: @gutter;
+	padding-right: @gutter;
+	@media @tablet-all{
+		padding-left: @gutter-tablet;
+		padding-right: @gutter-tablet;
+	}
+	@media @mobile-all{
+		padding-left: @gutter-mobile;
+		padding-right: @gutter-mobile;
+	}
+}
+
+.outer-gutter-left{
+	padding-left: @gutter;
+	@media @tablet-all{
+		padding-left: @gutter-tablet;
+	}
+	@media @mobile-all{
+		padding-left: @gutter-mobile;
+	}
+}
+
+.outer-gutter-right{
+	padding-right: @gutter;
+	@media @tablet-all{
+		padding-right: @gutter-tablet;
+	}
+	@media @mobile-all{
+		padding-right: @gutter-mobile;
+	}
+}
+
+.site-wrapper{
+	position: relative;
+	overflow: hidden;
+	height: 100%;
+
+	max-width: @max-width;
+	margin: 0 auto;
+	background: @white;
+}
+.site-pusher{
+	@media @tablet-all, @mobile-all{
+		position: relative;
+		height: 100%;
+		left: 0;
+		transition: transform .5s ease;
+
+
+		&:after{
+		    content: '';
+		    z-index: 1000;
+			position: absolute;
+		    top: 0;
+		    right: 0;
+		    width: 0;
+		    height: 0;
+		    background: rgba(0,0,0,0.2);
+		    opacity: 0;
+		    transition: opacity 0.5s, width 0.1s 0.5s, height 0.1s 0.5s;
+		}
+
+
+		.menu-open &{
+			transform: translate3d(-(@off-canvas-width), 0, 0);
+
+			&:after{
+			    width: 100%;
+			    height: 100%;
+			    opacity: 1;
+				transition: opacity 0.5s;
+			}
+		}
+
+	}//end media
+}
+
+section.page{
+	position: relative;
+	min-height: 350px;
+	background: @white;
+	overflow: hidden;
+
+	> .container{
+		display: flex;
+		flex-flow: row wrap;
+    min-height: 350px;
+	}
+
+
+	.main-content-area{
+		flex: 1 0 auto;
+		width: 60%;
+
+		.main-content{
+			padding-top: 50px;
+			padding-bottom: 50px;
+		}
+
+	}
+
+	nav.side-nav{
+		flex: 1 0 auto;
+		width: 20%;
+		max-width: 20%;
+		border-right: 1px solid @gray-lighter;
+	}
+
+	aside.side-area{
+		flex: 1 0 auto;
+		width: 20%;
+		max-width: 20%;
+		padding-top: 50px;
+		padding-bottom: 50px;
+		border-left: 1px solid @gray-lighter;
+	}
+
+	@media @tablet-all, @mobile-all{
+
+		.main-content-area{
+			.main-content{ }
+		}
+
+		nav.side-nav{ display: none; }
+	}
+
+
+	@media @mobile-all{
+
+		.main-content-area{
+			flex: 1 0 100%;
+			width: 100%;
+			max-width: 100%;
+		}
+
+		aside.side-area{
+			margin-top: 40px;
+			flex: 1 0 100%;
+			width: 100%;
+			max-width: 100%;
+		}
+	}
+
+
+}//end section.page

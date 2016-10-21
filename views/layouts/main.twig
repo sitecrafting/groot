@@ -1,13 +1,13 @@
 <!doctype html>
-
-<!--[if IE 8]><html class="no-js lt-ie9"><![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-
+<html class="no-js">
 <head>
+
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
 	<title>{% block title %}{{ wp_title }}{% endblock %}</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 
 	<link rel="shortcut icon" href="{{ img_url('favicon.ico') }}" type="image/x-icon">
 	<link rel="apple-touch-icon" href="img/favicon-76.png" sizes="76x76">
@@ -15,26 +15,28 @@
 	<link rel="apple-touch-icon" href="img/favicon-152.png" sizes="152x152">
 
 	{{ wp_head }}
+
 </head>
 <body class="{{ body_classes | join(' ') }}">
+
 	<div class="site-wrapper">
 		<div class="site-pusher">
 
 			{% block container_content %}
-				<header class="site-header" itemscope itemtype="http://schema.org/Organization">
-					<a class="logo" href="/" title="{{ site.name }}">{{ site.name }}</a>
-					<a class="menu-btn">
-						<div class="toggle"><span></span><span></span><span></span><span></span></div>
-						<span>Menu</span>
-					</a>
-
+				<header class="site-header outer-gutter" itemscope itemtype="http://schema.org/Organization">
 					<!-- Rich Snippet/schema.org markup about this Organization -->
 					<meta itemprop="name" content="{{ site.name }}">
 					<meta itemprop="url" content="{{ site.url }}">
 					<meta itemprop="description" content="{{ site.description }}">
-					<span itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+					<a class="logo" href="/" title="{{ site.name }}" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+						{{ site.name }}
 						<meta itemprop="url" content="{{ img_url('logo.png') }}">
-					</span>
+					</a>
+
+					<a class="menu-btn">
+						<div class="toggle"><span></span><span></span><span></span><span></span></div>
+						<span>Menu</span>
+					</a>
 
 					{# {{ get_search_form() }} #}
 				</header>
@@ -47,11 +49,7 @@
 						{% endblock %}
 				</main>
 
-				{#<aside class="sidebar">
-					{{ get_sidebar_widgets('main-sidebar') }}
-				</aside>#}
-
-				<footer class="site-footer">
+				<footer class="site-footer outer-gutter">
 					{% block footer %}
 						&copy; {{ 'now' | date('Y') }} Company Name
 					{% endblock %}

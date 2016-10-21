@@ -1,15 +1,24 @@
 {% extends 'layouts/interior.twig' %}
 
 {% block interior_content %}
-    <div class="main-content">
+  <section class="main-content-area">
+    <div class="main-content outer-gutter">
+
     	<h1>{{ post.title }}</h1>
     	<div class="rtecontent">
     		{{ post.content }}
     	</div>
-    </div>
 
-    <aside class="side-panel">
-        Optional Side Panel
-    </aside>
+    </div>
+  </section>
+
+  <aside class="side-area outer-gutter-right">
+      <div class="widget">
+          <h3>Side Bar Widget</h3>
+          <div class="rtecontent">
+            Here is some sidebar text.
+          </div>
+      </div>
+  </aside>
 
 {% endblock %}

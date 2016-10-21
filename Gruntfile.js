@@ -64,53 +64,17 @@ module.exports = function(grunt) {
         }
       }
     },
-    modernizr: {
-      dist: {
-        "dest": "js/modernizr/modernizr-custom-build.js",
-        "devFile": false,
-        "parseFiles": true,
-        "customTests": [],
-        "tests": [
-          "geolocation",
-          "input",
-          "inputtypes",
-          "svg",
-          "css/animations",
-          "css/boxsizing",
-          "css/flexbox",
-          "css/flexboxlegacy",
-          "css/lastchild",
-          "css/multiplebgs",
-          "css/pointerevents",
-          "css/positionsticky",
-          "css/rgba",
-          "css/transforms",
-          "css/transforms3d",
-          "css/transitions",
-          "svg/clippaths",
-          "svg/inline"
-        ],
-        "extensibility": [
-          "domPrefixes",
-          "prefixes",
-          "testAllProps",
-          "testProp",
-          "testStyles",
-          "html5shiv",
-          "setClasses"
-        ],
-        "uglify": false
-      }
-    },
     concat: {
       js: {
         // All these files will be concatenated and served together.
         // This is where you should add additional front-end dependencies, such as jQuery UI.
         // NOTE: files are concatenated in the order they are declared, so upstream dependencies
         // should be declared here first, e.g. jQuery UI would be declared after jQuery core.
+        //jQuery core is included with the default codebase of wordpress
         src: [
-          'js/modernizr/modernizr-custom-build.js',
-          'bower_components/flexslider/jquery.flexslider.js',
+          //'js/modernizr/modernizr-custom-build.js', //included in the header
+          'js/plugins/jquery.flexslider.js',
+          'js/plugins/jquery.fitvids.js',
           'js/project/responsive-nav.jquery.js',
           'js/project/common.js'
         ],
@@ -166,6 +130,6 @@ module.exports = function(grunt) {
 
   // Default task.
   grunt.registerTask('default', ['jshint', 'concat:js', 'uglify:js', 'less', 'watch']);
-  grunt.registerTask('front-end', ['bower:install', 'modernizr:dist', 'less', 'jshint', 'concat:js', 'uglify:js']);
+  grunt.registerTask('front-end', ['bower:install', 'less', 'jshint', 'concat:js', 'uglify:js']);
   grunt.registerTask('doc', ['phpdocumentor']);
 };

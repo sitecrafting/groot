@@ -1,23 +1,36 @@
 <nav class="main-nav">
     <ul class="menu" itemscope itemtype="http://schema.org/SiteNavigationElement">
         {% for item in menu.get_items %}
-            <li class="nav-main-item {{item.classes | join(' ')}}">
+            <li class="{{item.classes | join(' ')}}">
 
-                <a class="nav-main-link" href="{{ item.get_path() }}" itemprop="url">
-                    <!-- support schema.org rich snippets for top-level nav items -->
-                    <span itemprop="name">{{item.title}}</span>
+                <a href="{{ item.get_path() }}" itemprop="url">
+                    <span itemprop="name">{{item.title}}</span><!-- support schema.org rich snippets for top-level nav items -->
                 </a>
 
-                {# SECOND LEVE #}
+                {# SECOND LEVEL #}
                 {% if item.get_children %}
-                    <ul class="nav-drop">
-                      {% for child in item.get_children %}
-                        <li class="nav-drop-item">
-                            <a href="{{ child.get_path() }}">{{child.title}}</a>
+                    <ul>
+                      {% for second in item.get_children %}
+                        <li class="{{second.classes | join(' ')}}">
+                            <a href="{{ second.get_path() }}">{{second.title}}</a>
+
+                                {# THIRD LEVEL - typically used for mobile in off canvas navigation when sidenav is hidden #}
+                                {% if second.get_children %}
+                                    <ul>
+                                      {% for third in second.get_children %}
+                                        <li class="{{third.classes | join(' ')}}">
+                                            <a href="{{ third.get_path() }}">{{third.title}}</a>
+                                        </li>
+                                      {% endfor %}
+                                    </ul>
+                                 {% endif %}
+                                {# END THIRD LEVEL #}
+
                         </li>
                       {% endfor %}
                     </ul>
                  {% endif %}
+                 {# END SECOND LEVEL #}
 
             </li>
         {% endfor %}

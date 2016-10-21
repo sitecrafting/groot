@@ -1,28 +1,30 @@
 {% if menu.get_current_top_level_item() %}
-	<nav class="side-nav level1">
-		<h2>{{ menu.get_current_top_level_item().title }}</h2>
+	<nav class="side-nav">
+		<a href="{{ menu.get_current_top_level_item().get_path }}" class="side-nav-title outer-gutter-left">{{ menu.get_current_top_level_item().title }}</a>
+		<div class="side-nav-menu">
+			<ul>
+				{% for item in menu.get_current_top_level_item().get_children() %}
 
-		<ul id="side-menu" class="menu">
-			{% for item in menu.get_current_top_level_item().get_children() %}
+					<li class="{{ item.classes | join(' ') }}">
+						<a href="{{ item.get_path }}">{{ item.title }}</a>
 
-				<li class="{{ item.classes | join(' ') }}">
-					<a href="{{ item.get_path }}">{{ item.title }}</a>
+						{# 3rd level nav #}
+						{% if item.display_children %}
+							<ul>
+								{% for sub_item in item.get_children %}
+									<li class="{{ sub_item.classes | join(' ') }}">
+										<a href="{{ sub_item.get_path }}">{{ sub_item.title }}</a>
+									</li>
+								{% endfor %}
 
-					{% if item.display_children %}
-						<ul class="sub-menu">
+							</ul>
+						{% endif %}
+						{# end 3rd level nav #}
 
-							{% for sub_item in item.get_children %}
-								<li class="sub-item {{ sub_item.classes | join(' ') }}">
-									<a href="{{ sub_item.get_path }}">{{ sub_item.title }}</a>
-								</li>
-							{% endfor %}
+					</li>
 
-						</ul>
-					{% endif %}
-
-				</li>
-
-			{% endfor %}
-		</ul>
+				{% endfor %}
+			</ul>
+		</div>
 	</nav>
 {% endif %}

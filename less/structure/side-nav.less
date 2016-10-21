@@ -1,0 +1,51 @@
+.side-nav > .side-nav-title{
+    display: block;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-right: 20px;
+    background: @gray-lighter;
+
+    &:hover{
+        background: darken(@gray-lighter, 10%);
+        text-decoration: none;
+    }
+}
+
+.side-nav-menu{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    ul{
+        .plain-list;
+        li{
+            a{
+                display: block;
+                padding: 8px 0;
+                .outer-gutter;
+            }
+            &.active, &:hover{
+                > a{
+                    background: @primary-color1;
+                    color: @white;
+                    text-decoration: none;
+                }
+            }
+
+            //tertiary/3rd level nav
+            ul{
+                li{
+                    padding-left: 20px;
+                    &.active, &:hover{
+                        >a{
+                            background: none;
+                            color: @primary-color1;
+                            text-decoration: underline;
+                        }
+
+                    }
+                }
+            }//end ul
+
+        }//end li
+    }//end ul
+
+}

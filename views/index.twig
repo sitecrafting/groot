@@ -1,7 +1,8 @@
 {% extends 'layouts/blog.twig' %}
 
 {% block blog_content %}
-	<div class="main-content full">
+<section class="main-content-area">
+	<div class="main-content outer-gutter">
 
 		{% for post in posts %}
 			{% include 'partials/blog/blog-entry-archive.twig' %}
@@ -12,4 +13,5 @@
 	  </div>
 
 	</div>
+</section>
 {% endblock %}

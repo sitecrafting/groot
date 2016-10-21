@@ -24,7 +24,11 @@
 
 @trans-speed:			.25s;
 
-@container-main:		1300px;
+@max-width:             1500px;
+
+@gutter:                40px;
+@gutter-tablet:         25px;
+@gutter-mobile:         15px;
 
 @off-canvas-width:		250px;
 
@@ -53,30 +57,23 @@
 
 @nav-font-size:		16px;
 
-// Components
-// -------------------------
-@gutter:            40px;
-@gutter-tablet:     20px;
-@gutter-mobile:     10px;
-
 
 // Forms
 // -------------------------
-@input-bg:                       #fff;
+@input-bg:                       @white;
 @input-bg-disabled:              @gray-lighter;
 
 @input-color:                    @text-color;
 @input-border:                   @gray-light;
 
-@input-border-focus:             #66afe9;
+@input-border-focus:            @primary-color1;
 
 @input-color-placeholder:        @text-color;
-@input-font-size:                16px;
+@input-font-size:               16px;
 
 @input-height:                  40px;
-@input-padding:                 8px 10px;
-
-@input-margin-bottom:           15px;
+@input-padding:                 10px;
+@input-bottom-margin:           15px;
 
 
 
@@ -95,14 +92,13 @@
               ~"only screen and (min-device-pixel-ratio: 1.5)";
 
 
-@mobile-sml:                ~"only screen and (max-width: 529px)";
-@mobile-lg:       ~"only screen and (min-width: 530px) and (max-width: 767px)";
-@mobile-all:      ~"only screen and (max-width: 767px)";
+@mobile-sml:                ~"only screen and (max-width: 529px) ";
+@mobile-lg:                 ~"only screen and (min-width: 530px) and (max-width: 767px)";
+@mobile-all:                ~"only screen and (max-width: 767px)";
 
-@tablet-sml:      ~"only screen and (min-width: 768px) and (max-width: 819px)";
-@tablet-lg:   ~"only screen and (min-width: 820px) and (max-width: 1023px)";
-@tablet-all:  ~"only screen and (min-width: 768px) and (max-width: 1023px)";
+@tablet-sml:                ~"only screen and (min-width: 768px) and (max-width: 819px)";
+@tablet-lg:                 ~"only screen and (min-width: 820px) and (max-width: 1023px)";
+@tablet-all:                ~"only screen and (min-width: 768px) and (max-width: 1023px)";
 
-@desktop-sml:           ~"only screen and (min-width: 1024px) and (max-width: 1274px)";
-
-@desktop:            ~"only screen and (min-width: 1275px)";
+@desktop-sml:               ~"only screen and (min-width: 1024px) and (max-width: 1249px)";
+@desktop:                   ~"only screen and (min-width: 1250px)";
