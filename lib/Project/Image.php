@@ -114,6 +114,11 @@ class Image extends TimberImage {
     $originalWidth = parent::width();
     $width = $this->width($customSize);
 
+    if (!isset($width)) {
+      // if image doesn't exist, width won't be set
+      return 0;
+    }
+
     if ($width != $originalWidth) {
       // distinct custom dimensions; calculate new based on aspect ratio
       $height = floor( $width / $this->aspect() );
