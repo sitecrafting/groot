@@ -31,7 +31,7 @@ class Image extends TimberImage {
    * @param int  $height the height to declare for this size
    * @param boolean $crop whether to create versions of newly uploaded pics cropped to this size
    */
-  public static function add_size( $name, $width, $height, $crop = false ) {
+  public static function add_size( $name, $width, $height = false, $crop = false ) {
     add_image_size( $name, $width, $height, $crop );
     $declared_sizes[$name] = [
       'name'    => $name,
