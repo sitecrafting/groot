@@ -1,6 +1,7 @@
 # Ignore artifacts/ghost files
 .DS_Store
 ._*
+config.codekit
 
 # Ignore dev dependencies
 /node_modules
