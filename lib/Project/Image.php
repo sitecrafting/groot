@@ -91,6 +91,16 @@ class Image extends TimberImage {
   }
 
   /**
+   * Get the aspect ratio of the underlying image file.
+   * @return mixed image aspect ratio as a float, or null if the image does not exist
+   */
+  public function aspect() {
+    if (file_exists($this->file_loc)) {
+      return parent::aspect();
+    }
+  }
+
+  /**
    * Get the declared width of this image, optionally specific to the image size $size
    * @param  string $customSize if specified
    * @return int
@@ -111,13 +121,12 @@ class Image extends TimberImage {
    * @return int
    */
   public function height( $customSize = false ) {
+    if (!file_exists($this->file_loc)) {
+      return null;
+    }
+
     $originalWidth = parent::width();
     $width = $this->width($customSize);
-
-    if (!isset($width)) {
-      // if image doesn't exist, width won't be set
-      return 0;
-    }
 
     if ($width != $originalWidth) {
       // distinct custom dimensions; calculate new based on aspect ratio
