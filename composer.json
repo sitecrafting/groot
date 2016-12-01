@@ -1,6 +1,7 @@
 {
     "name": "sitecrafting/wp-wordpress-seo-premium",
     "description": "SiteCrafting starter WordPress theme",
+    "version": "1.0.4",
     "minimum-stability": "stable",
     "authors": [
         {
