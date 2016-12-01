@@ -1,10 +1,12 @@
 {
-    "name": "Groot",
+    "name": "sitecrafting/wp-wordpress-seo-premium",
     "description": "SiteCrafting starter WordPress theme",
+    "minimum-stability": "stable",
     "authors": [
         {
             "name": "Coby Tamayo",
             "email": "acobster@gmail.com"
         }
-    ]
+    ],
+    "require": {}
 }
