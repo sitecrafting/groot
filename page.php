@@ -7,5 +7,4 @@
 $data = $site->get_context_with_post( new Project\Page() );
 
 // Render the default view
-Timber::render( 'page.twig', $data );
-
+Timber::render( [$data['post']->slug.'.twig', 'page.twig'], $data );
