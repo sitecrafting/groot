@@ -1,11 +1,10 @@
-{% extends 'layouts/main.twig' %}
+{% extends 'layouts/interior.twig' %}
 
-{% block main_content %}
-<section class="page-layout interior-layout">
+{% block interior_content %}
+
 
 	<section class="main-content-area">
-
-		<div class="main-content full">
+    <div class="main-content top_botton_gutter outer-gutter">
 
 				{% if posts %}
 					<p>{{ posts | length }} {{ 'result' | pluralize(posts|length)}} for <strong>{{ search_query }}</strong>:</p>
@@ -21,6 +20,6 @@
 		</div>
 	</section>
 
-</section>
+
 
 {% endblock %}

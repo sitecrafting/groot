@@ -75,6 +75,7 @@ module.exports = function(grunt) {
           //'js/modernizr/modernizr-custom-build.js', //included in the header
           'js/plugins/jquery.flexslider.js',
           'js/plugins/jquery.fitvids.js',
+          'js/plugins/accordion.jquery.js',
           'js/project/responsive-nav.jquery.js',
           'js/project/common.js'
         ],

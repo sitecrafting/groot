@@ -2,12 +2,15 @@
 
 {% block interior_content %}
   <section class="main-content-area">
-    <div class="main-content outer-gutter">
+    <div class="main-content top_botton_gutter outer-gutter">
 
     	<h1>{{ post.title }}</h1>
     	<div class="rtecontent">
     		{{ post.content }}
     	</div>
+
+      {# CONTENT LAYOUTS #}
+      {% include 'partials/content-layouts.twig' %}
 
     </div>
   </section>

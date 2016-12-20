@@ -1,0 +1,56 @@
+.accordion{
+  margin: 25px 0;
+  .clearfix;
+
+    dt{
+        position: relative;
+        margin-top: 4px;
+        background: @primary-color1;
+        transition: all .25s ease;
+        .clearfix;
+
+        &:first-child{ margin-top: 0; }
+
+        .tab-title{
+            margin: 0;
+            position: relative;
+            z-index: 5;
+            color: @white;
+            > a{
+              display: block;
+              padding: 20px;
+              color: @white;
+              &:hover{ text-decoration: none; }
+            }
+        }
+
+        &:before,&:after{
+            content: "";
+            display: block;
+            position: absolute;
+            top: 50%;
+            margin-top: -1px;
+            right: 34px;
+            width: 16px;
+            height: 2px;
+            background: @white;
+        }
+        &:after{
+            transform: rotate(90deg);
+            transition: all .25s ease;
+        }
+
+        &.active{
+            &:after{ transform: rotate(0); }
+        }
+
+    }//end dt
+
+    dd{
+        display: none;
+        background: #f3f3f3;
+        margin: -6px 0 0 0;
+        padding: 25px 20px;
+        .clearfix;
+    }
+}

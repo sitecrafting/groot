@@ -7,117 +7,176 @@
  * http://www.gnu.org/licenses/gpl-2.0.html
  *
  * Contributing author: Tyler Smith (@mbmufffin)
- * 
+ *
  */
-
 /* ====================================================================================================================
  * RESETS
  * ====================================================================================================================*/
-
-
-.flex-container,
-.flex-slider {
-
+.flex-container, .flex-slider {
   a:hover,
-  a:focus {
-
-    outline: none;
-
-  }
-
+  a:focus { outline: none; }
 }
 
-.slides,
-.slides > li,
-.flex-control-nav,
-.flex-direction-nav {
-  
-  margin: 0; 
-  padding: 0; 
+.slides, .slides > li,
+.flex-control-nav, .flex-direction-nav {
+  margin: 0;
+  padding: 0;
   list-style: none;
-
 }
 
-.flex-pauseplay span {
-
-  text-transform: capitalize;
-
-}
+.flex-pauseplay span { text-transform: capitalize; }
 
 /* ====================================================================================================================
  * BASE STYLES
  * ====================================================================================================================*/
-
-
 .flexslider {
-
-  margin: 0; 
+  margin: 0;
   padding: 0;
 
   .slides {
 
-    > li {
+    > li { display: none; -webkit-backface-visibility: hidden; }
 
-      display: none; 
-      -webkit-backface-visibility: hidden;
+    img{ width: 100%; display: block; }
 
-    }
-
-    img{
-
-      width: 100%;
-      display: block;
-
-    }
-
-
-    //
     // Clearfix for the .slides element
-    //
-
     &:after{
-
-      content: ""; 
-      display: block; 
-      clear: both; 
-      visibility: hidden; 
-      line-height: 0; 
-      height: 0;
-
-
-    }
-
-    html[xmlns] &{
-      
+      content: "";
       display: block;
-
+      clear: both;
+      visibility: hidden;
+      line-height: 0;
+      height: 0;
     }
 
-    * html &{
-      
-      height: 1%;
+    html[xmlns] &{ display: block; }
+    * html &{ height: 1%; }
 
-    }
-
-
-    
-     // 
      // No JavaScript Fallback
      // If you are not using another script, such as Modernizr, make sure you
      // include js that eliminates this class on page load
-     // 
-    
-
     .no-js &{
-
       > li{
-
-        &:first-child{
-
-          display: block;
-
-        }
+        &:first-child{ display: block; }
       }
     }
-  }
-}
+
+  }//end .slides
+}//end .flexslider
+
+/* ====================================================================================================================
+ * THEME STYLES
+ * ====================================================================================================================*/
+ /* DIRECTIONAL NAV */
+ ul.flex-direction-nav{
+   position: absolute;
+   width: 100%;
+   top: 0;
+   padding-top: 67%;
+
+     li{
+         margin: 0;
+         a{
+             display: block;
+             position: absolute;
+             top: 50%;
+             margin-top: -27px;
+             width: 55px;
+             height: 55px;
+             background: @primary-color1;
+             .hide-text;
+             z-index: 501;
+
+             &:before{
+                content: "<";
+                color: @white;
+                display: block;
+                width: 13px;
+                height: 23px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin: -11px 0 0 -7px;
+             }
+             &.flex-prev{ left: -55px; }
+
+             &.flex-next{
+              right: -55px;
+              &:before{ content: ">"; }
+             }
+
+             &:hover{
+                 background: darken(@primary-color1, 10%);
+             }
+         } //end a
+     }//end li
+ }//end flex-direction-nav
+
+ /* THUMBNAIL NAV */
+ ol.flex-control-thumbs{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    margin-left: -5px;
+    margin-right: -5px;
+
+    li{
+      position: relative;
+      padding-left: 5px;
+      padding-right: 5px;
+      flex-basis: 20%;
+      max-width: 20%;
+
+      img{
+        display: block;
+        margin: 10px 0 0 0;
+        width: 100%;
+        opacity: .5;
+        transition: all @trans-speed ease;
+        cursor: pointer;
+
+        &:hover,
+        &.flex-active{
+          opacity: 1;
+        }
+      }
+
+    }//end li
+
+    @media @mobile-sml{ display: none; }
+
+  } //end ol.flex-control-thumbs
+
+ .gallery.flexslider{
+   position: relative;
+   overflow: hidden;
+
+   margin: 20px 0;
+
+   ul.slides{
+     > li{
+       position: relative;
+       .slide-caption{
+         padding: 20px;
+         width: 100%;
+         position: absolute;
+         bottom: 0;
+         left: 0;
+         background: rgba(red(@primary-color1), green(@primary-color1), blue(@primary-color1), .5);
+         color: @white;
+       }
+     }
+   }
+
+   &:hover{
+       ul.flex-direction-nav{
+           li{
+               a{
+                   &.flex-prev{ left: 0px; }
+                   &.flex-next{ right: 0px; }
+               }
+           }
+       }
+   }
+
+ }//end .gallery.flexslider

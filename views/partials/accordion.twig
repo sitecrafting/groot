@@ -1,0 +1,16 @@
+{% set tab_count = acc_layout|length %}
+
+<dl class="accordion">
+  {% for acc in acc_layout %}
+      {% if acc.title %}
+        <dt data-id="{{loop.index}}" class="inactive">
+          <h3 class="tab-title"><a href="#{{loop.index}}">
+              {{ acc.title }}
+          </a></h3>
+        </dt>
+        <dd class="rtecontent">
+          {{ acc.content }}
+        </dd>
+    {% endif %}
+  {% endfor %}
+</dl>

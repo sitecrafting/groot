@@ -81,8 +81,9 @@ class Site extends TimberSite {
 		Functions\WordPress::add_twig_functions( $this );
 		Functions\Image::add_twig_functions( $this );
 
-		// Override how native WP galleries work
+		// used for Gallery ACF layout option in flexible content
 		Image::add_size( 'gallery', 900, 600, true );
+
 		remove_shortcode( 'gallery' );
 		Gallery::register( 'gallery' );
 

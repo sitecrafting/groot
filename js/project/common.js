@@ -3,6 +3,9 @@
 	//wrap select elements in div for custom styling
 	$('select').wrap('<div class="selectbox-container"');
 
+	// ACCORDION
+	$('dl.accordion').accordion();
+
 	//make sure embedded videos fit the container (are responsive)
 	$('.rtecontent').fitVids();
 

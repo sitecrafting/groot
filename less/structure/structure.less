@@ -3,6 +3,17 @@
 	margin: 0 auto;
 }
 
+.top_gutter{
+	padding-top: @gutter;
+}
+.bottom_gutter{
+	padding-bottom: @gutter;
+}
+.top_botton_gutter{
+	padding-top: @gutter;
+	padding-bottom: @gutter;
+}
+
 .outer-gutter{
 	padding-left: @gutter;
 	padding-right: @gutter;
@@ -90,6 +101,7 @@ section.page{
 	> .container{
 		display: flex;
 		flex-flow: row wrap;
+		justify-content: center;
     min-height: 350px;
 	}
 
@@ -97,12 +109,7 @@ section.page{
 	.main-content-area{
 		flex: 1 0 auto;
 		width: 60%;
-
-		.main-content{
-			padding-top: 50px;
-			padding-bottom: 50px;
-		}
-
+		max-width: 1200px;
 	}
 
 	nav.side-nav{

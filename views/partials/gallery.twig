@@ -1,0 +1,14 @@
+{% if gallery_images %}
+	<div class="gallery flexslider">
+		<ul class="slides">
+			{% for slide in gallery_images %}
+				<li data-thumb="{{ TimberImage(slide.image).src('thumbnail') }}">
+					<img src="{{ TimberImage(slide.image).src('gallery') }}" alt="{{ slide.image.title }}">
+          {% if slide.caption %}
+          <div class="slide-caption">{{slide.caption | striptags }}</div>
+          {% endif %}
+				</li>
+			{% endfor %}
+		</ul>
+	</div>
+{% endif %}
