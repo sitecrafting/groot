@@ -1,5 +1,5 @@
 {% if gallery_images %}
-	<div class="gallery flexslider">
+	<div class="gallery-slideshow flexslider">
 		<ul class="slides">
 			{% for slide in gallery_images %}
 				<li data-thumb="{{ TimberImage(slide.image).src('thumbnail') }}">

@@ -84,8 +84,9 @@ class Site extends TimberSite {
 		// used for Gallery ACF layout option in flexible content
 		Image::add_size( 'gallery', 900, 600, true );
 
-		remove_shortcode( 'gallery' );
-		Gallery::register( 'gallery' );
+		//remove_shortcode( 'gallery' );
+		//Gallery::register( 'gallery' );
+		add_filter( 'use_default_gallery_style', '__return_false' );
 
 		// register common nav menus
 		register_nav_menus([

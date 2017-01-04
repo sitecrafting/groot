@@ -10,7 +10,7 @@
 	$('.rtecontent').fitVids();
 
 	//flexslider for default wordpress gallery
-	$('.gallery.flexslider').flexslider({
+	$('.gallery-slideshow.flexslider').flexslider({
 		controlNav: 'thumbnails'
 	});
 

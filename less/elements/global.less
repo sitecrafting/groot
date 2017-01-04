@@ -208,7 +208,17 @@ object {
 ## Wordpress Galleries
 --------------------------------------------------------------*/
 .gallery {
-	margin-bottom: 1.5em;
+	margin-top: 20px;
+
+	display: flex;
+  flex: 0 1 auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  margin-right: -20px;
+  margin-left: -20px;
+
+	br{ display: none !important; }
 }
 
 .gallery-item {
@@ -216,40 +226,56 @@ object {
 	text-align: center;
 	vertical-align: top;
 	width: 100%;
+	padding-left: 20px;
+	padding-right: 20px;
+
+	img{ display: block; width: 100% !important; height: auto !important; }
+
 }
 
 .gallery-columns-2 .gallery-item {
+	flex: 0 0 50%;
 	max-width: 50%;
 }
 
 .gallery-columns-3 .gallery-item {
+	flex: 0 0 33.33%;
 	max-width: 33.33%;
 }
 
 .gallery-columns-4 .gallery-item {
+	flex: 0 0 25%;
 	max-width: 25%;
 }
 
 .gallery-columns-5 .gallery-item {
+	flex: 0 0 20%;
 	max-width: 20%;
 }
 
 .gallery-columns-6 .gallery-item {
+	flex: 0 0 16.66%;
 	max-width: 16.66%;
 }
 
 .gallery-columns-7 .gallery-item {
+	flex: 0 0 14.28%;
 	max-width: 14.28%;
 }
 
 .gallery-columns-8 .gallery-item {
+	flex: 0 0 12.5%;
 	max-width: 12.5%;
 }
 
 .gallery-columns-9 .gallery-item {
+	flex: 0 0 11.11%;
 	max-width: 11.11%;
 }
 
 .gallery-caption {
 	display: block;
+	margin: 0;
+	padding: 10px 5px 40px 5px;
+	font-size: (@font-size-base - 3px);
 }
