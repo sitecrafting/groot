@@ -2,9 +2,9 @@
 // HEADER STYLES
 //--------------------
 header.site-header{
-	width: 100%;
 	position: relative;
-
+	width: 100%;
+	height: @header-height;
 	background: @black;
 
 	z-index: (@zindex-base + 501);
@@ -20,9 +20,9 @@ header.site-header{
 
 	.menu-btn{ display: none; }
 
-
-
 	@media @tablet-sml, @mobile-all{
+
+		position: static;
 
 		.logo{ }
 

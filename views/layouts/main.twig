@@ -39,9 +39,10 @@
 					</a>
 
 					{# {{ get_search_form() }} #}
+					{% include 'partials/nav.twig' with { menu: primary_menu } only %}
 				</header>
 
-				{% include 'partials/nav.twig' with { menu: primary_menu } only %}
+
 
 				<main class="site-main">
 						{% block main_content %}

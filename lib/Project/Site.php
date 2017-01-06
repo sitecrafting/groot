@@ -84,6 +84,21 @@ class Site extends TimberSite {
 		// used for Gallery ACF layout option in flexible content
 		Image::add_size( 'gallery', 900, 600, true );
 
+		// Make certain custom sizes available in the RTE
+		// use this to unset or add image size options for RTE insert
+    /*add_filter( 'image_size_names_choose', function($sizes) {
+
+			unset( $sizes['large'] );
+			unset( $sizes['medium'] );
+			unset( $sizes['small'] );
+
+      return array_merge( $sizes, [
+				'image-row-small' => __( 'Small 300x235' ),
+        'image-row-medium' => __( 'Medium 450x350' ),
+        'image-row-large' => __( 'Large 900x450' )
+      ]);
+    });*/
+
 		//remove_shortcode( 'gallery' );
 		//Gallery::register( 'gallery' );
 		add_filter( 'use_default_gallery_style', '__return_false' );

@@ -68,10 +68,18 @@ nav.main-nav{
 		top: 0;
 		right: -(@off-canvas-width);
 		left: auto; bottom: auto;
-
 		padding: 20px;
-
 		background: @black;
+
+		&.main-nav-dropdown{
+			display: none;
+			position: absolute;
+			width: 100%;
+			height: auto;
+			top: @header-height;
+			left: 0;
+			right: 0;
+		}
 
 		ul{
 			float: none;

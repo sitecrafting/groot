@@ -1348,6 +1348,7 @@ $.fn.responsiveNav = function( options ) {
 		menuButtonSelector: '.menu-btn',
 		menuOpenClass: 'menu-open',
 		menuButtonActiveClass: 'active',
+		navType: 'offCanvas'
 	}, options);
 
 	var $this = $(this),
@@ -1356,7 +1357,12 @@ $.fn.responsiveNav = function( options ) {
 		$menuButton = $( options.menuButtonSelector );
 
 	var closeNav = function() {
-		$wrapper.removeClass( options.menuOpenClass );
+		if( options.navType === 'dropdown' ){
+			$this.slideUp();
+		}
+		else{
+			$wrapper.removeClass( options.menuOpenClass );
+		}
 		$menuButton.removeClass( options.menuButtonActiveClass );
 
 		menuOpen = false;
@@ -1370,6 +1376,22 @@ $.fn.responsiveNav = function( options ) {
 		}
 	};
 
+	var keyboardTabFn = function(){
+			// Adding quick Tab Functionality for Navigation
+			$('nav.main-nav > ul > li.menu-item-has-children > a').focus( function () {
+				$(this).siblings('ul').addClass('tab-show');
+			}).blur(function(){
+				$(this).siblings('ul').removeClass('tab-show');
+			});
+
+			// focusing on sub menu item show its dropdown
+			$('nav.main-nav > ul > li.menu-item-has-children > ul > li > a').focus( function () {
+				$(this).parent().parent('ul').addClass('tab-show');
+			}).blur(function(){
+				$(this).parent().parent('ul').removeClass('tab-show');
+			});
+	};
+
 	var menuBtnFn = function() {
 
 		$menuButton.bind( 'touchstart, click', function(event) {
@@ -1381,7 +1403,13 @@ $.fn.responsiveNav = function( options ) {
 				closeNav();
 			}
 			else{
-				$wrapper.addClass( options.menuOpenClass );
+				if( options.navType === 'dropdown' ){
+					$this.slideDown();
+				}
+				else{
+					$wrapper.addClass( options.menuOpenClass );
+				}
+
 				$(this).addClass( options.menuButtonActiveClass );
 
 				menuOpen = true;
@@ -1475,14 +1503,20 @@ $.fn.responsiveNav = function( options ) {
 	menuBtnFn();
 	secondlevelNav();
 	thirdlevelNav();
+	keyboardTabFn();
 	activeToggleFn();
 
 	$(window).resize(function(){
 
 		if( !$menuButton.is(':visible') ) {
-			closeNav();
+			//close mobile menu
+			if ( menuOpen ) {
+					closeNav();
+			}
 			//remove any inline styles from subnavigation
 			$this.find( 'ul' ).removeAttr( 'style' );
+			$this.find('.menu-item-has-children').removeClass('toggle');
+			$this.removeAttr('style');
 		}
 		else{
 			activeToggleFn();
@@ -1496,7 +1530,9 @@ $.fn.responsiveNav = function( options ) {
 (function($) {
 
 	// Make nav menu nice & responsive
-	$('nav.main-nav').responsiveNav();
+	$('nav.main-nav').responsiveNav({
+		navType: 'offCanvas' //default option for dropdown type use 'dropdown'
+	});
 
 	//wrap select elements in div for custom styling
 	$('select').wrap('<div class="selectbox-container"></div>');
@@ -1512,5 +1548,5 @@ $.fn.responsiveNav = function( options ) {
 		controlNav: 'thumbnails'
 	});
 
-	
+
 })(jQuery);

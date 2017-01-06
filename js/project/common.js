@@ -1,7 +1,9 @@
 (function($) {
 
 	// Make nav menu nice & responsive
-	$('nav.main-nav').responsiveNav();
+	$('nav.main-nav').responsiveNav({
+		navType: 'offCanvas' //default option for dropdown type use 'dropdown'
+	});
 
 	//wrap select elements in div for custom styling
 	$('select').wrap('<div class="selectbox-container"></div>');
@@ -17,5 +19,5 @@
 		controlNav: 'thumbnails'
 	});
 
-	
+
 })(jQuery);
