@@ -1,5 +1,5 @@
 /*
- * jQuery FlexSlider v2.5.0
+ * jQuery FlexSlider v2.6.0
  * http://www.woothemes.com/flexslider/
  *
  * Copyright 2012 WooThemes
@@ -9,22 +9,18 @@
  * Contributing author: Tyler Smith (@mbmufffin)
  *
  */
+
 /* ====================================================================================================================
  * RESETS
  * ====================================================================================================================*/
-.flex-container, .flex-slider {
-  a:hover,
-  a:focus { outline: none; }
-}
-
-.slides, .slides > li,
-.flex-control-nav, .flex-direction-nav {
+.slides,
+.slides > li,
+.flex-control-nav,
+.flex-direction-nav {
   margin: 0;
   padding: 0;
   list-style: none;
 }
-
-.flex-pauseplay span { text-transform: capitalize; }
 
 /* ====================================================================================================================
  * BASE STYLES
@@ -112,6 +108,23 @@
      }//end li
  }//end flex-direction-nav
 
+ .flexslider{
+   &:hover{
+       ul.flex-direction-nav{
+           li{
+               a{
+                   &.flex-prev{ left: 0px; }
+                   &.flex-next{ right: 0px; }
+               }
+           }
+       }
+   }
+ }
+
+ ol.flex-control-paging{
+   display: none;
+ }
+
  /* THUMBNAIL NAV */
  ol.flex-control-thumbs{
     display: flex;
@@ -168,15 +181,55 @@
      }
    }
 
-   &:hover{
-       ul.flex-direction-nav{
-           li{
-               a{
-                   &.flex-prev{ left: 0px; }
-                   &.flex-next{ right: 0px; }
-               }
-           }
-       }
-   }
+ }//end .gallery-slideshow.flexslider
 
- }//end .gallery.flexslider
+ //HOMEPAGE HERO SLIDESHOW
+ .hero.flexslider{
+    position: relative;
+    height: 580px;
+
+    ul.flex-direction-nav{
+      position: static;
+      padding: 0;
+    }
+
+    ul.slides{
+        height: 100%;
+        li{
+            height: 100%;
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+
+            &:before{
+                content: "";
+                display: block;
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                background: @black;
+                opacity: .4;
+            }
+
+            .caption{
+                position: relative;
+                height: 100%;
+                display: flex;
+                flex-flow: column;
+                justify-content: center;
+                align-items: center;
+                .text{
+                    padding: 20px;
+                    max-width: 1000px;
+                    text-align: center;
+                    h2{ margin: 0; font-size: 45px; color: @white; text-transform: uppercase;  }
+                    .btn{ margin: 20px 0 0 0; }
+                }
+            }//end .caption
+
+        }//end li
+    }//end ul.slides
+
+  }//end .hero.flexslider

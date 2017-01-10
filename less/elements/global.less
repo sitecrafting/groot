@@ -14,8 +14,9 @@ h1, h2, h3, h4, h5, h6{
 	color: @headings-color;
 }
 
-h1{ margin: 0 0 20px 0;}
-h2, h3, h4, h5, h6 { margin: 10px 0; }
+h1{ margin: 0 0 30px 0; }
+h2, h3 { margin: 20px 0; }
+h4, h5, h6 { margin: 10px 0; }
 
 h1{ font-size: @font-size-h1; }
 h2{ font-size: @font-size-h2; }
@@ -37,19 +38,20 @@ a {
 
 img{ max-width: 100%; height: auto !important; }
 
-p { margin: 0 0 25px 0; }
+p { margin: 20px 0; }
 
 ol, ul{
 	margin: 25px;
 	li > ul,
 	li > ol {
-		margin-bottom: 0;
-		margin-left: 1.5em;
+		margin: 5px 0 10px 25px;
 	}
 }
+
 dd{ margin: 20px; }
 
-hr { border: 0; border-bottom: 1px solid @text-color; height: 0px; margin: 30px 0; padding: 0; width: 100%; }
+hr { border: 0; border-bottom: 1px solid @gray-lighter; height: 0px; margin: 30px 0; padding: 0; width: 100%; }
+pre, code, blockquote { padding: 30px; }
 
 /*--------------------------------------------------------------
 # Alignments
@@ -71,6 +73,10 @@ hr { border: 0; border-bottom: 1px solid @text-color; height: 0px; margin: 30px 
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
+}
+
+.rtecontent{
+	& > *:first-child{ margin-top: 0; }
 }
 
 .clearfix, .rtecontent {

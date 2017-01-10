@@ -1,27 +1,17 @@
 <nav class="side-nav">
 
-    {{ get_sidebar_widgets('blog-sidebar') }}
-
-      {# manual tags list #}
-      {#
-      <ul id="side-menu" class="menu">
-        {% for tag in get_terms('tag') %}
-          <li class="{{ tag | term_item_class(post) }}">
-            <a href="{{ tag.link() }}" rel="tag">{{ tag.name }} ({{ tag.get_posts()|length}})</a>
-          </li>
-        {% endfor %}
-      </ul>
-      #}
+      {#{ get_sidebar_widgets('blog-sidebar') }#}
 
       {# manual category list #}
-      {#
-      <ul id="side-menu" class="menu">
-        {% for cat in get_terms('category') %}
-          <li class="{{ cat | term_item_class(post) }}">
-            <a href="{{ cat.link() }}" rel="category">{{ cat.name }} ({{ cat.get_posts()|length}})</a>
-          </li>
-        {% endfor %}
-      </ul>
-      #}
+      <div class="side-nav-title outer-gutter-left">Categories</div>
+      <div class="side-nav-menu">
+    			<ul>
+          {% for cat in get_terms('category') %}
+            <li class="{{ cat | term_item_class(post) }}">
+              <a href="{{ cat.link() }}" rel="category">{{ cat.name }} ({{ cat.get_posts()|length}})</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
 
 </nav>

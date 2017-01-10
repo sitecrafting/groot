@@ -84,13 +84,19 @@ class Site extends TimberSite {
 		// used for Gallery ACF layout option in flexible content
 		Image::add_size( 'gallery', 900, 600, true );
 
+		//USED FOR Image-Row ACF layout option in flexible content
+		Image::add_size( 'image-row-small', 300, 235, true );
+		Image::add_size( 'image-row-medium', 450, 350, true );
+		Image::add_size( 'image-row-large', 900, 450, true );
+
 		// Make certain custom sizes available in the RTE
 		// use this to unset or add image size options for RTE insert
     /*add_filter( 'image_size_names_choose', function($sizes) {
 
-			unset( $sizes['large'] );
-			unset( $sizes['medium'] );
-			unset( $sizes['small'] );
+			//USE THIS TO UNSET DEFAULT VARIABLE SIZES AND SET YOUR OWN CUSOM SIZES
+			//unset( $sizes['large'] );
+			//unset( $sizes['medium'] );
+			//unset( $sizes['small'] );
 
       return array_merge( $sizes, [
 				'image-row-small' => __( 'Small 300x235' ),

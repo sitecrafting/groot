@@ -20,7 +20,6 @@ form{
 //
 // Shared size and type resets for form controls. Apply `.form-control`
 // to any input type not listed here
-
 input[type=text],
 input[type=password],
 input[type="email"],
@@ -30,7 +29,6 @@ input[type="number"],
 .selectbox-container,
 textarea,
 .form-control {
-
   -webkit-appearance: none; //to make sure IOS default styling is removed
   -webkit-border-radius: 0; //to make sure IOS default round corners is removed - this can be removed if there are supposed to be rounded corners
   border-radius: 0;
@@ -116,18 +114,16 @@ textarea{
 // Position radios and checkboxes better [default styles]
 input[type="radio"], input[type="checkbox"] {
 	margin: 4px 5px 0 1px;
-	margin-top: 1px \9; /* IE8-9 */
 	line-height: normal;
 }
 input[type="radio"] + label, input[type="checkbox"] + label{
 	display: inline-block;
-	margin: 0 0 0 5px;
+	margin: 0 15px 0 5px;
 	font-weight: normal;
 	font-size: @input-font-size;
 	color: @input-color;
 }
 // Apply same disabled cursor tweak as for inputs
-//
 // Note: Neither radios nor checkboxes can be readonly.
 input[type="radio"],
 input[type="checkbox"]{

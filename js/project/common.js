@@ -1,5 +1,8 @@
 (function($) {
 
+	//main hero slideshow
+	$('.hero.flexslider').flexslider();
+	
 	// Make nav menu nice & responsive
 	$('nav.main-nav').responsiveNav({
 		navType: 'offCanvas' //default option for dropdown type use 'dropdown'

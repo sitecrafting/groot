@@ -2,21 +2,53 @@
 
 {% block main_content %}
 
-	<section class="top_botton_gutter outer-gutter">
+<section class="hero flexslider">
+<ul class="slides">
+	<li style="background-image: url(http://placehold.it/1500x690&text=One);">
+		<div class="caption outer-gutter">
+			<div class="text">
+				<h2>Caption for slide one</h2>
+				<a class="btn lg" href="">Learn more</a>
+			</div>
+		</div>
+	</li>
+	<li style="background-image: url(http://placehold.it/1500x690&text=Two);">
+		<div class="caption outer-gutter">
+			<div class="text">
+				<h2>Caption for slide two</h2>
+				<a class="btn lg" href="">Learn more</a>
+			</div>
+		</div>
+	</li>
+	<li style="background-image: url(http://placehold.it/1500x690&text=Three);">
+		<div class="caption outer-gutter">
+			<div class="text">
+				<h2>Caption for slide three</h2>
+				<a class="btn lg" href="">Learn more</a>
+			</div>
+		</div>
+	</li>
+	<li style="background-image: url(http://placehold.it/1500x690&text=Four);">
+		<div class="caption outer-gutter">
+			<div class="text">
+				<h2>Caption for slide four</h2>
+				<a class="btn lg" href="">Learn more</a>
+			</div>
+		</div>
+	</li>
+</ul>
+</section>
 
-			{% for post in posts %}
-				<article class="{{post.class}}">
+<section class="top-bottom-gutter outer-gutter">
+	<div class="container">
 
 					<h1>{{ post.title }}</h1>
-					<div class="post-content">{{ post.content }}</div>
+					<div class="rtecontent">{{ post.content }}</div>
 
 					<h2>front-page.twig</h2>
 					<p>Using Timber with Twig version: <tt>{{ constant('Twig_Environment::VERSION') }}</tt></p>
 
-
-				</article>
-			{% endfor %}
-
-	</section>
+	</div>
+</section>
 
 {% endblock %}

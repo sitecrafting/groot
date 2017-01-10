@@ -1,21 +1,21 @@
 
 {% set content_image_row_amount = image_row|length %}
 
-<div class="feature-image-row">
+<div class="feature-image-row{% if content_image_row_amount == 1 %} single-image{% endif %}">
   {% for image_item in image_row %}
       {% if content_image_row_amount == 3 %}
         <div class="img-item">
-          <div class="img"><img src="{{ TimberImage(image_item.image).src('medium') }}" /></div>{# create small size to use #}
+          <div class="img"><img src="{{ TimberImage(image_item.image).src('image-row-small') }}" /></div>{# create small size to use #}
           <span class="img-row-caption">{{image_item.caption}}</span>
         </div>
       {% elseif content_image_row_amount == 2 %}
         <div class="img-item">
-          <div class="img"><img src="{{ TimberImage(image_item.image).src('large') }}" /></div>{# create medium size to use #}
+          <div class="img"><img src="{{ TimberImage(image_item.image).src('image-row-medium') }}" /></div>{# create medium size to use #}
           <span class="img-row-caption">{{image_item.caption}}</span>
         </div>
       {% else %}
         <div class="img-item">
-          <div class="img"><img src="{{ TimberImage(image_item.image).src('large') }}" /></div>{# create large size to use #}
+          <div class="img"><img src="{{ TimberImage(image_item.image).src('image-row-large') }}" /></div>{# create large size to use #}
           <span class="img-row-caption">{{image_item.caption}}</span>
         </div>
       {% endif %}
