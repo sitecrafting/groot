@@ -19,6 +19,7 @@ module.exports = function(grunt) {
         unused: true,
         boss: true,
         eqnull: true,
+        reporterOutput: '',
         globals: {
           'jQuery': true,
           'window': true,
