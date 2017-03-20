@@ -1,21 +1,22 @@
-.accordion{
+.accordion {
   .clearfix;
   margin: 25px 0;
 
-    dt{
+    dt {
       .clearfix;
       margin-top: 4px;
       position: relative;
       background: @primary-color1;
       transition: all .25s ease;
 
-        &:first-child{ margin-top: 0; }
+        &:first-child { margin-top: 0; }
 
-        .tab-title{
-            margin: 0;
-            position: relative;
-            z-index: 5;
-            color: @white;
+        .acc--title {
+          margin: 0;
+          position: relative;
+          z-index: 5;
+          color: @white;
+
             > a{
               display: block;
               padding: 20px;
@@ -36,17 +37,17 @@
           background: @white;
         }
 
-        &:after{
+        &:after {
           transform: rotate(90deg);
           transition: all .25s ease;
         }
 
-        &.active{
+        &.active {
           &:after{ transform: rotate(0); }
         }
     }//end dt
 
-    dd{
+    dd {
       .clearfix;
       display: none;
       background: #f3f3f3;

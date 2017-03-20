@@ -8,7 +8,7 @@
 		<div class="caption outer-gutter">
 			<div class="text">
 				<h2>Caption for slide one</h2>
-				<a class="btn lg" href="">Learn more</a>
+				<a class="btn btn--lrg" href="">Learn more</a>
 			</div>
 		</div>
 	</li>
@@ -16,7 +16,7 @@
 		<div class="caption outer-gutter">
 			<div class="text">
 				<h2>Caption for slide two</h2>
-				<a class="btn lg" href="">Learn more</a>
+				<a class="btn btn--lrg" href="">Learn more</a>
 			</div>
 		</div>
 	</li>
@@ -24,7 +24,7 @@
 		<div class="caption outer-gutter">
 			<div class="text">
 				<h2>Caption for slide three</h2>
-				<a class="btn lg" href="">Learn more</a>
+				<a class="btn btn--lrg" href="">Learn more</a>
 			</div>
 		</div>
 	</li>
@@ -32,7 +32,7 @@
 		<div class="caption outer-gutter">
 			<div class="text">
 				<h2>Caption for slide four</h2>
-				<a class="btn lg" href="">Learn more</a>
+				<a class="btn btn--lrg" href="">Learn more</a>
 			</div>
 		</div>
 	</li>
@@ -42,12 +42,18 @@
 <section class="top-bottom-gutter outer-gutter">
 	<div class="container">
 
-					<h1>{{ post.title }}</h1>
-					<div class="rtecontent">{{ post.content }}</div>
+		<h1>{{ post.title }}</h1>
+		<div class="rtecontent">{{ post.content }}</div>
 
-					<h2>front-page.twig</h2>
-					<p>Using Timber with Twig version: <tt>{{ constant('Twig_Environment::VERSION') }}</tt></p>
+		<h2>front-page.twig</h2>
+		<p>Using Timber with Twig version: <tt>{{ constant('Twig_Environment::VERSION') }}</tt></p>
 
+		<dl class="accordion">
+      <dt data-id="tab1"><h4 class="acc--title"><a href="#tab1">Tab Title</a></h4></dt>
+      <dd class="acc--content">Panel Content</dd>
+      <dt data-id="tab1"><h4 class="acc--title"><a href="#tab2">Tab Title</a></h4></dt>
+      <dd class="acc--content">Panel Content</dd>
+	  </dl>
 	</div>
 </section>
 

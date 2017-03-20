@@ -30,7 +30,8 @@ $.fn.accordion = function() {
     };
 
     //TAB ANCHOR CLICKS
-    $tabs.delegate('a', 'click', function(){
+    $tabs.find('a').on('click', function(e){
+        e.preventDefault();
         var this_tab = $(this).parent().parent();
         var this_panel = this_tab.next();
         toggleAccPanelFn(this_tab, this_panel);
@@ -38,20 +39,13 @@ $.fn.accordion = function() {
 
     //PRESELECTED OPEN PANEL (USE OF HASHTAGS)
     if( hashtag && $accWrapper.children('dt[data-id="'+panelId+'"]').length>0 ){
-          var selected_tab = $accWrapper.children('dt[data-id="'+panelId+'"]');
-          var selected_panel = selected_tab.next();
+        var selected_tab = $accWrapper.children('dt[data-id="'+panelId+'"]');
+        var selected_panel = selected_tab.next();
+        toggleAccPanelFn(selected_tab, selected_panel);
 
-          selected_panel.show();
-          selected_tab.addClass('active');
-
-          setTimeout(function(){
-            var accordionPos = selected_tab.offset().top;
-            $('html, body').animate( { scrollTop : accordionPos }, 500 );
-          },500);
+        var accordionPos = selected_tab.offset().top;
+        $('html, body').animate( { scrollTop : accordionPos }, 500 );
     }
-
-
-
 };
 
 })(jQuery);
