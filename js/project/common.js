@@ -27,15 +27,14 @@
 	// navigation and possible layout adjustments
 	$(window).resize( $.debounce( 50, true, function(){
 	})).resize( $.debounce( 50, false, function(){
+		var $trigger = $('.mobile-trigger');
 
 		// Adding Secondary mobile accordions for Course details
 		// Check to make sure we're in Tablet view or below
 		// Also make sure you have '.mobile-trigger' elements in your markup (outside of nav)
-		if ($('.mobile-trigger').is(':visible')){
-			console.log('hidden');
-
+		if ($trigger.is(':visible')){
 			// Multiple elements exist so lets apply this to each
-			$('.mobile-trigger').each(function(){
+			$trigger.each(function(){
 				//unbind first to prevent build up on resizes
 				$(this).unbind('touchstart, click').bind('touchstart, click', function() {
 					// if 'mobile-collapsed' is hidden, expand it
@@ -51,7 +50,6 @@
 			});
 		} else {
 			//remove jQuery applied inline styles to hide 'mobile-collapsed'
-			console.log('visible');
 			$('nav.side-nav').removeAttr('style');
 		}
 	}));

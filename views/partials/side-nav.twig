@@ -1,5 +1,7 @@
 {% if menu.get_current_top_level_item() %}
 	<span class="mobile-trigger">Menu</span>
+	{# Define mobile-trigger element in common.js -- var $trigger = $('.mobile-trigger'); #}
+	
 	<nav class="side-nav">
 		<a href="{{ menu.get_current_top_level_item().get_path }}" class="side-nav-title outer-gutter-left">{{ menu.get_current_top_level_item().title }}</a>
 
