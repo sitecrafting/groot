@@ -74,9 +74,10 @@ module.exports = function(grunt) {
         //jQuery core is included with the default codebase of wordpress
         src: [
           //'js/modernizr/modernizr-custom-build.js', //included in the header
+          'js/plugins/jquery.debounce.js',
           'js/plugins/jquery.flexslider.js',
           'js/plugins/jquery.fitvids.js',
-          'js/plugins/accordion.jquery.js',
+          'js/plugins/jquery.accordion.js',
           'js/project/responsive-nav.jquery.js',
           'js/project/common.js'
         ],
