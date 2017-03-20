@@ -1,30 +1,34 @@
 {% if menu.get_current_top_level_item() %}
+	<span class="mobile-trigger">Menu</span>
 	<nav class="side-nav">
 		<a href="{{ menu.get_current_top_level_item().get_path }}" class="side-nav-title outer-gutter-left">{{ menu.get_current_top_level_item().title }}</a>
-		<div class="side-nav-menu">
-			<ul>
-				{% for item in menu.get_current_top_level_item().get_children() %}
 
-					<li class="{{ item.classes | join(' ') }}">
-						<a href="{{ item.get_path }}">{{ item.title }}</a>
+		{% if menu.get_current_top_level_item().get_children() %}
+			<div class="side-nav-menu">
+				<ul>
+					{% for item in menu.get_current_top_level_item().get_children() %}
 
-						{# 3rd level nav #}
-						{% if item.display_children %}
-							<ul>
-								{% for sub_item in item.get_children %}
-									<li class="{{ sub_item.classes | join(' ') }}">
-										<a href="{{ sub_item.get_path }}">{{ sub_item.title }}</a>
-									</li>
-								{% endfor %}
+						<li class="{{ item.classes | join(' ') }}">
+							<a href="{{ item.get_path }}">{{ item.title }}</a>
 
-							</ul>
-						{% endif %}
-						{# end 3rd level nav #}
+							{# 3rd level nav #}
+							{% if item.display_children %}
+								<ul>
+									{% for sub_item in item.get_children %}
+										<li class="{{ sub_item.classes | join(' ') }}">
+											<a href="{{ sub_item.get_path }}">{{ sub_item.title }}</a>
+										</li>
+									{% endfor %}
 
-					</li>
+								</ul>
+							{% endif %}
+							{# end 3rd level nav #}
 
-				{% endfor %}
-			</ul>
-		</div>
+						</li>
+
+					{% endfor %}
+				</ul>
+			</div>
+		{% endif %}
 	</nav>
 {% endif %}

@@ -1,4 +1,4 @@
-.side-nav > .side-nav-title{
+.side-nav > .side-nav-title {
     display: block;
     padding-top: 20px;
     padding-bottom: 20px;
@@ -11,41 +11,57 @@
     }
 }
 
-.side-nav-menu{
-    padding-top: 20px;
-    padding-bottom: 20px;
+.side-nav-menu {
+  padding-top: 20px;
+  padding-bottom: 20px;
+
     ul{
-        .plain-list;
+      .plain-list;
+
         li{
-            a{
-                display: block;
-                padding: 8px 0;
-                .outer-gutter;
+          a{
+            display: block;
+            padding: 8px 0;
+            .outer-gutter;
+          }
+          &.active, &:hover{
+            > a{
+                background: @primary-color1;
+                color: @white;
+                text-decoration: none;
             }
-            &.active, &:hover{
-                > a{
-                    background: @primary-color1;
-                    color: @white;
-                    text-decoration: none;
-                }
-            }
+          }
 
             //tertiary/3rd level nav
             ul{
-                li{
-                    padding-left: 20px;
-                    &.active, &:hover{
-                        >a{
-                            background: none;
-                            color: @primary-color1;
-                            text-decoration: underline;
-                        }
+              li{
+                padding-left: 20px;
 
+                &.active, &:hover {
+                    > a {
+                      background: none;
+                      color: @primary-color1;
+                      text-decoration: underline;
                     }
+
                 }
+              }
             }//end ul
 
         }//end li
     }//end ul
+}
 
+.mobile-trigger {
+  width: 100%;
+  display: none;
+  padding: 20px;
+  cursor: pointer;
+  text-align: center;
+  position: relative;
+  background: @gray-lighter;
+
+    @media @tablet-all, @mobile-all {
+      display: block;
+    }
 }

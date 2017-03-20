@@ -126,29 +126,27 @@ section.page{
 		border-left: 1px solid @gray-lighter;
 	}
 
-	@media @tablet-all, @mobile-all{
-
-		.main-content-area{
-			.main-content{ }
-		}
-
-		nav.side-nav{ display: none; }
-	}
 
 
-	@media @mobile-all{
-
+	@media @tablet-all, @mobile-all {
 		.main-content-area{
 			flex: 1 0 100%;
 			width: 100%;
 			max-width: 100%;
 		}
 
-		aside.side-area{
+		aside.side-area {
 			margin-top: 40px;
 			flex: 1 0 100%;
 			width: 100%;
 			max-width: 100%;
+		}
+
+		nav.side-nav{
+			display: none;
+			flex-basis: 100%;
+			max-width: 100%;
+			text-align: center;
 		}
 	}
 

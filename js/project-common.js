@@ -1807,7 +1807,8 @@ $.fn.responsiveNav = function( options ) {
 		// Adding Secondary mobile accordions for Course details
 		// Check to make sure we're in Tablet view or below
 		// Also make sure you have '.mobile-trigger' elements in your markup (outside of nav)
-		if ($(window).width() <= 1023  ){
+		if ($('.mobile-trigger').is(':visible')){
+			console.log('hidden');
 
 			// Multiple elements exist so lets apply this to each
 			$('.mobile-trigger').each(function(){
@@ -1826,7 +1827,8 @@ $.fn.responsiveNav = function( options ) {
 			});
 		} else {
 			//remove jQuery applied inline styles to hide 'mobile-collapsed'
-			$('.mobile-collapsed').removeAttr('style');
+			console.log('visible');
+			$('nav.side-nav').removeAttr('style');
 		}
 	}));
 
