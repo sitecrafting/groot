@@ -1550,7 +1550,7 @@ $.fn.accordion = function() {
         panelId = window.location.hash.replace('#','');
 
     //FUNCTIONS
-    var toggleAccPanelFn = function( $this_tab, $this_panel ){
+    var toggleAccPanelFn = function( $this_hash, $this_tab, $this_panel ){
           if( $this_tab.hasClass('active') && $this_panel.is(':visible') ){
               $this_panel.slideUp();
               $this_tab.removeClass('active').addClass('inactive');
@@ -1558,6 +1558,7 @@ $.fn.accordion = function() {
           else{
             $this_panel.slideDown();
             $this_tab.addClass('active').removeClass('inactive');
+            window.location.hash = $this_hash;
           }
 
     };
@@ -1565,16 +1566,17 @@ $.fn.accordion = function() {
     //TAB ANCHOR CLICKS
     $tabs.find('a').on('click', function(e){
         e.preventDefault();
+        var this_hash = $(this).attr('href');
         var this_tab = $(this).parent().parent();
         var this_panel = this_tab.next();
-        toggleAccPanelFn(this_tab, this_panel);
+        toggleAccPanelFn(this_hash, this_tab, this_panel);
     });
 
     //PRESELECTED OPEN PANEL (USE OF HASHTAGS)
     if( hashtag && $accWrapper.children('dt[data-id="'+panelId+'"]').length>0 ){
         var selected_tab = $accWrapper.children('dt[data-id="'+panelId+'"]');
         var selected_panel = selected_tab.next();
-        toggleAccPanelFn(selected_tab, selected_panel);
+        toggleAccPanelFn(hashtag, selected_tab, selected_panel);
 
         var accordionPos = selected_tab.offset().top;
         $('html, body').animate( { scrollTop : accordionPos }, 500 );
