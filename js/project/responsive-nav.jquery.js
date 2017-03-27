@@ -168,7 +168,7 @@ $.fn.responsiveNav = function( options ) {
 	keyboardTabFn();
 	activeToggleFn();
 
-	$(window).resize(function(){
+	$(window).resize( $.debounce(function() {
 
 		if( !$menuButton.is(':visible') ) {
 			//close mobile menu
@@ -183,7 +183,7 @@ $.fn.responsiveNav = function( options ) {
 		else{
 			activeToggleFn();
 		}
-	});
+	}, 150));
 
 	return this;
 };

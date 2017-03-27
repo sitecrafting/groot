@@ -1,12 +1,12 @@
 {% if menu.get_current_top_level_item() %}
-	<span class="mobile-trigger">Menu</span>
-	{# Define mobile-trigger element in common.js -- var $trigger = $('.mobile-trigger'); #}
-	
-	<nav class="side-nav">
-		<a href="{{ menu.get_current_top_level_item().get_path }}" class="side-nav-title outer-gutter-left">{{ menu.get_current_top_level_item().title }}</a>
 
+	<nav class="side-nav">
+		<span class="side-nav-trigger outer-gutter-left">Sections</span>
+
+		{# Define side-nav-trigger element in responsive-sidenav.jquery.js #}
 		{% if menu.get_current_top_level_item().get_children() %}
-			<div class="side-nav-menu">
+			<div class="side-nav-menu top-bottom-gutter">
+				{#<a href="{{ menu.get_current_top_level_item().get_path }}" class="side-nav-title outer-gutter-left">{{ menu.get_current_top_level_item().title }}</a>#}
 				<ul>
 					{% for item in menu.get_current_top_level_item().get_children() %}
 

@@ -79,6 +79,7 @@ module.exports = function(grunt) {
           'js/plugins/jquery.fitvids.js',
           'js/project/jquery.accordion.js',
           'js/project/responsive-nav.jquery.js',
+          'js/project/responsive-sidenav.jquery.js',
           'js/project/common.js'
         ],
         dest: 'js/project-common.js',
