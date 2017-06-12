@@ -19,12 +19,6 @@ if ( ! class_exists( 'Timber' ) ) {
 	return;
 }
 
-// Configure custom routes in a route file. Example:
-// Timber::add_route( '/blog', function($params) {
-// 	Timber::load_template( 'archive.php', $query );
-// });
-// require_once 'routes.php';
-
 // Build out the site.
 // Put WordPress configurations, such as filter and action hooks,
 // inside the build method.
