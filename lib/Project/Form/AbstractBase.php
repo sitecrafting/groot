@@ -138,14 +138,14 @@ abstract class AbstractBase {
       }
       if (isset($field['validators'])) {
         if (!is_array($field['validators'])) {
-          throw new \RuntimeExcpetion("$name validators must be defined as an array!");
+          throw new \RuntimeException("$name validators must be defined as an array!");
         }
 
         $field['name'] = $name;
 
         foreach ($field['validators'] as $validator) {
           if (!is_callable($validator)) {
-            throw new \RuntimeExcpetion("$name field validator must be defined as a callable!");
+            throw new \RuntimeException("$name field validator must be defined as a callable!");
           }
 
           $fieldValue = isset($submission[$name]) ? $submission[$name] : '';
