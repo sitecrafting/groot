@@ -3,6 +3,8 @@
 namespace Project\Form;
 
 abstract class AbstractBase {
+  const MESSAGE_FIELD_REQUIRED = '%s is required';
+
   /**
    * The fields configured for this form as an array of arrays.
    * For example, an EmployeeForm might have this config:
@@ -168,7 +170,10 @@ abstract class AbstractBase {
     $valid = !empty($value);
 
     if (!$valid) {
-      $this->addError($field['name'], "{$field['label']} is required.");
+      $this->addError($field['name'], sprintf(
+        static::MESSAGE_FIELD_REQUIRED,
+        $field['label']
+      ));
     }
 
     return $valid;
