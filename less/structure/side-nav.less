@@ -46,7 +46,7 @@ nav.side-nav{
               padding: 8px 0;
               .outer-gutter;
             }
-            &.active, &:hover{
+            &.current-menu-item, &.current-menu-ancestor, &:hover{
               > a{
                   background: @primary-color1;
                   color: @white;
@@ -59,7 +59,7 @@ nav.side-nav{
                 li{
                   padding-left: 20px;
 
-                  &.active, &:hover {
+                  &.current-menu-item, &.current-menu-ancestor, &:hover {
                       > a {
                         background: none;
                         color: @primary-color1;
