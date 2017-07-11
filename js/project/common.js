@@ -7,6 +7,7 @@
 	$('nav.main-nav').responsiveNav({
 		navType: 'offCanvas' //default option for dropdown type use 'dropdown'
 	});
+	$('nav.side-nav').mobileSidenav();
 
 	// Custom Select Boxes
 	$('select').wrap('<div class="selectbox-container"></div>');
@@ -22,6 +23,6 @@
 		controlNav: 'thumbnails'
 	});
 
-	$('nav.side-nav').mobileSidenav();
+
 
 })(jQuery);

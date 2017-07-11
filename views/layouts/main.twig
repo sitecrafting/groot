@@ -10,9 +10,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 
 	<link rel="shortcut icon" href="{{ img_url('favicon.ico') }}" type="image/x-icon">
-	<link rel="apple-touch-icon" href="img/favicon-76.png" sizes="76x76">
-	<link rel="apple-touch-icon" href="img/favicon-120.png" sizes="120x120">
-	<link rel="apple-touch-icon" href="img/favicon-152.png" sizes="152x152">
+	<link rel="apple-touch-icon" href="{{ img_url('favicon-76.png') }}" sizes="76x76">
+	<link rel="apple-touch-icon" href="{{ img_url('favicon-120.png') }}" sizes="120x120">
+	<link rel="apple-touch-icon" href="{{ img_url('favicon-152.png') }}" sizes="152x152">
 
 	{{ wp_head }}
 
@@ -24,25 +24,25 @@
 
 			{% block container_content %}
 				<header class="site-header outer-gutter" itemscope itemtype="http://schema.org/Organization">
-					<!-- Rich Snippet/schema.org markup about this Organization -->
-					<meta itemprop="name" content="{{ site.name }}">
-					<meta itemprop="url" content="{{ site.url }}">
-					<meta itemprop="description" content="{{ site.description }}">
-					<a class="logo" href="/" title="{{ site.name }}" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-						{{ site.name }}
-						<meta itemprop="url" content="{{ img_url('logo.png') }}">
-					</a>
+					<div class="container">
+						<a class="logo" href="/" title="{{ site.name }}" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+							<img src="http://placehold.it/215x50?text=LOGO" alt="{{ site.name }}" />
+							<!-- Rich Snippet/schema.org markup about this Organization -->
+							<meta itemprop="url" content="{{ img_url('logo.png') }}">
+							<meta itemprop="name" content="{{ site.name }}">
+							<meta itemprop="url" content="{{ site.url }}">
+							<meta itemprop="description" content="{{ site.description }}">
+						</a>
 
-					<a class="menu-btn">
-						<div class="toggle"><span></span><span></span><span></span><span></span></div>
-						<span>Menu</span>
-					</a>
+						<a class="menu-btn">
+							<div class="toggle"><span></span><span></span><span></span><span></span></div>
+							<span>Menu</span>
+						</a>
 
-					{# {{ get_search_form() }} #}
-					{% include 'partials/nav.twig' with { menu: primary_menu } only %}
+						{# {{ get_search_form() }} #}
+						{% include 'partials/nav.twig' with { menu: primary_menu } only %}
+					</div>
 				</header>
-
-
 
 				<main class="site-main">
 						{% block main_content %}

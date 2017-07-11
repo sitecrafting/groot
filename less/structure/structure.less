@@ -1,6 +1,7 @@
 
 .container{
 	margin: 0 auto;
+	max-width: @container-width;
 }
 
 .top-gutter{
@@ -102,51 +103,54 @@ section.page{
 		display: flex;
 		flex-flow: row wrap;
 		justify-content: center;
-    min-height: 350px;
 	}
 
-
-	.main-content-area{
+	nav.side-nav, .main-content-area, aside.side-area{
 		flex: 1 0 auto;
-		width: 60%;
-		max-width: 1200px;
+		padding-top: 40px;
+		padding-bottom: 40px;
 	}
 
 	nav.side-nav{
-		flex: 1 0 auto;
 		width: 20%;
 		max-width: 20%;
-		border-right: 1px solid @gray-lighter;
+		padding-right: 40px;
+	}
+
+	.main-content-area{
+		width: 60%;
+		max-width: 960px; //you dont want this to be smaller than what it would be with one of side nav or side area
 	}
 
 	aside.side-area{
-		flex: 1 0 auto;
 		width: 20%;
 		max-width: 20%;
-		border-left: 1px solid @gray-lighter;
+		padding-left: 40px;
 	}
 
 
 
 	@media @tablet-all, @mobile-all {
+		> .container{ min-height: 0; }
+		nav.side-nav, .main-content-area, aside.side-area{ flex-basis: 100%; }
+
+		nav.side-nav{
+			width: 100%;
+			max-width: 100%;
+			padding: 0;
+		}
 		.main-content-area{
-			flex: 1 0 100%;
 			width: 100%;
 			max-width: 100%;
 		}
 
 		aside.side-area {
-			margin-top: 40px;
-			flex: 1 0 100%;
 			width: 100%;
 			max-width: 100%;
+			padding: 0;
 		}
 
-		nav.side-nav{
-			//display: none;
-			flex-basis: 100%;
-			max-width: 100%;
-		}
+
 	}
 
 

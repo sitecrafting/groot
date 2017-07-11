@@ -7,7 +7,7 @@ $.fn.mobileSidenav = function( options ) {
 
 	options = $.extend({}, {
 		triggerButtonSelector: '.side-nav-trigger',
-		sidenavWrapperClass: '.side-nav-menu',
+		sidenavWrapperClass: '.side-menu',
 		sidenavOpenClass: 'panel-open',
 		menuButtonActiveClass: 'active'
 	}, options);

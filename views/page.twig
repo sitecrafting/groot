@@ -2,26 +2,27 @@
 
 {% block interior_content %}
   <section class="main-content-area">
-    <div class="main-content top-bottom-gutter outer-gutter">
 
-    	<h1>{{ post.title }}</h1>
-    	<div class="rtecontent">
-    		{{ post.content }}
-    	</div>
+    <h1>{{ post.get_field('main_headline') ? post.get_field('main_headline') : post.title }}</h1>
 
-      {# CONTENT LAYOUTS #}
-      {% include 'partials/content-layouts.twig' %}
+    {# CONTENT LAYOUTS #}
+    {% include 'partials/content-layouts.twig' %}
 
-    </div>
+
   </section>
 
-  <aside class="side-area top-bottom-gutter outer-gutter-right">
-      <div class="widget">
-          <h3>Side Bar Widget</h3>
-          <div class="rtecontent">
-            Here is some sidebar text.
-          </div>
+  {% if post.get_field('include_sidebar') %}
+  <aside class="side-area">
+      {% for sideBlock in post.get_field('sidebar_content') %}
+      <div class="side-block">
+          {% if sideBlock.sidebar_title %}<h3 class="title">{{ sideBlock.sidebar_title }}</h3>{% endif %}
+          <div class="rtecontent">{{ sideBlock.sidebar_content }}</div>
+          {% if sideBlock.sidebar_more_link.url %}
+                <a href="{{ sideBlock.sidebar_more_link.url }}"{{ sideBlock.sidebar_more_link.target ? ' target="_blank"':'' }}>{{ sideBlock.sidebar_more_link.text }}</a>
+          {% endif %}
       </div>
+      {% endfor %}
   </aside>
+  {% endif %}
 
 {% endblock %}

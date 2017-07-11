@@ -1,20 +1,22 @@
 {% extends 'layouts/main.twig' %}
 
-
 {% block main_content %}
-<section class="page">
-  <div class="container">
 
-  {% block side_content %}
-    {% include 'partials/side-nav.twig' with { menu: primary_menu, post: post } only %}
-  {% endblock %}
+<section class="page outer-gutter">
+    <div class="container">
 
 
-  {% block interior_content %}
+      {% block side_content %}
+        {% include 'partials/side-nav.twig' with { menu: primary_menu, post: post } only %}
+      {% endblock %}
 
-  {% endblock %}
+
+      {% block interior_content %}
+
+      {% endblock %}
 
 
-</div><!-- END .container -->
+    </div><!-- END .container -->
 </section>
+
 {% endblock %}

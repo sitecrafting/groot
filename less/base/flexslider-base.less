@@ -1,0 +1,61 @@
+/*
+ * jQuery FlexSlider v2.6.0
+ * http://www.woothemes.com/flexslider/
+ *
+ * Copyright 2012 WooThemes
+ * Free to use under the GPLv2 and later license.
+ * http://www.gnu.org/licenses/gpl-2.0.html
+ *
+ * Contributing author: Tyler Smith (@mbmufffin)
+ *
+ */
+
+/* ====================================================================================================================
+ * RESETS
+ * ====================================================================================================================*/
+.slides,
+.slides > li,
+.flex-control-nav,
+.flex-direction-nav {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* ====================================================================================================================
+ * BASE STYLES
+ * ====================================================================================================================*/
+.flexslider {
+  margin: 0;
+  padding: 0;
+
+  .slides {
+
+    > li { display: none; -webkit-backface-visibility: hidden; }
+
+    img{ width: 100%; display: block; }
+
+    // Clearfix for the .slides element
+    &:after{
+      content: "";
+      display: block;
+      clear: both;
+      visibility: hidden;
+      line-height: 0;
+      height: 0;
+    }
+
+    html[xmlns] &{ display: block; }
+    * html &{ height: 1%; }
+
+     // No JavaScript Fallback
+     // If you are not using another script, such as Modernizr, make sure you
+     // include js that eliminates this class on page load
+    .no-js &{
+      > li{
+        &:first-child{ display: block; }
+      }
+    }
+
+  }//end .slides
+}//end .flexslider

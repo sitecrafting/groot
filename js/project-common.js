@@ -1555,7 +1555,7 @@ $.fn.mobileSidenav = function( options ) {
 
 	options = $.extend({}, {
 		triggerButtonSelector: '.side-nav-trigger',
-		sidenavWrapperClass: '.side-nav-menu',
+		sidenavWrapperClass: '.side-menu',
 		sidenavOpenClass: 'panel-open',
 		menuButtonActiveClass: 'active'
 	}, options);
@@ -1621,6 +1621,7 @@ $.fn.mobileSidenav = function( options ) {
 	$('nav.main-nav').responsiveNav({
 		navType: 'offCanvas' //default option for dropdown type use 'dropdown'
 	});
+	$('nav.side-nav').mobileSidenav();
 
 	// Custom Select Boxes
 	$('select').wrap('<div class="selectbox-container"></div>');
@@ -1636,6 +1637,6 @@ $.fn.mobileSidenav = function( options ) {
 		controlNav: 'thumbnails'
 	});
 
-	$('nav.side-nav').mobileSidenav();
+
 
 })(jQuery);

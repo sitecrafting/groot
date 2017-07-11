@@ -1,36 +1,34 @@
-{% if menu.get_current_top_level_item() %}
-
+{% if menu.get_current_top_level_item().get_children() %}
 	<nav class="side-nav">
-		<span class="side-nav-trigger outer-gutter-left">Sections</span>
 
+		<h3 class="side-nav-title"><a href="{{ menu.get_current_top_level_item().get_path }}">{{ menu.get_current_top_level_item().title }}</a></h3>
+		<h3 class="side-nav-trigger"><span>Sections</span></h3>
 		{# Define side-nav-trigger element in responsive-sidenav.jquery.js #}
-		{% if menu.get_current_top_level_item().get_children() %}
-			<div class="side-nav-menu top-bottom-gutter">
-				{#<a href="{{ menu.get_current_top_level_item().get_path }}" class="side-nav-title outer-gutter-left">{{ menu.get_current_top_level_item().title }}</a>#}
-				<ul>
-					{% for item in menu.get_current_top_level_item().get_children() %}
 
-						<li class="{{ item.classes | join(' ') }}">
-							<a href="{{ item.get_path }}">{{ item.title }}</a>
+		<ul class="side-menu">
+			{% for item in menu.get_current_top_level_item().get_children() %}
 
-							{# 3rd level nav #}
-							{% if item.display_children %}
-								<ul>
-									{% for sub_item in item.get_children %}
-										<li class="{{ sub_item.classes | join(' ') }}">
-											<a href="{{ sub_item.get_path }}">{{ sub_item.title }}</a>
-										</li>
-									{% endfor %}
+				<li class="{{ item.classes | join(' ') }}">
+					<a href="{{ item.get_path }}">{{ item.title }}</a>
 
-								</ul>
-							{% endif %}
-							{# end 3rd level nav #}
+					{# 3rd level nav #}
+					{% if item.display_children %}
+						<ul>
+							{% for sub_item in item.get_children %}
+								<li class="{{ sub_item.classes | join(' ') }}">
+									<a href="{{ sub_item.get_path }}">{{ sub_item.title }}</a>
+								</li>
+							{% endfor %}
 
-						</li>
+						</ul>
+					{% endif %}
+					{# end 3rd level nav #}
 
-					{% endfor %}
-				</ul>
-			</div>
-		{% endif %}
+				</li>
+
+			{% endfor %}
+		</ul>
+
+
 	</nav>
 {% endif %}
