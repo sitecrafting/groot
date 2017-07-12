@@ -2,16 +2,16 @@
 
 {% block blog_content %}
 <section class="main-content-area">
-	<div class="main-content top-bottom-gutter outer-gutter">
 
+	<div class="article-list">
 		{% for post in posts %}
 			{% include 'partials/blog/blog-entry-archive.twig' %}
 		{% endfor %}
+	</div><!-- END .article-list -->
 
-	  <div class="pagination">
+	  <div class="post-navigation">
 	    {{ paginate_links() }}
 	  </div>
 
-	</div>
 </section>
 {% endblock %}

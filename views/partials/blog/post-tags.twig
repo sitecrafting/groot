@@ -1,5 +1,5 @@
 {% if post.get_tags %}
-	Tagged with:
+	Tags:
 	{% for tag in post.get_tags %}
 		<span class="tag tag-{{tag.slug}}"><a href="{{tag.link}}">{{tag}}</a></span>{{ loop.last ? '' : ',' }}
 	{% endfor %}

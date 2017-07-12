@@ -1,18 +1,19 @@
 {% extends 'layouts/main.twig' %}
 
-
 {% block main_content %}
-<section class="page blog-layout">
-  <div class="container">
 
-  {% block side_content %}
-    {% include 'partials/blog/blog-sidebar.twig' %}
-  {% endblock %}
+<section class="page blog-layout outer-gutter">
+    <div class="container">
 
 
-  {% block blog_content %}{% endblock %}
+        {% block side_content %}
+            {% include 'partials/blog/blog-sidebar.twig' %}
+        {% endblock %}
 
 
-  </div>
+        {% block blog_content %}{% endblock %}
+
+
+    </div><!-- END .container -->
 </section>
 {% endblock %}

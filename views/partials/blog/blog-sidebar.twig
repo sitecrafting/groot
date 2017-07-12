@@ -1,17 +1,16 @@
 <nav class="side-nav">
 
-      {#{ get_sidebar_widgets('blog-sidebar') }#}
+    {#{ get_sidebar_widgets('blog-sidebar') }#}
 
-      {# manual category list #}
-      <div class="side-nav-title outer-gutter-left">Categories</div>
-      <div class="side-nav-menu">
-    			<ul>
-          {% for cat in get_terms('category') %}
-            <li class="{{ cat | term_item_class(post) }}">
-              <a href="{{ cat.link() }}" rel="category">{{ cat.name }} ({{ cat.get_posts()|length}})</a>
-            </li>
-          {% endfor %}
-        </ul>
-      </div>
+    {# manual category list #}
+    <h3 class="side-nav-title"><span>Categories</span></h3><h3 class="side-nav-trigger"><span>Categories</span></h3>
+
+    <ul class="side-menu">
+      {% for cat in get_terms('category') %}
+        <li class="{{ cat | term_item_class(post) }}">
+            <a href="{{ cat.link() }}" rel="category">{{ cat.name }} ({{ cat.get_posts()|length}})</a>
+        </li>
+      {% endfor %}
+    </ul>
 
 </nav>

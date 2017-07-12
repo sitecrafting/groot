@@ -1,36 +1,26 @@
 article.post{
-  padding: 0 0 40px 0;
-  margin: 0 0 40px 0;
-  border-bottom: 1px solid @gray-light;
-
-    header{
-      .title{ margin: 0; }
-      .post-publish-info{ margin: 5px 0 15px 0; }
+    header.article-header{
+        .title{ margin: 0; }
+        margin-bottom: 15px;
     }
+    .post-thumb-container{ margin: 15px 0; }
+    .post-meta{ margin-top: 15px; }
+    .more-wrapper{ margin-top: 15px; }
+}//end artice.post
 
-    .post-thumb-container{
-      margin: 0 0 15px 0;
-        img{ display: block; margin: 0; }
-    }
+.article-list{
+    article.post{
+        margin: 30px 0;
+        padding: 30px 0 0;
+        border-top: 1px solid @gray-light;
 
-    .post-content { margin: 0 0 15px 0; }
-    .post-meta { margin: 0 0 15px 0; }
+        &:first-child{ margin-top: 0; padding-top: 0; border-top: 0; }
 
-    .post-read-more-wrap{
-        margin-top: 20px;
-    }
-
-
-    .single &{
-      padding: 0;
-      margin: 0;
-      border-bottom: 0;
-
-        .post-back-to-blog-wrap{
-          margin: 40px 0 0 0;
-          padding: 40px 0 0 0;
-          border-top: 1px solid @gray-light;
+        .post-thumb-container{
+            width: 30%;
+            float: left;
+            ~ * { margin-left: 30%; padding-left: 30px; }
         }
-    }
 
+    }//end .article.post
 }

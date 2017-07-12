@@ -4,14 +4,21 @@
 we just want to define how certain pieces of the template behave.
 In this case, we might just want a "Read More" button at the bottom #}
 
+{# block before_post_header #}
+
+{# block post_header #}
+
+{% block before_content %}{% endblock %} {# we want the image before the title #}
+
 {% block post_content %}
-	<div class="post-content post-excerpt">{{ post.content | excerpt }}</div>
+	<div class="post-excerpt">{{ post.content | excerpt }}</div>
 {% endblock %}
 
 {% block after_content %}
   	{{ parent() }}
 
-	<div class="post-read-more-wrap">
+	<div class="more-wrapper">
 		<a href="{{ post.link }}" class="btn">Read More</a>
 	</div>
+
 {% endblock %}
