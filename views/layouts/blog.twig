@@ -2,13 +2,12 @@
 
 {% block main_content %}
 
+{% block filter_bar %}
+    {% include 'partials/blog/blog-filterbar.twig' %}
+{% endblock %}
+
 <section class="page blog-layout outer-gutter">
     <div class="container">
-
-
-        {% block side_content %}
-            {% include 'partials/blog/blog-sidebar.twig' %}
-        {% endblock %}
 
 
         {% block blog_content %}{% endblock %}

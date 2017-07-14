@@ -3,7 +3,9 @@
 {# We don't want to redefine the entire blog entry article layout,
 we just want to define how certain pieces of the template behave.
 In this case, we might want some extra navigation at the bottom #}
+
 {% block before_post_header %}{% endblock %}
+
 {% block post_header %}
 	<header class="article-header">
 		<h1 class="title" itemprop="headline"><a href="{{ post.link }}" title="{{ post.title }}">{{ post.title }}</a></h1>
@@ -28,22 +30,22 @@ In this case, we might want some extra navigation at the bottom #}
 {% endblock %}
 
 {# block before_content #}
+
 {# block post_content #}
 
 {% block after_content %}
+
 	{{ parent() }}
+
+	{{ function( 'comments_template' ) }}
 
 	<div class="post-navigation">
 
 		<div class="nav-previous">
-			{% if post.prev %}
-				<a class="btn" href="{{ post.prev.link }}" title="{{ post.prev.title }}">Previous</a>
-			{% endif %}
+				<a class="btn{{ post.prev is not defined ? ' disabled' : '' }}" {% if post.prev is not empty %}href="{{ post.prev.link }}"{% endif %} title="{{ post.prev.title }}">Previous</a>
 		</div>
 		<div class="nav-next">
-			{% if post.next %}
-				<a class="btn" href="{{ post.next.link }}" title="{{ post.next.title }}">Next</a>
-			{% endif %}
+				<a class="btn{{ post.next is empty ? ' disabled' : '' }}" {% if post.next is not empty %}href="{{ post.next.link }}"{% endif %} title="{{ post.next.title }}">Next</a>
 		</div>
 
 	</div>

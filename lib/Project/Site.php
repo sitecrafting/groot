@@ -116,21 +116,18 @@ class Site extends TimberSite {
 			'footer' => 'Footer Navigation', // footer links
 		]);
 
-		// widget area
-		register_sidebar([
-			'name' => 'Main Sidebar',
-			'id' => 'main-sidebar'
-		]);
-
 		//blog sidebar
 		register_sidebar([
-			'name' => 'Blog Sidebar',
-			'id' => 'blog-sidebar'
+			'name' => 'Blog Filter Bar',
+			'id' => 'blog-filters',
+			'before_widget' => '<div id="%1$s" class="filter %2$s">',
+			'after_widget'  => "</div>\n",
+			'before_title'  => '<h3 class="filtertitle">',
+			'after_title'   => "</h3>\n"
 		]);
 
 		// Banish the Yoast SEO meta box to the bottom of the post edit screen, where it belongs
 		add_filter( 'wpseo_metabox_prio', function() { return 'low';});
-
 
 
 		return $this;

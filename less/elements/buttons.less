@@ -4,25 +4,30 @@
   border-radius: 0;
   padding: 15px 20px;
   display: inline-block;
-  border: 1px solid @gray-light;
+  border: 1px solid @black;
 
-  color: @black;
+  color: @white;
   line-height: 1;
   text-align: center;
-  font-size: @input-font-size;
-  font-family: @font-family-base;
+  font-size: 16px;
 
-  background: @gray-lighter;
+  background: @primary-color1;
   -webkit-appearance: none;
 
   transition: all .25s ease;
 
-  &.btn--sml { font-size: (@input-font-size - 2); }
-  &.btn--lrg { font-size: (@input-font-size + 2); }
-
 	&:hover {
 	  text-decoration: none;
-	  background: darken(@gray-lighter,5%);
+	  background: darken(@primary-color1,5%);
 	}
+
+    &.disabled{
+        background: @gray-lighter;
+        border-color: @gray-light;
+        color: @gray-light;
+        cursor: not-allowed;
+        &:hover{ background: @gray-lighter; }
+    }
+
 
 }

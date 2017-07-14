@@ -1,0 +1,22 @@
+<section class="filter-bar outer-gutter">
+    <div class="container">
+
+        <div class="filters-container">
+
+            <h3 class="filterbar-headline">Filters</h3>
+            {{ get_sidebar_widgets('blog-filters') }}
+
+            {# manual category list
+            <h3 class="side-nav-title"><span>Categories</span></h3><h3 class="side-nav-trigger"><span>Categories</span></h3>
+            <ul class="side-menu">
+              {% for cat in get_terms('category') %}
+                <li class="{{ cat | term_item_class(post) }}">
+                    <a href="{{ cat.link() }}" rel="category">{{ cat.name }} ({{ cat.get_posts()|length}})</a>
+                </li>
+              {% endfor %}
+            </ul>
+            #}
+        </div><!-- END .filters-container -->
+
+    </div>
+</section>
