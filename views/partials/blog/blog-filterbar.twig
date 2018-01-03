@@ -4,18 +4,24 @@
         <div class="filters-container">
 
             <h3 class="filterbar-headline">Filters</h3>
-            {{ get_sidebar_widgets('blog-filters') }}
-
-            {# manual category list
-            <h3 class="side-nav-title"><span>Categories</span></h3><h3 class="side-nav-trigger"><span>Categories</span></h3>
-            <ul class="side-menu">
-              {% for cat in get_terms('category') %}
-                <li class="{{ cat | term_item_class(post) }}">
-                    <a href="{{ cat.link() }}" rel="category">{{ cat.name }} ({{ cat.get_posts()|length}})</a>
-                </li>
-              {% endfor %}
-            </ul>
-            #}
+            <div class="filter">
+                <select name="cat" id="cat" onchange="document.location.href=this.options[this.selectedIndex].value;">
+                    <option value="">Select Category</option>
+                    {% for cat in get_terms('category') %}
+                      <option{{ post.slug == cat.slug() ? ' selected="selected"' : '' }} value="{{ cat.link() }}">{{ cat.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="filter">
+                <select name="archives" id="archives" onchange="document.location.href=this.options[this.selectedIndex].value;">
+                    <option value="{{ get_blog_url() }}">Select Month</option>
+                    {% for archive in archives.items %}
+                        {% for month in archive.children %}
+                            <option value="{{ month.link }}">{{ month.name }} {{ archive.name }}</option>
+                        {% endfor %}
+                    {% endfor %}
+                </select>
+            </div>
         </div><!-- END .filters-container -->
 
     </div>

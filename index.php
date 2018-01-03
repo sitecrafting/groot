@@ -17,5 +17,8 @@ if( is_tag() || is_category() ) {
   $data['post'] = Page::get_blog_page();
 }
 
+//get archives
+$data['archives'] = new TimberArchives( $args );
+
 // Render the archive view
 Timber::render( 'index.twig', $data );

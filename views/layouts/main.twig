@@ -26,7 +26,7 @@
 				<header class="site-header outer-gutter" itemscope itemtype="http://schema.org/Organization">
 					<div class="container">
 						<a class="logo" href="/" title="{{ site.name }}" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-							<img src="http://placehold.it/215x50/00aeef/000?text={{ site.name }}" alt="{{ site.name }}" />
+							<img src="http://placehold.it/430x100/00aeef/000?text={{ site.name | url_encode }}" srcset="http://placehold.it/215x50/00aeef/000?text={{ site.name | url_encode }} 1x, http://placehold.it/430x100/00aeef/000?text={{ site.name | url_encode }} 2x" alt="{{ site.name }}" />
 							<!-- Rich Snippet/schema.org markup about this Organization -->
 							<meta itemprop="url" content="{{ img_url('logo.png') }}">
 							<meta itemprop="name" content="{{ site.name }}">

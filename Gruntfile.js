@@ -89,6 +89,7 @@ module.exports = function(grunt) {
     less: {
       development: {
         options: {
+        sourceMap: true,
           compress: true,
           plugins: [
             new AutoPrefix({browsers: '> 1%, last 2 versions, Firefox ESR, Opera 12.1'})

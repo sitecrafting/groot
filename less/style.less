@@ -1,7 +1,7 @@
 /*!
  * Theme Name: Groot
  * Theme URI: http://bitbucket.org/sitecrafting/start-wp-theme-groot
- * Author: Coby Tamayo
+ * Author: SiteCrafting
  * Author URI: http://sitecrafting.com
  * Description: The official SiteCrafting Starter WordPress Theme
  * Version: 0.1.0
@@ -20,16 +20,17 @@
 @import "structure/flexboxgrid.less";
 @import "elements/global.less";
 
-@import "elements/buttons.less";
-@import "elements/datepicker.less";
+@import "elements/pieces/buttons.less";
+@import "elements/pieces/datepicker.less";
+
 @import "elements/forms.less";
 
 /* FLEXIBLE CONTENT ACF OPTION LAYOUT - SEE partials/ : accordion.twig, gallery.twig, image-row.twig */
-@import "elements/accordion.less";
-@import "elements/image-row.less";
-@import "elements/flexslider-themes.less";
+@import "elements/layouts/accordion.less";
+@import "elements/layouts/image-row.less";
+@import "elements/layouts/flexslider-themes.less";
 
-@import "elements/side-block.less"; //typically used in optional sidebar
+//BLOG
 @import "elements/filter-bar.less";
 @import "elements/wp-blog.less";
 @import "elements/comments.less";
@@ -41,3 +42,4 @@
 @import "structure/footer.less";
 
 @import "structure/structure.less";
+@import "structure/templates/page.less"; //general interior structure
