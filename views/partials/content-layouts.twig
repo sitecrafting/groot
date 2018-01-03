@@ -9,19 +9,19 @@
 
 {# IMAGE ROW - 1, 2 or 3 #}
 {% if layout.acf_fc_layout == 'image_row' %}
-      {% include 'partials/image-row.twig' with { image_row : layout.image_item } %}
+      {% include 'partials/blocks/image-row.twig' with { image_row : layout.image_item } %}
 {% endif %}
 {# END ACCORDION #}
 
 {# ACCORDION #}
 {% if layout.acf_fc_layout == 'accordion' %}
-      {% include 'partials/accordion.twig' with { acc_layout : layout.acc_panel } %}
+      {% include 'partials/blocks/accordion.twig' with { acc_layout : layout.acc_panel } %}
 {% endif %}
 {# END ACCORDION #}
 
 {# GALLERY #}
 {% if layout.acf_fc_layout == 'slideshow_gallery' %}
-      {% include 'partials/gallery.twig' with { gallery_images : layout.slideshow } %}
+      {% include 'partials/blocks/gallery.twig' with { gallery_images : layout.slideshow } %}
 {% endif %}
 {# END ACCORDION #}
 

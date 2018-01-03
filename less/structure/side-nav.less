@@ -60,7 +60,7 @@ nav.side-nav{
             height: 3px;
             position: absolute;
             top: 32px;
-            right: 15px;
+            right: @gutter-tablet;
             background: @primary-color1;
             border-radius: 4px;
             transition: all .25s ease;
@@ -87,6 +87,15 @@ nav.side-nav{
             }
         }
 
+    }//@tablet-all, @mobile-all
+    @media @mobile-all{
+        .side-nav-trigger {
+            margin: 0 -(@gutter-mobile);
+            span{
+                padding: 20px @gutter-mobile;
+            }
+            &:before, &:after{ right: @gutter-mobile; }
+        }
     }
 
 }//end nav.side-nav

@@ -84,7 +84,8 @@ nav.main-nav{
 		right: -(@off-canvas-width);
 		left: auto; bottom: auto;
 		padding: 20px;
-		background: @black;
+		margin: 0;
+		background: @gray;
 
 		&.main-nav-dropdown{
 			display: none;
@@ -101,12 +102,14 @@ nav.main-nav{
 
 			li{
 				display: block;
-				margin: 0 0 5px 0;
+				margin: 0;
+				padding: 0;
+				border-bottom: 1px solid @gray-dark;
 
 				a{
 					position: relative;
 					z-index: @zindex-base;
-					padding: 10px 15px;
+					padding: 10px;
 				}
 
 				&.menu-item-has-children{
@@ -122,20 +125,26 @@ nav.main-nav{
 							height: 100%;
 							cursor: pointer;
 							z-index: (@zindex-base + 100);
-							border-left: 1px solid @gray;
-							&:after{
-								content: "+";
+							&:before, &:after{
+								content: "";
 								display: block;
 								position: absolute;
-								width: 100%;
-								padding: 10px 0;
-								text-align: center;
+								top: 20px;
+								right: 0px;
+								width: 16px;
+								height: 2px;
+								background: @primary-color1;
+								border-radius: 1px;
+							}
+							&:after{
+								transform: rotate(-90deg);
+								transition: all @trans-speed ease;
 							}
 						}//end span.dropper
 					}
 					&.toggle{
 						> a > span.dropper{
-							&:after{ content: "-"; }
+							&:after{ opacity: 0; transform: rotate(0deg); }
 						}
 					}
 				}//end &.menu-item-has-children
@@ -147,18 +156,31 @@ nav.main-nav{
 					width: 100%;
 					opacity: 1;
 					display: none;
-					margin: 5px 0 0 15px;
+					border: 0;
+					padding: 5px 0;
+					margin: 0;
+					border-top: 1px solid @gray-dark;
 					background: none;
 
 					li{
+						padding: 0;
+						border: 0;
 						a{
-							padding: 5px 15px;
+							padding: 8px 15px;
 						}
 						&.menu-item-has-children{
 							a{
-								span.dropper:after{ padding: 5px 0; }
+								span.dropper{ &:before, &:after{ top: 15px; } }
 							}
 						}
+
+						//third level
+						ul{
+							border: 0;
+							margin-left: 20px;
+							li a{ font-size: 12px; }
+						}
+
 					}//end second level li
 				}
 
