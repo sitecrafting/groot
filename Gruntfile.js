@@ -36,35 +36,6 @@ module.exports = function(grunt) {
         src: 'js/project/*.js'
       }
     },
-    watch: {
-      gruntfile: {
-        files: '<%= jshint.gruntfile.src %>',
-        tasks: ['jshint:gruntfile']
-      },
-      js: {
-        files: 'js/project/*.js',
-        tasks: ['jshint:theme', 'concat:js', 'uglify:js', 'assets_version']
-      },
-      less: {
-        files: 'less/**/*.less',
-        tasks: ['less', 'assets_version']
-      },
-    },
-    phpdocumentor: {
-      dist: {
-        options: {
-          target: 'doc'
-        }
-      }
-    },
-    bower: {
-      install: {
-        options: {
-          install: true,
-          copy: false
-        }
-      }
-    },
     concat: {
       js: {
         // All these files will be concatenated and served together.
@@ -86,6 +57,34 @@ module.exports = function(grunt) {
         nonull: true
       }
     },
+    uglify: {
+      js: {
+        files: {
+          'js/project-common.min.js': ['js/project-common.js']
+        }
+      }
+    },
+    watch: {
+      gruntfile: {
+        files: '<%= jshint.gruntfile.src %>',
+        tasks: ['jshint:gruntfile']
+      },
+      js: {
+        files: 'js/project/*.js',
+        tasks: ['jshint:theme', 'concat:js', 'uglify:js', 'assets_version']
+      },
+      less: {
+        files: 'less/**/*.less',
+        tasks: ['less', 'assets_version']
+      },
+    },
+    phpdocumentor: {
+      dist: {
+        options: {
+          target: 'doc'
+        }
+      }
+    },
     less: {
       development: {
         options: {
@@ -98,13 +97,6 @@ module.exports = function(grunt) {
         files: {
           'style.css': 'less/style.less',
           'print.css': 'less/style-print.less'
-        }
-      }
-    },
-    uglify: {
-      js: {
-        files: {
-          'js/project-common.min.js': ['js/project-common.js']
         }
       }
     }
@@ -135,6 +127,6 @@ module.exports = function(grunt) {
 
   // Default task.
   grunt.registerTask('default', ['jshint', 'concat:js', 'uglify:js', 'less', 'watch']);
-  grunt.registerTask('front-end', ['bower:install', 'less', 'jshint', 'concat:js', 'uglify:js']);
+  grunt.registerTask('front-end', ['less', 'jshint', 'concat:js', 'uglify:js']);
   grunt.registerTask('doc', ['phpdocumentor']);
 };
