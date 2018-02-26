@@ -3,12 +3,12 @@
  * PSR-4 autoloading
  */
 
-namespace Conifer;
+namespace Groot;
 
 /**
  * Basic Project-specific Autoloader with configurable search paths.
  *
- * @package Conifer
+ * @package Groot
  */
 class Autoloader {
 	/**
@@ -22,9 +22,14 @@ class Autoloader {
 	 * @param array $paths Directories to register. When searching for classes to autoload,
 	 * the autoloader will check these directories in the order they are specified here.
 	 */
-	public function __construct( array $paths = [] ) {
-		// default to looking in the theme's lib/ dir
-		$this->paths = $paths ?: [get_stylesheet_directory() . '/lib/'];
+	public function __construct(array $paths = []) {
+		// Look first in Conifer libs directory for unloaded classes, then theme libs
+		$defaultPaths = [
+			WP_PLUGIN_DIR.'/conifer/lib/',
+			get_stylesheet_directory().'/lib/',
+		];
+
+		$this->paths = $paths ?: $defaultPaths;
 	}
 
 	/**
