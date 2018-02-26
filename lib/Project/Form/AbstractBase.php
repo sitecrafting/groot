@@ -1,6 +1,6 @@
 <?php
 
-namespace Project\Form;
+namespace Conifer\Form;
 
 abstract class AbstractBase {
   const MESSAGE_FIELD_REQUIRED = '%s is required';

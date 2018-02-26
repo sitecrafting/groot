@@ -8,9 +8,7 @@ namespace TwigWrapper\Filters;
 /**
  * Twig Wrapper around generic filters for numbers
  *
- * @copyright 2015 SiteCrafting, Inc.
- * @author Coby Tamayo
- * @package  Groot
+ * @package Conifer
  */
 class Number extends AbstractBase {
 	/**

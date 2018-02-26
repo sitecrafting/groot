@@ -9,9 +9,7 @@ namespace Traits;
  * This Trait adds a powerful abstraction to post type classes:
  * the ability to declaratively add custom admin columns.
  *
- * @copyright 2015 SiteCrafting, Inc.
- * @author Coby Tamayo
- * @package  Groot
+ * @package Conifer
  */
 trait HasCustomAdminColumns {
 	/**

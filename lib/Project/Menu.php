@@ -3,7 +3,7 @@
  * Custom Menu class extending TimberMenu.
  */
 
-namespace Project;
+namespace Conifer;
 
 use Timber\Menu as TimberMenu;
 
@@ -11,9 +11,7 @@ use Timber\Menu as TimberMenu;
  * Custom Menu class to add special nav behavior on top of
  * TimberMenu instances.
  *
- * @copyright 2015 SiteCrafting, Inc.
- * @author Coby Tamayo
- * @package  Groot
+ * @package Conifer
  */
 class Menu extends TimberMenu {
 	/**

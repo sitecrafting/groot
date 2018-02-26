@@ -3,14 +3,12 @@
  * Home page class
  */
 
-namespace Project;
+namespace Conifer;
 
 /**
  * Class to represent the home page.
  *
- * @copyright 2015 SiteCrafting, Inc.
- * @author Coby Tamayo
- * @package  Groot
+ * @package Conifer
  */
 class FrontPage extends Post {
   /**

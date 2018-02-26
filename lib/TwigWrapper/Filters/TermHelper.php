@@ -11,9 +11,7 @@ use Timber\CoreInterface as TimberCoreInterface;
 /**
  * Twig Wrapper around filters for WP/Timber terms and taxonomies
  *
- * @copyright 2015 SiteCrafting, Inc.
- * @author Coby Tamayo
- * @package  Groot
+ * @package Conifer
  */
 class TermHelper extends AbstractBase {
 	/**

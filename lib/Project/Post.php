@@ -3,7 +3,7 @@
  * High-level WP Post behavior
  */
 
-namespace Project;
+namespace Conifer;
 
 use Timber\Post as TimberPost;
 
@@ -11,10 +11,6 @@ use Project\Image;
 
 /**
  * High-level behavior for WP Posts, on top of TimberPost class
- *
- * @copyright 2015 SiteCrafting, Inc.
- * @author Coby Tamayo
- * @package  Groot
  */
 class Post extends TimberPost {
 	use \Traits\HasTerms;

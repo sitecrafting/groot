@@ -10,9 +10,7 @@ use Timber\Timber;
 /**
  * Declaratively add custom admin filter options.
  *
- * @copyright 2015 SiteCrafting, Inc.
- * @author Coby Tamayo
- * @package  Groot
+ * @package Conifer
  */
 trait HasCustomAdminFilters {
 	/**

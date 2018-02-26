@@ -11,9 +11,7 @@ use Timber\Timber;
  * Twig Wrapper around generic or global functions, such as WordPress
  * template tags.
  *
- * @copyright 2015 SiteCrafting, Inc.
- * @author Coby Tamayo
- * @package  Groot
+ * @package Conifer
  */
 class WordPress extends AbstractBase {
 	/**

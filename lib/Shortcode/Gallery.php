@@ -12,9 +12,7 @@ use Project\Image;
 /**
  * Implements a custom gallery shortcode that overrides the native shortcode.
  *
- * @copyright 2015 SiteCrafting, Inc.
- * @author Coby Tamayo
- * @package  Groot
+ * @package Conifer
  */
 class Gallery extends AbstractBase {
 	/**

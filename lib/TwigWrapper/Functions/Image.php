@@ -11,9 +11,7 @@ use TimberImage;
 /**
  * Twig Wrapper around high-level image functions
  *
- * @copyright 2015 SiteCrafting, Inc.
- * @author Coby Tamayo
- * @package  Groot
+ * @package Conifer
  */
 class Image extends AbstractBase {
 	/**

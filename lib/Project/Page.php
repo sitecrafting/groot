@@ -3,14 +3,12 @@
  * Custom page class
  */
 
-namespace Project;
+namespace Conifer;
 
 /**
  * Class to represent WordPress pages.
  *
- * @copyright 2015 SiteCrafting, Inc.
- * @author Coby Tamayo
- * @package  Groot
+ * @package Conifer
  */
 class Page extends Post {
 	/**

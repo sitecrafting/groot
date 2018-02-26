@@ -8,9 +8,7 @@ namespace TwigWrapper\Filters;
 /**
  * Twig Wrapper for helpful linguistic filters, such as pluralize
  *
- * @copyright 2015 SiteCrafting, Inc.
- * @author Coby Tamayo
- * @package  Groot
+ * @package Conifer
  */
 class TextHelper extends AbstractBase {
 	static protected $PLURALS = [

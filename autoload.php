@@ -3,14 +3,12 @@
  * PSR-4 autoloading
  */
 
-namespace Project;
+namespace Conifer;
 
 /**
  * Basic Project-specific Autoloader with configurable search paths.
  *
- * @copyright 2015 SiteCrafting, Inc.
- * @author Coby Tamayo
- * @package  Groot
+ * @package Conifer
  */
 class Autoloader {
 	/**

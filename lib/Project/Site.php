@@ -3,7 +3,7 @@
  * Central Site class
  */
 
-namespace Project;
+namespace Conifer;
 
 use Timber\Timber;
 use Timber\Site as TimberSite;
@@ -23,9 +23,7 @@ use Shortcode\Button;
 /**
  * Wrapper for any and all theme-specific behavior.
  *
- * @copyright 2015 SiteCrafting, Inc.
- * @author Coby Tamayo
- * @package  Groot
+ * @package Conifer
  */
 class Site extends TimberSite {
 	/**

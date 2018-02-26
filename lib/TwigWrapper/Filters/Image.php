@@ -8,9 +8,7 @@ namespace TwigWrapper\Filters;
 /**
  * Twig Wrapper around high-level image filters
  *
- * @copyright 2015 SiteCrafting, Inc.
- * @author Coby Tamayo
- * @package  Groot
+ * @package Conifer
  */
 class Image extends AbstractBase {
 	/**

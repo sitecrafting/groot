@@ -9,9 +9,7 @@ namespace Traits;
  * Trait that can be used from any post type class to get
  * tags and categories.
  *
- * @copyright 2015 SiteCrafting, Inc.
- * @author Coby Tamayo
- * @package  Groot
+ * @package Conifer
  */
 trait HasTerms {
 	/**

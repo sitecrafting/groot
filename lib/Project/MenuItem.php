@@ -3,7 +3,7 @@
  * Custom MenuItem class
  */
 
-namespace Project;
+namespace Conifer;
 
 use Timber\MenuItem as TimberMenuItem;
 
@@ -11,9 +11,7 @@ use Timber\MenuItem as TimberMenuItem;
  * Custom MenuItem class for adding special nav behavior to
  * TimberMenuItem instances
  *
- * @copyright 2015 SiteCrafting, Inc.
- * @author Coby Tamayo
- * @package  Groot
+ * @package Conifer
  */
 class MenuItem extends TimberMenuItem {
 	const CLASS_HAS_CHILDREN 			= 'menu-item-has-children';

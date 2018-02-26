@@ -3,14 +3,12 @@
  * Customize the WP Admin
  */
 
-namespace Project;
+namespace Conifer;
 
 /**
  * Utility class for configuring WP Admin behavior.
  *
- * @copyright 2015 SiteCrafting, Inc.
- * @author Coby Tamayo
- * @package  Groot
+ * @package Conifer
  */
 class Admin {
 	/**

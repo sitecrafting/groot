@@ -3,7 +3,7 @@
  * Manage image sizes
  */
 
-namespace Project;
+namespace Conifer;
 
 use Timber\Image as TimberImage;
 
@@ -11,9 +11,7 @@ use Timber\Image as TimberImage;
  * Custom Image class for maintaining image sizes.
  * Image sizes/dimensions are more easily retrievable when declared via this class.
  *
- * @copyright 2015 SiteCrafting, Inc.
- * @author Coby Tamayo
- * @package  Groot
+ * @package Conifer
  */
 class Image extends TimberImage {
   /**

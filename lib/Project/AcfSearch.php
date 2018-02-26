@@ -1,5 +1,6 @@
 <?php
-namespace Project;
+
+namespace Conifer;
 
 class AcfSearch {
 
