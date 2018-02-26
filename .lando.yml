@@ -1,0 +1,74 @@
+# Sample Lando config for use with this image
+name: groot
+recipe: wordpress
+
+services:
+  appserver:
+    type: php:custom
+
+    overrides:
+      services:
+        image: sitecrafting/lando-wp-theme:7.0-apache
+        environment:
+          LANDO_WEBROOT: /var/www/html
+          # specify defaults to setup-wordpress.bash
+          DEFAULT_URL: 'https://groot.lndo.site'
+          DEFAULT_TITLE: 'Groot'
+          DEFAULT_ADMIN_USER: 'admin'
+          DEFAULT_ADMIN_PASSWORD: 'password'
+          DEFAULT_ADMIN_EMAIL: 'admin@example.com'
+
+  node:
+    type: node:6.11
+
+    globals:
+      webpack: "4.0.0"
+      grunt-cli: "1.2.0"
+      yarn: "1.3.2"
+    
+    build:
+      - cd $LANDO_MOUNT && yarn install
+
+  phpmyadmin:
+    type: phpmyadmin:4.7
+
+  mailhog:
+    type: mailhog:v1.0.0
+    hogfrom:
+      - appserver
+
+tooling:
+  install:
+    service: appserver
+    cmd: 'setup-wordpress.bash'
+    description: 'Install and configure WordPress for custom theme dev'
+
+  w:
+    service: appserver
+    cmd: 'wp --path=/var/www/html'
+    description: 'Run wp-cli commands within the container webroot'
+
+  yarn:
+    service: node
+
+  grunt:
+    service: node
+
+  webpack:
+    service: node
+
+proxy:
+  appserver:
+    - groot.lndo.site
+
+  mailhog:
+    - mail.groot.lndo.site
+
+events:
+  post-install:
+    # ensure WordPress is installed and configured
+    - wp plugin uninstall hello akismet
+    - wp plugin install --activate timber-library
+    # TODO conifer
+    # install dev dependencies
+    - cd $LANDO_MOUNT && composer install

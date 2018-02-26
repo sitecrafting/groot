@@ -32,7 +32,7 @@ class PluginManager {
 	/**
 	 * Warn admin user if Timber or Conifer is not installed/activated
 	 */
-	public function requirements_met(boolean $displayAdminWarnings = true) {
+	public function requirements_met(bool $displayAdminWarnings = true) {
 		$allLoaded = true;
 
 		foreach ($this->required_classes as $class) {
@@ -41,7 +41,7 @@ class PluginManager {
 				$allLoaded = false;
 
 				if ($displayAdminWarnings) {
-					$missingPlugin = $this->get_implementing_plugin($requirement);
+					$missingPlugin = $this->get_implementing_plugin($class);
 					$this->generate_admin_warning($missingPlugin);
 				}
 			}
@@ -80,7 +80,7 @@ class PluginManager {
 			$link = esc_url(admin_url('plugins.php'.$anchor));
 
 			echo sprintf(
-				'<div class="error"><p>%s <a href="%s">%s</a></p></div>'
+				'<div class="error"><p>%s <a href="%s">%s</a></p></div>',
 				$message,
 				$link,
 				__('here')

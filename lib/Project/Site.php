@@ -16,7 +16,7 @@ use Twig_SimpleFilter;
 use TwigWrapper\Filters;
 use TwigWrapper\Functions;
 
-use Project\Image;
+use Conifer\Image;
 use Shortcode\Gallery;
 use Shortcode\Button;
 
@@ -53,7 +53,7 @@ class Site extends TimberSite {
 
 	/**
 	 * Configure any WordPress hooks and register site-wide components, such as nav menus
-	 * @return Project\Site the Site object it was called on
+	 * @return Conifer\Site the Site object it was called on
 	 */
 	public function configure() {
 		add_theme_support( 'post-thumbnails' );
@@ -65,10 +65,10 @@ class Site extends TimberSite {
 
 		add_action( 'wp_enqueue_scripts', [$this, 'enqueue_scripts_and_styles'] );
 
-		add_action( 'admin_init', ['\Project\Admin', 'init'] );
-		add_action( 'init', ['\Project\Admin', 'add_theme_settings_page'] );
+		add_action( 'admin_init', ['\Conifer\Admin', 'init'] );
+		add_action( 'init', ['\Conifer\Admin', 'add_theme_settings_page'] );
 
-		add_filter( 'posts_search', ['\Project\AcfSearch', 'advanced_custom_search'], 10, 2 );
+		add_filter( 'posts_search', ['\Conifer\AcfSearch', 'advanced_custom_search'], 10, 2 );
 
 		// Add default Twig filters/functions
 		Filters\Number::add_twig_filters( $this );
@@ -178,7 +178,7 @@ class Site extends TimberSite {
 
 	/**
 	 * Get the current Timber context, with the "post" index set to $post
-	 * @param Project\Post $post the current Post object
+	 * @param Conifer\Post $post the current Post object
 	 * @return array the Timber context
 	 */
 	public function get_context_with_post( Post $post ) {
@@ -189,7 +189,7 @@ class Site extends TimberSite {
 
 	/**
 	 * Get the current Timber context, with the "posts" index set to $posts
-	 * @param array $posts an array of Project\Post objects
+	 * @param array $posts an array of Conifer\Post objects
 	 * @return array the Timber context
 	 */
 	public function get_context_with_posts( array $posts ) {
@@ -216,7 +216,7 @@ class Site extends TimberSite {
 	 * "get_twig" WordPress filter
 	 * @param string $name the name of the filter
 	 * @param callable $filter a callable that implements the custom filter
-	 * @return Project\Site the Site object it was called on
+	 * @return Conifer\Site the Site object it was called on
 	 */
 	public function add_twig_filter( $name, callable $filter ) {
 		$this->twig_filters[$name] = $filter;
@@ -228,7 +228,7 @@ class Site extends TimberSite {
 	 * the "get_twig" WordPress filter
 	 * @param string $name the name of the function
 	 * @param callable $function a callable that implements the custom function
-	 * @return Project\Site the Site object it was called on
+	 * @return Conifer\Site the Site object it was called on
 	 */
 	public function add_twig_function( $name, callable $function ) {
 		$this->twig_functions[$name] = $function;
