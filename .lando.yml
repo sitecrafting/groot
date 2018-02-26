@@ -15,8 +15,8 @@ services:
           DEFAULT_URL: 'https://groot.lndo.site'
           DEFAULT_TITLE: 'Groot'
           DEFAULT_ADMIN_USER: 'admin'
-          DEFAULT_ADMIN_PASSWORD: 'password'
-          DEFAULT_ADMIN_EMAIL: 'admin@example.com'
+          DEFAULT_ADMIN_PASSWORD: 'groot'
+          DEFAULT_ADMIN_EMAIL: 'groot@example.com'
 
   node:
     type: node:6.11
@@ -70,5 +70,6 @@ events:
     - wp plugin uninstall hello akismet
     - wp plugin install --activate timber-library
     # TODO conifer
+    - wp theme uninstall twentyfifteen twentysixteen twentyseventeen
     # install dev dependencies
     - cd $LANDO_MOUNT && composer install
