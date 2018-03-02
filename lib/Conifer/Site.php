@@ -13,12 +13,13 @@ use Twig_Extension_Debug;
 use Twig_SimpleFunction;
 use Twig_SimpleFilter;
 
-use TwigWrapper\Filters;
-use TwigWrapper\Functions;
+use Conifer\Twig\Filters;
+use Conifer\Twig\Functions;
 
-use Conifer\Image;
-use Shortcode\Gallery;
-use Shortcode\Button;
+use Conifer\Post\Image;
+use Conifer\Post\Post;
+use Conifer\Shortcode\Gallery;
+use Conifer\Shortcode\Button;
 
 /**
  * Wrapper for any and all theme-specific behavior.

@@ -3,7 +3,9 @@
  * Abstract base class for declarative, OO Twig functions
  */
 
-namespace TwigWrapper\Filters;
+namespace Conifer\Twig\Filters;
+
+use Conifer\Site;
 
 /**
  * Easily define custom filters to add to Twig by extending this class.
@@ -16,18 +18,18 @@ abstract class AbstractBase {
 
 	/**
 	 * Constructor
-	 * @param \Project\Site $site the Site object
+	 * @param \Conifer\Site $site the Site object
 	 */
-	public function __construct( \Project\Site $site ) {
+	public function __construct( Site $site ) {
 		$this->site = $site;
 	}
 
 	/**
 	 * Register the Twig filters this class defines in get_filters()
 	 * on the central Site object
-	 * @param type \Project\Site $site the Site object to register filters on
+	 * @param type \Conifer\Site $site the Site object to register filters on
 	 */
-	public static function add_twig_filters( \Project\Site $site ) {
+	public static function add_twig_filters( Site $site ) {
 		$wrapper = new static( $site );
 		foreach( $wrapper->get_filters() as $name => $closure ) {
 			$site->add_twig_filter( $name, $closure );

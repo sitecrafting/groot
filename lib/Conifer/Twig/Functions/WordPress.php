@@ -3,7 +3,7 @@
  * General-purpose WordPress functions in Twig
  */
 
-namespace TwigWrapper\Functions;
+namespace Conifer\Twig\Functions;
 
 use Timber\Timber;
 
@@ -23,7 +23,7 @@ class WordPress extends AbstractBase {
 			'get_search_form' => function() {
 				return get_search_form( false );
 			},
-			'get_blog_url' => [ '\Project\Post', 'get_blog_url' ],
+			'get_blog_url' => [ '\Conifer\Post\Post', 'get_blog_url' ],
 			'img_url' => function( $file ) {
 				return get_stylesheet_directory_uri() . '/img/' . $file;
 			},

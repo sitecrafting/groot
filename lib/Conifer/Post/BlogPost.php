@@ -1,8 +1,8 @@
 <?php
 
-namespace Conifer;
+namespace Conifer\Post;
 
-use \DateTime;
+use DateTime;
 
 class BlogPost extends Post {
   const POST_TYPE = 'post';
@@ -69,7 +69,7 @@ _SQL_;
   /**
    * Get related posts of the same type
    * @param  int $numPosts the number of posts to fetch.
-   * @return array         an array of Project\Post objects
+   * @return array         an array of Conifer\Post\Post objects
    */
   public function get_related( $numPosts = self::NUM_RELATED_POSTS ) {
     if (!isset($this->related_posts)) {

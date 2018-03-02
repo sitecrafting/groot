@@ -3,7 +3,7 @@
  * Powerful utility trait for adding custom filters in the WP Admin
  */
 
-namespace Traits;
+namespace Conifer\Post;
 
 use Timber\Timber;
 

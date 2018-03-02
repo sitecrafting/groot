@@ -3,7 +3,7 @@
  * Declarative-style WP shortcodes
  */
 
-namespace Shortcode;
+namespace Conifer\Shortcode;
 
 /**
  * Easily add shortcodes by calling register() on a class that implements this

@@ -3,11 +3,12 @@
  * Custom gallery functionality
  */
 
-namespace Shortcode;
+namespace Conifer\Shortcode;
 
 use Timber\Timber;
 
-use Project\Image;
+use Conifer\Post\Image;
+use Conifer\Post\Post;
 
 /**
  * Implements a custom gallery shortcode that overrides the native shortcode.
@@ -39,7 +40,7 @@ class Gallery extends AbstractBase {
 	protected function get_images( $ids ) {
 		// Make sure we only query for images by valid, real IDs
 		$ids = array_filter( $ids, function($id) {
-			return filter_var( $id, FILTER_VALIDATE_INT ) && \Project\Post::exists( $id );
+			return filter_var( $id, FILTER_VALIDATE_INT ) && Post::exists( $id );
 		});
 
 		// Get a TimberImage for each valid ID

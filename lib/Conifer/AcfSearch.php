@@ -1,5 +1,6 @@
 <?php
 
+// TODO move to Conifer\Post
 namespace Conifer;
 
 class AcfSearch {
@@ -62,11 +63,11 @@ class AcfSearch {
     $where = '';
 
     // GET SEARCHABLE ACF FIELDS WE WANT TO QUERY AGAINST
-    $list_searcheable_acf = \Project\AcfSearch::list_searcheable_acf();
+    $list_searcheable_acf = static::list_searcheable_acf();
 
     //FOR EACH SEARCH TERM BUILD THE QUERY CLAUSE TO LOOK IN THE ACF FIELDS
     foreach( $arrSearchTerms as $tag ) {
-      $where .= \Project\AcfSearch::buildWhereClause($list_searcheable_acf, $tag);
+      $where .= static::buildWhereClause($list_searcheable_acf, $tag);
     }
 
     return $where;
@@ -100,10 +101,10 @@ class AcfSearch {
             $searchTerm);
 
     //ADD THE SEARCH FILTERS FOR EACH ACF FIELD
-    $where.=\Project\AcfSearch::buildMetaFilters($searchTerm, $list_searcheable_acf);
+    $where .= static::buildMetaFilters($searchTerm, $list_searcheable_acf);
 
     //CHECK COMMENTS AND TAXONMY TAGS
-    $where .=$wpdb->prepare(")
+    $where .= $wpdb->prepare(")
         )
         OR EXISTS (
           SELECT * FROM ".$table_prefix."comments

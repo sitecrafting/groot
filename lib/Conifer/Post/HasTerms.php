@@ -3,7 +3,7 @@
  * Retrieve tags and categories from posts
  */
 
-namespace Traits;
+namespace Conifer\Post;
 
 /**
  * Trait that can be used from any post type class to get

@@ -3,7 +3,7 @@
  * Custom Twig filters for formatting numbers
  */
 
-namespace TwigWrapper\Filters;
+namespace Conifer\Twig\Filters;
 
 /**
  * Twig Wrapper around generic filters for numbers

@@ -3,7 +3,7 @@
  * Manage image sizes
  */
 
-namespace Conifer;
+namespace Conifer\Post;
 
 use Timber\Image as TimberImage;
 

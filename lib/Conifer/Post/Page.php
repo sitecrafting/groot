@@ -3,7 +3,7 @@
  * Custom page class
  */
 
-namespace Conifer;
+namespace Conifer\Post;
 
 /**
  * Class to represent WordPress pages.
@@ -14,7 +14,7 @@ class Page extends Post {
 	/**
 	 * Get the top-level title to display from the nav structure, fall back
 	 * on this Page object's title it it's outside the nav hierarchy.
-	 * @param \Project\Menu $menu the menu to look at to determine the title
+	 * @param \Conifer\Post\Menu $menu the menu to look at to determine the title
 	 * @return string the title to display
 	 */
 	public function get_title_from_nav_or_post( Menu $menu ) {
@@ -24,7 +24,7 @@ class Page extends Post {
 
 	/**
 	 * Get the Blog Landing Page.
-	 * @return \Project\Page
+	 * @return \Conifer\Post\Page
 	 */
 	public static function get_blog_page() {
 		return new static( get_option('page_for_posts') );

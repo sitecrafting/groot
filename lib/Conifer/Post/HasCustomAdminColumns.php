@@ -3,7 +3,7 @@
  * Powerful utility trait for adding custom columns in the WP Admin
  */
 
-namespace Traits;
+namespace Conifer\Post;
 
 /**
  * This Trait adds a powerful abstraction to post type classes:

@@ -3,23 +3,23 @@
  * High-level WP Post behavior
  */
 
-namespace Conifer;
+namespace Conifer\Post;
 
 use Timber\Post as TimberPost;
 
-use Project\Image;
+use Conifer\Post\Image;
 
 /**
  * High-level behavior for WP Posts, on top of TimberPost class
  */
 class Post extends TimberPost {
-	use \Traits\HasTerms;
+	use HasTerms;
 
 	/**
 	 * When instantiating TimberImages, create instances of this class
 	 * @var string
 	 */
-	public $ImageClass = '\Project\Image';
+	public $ImageClass = '\Conifer\Post\Image';
 
 	/**
 	 * The default blog landing page URL
@@ -61,7 +61,5 @@ class Post extends TimberPost {
 	public static function exists( $id ) {
 		return is_string( get_post_status( $id ) );
 	}
-
-	// your project-specific Post code here
 }
 

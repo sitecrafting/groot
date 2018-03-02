@@ -3,9 +3,9 @@
  * Custom Twig filters for front-end forms
  */
 
-namespace TwigWrapper\Filters;
+namespace Conifer\Twig\Filters;
 
-use Project\Form\AbstractBase as Form;
+use Conifer\Form\AbstractBase as Form;
 
 /**
  * Twig Wrapper for helpful linguistic filters, such as pluralize
@@ -28,7 +28,7 @@ class FormHelper extends AbstractBase {
 
   /**
    * Get the class to render for the form field, based on its error state
-   * @param  \Project\Form\AbstractBase $form a form object
+   * @param  \Conifer\Form\AbstractBase $form a form object
    * @param  string $fieldName the name of the field being rendered
    * @return string            the HTML class(es) to render
    */

@@ -3,7 +3,7 @@
  * Custom Twig filters for dealing with images
  */
 
-namespace TwigWrapper\Filters;
+namespace Conifer\Twig\Filters;
 
 /**
  * Twig Wrapper around high-level image filters

@@ -3,7 +3,7 @@
  * Custom Twig filters for manipulating text
  */
 
-namespace TwigWrapper\Filters;
+namespace Conifer\Twig\Filters;
 
 /**
  * Twig Wrapper for helpful linguistic filters, such as pluralize

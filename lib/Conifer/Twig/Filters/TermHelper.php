@@ -3,7 +3,7 @@
  * Twig filters for WP terms
  */
 
-namespace TwigWrapper\Filters;
+namespace Conifer\Twig\Filters;
 
 use Timber\Term;
 use Timber\CoreInterface as TimberCoreInterface;

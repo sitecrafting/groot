@@ -3,7 +3,7 @@
  * Custom buttons inside RTEs!
  */
 
-namespace Shortcode;
+namespace Conifer\Shortcode;
 
 use DOMDocument;
 use DOMElement;

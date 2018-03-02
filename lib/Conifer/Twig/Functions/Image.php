@@ -3,7 +3,7 @@
  * Custom Twig functions for dealing with images
  */
 
-namespace TwigWrapper\Functions;
+namespace Conifer\Twig\Functions;
 
 use Timber;
 use TimberImage;
