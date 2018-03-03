@@ -32,25 +32,23 @@ class PluginManager {
 	/**
 	 * Warn admin user if Timber or Conifer is not installed/activated
 	 */
-	public function requirements_met(bool $displayAdminWarnings = true) {
-		$allLoaded = true;
-
+	public function requirements_met(bool $displayAdminWarnings = true) : bool {
 		foreach ($this->required_classes as $class) {
 			if (!class_exists($class) ) {
-
-				$allLoaded = false;
 
 				if ($displayAdminWarnings) {
 					$missingPlugin = $this->get_implementing_plugin($class);
 					$this->generate_admin_warning($missingPlugin);
 				}
+
+        return false;
 			}
 		}
 
-		return $allLoaded;
+		return true;
 	}
 
-	protected function get_implementing_plugin(string $class) {
+	protected function get_implementing_plugin(string $class) : array {
 		switch ($class) {
 			case 'Timber\Timber':
 				$plugin = ['slug' => 'timber', 'name' => 'Timber'];

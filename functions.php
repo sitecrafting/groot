@@ -14,8 +14,8 @@ $loader->register();
 // Require that certain classes be loaded (presumably by plugins)
 $pluginManager = new PluginManager();
 $pluginManager->require_classes([
-	'Timber\Timber',
-	'Conifer\Site',
+	'\Timber\Site',
+	'\Conifer\Site',
 	// add your own classes here
 ]);
 
