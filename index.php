@@ -4,10 +4,11 @@
  */
 
 use Timber\Timber;
-use Project\Page;
+use Conifer\Post\Page;
+use Conifer\Post\Post;
 
 // Get common/site-wide data
-$data = $site->get_context_with_posts( Project\Post::get_all() );
+$data = $site->get_context_with_posts( Post::get_all() );
 
 if( is_tag() || is_category() ) {
   // tag/category archive page
