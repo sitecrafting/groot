@@ -1,22 +1,12 @@
 # Sample Lando config for use with this image
 name: groot
 recipe: wordpress
+webroot: wp
 
 services:
   appserver:
-    type: php:custom
-
-    overrides:
-      services:
-        image: sitecrafting/lando-wp-theme:4.9.4
-        environment:
-          LANDO_WEBROOT: /var/www/html
-          # specify defaults to setup-wordpress.bash
-          DEFAULT_URL: 'https://groot.lndo.site'
-          DEFAULT_TITLE: 'Groot'
-          DEFAULT_ADMIN_USER: 'admin'
-          DEFAULT_ADMIN_PASSWORD: 'groot'
-          DEFAULT_ADMIN_EMAIL: 'groot@example.com'
+    build:
+      - cd $LANDO_MOUNT && composer install
 
   node:
     type: node:6.11
@@ -40,13 +30,8 @@ services:
 tooling:
   install:
     service: appserver
-    cmd: 'setup-wordpress.bash'
+    cmd: '/app/scripts/setup-wordpress.bash'
     description: 'Install and configure WordPress for custom theme dev'
-
-  w:
-    service: appserver
-    cmd: 'wp --path=/var/www/html'
-    description: 'Run wp-cli commands within the container webroot'
 
   yarn:
     service: node
@@ -67,9 +52,8 @@ proxy:
 events:
   post-install:
     # ensure WordPress is installed and configured
-    - wp plugin uninstall hello akismet
-    - wp plugin install --activate timber-library
+    - wp --path="$LANDO_MOUNT/wp" plugin uninstall hello akismet
+    - wp --path="$LANDO_MOUNT/wp" plugin install --activate timber-library
     # TODO conifer
-    - wp theme uninstall twentyfifteen twentysixteen twentyseventeen
-    # install dev dependencies
-    - cd $LANDO_MOUNT && composer install
+    - wp --path="$LANDO_MOUNT/wp" theme activate groot
+    - wp --path="$LANDO_MOUNT/wp" theme uninstall twentyfifteen twentysixteen twentyseventeen
