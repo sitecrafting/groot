@@ -16,12 +16,24 @@ main() {
   if wp_configured ; then
     echo 'WordPress is configured'
   else
+    # TODO get this to work...
+    extra_php=<<'EOF'
+
+error_reporting(E_ALL);
+
+// enable debug logging
+define('WP_DEBUG', true);
+define('WP_DEBUG_LOG', true);
+define('WP_DEBUG_DISPLAY', false);
+EOF
+
     # create a wp-config.php
     wp --path="$WP_DIR" config create \
       --dbname="$DB_NAME" \
       --dbuser="$DB_USER" \
       --dbpass="$DB_PASSWORD" \
-      --dbhost="$DB_HOST"
+      --dbhost="$DB_HOST" \
+      --extra-php < <(echo "$extra_php")
   fi
 
   echo 'Checking for WordPress installation...'
