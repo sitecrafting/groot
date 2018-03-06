@@ -11,7 +11,6 @@ main() {
     echo 'Linking groot theme directory...'
     ln -s "../../../" "$WP_DIR"/wp-content/themes/groot
   fi
-  exit
 
   echo 'Checking for WordPress config...'
   if wp_configured ; then
