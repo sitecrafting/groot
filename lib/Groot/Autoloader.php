@@ -25,7 +25,6 @@ class Autoloader {
 	public function __construct(array $paths = []) {
 		// Look first in Conifer libs directory for unloaded classes, then theme libs
 		$defaultPaths = [
-			WP_PLUGIN_DIR.'/conifer/lib/',
 			get_stylesheet_directory().'/lib/',
 		];
 
