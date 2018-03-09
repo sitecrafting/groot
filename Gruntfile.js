@@ -78,13 +78,6 @@ module.exports = function(grunt) {
         tasks: ['less', 'assets_version']
       },
     },
-    phpdocumentor: {
-      dist: {
-        options: {
-          target: 'doc'
-        }
-      }
-    },
     less: {
       development: {
         options: {
@@ -118,8 +111,6 @@ module.exports = function(grunt) {
   // These plugins provide necessary tasks.
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-phpdocumentor');
-  grunt.loadNpmTasks('grunt-bower-installer');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -128,5 +119,4 @@ module.exports = function(grunt) {
   // Default task.
   grunt.registerTask('default', ['jshint', 'concat:js', 'uglify:js', 'less', 'watch']);
   grunt.registerTask('front-end', ['less', 'jshint', 'concat:js', 'uglify:js']);
-  grunt.registerTask('doc', ['phpdocumentor']);
 };
