@@ -1,4 +1,3 @@
-# Sample Lando config for use with this image
 name: groot
 recipe: wordpress
 config:
