@@ -1,6 +1,8 @@
 # Groot
 
-The official SiteCrafting WordPress starter theme
+> **THIS REPO IS IN ALPHA STATUS. ITS USE IN PRODUCTION IS NOT RECOMMENDED.**
+
+The official SiteCrafting WordPress starter theme.
 
 # Development
 
