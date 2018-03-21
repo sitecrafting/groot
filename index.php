@@ -3,7 +3,9 @@
  * Author: Coby Tamayo
  */
 
+use Timber\Archives;
 use Timber\Timber;
+
 use Conifer\Post\Page;
 use Conifer\Post\BlogPost;
 
@@ -19,7 +21,7 @@ if( is_tag() || is_category() ) {
 }
 
 //get archives
-$data['archives'] = new TimberArchives( $args );
+$data['archives'] = new Archives();
 
 // Render the archive view
 Timber::render( 'index.twig', $data );
