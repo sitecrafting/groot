@@ -5,10 +5,10 @@
 
 use Timber\Timber;
 use Conifer\Post\Page;
-use Conifer\Post\Post;
+use Conifer\Post\BlogPost;
 
 // Get common/site-wide data
-$data = $site->get_context_with_posts( Post::get_all() );
+$data = $site->get_context_with_posts(BlogPost::get_all());
 
 if( is_tag() || is_category() ) {
   // tag/category archive page
