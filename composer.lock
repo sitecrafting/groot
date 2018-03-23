@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "38248a4d3b86f2b694cb2d23cb7c2445",
+    "content-hash": "134553419ffc279b0e316d34fe4af7b6",
     "packages": [
         {
             "name": "composer/installers",
@@ -272,7 +272,7 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "git@bitbucket.org:sitecrafting/conifer.git",
+                "url": "https://github.com/sitecrafting/conifer.git",
                 "reference": "ab1136d307851e59502ab5450cc3d9266502bae1"
             },
             "require-dev": {

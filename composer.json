@@ -18,10 +18,6 @@
         {
             "type": "composer",
             "url": "https://wpackagist.org"
-        },
-        {
-            "type": "vcs",
-            "url": "git@bitbucket.org:sitecrafting/conifer.git"
         }
     ],
     "require": {
