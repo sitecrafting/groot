@@ -34,6 +34,50 @@ $site->configure(function() {
   add_theme_support( 'post-thumbnails' );
   add_theme_support( 'menus' );
 
+  add_action('wp_enqueue_scripts', function() {
+    /*
+     * Enqueue our own project-specific JavaScript, including dependencies.
+     * If you need to add a script to be enqueued and it's ok to do so
+     * site-wide, consider doing so via Grunt instead of here to reduce
+     * page load times.
+     */
+    $this->enqueue_script(
+      'project-common',
+      'project-common.min.js',
+      ['jquery']
+    );
+
+    //modernizr
+    $this->enqueue_script(
+      'project-modernizr',
+      'modernizr/modernizr.custom.53630.js',
+      [],
+      true,
+      false
+    );
+
+    /*
+		 * NOTE: If you do need to enqueue additional scripts here,
+     * it's probably best to enqueue them in the footer unless
+     * there's a very good reason not to.
+     */
+
+    $this->enqueue_style(
+      'project-css',
+      'style.css',
+      $dependencies = [],
+      $version      = $this->get_assets_version()
+    );
+    $this->enqueue_style(
+      'project-print-css',
+      'print.css',
+      $dependencies = [],
+      $version      = $this->get_assets_version(),
+      'print'
+    );
+
+  });
+
   add_action( 'init', ['\Conifer\Admin', 'add_theme_settings_page'] );
 
   add_filter( 'posts_search', ['\Conifer\AcfSearch', 'advanced_custom_search'], 10, 2 );
