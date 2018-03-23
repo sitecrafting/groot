@@ -45,14 +45,19 @@ EOF
     read -p "${BOLD}Site Title${NORMAL} (Groot): " TITLE
     TITLE=${TITLE:-'Groot'}
 
-    read -p "${BOLD}Admin username${NORMAL} (admin): " ADMIN_USER
-    ADMIN_USER=${ADMIN_USER:-'admin'}
+    # Determine the default username/email to suggest based on git config
+    DEFAULT_EMAIL=$(git config --global user.email)
+    DEFAULT_EMAIL=${DEFAULT_EMAIL:-'admin@example.com'}
+    DEFAULT_USERNAME=$(echo $DEFAULT_EMAIL | sed 's/@.*$//')
+
+    read -p "${BOLD}Admin username${NORMAL} ($DEFAULT_USERNAME): " ADMIN_USER
+    ADMIN_USER=${ADMIN_USER:-"$DEFAULT_USERNAME"}
 
     read -p "${BOLD}Admin password${NORMAL} (groot): " ADMIN_PASSWORD
     ADMIN_PASSWORD=${ADMIN_PASSWORD:-'groot'}
 
-    read -p "${BOLD}Admin email${NORMAL} (groot@example.com): " ADMIN_EMAIL
-    ADMIN_EMAIL=${ADMIN_EMAIL:-'groot@example.com'}
+    read -p "${BOLD}Admin email${NORMAL} ($DEFAULT_EMAIL): " ADMIN_EMAIL
+    ADMIN_EMAIL=${ADMIN_EMAIL:-"$DEFAULT_EMAIL"}
 
     # install WordPress
     wp --path="$WP_DIR" core install \
@@ -63,6 +68,22 @@ EOF
       --admin_email="$ADMIN_EMAIL" \
       --skip-email
   fi
+
+  # TODO check before running somehow?
+  # install/activate plugins and theme
+  wp --path="$WP_DIR" plugin uninstall hello akismet
+  wp --path="$WP_DIR" plugin install --activate timber-library
+  wp --path="$WP_DIR" plugin activate conifer
+  wp --path="$WP_DIR" theme activate groot
+
+  # uninstall stock themes
+  wp --path="$WP_DIR" theme uninstall twentyten twentyeleven twentytwelve \
+    twentythirteen twentyfourteen twentyfifteen twentysixteen twentyseventeen
+
+  # configure pretty permalinks
+  wp --path="$WP_DIR" option set permalink_structure '/%postname%/'
+  wp --path="$WP_DIR" rewrite flush
+
 }
 
 

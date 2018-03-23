@@ -9,12 +9,8 @@ The official SiteCrafting WordPress starter theme.
 To start hacking on Groot itself, run:
 
 ```
-git clone git@bitbucket.org:sitecrafting/groot.git
-cd groot
-# for now, make sure you're hacking on the conifer branch
-git checkout -b conifer origin/conifer
+git clone git@github.com:sitecrafting/groot.git && cd groot
 lando start
-lando install
 ```
 
 The `lando start` command should output some URLs. Save the `APPSERVER` URL,
