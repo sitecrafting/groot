@@ -8,7 +8,12 @@
     <div class="rtecontent">{{ post.content }}</div>
 
     {# CONTENT LAYOUTS #}
-    {% include 'partials/content-layouts.twig' %}
+    {% for section in post.get_field('layouts') %}
+      {% include 'partials/content-layouts/' ~ section.acf_fc_layout ~ '.twig'
+        ignore missing
+        with { layout: section } only
+      %}
+    {% endfor %}
 
 
   </section>

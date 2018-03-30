@@ -7,6 +7,7 @@
             "label": "Main Headline",
             "name": "main_headline",
             "type": "text",
+            "value": null,
             "instructions": "General interior H1 headline. If left empty will default to page title.",
             "required": 0,
             "conditional_logic": 0,
@@ -26,6 +27,7 @@
             "label": "Layouts",
             "name": "layouts",
             "type": "flexible_content",
+            "value": null,
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -34,13 +36,10 @@
                 "class": "",
                 "id": ""
             },
-            "button_label": "Add Row",
-            "min": "",
-            "max": "",
-            "layouts": [
-                {
+            "layouts": {
+                "5850715f04d8a": {
                     "key": "5850715f04d8a",
-                    "name": "standard_content",
+                    "name": "standard-content",
                     "label": "Standard Content",
                     "display": "block",
                     "sub_fields": [
@@ -49,6 +48,7 @@
                             "label": "Content",
                             "name": "content",
                             "type": "wysiwyg",
+                            "value": null,
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -67,7 +67,7 @@
                     "min": "",
                     "max": ""
                 },
-                {
+                "5850718e602ef": {
                     "key": "5850718e602ef",
                     "name": "accordion",
                     "label": "Accordion",
@@ -78,6 +78,7 @@
                             "label": "Panel",
                             "name": "acc_panel",
                             "type": "repeater",
+                            "value": null,
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -97,6 +98,7 @@
                                     "label": "Title",
                                     "name": "acc_title",
                                     "type": "text",
+                                    "value": null,
                                     "instructions": "",
                                     "required": 0,
                                     "conditional_logic": 0,
@@ -116,6 +118,7 @@
                                     "label": "Content",
                                     "name": "acc_content",
                                     "type": "wysiwyg",
+                                    "value": null,
                                     "instructions": "",
                                     "required": 0,
                                     "conditional_logic": 0,
@@ -136,9 +139,9 @@
                     "min": "",
                     "max": ""
                 },
-                {
+                "5850726b602f3": {
                     "key": "5850726b602f3",
-                    "name": "image_row",
+                    "name": "image-row",
                     "label": "Image Row",
                     "display": "block",
                     "sub_fields": [
@@ -147,6 +150,7 @@
                             "label": "Image Item",
                             "name": "image_item",
                             "type": "repeater",
+                            "value": null,
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -166,6 +170,7 @@
                                     "label": "image",
                                     "name": "ir_image",
                                     "type": "image",
+                                    "value": null,
                                     "instructions": "",
                                     "required": 0,
                                     "conditional_logic": 0,
@@ -190,6 +195,7 @@
                                     "label": "caption",
                                     "name": "ir_caption",
                                     "type": "text",
+                                    "value": null,
                                     "instructions": "",
                                     "required": 0,
                                     "conditional_logic": 0,
@@ -210,9 +216,9 @@
                     "min": "",
                     "max": ""
                 },
-                {
+                "585073607be21": {
                     "key": "585073607be21",
-                    "name": "slideshow_gallery",
+                    "name": "slideshow-gallery",
                     "label": "Slideshow Gallery",
                     "display": "block",
                     "sub_fields": [
@@ -221,6 +227,7 @@
                             "label": "slideshow",
                             "name": "slideshow",
                             "type": "repeater",
+                            "value": null,
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -240,6 +247,7 @@
                                     "label": "Image",
                                     "name": "slide_image",
                                     "type": "image",
+                                    "value": null,
                                     "instructions": "",
                                     "required": 0,
                                     "conditional_logic": 0,
@@ -264,6 +272,7 @@
                                     "label": "caption",
                                     "name": "slide_caption",
                                     "type": "textarea",
+                                    "value": null,
                                     "instructions": "",
                                     "required": 0,
                                     "conditional_logic": 0,
@@ -284,7 +293,10 @@
                     "min": "",
                     "max": ""
                 }
-            ]
+            },
+            "button_label": "Add Row",
+            "min": "",
+            "max": ""
         }
     ],
     "location": [
@@ -309,5 +321,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1499807165
+    "modified": 1522450016
 }
