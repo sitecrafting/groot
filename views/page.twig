@@ -5,6 +5,8 @@
 
     <h1>{{ post.get_field('main_headline') ? post.get_field('main_headline') : post.title }}</h1>
 
+    <div class="rtecontent">{{ post.content }}</div>
+
     {# CONTENT LAYOUTS #}
     {% include 'partials/content-layouts.twig' %}
 
