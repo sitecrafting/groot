@@ -1,65 +1,66 @@
+/* globals jQuery */
 (function($) {
 
-/**
- * define responsive nav component as its own jQuery extension
- */
-$.fn.mobileSidenav = function( options ) {
+  /**
+   * define responsive nav component as its own jQuery extension
+   */
+  $.fn.mobileSidenav = function( options ) {
 
-	options = $.extend({}, {
-		triggerButtonSelector: '.side-nav-trigger',
-		sidenavWrapperClass: '.side-menu',
-		sidenavOpenClass: 'panel-open',
-		menuButtonActiveClass: 'active'
-	}, options);
+    options = $.extend({}, {
+      triggerButtonSelector: '.side-nav-trigger',
+      sidenavWrapperClass: '.side-menu',
+      sidenavOpenClass: 'panel-open',
+      menuButtonActiveClass: 'active'
+    }, options);
 
-	var $this = $(this), //nav.side-nav
-		sidenavOpen = false,
-		$sidenavWraper = $( options.sidenavWrapperClass ),
-		$triggerButton = $( options.triggerButtonSelector );
+    var $this = $(this), //nav.side-nav
+      sidenavOpen = false,
+      $sidenavWraper = $( options.sidenavWrapperClass ),
+      $triggerButton = $( options.triggerButtonSelector );
 
-	var closeSidenav = function() {
-		$sidenavWraper.slideUp();
-		$this.removeClass( options.sidenavOpenClass );
+    var closeSidenav = function() {
+      $sidenavWraper.slideUp();
+      $this.removeClass( options.sidenavOpenClass );
 
-		sidenavOpen = false;
-	};
+      sidenavOpen = false;
+    };
 
-	var triggerBtnFn = function() {
+    var triggerBtnFn = function() {
 
-		$triggerButton.bind( 'touchstart, click', function(event) {
+      $triggerButton.bind( 'touchstart, click', function(event) {
 
-			event.stopPropagation();
-			event.preventDefault();
+        event.stopPropagation();
+        event.preventDefault();
 
-			if ( sidenavOpen ) {
-				closeSidenav();
-			}
-			else{
-				$sidenavWraper.slideDown();
-				$this.addClass( options.sidenavOpenClass );
-				sidenavOpen = true;
+        if ( sidenavOpen ) {
+          closeSidenav();
+        }
+        else{
+          $sidenavWraper.slideDown();
+          $this.addClass( options.sidenavOpenClass );
+          sidenavOpen = true;
 
-			}
-		}); //end button bind
+        }
+      }); //end button bind
 
 
 
-	}; //end menuBtnFn
+    }; //end menuBtnFn
 
-	triggerBtnFn();
+    triggerBtnFn();
 
-	$(window).resize( $.debounce(function() {
-			if( !$triggerButton.is(':visible') ) {
-				//close mobile menu
-				if ( sidenavOpen ) {
-					$sidenavWraper.hide(); //when resizing we want this to be immediate
-					$this.removeClass( options.sidenavOpenClass );
-					sidenavOpen = false;
-				}
-				$sidenavWraper.removeAttr('style');
-			}
-	}, 150));
+    $(window).resize( $.debounce(function() {
+      if( !$triggerButton.is(':visible') ) {
+        //close mobile menu
+        if ( sidenavOpen ) {
+          $sidenavWraper.hide(); //when resizing we want this to be immediate
+          $this.removeClass( options.sidenavOpenClass );
+          sidenavOpen = false;
+        }
+        $sidenavWraper.removeAttr('style');
+      }
+    }, 150));
 
-	return this;
-};
+    return this;
+  };
 })(jQuery);
