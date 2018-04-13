@@ -1,6 +1,8 @@
 /* globals jQuery */
 (function($) {
 
+  $.fn.responsiveNav = require('./responsive-nav.jquery.js');
+
   //main hero slideshow
   $('.hero.flexslider').flexslider();
 

@@ -1355,288 +1355,307 @@ $.fn.accordion = function() {
 
 })(jQuery);
 
+/* globals jQuery */
 (function($) {
+
+  /**
+   * define responsive nav component as its own jQuery extension
+   */
+  $.fn.mobileSidenav = function( options ) {
+
+    options = $.extend({}, {
+      triggerButtonSelector: '.side-nav-trigger',
+      sidenavWrapperClass: '.side-menu',
+      sidenavOpenClass: 'panel-open',
+      menuButtonActiveClass: 'active'
+    }, options);
+
+    var $this = $(this), //nav.side-nav
+      sidenavOpen = false,
+      $sidenavWraper = $( options.sidenavWrapperClass ),
+      $triggerButton = $( options.triggerButtonSelector );
+
+    var closeSidenav = function() {
+      $sidenavWraper.slideUp();
+      $this.removeClass( options.sidenavOpenClass );
+
+      sidenavOpen = false;
+    };
+
+    var triggerBtnFn = function() {
+
+      $triggerButton.bind( 'touchstart, click', function(event) {
+
+        event.stopPropagation();
+        event.preventDefault();
+
+        if ( sidenavOpen ) {
+          closeSidenav();
+        }
+        else{
+          $sidenavWraper.slideDown();
+          $this.addClass( options.sidenavOpenClass );
+          sidenavOpen = true;
+
+        }
+      }); //end button bind
+
+
+
+    }; //end menuBtnFn
+
+    triggerBtnFn();
+
+    $(window).resize( $.debounce(function() {
+      if( !$triggerButton.is(':visible') ) {
+        //close mobile menu
+        if ( sidenavOpen ) {
+          $sidenavWraper.hide(); //when resizing we want this to be immediate
+          $this.removeClass( options.sidenavOpenClass );
+          sidenavOpen = false;
+        }
+        $sidenavWraper.removeAttr('style');
+      }
+    }, 150));
+
+    return this;
+  };
+})(jQuery);
+
+(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
+/* globals jQuery */
+(function($) {
+
+  $.fn.responsiveNav = require('./responsive-nav.jquery.js');
+
+  //main hero slideshow
+  $('.hero.flexslider').flexslider();
+
+  // Make nav menu nice & responsive
+  $('nav.main-nav').responsiveNav({
+    navType: 'offCanvas' //default option for dropdown type use 'dropdown'
+  });
+  $('nav.side-nav').mobileSidenav();
+
+  // Custom Select Boxes
+  $('select').wrap('<div class="selectbox-container"></div>');
+
+  // Responsive Videos
+  $('.rtecontent').fitVids();
+
+  // Accordions
+  $('dl.accordion').accordion();
+
+  // gallery flexslider
+  $('.gallery-slideshow.flexslider').flexslider({
+    controlNav: 'thumbnails'
+  });
+
+})(jQuery);
+
+},{"./responsive-nav.jquery.js":2}],2:[function(require,module,exports){
+/* globals module, jQuery */
 
 /**
- * define responsive nav component as its own jQuery extension
+ * jQueryResponsiveNav module
+ *
+ * Usage:
+ *
+ * ```js
+ * $.fn.responsiveNav = require('./responsive-nav.jquery.js');
+ *
+ * $('.my-nav-element').responsiveNav({
+ *   navType: 'offCanvas'
+ * });
+ * ```
  */
-$.fn.responsiveNav = function( options ) {
+module.exports = (function($){
 
-	options = $.extend({}, {
-		wrapperSelector: '.site-wrapper',
-		menuButtonSelector: '.menu-btn',
-		menuOpenClass: 'menu-open',
-		menuButtonActiveClass: 'active',
-		navType: 'offCanvas'
-	}, options);
+  return function jQueryResponsiveNav( options ) {
 
-	var $this = $(this),
-		menuOpen = false,
-		$wrapper = $( options.wrapperSelector ),
-		$menuButton = $( options.menuButtonSelector );
+    options = $.extend({}, {
+      wrapperSelector: '.site-wrapper',
+      menuButtonSelector: '.menu-btn',
+      menuOpenClass: 'menu-open',
+      menuButtonActiveClass: 'active',
+      navType: 'offCanvas'
+    }, options);
 
-	var closeNav = function() {
-		if( options.navType === 'dropdown' ){
-			$this.slideUp();
-		}
-		else{
-			$wrapper.removeClass( options.menuOpenClass );
-		}
-		$menuButton.removeClass( options.menuButtonActiveClass );
+    var $this = $(this),
+      menuOpen = false,
+      $wrapper = $( options.wrapperSelector ),
+      $menuButton = $( options.menuButtonSelector );
 
-		menuOpen = false;
-	};
+    var closeNav = function() {
+      if( options.navType === 'dropdown' ){
+        $this.slideUp();
+      }
+      else{
+        $wrapper.removeClass( options.menuOpenClass );
+      }
+      $menuButton.removeClass( options.menuButtonActiveClass );
 
-	var bodyClickFn = function(evt) {
-		//if not nav container or a decendant of nav container
-		if( !$this.is(evt.target) && $this.has(evt.target).length === 0 ) {
-			closeNav();
-			$('.site-wrapper').unbind( 'touchstart, click', bodyClickFn );
-		}
-	};
+      menuOpen = false;
+    };
 
-	var keyboardTabFn = function(){
-			// Adding quick Tab Functionality for Navigation
-			$('nav.main-nav > ul > li.menu-item-has-children > a').focus( function () {
-				$(this).siblings('ul').addClass('tab-show');
-			}).blur(function(){
-				$(this).siblings('ul').removeClass('tab-show');
-			});
+    var bodyClickFn = function(evt) {
+      //if not nav container or a decendant of nav container
+      if( !$this.is(evt.target) && $this.has(evt.target).length === 0 ) {
+        closeNav();
+        $('.site-wrapper').unbind( 'touchstart, click', bodyClickFn );
+      }
+    };
 
-			// focusing on sub menu item show its dropdown
-			$('nav.main-nav > ul > li.menu-item-has-children > ul > li > a').focus( function () {
-				$(this).parent().parent('ul').addClass('tab-show');
-			}).blur(function(){
-				$(this).parent().parent('ul').removeClass('tab-show');
-			});
-	};
+    var keyboardTabFn = function(){
+      // Adding quick Tab Functionality for Navigation
+      $('nav.main-nav > ul > li.menu-item-has-children > a').focus( function () {
+        $(this).siblings('ul').addClass('tab-show');
+      }).blur(function(){
+        $(this).siblings('ul').removeClass('tab-show');
+      });
 
-	var menuBtnFn = function() {
+      // focusing on sub menu item show its dropdown
+      $('nav.main-nav > ul > li.menu-item-has-children > ul > li > a').focus( function () {
+        $(this).parent().parent('ul').addClass('tab-show');
+      }).blur(function(){
+        $(this).parent().parent('ul').removeClass('tab-show');
+      });
+    };
 
-		$menuButton.bind( 'touchstart, click', function(event) {
+    var menuBtnFn = function() {
 
-			event.stopPropagation();
-			event.preventDefault();
+      $menuButton.bind( 'touchstart, click', function(event) {
 
-			if ( menuOpen ) {
-				closeNav();
-			}
-			else{
-				if( options.navType === 'dropdown' ){
-					$this.slideDown();
-				}
-				else{
-					$wrapper.addClass( options.menuOpenClass );
-				}
+        event.stopPropagation();
+        event.preventDefault();
 
-				$(this).addClass( options.menuButtonActiveClass );
+        if ( menuOpen ) {
+          closeNav();
+        }
+        else{
+          if( options.navType === 'dropdown' ){
+            $this.slideDown();
+          }
+          else{
+            $wrapper.addClass( options.menuOpenClass );
+          }
 
-				menuOpen = true;
+          $(this).addClass( options.menuButtonActiveClass );
 
-				$('.site-wrapper').bind( 'touchstart, click', bodyClickFn );
+          menuOpen = true;
 
-			}
-		}); //end button bind
+          $('.site-wrapper').bind( 'touchstart, click', bodyClickFn );
 
-		//ADD EXPANDER ICON
-		$this.find('li.menu-item-has-children > a').each(function(){
-			if( $(this).next('ul').length ) {
-				$(this).append('<span class="dropper"></span>');
-			}
-		});
+        }
+      }); //end button bind
 
-	}; //end menuBtnFn
+      //ADD EXPANDER ICON
+      $this.find('li.menu-item-has-children > a').each(function(){
+        if( $(this).next('ul').length ) {
+          $(this).append('<span class="dropper"></span>');
+        }
+      });
 
-	var secondlevelNav = function() {
-		$this.find('ul.menu > li.menu-item-has-children > a > span.dropper').each(function(){
-			$(this).bind('touchstart, click', function(event) {
+    }; //end menuBtnFn
 
-				event.stopPropagation();
-				event.preventDefault();
+    var secondlevelNav = function() {
+      $this.find('ul.menu > li.menu-item-has-children > a > span.dropper').each(function(){
+        $(this).bind('touchstart, click', function(event) {
 
-				if ( menuOpen && !$(this).parent().next().is(':visible') && $(this).parent().next().length > 0) {
+          event.stopPropagation();
+          event.preventDefault();
 
-					//close what's already open
-					$this.find('ul.menu li').removeClass('toggle');
-					$this.find('ul.menu > li ul').slideUp(250);
+          if ( menuOpen && !$(this).parent().next().is(':visible') && $(this).parent().next().length > 0) {
 
-					//expand current click
-					$(this).parent().parent().addClass('toggle');
-					$(this).parent().next('ul').slideDown(250);
+            //close what's already open
+            $this.find('ul.menu li').removeClass('toggle');
+            $this.find('ul.menu > li ul').slideUp(250);
 
-				}
-				else if ( menuOpen && $(this).parent().next('ul').is(':visible') ) {
-						//close this item
-						$(this).parent().parent().removeClass('toggle');
-						$(this).parent().next('ul').slideUp(250);
-				}
+            //expand current click
+            $(this).parent().parent().addClass('toggle');
+            $(this).parent().next('ul').slideDown(250);
 
-			}); //end bind
-		});//end find span.dropper
-	};//end secondlevelNav
+          }
+          else if ( menuOpen && $(this).parent().next('ul').is(':visible') ) {
+            //close this item
+            $(this).parent().parent().removeClass('toggle');
+            $(this).parent().next('ul').slideUp(250);
+          }
 
-	var thirdlevelNav = function() {
-		$this.find('ul.menu > li.menu-item-has-children > ul > li.menu-item-has-children > a > span.dropper').each(function(){
-			$(this).bind('touchstart, click', function(event) {
+        }); //end bind
+      });//end find span.dropper
+    };//end secondlevelNav
 
-					event.stopPropagation();
-					event.preventDefault();
+    var thirdlevelNav = function() {
+      $this.find('ul.menu > li.menu-item-has-children > ul > li.menu-item-has-children > a > span.dropper').each(function(){
+        $(this).bind('touchstart, click', function(event) {
 
-				if ( menuOpen && !$(this).parent().next().is(':visible') && $(this).parent().next().length > 0) {
+          event.stopPropagation();
+          event.preventDefault();
 
-					//close what's already open
-					$this.find('ul.menu > li ul > li').removeClass('toggle');
-					$this.find('ul.menu > li ul > li ul').slideUp(250);
+          if ( menuOpen && !$(this).parent().next().is(':visible') && $(this).parent().next().length > 0) {
 
-					//expand current click
-					$(this).parent().parent().addClass('toggle');
-					$(this).parent().next('ul').slideDown(250);
+            //close what's already open
+            $this.find('ul.menu > li ul > li').removeClass('toggle');
+            $this.find('ul.menu > li ul > li ul').slideUp(250);
 
-				}
-				else if ( menuOpen && $(this).parent().next('ul').is(':visible') ) {
+            //expand current click
+            $(this).parent().parent().addClass('toggle');
+            $(this).parent().next('ul').slideDown(250);
 
-						//close this item
-						$(this).parent().parent().removeClass('toggle');
-						$(this).parent().next('ul').slideUp(250);
-				}
+          }
+          else if ( menuOpen && $(this).parent().next('ul').is(':visible') ) {
 
-			}); //end bind
-		});//end find span.dropper
-	};//end fn thirdlevelNav
+            //close this item
+            $(this).parent().parent().removeClass('toggle');
+            $(this).parent().next('ul').slideUp(250);
+          }
 
-	var activeToggleFn = function(){
-		//on mobile check for active navigation and set open accordingly
-		if( $menuButton.is(':visible') ){
+        }); //end bind
+      });//end find span.dropper
+    };//end fn thirdlevelNav
 
-			$this.find('ul.menu li.current_page_item, ul.menu li.current_page_ancestor').each(function(){
-					if( !$(this).hasClass('toggle') ){
-						$(this).addClass('toggle');
-					}
-					if( !$(this).children('ul').is(':visible') ){
-						$(this).children('ul').show();
-					}
-			});
-		}
-	}; //end activeToggleFn
+    var activeToggleFn = function(){
+      //on mobile check for active navigation and set open accordingly
+      if( $menuButton.is(':visible') ){
 
-	menuBtnFn();
-	secondlevelNav();
-	thirdlevelNav();
-	keyboardTabFn();
-	activeToggleFn();
+        $this.find('ul.menu li.current_page_item, ul.menu li.current_page_ancestor').each(function(){
+          if( !$(this).hasClass('toggle') ){
+            $(this).addClass('toggle');
+          }
+          if( !$(this).children('ul').is(':visible') ){
+            $(this).children('ul').show();
+          }
+        });
+      }
+    }; //end activeToggleFn
 
-	$(window).resize( $.debounce(function() {
+    menuBtnFn();
+    secondlevelNav();
+    thirdlevelNav();
+    keyboardTabFn();
+    activeToggleFn();
 
-		if( !$menuButton.is(':visible') ) {
-			//close mobile menu
-			if ( menuOpen ) {
-					closeNav();
-			}
-			//remove any inline styles from subnavigation
-			$this.find( 'ul' ).removeAttr( 'style' );
-			$this.find('.menu-item-has-children').removeClass('toggle');
-			$this.removeAttr('style');
-		}
-		else{
-			activeToggleFn();
-		}
-	}, 150));
+    $(window).resize( $.debounce(function() {
 
-	return this;
-};
+      if( !$menuButton.is(':visible') ) {
+        //close mobile menu
+        if ( menuOpen ) {
+          closeNav();
+        }
+        //remove any inline styles from subnavigation
+        $this.find( 'ul' ).removeAttr( 'style' );
+        $this.find('.menu-item-has-children').removeClass('toggle');
+        $this.removeAttr('style');
+      }
+      else{
+        activeToggleFn();
+      }
+    }, 150));
+
+    return this;
+  };
+
 })(jQuery);
 
-(function($) {
-
-/**
- * define responsive nav component as its own jQuery extension
- */
-$.fn.mobileSidenav = function( options ) {
-
-	options = $.extend({}, {
-		triggerButtonSelector: '.side-nav-trigger',
-		sidenavWrapperClass: '.side-menu',
-		sidenavOpenClass: 'panel-open',
-		menuButtonActiveClass: 'active'
-	}, options);
-
-	var $this = $(this), //nav.side-nav
-		sidenavOpen = false,
-		$sidenavWraper = $( options.sidenavWrapperClass ),
-		$triggerButton = $( options.triggerButtonSelector );
-
-	var closeSidenav = function() {
-		$sidenavWraper.slideUp();
-		$this.removeClass( options.sidenavOpenClass );
-
-		sidenavOpen = false;
-	};
-
-	var triggerBtnFn = function() {
-
-		$triggerButton.bind( 'touchstart, click', function(event) {
-
-			event.stopPropagation();
-			event.preventDefault();
-
-			if ( sidenavOpen ) {
-				closeSidenav();
-			}
-			else{
-				$sidenavWraper.slideDown();
-				$this.addClass( options.sidenavOpenClass );
-				sidenavOpen = true;
-
-			}
-		}); //end button bind
-
-
-
-	}; //end menuBtnFn
-
-	triggerBtnFn();
-
-	$(window).resize( $.debounce(function() {
-			if( !$triggerButton.is(':visible') ) {
-				//close mobile menu
-				if ( sidenavOpen ) {
-					$sidenavWraper.hide(); //when resizing we want this to be immediate
-					$this.removeClass( options.sidenavOpenClass );
-					sidenavOpen = false;
-				}
-				$sidenavWraper.removeAttr('style');
-			}
-	}, 150));
-
-	return this;
-};
-})(jQuery);
-
-(function($) {
-
-	//main hero slideshow
-	$('.hero.flexslider').flexslider();
-
-	// Make nav menu nice & responsive
-	$('nav.main-nav').responsiveNav({
-		navType: 'offCanvas' //default option for dropdown type use 'dropdown'
-	});
-	$('nav.side-nav').mobileSidenav();
-
-	// Custom Select Boxes
-	$('select').wrap('<div class="selectbox-container"></div>');
-
-	// Responsive Videos
-	$('.rtecontent').fitVids();
-
-	// Accordions
-	$('dl.accordion').accordion();
-
-	// gallery flexslider
-	$('.gallery-slideshow.flexslider').flexslider({
-		controlNav: 'thumbnails'
-	});
-
-
-
-})(jQuery);
+},{}]},{},[1]);

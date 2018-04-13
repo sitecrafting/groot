@@ -1,10 +1,21 @@
-/* globals jQuery */
-(function($) {
+/* globals module, jQuery */
 
-  /**
-   * define responsive nav component as its own jQuery extension
-   */
-  $.fn.responsiveNav = function( options ) {
+/**
+ * jQueryResponsiveNav module
+ *
+ * Usage:
+ *
+ * ```js
+ * $.fn.responsiveNav = require('./responsive-nav.jquery.js');
+ *
+ * $('.my-nav-element').responsiveNav({
+ *   navType: 'offCanvas'
+ * });
+ * ```
+ */
+module.exports = (function($){
+
+  return function jQueryResponsiveNav( options ) {
 
     options = $.extend({}, {
       wrapperSelector: '.site-wrapper',
@@ -188,4 +199,5 @@
 
     return this;
   };
+
 })(jQuery);
