@@ -34,12 +34,12 @@ module.exports = function(grunt) {
         src: 'Gruntfile.js'
       },
       theme: {
-        src: 'js/project/*.js'
+        src: 'js/src/*.js'
       }
     },
     browserify: {
       main: {
-        src: 'js/project/common.js',
+        src: 'js/src/common.js',
         dest: 'js/browserified/common.js'
       }
     },
@@ -50,14 +50,14 @@ module.exports = function(grunt) {
         src: [
           'js/browserified/common.js'
         ],
-        dest: 'js/project-common.js',
+        dest: 'js/dist/common.js',
         nonull: true
       }
     },
     uglify: {
       js: {
         files: {
-          'js/project-common.min.js': ['js/project-common.js']
+          'js/dist/common.min.js': ['js/dist/common.js']
         }
       }
     },
@@ -67,7 +67,7 @@ module.exports = function(grunt) {
         tasks: ['jshint:gruntfile']
       },
       js: {
-        files: 'js/project/*.js',
+        files: 'js/src/*.js',
         tasks: ['jshint:theme', 'browserify', 'concat:js', 'uglify:js', 'assets_version']
       },
       less: {

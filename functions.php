@@ -43,7 +43,7 @@ $site->configure(function() {
      */
     $this->enqueue_script(
       'project-common',
-      'project-common.min.js',
+      'dist/common.min.js',
       ['jquery']
     );
 
