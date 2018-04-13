@@ -46,18 +46,8 @@ module.exports = function(grunt) {
     concat: {
       js: {
         // All these files will be concatenated and served together.
-        // This is where you should add additional front-end dependencies, such as jQuery UI.
-        // NOTE: files are concatenated in the order they are declared, so upstream dependencies
-        // should be declared here first, e.g. jQuery UI would be declared after jQuery core.
         //jQuery core is included with the default codebase of wordpress
         src: [
-          //'js/modernizr/modernizr-custom-build.js', //included in the header
-          'js/plugins/jquery.debounce.js',
-          'js/plugins/jquery.flexslider.js',
-          'js/plugins/jquery.fitvids.js',
-          //'js/project/jquery.accordion.js',
-          //'js/project/responsive-nav.jquery.js', // required directly
-          //'js/project/responsive-sidenav.jquery.js', // ^ ditto
           'js/browserified/common.js'
         ],
         dest: 'js/project-common.js',

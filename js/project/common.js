@@ -1,6 +1,10 @@
 /* globals jQuery */
 (function($) {
 
+  require('../plugins/jquery.fitvids');
+  require('../plugins/jquery.flexslider');
+  require('../plugins/jquery.debounce');
+
   $.fn.responsiveNav = require('./responsive-nav.jquery.js');
   $.fn.mobileSidenav = require('./responsive-sidenav.jquery.js');
   $.fn.accordion = require('./jquery.accordion.js');
