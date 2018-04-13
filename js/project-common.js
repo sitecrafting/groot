@@ -1301,66 +1301,13 @@
 // Works with either jQuery or Zepto
 })( window.jQuery || window.Zepto );
 
-(function($) {
-
-  //markup:
-  // <dl class="accordion">
-  //      <dt data-id="tab1"><h3><a href="#tab1">Tab Title</a></h3></dt>
-  //      <dd>Panel Content</dd>
-  //      <dt data-id="tab1"><h3><a href="#tab2">Tab Title</a></h3></dt>
-  //      <dd>Panel Content</dd>
-  // </dl>
-
-$.fn.accordion = function() {
-
-    //VARIABLES
-    var $accWrapper = $(this),
-        $tabs = $accWrapper.children('dt'),
-        hashtag = window.location.hash,
-        panelId = window.location.hash.replace('#','');
-
-    //FUNCTIONS
-    var toggleAccPanelFn = function( $this_hash, $this_tab, $this_panel ){
-          if( $this_tab.hasClass('active') && $this_panel.is(':visible') ){
-              $this_panel.slideUp();
-              $this_tab.removeClass('active').addClass('inactive');
-          }
-          else{
-            $this_panel.slideDown();
-            $this_tab.addClass('active').removeClass('inactive');
-            window.location.hash = $this_hash;
-          }
-
-    };
-
-    //TAB ANCHOR CLICKS
-    $tabs.find('a').on('click', function(e){
-        e.preventDefault();
-        var this_hash = $(this).attr('href');
-        var this_tab = $(this).parent().parent();
-        var this_panel = this_tab.next();
-        toggleAccPanelFn(this_hash, this_tab, this_panel);
-    });
-
-    //PRESELECTED OPEN PANEL (USE OF HASHTAGS)
-    if( hashtag && $accWrapper.children('dt[data-id="'+panelId+'"]').length>0 ){
-        var selected_tab = $accWrapper.children('dt[data-id="'+panelId+'"]');
-        var selected_panel = selected_tab.next();
-        toggleAccPanelFn(hashtag, selected_tab, selected_panel);
-
-        var accordionPos = selected_tab.offset().top;
-        $('html, body').animate( { scrollTop : accordionPos }, 500 );
-    }
-};
-
-})(jQuery);
-
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 /* globals jQuery */
 (function($) {
 
   $.fn.responsiveNav = require('./responsive-nav.jquery.js');
   $.fn.mobileSidenav = require('./responsive-sidenav.jquery.js');
+  $.fn.accordion = require('./jquery.accordion.js');
 
   //main hero slideshow
   $('.hero.flexslider').flexslider();
@@ -1387,7 +1334,80 @@ $.fn.accordion = function() {
 
 })(jQuery);
 
-},{"./responsive-nav.jquery.js":2,"./responsive-sidenav.jquery.js":3}],2:[function(require,module,exports){
+},{"./jquery.accordion.js":2,"./responsive-nav.jquery.js":3,"./responsive-sidenav.jquery.js":4}],2:[function(require,module,exports){
+/* globals module, jQuery */
+
+/**
+ * jQueryAccordion module
+ *
+ * ## Usage
+ *
+ * ### Markup:
+ *
+ * ```html
+ * <dl class="accordion">
+ *   <dt data-id="tab1"><h3><a href="#tab1">Tab Title</a></h3></dt>
+ *   <dd>Panel Content</dd>
+ *   <dt data-id="tab1"><h3><a href="#tab2">Tab Title</a></h3></dt>
+ *   <dd>Panel Content</dd>
+ * </dl>
+ * ```
+ *
+ * ### JS:
+ *
+ * ```js
+ * $.fn.accordion = require('./jquery.accordion.js');
+ *
+ * $('dl.accordion').accordion();
+ * ```
+ */
+module.exports = (function($) {
+
+  return function() {
+
+    //VARIABLES
+    var $accWrapper = $(this),
+      $tabs = $accWrapper.children('dt'),
+      hashtag = window.location.hash,
+      panelId = window.location.hash.replace('#','');
+
+    //FUNCTIONS
+    var toggleAccPanelFn = function( $this_hash, $this_tab, $this_panel ){
+      if( $this_tab.hasClass('active') && $this_panel.is(':visible') ){
+        $this_panel.slideUp();
+        $this_tab.removeClass('active').addClass('inactive');
+      }
+      else{
+        $this_panel.slideDown();
+        $this_tab.addClass('active').removeClass('inactive');
+        window.location.hash = $this_hash;
+      }
+
+    };
+
+    //TAB ANCHOR CLICKS
+    $tabs.find('a').on('click', function(e){
+      e.preventDefault();
+      var this_hash = $(this).attr('href');
+      var this_tab = $(this).parent().parent();
+      var this_panel = this_tab.next();
+      toggleAccPanelFn(this_hash, this_tab, this_panel);
+    });
+
+    //PRESELECTED OPEN PANEL (USE OF HASHTAGS)
+    if( hashtag && $accWrapper.children('dt[data-id="'+panelId+'"]').length>0 ){
+      var selected_tab = $accWrapper.children('dt[data-id="'+panelId+'"]');
+      var selected_panel = selected_tab.next();
+      toggleAccPanelFn(hashtag, selected_tab, selected_panel);
+
+      var accordionPos = selected_tab.offset().top;
+      $('html, body').animate( { scrollTop : accordionPos }, 500 );
+    }
+  };
+
+})(jQuery);
+
+},{}],3:[function(require,module,exports){
 /* globals module, jQuery */
 
 /**
@@ -1592,7 +1612,7 @@ module.exports = (function($){
 
 })(jQuery);
 
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 /* globals module, jQuery */
 
 /**

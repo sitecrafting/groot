@@ -3,6 +3,7 @@
 
   $.fn.responsiveNav = require('./responsive-nav.jquery.js');
   $.fn.mobileSidenav = require('./responsive-sidenav.jquery.js');
+  $.fn.accordion = require('./jquery.accordion.js');
 
   //main hero slideshow
   $('.hero.flexslider').flexslider();

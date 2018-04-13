@@ -55,7 +55,7 @@ module.exports = function(grunt) {
           'js/plugins/jquery.debounce.js',
           'js/plugins/jquery.flexslider.js',
           'js/plugins/jquery.fitvids.js',
-          'js/project/jquery.accordion.js',
+          //'js/project/jquery.accordion.js',
           //'js/project/responsive-nav.jquery.js', // required directly
           //'js/project/responsive-sidenav.jquery.js', // ^ ditto
           'js/browserified/common.js'
