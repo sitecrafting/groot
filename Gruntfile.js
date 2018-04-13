@@ -8,6 +8,7 @@ module.exports = function(grunt) {
     // Task configuration.
     jshint: {
       options: {
+        esversion: 6,
         curly: true,
         eqeqeq: true,
         immed: true,
@@ -81,7 +82,7 @@ module.exports = function(grunt) {
     less: {
       development: {
         options: {
-        sourceMap: true,
+          sourceMap: true,
           compress: true,
           plugins: [
             new AutoPrefix({browsers: '> 1%, last 2 versions, Firefox ESR, Opera 12.1'})
