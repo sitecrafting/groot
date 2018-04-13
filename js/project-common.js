@@ -1355,78 +1355,12 @@ $.fn.accordion = function() {
 
 })(jQuery);
 
-/* globals jQuery */
-(function($) {
-
-  /**
-   * define responsive nav component as its own jQuery extension
-   */
-  $.fn.mobileSidenav = function( options ) {
-
-    options = $.extend({}, {
-      triggerButtonSelector: '.side-nav-trigger',
-      sidenavWrapperClass: '.side-menu',
-      sidenavOpenClass: 'panel-open',
-      menuButtonActiveClass: 'active'
-    }, options);
-
-    var $this = $(this), //nav.side-nav
-      sidenavOpen = false,
-      $sidenavWraper = $( options.sidenavWrapperClass ),
-      $triggerButton = $( options.triggerButtonSelector );
-
-    var closeSidenav = function() {
-      $sidenavWraper.slideUp();
-      $this.removeClass( options.sidenavOpenClass );
-
-      sidenavOpen = false;
-    };
-
-    var triggerBtnFn = function() {
-
-      $triggerButton.bind( 'touchstart, click', function(event) {
-
-        event.stopPropagation();
-        event.preventDefault();
-
-        if ( sidenavOpen ) {
-          closeSidenav();
-        }
-        else{
-          $sidenavWraper.slideDown();
-          $this.addClass( options.sidenavOpenClass );
-          sidenavOpen = true;
-
-        }
-      }); //end button bind
-
-
-
-    }; //end menuBtnFn
-
-    triggerBtnFn();
-
-    $(window).resize( $.debounce(function() {
-      if( !$triggerButton.is(':visible') ) {
-        //close mobile menu
-        if ( sidenavOpen ) {
-          $sidenavWraper.hide(); //when resizing we want this to be immediate
-          $this.removeClass( options.sidenavOpenClass );
-          sidenavOpen = false;
-        }
-        $sidenavWraper.removeAttr('style');
-      }
-    }, 150));
-
-    return this;
-  };
-})(jQuery);
-
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 /* globals jQuery */
 (function($) {
 
   $.fn.responsiveNav = require('./responsive-nav.jquery.js');
+  $.fn.mobileSidenav = require('./responsive-sidenav.jquery.js');
 
   //main hero slideshow
   $('.hero.flexslider').flexslider();
@@ -1453,7 +1387,7 @@ $.fn.accordion = function() {
 
 })(jQuery);
 
-},{"./responsive-nav.jquery.js":2}],2:[function(require,module,exports){
+},{"./responsive-nav.jquery.js":2,"./responsive-sidenav.jquery.js":3}],2:[function(require,module,exports){
 /* globals module, jQuery */
 
 /**
@@ -1656,6 +1590,86 @@ module.exports = (function($){
     return this;
   };
 
+})(jQuery);
+
+},{}],3:[function(require,module,exports){
+/* globals module, jQuery */
+
+/**
+ * jQueryModileSidenav module
+ *
+ * Usage:
+ *
+ * ```js
+ * $.fn.mobileSidenav = require('./responsive-sidenav.jquery.js');
+ *
+ * $('.my-sidenav-element').mobileSidenav({
+ * ```
+ */
+module.exports = (function($) {
+
+  /**
+   * define responsive nav component as its own jQuery extension
+   */
+  return function jQueryMobileSidenav( options ) {
+
+    options = $.extend({}, {
+      triggerButtonSelector: '.side-nav-trigger',
+      sidenavWrapperClass: '.side-menu',
+      sidenavOpenClass: 'panel-open',
+      menuButtonActiveClass: 'active'
+    }, options);
+
+    var $this = $(this), //nav.side-nav
+      sidenavOpen = false,
+      $sidenavWraper = $( options.sidenavWrapperClass ),
+      $triggerButton = $( options.triggerButtonSelector );
+
+    var closeSidenav = function() {
+      $sidenavWraper.slideUp();
+      $this.removeClass( options.sidenavOpenClass );
+
+      sidenavOpen = false;
+    };
+
+    var triggerBtnFn = function() {
+
+      $triggerButton.bind( 'touchstart, click', function(event) {
+
+        event.stopPropagation();
+        event.preventDefault();
+
+        if ( sidenavOpen ) {
+          closeSidenav();
+        }
+        else{
+          $sidenavWraper.slideDown();
+          $this.addClass( options.sidenavOpenClass );
+          sidenavOpen = true;
+
+        }
+      }); //end button bind
+
+
+
+    }; //end menuBtnFn
+
+    triggerBtnFn();
+
+    $(window).resize( $.debounce(function() {
+      if( !$triggerButton.is(':visible') ) {
+        //close mobile menu
+        if ( sidenavOpen ) {
+          $sidenavWraper.hide(); //when resizing we want this to be immediate
+          $this.removeClass( options.sidenavOpenClass );
+          sidenavOpen = false;
+        }
+        $sidenavWraper.removeAttr('style');
+      }
+    }, 150));
+
+    return this;
+  };
 })(jQuery);
 
 },{}]},{},[1]);

@@ -1,10 +1,22 @@
-/* globals jQuery */
-(function($) {
+/* globals module, jQuery */
+
+/**
+ * jQueryModileSidenav module
+ *
+ * Usage:
+ *
+ * ```js
+ * $.fn.mobileSidenav = require('./responsive-sidenav.jquery.js');
+ *
+ * $('.my-sidenav-element').mobileSidenav({
+ * ```
+ */
+module.exports = (function($) {
 
   /**
    * define responsive nav component as its own jQuery extension
    */
-  $.fn.mobileSidenav = function( options ) {
+  return function jQueryMobileSidenav( options ) {
 
     options = $.extend({}, {
       triggerButtonSelector: '.side-nav-trigger',

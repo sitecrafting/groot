@@ -2,6 +2,7 @@
 (function($) {
 
   $.fn.responsiveNav = require('./responsive-nav.jquery.js');
+  $.fn.mobileSidenav = require('./responsive-sidenav.jquery.js');
 
   //main hero slideshow
   $('.hero.flexslider').flexslider();
