@@ -37,6 +37,12 @@ module.exports = function(grunt) {
         src: 'js/project/*.js'
       }
     },
+    browserify: {
+      main: {
+        src: 'js/project/common.js',
+        dest: 'js/browserified/common.js'
+      }
+    },
     concat: {
       js: {
         // All these files will be concatenated and served together.
@@ -50,9 +56,9 @@ module.exports = function(grunt) {
           'js/plugins/jquery.flexslider.js',
           'js/plugins/jquery.fitvids.js',
           'js/project/jquery.accordion.js',
-          'js/project/responsive-nav.jquery.js',
+          //'js/project/responsive-nav.jquery.js', // required directly
           'js/project/responsive-sidenav.jquery.js',
-          'js/project/common.js'
+          'js/browserified/common.js'
         ],
         dest: 'js/project-common.js',
         nonull: true
@@ -72,7 +78,7 @@ module.exports = function(grunt) {
       },
       js: {
         files: 'js/project/*.js',
-        tasks: ['jshint:theme', 'concat:js', 'uglify:js', 'assets_version']
+        tasks: ['jshint:theme', 'browserify', 'concat:js', 'uglify:js', 'assets_version']
       },
       less: {
         files: 'less/**/*.less',
@@ -110,6 +116,7 @@ module.exports = function(grunt) {
   );
 
   // These plugins provide necessary tasks.
+  grunt.loadNpmTasks('grunt-browserify');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-concat');
@@ -118,6 +125,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-modernizr');
 
   // Default task.
-  grunt.registerTask('default', ['jshint', 'concat:js', 'uglify:js', 'less', 'watch']);
+  grunt.registerTask('default', ['jshint', 'browserify', 'concat:js', 'uglify:js', 'less', 'watch']);
   grunt.registerTask('front-end', ['less', 'jshint', 'concat:js', 'uglify:js']);
 };
