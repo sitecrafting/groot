@@ -111,30 +111,6 @@ module.exports = (function($){
     }
 
 
-    var menuBtnFn = function() {
-
-      $menuButton.bind( 'touchstart, click', function(event) {
-
-        event.stopPropagation();
-        event.preventDefault();
-
-        if ( _menuIsOpen() ) {
-          closeNav();
-        }
-        else{
-          openNav();
-        }
-      }); //end button bind
-
-      //ADD EXPANDER ICON
-      $this.find('li.menu-item-has-children > a').each(function(){
-        if( $(this).next('ul').length ) {
-          $(this).append('<span class="dropper"></span>');
-        }
-      });
-
-    }; //end menuBtnFn
-
     var secondlevelNav = function() {
       $this.find('ul.menu > li.menu-item-has-children > a > span.dropper').each(function(){
         $(this).bind('touchstart, click', function(event) {
@@ -207,7 +183,29 @@ module.exports = (function($){
       }
     }; //end activeToggleFn
 
-    menuBtnFn();
+
+    $menuButton.bind( 'touchstart, click', function(event) {
+
+      event.stopPropagation();
+      event.preventDefault();
+
+      if ( _menuIsOpen() ) {
+        closeNav();
+      }
+      else{
+        openNav();
+      }
+    }); //end button bind
+
+    //ADD EXPANDER ICON
+    $this.find('li.menu-item-has-children > a').each(function(){
+      if( $(this).next('ul').length ) {
+        $(this).append('<span class="dropper"></span>');
+      }
+    });
+
+
+
     secondlevelNav();
     thirdlevelNav();
     activeToggleFn();
