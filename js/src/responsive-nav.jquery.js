@@ -113,7 +113,7 @@ module.exports = (function($){
 
     var secondlevelNav = function() {
       $this.find('ul.menu > li.menu-item-has-children > a > span.dropper').each(function(){
-        $(this).bind('touchstart, click', function(event) {
+        $(this).on('touchstart, click', function(event) {
 
           event.stopPropagation();
           event.preventDefault();
@@ -135,13 +135,13 @@ module.exports = (function($){
             $(this).parent().next('ul').slideUp(250);
           }
 
-        }); //end bind
+        }); //end on
       });//end find span.dropper
     };//end secondlevelNav
 
     var thirdlevelNav = function() {
       $this.find('ul.menu > li.menu-item-has-children > ul > li.menu-item-has-children > a > span.dropper').each(function(){
-        $(this).bind('touchstart, click', function(event) {
+        $(this).on('touchstart, click', function(event) {
 
           event.stopPropagation();
           event.preventDefault();
@@ -164,7 +164,7 @@ module.exports = (function($){
             $(this).parent().next('ul').slideUp(250);
           }
 
-        }); //end bind
+        }); //end on
       });//end find span.dropper
     };//end fn thirdlevelNav
 
@@ -184,7 +184,7 @@ module.exports = (function($){
     }; //end activeToggleFn
 
 
-    $menuButton.bind( 'touchstart, click', function(event) {
+    $menuButton.on( 'touchstart, click', function(event) {
 
       event.stopPropagation();
       event.preventDefault();
@@ -195,7 +195,7 @@ module.exports = (function($){
       else{
         openNav();
       }
-    }); //end button bind
+    }); //end button on
 
     //ADD EXPANDER ICON
     $this.find('li.menu-item-has-children > a').each(function(){
