@@ -32,17 +32,27 @@ module.exports = (function($){
       $wrapper = $( options.wrapperSelector ),
       $menuButton = $( options.menuButtonSelector );
 
-    var closeNav = function() {
-      if( options.navType === 'dropdown' ){
-        $this.slideUp();
-      }
-      else{
-        $wrapper.removeClass( options.menuOpenClass );
-      }
+    function _closeNav() {
       $menuButton.removeClass( options.menuButtonActiveClass );
-
       menuOpen = false;
+    }
+
+    function _closeDropdownNav() {
+      $this.slideUp();
+      _closeNav();
+    }
+
+    function _closeOffCanvasNav() {
+      $wrapper.removeClass( options.menuOpenClass );
+      _closeNav();
+    }
+
+    var closeNavStrategies = {
+      dropdown: _closeDropdownNav,
+      offCanvas: _closeOffCanvasNav,
     };
+
+    var closeNav = closeNavStrategies[options.navType] || _closeOffCanvasNav;
 
     var bodyClickFn = function(evt) {
       //if not nav container or a decendant of nav container
