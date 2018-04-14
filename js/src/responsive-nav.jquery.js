@@ -28,23 +28,21 @@ module.exports = (function($){
     }, options);
 
     var $this = $(this),
-      menuOpen = false,
       $wrapper = $( options.wrapperSelector ),
       $menuButton = $( options.menuButtonSelector );
 
-    function _closeNav() {
-      $menuButton.removeClass( options.menuButtonActiveClass );
-      menuOpen = false;
+    function _menuIsOpen() {
+      return $menuButton.hasClass( options.menuButtonActiveClass );
     }
 
     function _closeDropdownNav() {
       $this.slideUp();
-      _closeNav();
+      $menuButton.removeClass( options.menuButtonActiveClass );
     }
 
     function _closeOffCanvasNav() {
       $wrapper.removeClass( options.menuOpenClass );
-      _closeNav();
+      $menuButton.removeClass( options.menuButtonActiveClass );
     }
 
     var closeNavStrategies = {
@@ -85,7 +83,7 @@ module.exports = (function($){
         event.stopPropagation();
         event.preventDefault();
 
-        if ( menuOpen ) {
+        if ( _menuIsOpen() ) {
           closeNav();
         }
         else{
@@ -97,8 +95,6 @@ module.exports = (function($){
           }
 
           $(this).addClass( options.menuButtonActiveClass );
-
-          menuOpen = true;
 
           $('.site-wrapper').bind( 'touchstart, click', bodyClickFn );
 
@@ -121,7 +117,7 @@ module.exports = (function($){
           event.stopPropagation();
           event.preventDefault();
 
-          if ( menuOpen && !$(this).parent().next().is(':visible') && $(this).parent().next().length > 0) {
+          if ( _menuIsOpen() && !$(this).parent().next().is(':visible') && $(this).parent().next().length > 0) {
 
             //close what's already open
             $this.find('ul.menu li').removeClass('toggle');
@@ -132,7 +128,7 @@ module.exports = (function($){
             $(this).parent().next('ul').slideDown(250);
 
           }
-          else if ( menuOpen && $(this).parent().next('ul').is(':visible') ) {
+          else if ( _menuIsOpen() && $(this).parent().next('ul').is(':visible') ) {
             //close this item
             $(this).parent().parent().removeClass('toggle');
             $(this).parent().next('ul').slideUp(250);
@@ -149,7 +145,7 @@ module.exports = (function($){
           event.stopPropagation();
           event.preventDefault();
 
-          if ( menuOpen && !$(this).parent().next().is(':visible') && $(this).parent().next().length > 0) {
+          if ( _menuIsOpen() && !$(this).parent().next().is(':visible') && $(this).parent().next().length > 0) {
 
             //close what's already open
             $this.find('ul.menu > li ul > li').removeClass('toggle');
@@ -160,7 +156,7 @@ module.exports = (function($){
             $(this).parent().next('ul').slideDown(250);
 
           }
-          else if ( menuOpen && $(this).parent().next('ul').is(':visible') ) {
+          else if ( _menuIsOpen() && $(this).parent().next('ul').is(':visible') ) {
 
             //close this item
             $(this).parent().parent().removeClass('toggle');
@@ -196,7 +192,7 @@ module.exports = (function($){
 
       if( !$menuButton.is(':visible') ) {
         //close mobile menu
-        if ( menuOpen ) {
+        if ( _menuIsOpen() ) {
           closeNav();
         }
         //remove any inline styles from subnavigation
