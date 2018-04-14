@@ -6,7 +6,6 @@ require('flexslider');
 (function($) {
 
   $.fn.responsiveNav = require('./responsive-nav.jquery.js');
-  $.fn.mobileSidenav = require('./responsive-sidenav.jquery.js');
   $.fn.accordion = require('./jquery.accordion.js');
 
   //main hero slideshow
@@ -14,9 +13,16 @@ require('flexslider');
 
   // Make nav menu nice & responsive
   $('nav.main-nav').responsiveNav({
-    navType: 'offCanvas' //default option for dropdown type use 'dropdown'
+    navType: 'offCanvas', //default option for dropdown type use 'dropdown'
+    closeOnOutsideClick: true,
+    showTabsOnFocus: true,
   });
-  $('nav.side-nav').mobileSidenav();
+  $('nav.side-nav').responsiveNav({
+    menuButtonSelector: '.side-nav-trigger',
+    activeClass: 'panel-open',
+    dropdownSelector: '.side-menu',
+    navType: 'dropdown',
+  });
 
   // Custom Select Boxes
   $('select').wrap('<div class="selectbox-container"></div>');
@@ -34,7 +40,7 @@ require('flexslider');
 
 })(jQuery);
 
-},{"./jquery.accordion.js":2,"./responsive-nav.jquery.js":3,"./responsive-sidenav.jquery.js":4,"fitvids.1.1.0":5,"flexslider":6}],2:[function(require,module,exports){
+},{"./jquery.accordion.js":2,"./responsive-nav.jquery.js":3,"fitvids.1.1.0":4,"flexslider":5}],2:[function(require,module,exports){
 /* globals module, jQuery */
 
 /**
@@ -132,37 +138,85 @@ module.exports = (function($){
     options = $.extend({}, {
       wrapperSelector: '.site-wrapper',
       menuButtonSelector: '.menu-btn',
-      menuOpenClass: 'menu-open',
-      menuButtonActiveClass: 'active',
-      navType: 'offCanvas'
+      menuOpenWrapperClass: 'menu-open',
+      activeClass: 'active',
+      dropdownSelector: '',
+      navType: 'offCanvas',
+      debounceTime: 150,
+      closeOnOutsideClick: false,
+      showTabsOnFocus: false,
     }, options);
 
     var $this = $(this),
-      menuOpen = false,
       $wrapper = $( options.wrapperSelector ),
       $menuButton = $( options.menuButtonSelector );
 
-    var closeNav = function() {
-      if( options.navType === 'dropdown' ){
-        $this.slideUp();
-      }
-      else{
-        $wrapper.removeClass( options.menuOpenClass );
-      }
-      $menuButton.removeClass( options.menuButtonActiveClass );
+    // target dropdown element, which may be distinct from $this
+    var $dropdownElem = options.dropdownSelector ?
+      $(options.dropdownSelector) :
+      $this;
 
-      menuOpen = false;
+    function _menuIsOpen() {
+      return $this.hasClass( options.activeClass );
+    }
+
+    function _closeDropdownNav() {
+      $dropdownElem.slideUp();
+    }
+
+    function _closeOffCanvasNav() {
+      $wrapper.removeClass( options.menuOpenWrapperClass );
+    }
+
+    var closeNavStrategies = {
+      dropdown: _closeDropdownNav,
+      offCanvas: _closeOffCanvasNav,
     };
 
-    var bodyClickFn = function(evt) {
-      //if not nav container or a decendant of nav container
-      if( !$this.is(evt.target) && $this.has(evt.target).length === 0 ) {
-        closeNav();
-        $('.site-wrapper').unbind( 'touchstart, click', bodyClickFn );
-      }
-    };
+    var closeNavStrategy = closeNavStrategies[options.navType] || _closeOffCanvasNav;
 
-    var keyboardTabFn = function(){
+    function closeNav() {
+      closeNavStrategy();
+      $this.removeClass( options.activeClass );
+    }
+
+
+    function _openDropdownNav() {
+      $dropdownElem.slideDown();
+    }
+
+    function _openOffCanvasNav() {
+      $wrapper.addClass( options.menuOpenWrapperClass );
+    }
+
+    var openNavStrategies = {
+      dropdown: _openDropdownNav,
+      offCanvas: _openOffCanvasNav,
+    };
+    var openNavStrategy = openNavStrategies[options.navType] || _openOffCanvasNav;
+
+    function openNav() {
+      openNavStrategy();
+
+      $this.addClass( options.activeClass );
+
+      if (options.closeOnOutsideClick) {
+        // close the menu when the user clicks anywhere outside it
+        $(options.wrapperSelector).one(
+          'touchstart, click',
+          function _onOutsideClick(evt) {
+            //if not nav container or a decendant of nav container
+            if( !$this.is(evt.target) && $this.has(evt.target).length === 0 ) {
+              closeNav();
+            }
+          });
+      }
+    }
+
+
+
+
+    if (options.showTabsOnFocus) {
       // Adding quick Tab Functionality for Navigation
       $('nav.main-nav > ul > li.menu-item-has-children > a').focus( function () {
         $(this).siblings('ul').addClass('tab-show');
@@ -176,52 +230,17 @@ module.exports = (function($){
       }).blur(function(){
         $(this).parent().parent('ul').removeClass('tab-show');
       });
-    };
+    }
 
-    var menuBtnFn = function() {
-
-      $menuButton.bind( 'touchstart, click', function(event) {
-
-        event.stopPropagation();
-        event.preventDefault();
-
-        if ( menuOpen ) {
-          closeNav();
-        }
-        else{
-          if( options.navType === 'dropdown' ){
-            $this.slideDown();
-          }
-          else{
-            $wrapper.addClass( options.menuOpenClass );
-          }
-
-          $(this).addClass( options.menuButtonActiveClass );
-
-          menuOpen = true;
-
-          $('.site-wrapper').bind( 'touchstart, click', bodyClickFn );
-
-        }
-      }); //end button bind
-
-      //ADD EXPANDER ICON
-      $this.find('li.menu-item-has-children > a').each(function(){
-        if( $(this).next('ul').length ) {
-          $(this).append('<span class="dropper"></span>');
-        }
-      });
-
-    }; //end menuBtnFn
 
     var secondlevelNav = function() {
       $this.find('ul.menu > li.menu-item-has-children > a > span.dropper').each(function(){
-        $(this).bind('touchstart, click', function(event) {
+        $(this).on('touchstart, click', function(event) {
 
           event.stopPropagation();
           event.preventDefault();
 
-          if ( menuOpen && !$(this).parent().next().is(':visible') && $(this).parent().next().length > 0) {
+          if ( _menuIsOpen() && !$(this).parent().next().is(':visible') && $(this).parent().next().length > 0) {
 
             //close what's already open
             $this.find('ul.menu li').removeClass('toggle');
@@ -232,24 +251,24 @@ module.exports = (function($){
             $(this).parent().next('ul').slideDown(250);
 
           }
-          else if ( menuOpen && $(this).parent().next('ul').is(':visible') ) {
+          else if ( _menuIsOpen() && $(this).parent().next('ul').is(':visible') ) {
             //close this item
             $(this).parent().parent().removeClass('toggle');
             $(this).parent().next('ul').slideUp(250);
           }
 
-        }); //end bind
+        }); //end on
       });//end find span.dropper
     };//end secondlevelNav
 
     var thirdlevelNav = function() {
       $this.find('ul.menu > li.menu-item-has-children > ul > li.menu-item-has-children > a > span.dropper').each(function(){
-        $(this).bind('touchstart, click', function(event) {
+        $(this).on('touchstart, click', function(event) {
 
           event.stopPropagation();
           event.preventDefault();
 
-          if ( menuOpen && !$(this).parent().next().is(':visible') && $(this).parent().next().length > 0) {
+          if ( _menuIsOpen() && !$(this).parent().next().is(':visible') && $(this).parent().next().length > 0) {
 
             //close what's already open
             $this.find('ul.menu > li ul > li').removeClass('toggle');
@@ -260,14 +279,14 @@ module.exports = (function($){
             $(this).parent().next('ul').slideDown(250);
 
           }
-          else if ( menuOpen && $(this).parent().next('ul').is(':visible') ) {
+          else if ( _menuIsOpen() && $(this).parent().next('ul').is(':visible') ) {
 
             //close this item
             $(this).parent().parent().removeClass('toggle');
             $(this).parent().next('ul').slideUp(250);
           }
 
-        }); //end bind
+        }); //end on
       });//end find span.dropper
     };//end fn thirdlevelNav
 
@@ -286,17 +305,38 @@ module.exports = (function($){
       }
     }; //end activeToggleFn
 
-    menuBtnFn();
+
+    $menuButton.on( 'touchstart, click', function(event) {
+
+      event.stopPropagation();
+      event.preventDefault();
+
+      if ( _menuIsOpen() ) {
+        closeNav();
+      }
+      else{
+        openNav();
+      }
+    }); //end button on
+
+    //ADD EXPANDER ICON
+    $this.find('li.menu-item-has-children > a').each(function(){
+      if( $(this).next('ul').length ) {
+        $(this).append('<span class="dropper"></span>');
+      }
+    });
+
+
+
     secondlevelNav();
     thirdlevelNav();
-    keyboardTabFn();
     activeToggleFn();
 
     $(window).resize( debounce(function() {
 
       if( !$menuButton.is(':visible') ) {
         //close mobile menu
-        if ( menuOpen ) {
+        if ( _menuIsOpen() ) {
           closeNav();
         }
         //remove any inline styles from subnavigation
@@ -307,96 +347,14 @@ module.exports = (function($){
       else{
         activeToggleFn();
       }
-    }, 150));
+    }, options.debounceTime));
 
     return this;
   };
 
 })(jQuery);
 
-},{"throttle-debounce/debounce":7}],4:[function(require,module,exports){
-/* globals module, jQuery */
-
-var debounce = require('throttle-debounce/debounce');
-
-/**
- * jQueryModileSidenav module
- *
- * Usage:
- *
- * ```js
- * $.fn.mobileSidenav = require('./responsive-sidenav.jquery.js');
- *
- * $('.my-sidenav-element').mobileSidenav({
- * ```
- */
-module.exports = (function($) {
-
-  /**
-   * define responsive nav component as its own jQuery extension
-   */
-  return function jQueryMobileSidenav( options ) {
-
-    options = $.extend({}, {
-      triggerButtonSelector: '.side-nav-trigger',
-      sidenavWrapperClass: '.side-menu',
-      sidenavOpenClass: 'panel-open',
-      menuButtonActiveClass: 'active'
-    }, options);
-
-    var $this = $(this), //nav.side-nav
-      sidenavOpen = false,
-      $sidenavWraper = $( options.sidenavWrapperClass ),
-      $triggerButton = $( options.triggerButtonSelector );
-
-    var closeSidenav = function() {
-      $sidenavWraper.slideUp();
-      $this.removeClass( options.sidenavOpenClass );
-
-      sidenavOpen = false;
-    };
-
-    var triggerBtnFn = function() {
-
-      $triggerButton.bind( 'touchstart, click', function(event) {
-
-        event.stopPropagation();
-        event.preventDefault();
-
-        if ( sidenavOpen ) {
-          closeSidenav();
-        }
-        else{
-          $sidenavWraper.slideDown();
-          $this.addClass( options.sidenavOpenClass );
-          sidenavOpen = true;
-
-        }
-      }); //end button bind
-
-
-
-    }; //end menuBtnFn
-
-    triggerBtnFn();
-
-    $(window).resize( debounce(function() {
-      if( !$triggerButton.is(':visible') ) {
-        //close mobile menu
-        if ( sidenavOpen ) {
-          $sidenavWraper.hide(); //when resizing we want this to be immediate
-          $this.removeClass( options.sidenavOpenClass );
-          sidenavOpen = false;
-        }
-        $sidenavWraper.removeAttr('style');
-      }
-    }, 150));
-
-    return this;
-  };
-})(jQuery);
-
-},{"throttle-debounce/debounce":7}],5:[function(require,module,exports){
+},{"throttle-debounce/debounce":6}],4:[function(require,module,exports){
 /*jshint browser:true */
 /*!
 * FitVids 1.1
@@ -485,7 +443,7 @@ module.exports = (function($) {
 // Works with either jQuery or Zepto
 })( window.jQuery || window.Zepto );
 
-},{}],6:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 /*
  * jQuery FlexSlider v2.7.0
  * Copyright 2012 WooThemes
@@ -1705,7 +1663,7 @@ module.exports = (function($) {
   };
 })(jQuery);
 
-},{}],7:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 /* eslint-disable no-undefined */
 
 var throttle = require('./throttle');
@@ -1728,7 +1686,7 @@ module.exports = function ( delay, atBegin, callback ) {
 	return callback === undefined ? throttle(delay, atBegin, false) : throttle(delay, callback, atBegin !== false);
 };
 
-},{"./throttle":8}],8:[function(require,module,exports){
+},{"./throttle":7}],7:[function(require,module,exports){
 /* eslint-disable no-undefined,no-param-reassign,no-shadow */
 
 /**
