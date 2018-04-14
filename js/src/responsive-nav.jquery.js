@@ -23,7 +23,7 @@ module.exports = (function($){
       wrapperSelector: '.site-wrapper',
       menuButtonSelector: '.menu-btn',
       menuOpenWrapperClass: 'menu-open',
-      menuButtonActiveClass: 'active',
+      activeClass: 'active',
       dropdownSelector: '',
       navType: 'offCanvas',
       debounceTime: 150,
@@ -41,7 +41,7 @@ module.exports = (function($){
       $this;
 
     function _menuIsOpen() {
-      return $this.hasClass( options.menuButtonActiveClass );
+      return $this.hasClass( options.activeClass );
     }
 
     function _closeDropdownNav() {
@@ -61,7 +61,7 @@ module.exports = (function($){
 
     function closeNav() {
       closeNavStrategy();
-      $this.removeClass( options.menuButtonActiveClass );
+      $this.removeClass( options.activeClass );
     }
 
 
@@ -82,7 +82,7 @@ module.exports = (function($){
     function openNav() {
       openNavStrategy();
 
-      $this.addClass( options.menuButtonActiveClass );
+      $this.addClass( options.activeClass );
 
       if (options.closeOnOutsideClick) {
         // close the menu when the user clicks anywhere outside it

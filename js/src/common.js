@@ -18,7 +18,7 @@ require('flexslider');
   });
   $('nav.side-nav').responsiveNav({
     menuButtonSelector: '.side-nav-trigger',
-    menuButtonActiveClass: 'panel-open',
+    activeClass: 'panel-open',
     dropdownSelector: '.side-menu',
     navType: 'dropdown',
   });
