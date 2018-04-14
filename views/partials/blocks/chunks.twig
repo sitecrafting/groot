@@ -1,0 +1,23 @@
+{#
+
+  Render a collection of "items" into evenly divided chunks.
+
+  Usage:
+
+  {% include chunks.twig with {
+    items: [arbitrary array of items goes here],
+    num_chunks: 3,
+    single_template: "views/partials/template-for-a-single-chunk.twig"
+  } %}
+
+#}
+
+{# Get chunk length #}
+{% set col_len = (items|length) / num_chunks %}
+
+{# Divide the items into chunks #}
+{% set chunks = ( items | batch( col_len ) ) %}
+
+{% for chunk in chunks %}
+	{% include single_template with { chunk: chunk } only %}
+{% endfor %}
