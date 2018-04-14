@@ -26,6 +26,7 @@ module.exports = (function($){
       menuButtonActiveClass: 'active',
       navType: 'offCanvas',
       debounceTime: 150,
+      closeOnOutsideClick: false,
     }, options);
 
     var $this = $(this),
@@ -53,13 +54,15 @@ module.exports = (function($){
 
     var closeNav = closeNavStrategies[options.navType] || _closeOffCanvasNav;
 
-    var bodyClickFn = function(evt) {
+
+    function _onOutsideClick(evt) {
       //if not nav container or a decendant of nav container
       if( !$this.is(evt.target) && $this.has(evt.target).length === 0 ) {
         closeNav();
-        $('.site-wrapper').unbind( 'touchstart, click', bodyClickFn );
+        $('.site-wrapper').unbind( 'touchstart, click', _onOutsideClick );
       }
-    };
+    }
+
 
     var keyboardTabFn = function(){
       // Adding quick Tab Functionality for Navigation
@@ -97,7 +100,10 @@ module.exports = (function($){
 
           $(this).addClass( options.menuButtonActiveClass );
 
-          $('.site-wrapper').bind( 'touchstart, click', bodyClickFn );
+          if (options.closeOnOutsideClick) {
+            // close the menu when the user clicks anywhere outside it
+            $('.site-wrapper').bind( 'touchstart, click', _onOutsideClick );
+          }
 
         }
       }); //end button bind
