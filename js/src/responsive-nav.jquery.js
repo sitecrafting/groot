@@ -27,6 +27,7 @@ module.exports = (function($){
       navType: 'offCanvas',
       debounceTime: 150,
       closeOnOutsideClick: false,
+      showTabsOnFocus: false,
     }, options);
 
     var $this = $(this),
@@ -64,7 +65,7 @@ module.exports = (function($){
     }
 
 
-    var keyboardTabFn = function(){
+    if (options.showTabsOnFocus) {
       // Adding quick Tab Functionality for Navigation
       $('nav.main-nav > ul > li.menu-item-has-children > a').focus( function () {
         $(this).siblings('ul').addClass('tab-show');
@@ -78,7 +79,8 @@ module.exports = (function($){
       }).blur(function(){
         $(this).parent().parent('ul').removeClass('tab-show');
       });
-    };
+    }
+
 
     var menuBtnFn = function() {
 
@@ -192,7 +194,6 @@ module.exports = (function($){
     menuBtnFn();
     secondlevelNav();
     thirdlevelNav();
-    keyboardTabFn();
     activeToggleFn();
 
     $(window).resize( debounce(function() {
