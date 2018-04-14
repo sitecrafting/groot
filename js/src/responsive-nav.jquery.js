@@ -40,12 +40,10 @@ module.exports = (function($){
 
     function _closeDropdownNav() {
       $this.slideUp();
-      $menuButton.removeClass( options.menuButtonActiveClass );
     }
 
     function _closeOffCanvasNav() {
       $wrapper.removeClass( options.menuOpenClass );
-      $menuButton.removeClass( options.menuButtonActiveClass );
     }
 
     var closeNavStrategies = {
@@ -53,35 +51,47 @@ module.exports = (function($){
       offCanvas: _closeOffCanvasNav,
     };
 
-    var closeNav = closeNavStrategies[options.navType] || _closeOffCanvasNav;
+    var closeNavStrategy = closeNavStrategies[options.navType] || _closeOffCanvasNav;
+
+    function closeNav() {
+      closeNavStrategy();
+      $menuButton.removeClass( options.menuButtonActiveClass );
+    }
 
 
     function _openDropdownNav() {
       $this.slideDown();
-      $(this).addClass( options.menuButtonActiveClass );
     }
 
     function _openOffCanvasNav() {
       $wrapper.addClass( options.menuOpenClass );
-      $(this).addClass( options.menuButtonActiveClass );
     }
 
     var openNavStrategies = {
       dropdown: _openDropdownNav,
       offCanvas: _openOffCanvasNav,
     };
+    var openNavStrategy = openNavStrategies[options.navType] || _openOffCanvasNav;
 
-    var openNav = openNavStrategies[options.navType] || _openOffCanvasNav;
+    function openNav() {
+      openNavStrategy();
 
+      $(this).addClass( options.menuButtonActiveClass );
 
-
-
-    function _onOutsideClick(evt) {
-      //if not nav container or a decendant of nav container
-      if( !$this.is(evt.target) && $this.has(evt.target).length === 0 ) {
-        closeNav();
+      if (options.closeOnOutsideClick) {
+        // close the menu when the user clicks anywhere outside it
+        $(options.wrapperSelector).one(
+          'touchstart, click',
+          function _onOutsideClick(evt) {
+            //if not nav container or a decendant of nav container
+            if( !$this.is(evt.target) && $this.has(evt.target).length === 0 ) {
+              closeNav();
+            }
+          });
       }
     }
+
+
 
 
     if (options.showTabsOnFocus) {
@@ -113,12 +123,6 @@ module.exports = (function($){
         }
         else{
           openNav();
-
-          if (options.closeOnOutsideClick) {
-            // close the menu when the user clicks anywhere outside it
-            $('.site-wrapper').one( 'touchstart, click', _onOutsideClick );
-          }
-
         }
       }); //end button bind
 
