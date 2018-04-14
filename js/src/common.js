@@ -5,7 +5,6 @@ require('flexslider');
 (function($) {
 
   $.fn.responsiveNav = require('./responsive-nav.jquery.js');
-  $.fn.mobileSidenav = require('./responsive-sidenav.jquery.js');
   $.fn.accordion = require('./jquery.accordion.js');
 
   //main hero slideshow
@@ -17,7 +16,12 @@ require('flexslider');
     closeOnOutsideClick: true,
     showTabsOnFocus: true,
   });
-  $('nav.side-nav').mobileSidenav();
+  $('nav.side-nav').responsiveNav({
+    menuButtonSelector: '.side-nav-trigger',
+    menuButtonActiveClass: 'panel-open',
+    dropdownSelector: '.side-menu',
+    navType: 'dropdown',
+  });
 
   // Custom Select Boxes
   $('select').wrap('<div class="selectbox-container"></div>');
