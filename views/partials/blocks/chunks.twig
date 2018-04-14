@@ -19,5 +19,5 @@
 {% set chunks = ( items | batch( col_len ) ) %}
 
 {% for chunk in chunks %}
-	{% include single_template with { chunk: chunk } %}
+  {% include single_template with { chunk: chunk } %}
 {% endfor %}
