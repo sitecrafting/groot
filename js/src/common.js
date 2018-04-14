@@ -15,6 +15,7 @@ require('flexslider');
   $('nav.main-nav').responsiveNav({
     navType: 'offCanvas', //default option for dropdown type use 'dropdown'
     closeOnOutsideClick: true,
+    showTabsOnFocus: true,
   });
   $('nav.side-nav').mobileSidenav();
 
