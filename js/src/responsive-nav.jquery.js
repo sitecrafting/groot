@@ -1,5 +1,7 @@
 /* globals module, jQuery */
 
+var debounce = require('throttle-debounce/debounce');
+
 /**
  * jQueryResponsiveNav module
  *
@@ -180,7 +182,7 @@ module.exports = (function($){
     keyboardTabFn();
     activeToggleFn();
 
-    $(window).resize( $.debounce(function() {
+    $(window).resize( debounce(function() {
 
       if( !$menuButton.is(':visible') ) {
         //close mobile menu

@@ -1,9 +1,8 @@
 /* globals jQuery */
-(function($) {
+require('fitvids.1.1.0');
+require('flexslider');
 
-  require('../plugins/jquery.fitvids');
-  require('../plugins/jquery.flexslider');
-  require('../plugins/jquery.debounce');
+(function($) {
 
   $.fn.responsiveNav = require('./responsive-nav.jquery.js');
   $.fn.mobileSidenav = require('./responsive-sidenav.jquery.js');

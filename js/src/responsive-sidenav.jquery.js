@@ -1,5 +1,7 @@
 /* globals module, jQuery */
 
+var debounce = require('throttle-debounce/debounce');
+
 /**
  * jQueryModileSidenav module
  *
@@ -61,7 +63,7 @@ module.exports = (function($) {
 
     triggerBtnFn();
 
-    $(window).resize( $.debounce(function() {
+    $(window).resize( debounce(function() {
       if( !$triggerButton.is(':visible') ) {
         //close mobile menu
         if ( sidenavOpen ) {
