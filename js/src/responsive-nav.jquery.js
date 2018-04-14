@@ -56,6 +56,26 @@ module.exports = (function($){
     var closeNav = closeNavStrategies[options.navType] || _closeOffCanvasNav;
 
 
+    function _openDropdownNav() {
+      $this.slideDown();
+      $(this).addClass( options.menuButtonActiveClass );
+    }
+
+    function _openOffCanvasNav() {
+      $wrapper.addClass( options.menuOpenClass );
+      $(this).addClass( options.menuButtonActiveClass );
+    }
+
+    var openNavStrategies = {
+      dropdown: _openDropdownNav,
+      offCanvas: _openOffCanvasNav,
+    };
+
+    var openNav = openNavStrategies[options.navType] || _openOffCanvasNav;
+
+
+
+
     function _onOutsideClick(evt) {
       //if not nav container or a decendant of nav container
       if( !$this.is(evt.target) && $this.has(evt.target).length === 0 ) {
@@ -93,14 +113,7 @@ module.exports = (function($){
           closeNav();
         }
         else{
-          if( options.navType === 'dropdown' ){
-            $this.slideDown();
-          }
-          else{
-            $wrapper.addClass( options.menuOpenClass );
-          }
-
-          $(this).addClass( options.menuButtonActiveClass );
+          openNav();
 
           if (options.closeOnOutsideClick) {
             // close the menu when the user clicks anywhere outside it
