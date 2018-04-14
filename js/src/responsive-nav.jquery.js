@@ -24,7 +24,8 @@ module.exports = (function($){
       menuButtonSelector: '.menu-btn',
       menuOpenClass: 'menu-open',
       menuButtonActiveClass: 'active',
-      navType: 'offCanvas'
+      navType: 'offCanvas',
+      debounceTime: 150,
     }, options);
 
     var $this = $(this),
@@ -203,7 +204,7 @@ module.exports = (function($){
       else{
         activeToggleFn();
       }
-    }, 150));
+    }, options.debounceTime));
 
     return this;
   };
