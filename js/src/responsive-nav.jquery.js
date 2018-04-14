@@ -22,8 +22,9 @@ module.exports = (function($){
     options = $.extend({}, {
       wrapperSelector: '.site-wrapper',
       menuButtonSelector: '.menu-btn',
-      menuOpenClass: 'menu-open',
+      menuOpenWrapperClass: 'menu-open',
       menuButtonActiveClass: 'active',
+      dropdownSelector: '',
       navType: 'offCanvas',
       debounceTime: 150,
       closeOnOutsideClick: false,
@@ -34,16 +35,21 @@ module.exports = (function($){
       $wrapper = $( options.wrapperSelector ),
       $menuButton = $( options.menuButtonSelector );
 
+    // target dropdown element, which may be distinct from $this
+    var $dropdownElem = options.dropdownSelector ?
+      $(options.dropdownSelector) :
+      $this;
+
     function _menuIsOpen() {
-      return $menuButton.hasClass( options.menuButtonActiveClass );
+      return $this.hasClass( options.menuButtonActiveClass );
     }
 
     function _closeDropdownNav() {
-      $this.slideUp();
+      $dropdownElem.slideUp();
     }
 
     function _closeOffCanvasNav() {
-      $wrapper.removeClass( options.menuOpenClass );
+      $wrapper.removeClass( options.menuOpenWrapperClass );
     }
 
     var closeNavStrategies = {
@@ -55,16 +61,16 @@ module.exports = (function($){
 
     function closeNav() {
       closeNavStrategy();
-      $menuButton.removeClass( options.menuButtonActiveClass );
+      $this.removeClass( options.menuButtonActiveClass );
     }
 
 
     function _openDropdownNav() {
-      $this.slideDown();
+      $dropdownElem.slideDown();
     }
 
     function _openOffCanvasNav() {
-      $wrapper.addClass( options.menuOpenClass );
+      $wrapper.addClass( options.menuOpenWrapperClass );
     }
 
     var openNavStrategies = {
@@ -76,7 +82,7 @@ module.exports = (function($){
     function openNav() {
       openNavStrategy();
 
-      $(this).addClass( options.menuButtonActiveClass );
+      $this.addClass( options.menuButtonActiveClass );
 
       if (options.closeOnOutsideClick) {
         // close the menu when the user clicks anywhere outside it
