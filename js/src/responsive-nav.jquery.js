@@ -80,7 +80,6 @@ module.exports = (function($){
       //if not nav container or a decendant of nav container
       if( !$this.is(evt.target) && $this.has(evt.target).length === 0 ) {
         closeNav();
-        $('.site-wrapper').unbind( 'touchstart, click', _onOutsideClick );
       }
     }
 
@@ -117,7 +116,7 @@ module.exports = (function($){
 
           if (options.closeOnOutsideClick) {
             // close the menu when the user clicks anywhere outside it
-            $('.site-wrapper').bind( 'touchstart, click', _onOutsideClick );
+            $('.site-wrapper').one( 'touchstart, click', _onOutsideClick );
           }
 
         }
