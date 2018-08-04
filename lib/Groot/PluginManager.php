@@ -50,10 +50,12 @@ class PluginManager {
 
 	protected function get_implementing_plugin(string $class) : array {
 		switch ($class) {
+			case '\Timber\Timber':
 			case 'Timber\Timber':
 				$plugin = ['slug' => 'timber', 'name' => 'Timber'];
 				break;
 
+			case '\Conifer\Site':
 			case 'Conifer\Site':
 				$plugin = ['slug' => 'conifer', 'name' => 'Conifer'];
 				break;
