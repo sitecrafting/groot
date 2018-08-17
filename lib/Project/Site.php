@@ -70,7 +70,8 @@ class Site extends TimberSite {
 		add_action( 'admin_init', ['\Project\Admin', 'init'] );
 		add_action( 'init', ['\Project\Admin', 'add_theme_settings_page'] );
 
-		add_filter( 'posts_search', ['\Project\AcfSearch', 'advanced_custom_search'], 10, 2 );
+		/* TODO: Warning: Parameter 2 to Project\AcfSearch::advanced_custom_search() expected to be a reference, value given
+		add_filter( 'posts_search', ['\Project\AcfSearch', 'advanced_custom_search'], 10, 2 );*/
 
 		// Add default Twig filters/functions
 		Filters\Number::add_twig_filters( $this );

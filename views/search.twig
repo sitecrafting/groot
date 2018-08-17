@@ -1,10 +1,13 @@
-{% extends 'layouts/interior.twig' %}
+{% extends 'layouts/main.twig' %}
 
-{% block interior_content %}
+{% block main_content %}
 
+<section class="column-layout outer-gutter">
+    <div class="container">
 
-	<section class="main-content-area">
-    <div class="main-content top-bottom-gutter outer-gutter">
+        <div class="flex-row center-lg gutter-lg-fat gutter-md-default">
+
+			<div class="col-main-content{{ post.get_field('include_sidebar') and primary_menu.get_current_top_level_item().get_children() ? ' middle-content' }}">
 
 				{% if posts %}
 					<p>{{ posts | length }} {{ 'result' | pluralize(posts|length)}} for <strong>{{ search_query }}</strong>:</p>
@@ -16,10 +19,10 @@
 				{% else %}
 					<p>Sorry, we couldn't find anything about <strong>{{ search_query }}</strong></p>
 				{% endif %}
+			</div>
 
-		</div>
-	</section>
+		</div><!-- //flex-row -->
 
-
-
+	</div><!-- END .container -->
+</section>
 {% endblock %}
