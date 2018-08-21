@@ -1,7 +1,7 @@
 {
     "name": "sitecrafting/start-wp-theme-groot",
     "description": "SiteCrafting starter WordPress theme",
-    "version": "1.1.3",
+    "version": "1.1.4",
     "minimum-stability": "stable",
     "authors": [
         {
