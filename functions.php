@@ -78,7 +78,13 @@ $site->configure(function() {
 
   });
 
-  add_action( 'init', ['\Conifer\Admin', 'add_theme_settings_page'] );
+	// Add an ACF-driven options page
+	if ( is_admin() && function_exists('acf_add_options_page') ) {
+		acf_add_options_page([
+			'page_title' => 'Theme Settings',
+			'menu_slug' => 'theme-settings',
+		]);
+	}
 
   add_filter( 'posts_search', ['\Conifer\AcfSearch', 'advanced_custom_search'], 10, 2 );
 
