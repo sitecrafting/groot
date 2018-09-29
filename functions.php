@@ -86,8 +86,6 @@ $site->configure(function() {
 		]);
 	}
 
-  add_filter( 'posts_search', ['\Conifer\AcfSearch', 'advanced_custom_search'], 10, 2 );
-
   // used for Gallery ACF layout option in flexible content
   Image::add_size( 'gallery', 900, 600, true );
 
