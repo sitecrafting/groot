@@ -58,6 +58,9 @@ class Site extends TimberSite {
 	 * @return Project\Site the Site object it was called on
 	 */
 	public function configure() {
+
+		Timber::$dirname = array('views','img');
+		
 		add_theme_support( 'post-thumbnails' );
 		add_theme_support( 'menus' );
 
@@ -70,8 +73,7 @@ class Site extends TimberSite {
 		add_action( 'admin_init', ['\Project\Admin', 'init'] );
 		add_action( 'init', ['\Project\Admin', 'add_theme_settings_page'] );
 
-		/* TODO: Warning: Parameter 2 to Project\AcfSearch::advanced_custom_search() expected to be a reference, value given
-		add_filter( 'posts_search', ['\Project\AcfSearch', 'advanced_custom_search'], 10, 2 );*/
+		add_filter( 'posts_search', ['\Project\AcfSearch', 'advanced_custom_search'], 10, 2 );
 
 		// Add default Twig filters/functions
 		Filters\Number::add_twig_filters( $this );
