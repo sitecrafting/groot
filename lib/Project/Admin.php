@@ -86,5 +86,14 @@ class Admin {
 			echo "<div class=\"{$class}\"><p>{$message}</p></div>";
 		});
 	}
-}
 
+	public static function remove_menus(){
+		//remove_menu_page( 'edit.php' );   //Posts
+		//remove_menu_page( 'edit-comments.php' );  //Comments
+	}
+	public static function edit_admin_bar(){
+		//global $wp_admin_bar;
+		//$wp_admin_bar->remove_menu('comments');
+		//$wp_admin_bar->remove_menu('customize');
+	}
+}

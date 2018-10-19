@@ -57,6 +57,17 @@
 			{% endfor %}
 		</div><!-- END .flex-row -->
 
+		<h2>Latest Posts</h2>
+		<ul>
+		{% for postItem in get_latest_posts(4) %}
+			<li>
+				<a href="{{ postItem.link }}">
+					<h4>{{ postItem.title }}</h4>
+					<h6>{{ postItem.date }}</h6>
+				</a>
+			</li>
+		{% endfor %}
+
 	</div>
 </section>
 
