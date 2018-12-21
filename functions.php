@@ -1,5 +1,6 @@
 <?php
 
+// TODO use vendor/autoload.php
 use Groot\Autoloader;
 use Groot\PluginManager;
 use Conifer\Post\Image;
@@ -136,8 +137,6 @@ $site->configure(function() {
     'after_title'   => "</h3>\n"
   ]);
 });
-
-
 
 
 ?>

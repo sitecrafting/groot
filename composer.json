@@ -41,5 +41,10 @@
                 "sitecrafting/conifer"
             ]
         }
+    },
+    "autoload": {
+        "psr-4": {
+            "Project\\": "lib/Project/"
+        }
     }
 }
