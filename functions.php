@@ -31,6 +31,11 @@ if (!$pluginManager->requirements_met()) {
 // inside the config function passed to Site::configure().
 $site = new Site();
 $site->configure(function() {
+
+  /*
+   * @groot config_callback
+   */
+
   add_theme_support( 'post-thumbnails' );
   add_theme_support( 'menus' );
 
