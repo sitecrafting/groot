@@ -10,7 +10,6 @@ module.exports = {
 
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, 'js/dist'),
   },
 
   plugins: [
@@ -29,9 +28,6 @@ module.exports = {
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
-            options: {
-              publicPath: path.resolve(__dirname)
-            },
           },
           'css-loader',
           'less-loader',
