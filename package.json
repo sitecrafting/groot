@@ -9,17 +9,10 @@
   "devDependencies": {
     "fitvids.1.1.0": "^1.1.0",
     "flexslider": "^2.7.0",
-    "grunt": "^1.0",
-    "grunt-browserify": "^5.3.0",
-    "grunt-contrib-concat": "^1.0",
-    "grunt-contrib-jshint": "^1.1",
-    "grunt-contrib-less": "^1.4",
-    "grunt-contrib-uglify": "^3.3",
-    "grunt-contrib-watch": "^1.0",
-    "grunt-modernizr": "^1.0.2",
     "less-plugin-autoprefix": "^1.5.1",
     "throttle-debounce": "^1.0.1",
-    "webpack": "^4.28"
+    "webpack": "^4.28",
+    "webpack-cli": "^3.1.2"
   },
   "license": "MIT"
 }

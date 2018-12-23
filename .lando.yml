@@ -27,7 +27,7 @@ services:
     globals:
       webpack: "^4.28"
       grunt-cli: "1.2.0"
-      yarn: "1.5.1"
+      yarn: "^1.6"
 
     run:
       - cd $LANDO_MOUNT && yarn
