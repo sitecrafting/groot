@@ -28,19 +28,14 @@
         "johnpbloch/wordpress-core-installer": "^1.0",
         "johnpbloch/wordpress-core": "^4.9",
         "mnsami/composer-custom-directory-installer": "^1.1",
-        "phpunit/phpunit": "^6.0",
-        "sitecrafting/conifer": "dev-master",
-        "wpackagist-plugin/timber-library": "^1.7.0"
+        "sitecrafting/conifer": "^0.4",
+        "squizlabs/php_codesniffer": "3.*",
+        "wpackagist-plugin/timber-library": "^1.7",
+        "wp-coding-standards/wpcs": "^0.14"
     },
     "extra": {
         "wordpress-install-dir": {
             "johnpbloch/wordpress-core": "wp"
-        },
-        "installer-paths": {
-            "wp/wp-content/plugins/{$name}/": [
-                "wpackagist-plugin/timber-library",
-                "sitecrafting/conifer"
-            ]
         }
     },
     "autoload": {

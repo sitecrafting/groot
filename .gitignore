@@ -9,4 +9,5 @@ config.codekit
 /doc
 /vendor
 /wp
+/wp-content
 /js/browserified
