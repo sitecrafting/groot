@@ -63,10 +63,10 @@ EOF
 
     # create a wp-config.php
     wp config create \
-      --dbname="$DB_NAME" \
-      --dbuser="$DB_USER" \
-      --dbpass="$DB_PASSWORD" \
-      --dbhost="$DB_HOST" \
+      --dbname="wordpress" \
+      --dbuser="wordpress" \
+      --dbpass="wordpress" \
+      --dbhost="database" \
       --extra-php < <(echo "$extra_php")
   fi
 

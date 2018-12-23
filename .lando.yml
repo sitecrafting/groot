@@ -12,7 +12,7 @@ services:
 
     run:
       - cd $LANDO_MOUNT && composer install
-      - cd $LANDO_MOUNT && scripts/setup-wordpress.bash
+      - cd $LANDO_MOUNT && scripts/setup-wordpress.sh
 
     overrides:
       services:
@@ -20,6 +20,9 @@ services:
           # Pass any non-empty CI envvar from the host into Lando
           # This is so we can force non-interactive mode setting up WP
           CI: ${CI:-''}
+
+  database:
+    type: mysql:5.7
 
   node:
     type: node:6.11
