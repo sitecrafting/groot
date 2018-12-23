@@ -7,6 +7,9 @@
     "node": ">= 0.10.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "babel-loader": "^8.0.4",
     "css-loader": "^2.0.2",
     "fitvids.1.1.0": "^1.1.0",
     "flexslider": "^2.7.0",
