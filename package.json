@@ -7,9 +7,13 @@
     "node": ">= 0.10.0"
   },
   "devDependencies": {
+    "css-loader": "^2.0.2",
     "fitvids.1.1.0": "^1.1.0",
     "flexslider": "^2.7.0",
+    "less": "^3.9.0",
+    "less-loader": "^4.1.0",
     "less-plugin-autoprefix": "^1.5.1",
+    "mini-css-extract-plugin": "^0.5.0",
     "throttle-debounce": "^1.0.1",
     "webpack": "^4.28",
     "webpack-cli": "^3.1.2"
