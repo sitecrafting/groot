@@ -24,6 +24,7 @@
         "php": ">=7.0"
     },
     "require-dev": {
+        "acobster/wp-cli-yaml-fixtures": "^0.6.0",
         "johnpbloch/wordpress-core-installer": "^1.0",
         "johnpbloch/wordpress-core": "^4.9",
         "mnsami/composer-custom-directory-installer": "^1.1",
