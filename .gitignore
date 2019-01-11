@@ -12,6 +12,11 @@ config.codekit
 /wp-content
 /js/browserified
 
+# Release artifacts
+/*.zip
+/*.tar
+/*.tar.gz
+
 # Webpack artifacts
 /dist/style.*
 /dist/print.*
