@@ -39,7 +39,9 @@
           text-indent: 100%;
           position: absolute;
           white-space: nowrap;
-          background: url(../img/datepicker-carets@2x.png) 0 0 no-repeat;
+          // NOTE: webpack complains about datepicker-carets@2x.png missin
+          // when this is uncommented
+          //background: url(../img/datepicker-carets@2x.png) 0 0 no-repeat;
           background-size: 24px 17px;
 
           &.ui-datepicker-next {
