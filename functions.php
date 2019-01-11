@@ -1,7 +1,5 @@
 <?php
 
-// TODO use vendor/autoload.php
-use Groot\Autoloader;
 use Groot\PluginManager;
 use Conifer\Post\Image;
 use Conifer\Site;
