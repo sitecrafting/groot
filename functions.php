@@ -1,17 +1,25 @@
 <?php
 
-// TODO use vendor/autoload.php
-use Groot\Autoloader;
 use Groot\PluginManager;
 use Conifer\Post\Image;
 use Conifer\Site;
 
-require_once 'lib/Groot/Autoloader.php';
-require_once 'util.php';
 
-// Autoload plugin and theme library classes
-$loader = new Autoloader();
-$loader->register();
+// autoload dependencies, if any
+if (file_exists(__DIR__ . '/vendor/autoload.php')) {
+  require_once __DIR__ . '/vendor/autoload.php';
+}
+
+// autoload library files
+spl_autoload_register(function(string $class) {
+  $file = __DIR__ . '/lib/' . str_replace('\\', '/', $class) . '.php';
+  if (file_exists($file)) {
+    require $file;
+  }
+});
+
+
+require_once 'util.php';
 
 // Require that certain classes be loaded (presumably by plugins)
 $pluginManager = new PluginManager();
@@ -49,7 +57,7 @@ $site->configure(function() {
      */
     $this->enqueue_script(
       'project-common',
-      'dist/common.min.js',
+      'common.js',
       ['jquery']
     );
 

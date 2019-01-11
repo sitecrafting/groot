@@ -9,4 +9,8 @@ config.codekit
 /doc
 /vendor
 /wp
+/wp-content
 /js/browserified
+
+# Webpack artifacts
+/dist/style.js
