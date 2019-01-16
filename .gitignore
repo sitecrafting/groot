@@ -13,4 +13,6 @@ config.codekit
 /js/browserified
 
 # Webpack artifacts
-/dist/style.js
+/dist/style.*
+/dist/print.*
+/dist/assets.version
