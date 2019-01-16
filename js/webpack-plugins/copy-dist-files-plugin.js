@@ -8,18 +8,10 @@ class CopyDistFilesPlugin {
 
   apply() {
     for (const distFile in this.files) {
-      fs.readFile(distFile, (err, contents) => {
-        if (err) {
-          console.log(`Error reading ${distFile} `, err);
-        } else {
-          const dest = this.files[distFile];
-          fs.writeFile(dest, contents, (err) => {
-            if (err) {
-              console.log('Error writing to ${dest}: ', err);
-            }
-          })
-        }
-      })
+      const contents = fs.readFileSync(distFile)
+      const dest     = this.files[distFile]
+
+      fs.writeFileSync(dest, contents)
     }
   }
 }
