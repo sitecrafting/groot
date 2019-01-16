@@ -1,6 +1,17 @@
+const fs = require('fs')
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
+
+// Simple plugin to write to assets.version file for cache-busting
+class AssetsVersionPlugin {
+  apply() {
+    fs.writeFile('assets.version', Date.now().toString(), (err) => {
+      if (err) {
+        console.log("Error writing assets.version: ", err)
+      }
+    })
+  }
+}
 
 module.exports = {
 
@@ -21,15 +32,8 @@ module.exports = {
       chunkFilename: '[id].css',
     }),
 
-    new CopyWebpackPlugin([
-      {
-        from: 'js/src/assets.version',
-        to: 'assets.version',
-        transform() {
-          return Date.now().toString()
-        },
-      }
-    ]),
+    new AssetsVersionPlugin([]),
+
   ],
 
   module: {
