@@ -78,15 +78,13 @@ $site->configure(function() {
 
     $this->enqueue_style(
       'project-css',
-      'style.css',
-      $dependencies = [],
-      $version      = $this->get_assets_version()
+      'style.css'
     );
     $this->enqueue_style(
       'project-print-css',
       'print.css',
       $dependencies = [],
-      $version      = $this->get_assets_version(),
+      $version      = true,
       'print'
     );
 
