@@ -42,6 +42,7 @@ module.exports = {
   entry: {
     common: './js/src/common.js',
     style: './less/style.less',
+    print: './less/style-print.less',
   },
 
   output: {
@@ -60,6 +61,7 @@ module.exports = {
 
     new CopyDistFilesPlugin({
       'dist/style.css': 'style.css',
+      'dist/print.css': 'print.css',
     }),
 
   ],
