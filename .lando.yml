@@ -104,11 +104,6 @@ tooling:
     cmd: 'yarn gitbook'
     description: 'Run arbitrary gitbook commands'
 
-  debug:
-    service: appserver
-    cmd: 'tail -f /app/wp/wp-content/debug.log'
-    description: 'Watch the WP debug log in real time'
-
 proxy:
   appserver:
     - groot.lndo.site
