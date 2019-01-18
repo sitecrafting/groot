@@ -6,7 +6,7 @@
  * Description: The official SiteCrafting Starter WordPress Theme
  * Version: 0.1.0
  *
- * (c) Copyright 2016 SiteCrafting, Inc.
+ * (c) Copyright 2018 SiteCrafting, Inc.
  */
 
 // Reset
@@ -17,29 +17,30 @@
 @import "base/mixins.less";
 @import "base/flexslider-base.less";
 
-@import "structure/flexboxgrid.less";
 @import "elements/global.less";
 
+@import "elements/pieces/flexslider-pieces.less";
 @import "elements/pieces/buttons.less";
 @import "elements/pieces/datepicker.less";
-
-@import "elements/forms.less";
-
-/* FLEXIBLE CONTENT ACF OPTION LAYOUT - SEE partials/ : accordion.twig, gallery.twig, image-row.twig */
-@import "elements/layouts/accordion.less";
-@import "elements/layouts/image-row.less";
-@import "elements/layouts/flexslider-themes.less";
-
-//BLOG
-@import "elements/filter-bar.less";
-@import "elements/wp-blog.less";
-@import "elements/comments.less";
+@import "elements/pieces/forms.less";
 
 //MAIN OVERALL STRUCTURE OF THE SITE
+@import "structure/flexboxgrid.less";
 @import "structure/header.less";
 @import "structure/navigation.less";
 @import "structure/side-nav.less";
 @import "structure/footer.less";
 
 @import "structure/structure.less";
-@import "structure/templates/page.less"; //general interior structure
+@import "structure/page.less"; //general interior structure
+
+/* LAYOUTS */
+@import "elements/layouts/hero-flexslider.less";
+@import "elements/layouts/accordion.less";
+@import "elements/layouts/image-row.less";
+@import "elements/layouts/gallery-flexslider.less";
+
+//BLOG
+@import "elements/filter-bar.less";
+@import "elements/wp-blog.less";
+@import "elements/comments.less";

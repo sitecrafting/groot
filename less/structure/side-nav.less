@@ -1,23 +1,17 @@
-nav.side-nav{
+nav.col-side-nav{
 
-    .side-nav-trigger { display: none; }
-    .side-nav-title{
-        margin: 0;
-    }
+    .side-nav-title{ margin: 0; }
 
     ul.side-menu{
-      .plain-list();
+        .plain-list();
         li{
             a{
               display: block;
               padding: 8px 0;
             }
             &.current-menu-item, &.current-menu-ancestor, &:hover{
-              > a{
-                  text-decoration: underline;
-              }
+                > a{ text-decoration: underline; }
             }
-
               //tertiary/3rd level nav
               ul{
                 li{
@@ -40,62 +34,7 @@ nav.side-nav{
 
 
     @media @tablet-all, @mobile-all{
-        .side-nav-title{ display: none; }
-        //mobile slidedown trigger
-        .side-nav-trigger {
-          display: block;
-          position: relative;
-          margin: 0 -(@gutter-tablet);
-          width: auto;
-          background: @gray-lighter;
-
-          span{
-              display: block;
-              padding: 20px @gutter-tablet;
-          }
-          &:before, &:after{
-            content: "";
-            display: block;
-            width: 18px;
-            height: 3px;
-            position: absolute;
-            top: 32px;
-            right: @gutter-tablet;
-            background: @primary-color1;
-            border-radius: 4px;
-            transition: all .25s ease;
-          }
-          &:after{ transform: rotate(90deg); transition: all @trans-speed ease; }
-        }//end .side-nav-trigger
-
-        &.panel-open{
-            .side-nav-trigger{
-                &:after{ transform: rotate(180deg); opacity: 0; }
-            }
-        }
-
-        ul.side-menu{
-            display: none;
-            margin: 0 -25px;
-            li{
-              a{
-                  padding: 8px 20px;
-                  border-bottom: 1px solid @gray-lighter;
-              }
-              //third level
-              ul li a{ border: 0; }
-            }
-        }
-
+        display: none;
     }//@tablet-all, @mobile-all
-    @media @mobile-all{
-        .side-nav-trigger {
-            margin: 0 -(@gutter-mobile);
-            span{
-                padding: 20px @gutter-mobile;
-            }
-            &:before, &:after{ right: @gutter-mobile; }
-        }
-    }
 
 }//end nav.side-nav

@@ -39,17 +39,16 @@
 </ul>
 </section>
 
-<section class="top-bottom-gutter outer-gutter">
+<section class="home-content outer-gutter">
 	<div class="container">
-
 		<h1>{{ post.title }}</h1>
 		<div class="rtecontent">{{ post.content }}</div>
 
-		<h2>Responsive Grid Example</h2>
-		<p>http://flexboxgrid.com/ - see less/structure/flexboxgrid.less</p>
-		<div class="flex-row">
+		<h2>Responsive Grid</h2>
+		<p>less/structure/flexboxgrid.less</p>
+		<div class="flex-row gutter-lg-fat gutter-mdl-default gutter-md-default gutter-sm-default">
 			{% for i in 0..7 %}
-			<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+			<div class="col-lg-3 col-mdl-3 col-md-4 col-sm-6 col-xs-12">
 				<div class="box">
 					<img src="http://placehold.it/350x250" alt="" class="full-img" />
 					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</p>
@@ -57,6 +56,17 @@
 			</div>
 			{% endfor %}
 		</div><!-- END .flex-row -->
+
+		<h2>Latest Posts</h2>
+		<ul>
+		{% for postItem in get_latest_posts(4) %}
+			<li>
+				<a href="{{ postItem.link }}">
+					<h4>{{ postItem.title }}</h4>
+					<h6>{{ postItem.date }}</h6>
+				</a>
+			</li>
+		{% endfor %}
 
 	</div>
 </section>
