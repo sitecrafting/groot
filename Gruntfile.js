@@ -27,8 +27,6 @@ module.exports = function(grunt) {
           'alert': true,
           'console': true,
           'require': true,
-          'setInterval': true,
-          'setTimeout':true
         }
       },
       gruntfile: {
@@ -48,10 +46,11 @@ module.exports = function(grunt) {
         src: [
           //'js/modernizr/modernizr-custom-build.js', //included in the header
           'js/plugins/jquery.debounce.js',
+          'js/plugins/jquery.flexslider.js',
           'js/plugins/jquery.fitvids.js',
-          'node_modules/flexslider/jquery.flexslider-min.js',
           'js/project/jquery.accordion.js',
           'js/project/responsive-nav.jquery.js',
+          'js/project/responsive-sidenav.jquery.js',
           'js/project/common.js'
         ],
         dest: 'js/project-common.js',
@@ -120,6 +119,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-phpdocumentor');
+  grunt.loadNpmTasks('grunt-bower-installer');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-uglify');

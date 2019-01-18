@@ -1,7 +1,7 @@
 (function($) {
 
 /**
- * define responsive nav component as its own jQuery plugin
+ * define responsive nav component as its own jQuery extension
  */
 $.fn.responsiveNav = function( options ) {
 
@@ -18,19 +18,13 @@ $.fn.responsiveNav = function( options ) {
 		$wrapper = $( options.wrapperSelector ),
 		$menuButton = $( options.menuButtonSelector );
 
-	if( options.navtype === 'dropdown' ){
-		$this.addClass('main-nav-dropdown');
-	}
-
 	var closeNav = function() {
-
 		if( options.navType === 'dropdown' ){
 			$this.slideUp();
 		}
 		else{
 			$wrapper.removeClass( options.menuOpenClass );
 		}
-
 		$menuButton.removeClass( options.menuButtonActiveClass );
 
 		menuOpen = false;
@@ -38,7 +32,7 @@ $.fn.responsiveNav = function( options ) {
 
 	var bodyClickFn = function(evt) {
 		//if not nav container or a decendant of nav container
-		if( !$('nav.main-nav').is(evt.target) && $('nav.main-nav').has(evt.target).length === 0 ) {
+		if( !$this.is(evt.target) && $this.has(evt.target).length === 0 ) {
 			closeNav();
 			$('.site-wrapper').unbind( 'touchstart, click', bodyClickFn );
 		}
@@ -85,7 +79,7 @@ $.fn.responsiveNav = function( options ) {
 				$('.site-wrapper').bind( 'touchstart, click', bodyClickFn );
 
 			}
-		});
+		}); //end button bind
 
 		//ADD EXPANDER ICON
 		$this.find('li.menu-item-has-children > a').each(function(){
@@ -96,19 +90,18 @@ $.fn.responsiveNav = function( options ) {
 
 	}; //end menuBtnFn
 
-	var sublevelNav = function() {
-		$this.find('span.dropper').each(function(){
+	var secondlevelNav = function() {
+		$this.find('ul.menu > li.menu-item-has-children > a > span.dropper').each(function(){
 			$(this).bind('touchstart, click', function(event) {
 
 				event.stopPropagation();
 				event.preventDefault();
 
-				//if menu is open and the subnav is not visible and subnav exists
 				if ( menuOpen && !$(this).parent().next().is(':visible') && $(this).parent().next().length > 0) {
 
-					//close what's already open at the same level
-					//remove toggle class from the li and slide up its child ul
-					$(this).parent().parent().siblings().removeClass('toggle').children('ul').slideUp(250);
+					//close what's already open
+					$this.find('ul.menu li').removeClass('toggle');
+					$this.find('ul.menu > li ul').slideUp(250);
 
 					//expand current click
 					$(this).parent().parent().addClass('toggle');
@@ -123,13 +116,42 @@ $.fn.responsiveNav = function( options ) {
 
 			}); //end bind
 		});//end find span.dropper
-	};//end sublevelNav
+	};//end secondlevelNav
+
+	var thirdlevelNav = function() {
+		$this.find('ul.menu > li.menu-item-has-children > ul > li.menu-item-has-children > a > span.dropper').each(function(){
+			$(this).bind('touchstart, click', function(event) {
+
+					event.stopPropagation();
+					event.preventDefault();
+
+				if ( menuOpen && !$(this).parent().next().is(':visible') && $(this).parent().next().length > 0) {
+
+					//close what's already open
+					$this.find('ul.menu > li ul > li').removeClass('toggle');
+					$this.find('ul.menu > li ul > li ul').slideUp(250);
+
+					//expand current click
+					$(this).parent().parent().addClass('toggle');
+					$(this).parent().next('ul').slideDown(250);
+
+				}
+				else if ( menuOpen && $(this).parent().next('ul').is(':visible') ) {
+
+						//close this item
+						$(this).parent().parent().removeClass('toggle');
+						$(this).parent().next('ul').slideUp(250);
+				}
+
+			}); //end bind
+		});//end find span.dropper
+	};//end fn thirdlevelNav
 
 	var activeToggleFn = function(){
 		//on mobile check for active navigation and set open accordingly
 		if( $menuButton.is(':visible') ){
 
-			$this.find('ul.menu li.menu-item-has-children.current-menu-item, ul.menu li.menu-item-has-children.current-menu-ancestor').each(function(){
+			$this.find('ul.menu li.current_page_item, ul.menu li.current_page_ancestor').each(function(){
 					if( !$(this).hasClass('toggle') ){
 						$(this).addClass('toggle');
 					}
@@ -141,11 +163,12 @@ $.fn.responsiveNav = function( options ) {
 	}; //end activeToggleFn
 
 	menuBtnFn();
-	sublevelNav();
+	secondlevelNav();
+	thirdlevelNav();
 	keyboardTabFn();
 	activeToggleFn();
 
-	$(window).resize(function(){
+	$(window).resize( $.debounce(function() {
 
 		if( !$menuButton.is(':visible') ) {
 			//close mobile menu
@@ -160,7 +183,7 @@ $.fn.responsiveNav = function( options ) {
 		else{
 			activeToggleFn();
 		}
-	});
+	}, 150));
 
 	return this;
 };

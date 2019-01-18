@@ -1,4 +1,4 @@
-/* DIRECTIONAL NAV - ARROWS */
+/* DIRECTIONAL NAV */
 ul.flex-direction-nav{
   width: 100%;
     li{
@@ -42,7 +42,6 @@ ul.flex-direction-nav{
     }//end li
 }//end flex-direction-nav
 
-/* PAGING - DOTS */
 ol.flex-control-paging{
     width: 100%;
     position: absolute;
@@ -77,7 +76,7 @@ ol.flex-control-paging{
     }
 }
 
-/* PAGING - THUMBNAILS */
+/* THUMBNAIL NAV */
 ol.flex-control-thumbs{
    display: flex;
    flex-flow: row wrap;
@@ -111,3 +110,80 @@ ol.flex-control-thumbs{
    @media @mobile-sml{ display: none; }
 
  } //end ol.flex-control-thumbs
+
+
+//homepage hero
+.hero.flexslider {
+   position: relative;
+   height: 580px;
+
+   ul.slides {
+     height: 100%;
+
+       li {
+         height: 100%;
+         background-size: cover;
+         background-position: center center;
+         background-repeat: no-repeat;
+
+           &:before {
+             content: "";
+             display: block;
+             width: 100%;
+             height: 100%;
+             position: absolute;
+             top: 0;
+             left: 0;
+             background: @black;
+             opacity: .4;
+           }
+
+           .caption {
+             position: relative;
+             height: 100%;
+             display: flex;
+             flex-flow: column;
+             justify-content: center;
+             align-items: center;
+
+               .text {
+                 padding: 20px;
+                 max-width: 1000px;
+                 text-align: center;
+
+                   h2 {
+                     margin: 0;
+                     color: @white;
+                     font-size: 45px;
+                     text-transform: uppercase;
+                   }
+                   .btn { margin: 20px 0 0 0; }
+               }
+           }//end .caption
+
+       }//end li
+   }//end ul.slides
+ }//end .hero.flexslider
+
+.gallery-slideshow.flexslider{
+    position: relative;
+    overflow: hidden;
+
+    margin: 20px 0;
+
+    ul.slides{
+      > li{
+        position: relative;
+        .slide-caption{
+          padding: 20px;
+          width: 100%;
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          background: rgba(red(@primary-color1), green(@primary-color1), blue(@primary-color1), .5);
+          color: @white;
+        }
+      }
+    }
+
+}//end .gallery-slideshow.flexslider

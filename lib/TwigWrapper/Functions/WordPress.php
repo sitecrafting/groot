@@ -55,9 +55,6 @@ class WordPress extends AbstractBase {
 			'get_sidebar_widgets' => function($name) {
 				return Timber::get_widgets($name);
 			},
-			'get_latest_posts' => function($num = 3){
-				return Timber::get_posts( array('post_type' => 'post', 'posts_per_page' => $num) );
-			}
 		];
 	}
 }

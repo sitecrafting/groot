@@ -1,5 +1,5 @@
 /*
- * jQuery FlexSlider v2.7.1
+ * jQuery FlexSlider v2.6.0
  * http://www.woothemes.com/flexslider/
  *
  * Copyright 2012 WooThemes
@@ -13,10 +13,6 @@
 /* ====================================================================================================================
  * RESETS
  * ====================================================================================================================*/
-.flex-container a:hover,
-.flex-slider a:hover {
-  outline: none;
-}
 .slides,
 .slides > li,
 .flex-control-nav,
@@ -24,9 +20,6 @@
   margin: 0;
   padding: 0;
   list-style: none;
-}
-.flex-pauseplay span {
-  text-transform: capitalize;
 }
 
 /* ====================================================================================================================
@@ -44,7 +37,7 @@
 
     // Clearfix for the .slides element
     &:after{
-      content: "\0020";
+      content: "";
       display: block;
       clear: both;
       visibility: hidden;

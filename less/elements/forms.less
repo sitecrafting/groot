@@ -22,11 +22,10 @@ input[type="email"],
 input[type="tel"],
 input[type="url"],
 input[type="number"],
-select,
+.selectbox-container,
 textarea,
 .form-control {
   -webkit-appearance: none; //to make sure IOS default styling is removed
-  -moz-appearance: none;
   -webkit-border-radius: 0; //to make sure IOS default round corners is removed - this can be removed if there are supposed to be rounded corners
   border-radius: 0;
 
@@ -39,7 +38,7 @@ textarea,
   margin-bottom: @input-bottom-margin;
 
   font-size: @input-font-size;
-  line-height: @input-font-size+3;
+  line-height: @input-font-size+1;
 
   color: @input-color;
   vertical-align: middle;
@@ -66,10 +65,37 @@ textarea,
 
 }
 
-select{
-    padding-right: 25px;
-    background: url(img/chevron-down.svg) right center no-repeat;
-    background-position: right 5px top 32px;
+.selectbox-container{
+	position: relative;
+	padding: 0;
+
+	select{
+		position: relative;
+		z-index: 1;
+		background: transparent;
+		margin: 0;
+		width: 100%;
+		height: @input-height;
+		padding: @input-padding;
+		border: 0;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+
+		.placeholder();
+	}
+
+	//using before to keep it behind the actual select element being clicked
+	&:before{
+		content: "";
+		display: block;
+		position: absolute;
+		top: 50%;
+		right: 10px;
+		margin-top: -5px;
+		border-top: 10px solid @gray;
+		border-left: 10px solid transparent;
+		border-right: 10px solid transparent;
+	}
 }
 select::-ms-expand{
     /* for IE 10+ */
