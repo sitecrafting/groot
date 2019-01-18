@@ -8,3 +8,11 @@ config.codekit
 /bower_components
 /doc
 /vendor
+/wp
+/wp-content
+/js/browserified
+
+# Webpack artifacts
+/dist/style.*
+/dist/print.*
+/dist/assets.version

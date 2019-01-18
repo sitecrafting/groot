@@ -1,0 +1,112 @@
+name: groot
+recipe: wordpress
+config:
+  webroot: wp
+  php: '7.0'
+
+services:
+  appserver:
+    run_as_root:
+      - apt-get update
+      - apt-get install zip
+
+    run:
+      - cd $LANDO_MOUNT && composer install
+      - cd $LANDO_MOUNT && scripts/setup-wordpress.sh
+
+    overrides:
+      services:
+        environment:
+          # Pass any non-empty CI envvar from the host into Lando
+          # This is so we can force non-interactive mode setting up WP
+          CI: ${CI:-''}
+
+  database:
+    type: mysql:5.7
+
+  node:
+    type: node:6.11
+
+    globals:
+      webpack: "^4.28"
+      grunt-cli: "1.2.0"
+      yarn: "^1.6"
+
+    run:
+      - cd $LANDO_MOUNT && yarn
+
+    overrides:
+      services:
+        image: 'sitecrafting/lando-cypress-wordpress:latest'
+
+  phpmyadmin:
+    type: phpmyadmin:4.7
+
+  mailhog:
+    type: mailhog:v1.0.0
+    hogfrom:
+      - appserver
+
+  docs:
+    type: nginx:1.13
+    ssl: true
+    webroot: docs/_book
+
+tooling:
+  install:
+    service: appserver
+    cmd: '/app/scripts/setup-wordpress.sh'
+    description: 'Install and configure WordPress for custom theme dev'
+
+  yarn:
+    service: node
+
+  debug:
+    service: appserver
+    cmd: 'tail -f /app/wp/wp-content/debug.log'
+    description: 'Get real-time WP debug log output'
+
+  grunt:
+    service: node
+
+  webpack:
+    service: node
+    cmd: 'node_modules/.bin/webpack'
+    description: 'Run arbitrary webpack commands'
+
+  sniff:
+    service: appserver
+    cmd: 'composer sniff'
+    description: 'Run phpcs code sniffer'
+
+  sniff-summary:
+    service: appserver
+    cmd: 'composer sniff-summary'
+    description: 'Summarize phpcs results'
+
+  sniff-fix:
+    service: appserver
+    cmd: 'composer sniff-fix'
+    description: 'Fix coding standards issues that are automatically fixable'
+
+  release:
+    service: appserver
+    cmd: '/app/scripts/build-release.sh'
+    description: 'Build a downloadable release of the Conifer WordPress plugin'
+
+  docs:
+    service: node
+    cmd: '/app/scripts/build-docs.sh /app/docs'
+    description: 'Build documentation in _book folder using Gitbook'
+
+  gitbook:
+    service: node
+    cmd: 'yarn gitbook'
+    description: 'Run arbitrary gitbook commands'
+
+proxy:
+  appserver:
+    - groot.lndo.site
+
+  mailhog:
+    - mail.groot.lndo.site

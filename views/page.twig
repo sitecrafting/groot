@@ -5,7 +5,17 @@
 <section class="column-layout outer-gutter">
     <div class="container">
 
-        <div class="flex-row center-lg gutter-lg-fat gutter-md-default">
+      <div class="flex-row center-lg gutter-lg-fat gutter-md-default">
+
+        <div class="rtecontent">{{ post.content }}</div>
+
+            {# CONTENT LAYOUTS #}
+            {% for section in post.get_field('layouts') %}
+                {% include 'partials/content-layouts/' ~ section.acf_fc_layout ~ '.twig'
+                    ignore missing
+                    with { layout: section } only
+                %}
+            {% endfor %}
 
             {# SIDE NAV | col-side-nav #}
             {% block side_nav %}
