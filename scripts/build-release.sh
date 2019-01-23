@@ -78,6 +78,7 @@ function main() {
     groot/js \
     groot/less \
     groot/lib \
+    groot/package.json \
     groot/views \
     groot/LICENSE.txt \
     groot/README.md
@@ -90,6 +91,7 @@ function main() {
     groot/js \
     groot/less \
     groot/lib \
+    groot/package.json \
     groot/views \
     groot/LICENSE.txt \
     groot/README.md
