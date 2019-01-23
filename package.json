@@ -1,7 +1,7 @@
 {
   "repository": {
     "type": "git",
-    "url": "https://bitbucket.org/sitecrafting/start-wp-theme-groot"
+    "url": "https://github.com/sitecrafting/groot"
   },
   "engines": {
     "node": ">= 0.10.0"
