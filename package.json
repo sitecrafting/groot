@@ -17,6 +17,7 @@
     "less-loader": "^4.1.0",
     "less-plugin-autoprefix": "^1.5.1",
     "mini-css-extract-plugin": "^0.5.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.1",
     "throttle-debounce": "^1.0.1",
     "webpack": "^4.28",
     "webpack-cli": "^3.1.2"

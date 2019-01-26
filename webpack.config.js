@@ -1,14 +1,17 @@
 const path = require('path')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const AssetsVersionPlugin = require('./js/webpack-plugins/assets-version-plugin.js')
-const CopyDistFilesPlugin = require('./js/webpack-plugins/copy-dist-files-plugin.js')
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
-module.exports = {
+const sharedConfig = {
+  mode: 'production',
+  devtool: 'source-map',
+}
+
+const jsConfig = Object.assign({}, sharedConfig, {
 
   entry: {
     common: './js/src/common.js',
-    style: './less/style.less',
-    print: './less/style-print.less',
   },
 
   output: {
@@ -16,20 +19,7 @@ module.exports = {
   },
 
   plugins: [
-    // extract CSS to a separate stylesheet, rather than
-    // bundling into a JS module
-    new MiniCssExtractPlugin({
-      filename: '[name].css',
-      chunkFilename: '[id].css',
-    }),
-
     new AssetsVersionPlugin([]),
-
-    new CopyDistFilesPlugin({
-      'dist/style.css': 'style.css',
-      'dist/print.css': 'print.css',
-    }),
-
   ],
 
   module: {
@@ -44,19 +34,52 @@ module.exports = {
           },
         },
       },
+    ],
+  },
+
+})
+
+const cssConfig = Object.assign({}, sharedConfig, {
+
+  entry: {
+    style: './less/style.less',
+    print: './less/style-print.less',
+  },
+
+  output: {
+    path: path.resolve(__dirname, '.'),
+  },
+
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+    }),
+    new OptimizeCssAssetsPlugin({}),
+    new AssetsVersionPlugin([]),
+  ],
+
+  module: {
+    rules: [
       {
         test: /\.(less|css)/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
+        use: [{
+          // Compile just the CSS as a non-JS asset
+          loader: MiniCssExtractPlugin.loader
+        }, {
+          loader: 'css-loader',
+          options: {
+            sourceMap: true,
           },
-          'css-loader',
-          'less-loader',
-        ],
+        }, {
+          loader: 'less-loader',
+          options: {
+            sourceMap: true,
+          },
+        }],
       },
     ],
   },
 
-  mode: 'production',
+})
 
-}
+module.exports = [jsConfig, cssConfig]
