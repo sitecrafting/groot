@@ -18,6 +18,5 @@ config.codekit
 /*.tar.gz
 
 # Webpack artifacts
-/dist/style.*
-/dist/print.*
-/dist/assets.version
+print.js*
+style.js*
