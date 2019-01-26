@@ -68,36 +68,37 @@ function main() {
 
   # hackishly create a symlink groot directory, so that when extracted, the
   # archives we create have a top-level directory
-  ln -sfn . groot
+  release_dir="groot-${RELEASE}"
+  ln -sfn . "$release_dir"
 
   # archive plugins distro files inside a top-level groot/ dir
   tar -cvzf "$tar_name" \
-    groot/*.php \
-    groot/dist \
-    groot/img \
-    groot/js \
-    groot/less \
-    groot/lib \
-    groot/package.json \
-    groot/views \
-    groot/LICENSE.txt \
-    groot/README.md
+    $release_dir/*.php \
+    $release_dir/dist \
+    $release_dir/img \
+    $release_dir/js \
+    $release_dir/less \
+    $release_dir/lib \
+    $release_dir/package.json \
+    $release_dir/views \
+    $release_dir/LICENSE.txt \
+    $release_dir/README.md
 
   # ditto for zip
   zip -r "${zip_name}" \
-    groot/*.php \
-    groot/dist \
-    groot/img \
-    groot/js \
-    groot/less \
-    groot/lib \
-    groot/package.json \
-    groot/views \
-    groot/LICENSE.txt \
-    groot/README.md
+    $release_dir/*.php \
+    $release_dir/dist \
+    $release_dir/img \
+    $release_dir/js \
+    $release_dir/less \
+    $release_dir/lib \
+    $release_dir/package.json \
+    $release_dir/views \
+    $release_dir/LICENSE.txt \
+    $release_dir/README.md
 
   # remove hackish symlink
-  rm ./groot
+  rm ./$release_dir
 
   echo "Created ${tar_name}, ${zip_name}"
 }
