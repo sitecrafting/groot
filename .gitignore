@@ -16,6 +16,7 @@ config.codekit
 /*.zip
 /*.tar
 /*.tar.gz
+/groot-v*/
 
 # Webpack artifacts
 print.js*
