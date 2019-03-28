@@ -1,7 +1,9 @@
 const path = require('path')
-const AssetsVersionPlugin = require('./js/webpack-plugins/assets-version-plugin.js')
+const webpack = require('webpack');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+
+const AssetsVersionPlugin = require('./js/webpack-plugins/assets-version-plugin.js')
 
 const sharedConfig = {
   mode: 'production',
@@ -20,6 +22,11 @@ const jsConfig = Object.assign({}, sharedConfig, {
 
   plugins: [
     new AssetsVersionPlugin([]),
+    new webpack.ProvidePlugin({
+      '$': 'jquery',
+      'jQuery': 'jquery',
+      'window.jQuery': 'jquery',
+    }),
   ],
 
   module: {
