@@ -2,6 +2,9 @@
 .DS_Store
 ._*
 config.codekit
+*.swp
+*.swo
+*.swn
 
 # Ignore dev dependencies
 /node_modules
