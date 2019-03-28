@@ -19,40 +19,43 @@
 </head>
 <body class="{{ body_classes | join(' ') }}">
 
-<div class="site-wrapper"><div class="site-pusher">
+	<div class="site-wrapper">
+		<div class="site-pusher">
 
-	{% block header %}
-		<header class="site-header outer-gutter" itemscope itemtype="http://schema.org/Organization">
-			<div class="container">
-				<a class="logo" href="/" title="{{ site.name }}" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-					<img src="http://placehold.it/430x100/00aeef/000?text=GROOT" alt="{{ site.name }}" />
-					<!-- Rich Snippet/schema.org markup about this Organization -->
-					<meta itemprop="url" content="{{ img_url('logo.png') }}">
-					<meta itemprop="name" content="{{ site.name }}">
-					<meta itemprop="url" content="{{ site.url }}">
-					<meta itemprop="description" content="{{ site.description }}">
-				</a>
+			{% block container_content %}
+				<header class="site-header outer-gutter" itemscope itemtype="http://schema.org/Organization">
+					<div class="container">
+						<a class="logo" href="/" title="{{ site.name }}" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+							<img src="https://placehold.it/430x100/00aeef/000?text={{ site.name | url_encode }}" srcset="https://placehold.it/215x50/00aeef/000?text={{ site.name | url_encode }} 1x, https://placehold.it/430x100/00aeef/000?text={{ site.name | url_encode }} 2x" alt="{{ site.name }}" />
+							<!-- Rich Snippet/schema.org markup about this Organization -->
+							<meta itemprop="url" content="{{ img_url('logo.png') }}">
+							<meta itemprop="name" content="{{ site.name }}">
+							<meta itemprop="url" content="{{ site.url }}">
+							<meta itemprop="description" content="{{ site.description }}">
+						</a>
 
-				{# {{ get_search_form() }} #}
-				{% include 'partials/nav.twig' with { menu: primary_menu } only %}
-			</div>
-		</header>
-	{% endblock %}
+						{# {{ get_search_form() }} #}
+						{% include 'partials/nav.twig' with { menu: primary_menu } only %}
+					</div>
+				</header>
 
-	<main class="site-main">
-		{% block main_content %}
-			Default main content
-		{% endblock %}
-	</main>
+				<main class="site-main">
+						{% block main_content %}
+							Default main content
+						{% endblock %}
+				</main>
 
-	{% block footer %}
-		<footer class="site-footer outer-gutter">
-			&copy; {{ 'now' | date('Y') }} {{ site.name }}<br>
-			<a href="http://sitecrafting.com" target="_blank">Website Design and Development by SiteCrafting</a>
-		</footer>
-	{% endblock %}
+				<footer class="site-footer outer-gutter">
+					{% block footer %}
+						&copy; {{ 'now' | date('Y') }} {{ site.name }}<br>
+						<a href="https://www.sitecrafting.com" target="_blank">Website Design and Development by SiteCrafting</a>
+					{% endblock %}
+				</footer>
 
-</div></div><!-- //.site-pusher //.site-wrapper -->
+			{% endblock %}
+
+		</div>
+	</div>
 
 	<!-- everything below here is included automagically by WP -->
 	{{ wp_footer }}
