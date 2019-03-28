@@ -1,14 +1,19 @@
 const path = require('path')
+const webpack = require('webpack');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const AssetsVersionPlugin = require('./js/webpack-plugins/assets-version-plugin.js')
-const CopyDistFilesPlugin = require('./js/webpack-plugins/copy-dist-files-plugin.js')
 
-module.exports = {
+const AssetsVersionPlugin = require('./js/webpack-plugins/assets-version-plugin.js')
+
+const sharedConfig = {
+  mode: 'production',
+  devtool: 'source-map',
+}
+
+const jsConfig = Object.assign({}, sharedConfig, {
 
   entry: {
     common: './js/src/common.js',
-    style: './less/style.less',
-    print: './less/style-print.less',
   },
 
   output: {
@@ -16,20 +21,12 @@ module.exports = {
   },
 
   plugins: [
-    // extract CSS to a separate stylesheet, rather than
-    // bundling into a JS module
-    new MiniCssExtractPlugin({
-      filename: '[name].css',
-      chunkFilename: '[id].css',
-    }),
-
     new AssetsVersionPlugin([]),
-
-    new CopyDistFilesPlugin({
-      'dist/style.css': 'style.css',
-      'dist/print.css': 'print.css',
+    new webpack.ProvidePlugin({
+      '$': 'jquery',
+      'jQuery': 'jquery',
+      'window.jQuery': 'jquery',
     }),
-
   ],
 
   module: {
@@ -37,26 +34,61 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: {
+        use: [{
           loader: 'babel-loader',
           options: {
             presets: ['@babel/preset-env'],
           },
-        },
-      },
-      {
-        test: /\.(less|css)/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-          },
-          'css-loader',
-          'less-loader',
-        ],
+        }, {
+          loader: 'ts-loader',
+        }],
       },
     ],
   },
 
-  mode: 'production',
+})
 
-}
+const cssConfig = Object.assign({}, sharedConfig, {
+
+  entry: {
+    style: './less/style.less',
+    print: './less/style-print.less',
+  },
+
+  output: {
+    path: path.resolve(__dirname, '.'),
+  },
+
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+    }),
+    new OptimizeCssAssetsPlugin({}),
+    new AssetsVersionPlugin([]),
+  ],
+
+  module: {
+    rules: [
+      {
+        test: /\.(less|css)/,
+        use: [{
+          // Compile just the CSS as a non-JS asset
+          loader: MiniCssExtractPlugin.loader
+        }, {
+          loader: 'css-loader',
+          options: {
+            sourceMap: true,
+          },
+        }, {
+          loader: 'less-loader',
+          options: {
+            sourceMap: true,
+          },
+        }],
+      },
+    ],
+  },
+
+})
+
+module.exports = [jsConfig, cssConfig]

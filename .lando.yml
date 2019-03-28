@@ -92,7 +92,7 @@ tooling:
   release:
     service: appserver
     cmd: '/app/scripts/build-release.sh'
-    description: 'Build a downloadable release of the Conifer WordPress plugin'
+    description: 'Build a downloadable release archive of Groot'
 
   docs:
     service: node

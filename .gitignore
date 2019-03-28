@@ -2,6 +2,9 @@
 .DS_Store
 ._*
 config.codekit
+*.swp
+*.swo
+*.swn
 
 # Ignore dev dependencies
 /node_modules
@@ -12,7 +15,12 @@ config.codekit
 /wp-content
 /js/browserified
 
+# Release artifacts
+/*.zip
+/*.tar
+/*.tar.gz
+/groot-v*/
+
 # Webpack artifacts
-/dist/style.*
-/dist/print.*
-/dist/assets.version
+print.js*
+style.js*
