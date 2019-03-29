@@ -6,7 +6,7 @@ The official SiteCrafting WordPress starter theme.
 
 ## Migrating from the old, closed-source Groot
 
-There are a few new ways of doing things using more consistent, reliable tooling that comes bundled with the Lando environment. Note that running `lando yarn` isn't necessary in normal circumstances: the new Lando environment installs everything for you on `lando start`.
+For client projects built on top of Groot, there are a few new ways of doing things using more consistent, reliable tooling that comes bundled with the Lando environment. Note that running `lando yarn` isn't necessary in normal circumstances: the new Lando environment installs everything for you on `lando start`.
 
 | Task                   | Old command           | New command              | Notes                         |
 | ---------------------- | --------------------- | ------------------------ | ----------------------------- |
@@ -20,9 +20,19 @@ There are a few new ways of doing things using more consistent, reliable tooling
 
 To start hacking on the Groot starter theme itself, run:
 
-```
+```bash
 git clone git@github.com:sitecrafting/groot.git && cd groot
 lando start
 ```
 
 This will prompt you for site info admin credentials to set up. Then it does some setup/cleanup. After this, you should have a fully functional WordPress site running Groot!
+
+### Run commands from the root directory
+
+For compiling LESS/JS assets within Groot itself, you should be able to run commands within the root directory. For example:
+
+```bash
+cd /path/to/groot
+lando webpack --watch
+```
+
