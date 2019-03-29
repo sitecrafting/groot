@@ -15,6 +15,27 @@ For client projects built on top of Groot, there are a few new ways of doing thi
 | Watch LESS/JS          | `grunt watch`         | `lando webpack --watch`  |                               |
 | Recompile LESS/JS once | `grunt`               | `lando webpack`          |                               |
 
+### Asset Paths in LESS files
+
+Webpack handles image paths differently. The simplest way to refer to theme files is to use the absolute path from the webroot.
+
+Put something like this in `base/variables.less`:
+
+```less
+@theme-path: '/wp-content/themes/<theme-dir-name>/';
+```
+
+Replace `<theme-dir-name>` with the actual theme directory name. Now you can use the `@theme-path` variable like this:
+
+```less
+* { background-image: url(~'@{theme-path}img/icons/my-icon.svg'); }
+```
+
+### Adding code to functions.php
+
+To make Groot as flexible as possible, all non-generic code has been stripped out of functions.php (In Conifer-speak, the [config callback](https://coniferplug.in/glossary#config-callback)). We now use some [custom tooling](https://github.com/sitecrafting/wp-cli-scaffold-groot-command) to generate that code for every new project.
+
+To add SiteCrafting specific stuff, edit [this file](https://bitbucket.org/sitecrafting/wordpress/src/master/config_callback.inc).
 
 ## Development
 
