@@ -25,7 +25,7 @@ services:
     type: mysql:5.7
 
   node:
-    type: node:6.11
+    type: node:8
 
     globals:
       webpack: "^4.28"
@@ -48,7 +48,7 @@ services:
       - appserver
 
   docs:
-    type: nginx:1.13
+    type: nginx
     ssl: true
     webroot: docs/_book
 
