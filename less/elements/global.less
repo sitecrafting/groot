@@ -57,44 +57,14 @@ pre, code, blockquote { padding: 30px; }
 //prevent default italics on address tags
 address{ font-style: normal; }
 
-/* ---------------------
-# UTILTIES
-------------------------*/
-.mt-10{ margin-top: 10px; }
-.mt-20{ margin-top: 20px; }
-.mt-30{ margin-top: 30px; }
-.mt-40{ margin-top: 40px; }
-.mt-50{ margin-top: 50px; }
+b, strong{ font-weight: 700; }
 
-.mb-10{ margin-bottom: 10px; }
-.mb-20{ margin-bottom: 20px; }
-.mb-30{ margin-bottom: 30px; }
-.mb-40{ margin-bottom: 40px; }
-.mb-50{ margin-bottom: 50px; }
-
-.mtb-10{ margin-top: 10px; margin-bottom: 10px; }
-.mtb-20{ margin-top: 20px; margin-bottom: 20px; }
-.mtb-30{ margin-top: 30px; margin-bottom: 30px; }
-.mtb-40{ margin-top: 40px; margin-bottom: 40px; }
-.mtb-50{ margin-top: 50px; margin-bottom: 50px; }
-
-.pt-10{ padding-top: 10px; }
-.pt-20{ padding-top: 20px; }
-.pt-30{ padding-top: 30px; }
-.pt-40{ padding-top: 40px; }
-.pt-50{ padding-top: 50px; }
-
-.pb-10{ padding-bottom: 10px; }
-.pb-20{ padding-bottom: 20px; }
-.pb-30{ padding-bottom: 30px; }
-.pb-40{ padding-bottom: 40px; }
-.pb-50{ padding-bottom: 50px; }
-
-.ptb-10{ padding-top: 10px; padding-bottom: 10px; }
-.ptb-20{ padding-top: 20px; padding-bottom: 20px; }
-.ptb-30{ padding-top: 30px; padding-bottom: 30px; }
-.ptb-40{ padding-top: 40px; padding-bottom: 40px; }
-.ptb-50{ padding-top: 50px; padding-bottom: 50px; }
+/* Make sure embeds and iframes fit their containers. */
+embed,
+iframe,
+object {
+	max-width: 100%;
+}
 
 /*--------------------------------------------------------------
 # Alignments
@@ -134,70 +104,6 @@ address{ font-style: normal; }
 }
 
 /*--------------------------------------------------------------
-# paging/blog navigation
---------------------------------------------------------------*/
-.site-main .comment-navigation,
-.site-main .posts-navigation,
-.site-main .post-navigation {
-	margin: 40px 0;
-	overflow: hidden;
-}
-
-.comment-navigation .nav-previous,
-.posts-navigation .nav-previous,
-.post-navigation .nav-previous {
-	float: left;
-	width: 50%;
-}
-
-.comment-navigation .nav-next,
-.posts-navigation .nav-next,
-.post-navigation .nav-next {
-	float: right;
-	text-align: right;
-	width: 50%;
-}
-
-/*--------------------------------------------------------------
-# Accessibility
---------------------------------------------------------------*/
-/* Text meant only for screen readers. */
-.screen-reader-text {
-	clip: rect(1px, 1px, 1px, 1px);
-	position: absolute !important;
-	height: 1px;
-	width: 1px;
-	overflow: hidden;
-}
-
-.screen-reader-text:focus {
-	background-color: #f1f1f1;
-	border-radius: 3px;
-	box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
-	clip: auto !important;
-	color: #21759b;
-	display: block;
-	font-size: 14px;
-	font-size: 0.875rem;
-	font-weight: bold;
-	height: auto;
-	left: 5px;
-	line-height: normal;
-	padding: 15px 23px 14px;
-	text-decoration: none;
-	top: 5px;
-	width: auto;
-	z-index: 100000; /* Above WP toolbar. */
-}
-
-/* Make sure embeds and iframes fit their containers. */
-embed,
-iframe,
-object {
-	max-width: 100%;
-}
-
-/*--------------------------------------------------------------
 ## Captions
 --------------------------------------------------------------*/
 .wp-caption {
@@ -224,14 +130,13 @@ object {
 --------------------------------------------------------------*/
 .gallery {
 	margin-top: 20px;
-
 	display: flex;
-  flex: 0 1 auto;
-  flex-direction: row;
-  flex-wrap: wrap;
+	flex: 0 1 auto;
+	flex-direction: row;
+	flex-wrap: wrap;
 
-  margin-right: -20px;
-  margin-left: -20px;
+	margin-right: -20px;
+	margin-left: -20px;
 
 	br{ display: none !important; }
 }
@@ -245,7 +150,6 @@ object {
 	padding-right: 20px;
 
 	img{ display: block; width: 100% !important; height: auto !important; }
-
 }
 
 .gallery-columns-2 .gallery-item {
@@ -293,4 +197,36 @@ object {
 	margin: 0;
 	padding: 10px 5px 40px 5px;
 	font-size: (@font-size-base - 3px);
+}
+
+/*--------------------------------------------------------------
+# Accessibility
+--------------------------------------------------------------*/
+/* Text meant only for screen readers. */
+.screen-reader-text {
+	clip: rect(1px, 1px, 1px, 1px);
+	position: absolute !important;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+}
+
+.screen-reader-text:focus {
+	background-color: #f1f1f1;
+	border-radius: 3px;
+	box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+	clip: auto !important;
+	color: #21759b;
+	display: block;
+	font-size: 14px;
+	font-size: 0.875rem;
+	font-weight: bold;
+	height: auto;
+	left: 5px;
+	line-height: normal;
+	padding: 15px 23px 14px;
+	text-decoration: none;
+	top: 5px;
+	width: auto;
+	z-index: 100000; /* Above WP toolbar. */
 }

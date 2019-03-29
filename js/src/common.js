@@ -20,16 +20,6 @@ import accordion from './jquery.accordion.js'
     showTabsOnFocus: true,
   })
 
-  $('nav.side-nav').responsiveNav({
-    menuButtonSelector: '.side-nav-trigger',
-    activeClass: 'panel-open',
-    dropdownSelector: '.side-menu',
-    navType: 'dropdown',
-  })
-
-  // Custom Select Boxes
-  $('select').wrap('<div class="selectbox-container"></div>')
-
   // Responsive Videos
   $('.rtecontent').fitVids()
 

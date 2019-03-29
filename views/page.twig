@@ -1,35 +1,42 @@
-{% extends 'layouts/interior.twig' %}
+{% extends 'layouts/main.twig' %}
 
-{% block interior_content %}
-  <section class="main-content-area">
+{% block main_content %}
 
-    <h1>{{ post.get_field('main_headline') ? post.get_field('main_headline') : post.title }}</h1>
+<section class="column-layout outer-gutter">
+    <div class="container">
 
-    <div class="rtecontent">{{ post.content }}</div>
+      <div class="flex-row center-lg gutter-lg-fat gutter-md-default">
 
-    {# CONTENT LAYOUTS #}
-    {% for section in post.get_field('layouts') %}
-      {% include 'partials/content-layouts/' ~ section.acf_fc_layout ~ '.twig'
-        ignore missing
-        with { layout: section } only
-      %}
-    {% endfor %}
+        <div class="rtecontent">{{ post.content }}</div>
 
+            {# CONTENT LAYOUTS #}
+            {% for section in post.get_field('layouts') %}
+                {% include 'partials/content-layouts/' ~ section.acf_fc_layout ~ '.twig'
+                    ignore missing
+                    with { layout: section } only
+                %}
+            {% endfor %}
 
-  </section>
+            {# SIDE NAV | col-side-nav #}
+            {% block side_nav %}
+                {% include 'partials/side-nav.twig' with { menu: primary_menu, post: post } only %}
+            {% endblock %}
 
-  {% if post.get_field('include_sidebar') %}
-  <aside class="side-area">
-      {% for sideBlock in post.get_field('sidebar_content') %}
-      <div class="side-block">
-          {% if sideBlock.sidebar_title %}<h3 class="title">{{ sideBlock.sidebar_title }}</h3>{% endif %}
-          <div class="rtecontent">{{ sideBlock.sidebar_content }}</div>
-          {% if sideBlock.sidebar_more_link.url %}
-                <a href="{{ sideBlock.sidebar_more_link.url }}"{{ sideBlock.sidebar_more_link.target ? ' target="_blank"':'' }}>{{ sideBlock.sidebar_more_link.text }}</a>
-          {% endif %}
-      </div>
-      {% endfor %}
-  </aside>
-  {% endif %}
+            {# MAIN COLUMN #}
+            <div class="col-main-content{{ post.get_field('include_sidebar') and primary_menu.get_current_top_level_item().get_children() ? ' middle-content' }}">
+                <h1>{{ post.get_field('main_headline') ? post.get_field('main_headline') : post.title }}</h1>
+                {# FLEXIBLE LAYOUTS #}
+                {% include 'partials/content-layouts.twig' %}
+            </div>
+
+            {# SIDE COLUMN #}
+            {% if post.get_field('include_sidebar') %}
+                {% include 'partials/side-bar.twig' with { blocks : post.get_field('sidebar_content') } %}
+            {% endif %}
+
+        </div><!-- //flex-row -->
+
+    </div><!-- END .container -->
+</section>
 
 {% endblock %}
