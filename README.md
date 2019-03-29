@@ -31,12 +31,6 @@ Replace `<theme-dir-name>` with the actual theme directory name. Now you can use
 * { background-image: url(~'@{theme-path}img/icons/my-icon.svg'); }
 ```
 
-### Adding code to functions.php
-
-To make Groot as flexible as possible, all non-generic code has been stripped out of functions.php (In Conifer-speak, the [config callback](https://coniferplug.in/glossary#config-callback)). We now use some [custom tooling](https://github.com/sitecrafting/wp-cli-scaffold-groot-command) to generate that code for every new project.
-
-To add SiteCrafting specific stuff, edit [this file](https://bitbucket.org/sitecrafting/wordpress/src/master/config_callback.inc).
-
 ## Development
 
 To start hacking on the Groot starter theme itself, run:

@@ -48,6 +48,58 @@ $site->configure(function() {
   add_theme_support( 'post-thumbnails' );
   add_theme_support( 'menus' );
 
+
+  /*
+   * Disable comments across the site
+   */
+
+  add_action('admin_init', function() {
+    global $pagenow;
+
+    if ($pagenow === 'edit-comments.php') {
+      wp_redirect(admin_url());
+      exit;
+    }
+
+    // Remove comments metabox from dashboard
+    remove_meta_box('dashboard_recent_comments', 'dashboard', 'normal');
+
+    // Disable support for comments and trackbacks in post types
+    foreach (get_post_types() as $post_type) {
+      if (post_type_supports($post_type, 'comments')) {
+        remove_post_type_support($post_type, 'comments');
+        remove_post_type_support($post_type, 'trackbacks');
+      }
+    }
+  });
+
+  // hide comment menu item from WP Dashboard menu
+  add_action('admin_menu', function() {
+    remove_menu_page('edit-comments.php');
+  });
+
+  // hide comment menu items in WP Admin bar
+  add_action('wp_before_admin_bar_render', function() {
+    global $wp_admin_bar;
+    $wp_admin_bar->remove_menu('comments');
+  });
+
+  // hide comments column in WP Admin
+  add_filter('manage_page_columns', function(array $columns) {
+    unset($columns['comments']);
+    return $columns;
+  });
+
+  // hide all existing comments
+  add_filter('comments_array', '__return_empty_array', 10, 2);
+
+  // Close comments on the frontend
+  add_filter('comments_open', '__return_false', 20, 2);
+  add_filter('pings_open', '__return_false', 20, 2);
+
+  /* ^^^ end disable comment code ^^^ */
+
+
   add_action('wp_enqueue_scripts', function() {
     /*
      * Enqueue our own project-specific JavaScript, including dependencies.
@@ -71,40 +123,34 @@ $site->configure(function() {
     );
 
     /*
-		 * NOTE: If you do need to enqueue additional scripts here,
+     * NOTE: If you do need to enqueue additional scripts here,
      * it's probably best to enqueue them in the footer unless
      * there's a very good reason not to.
      */
 
-    $this->enqueue_style(
-      'project-css',
-      'style.css'
-    );
-    $this->enqueue_style(
-      'project-print-css',
-      'print.css',
-      $dependencies = [],
-      $version      = true,
-      'print'
-    );
+    $this->enqueue_style('project-css', 'style.css', [], true);
+    $this->enqueue_style('project-print-css', 'print.css', [], true, 'print');
 
   });
 
-	// Add an ACF-driven options page
-	if ( is_admin() && function_exists('acf_add_options_page') ) {
-		acf_add_options_page([
-			'page_title' => 'Theme Settings',
-			'menu_slug' => 'theme-settings',
-		]);
-	}
+  // Add an ACF-driven options page
+  if ( is_admin() && function_exists('acf_add_options_page') ) {
+    acf_add_options_page([
+      'page_title' => 'Theme Settings',
+      'menu_slug' => 'theme-settings',
+    ]);
+  }
 
   // used for Gallery ACF layout option in flexible content
-  Image::add_size( 'gallery', 900, 600, true );
+  add_image_size( 'gallery', 900, 600, true );
 
-  //USED FOR Image-Row ACF layout option in flexible content
-  Image::add_size( 'image-row-small', 300, 235, true );
-  Image::add_size( 'image-row-medium', 450, 350, true );
-  Image::add_size( 'image-row-large', 900, 450, true );
+  // disable default Gallery
+  add_filter( 'use_default_gallery_style', '__return_false' );
+
+  // Image-Row ACF layout option in flexible content
+  add_image_size( 'image-row-small', 300, 235, true );
+  add_image_size( 'image-row-medium', 450, 350, true );
+  add_image_size( 'image-row-large', 900, 450, true );
 
   // Make certain custom sizes available in the RTE
   // use this to unset or add image size options for RTE insert
@@ -116,32 +162,42 @@ $site->configure(function() {
     //unset( $sizes['small'] );
 
     return array_merge( $sizes, [
-      'image-row-small' => __( 'Small 300x235' ),
+      'image-row-small'  => __( 'Small 300x235' ),
       'image-row-medium' => __( 'Medium 450x350' ),
-      'image-row-large' => __( 'Large 900x450' )
+      'image-row-large'  => __( 'Large 900x450' )
     ]);
   });*/
-
-  //remove_shortcode( 'gallery' );
-  //Gallery::register( 'gallery' );
-  add_filter( 'use_default_gallery_style', '__return_false' );
 
   // register common nav menus
   register_nav_menus([
     'primary' => 'Main Navigation', // main page/nav structure
-    'global' => 'Global Navigation', // for stuff like social icons
-    'footer' => 'Footer Navigation', // footer links
+    'global'  => 'Global Navigation', // for stuff like social icons
+    'footer'  => 'Footer Navigation', // footer links
   ]);
 
-  //blog sidebar
-  register_sidebar([
-    'name' => 'Blog Filter Bar',
-    'id' => 'blog-filters',
-    'before_widget' => '<div id="%1$s" class="filter %2$s">',
-    'after_widget'  => "</div>\n",
-    'before_title'  => '<h3 class="filtertitle">',
-    'after_title'   => "</h3>\n"
-  ]);
+
+  /*
+   * Hide plugins that come with the custom SiteCrafting/WordPress upstream
+   * https://bitbucket.org/sitecrafting/wordpress/src
+   *
+   * NOTE: when you do this, you should also make sure the following is in
+   * your /pantheon.yml file:
+   *
+   * ```
+   * protected_web_paths:
+   *   - /wp-content/plugins/the-events-calendar/
+   *   - /wp-content/plugins/events-calendar-pro/
+   *   # ...any other protected web paths you like here...
+   * ```
+   */
+
+  /*add_action('pre_current_active_plugins', function() {
+    global $wp_list_table;
+
+    unset($wp_list_table->items['the-events-calendar/the-events-calendar.php']);
+    unset($wp_list_table->items['events-calendar-pro/events-calendar-pro.php']);
+  });*/
+
 });
 
 
