@@ -39,8 +39,9 @@ const jsConfig = Object.assign({}, sharedConfig, {
           options: {
             presets: ['@babel/preset-env'],
           },
-        }, {
-          loader: 'ts-loader',
+        // uncomment for TypeScript support:
+        //}, {
+        //  loader: 'ts-loader',
         }],
       },
     ],
