@@ -15,29 +15,35 @@ services:
       - cd $LANDO_MOUNT && scripts/setup-wordpress.sh
 
     overrides:
-      services:
-        environment:
-          # Pass any non-empty CI envvar from the host into Lando
-          # This is so we can force non-interactive mode setting up WP
-          CI: ${CI:-''}
+      environment:
+        # Pass any non-empty CI envvar from the host into Lando
+        # This is so we can force non-interactive mode setting up WP
+        CI: ${CI:-''}
 
   database:
     type: mysql:5.7
 
   node:
-    type: node:8
+    type: node:10
 
     globals:
-      webpack: "^4.28"
-      grunt-cli: "1.2.0"
-      yarn: "^1.6"
+      webpack: "^4.29"
+      yarn: "^1.15.2"
 
     run:
-      - cd $LANDO_MOUNT && yarn
+      - yarn
+
+  cypress:
+    type: node:10
+
+    globals:
+      cypress: "^3.2.0"
+
+    run_as_root:
+      - cypress install
 
     overrides:
-      services:
-        image: 'sitecrafting/lando-cypress-wordpress:latest'
+      image: 'sitecrafting/lando-cypress-wordpress:latest'
 
   phpmyadmin:
     type: phpmyadmin:4.7
@@ -51,6 +57,15 @@ services:
     type: nginx
     ssl: true
     webroot: docs/_book
+
+  gitbook:
+    type: node:10
+
+    globals:
+      gitbook-cli: "2.3"
+
+    run:
+      - gitbook install && gitbook build
 
 tooling:
   install:
@@ -95,13 +110,13 @@ tooling:
     description: 'Build a downloadable release archive of Groot'
 
   docs:
-    service: node
+    service: gitbook
     cmd: '/app/scripts/build-docs.sh /app/docs'
     description: 'Build documentation in _book folder using Gitbook'
 
   gitbook:
-    service: node
-    cmd: 'yarn gitbook'
+    service: gitbook
+    cmd: gitbook
     description: 'Run arbitrary gitbook commands'
 
 proxy:
