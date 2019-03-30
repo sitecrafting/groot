@@ -35,15 +35,10 @@ services:
 
     globals:
       webpack: "^4.28"
-      grunt-cli: "1.2.0"
       yarn: "^1.6"
 
     run:
       - yarn
-
-    overrides:
-      services:
-        image: 'sitecrafting/lando-cypress-wordpress:latest'
 
   phpmyadmin:
     type: phpmyadmin:4.7
@@ -72,9 +67,6 @@ tooling:
     cmd: 'tail -f /app/wp/wp-content/debug.log'
     description: 'Get real-time WP debug log output'
 
-  grunt:
-    service: node
-
   webpack:
     service: node
     cmd: 'node_modules/.bin/webpack'
@@ -100,11 +92,13 @@ tooling:
     cmd: '/app/scripts/build-release.sh'
     description: 'Build a downloadable release archive of Groot'
 
+  # TODO
   docs:
     service: node
     cmd: '/app/scripts/build-docs.sh /app/docs'
     description: 'Build documentation in _book folder using Gitbook'
 
+  # TODO
   gitbook:
     service: node
     cmd: 'yarn gitbook'
