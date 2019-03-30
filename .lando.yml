@@ -6,14 +6,13 @@ config:
 
 services:
   appserver:
-    # Temporary hack to get a Debian package to install
-    # https://github.com/lando/lando/issues/1554
-    build_as_root:
+    run_as_root:
+      # Temporary hack to get a Debian package to install
+      # https://github.com/lando/lando/issues/1554
       - echo 'Acquire::Check-Valid-Until "false";' > /etc/apt/apt.conf
       - echo "deb [check-valid-until=no] http://archive.debian.org/debian jessie-backports main" > /etc/apt/sources.list.d/jessie-backports.list
       - sed -i '/deb http:\/\/deb.debian.org\/debian jessie-updates main/d' /etc/apt/sources.list
 
-    run_as_root:
       - apt-get update
       - apt-get install zip
 
@@ -32,7 +31,7 @@ services:
     type: mysql:5.7
 
   node:
-    type: node:8
+    type: node:10
 
     globals:
       webpack: "^4.28"
@@ -40,7 +39,7 @@ services:
       yarn: "^1.6"
 
     run:
-      - cd $LANDO_MOUNT && yarn
+      - yarn
 
     overrides:
       services:
