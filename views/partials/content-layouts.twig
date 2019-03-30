@@ -1,0 +1,7 @@
+{% for sub_field in layouts %}
+    {% include 'partials/content-layouts/' ~ sub_field.acf_fc_layout ~ '.twig'
+        ignore missing
+        with { layout: sub_field } only
+    %}
+{% endfor %}
+
