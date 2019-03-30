@@ -36,6 +36,11 @@ services:
     globals:
       webpack: "^4.28"
       yarn: "^1.6"
+      parcel: "^1.12"
+
+    run_as_root:
+      # hack to get npm to install globals correcly
+      - mkdir /.npm && chmod 755 /.npm
 
     run:
       - yarn
@@ -103,6 +108,17 @@ tooling:
     service: node
     cmd: 'yarn gitbook'
     description: 'Run arbitrary gitbook commands'
+
+  parcel:
+    service: node
+    cmd: parcel
+
+  build:
+    service: node
+    cmd: node js/parcel/build.js groot
+
+  node:
+    service: node
 
 proxy:
   appserver:
