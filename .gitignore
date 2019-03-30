@@ -14,6 +14,8 @@ config.codekit
 /wp
 /wp-content
 /js/browserified
+.cache
+yarn-error.log
 
 # Release artifacts
 /*.zip
