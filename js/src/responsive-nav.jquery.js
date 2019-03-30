@@ -1,6 +1,6 @@
 /* globals jQuery */
 
-const debounce = require('throttle-debounce/debounce');
+import { debounce } from 'throttle-debounce'
 
 /**
  * jQueryResponsiveNav module
@@ -216,7 +216,7 @@ export default (($) => {
     thirdlevelNav()
     activeToggleFn()
 
-    $(window).resize( debounce(function() {
+    $(window).resize( debounce(options.debounceTime, function() {
 
       if( !$menuButton.is(':visible') ) {
         //close mobile menu
@@ -231,7 +231,7 @@ export default (($) => {
       else{
         activeToggleFn()
       }
-    }, options.debounceTime))
+    }))
 
     return this
   }
