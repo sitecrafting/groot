@@ -22,7 +22,8 @@ matrix:
         - lando version
       install:
         - lando start
-        - yarn install --frozen-lockfile
+        - lando yarn --frozen-lockfile
+        - lando webpack
       script:
         # TODO run tests
         - lando version
