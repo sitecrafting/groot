@@ -4,6 +4,8 @@
 
 The official SiteCrafting WordPress starter theme.
 
+[![Build Status](https://travis-ci.org/sitecrafting/groot.svg?branch=master)](https://travis-ci.org/sitecrafting/groot)
+
 ## Migrating from the old, closed-source Groot
 
 For client projects built on top of Groot, there are a few new ways of doing things using more consistent, reliable tooling that comes bundled with the Lando environment. Note that running `lando yarn` isn't necessary in normal circumstances: the new Lando environment installs everything for you on `lando start`.
