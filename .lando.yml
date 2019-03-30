@@ -34,7 +34,6 @@ services:
     type: node:10
 
     globals:
-      webpack: "^4.28"
       yarn: "^1.6"
       parcel: "^1.12"
 
@@ -71,11 +70,6 @@ tooling:
     service: appserver
     cmd: 'tail -f /app/wp/wp-content/debug.log'
     description: 'Get real-time WP debug log output'
-
-  webpack:
-    service: node
-    cmd: 'node_modules/.bin/webpack'
-    description: 'Run arbitrary webpack commands'
 
   sniff:
     service: appserver
