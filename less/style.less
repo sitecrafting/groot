@@ -8,37 +8,48 @@
  * Copyright 2019 SiteCrafting, Inc.
  */
 
+//FONT IMPORTS
+@import (css) url('///fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i|Roboto+Condensed:700');
+
 // Reset
 @import "base/normalize.less";
 
 // Core variables and mixins
 @import "base/variables.less";
 @import "base/mixins.less";
-@import "base/flexslider-base.less";
+@import "base/flexslider-base.less"; //core required flexslider styles
 
-@import "structure/flexboxgrid.less";
-@import "elements/global.less";
+/* ====================
+    STRUCTURE FILES
+=======================*/
+@import "structure/flexboxgrid.less"; //grid layouts
+@import "structure/structure.less"; //gutters and other structural elements
 
-@import "elements/pieces/flexslider-pieces.less";
-@import "elements/pieces/buttons.less";
-@import "elements/pieces/datepicker.less";
-@import "elements/pieces/forms.less";
-
-/* FLEXIBLE CONTENT ACF OPTION LAYOUT - SEE partials/ : accordion.twig, gallery.twig, image-row.twig */
-@import "elements/layouts/accordion.less";
-@import "elements/layouts/image-row.less";
-@import "elements/layouts/hero-flexslider.less";
-
-// BLOG
-@import "elements/filter-bar.less";
-@import "elements/wp-blog.less";
-@import "elements/comments.less";
-
-// MAIN OVERALL STRUCTURE OF THE SITE
 @import "structure/header.less";
 @import "structure/navigation.less";
 @import "structure/side-nav.less";
 @import "structure/footer.less";
 
-@import "structure/structure.less";
 @import "structure/page.less"; // general interior structure
+
+/* ====================
+    ELEMENT/PIECES
+=======================*/
+@import "elements/global.less"; //global utility styles
+
+@import "elements/pieces/flexslider-pieces.less"; //prev/next arrows, paging notes, thumbnails
+@import "elements/pieces/buttons.less";
+@import "elements/pieces/datepicker.less";
+@import "elements/pieces/forms.less";
+
+/* ====================
+    LAYOUTS/PATTERNS
+=======================*/
+@import "elements/layouts/hero.less"; //hero/hero slideshow
+@import "elements/layouts/accordion.less";
+@import "elements/layouts/image-row.less";
+
+// BLOG
+@import "elements/filter-bar.less";
+@import "elements/wp-blog.less";
+@import "elements/comments.less";

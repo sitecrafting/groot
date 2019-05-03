@@ -31,7 +31,7 @@ services:
     type: mysql:5.7
 
   node:
-    type: node:10
+    type: node:8
 
     globals:
       webpack: "^4.28"

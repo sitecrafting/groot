@@ -1,38 +1,29 @@
-/* DIRECTIONAL NAV - ARROWS */
+.flexslider{
+    position: relative;
+}
+
+/*===========================
+    DIRECTIONAL NAV - ARROWS
+=============================*/
 ul.flex-direction-nav{
-  width: 100%;
     li{
-        margin: 0;
         a{
             display: block;
             position: absolute;
             top: 50%;
-            margin-top: -27px;
             width: 50px;
             height: 50px;
-            background: @primary-color1;
+            transform: translateY(-50%);
+
+            background: @primary-color1 url('@{theme-path}img/arrows/chevron-left-white.svg') center center no-repeat;
             .hide-text();
             z-index: 501;
 
-            &:before{
-               content: "\2039";
-               display: block;
-               width: 13px;
-               height: 23px;
-               position: absolute;
-               top: 50%;
-               left: 50%;
-               margin: -11px 0 0 -7px;
-               color: @white;
-               font-size: 38px;
-               line-height: 17px;
-               text-indent: 0;
-            }
             &.flex-prev{ left: 0; }
 
             &.flex-next{
-             right: 0;
-             &:before{ content: "\203A"; }
+                right: 0;
+                background-image: url('@{theme-path}img/arrows/chevron-right-white.svg');
             }
 
             &:hover{
@@ -42,11 +33,13 @@ ul.flex-direction-nav{
     }//end li
 }//end flex-direction-nav
 
-/* PAGING - DOTS */
+/*===========================
+    PAGING - DOTS
+============================*/
 ol.flex-control-paging{
     width: 100%;
     position: absolute;
-    bottom: 5px;
+    bottom: 10px;
     left: 0;
     text-align: center;
     z-index: 5;
@@ -55,29 +48,33 @@ ol.flex-control-paging{
         a{
             position: relative;
             display: block;
-            width: 25px;
-            height: 25px;
+            width: 30px;
+            height: 35px;
             .hide-text();
-            cursor: pointer;
+
             &:before{
                 content: "";
                 display: block;
-                width: 8px; height: 8px;
+                width: 15px;
+                height: 15px;
                 border-radius: 50%;
                 position: absolute;
                 top: 50%;
                 left: 50%;
-                margin: -4px 0 0 -4px;
+                transform: translate(-50%,-50%);
                 background: @white;
+                transition: all @trans-speed ease;
             }
-            &.flex-active{
+            &.flex-active, &:hover{
                 &:before{ background: @primary-color1; }
             }
         }
     }
-}
+}//ol.flex-control-paging
 
-/* PAGING - THUMBNAILS */
+/*===========================
+    PAGING - THUMBNAILS
+===========================*/
 ol.flex-control-thumbs{
    display: flex;
    flex-flow: row wrap;

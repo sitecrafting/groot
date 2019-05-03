@@ -1,33 +1,32 @@
-.btn, input[type="submit"], button {
-  cursor: pointer;
-  min-width: 120px;
-  border-radius: 0;
-  padding: 15px 20px;
-  display: inline-block;
-  border: 1px solid @black;
+.btn{
+    display: inline-block;
+    padding: 20px 30px;
+    cursor: pointer;
+    border-radius: 0;
+    border: 0;
 
-  color: @white;
-  line-height: 1;
-  text-align: center;
-  font-size: 16px;
+    color: @white;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    font: 700 16px/1.1 @font-family-headings;
 
-  background: @primary-color1;
-  -webkit-appearance: none;
+    background: @primary-color1;
+    -webkit-appearance: none;
 
-  transition: all .25s ease;
+    transition: all @trans-speed ease;
 
-	&:hover {
-	  text-decoration: none;
-	  background: darken(@primary-color1,5%);
-	}
-
-    &.disabled{
-        background: @gray-lighter;
-        border-color: @gray-light;
-        color: @gray-light;
-        cursor: not-allowed;
-        &:hover{ background: @gray-lighter; }
+    &:hover {
+        text-decoration: none;
+        background: darken(@primary-color1,5%);
     }
 
+}
 
+.btn--disabled{
+    background: @gray-lighter;
+    border-color: @gray-light;
+    color: @gray-light;
+    cursor: not-allowed;
+    &:hover{ background: @gray-lighter; }
 }

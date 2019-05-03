@@ -2,41 +2,41 @@
 
 {% block main_content %}
 
-<section class="hero flexslider">
-<ul class="slides">
+{# SAMPLE DATA #}
+{% set slides =
+    [
+        {
+            image : 'http://placehold.it/1600x580?text=One',
+            caption : {
+                title : 'Slide Title One Goes Here',
+                link : { url : '#', title : 'Learn More' }
+            }
+        },
+        {
+            image : 'http://placehold.it/1600x580?text=Two',
+            caption : {
+                title : 'Slide Title Two Goes Here',
+                link : { url : '#', title : 'Learn More' }
+            }
+        }
+    ]
+%}
 
-  {# Render some pseudo-dynamic data in a slideshow #}
-  {% for slide in [
-    {
-      background_image_url: 'https://placehold.it/1500x690&text=One',
-      caption: 'Caption for slide one',
-    },
-    {
-      background_image_url: 'https://placehold.it/1500x690&text=Two',
-      caption: 'Caption for slide two',
-    },
-    {
-      background_image_url: 'https://placehold.it/1500x690&text=Three',
-      caption: 'Caption for slide three',
-    },
-    {
-      background_image_url: 'https://placehold.it/1500x690&text=Four',
-      caption: 'Caption for slide four',
-    },
-  ] %}
-
-    <li style="background-image: url({{ slide.background_image_url }});">
-      <div class="caption outer-gutter">
-        <div class="text">
-          <h2>{{ slide.caption }}</h2>
-          <a class="btn btn--lrg" href="">Learn more</a>
-        </div>
-      </div>
-    </li>
-
-  {% endfor %}
-
-</ul>
+<section class="slideshow{{ slides|length > 1 ? ' flexslider'}}">
+    <ul class="slides">
+        {% for slide in slides %}
+            <li class="hero" style="background-image: url({{ slide.image }});">
+                <div class="hero__caption">
+                    <div class="caption-text">
+                        <h2>{{ slide.caption.title }}</h2>
+                        {% if slide.caption.link.url %}
+                            <a class="btn" href="{{ slide.caption.link.url }}"{{ slide.caption.link.target ? ' target="_blank"' }}>{{ slide.caption.link.title|default('Learn More') }}</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </li>
+      {% endfor %}
+    </ul>
 </section>
 
 <section class="home-content outer-gutter">
@@ -45,7 +45,7 @@
 		<div class="rtecontent">{{ post.content }}</div>
 
 		<h2>Responsive Grid Example</h2>
-    <p>http://flexboxgrid.com/ - see <code>less/structure/flexboxgrid.less</code></p>
+        <p>http://flexboxgrid.com/ - see <code>less/structure/flexboxgrid.less</code></p>
 		<div class="flex-row gutter-lg-fat gutter-mdl-default gutter-md-default gutter-sm-default">
 
       {# Render a pseudo-dynamic flexbox grid #}

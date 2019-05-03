@@ -17,26 +17,6 @@
 	}
 }
 
-.outer-gutter-left{
-	padding-left: @gutter;
-	@media @tablet-all{
-		padding-left: @gutter-tablet;
-	}
-	@media @mobile-all{
-		padding-left: @gutter-mobile;
-	}
-}
-
-.outer-gutter-right{
-	padding-right: @gutter;
-	@media @tablet-all{
-		padding-right: @gutter-tablet;
-	}
-	@media @mobile-all{
-		padding-right: @gutter-mobile;
-	}
-}
-
 .site-wrapper{
 	position: relative;
 	overflow: hidden;
@@ -44,8 +24,6 @@
 
 	max-width: @max-width;
 	margin: 0 auto;
-	background: @white;
-	box-shadow: 0 0 20px rgba(0,0,0,.3);
 }
 .site-pusher{
 	@media @tablet-all, @mobile-all{
@@ -54,7 +32,7 @@
 		left: 0;
 		transition: transform .5s ease;
 
-
+		//darken the page to better highlight off canvas navigation
 		&:after{
 			content: '';
 			z-index: 1000;
@@ -67,7 +45,6 @@
 			opacity: 0;
 			transition: opacity 0.5s, width 0.1s 0.5s, height 0.1s 0.5s;
 		}
-
 
 		.menu-open &{
 			transform: translate3d(-(@off-canvas-width), 0, 0);
@@ -85,4 +62,5 @@
 
 main.site-main{
 	position: relative;
+	display: block; //IE sometimes needs this :P
 }

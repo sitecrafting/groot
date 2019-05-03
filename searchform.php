@@ -6,6 +6,6 @@
 use Timber\Timber;
 
 $data = Timber::get_context();
-Timber::render( 'searchform.twig', $data );
+Timber::render( 'partials/searchform.twig', $data );
 
 ?>

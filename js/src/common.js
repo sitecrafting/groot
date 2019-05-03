@@ -7,28 +7,28 @@ import accordion from './jquery.accordion.js'
 
 (($) => {
 
-  $.fn.responsiveNav = responsiveNav
-  $.fn.accordion = accordion
+    $.fn.responsiveNav = responsiveNav
+    $.fn.accordion = accordion
 
-  //main hero slideshow
-  $('.hero.flexslider').flexslider()
+    //main hero slideshow
+    $('.slideshow.flexslider').flexslider();
 
-  // Make nav menu nice & responsive
-  $('nav.main-nav').responsiveNav({
-    navType: 'offCanvas', //default option for dropdown type use 'dropdown'
-    closeOnOutsideClick: true,
-    showTabsOnFocus: true,
-  })
+    // Make nav menu nice & responsive
+    $('nav.main-nav').responsiveNav({
+        navType: 'offCanvas', //default option for dropdown type use 'dropdown'
+        closeOnOutsideClick: true, //set to false if using dropdown type
+        showTabsOnFocus: true,
+    });
 
-  // Responsive Videos
-  $('.rtecontent').fitVids()
+    // Responsive Videos
+    $('.rtecontent').fitVids();
 
-  // Accordions
-  $('dl.accordion').accordion()
+    // Accordions
+    $('dl.accordion').accordion();
 
-  // gallery flexslider
-  $('.gallery-slideshow.flexslider').flexslider({
-    controlNav: 'thumbnails'
-  })
+    // gallery flexslider
+    $('.gallery-slideshow.flexslider').flexslider({
+        controlNav: 'thumbnails'
+    });
 
 })(jQuery)

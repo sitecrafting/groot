@@ -37,13 +37,17 @@ export default (($) => {
 
     // target dropdown element, which may be distinct from $this
     const $dropdownElem = options.dropdownSelector ?
-      $(options.dropdownSelector) :
-      $this
+                            $(options.dropdownSelector) :
+                            $this
 
     function _menuIsOpen() {
-      return $this.hasClass( options.activeClass )
+      //site wrapper has the menu-open class
+      return $menuButton.hasClass( options.activeClass )
     }
 
+    /*
+    * CLOSE NAVIGATION SETUP
+    */
     function _closeDropdownNav() {
       $dropdownElem.slideUp()
     }
@@ -57,14 +61,18 @@ export default (($) => {
       offCanvas: _closeOffCanvasNav,
     }
 
+    //set what type of closeNav we want
     const closeNavStrategy = closeNavStrategies[options.navType] || _closeOffCanvasNav
 
+    //THIS IS THE ACTUAL FUNCTIoN THAT GETS CALLED TO CLOSE THE NAV
     function closeNav() {
       closeNavStrategy()
-      $this.removeClass( options.activeClass )
+      $menuButton.removeClass( options.activeClass )
     }
 
-
+    /*
+    * OPEN NAVIGATION SETUP
+    */
     function _openDropdownNav() {
       $dropdownElem.slideDown()
     }
@@ -77,16 +85,18 @@ export default (($) => {
       dropdown: _openDropdownNav,
       offCanvas: _openOffCanvasNav,
     }
+    //set what type of closeNav we want
     const openNavStrategy = openNavStrategies[options.navType] || _openOffCanvasNav
 
+    //THIS IS THE ACTUAL FUNCTION THAT GETS CALLED TO OPEN THE NAV
     function openNav() {
-      openNavStrategy()
 
-      $this.addClass( options.activeClass )
+      openNavStrategy()
+      $menuButton.addClass( options.activeClass )
 
       if (options.closeOnOutsideClick) {
         // close the menu when the user clicks anywhere outside it
-        $(options.wrapperSelector).one(
+        $(options.wrapperSelector).on(
           'touchstart, click',
           function _onOutsideClick(evt) {
             //if not nav container or a decendant of nav container
@@ -97,9 +107,7 @@ export default (($) => {
       }
     }
 
-
-
-
+    //KEYBOARD FUNCTIONALITY
     if (options.showTabsOnFocus) {
       // Adding quick Tab Functionality for Navigation
       $('nav.main-nav > ul > li.menu-item-has-children > a').focus( function () {
@@ -116,63 +124,34 @@ export default (($) => {
       })
     }
 
+    const sublevelNav = function() {
+		$this.find('span.dropper').each(function(){
+			$(this).bind('touchstart, click', function(event) {
 
-    const secondlevelNav = function() {
-      $this.find('ul.menu > li.menu-item-has-children > a > span.dropper').each(function(){
-        $(this).on('touchstart, click', function(event) {
+				event.stopPropagation();
+				event.preventDefault();
 
-          event.stopPropagation()
-          event.preventDefault()
+				//if menu is open and the subnav is not visible and subnav exists
+				if ( _menuIsOpen() && !$(this).parent().next().is(':visible') && $(this).parent().next().length > 0) {
 
-          if ( _menuIsOpen() && !$(this).parent().next().is(':visible') && $(this).parent().next().length > 0) {
+					//close what's already open at the same level
+					//remove toggle class from the li and slide up its child ul
+					$(this).parent().parent().siblings().removeClass('toggle').children('ul').slideUp(250);
 
-            //close what's already open
-            $this.find('ul.menu li').removeClass('toggle')
-            $this.find('ul.menu > li ul').slideUp(250)
+					//expand current click
+					$(this).parent().parent().addClass('toggle');
+					$(this).parent().next('ul').slideDown(250);
 
-            //expand current click
-            $(this).parent().parent().addClass('toggle')
-            $(this).parent().next('ul').slideDown(250)
+				}
+				else if ( _menuIsOpen() && $(this).parent().next('ul').is(':visible') ) {
+						//close this item
+						$(this).parent().parent().removeClass('toggle');
+						$(this).parent().next('ul').slideUp(250);
+				}
 
-          }
-          else if ( _menuIsOpen() && $(this).parent().next('ul').is(':visible') ) {
-            //close this item
-            $(this).parent().parent().removeClass('toggle')
-            $(this).parent().next('ul').slideUp(250)
-          }
-
-        }) //end on
-      })//end find span.dropper
-    }//end secondlevelNav
-
-    const thirdlevelNav = function() {
-      $this.find('ul.menu > li.menu-item-has-children > ul > li.menu-item-has-children > a > span.dropper').each(function(){
-        $(this).on('touchstart, click', function(event) {
-
-          event.stopPropagation()
-          event.preventDefault()
-
-          if ( _menuIsOpen() && !$(this).parent().next().is(':visible') && $(this).parent().next().length > 0) {
-
-            //close what's already open
-            $this.find('ul.menu > li ul > li').removeClass('toggle')
-            $this.find('ul.menu > li ul > li ul').slideUp(250)
-
-            //expand current click
-            $(this).parent().parent().addClass('toggle')
-            $(this).parent().next('ul').slideDown(250)
-
-          }
-          else if ( _menuIsOpen() && $(this).parent().next('ul').is(':visible') ) {
-
-            //close this item
-            $(this).parent().parent().removeClass('toggle')
-            $(this).parent().next('ul').slideUp(250)
-          }
-
-        }) //end on
-      })//end find span.dropper
-    }//end fn thirdlevelNav
+			}); //end bind
+		});//end find span.dropper
+	};//end sublevelNav
 
     const activeToggleFn = function(){
       //on mobile check for active navigation and set open accordingly
@@ -210,10 +189,12 @@ export default (($) => {
       }
     })
 
+    //IF DROPDOWN TYPE SET CLASSNAME
+    if( options.navType === 'dropdown' ){
+        $dropdownElem.addClass('main-nav-dropdown');
+    }
 
-
-    secondlevelNav()
-    thirdlevelNav()
+    sublevelNav()
     activeToggleFn()
 
     $(window).resize( debounce(options.debounceTime, function() {
@@ -221,7 +202,10 @@ export default (($) => {
       if( !$menuButton.is(':visible') ) {
         //close mobile menu
         if ( _menuIsOpen() ) {
-          closeNav()
+          //closeNav() - we dont want to run the function cause we dont want all transitions with the dropdown
+          $menuButton.removeClass( options.activeClass );
+          $wrapper.removeClass( options.menuOpenWrapperClass );
+          $this.removeAttr('style');
         }
         //remove any inline styles from subnavigation
         $this.find( 'ul' ).removeAttr( 'style' )

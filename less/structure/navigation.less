@@ -1,26 +1,31 @@
+//styles for showing dropdown
+.show-dropdown(){
+	left: 50%;
+	transform: translateX(-50%);
+	opacity: 1;
+}
 
 nav.main-nav{
-	margin-top: 20px;
-	float: right;
 	position: relative;
+	align-self: flex-end;
 	z-index: (@zindex-base + 505);
 
 	ul.menu{
-		.plain-list;
+		.plain-list();
 
 		display: flex;
 		align-items: center;
 		justify-content: flex-end;
 
 		li{ //top level li
-
 			position: relative;
-			padding-bottom: 18px;
-
+			padding-bottom: 15px;
 			a{
 				display: block;
 				padding: 15px 20px;
-				font-size: @nav-font-size;
+				font: 700 16px/1.2 @font-family-headings;
+				text-transform: uppercase;
+				letter-spacing: .5px;
 
 				&:hover{ text-decoration: none; }
 
@@ -31,49 +36,73 @@ nav.main-nav{
 				.plain-list;
 				position: absolute;
 				left: -9999em;
-				width: 250px;
-				margin: 18px 0 0 0;
-				background: @gray;
+				width: 200px;
+				margin: 15px 0 0 0;
+				padding: 10px 0;
+
+				background: @white;
 				opacity: 0;
 				transition: opacity @trans-speed ease;
 				z-index: (@zindex-base + 10);
 
+				&:before{
+					content: "";
+					display: block;
+					width: 20px;
+					height: 20px;
+					border-radius: 3px;
+					background: @white;
+					position: absolute;
+					top: 0;
+					left: 50%;
+					transform: rotate(45deg) translateX(-50%);
+				}
+
 				li{
 					display: block;
+					padding: 0;
 					a{
-						font-size: (@nav-font-size + -2);
+						padding: 10px 15px;
+						color: @text-color;
+						&:hover{ color: @primary-color1; }
 					}
 				}
 
 				ul{ display: none; } //hide all other levels
 
 				&.tab-show{
-					left: auto;
-					opacity: 1;
+					.show-dropdown();
 				}
 
 			}//end second level ul
 
+			//TOP ACTIVE STYLES
 			&.current-menu-item, &.current-menu-ancestor{
 				> a{ color: @white; }
 			}
+			//TOP HOVER STYLES
 			&:hover{
 				> a{ color: @white; }
-				ul{
-					left: auto;
-					opacity: 1;
+				> ul{
+					.show-dropdown();
 				}
 			}
 
+			//LAST CHILD DROPDOWN BUT FAVOR RIGHT EDGE SO IT DOESNT RUN OF SCREEN
 			&:last-child{
-					//second level (dropdown)
-					ul.tab-show{ right: 0; }
-					&:hover ul{ right: 0; }
+				//second level (dropdown)
+				> ul{
+					&:before{
+						left: auto;
+						right: 15px;
+					}
+				}
+				> ul.tab-show,
+				&:hover > ul{ left: auto; transform: none; right: 0; }
 			}
 
 		}//end li
-
-	}//end ul
+	}//end ul.menu
 
 
 	@media @tablet-all, @mobile-all{
@@ -85,7 +114,7 @@ nav.main-nav{
 		left: auto; bottom: auto;
 		padding: 20px;
 		margin: 0;
-		background: @gray;
+		background: @white;
 
 		&.main-nav-dropdown{
 			display: none;
@@ -104,16 +133,20 @@ nav.main-nav{
 				display: block;
 				margin: 0;
 				padding: 0;
-				border-bottom: 1px solid @gray-dark;
 
 				a{
 					position: relative;
 					z-index: @zindex-base;
 					padding: 10px;
+					color: @text-color;
+				}
+
+				&:hover{
+					> a{ color: @primary-color1; }
 				}
 
 				&.menu-item-has-children{
-					a{
+					> a{
 						margin-right: 35px;
 
 						span.dropper{
@@ -124,17 +157,15 @@ nav.main-nav{
 							width: 35px;
 							height: 100%;
 							cursor: pointer;
-							z-index: (@zindex-base + 100);
 							&:before, &:after{
 								content: "";
 								display: block;
 								position: absolute;
-								top: 20px;
+								top: 17px;
 								right: 0px;
 								width: 16px;
 								height: 2px;
 								background: @primary-color1;
-								border-radius: 1px;
 							}
 							&:after{
 								transform: rotate(-90deg);
@@ -159,26 +190,38 @@ nav.main-nav{
 					border: 0;
 					padding: 5px 0;
 					margin: 0;
-					border-top: 1px solid @gray-dark;
 					background: none;
+
+					&:before{ display: none; }
 
 					li{
 						padding: 0;
 						border: 0;
 						a{
-							padding: 8px 15px;
+							padding: 8px 0 8px 25px;
+							font-size: 14px;
+							&:hover{ color: @primary-color1; }
 						}
 						&.menu-item-has-children{
-							a{
-								span.dropper{ &:before, &:after{ top: 15px; } }
+							> a{
+								span.dropper{ &:before, &:after{ top: 14px; } }
 							}
 						}
 
 						//third level
 						ul{
-							border: 0;
-							margin-left: 20px;
-							li a{ font-size: 12px; }
+							padding: 0;
+							margin: 5px 0 8px 25px;
+							border-left: 2px solid @black;
+							li{
+								a{
+									padding: 8px 0 8px 10px;
+									font-size: 12px;
+									text-transform: none;
+								}
+								&:first-child a{ padding-top: 0; }
+								&:last-child a{ padding-bottom: 0; }
+							}
 						}
 
 					}//end second level li

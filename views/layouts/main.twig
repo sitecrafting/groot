@@ -19,45 +19,54 @@
 </head>
 <body class="{{ body_classes | join(' ') }}">
 
-	<div class="site-wrapper">
-		<div class="site-pusher">
+<div class="site-wrapper"><div class="site-pusher">
 
-			{% block container_content %}
-				<header class="site-header outer-gutter" itemscope itemtype="http://schema.org/Organization">
-					<div class="container">
-						<a class="logo" href="/" title="{{ site.name }}" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-							<img src="https://placehold.it/430x100/00aeef/000?text={{ site.name | url_encode }}" srcset="https://placehold.it/215x50/00aeef/000?text={{ site.name | url_encode }} 1x, https://placehold.it/430x100/00aeef/000?text={{ site.name | url_encode }} 2x" alt="{{ site.name }}" />
-							<!-- Rich Snippet/schema.org markup about this Organization -->
-							<meta itemprop="url" content="{{ img_url('logo.png') }}">
-							<meta itemprop="name" content="{{ site.name }}">
-							<meta itemprop="url" content="{{ site.url }}">
-							<meta itemprop="description" content="{{ site.description }}">
-						</a>
+	{% block header %}
+		<header class="site-header" itemscope itemtype="http://schema.org/Organization">
+			<div class="container">
 
-						{# {{ get_search_form() }} #}
-						{% include 'partials/nav.twig' with { menu: primary_menu } only %}
-					</div>
-				</header>
+				<a class="logo" href="/" title="{{ site.name }}" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+					<img src="{{ img_url('logo.svg') }}" alt="{{ site.name }}" />
+					<!-- Rich Snippet/schema.org markup about this Organization -->
+					<meta itemprop="url" content="{{ img_url('logo.svg') }}">
+					<meta itemprop="name" content="{{ site.name }}">
+					<meta itemprop="url" content="{{ site.url }}">
+					<meta itemprop="description" content="{{ site.description }}">
+				</a>
 
-				<main class="site-main">
-						{% block main_content %}
-							Default main content
-						{% endblock %}
-				</main>
+				{# {{ get_search_form() }} #}
 
-				<footer class="site-footer outer-gutter">
-					{% block footer %}
-						&copy; {{ 'now' | date('Y') }} {{ site.name }}<br>
-						<a href="https://www.sitecrafting.com" target="_blank">Website Design and Development by SiteCrafting</a>
-					{% endblock %}
-				</footer>
+				<a class="menu-btn">
+				    <div class="toggle"><span></span><span></span><span></span><span></span></div>
+				    <span>Menu</span>
+				</a>
 
-			{% endblock %}
+				{% include 'partials/nav.twig' with { menu: primary_menu } only %}
 
-		</div>
-	</div>
+			</div>
+		</header>
+	{% endblock %}
 
-	<!-- everything below here is included automagically by WP -->
-	{{ wp_footer }}
+	<main class="site-main">
+		{% block main_content %}
+			Default main content
+		{% endblock %}
+	</main>
+
+	{% block footer %}
+		<footer class="site-footer">
+
+				&copy; {{ 'now' | date('Y') }} {{ site.name }}<br>
+				<a href="https://www.sitecrafting.com" target="_blank">Website Design and Development by SiteCrafting</a>
+
+		</footer>
+	{% endblock %}
+
+</div></div><!-- //.site-pusher //.site-wrapper -->
+
+{# everything below here is included automagically by WP #}
+{{ wp_footer }}
+
+
 </body>
 </html>

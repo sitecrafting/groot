@@ -10,7 +10,7 @@
 //
 // Example usage:
 //
-// * { background-image: url(~'@{theme-path}img/icons/my-icon.svg'); }
+// * { background-image: url('@{theme-path}img/icons/my-icon.svg'); }
 //
 // TODO update this to your project-specific name
 // This step will go away once
@@ -40,7 +40,7 @@
 
 @trans-speed:			.25s;
 
-@max-width:             1700px;
+@max-width:             100%;
 @container-width:       1200px;
 
 @gutter:                40px;
@@ -48,7 +48,6 @@
 @gutter-mobile:         15px;
 
 @off-canvas-width:		250px;
-
 @header-height:       90px;
 
 // Links
@@ -57,8 +56,8 @@
 
 // Typography
 // -------------------------
-@font-family-base:        arial, sans-serif;
-@font-family-headings:     garamond, times, serif;
+@font-family-base:          'Open Sans', arial, sans-serif;
+@font-family-headings:      'Roboto Condensed',  arial, sans-serif;
 
 @font-size-base:        16px;
 @line-height:        	1.4;
@@ -118,3 +117,5 @@
 
 @desktop-sml:               ~"only screen and (min-width: 1024px) and (max-width: 1249px)";
 @desktop:                   ~"only screen and (min-width: 1250px)";
+
+@mobile-menu:               @tablet-all, @mobile-all;
