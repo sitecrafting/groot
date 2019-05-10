@@ -2,72 +2,60 @@
   width: 280px;
   display: none;
   max-width: 100%;
-  margin-top: 15px;
   text-align: center;
   background: @white;
-  border: 1px solid @gray-f3;
-
-    &:before {
-      content: "";
-      width: 0;
-      height: 0;
-      display: block;
-      position: absolute;
-      margin: -15px 0 0 130px;
-      border-left: 15px solid transparent;
-	    border-right: 15px solid transparent;
-
-	    border-bottom: 15px solid @gray-f3;
-    }//:before
+  border: 1px solid @gray-cc;
 
     .ui-datepicker-header {
       font-weight: 600;
       color: @text-color;
-      padding: 20px 40px;
+      padding: 10px 35px 10px;
       position: relative;
+
+      select{
+          display: inline-block;
+          margin: 0 5px;
+          height: 40px;
+          padding: 5px 20px 5px 10px;
+          background-size: 15px auto;
+          background-position: right 5px top 15px;
+          width: 90px;
+      }
 
         a {
           top: 50%;
-          left: 20px;
+          left: 15px;
           width: 12px;
           height: 18px;
-          opacity: .5;
           display: block;
           cursor: pointer;
-          margin-top: -9px;
+          margin-top: -6px;
           overflow: hidden;
           text-indent: 100%;
           position: absolute;
           white-space: nowrap;
-          // NOTE: webpack complains about datepicker-carets@2x.png missin
-          // when this is uncommented
-          //background: url(../img/datepicker-carets@2x.png) 0 0 no-repeat;
-          background-size: 24px 17px;
+          background: url('@{theme-path}/img/arrows/chevron-left.svg') 0 0 no-repeat;
+          background-size: auto 17px;
 
           &.ui-datepicker-next {
             left: auto;
-            right: 20px;
-            background-position: -12px 0;
+            right: 15px;
+            background-image: url('@{theme-path}/img/arrows/chevron-right.svg');
           }//.ui-datepicker-next
 
-          &:hover { opacity: 1; }
         }//a
     }//.ui-datepicker-header
 
     table {
       width: 100%;
+      border-collapse: collapse;
 
         tr {
-          //zebra striping
-          &:nth-of-type(2n) {
-            background: #f8f9fa;
-          }//nth-of-type
-
             th {
               font-size: 12px;
-              padding-bottom: 3px;
-              font-weight: normal;
+              font-weight: 700;
               text-transform: uppercase;
+              background: @gray-f3;
 
                 span {
                   width: 100%;
@@ -80,7 +68,7 @@
             td {
               padding: 5px;
               font-size: 14px;
-              border: 1px solid #f4f4f4;
+              border: 1px solid @gray-cc;
               border-bottom: none;
 
               &:first-of-type { border-left: none; }
@@ -93,13 +81,14 @@
 
               //selected day styles
               &.ui-datepicker-current-day {
-                a { color: @blue; }
+                  background: @blue;
+                a { color: @white; }
               }//
 
               //current day styles
               &.ui-datepicker-today {
-                background: lighten(@blue, 45%);
-                  a { color: @blue; }
+                //background: lighten(@primary-color1, 45%);
+                  //a { color: @primary-color1; }
               }//.ui-datepicker-today
             }//td
 
