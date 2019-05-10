@@ -20,7 +20,7 @@
 
                 {# FLEXIBLE LAYOUTS #}
                 {% include 'partials/content-layouts.twig' with { layouts: post.meta('layouts') } only %}
-                
+
             </div>
 
             {# SIDE COLUMN #}
@@ -32,5 +32,7 @@
 
     </div><!-- END .container -->
 </section>
+
+{% include 'partials/call-to-action.twig' %}
 
 {% endblock %}

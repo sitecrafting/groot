@@ -4,7 +4,7 @@
 
         {% include 'partials/content-layouts/' ~ layout.acf_fc_layout ~ '.twig'
             ignore missing
-            with { layout : layout } only
+            with { layout : layout, parent_loop : loop } only
         %}
 
     </div>
