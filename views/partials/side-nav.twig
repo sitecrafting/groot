@@ -1,9 +1,9 @@
 {% if menu.get_current_top_level_item().get_children() %}
 	<nav class="col-side-nav">
 
-		<h3 class="side-nav-title"><a href="{{ menu.get_current_top_level_item().get_path }}">{{ menu.get_current_top_level_item().title }}</a></h3>
+		<h3 class="col-side-nav__title"><a href="{{ menu.get_current_top_level_item().get_path }}">{{ menu.get_current_top_level_item().title }}</a></h3>
 
-		<ul class="side-menu">
+		<ul class="col-side-nav__menu">
 			{% for item in menu.get_current_top_level_item().get_children() %}
 
 				<li class="{{ item.classes | join(' ') }}">

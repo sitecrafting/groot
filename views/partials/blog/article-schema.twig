@@ -1,0 +1,10 @@
+{# Rich Snippet markup for this blog post. See: https://developers.google.com/search/docs/data-types/articles #}
+<meta itemprop="dateModified" content="{{ post.modified_date | date('c') }}">
+<span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="{{ site.name }}">
+    <span itemscope itemprop="logo" itemtype="http://schema.org/ImageObject">
+    <meta itemprop="url" content="{{ img_url('logo.png') }}">
+    <meta itemprop="width" content="395">
+    <meta itemprop="height" content="60">
+    </span>
+</span>

@@ -9,4 +9,4 @@ use Conifer\Post\Page;
 $data = $site->get_context_with_post( new Page() );
 
 // Render the default view
-Timber::render( [$data['post']->slug.'.twig', 'page.twig'], $data );
+Timber::render( 'page.twig', $data );

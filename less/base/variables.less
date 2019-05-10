@@ -20,93 +20,87 @@
 
 // Grays
 // -------------------------
-@gray-darker:            #222;
-@gray-dark:              #333;
-@gray:                   #555;
-@gray-light:             #999;
-@gray-lighter:           #eee;
+@gray-cc:                       #ccc;
+@gray-f3:                       #f3f3f3;
 
 // Brand colors
 // -------------------------
-@primary-color1:       #00aeef;
+@blue:                          #00aeef;
 
-@black:				#000;
-@white:				#fff;
+@black:				            #000;
+@white:				            #fff;
 
 // Scaffolding
 // -------------------------
-@body-bg:               #f3f3f3;
-@text-color:            @gray-dark;
+@body-bg:                       @white;
+@text-color:                    @black;
 
-@trans-speed:			.25s;
+@trans-speed:			        250ms;
 
-@max-width:             100%;
-@container-width:       1200px;
+@max-width:                     100%;
+@container-width:               1200px;
 
-@gutter:                40px;
-@gutter-tablet:         25px;
-@gutter-mobile:         15px;
+@gutter:                        40px;
+@gutter-tablet:                 25px;
+@gutter-mobile:                 15px;
 
-@off-canvas-width:		250px;
-@header-height:       90px;
+@off-canvas-width:		        250px;
+@header-height:                 90px;
 
 // Links
 // -------------------------
-@link-color:            @primary-color1;
+@link-color:                    @blue;
 
 // Typography
 // -------------------------
-@font-family-base:          'Open Sans', arial, sans-serif;
-@font-family-headings:      'Roboto Condensed',  arial, sans-serif;
+@font-family-base:              'Open Sans', arial, sans-serif;
+@font-family-headings:          'Roboto Condensed',  arial, sans-serif;
 
-@font-size-base:        16px;
-@line-height:        	1.4;
+@font-size-base:                16px;
+@line-height:        	        1.8;
 
-@font-size-h1:            36px;
-@font-size-h2:            30px;
-@font-size-h3:            24px;
-@font-size-h4:            20px;
-@font-size-h5:            16px;
-@font-size-h6:            16px;
+@font-size-h1:                  42px;
+@font-size-h2:                  35px;
+@font-size-h3:                  30px;
+@font-size-h4:                  25px;
+@font-size-h5:                  20px;
+@font-size-h6:                  18px;
 
-@headings-font-weight:    700;
-@headings-line-height:    1.1;
-@headings-color:          @primary-color1;
+@headings-font-weight:          700;
+@headings-line-height:          1.1;
+@headings-color:                @blue;
 
-@nav-font-size:		16px;
+//MOBILE FONT CHANGES
+@font-size-base-m:              14px;
+@font-size-h1-m:                38px;
+@font-size-h2-m:                32px;
+@font-size-h3-m:                28px;
+@font-size-h4-m:                22px;
+@font-size-h5-m:                18px;
+@font-size-h6-m:                16px;
 
 // Forms
 // -------------------------
 @input-bg:                       @white;
-@input-bg-disabled:              @gray-lighter;
+@input-bg-disabled:              @gray-f3;
 
 @input-color:                    @text-color;
-@input-border:                   @gray-light;
+@input-border:                   @gray-cc;
 
-@input-border-focus:            @primary-color1;
+@input-border-focus:             @blue;
 
 @input-color-placeholder:        @text-color;
-@input-font-size:               16px;
+@input-font-size:                16px;
 
-@input-height:                  55px;
-@input-padding:                 10px;
-@input-bottom-margin:           20px;
-
-// Z-index master list
-@zindex-base:            500;
+@input-height:                   55px;
+@input-padding:                  10px;
+@input-bottom-margin:            20px;
 
 
 // Media queries breakpoints
 // --------------------------------------------------
 // Breakpoints
 // -------------------------
-//Source: http://blog.scur.pl/2012/06/variable-media-queries-less-css/
-@highdensity: ~"only screen and (-webkit-min-device-pixel-ratio: 1.5)",
-              ~"only screen and (min--moz-device-pixel-ratio: 1.5)",
-              ~"only screen and (-o-min-device-pixel-ratio: 3/2)",
-              ~"only screen and (min-device-pixel-ratio: 1.5)";
-
-
 @mobile-sml:                ~"only screen and (max-width: 529px) ";
 @mobile-lg:                 ~"only screen and (min-width: 530px) and (max-width: 767px)";
 @mobile-all:                ~"only screen and (max-width: 767px)";
@@ -116,6 +110,7 @@
 @tablet-all:                ~"only screen and (min-width: 768px) and (max-width: 1023px)";
 
 @desktop-sml:               ~"only screen and (min-width: 1024px) and (max-width: 1249px)";
-@desktop:                   ~"only screen and (min-width: 1250px)";
+@desktop-lg:                ~"only screen and (min-width: 1250px)";
+@desktop-all:               ~"only screen and (min-width: 1024px)";
 
 @mobile-menu:               @tablet-all, @mobile-all;

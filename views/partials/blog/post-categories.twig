@@ -1,6 +1,8 @@
 {% if post.get_categories %}
-	Categories:
+<div class="post-categories">
+	<span>Categories:</span>
 	{% for category in post.get_categories %}
-		<span class="category category-{{category.slug}}"><a href="{{category.link}}">{{category}}</a></span>{{ loop.last ? '' : ',' }}
+		<a href="{{ category.link }}">{{ category }}</a>{{ loop.last ? '' : ',' }}
 	{% endfor %}
+</div>
 {% endif %}

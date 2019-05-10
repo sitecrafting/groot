@@ -1,12 +1,25 @@
+/*==============================
+	# TABLE OF CONTENTS
+		# Global styles
+		# Alignments
+		# Captions
+		# Default WP Gallery
+		# RTECONTENT - global Overrides
+================================*/
 
+/*===========================
+# GLOBAL STYLES
+===========================*/
 body{
 	background: @body-bg;
 	font: normal @font-size-base/@line-height @font-family-base;
 	color: @text-color;
+
+	@media @mobile-all{
+		font-size: @font-size-base-m;
+	}
 }
-// --------------------------------------------------
-// Headings
-// -------------------------
+
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6{
 	line-height: @headings-line-height;
@@ -26,6 +39,15 @@ h4, .h4{ font-size: @font-size-h4; }
 h5, .h5{ font-size: @font-size-h5; }
 h6, .h6{ font-size: @font-size-h6; }
 
+@media @mobile-all{
+	h1, .h1{ font-size: @font-size-h1-m; }
+	h2, .h2{ font-size: @font-size-h2-m; }
+	h3, .h3{ font-size: @font-size-h3-m; }
+	h4, .h4{ font-size: @font-size-h4-m; }
+	h5, .h5{ font-size: @font-size-h5-m; }
+	h6, .h6{ font-size: @font-size-h6-m; }
+}
+
 a {
     color: @link-color;
     text-decoration: none;
@@ -43,16 +65,29 @@ p { margin: 20px 0; }
 
 ol, ul{
 	margin: 25px;
-	li > ul,
-	li > ol {
-		margin: 5px 0 10px 25px;
+	li{
+		margin: 10px 0;
+		> ul,
+		> ol {
+			margin: 5px 0 10px 25px;
+		}
 	}
 }
 
 dd{ margin: 20px; }
 
-hr { border: 0; border-bottom: 1px solid @gray-lighter; height: 0px; margin: 30px 0; padding: 0; width: 100%; }
-pre, code, blockquote { padding: 30px; }
+hr { border: 0; border-bottom: 1px solid @gray-f3; height: 0px; margin: 30px 0; padding: 0; width: 100%; }
+code{
+	display: inline-block;
+	padding: 2px 5px;
+	background: @gray-f3;
+	color: #000;
+}
+pre, blockquote {
+	padding: 30px;
+    background: @gray-f3;
+	overflow: scroll;
+}
 
 //prevent default italics on address tags
 address{ font-style: normal; }
@@ -66,32 +101,6 @@ object {
 	max-width: 100%;
 }
 
-/*--------------------------------------------------------------
-# Alignments
---------------------------------------------------------------*/
-.alignleft {
-	display: inline;
-	float: left;
-	margin-right: 20px;
-}
-
-.alignright {
-	display: inline;
-	float: right;
-	margin-left: 20px;
-}
-
-.aligncenter {
-	clear: both;
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.rtecontent{
-	& > *:first-child{ margin-top: 0; }
-}
-
 .clearfix, .rtecontent {
   .clearfix();
 }
@@ -103,11 +112,33 @@ object {
   visibility: hidden !important;
 }
 
-/*--------------------------------------------------------------
+
+/*===========================
+# Alignments
+===========================*/
+.alignleft {
+	display: block;
+	float: left;
+	margin-right: 30px;
+}
+
+.alignright {
+	display: block;
+	float: right;
+	margin-left: 30px;
+}
+
+.aligncenter {
+	clear: both;
+	display: block;
+	margin: 20px auto;
+}
+
+
+/*===========================
 ## Captions
---------------------------------------------------------------*/
+===========================*/
 .wp-caption {
-	margin-bottom: 20px;
 	max-width: 100%;
 }
 
@@ -117,17 +148,15 @@ object {
 	margin-right: auto;
 }
 
-.wp-caption .wp-caption-text {
-	margin: 10px 0;
-}
-
 .wp-caption-text {
+	margin: 5px 0 0;
 	text-align: center;
+	font-size: @font-size-base - 4px;
 }
 
-/*--------------------------------------------------------------
+/*===========================
 ## Wordpress Galleries
---------------------------------------------------------------*/
+===========================*/
 .gallery {
 	margin-top: 20px;
 	display: flex;
@@ -139,6 +168,20 @@ object {
 	margin-left: -20px;
 
 	br{ display: none !important; }
+
+	&.gallery-columns-5,
+	&.gallery-columns-6,
+	&.gallery-columns-7,
+	&.gallery-columns-8,
+	&.gallery-columns-9{
+		margin-right: -10px;
+		margin-left: -10px;
+	}
+
+	@media @tablet-all, @mobile-all{
+		margin-right: -10px;
+		margin-left: -10px;
+	}
 }
 
 .gallery-item {
@@ -148,8 +191,25 @@ object {
 	width: 100%;
 	padding-left: 20px;
 	padding-right: 20px;
+	padding-bottom: 40px;
 
 	img{ display: block; width: 100% !important; height: auto !important; }
+
+	@media @tablet-all, @mobile-all{
+		padding-left: 10px;
+		padding-right: 10px;
+		padding-bottom: 20px;
+	}
+}
+
+.gallery-columns-5 .gallery-item ,
+.gallery-columns-6 .gallery-item ,
+.gallery-columns-7 .gallery-item ,
+.gallery-columns-8 .gallery-item ,
+.gallery-columns-9 .gallery-item {
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 20px;
 }
 
 .gallery-columns-2 .gallery-item {
@@ -160,48 +220,107 @@ object {
 .gallery-columns-3 .gallery-item {
 	flex: 0 0 33.33%;
 	max-width: 33.33%;
+	@media @mobile-all{
+		flex-basis: 50%;
+		max-width: 50%;
+	}
 }
 
 .gallery-columns-4 .gallery-item {
 	flex: 0 0 25%;
 	max-width: 25%;
+	@media @mobile-all{
+		flex-basis: 50%;
+		max-width: 50%;
+	}
 }
 
 .gallery-columns-5 .gallery-item {
 	flex: 0 0 20%;
 	max-width: 20%;
+	@media @tablet-all{
+		flex-basis: 33.33%;
+		max-width: 33.33%;
+	}
+	@media @mobile-all{
+		flex-basis: 50%;
+		max-width: 50%;
+	}
 }
 
 .gallery-columns-6 .gallery-item {
 	flex: 0 0 16.66%;
 	max-width: 16.66%;
+	@media @tablet-all{
+		flex-basis: 33.33%;
+		max-width: 33.33%;
+	}
+	@media @mobile-all{
+		flex-basis: 50%;
+		max-width: 50%;
+	}
 }
 
 .gallery-columns-7 .gallery-item {
 	flex: 0 0 14.28%;
 	max-width: 14.28%;
+	@media @tablet-all{
+		flex-basis: 33.33%;
+		max-width: 33.33%;
+	}
+	@media @mobile-all{
+		flex-basis: 50%;
+		max-width: 50%;
+	}
 }
 
 .gallery-columns-8 .gallery-item {
 	flex: 0 0 12.5%;
 	max-width: 12.5%;
+	@media @tablet-all{
+		flex-basis: 33.33%;
+		max-width: 33.33%;
+	}
+	@media @mobile-all{
+		flex-basis: 50%;
+		max-width: 50%;
+	}
 }
 
 .gallery-columns-9 .gallery-item {
 	flex: 0 0 11.11%;
 	max-width: 11.11%;
+	@media @tablet-all{
+		flex-basis: 33.33%;
+		max-width: 33.33%;
+	}
+	@media @mobile-all{
+		flex-basis: 50%;
+		max-width: 50%;
+	}
 }
 
 .gallery-caption {
 	display: block;
 	margin: 0;
-	padding: 10px 5px 40px 5px;
-	font-size: (@font-size-base - 3px);
+	padding: 10px 5px 0 5px;
+	font-size: @font-size-base - 4px;
 }
 
-/*--------------------------------------------------------------
+/*===========================
+	RTE CONTENT
+=============================*/
+.rtecontent{
+	& > *:first-child{ margin-top: 0; }
+	& > *:last-child{ margin-bottom: 0; }
+
+	.alignleft + *, .alignright + *{ margin-top: 0; }
+
+}
+
+/*===========================
 # Accessibility
---------------------------------------------------------------*/
+=============================*/
 /* Text meant only for screen readers. */
 .screen-reader-text {
 	clip: rect(1px, 1px, 1px, 1px);

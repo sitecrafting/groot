@@ -1,6 +1,6 @@
 .btn{
     display: inline-block;
-    padding: 20px 30px;
+    padding: 15px 40px;
     cursor: pointer;
     border-radius: 0;
     border: 0;
@@ -11,22 +11,21 @@
     letter-spacing: .5px;
     font: 700 16px/1.1 @font-family-headings;
 
-    background: @primary-color1;
+    background: @blue;
     -webkit-appearance: none;
 
     transition: all @trans-speed ease;
 
     &:hover {
         text-decoration: none;
-        background: darken(@primary-color1,5%);
+        background: darken(@blue,5%);
     }
 
 }
 
 .btn--disabled{
-    background: @gray-lighter;
-    border-color: @gray-light;
-    color: @gray-light;
+    background: @gray-f3;
+    color: @black;
     cursor: not-allowed;
-    &:hover{ background: @gray-lighter; }
+    &:hover{ background: @gray-f3; }
 }

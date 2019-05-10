@@ -1,11 +1,15 @@
 <aside class="col-side-bar">
-  {% for sideBlock in blocks %}
-  <div class="side-block">
-      {% if sideBlock.sidebar_title %}<h3 class="title">{{ sideBlock.sidebar_title }}</h3>{% endif %}
-      <div class="rtecontent">{{ sideBlock.sidebar_content }}</div>
-      {% if sideBlock.sidebar_more_link.url %}
-            <a href="{{ sideBlock.sidebar_more_link.url }}"{{ sideBlock.sidebar_more_link.target ? ' target="_blank"':'' }}>{{ sideBlock.sidebar_more_link.text|default('Learn More') }}</a>
-      {% endif %}
-  </div>
-  {% endfor %}
+    
+      {% for sideBlock in blocks %}
+          <div class="sidebar-box">
+              <h3 class="sidebar-box__title"><h3 class="title">{{ sideBlock.sidebar_title }}</h3>
+              <div class="sidebar-box__content">
+                  <div class="rtecontent">{{ sideBlock.sidebar_content }}</div>
+                  {% if sideBlock.sidebar_more_link.url %}
+                        <a href="{{ sideBlock.sidebar_more_link.url }}"{{ sideBlock.sidebar_more_link.target ? ' target="_blank"':'' }}>{{ sideBlock.sidebar_more_link.text|default('Learn More') }}</a>
+                  {% endif %}
+              </div>
+          </div>
+      {% endfor %}
+
 </aside>

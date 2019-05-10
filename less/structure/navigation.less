@@ -8,7 +8,7 @@
 nav.main-nav{
 	position: relative;
 	align-self: flex-end;
-	z-index: (@zindex-base + 505);
+	z-index: 1050;
 
 	ul.menu{
 		.plain-list();
@@ -19,6 +19,7 @@ nav.main-nav{
 
 		li{ //top level li
 			position: relative;
+			margin: 0;
 			padding-bottom: 15px;
 			a{
 				display: block;
@@ -43,7 +44,7 @@ nav.main-nav{
 				background: @white;
 				opacity: 0;
 				transition: opacity @trans-speed ease;
-				z-index: (@zindex-base + 10);
+				z-index: 1060;
 
 				&:before{
 					content: "";
@@ -64,7 +65,7 @@ nav.main-nav{
 					a{
 						padding: 10px 15px;
 						color: @text-color;
-						&:hover{ color: @primary-color1; }
+						&:hover{ color: @blue; }
 					}
 				}
 
@@ -136,13 +137,13 @@ nav.main-nav{
 
 				a{
 					position: relative;
-					z-index: @zindex-base;
+					z-index: 1050;
 					padding: 10px;
 					color: @text-color;
 				}
 
 				&:hover{
-					> a{ color: @primary-color1; }
+					> a{ color: @blue; }
 				}
 
 				&.menu-item-has-children{
@@ -165,7 +166,7 @@ nav.main-nav{
 								right: 0px;
 								width: 16px;
 								height: 2px;
-								background: @primary-color1;
+								background: @blue;
 							}
 							&:after{
 								transform: rotate(-90deg);
@@ -200,7 +201,7 @@ nav.main-nav{
 						a{
 							padding: 8px 0 8px 25px;
 							font-size: 14px;
-							&:hover{ color: @primary-color1; }
+							&:hover{ color: @blue; }
 						}
 						&.menu-item-has-children{
 							> a{

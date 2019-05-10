@@ -1,10 +1,12 @@
-nav.col-side-nav{
 
-    .side-nav-title{ margin: 0; }
+    .col-side-nav__title{
+        margin: 0;
+    }
 
-    ul.side-menu{
+    ul.col-side-nav__menu{
         .plain-list();
         li{
+            margin: 0;
             a{
               display: block;
               padding: 8px 0;
@@ -12,29 +14,23 @@ nav.col-side-nav{
             &.current-menu-item, &.current-menu-ancestor, &:hover{
                 > a{ text-decoration: underline; }
             }
-              //tertiary/3rd level nav
-              ul{
+
+            //tertiary/3rd level nav
+            ul{
                 li{
                   padding-left: 20px;
 
                   &.current-menu-item, &.current-menu-ancestor, &:hover {
                       > a {
                         background: none;
-                        color: @primary-color1;
+                        color: @blue;
                         text-decoration: underline;
                       }
 
                   }
                 }
-              }//end ul
+            }//end ul
 
         }//end li
 
     }//end ul.side-menu
-
-
-    @media @tablet-all, @mobile-all{
-        display: none;
-    }//@tablet-all, @mobile-all
-
-}//end nav.side-nav

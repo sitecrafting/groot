@@ -53,6 +53,7 @@ const cssConfig = Object.assign({}, sharedConfig, {
 
   entry: {
     style: './less/style.less',
+    'editor-style': './less/editor-style.less',
     print: './less/style-print.less',
   },
 

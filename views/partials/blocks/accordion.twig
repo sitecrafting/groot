@@ -3,12 +3,12 @@
 <dl class="accordion">
   {% for acc in acc_layout %}
       {% if acc.acc_title %}
-        <dt data-id="{{loop.index}}" class="inactive">
-          <h3 class="acc--title"><a href="#{{loop.index}}">
+        <dt data-id="{{ loop.index }}">
+          <h3 class="accordion__title h4"><a href="#{{loop.index}}">
               {{ acc.acc_title }}
           </a></h3>
         </dt>
-        <dd class="rtecontent">
+        <dd class="accordion__content rtecontent">
           {{ acc.acc_content }}
         </dd>
     {% endif %}

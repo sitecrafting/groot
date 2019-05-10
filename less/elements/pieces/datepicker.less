@@ -5,7 +5,7 @@
   margin-top: 15px;
   text-align: center;
   background: @white;
-  border: 1px solid @gray-lighter;
+  border: 1px solid @gray-f3;
 
     &:before {
       content: "";
@@ -17,7 +17,7 @@
       border-left: 15px solid transparent;
 	    border-right: 15px solid transparent;
 
-	    border-bottom: 15px solid @gray-lighter;
+	    border-bottom: 15px solid @gray-f3;
     }//:before
 
     .ui-datepicker-header {
@@ -93,13 +93,13 @@
 
               //selected day styles
               &.ui-datepicker-current-day {
-                a { color: @primary-color1; }
+                a { color: @blue; }
               }//
 
               //current day styles
               &.ui-datepicker-today {
-                background: lighten(@primary-color1, 45%);
-                  a { color: @primary-color1; }
+                background: lighten(@blue, 45%);
+                  a { color: @blue; }
               }//.ui-datepicker-today
             }//td
 

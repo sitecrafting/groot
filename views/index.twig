@@ -1,17 +1,54 @@
 {% extends 'layouts/main.twig' %}
 
 {% block main_content %}
-<section class="main-content-area">
+<section class="pattern column-layout outer-gutter">
+    <div class="container">
 
-	<div class="article-list">
-		{% for post in posts %}
-			{% include 'partials/blog/blog-entry-archive.twig' %}
-		{% endfor %}
-	</div><!-- END .article-list -->
+		<div class="flex-row center-lg gutter-lg-fat gutter-md-default">
+		  <div class="col-lg-8">
 
-	  <div class="post-navigation">
-	    {{ paginate_links() }}
-	  </div>
+              <h1>{{ post.title }}</h1>
 
+				<div class="article-list">
+					{% for post in posts %}
+						{% include 'partials/blog/article-card.twig' %}
+					{% endfor %}
+				</div><!-- END .article-list -->
+
+				{% include 'partials/post-pagination.twig' %}
+
+			</div>
+			<div class="col-lg-4">
+
+				<div class="sidebar-box">
+					<h3 class="sidebar-box__title">Categories</h3>
+					<div class="sidebar-box__content">
+						<ul class="sidebar-box__menu">
+							<li{{ is_category == false ? ' class="active"' }}><a href="{{ get_blog_url() }}">All</a></li>
+							{% for cat in get_terms('category') %}
+							  <li{{ post.slug == cat.slug() ? ' class="active"' : '' }}><a href="{{ cat.link() }}">{{ cat.name }}</a></li>
+							{% endfor %}
+						</ul>
+					</div>
+				</div><!-- //sidebar-box -->
+
+				<div class="sidebar-box">
+					<h3 class="sidebar-box__title">Archives</h3>
+					<div class="sidebar-box__content">
+						<ul class="sidebar-box__menu">
+							<li><a href="{{ get_blog_url() }}">All</a></li>
+                    		{% for archive in archives.items %}
+		                        {% for month in archive.children %}
+		                            <li><a href="{{ month.link }}">{{ month.name }} {{ archive.name }}</a></li>
+		                        {% endfor %}
+	                    	{% endfor %}
+						</ul>
+					</div>
+				</div><!-- //sidebar-box -->
+
+			</div>
+		</div>
+
+	</div><!-- //.container -->
 </section>
 {% endblock %}

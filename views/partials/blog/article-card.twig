@@ -1,0 +1,30 @@
+
+<article class="article-list__card {{ post.class }}" itemscope itemtype="http://schema.org/BlogPosting">
+	{% if post.thumbnail() %}
+		{# Rich Snippet markup for the Featured Image. Note: Google won't display a Rich Snippet without one of these #}
+		<div class="card-article__thumbnail" itemscope itemprop="image" itemtype="http://schema.org/ImageObject">
+			<img src="{{ post.thumbnail().src('thumbnail') }}" alt="{{ post.thumbnail().alt() | default(post.title) }}" itemprop="url">
+			<meta itemprop="width" content="{{ post.thumbnail().width('large') }}">
+			<meta itemprop="height" content="{{ post.thumbnail().height('large') }}">
+		</div>
+	{% endif %}
+	<div class="card-article__content">
+		<h2 class="title" itemprop="headline"><a href="{{ post.link }}" title="{{ post.title }}">{{ post.title }}</a></h2>
+		<div class="byline">
+			<span class="post-author">By
+				<a href="{{ post.author.link() }}" rel="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+					<span itemprop="name">{{ post.author }}</span>
+				</a>
+			</span>
+			<span class="post-date">On
+				<time itemprop="datePublished" content="{{ post.date | date('c') }}">{{ post.date }}</time>
+			</span>
+		</div><!-- //byline -->
+		<div class="excerpt">{{ post.content | excerpt(30) }}</div>
+
+		{# {% include 'partials/blog/post-categories.twig' %} #}
+		{# {% include 'partials/blog/post-tags.twig' %} #}
+
+		<a class="btn" href="{{ post.link }}">Read More</a>
+	</div>
+</article>

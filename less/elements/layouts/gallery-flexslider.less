@@ -13,10 +13,25 @@
           position: absolute;
           bottom: 0;
           left: 0;
-          background: rgba(red(@primary-color1), green(@primary-color1), blue(@primary-color1), .5);
+          background: rgba(red(@black), green(@black), blue(@black), .5);
           color: @white;
         }
       }
+    }
+
+    ul.flex-direction-nav{
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        //set height to width/height ratio of the gallery slide
+        //this helps vertically center the direction arrows on the slide
+        //instead of the whole slideshow
+        &:before{
+            content: "";
+            display: block;
+            padding-top: 67%;
+        }
     }
 
 }//end .gallery-slideshow.flexslider

@@ -15,7 +15,7 @@ ul.flex-direction-nav{
             height: 50px;
             transform: translateY(-50%);
 
-            background: @primary-color1 url('@{theme-path}img/arrows/chevron-left-white.svg') center center no-repeat;
+            background: @blue url('@{theme-path}img/arrows/chevron-left-white.svg') center center no-repeat;
             .hide-text();
             z-index: 501;
 
@@ -27,7 +27,7 @@ ul.flex-direction-nav{
             }
 
             &:hover{
-                background: darken(@primary-color1, 10%);
+                background-color: darken(@blue, 10%);
             }
         } //end a
     }//end li
@@ -66,7 +66,7 @@ ol.flex-control-paging{
                 transition: all @trans-speed ease;
             }
             &.flex-active, &:hover{
-                &:before{ background: @primary-color1; }
+                &:before{ background: @blue; }
             }
         }
     }
