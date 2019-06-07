@@ -1,11 +1,13 @@
+{% if pattern.title and pattern.button %}
 <section class="cta">
     <div class="container mx700">
 
         <div class="cta__content">
-            <h3 class="title">{{ post.meta('cta_title') }}</h3>
-            {% if post.meta('cta_subtext') %}<div class="subtext">{{ post.meta('cta_subtext') }}</div>{% endif %}
-            <a class="btn" href="{{ post.meta('cta_link').url }}"{{ post.meta('cta_link').target ? ' target="_blank"' }}>{{ post.meta('cta_link').title }}</a>
+            <h3 class="title">{{ pattern.title }}</h3>
+            {% if pattern.subtext %}<div class="subtext">{{ pattern.subtext }}</div>{% endif %}
+            <a class="btn" href="{{ pattern.button.url }}"{{ button.target ? ' target="_blank"' }}>{{ pattern.button.title|default('Learn More') }}</a>
         </div>
 
     </div>
 </section>
+{% endif %}

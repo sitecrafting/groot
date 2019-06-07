@@ -33,6 +33,12 @@
     </div><!-- END .container -->
 </section>
 
-{% include 'partials/call-to-action.twig' %}
+{% include 'partials/call-to-action.twig' with {
+    pattern : {
+        title : post.meta('cta_title'),
+        subtext : post.meta('cta_subtext'),
+        button : post.meta('cta_link')
+    }
+} %}
 
 {% endblock %}
