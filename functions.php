@@ -48,6 +48,35 @@ $site->configure(function() {
   add_theme_support( 'post-thumbnails' );
   add_theme_support( 'menus' );
 
+  //use editor-style.css for the admin center RTE
+  add_editor_style();
+
+    //remove read more tag
+    add_filter( 'mce_buttons', 'sc_remove_tiny_mce_buttons_from_row1');
+    function sc_remove_tiny_mce_buttons_from_row1( $buttons ) {
+        $remove_buttons = array(
+            'wp_more', // read more link
+        );
+        foreach ( $buttons as $button_key => $button_value ) {
+            if ( in_array( $button_value, $remove_buttons ) ) {
+                unset( $buttons[ $button_key ] );
+            }
+        }
+        return $buttons;
+    }
+    //REMOVE TEXT COLOR OPTION FROM RTE
+    add_filter( 'mce_buttons_2', 'sc_remove_tiny_mce_buttons_from_row2');
+    function sc_remove_tiny_mce_buttons_from_row2( $buttons ) {
+        $remove_buttons = array(
+            'forecolor', // text color
+        );
+        foreach ( $buttons as $button_key => $button_value ) {
+            if ( in_array( $button_value, $remove_buttons ) ) {
+                unset( $buttons[ $button_key ] );
+            }
+        }
+        return $buttons;
+    }
 
   /*
    * Disable comments across the site

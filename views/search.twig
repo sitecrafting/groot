@@ -2,26 +2,22 @@
 
 {% block main_content %}
 
-<section class="column-layout outer-gutter">
+<section class="pattern column-layout outer-gutter">
     <div class="container">
 
-        <div class="flex-row center-lg gutter-lg-fat gutter-md-default">
+            <h1>Search</h1>
 
-			<div class="col-main-content{{ post.get_field('include_sidebar') and primary_menu.get_current_top_level_item().get_children() ? ' middle-content' }}">
+			{% if posts %}
+				<p>{{ posts | length }} {{ 'result' | pluralize(posts|length)}} for <strong>{{ search_query }}</strong>:</p>
 
-				{% if posts %}
-					<p>{{ posts | length }} {{ 'result' | pluralize(posts|length)}} for <strong>{{ search_query }}</strong>:</p>
+				{% for post in posts %}
+					{% include 'partials/blog/article-card.twig' %}
+				{% endfor %}
 
-					{% for post in posts %}
-						{% include 'partials/blog/blog-entry-archive.twig' %}
-					{% endfor %}
+			{% else %}
+				<p>Sorry, we couldn't find anything about <strong>{{ search_query }}</strong></p>
+			{% endif %}
 
-				{% else %}
-					<p>Sorry, we couldn't find anything about <strong>{{ search_query }}</strong></p>
-				{% endif %}
-			</div>
-
-		</div><!-- //flex-row -->
 
 	</div><!-- END .container -->
 </section>

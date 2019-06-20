@@ -1,0 +1,32 @@
+.article-list{
+    
+}
+
+.article-list__card{
+
+    margin: 50px 0;
+    padding-bottom: 50px;
+    border-bottom: 1px solid @gray-f3;
+    .clearfix();
+
+    .card-article__content{
+        padding: 0;
+
+        .title{ margin: 0; }
+        .byline{ }
+        .excerpt{ margin-top: 10px; }
+        .btn{ margin-top: 15px; }
+
+    }
+    .card-article__thumbnail{
+        display: block;
+        float: left;
+        width: 24%;
+
+        img{ display: block; width: 100%; }
+
+        + .card-article__content{ margin-left: 24%; padding-left: 30px; }
+
+    }
+
+}

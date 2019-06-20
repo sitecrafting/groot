@@ -1,27 +1,24 @@
-<a class="menu-btn">
-    <div class="toggle"><span></span><span></span><span></span><span></span></div>
-    <span>Menu</span>
-</a>
-
 <nav class="main-nav">
     <ul class="menu" itemscope itemtype="http://schema.org/SiteNavigationElement">
-        {% for item in menu.get_items %}
-            <li class="{{item.classes | join(' ')}}">
+        {% for top in menu.get_items %}
+            <li class="{{ top.classes | join(' ') }}">
 
-                <a href="{{ item.get_path() }}" itemprop="url">
-                    <span itemprop="name">{{item.title}}</span><!-- support schema.org rich snippets for top-level nav items -->
+                <a href="{{ top.get_path() }}" itemprop="url">
+                    <span itemprop="name">{{ top.title }}</span>
                 </a>
 
                 {# SECOND LEVEL #}
-                {% if item.get_children %}
-                    <ul>
-                      {% for second in item.get_children %}
-                        <li class="{{second.classes | join(' ')}}">
-                            <a href="{{ second.get_path() }}">{{second.title}}</a>
+                {% if top.get_children %}
+                    <ul class="menu-second">
+                      {% for second in top.get_children %}
+                        <li class="{{ second.classes | join(' ') }}">
+                            <a href="{{ second.get_path() }}">{{ second.title }}</a>
 
-                                {# THIRD LEVEL - typically used for mobile in off canvas navigation when sidenav is hidden #}
+                                {# THIRD LEVEL
+                                    - typically used for mobile in off canvas navigation when sidenav is hidden
+                                #}
                                 {% if second.get_children %}
-                                    <ul>
+                                    <ul class="menu-third">
                                       {% for third in second.get_children %}
                                         <li class="{{third.classes | join(' ')}}">
                                             <a href="{{ third.get_path() }}">{{third.title}}</a>

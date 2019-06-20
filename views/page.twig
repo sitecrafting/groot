@@ -2,12 +2,10 @@
 
 {% block main_content %}
 
-<section class="column-layout outer-gutter">
+<section class="pattern column-layout outer-gutter">
     <div class="container">
 
       <div class="flex-row center-lg gutter-lg-fat gutter-md-default">
-
-        <div class="rtecontent">{{ post.content }}</div>
 
             {# SIDE NAV | col-side-nav #}
             {% block side_nav %}
@@ -15,24 +13,32 @@
             {% endblock %}
 
             {# MAIN COLUMN #}
-            <div class="col-main-content{{ post.get_field('include_sidebar') and primary_menu.get_current_top_level_item().get_children() ? ' middle-content' }}">
-                <h1>{{ post.get_field('main_headline') ? post.get_field('main_headline') : post.title }}</h1>
+            <div class="col-main-content{{ post.meta('include_sidebar') and primary_menu.get_current_top_level_item().get_children() ? ' middle-content' }}">
+
+                <h1>{{ post.meta('main_headline') ? post.meta('main_headline') : post.title }}</h1>
+                <div class="rtecontent">{{ post.content }}</div>
 
                 {# FLEXIBLE LAYOUTS #}
-                {% include 'partials/content-layouts.twig'
-                  with { layouts: post.get_field('layouts') } only
-                %}
+                {% include 'partials/content-layouts.twig' with { layouts: post.meta('layouts') } only %}
 
             </div>
 
             {# SIDE COLUMN #}
-            {% if post.get_field('include_sidebar') %}
-                {% include 'partials/side-bar.twig' with { blocks : post.get_field('sidebar_content') } %}
+            {% if post.meta('include_sidebar') %}
+                {% include 'partials/side-bar.twig' with { blocks : post.meta('sidebar_content') } %}
             {% endif %}
 
         </div><!-- //flex-row -->
 
     </div><!-- END .container -->
 </section>
+
+{% include 'partials/call-to-action.twig' with {
+    pattern : {
+        title : post.meta('cta_title'),
+        subtext : post.meta('cta_subtext'),
+        button : post.meta('cta_link')
+    }
+} %}
 
 {% endblock %}
