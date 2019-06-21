@@ -36,6 +36,9 @@
     "extra": {
         "wordpress-install-dir": {
             "johnpbloch/wordpress-core": "wp"
+        },
+        "installer-paths": {
+            "wp/wp-content/plugins/{$name}": ["sitecrafting/conifer"]
         }
     },
     "autoload": {
