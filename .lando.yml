@@ -31,11 +31,11 @@ services:
     type: mysql:5.7
 
   node:
-    type: node:8
+    type: node
 
     globals:
-      webpack: "^4.28"
-      yarn: "^1.6"
+      gulp-cli: "^2.2.0"
+      yarn: "^1.16.0"
 
     run:
       - yarn
@@ -48,6 +48,9 @@ services:
     hogfrom:
       - appserver
 
+  # TODO gitbook service for building docs
+
+  # bare-bones nginx service for serving docs site
   docs:
     type: nginx
     ssl: true
@@ -58,6 +61,9 @@ tooling:
     service: appserver
     cmd: '/app/scripts/setup-wordpress.sh'
     description: 'Install and configure WordPress for custom theme dev'
+
+  gulp:
+    server: node
 
   yarn:
     service: node
