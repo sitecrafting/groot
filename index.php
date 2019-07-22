@@ -10,7 +10,10 @@ use Conifer\Post\Page;
 use Conifer\Post\BlogPost;
 
 // Get common/site-wide data
-$data = $site->get_context_with_posts(BlogPost::get_all());
+$data = $site->get_context_with_posts(BlogPost::get_all([
+  'paged'        => get_query_var('paged'),
+  'category__in' => [get_query_var('cat')],
+]));
 
 
 if( is_tag() || is_category() ) {
