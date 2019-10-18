@@ -67,7 +67,15 @@ const cssConfig = Object.assign({}, sharedConfig, {
     new MiniCssExtractPlugin({
       filename: '[name].css',
     }),
-    new OptimizeCssAssetsPlugin({}),
+    // Tell optimizer explicitly to generate source maps.
+    new OptimizeCssAssetsPlugin({
+      cssProcessorOptions: {
+        map: {
+          inline: false,
+          annotation: true,
+        },
+      },
+    }),
     new AssetsVersionPlugin([]),
     new DeleteAfterBuildPlugin({
       paths: ['print.js*', 'style.js*', 'editor-style.js*'],
