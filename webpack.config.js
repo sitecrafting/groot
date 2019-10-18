@@ -2,13 +2,14 @@ const path = require('path')
 const webpack = require('webpack');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const WebpackDeletePlugin = require('webpack-delete-plugin')
 
+const DeleteAfterBuildPlugin = require('./js/webpack-plugins/delete-after-build-plugin.js')
 const AssetsVersionPlugin = require('./js/webpack-plugins/assets-version-plugin.js')
 
 const sharedConfig = {
   mode: 'production',
   devtool: 'source-map',
+  stats: 'errors-only',
 }
 
 const jsConfig = Object.assign({}, sharedConfig, {
@@ -68,11 +69,9 @@ const cssConfig = Object.assign({}, sharedConfig, {
     }),
     new OptimizeCssAssetsPlugin({}),
     new AssetsVersionPlugin([]),
-    new WebpackDeletePlugin([
-      // We don't need any corresponding JS for this build.
-      './print.js*',
-      './style.js*',
-    ]),
+    new DeleteAfterBuildPlugin({
+      paths: ['print.js*', 'style.js*'],
+    }),
   ],
 
   module: {

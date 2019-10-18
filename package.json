@@ -11,6 +11,7 @@
     "@babel/preset-env": "^7.2.3",
     "babel-loader": "^8.0.4",
     "css-loader": "^2.0.2",
+    "glob": "^7.1.4",
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
     "less-plugin-autoprefix": "^1.5.1",
@@ -18,8 +19,7 @@
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "ts-loader": "^5.3.3",
     "webpack": "^4.28",
-    "webpack-cli": "^3.1.2",
-    "webpack-delete-plugin": "^0.1.1"
+    "webpack-cli": "^3.1.2"
   },
   "license": "MIT",
   "dependencies": {
