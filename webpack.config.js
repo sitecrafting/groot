@@ -70,7 +70,7 @@ const cssConfig = Object.assign({}, sharedConfig, {
     new OptimizeCssAssetsPlugin({}),
     new AssetsVersionPlugin([]),
     new DeleteAfterBuildPlugin({
-      paths: ['print.js*', 'style.js*'],
+      paths: ['print.js*', 'style.js*', 'editor-style.js*'],
     }),
   ],
 
