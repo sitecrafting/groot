@@ -19,7 +19,7 @@ export default (($) => {
 
   return function jQueryResponsiveNav( options ) {
 
-    options = Object.assign({}, {
+    options = $.extend({}, {
       wrapperSelector: '.site-wrapper',
       menuButtonSelector: '.menu-btn',
       menuOpenWrapperClass: 'menu-open',
