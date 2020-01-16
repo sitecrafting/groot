@@ -19,6 +19,9 @@
 </head>
 <body class="{{ body_classes | join(' ') }}">
 
+{# necessary for tag manager plugin custom setting #}
+{{ gtm4wp_the_gtm_tag() }}
+
 <div class="site-wrapper"><div class="site-pusher">
 
 	{% block header %}

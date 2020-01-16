@@ -4,6 +4,8 @@ use Groot\PluginManager;
 use Conifer\Post\Image;
 use Conifer\Site;
 
+use Project\Twig\ThemeTwigHelper;
+
 
 // autoload dependencies, if any
 if (file_exists(__DIR__ . '/vendor/autoload.php')) {
@@ -44,6 +46,8 @@ $site->configure(function() {
   /*
    * @groot config_callback
    */
+
+   $this->add_twig_helper(new ThemeTwigHelper());
 
   add_theme_support( 'post-thumbnails' );
   add_theme_support( 'menus' );
