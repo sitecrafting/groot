@@ -1,5 +1,5 @@
 <nav class="main-nav">
-    <ul class="menu" itemscope itemtype="http://schema.org/SiteNavigationElement">
+    <ul class="main-nav__menu" itemscope itemtype="http://schema.org/SiteNavigationElement">
         {% for top in menu.get_items %}
             <li class="{{ top.classes | join(' ') }}">
 
@@ -9,7 +9,7 @@
 
                 {# SECOND LEVEL #}
                 {% if top.get_children %}
-                    <ul class="menu-second">
+                    <ul class="main-nav__second">
                       {% for second in top.get_children %}
                         <li class="{{ second.classes | join(' ') }}">
                             <a href="{{ second.get_path() }}">{{ second.title }}</a>
@@ -18,7 +18,7 @@
                                     - typically used for mobile in off canvas navigation when sidenav is hidden
                                 #}
                                 {% if second.get_children %}
-                                    <ul class="menu-third">
+                                    <ul class="main-nav__third">
                                       {% for third in second.get_children %}
                                         <li class="{{third.classes | join(' ')}}">
                                             <a href="{{ third.get_path() }}">{{third.title}}</a>

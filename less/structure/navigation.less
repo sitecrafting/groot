@@ -1,3 +1,11 @@
+/****************
+*	1. mixin for showing desktop dropdown
+*	2. mobile menu dropper element +
+*	3. MAIN NAV (parent wrapper)
+*	4. First Level Menu
+*	5. Second Level Menu
+*	6. Third Level Menu (should only show for mobile when necessary)
+*******************/
 //styles for showing dropdown
 .show-dropdown(){
 	left: 50%;
@@ -5,116 +13,47 @@
 	opacity: 1;
 }
 
+//piece for mobile nav
+span.main-nav__dropper{
+	display: none;
+	position: absolute;
+	top: 0;
+	right: -35px;
+	width: 35px;
+	height: 100%;
+	cursor: pointer;
+	z-index: 1050;
+	&:before, &:after{
+		content: "";
+		display: block;
+		position: absolute;
+		top: 17px;
+		left: 8px;
+		width: 20px;
+		height: 2px;
+		background: @blue;
+	}
+	&:after{
+		transform: rotate(-90deg);
+		transition: all @trans-speed ease;
+	}
+	@media @mobile-menu{ display: block; }
+}//end span.dropper
+
+
+//MAIN NAV WRAPPER
 nav.main-nav{
 	position: relative;
 	align-self: flex-end;
 	z-index: 1050;
 
-	ul.menu{
-		.plain-list();
-
-		display: flex;
-		align-items: center;
-		justify-content: flex-end;
-
-		li{ //top level li
-			position: relative;
-			margin: 0;
-			padding-bottom: 15px;
-			a{
-				display: block;
-				padding: 15px 20px;
-				font: 700 16px/1.2 @font-family-headings;
-				text-transform: uppercase;
-				letter-spacing: .5px;
-
-				&:hover{ text-decoration: none; }
-
-			}
-
-			//second level
-			ul{
-				.plain-list;
-				position: absolute;
-				left: -9999em;
-				width: 200px;
-				margin: 15px 0 0 0;
-				padding: 10px 0;
-
-				background: @white;
-				opacity: 0;
-				transition: opacity @trans-speed ease;
-				z-index: 1060;
-
-				&:before{
-					content: "";
-					display: block;
-					width: 20px;
-					height: 20px;
-					border-radius: 3px;
-					background: @white;
-					position: absolute;
-					top: 0;
-					left: 50%;
-					transform: rotate(45deg) translateX(-50%);
-				}
-
-				li{
-					display: block;
-					padding: 0;
-					a{
-						padding: 10px 15px;
-						color: @text-color;
-						&:hover{ color: @blue; }
-					}
-				}
-
-				ul{ display: none; } //hide all other levels
-
-				&.tab-show{
-					.show-dropdown();
-				}
-
-			}//end second level ul
-
-			//TOP ACTIVE STYLES
-			&.current-menu-item, &.current-menu-ancestor{
-				> a{ color: @white; }
-			}
-			//TOP HOVER STYLES
-			&:hover{
-				> a{ color: @white; }
-				> ul{
-					.show-dropdown();
-				}
-			}
-
-			//LAST CHILD DROPDOWN BUT FAVOR RIGHT EDGE SO IT DOESNT RUN OF SCREEN
-			&:last-child{
-				//second level (dropdown)
-				> ul{
-					&:before{
-						left: auto;
-						right: 15px;
-					}
-				}
-				> ul.tab-show,
-				&:hover > ul{ left: auto; transform: none; right: 0; }
-			}
-
-		}//end li
-	}//end ul.menu
-
-
-	@media @tablet-all, @mobile-all{
+	@media @mobile-menu{
 		position: absolute;
 		width: @off-canvas-width;
 		height: 100%;
 		top: 0;
 		right: -(@off-canvas-width);
 		left: auto; bottom: auto;
-		padding: 20px;
-		margin: 0;
 		background: @white;
 
 		&.main-nav-dropdown{
@@ -126,112 +65,183 @@ nav.main-nav{
 			left: 0;
 			right: 0;
 		}
+	}
+}//nav.main-nav
 
-		ul.menu{
+//FIRST LEVEL MENU
+ul.main-nav__menu{
+	.plain-list();
+
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+
+	> li{ //top level li
+		position: relative;
+		padding-bottom: 15px;
+
+		> a{
 			display: block;
+			padding: 15px 20px;
+			font: 700 16px/1.2 @font-family-headings;
+			text-transform: uppercase;
+			letter-spacing: .5px;
 
-			li{
-				display: block;
-				margin: 0;
-				padding: 0;
+			&:hover{ text-decoration: none; }
 
-				a{
-					position: relative;
-					z-index: 1050;
-					padding: 10px;
-					color: @text-color;
+		}
+
+		//TOP ACTIVE STYLES
+		&.current-menu-item, &.current-menu-ancestor{
+			> a{ color: @white; }
+		}
+
+		//TOP HOVER STYLES
+		&:hover{
+			> a{ color: @white; }
+			.main-nav__second{
+				.show-dropdown();
+			}
+		}
+
+		//LAST CHILD DROPDOWN FAVOR RIGHT EDGE SO IT DOESNT RUN OF SCREEN
+		&:last-child{
+			//second level (dropdown)
+			.main-nav__second{
+				&:before{
+					left: auto;
+					right: 15px;
 				}
+			}
+			.main-nav__second.tab-show,
+			&:hover > .main-nav__second{ left: auto; transform: none; right: 0; }
+		}
 
-				&:hover{
-					> a{ color: @blue; }
+	}//end li
+
+	@media @mobile-menu{
+		display: block;
+		> li{
+			padding: 0;
+			border-bottom: 1px solid @gray-f3;
+			> a{
+				position: relative;
+				padding: 10px 20px;
+				color: @text-color;
+			}
+
+			&.menu-item-has-children{
+				> a{
+					margin-right: 35px;
 				}
+				&.toggle{
+					> a > span.main-nav__dropper{
+						&:after{ opacity: 0; transform: rotate(0deg); }
+					}
+				}
+			}//end &.menu-item-has-children
 
+			//TOP ACTIVE STYLES
+			&:hover, &.current-menu-item, &.current-menu-ancestor{
+				> a{ color: @blue; }
+			}
+
+		}
+	}
+}//end ul.menu
+
+//second level
+ul.main-nav__second{
+	.plain-list();
+	position: absolute;
+	left: -9999em;
+	width: 200px;
+	margin: 15px 0 0 0;
+	padding: 10px 0;
+
+	background: @white;
+	opacity: 0;
+	transition: opacity @trans-speed ease;
+	z-index: 1060;
+
+	//arrow
+	&:before{
+		content: "";
+		display: block;
+		width: 20px;
+		height: 20px;
+		border-radius: 3px;
+		background: @white;
+		position: absolute;
+		top: 0;
+		left: 50%;
+		transform: rotate(45deg) translateX(-50%);
+	}
+
+	> li{
+		display: block;
+		> a{
+			position: relative;
+			display: block;
+			font: 700 14px/1.2 @font-family-headings;
+			padding: 10px 15px;
+			color: @text-color;
+			&:hover{ color: @blue; text-decoration: none; }
+		}
+	}
+
+	ul{ display: none; } //hide all other levels
+
+	&.tab-show{
+		.show-dropdown();
+	}
+
+	@media @mobile-menu{
+			position: relative;
+			left: auto !important;
+			width: auto;
+			opacity: 1;
+			padding: 5px 0 0 20px;
+			margin: 0 0 10px 0;
+			background: none;
+			transform: none !important;
+			border-top: 1px solid @gray-f3;
+
+			//initial hide
+			display: none;
+
+			//remove arrow
+			&:before{ display: none; }
+
+			> li{
+				> a{
+					padding: 10px 0;
+				}
 				&.menu-item-has-children{
 					> a{
 						margin-right: 35px;
-
-						span.dropper{
-							display: block;
-							position: absolute;
-							top: 0;
-							right: -35px;
-							width: 35px;
-							height: 100%;
-							cursor: pointer;
-							&:before, &:after{
-								content: "";
-								display: block;
-								position: absolute;
-								top: 17px;
-								right: 0px;
-								width: 16px;
-								height: 2px;
-								background: @blue;
-							}
-							&:after{
-								transform: rotate(-90deg);
-								transition: all @trans-speed ease;
-							}
-						}//end span.dropper
+						> span.main-nav__dropper{ &:before, &:after{ top: 14px; } }
 					}
-					&.toggle{
-						> a > span.dropper{
-							&:after{ opacity: 0; transform: rotate(0deg); }
-						}
-					}
-				}//end &.menu-item-has-children
-
-				//second level
-				ul{
-					position: relative;
-					left: auto;
-					width: 100%;
-					opacity: 1;
-					display: none;
-					border: 0;
-					padding: 5px 0;
-					margin: 0;
-					background: none;
-
-					&:before{ display: none; }
-
-					li{
-						padding: 0;
-						border: 0;
-						a{
-							padding: 8px 0 8px 25px;
-							font-size: 14px;
-							&:hover{ color: @blue; }
-						}
-						&.menu-item-has-children{
-							> a{
-								span.dropper{ &:before, &:after{ top: 14px; } }
-							}
-						}
-
-						//third level
-						ul{
-							padding: 0;
-							margin: 5px 0 8px 25px;
-							border-left: 2px solid @black;
-							li{
-								a{
-									padding: 8px 0 8px 10px;
-									font-size: 12px;
-									text-transform: none;
-								}
-								&:first-child a{ padding-top: 0; }
-								&:last-child a{ padding-bottom: 0; }
-							}
-						}
-
-					}//end second level li
 				}
+			}
 
-			}//end li
-		}//end ul
+	}
+
+}//end second level ul
 
 
-	}//end media
-
-}//end nav.mainNav
+//third level
+ul.main-nav__third{
+	.plain-list();
+	border-left: 2px solid @blue;
+	li{
+		a{
+			padding: 8px 0 8px 10px;
+			font: 700 12px/1.2 @font-family-headings;
+			color: @black;
+			text-decoration: none;
+		}
+		&:first-child a{ padding-top: 0; }
+		&:last-child a{ padding-bottom: 0; }
+	}
+}
