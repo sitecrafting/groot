@@ -1,12 +1,9 @@
-<section class="flex-patterns">
+
 {% for layout in layouts %}
-    <div class="pattern pattern--{{ layout.acf_fc_layout }}">
 
-        {% include 'partials/content-layouts/' ~ layout.acf_fc_layout ~ '.twig'
-            ignore missing
-            with { layout : layout, parent_loop : loop } only
-        %}
+    {% include 'partials/content-layouts/' ~ layout.acf_fc_layout ~ '.twig'
+        ignore missing
+        with { layout : layout, parent_loop : loop } only
+    %}
 
-    </div>
 {% endfor %}
-</section>
