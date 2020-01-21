@@ -17,7 +17,6 @@
     "less-plugin-autoprefix": "^1.5.1",
     "mini-css-extract-plugin": "^0.5.0",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
-    "ts-loader": "^5.3.3",
     "webpack": "^4.28",
     "webpack-cli": "^3.1.2"
   },

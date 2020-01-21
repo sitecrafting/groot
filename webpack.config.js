@@ -84,14 +84,25 @@ const jsConfig = Object.assign({}, sharedConfig, {
       {
         test: /\.js$/,
         exclude: /node_modules/,
+
+        /*
+         * NOTE ABOUT TYPESCRIPT SUPPORT:
+         *
+         * To add TypeScript support, run `yarn add --dev ts-loader`.
+         * Then add:
+         *
+         * {
+         *   loader: 'ts-loader'
+         * }
+         *
+         * to the array below.
+         */
+
         use: [{
           loader: 'babel-loader',
           options: {
             presets: ['@babel/preset-env'],
           },
-        // uncomment for TypeScript support:
-        //}, {
-        //  loader: 'ts-loader',
         }],
       },
     ],
