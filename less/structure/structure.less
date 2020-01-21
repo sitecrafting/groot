@@ -19,21 +19,17 @@
 	}
 }
 
-.pattern{
-	margin-top: 50px;
-	margin-bottom: 50px;
-}
-
 .site-wrapper{
 	position: relative;
-	overflow: hidden;
-	height: 100%;
-
 	max-width: @max-width;
 	margin: 0 auto;
+	
+	@media @mobile-menu{
+		overflow: hidden;
+	}
 }
 .site-pusher{
-	@media @tablet-all, @mobile-all{
+	@media @mobile-menu{
 		position: relative;
 		height: 100%;
 		left: 0;

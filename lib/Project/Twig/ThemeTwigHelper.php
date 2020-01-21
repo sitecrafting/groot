@@ -25,11 +25,24 @@ use Conifer\Twig\HelperInterface;
 class ThemeTwigHelper implements HelperInterface {
   public function get_functions() : array {
     // add your project-specific Twig functions here
-    return [];
+    return [
+        'gtm4wp_the_gtm_tag' => [$this, 'gtm4wp_the_gtm_tag'],
+    ];
   }
 
   public function get_filters() : array {
     // add you project-specific Twig filters here
     return [];
   }
+
+
+  public function gtm4wp_the_gtm_tag(){
+      if ( function_exists( 'gtm4wp_the_gtm_tag' ) ) {
+          return gtm4wp_the_gtm_tag();
+      }
+      else{
+          return false;
+      }
+  }
+
 }
