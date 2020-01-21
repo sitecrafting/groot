@@ -4,21 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5b4f113bd408a82d31cf575d7017e445",
+    "content-hash": "8d246e51925b72bdcd4b319d48d47208",
     "packages": [],
     "packages-dev": [
         {
             "name": "acobster/wp-cli-yaml-fixtures",
-            "version": "v0.6.1",
+            "version": "v0.6.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/acobster/wp-yaml-fixtures.git",
-                "reference": "b3766e98c35edfac58055defa1c9af68b2ec4c5f"
+                "reference": "d3d8c3402f39a11475f49ce86a92eb2da25515dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/acobster/wp-yaml-fixtures/zipball/b3766e98c35edfac58055defa1c9af68b2ec4c5f",
-                "reference": "b3766e98c35edfac58055defa1c9af68b2ec4c5f",
+                "url": "https://api.github.com/repos/acobster/wp-yaml-fixtures/zipball/d3d8c3402f39a11475f49ce86a92eb2da25515dd",
+                "reference": "d3d8c3402f39a11475f49ce86a92eb2da25515dd",
                 "shasum": ""
             },
             "require": {
@@ -51,72 +51,20 @@
                 }
             ],
             "description": "Define WordPress database snapshots as simple YAML files",
-            "time": "2019-03-04T19:44:53+00:00"
-        },
-        {
-            "name": "analog/analog",
-            "version": "1.0.12-stable",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/jbroadway/analog.git",
-                "reference": "4ac87ac59555db6eaba734b2b022fcc296e8729d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/jbroadway/analog/zipball/4ac87ac59555db6eaba734b2b022fcc296e8729d",
-                "reference": "4ac87ac59555db6eaba734b2b022fcc296e8729d",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.2",
-                "psr/log": "1.*"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^4.8.36 || ^5.7 || ^6.5"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Analog": "lib/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Johnny Broadway",
-                    "email": "johnny@johnnybroadway.com",
-                    "homepage": "http://www.johnnybroadway.com/"
-                }
-            ],
-            "description": "PHP logging class that can be extended via closures. Includes several pre-built handlers including file, mail, syslog, HTTP post, and MongoDB.",
-            "homepage": "https://github.com/jbroadway/analog",
-            "keywords": [
-                "alerts",
-                "debug",
-                "debugging",
-                "error",
-                "log",
-                "logger",
-                "logging",
-                "syslog"
-            ],
-            "time": "2019-03-05T22:41:22+00:00"
+            "time": "2019-09-20T18:03:32+00:00"
         },
         {
             "name": "composer/installers",
-            "version": "v1.6.0",
+            "version": "v1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/installers.git",
-                "reference": "cfcca6b1b60bc4974324efb5783c13dca6932b5b"
+                "reference": "141b272484481432cda342727a427dc1e206bfa0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/cfcca6b1b60bc4974324efb5783c13dca6932b5b",
-                "reference": "cfcca6b1b60bc4974324efb5783c13dca6932b5b",
+                "url": "https://api.github.com/repos/composer/installers/zipball/141b272484481432cda342727a427dc1e206bfa0",
+                "reference": "141b272484481432cda342727a427dc1e206bfa0",
                 "shasum": ""
             },
             "require": {
@@ -172,6 +120,7 @@
                 "RadPHP",
                 "SMF",
                 "Thelia",
+                "Whmcs",
                 "WolfCMS",
                 "agl",
                 "aimeos",
@@ -194,6 +143,7 @@
                 "installer",
                 "itop",
                 "joomla",
+                "known",
                 "kohana",
                 "laravel",
                 "lavalite",
@@ -223,7 +173,7 @@
                 "zend",
                 "zikula"
             ],
-            "time": "2018-08-27T06:10:37+00:00"
+            "time": "2019-08-12T15:00:31+00:00"
         },
         {
             "name": "greenlion/php-sql-parser",
@@ -231,19 +181,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/greenlion/PHP-SQL-Parser.git",
-                "reference": "249e8342c9b29e7444090bc66da5e870a0b28b8c"
+                "reference": "e0262c0848d95c7f777d1a5aa6b0a42e7763e223"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/greenlion/PHP-SQL-Parser/zipball/249e8342c9b29e7444090bc66da5e870a0b28b8c",
-                "reference": "249e8342c9b29e7444090bc66da5e870a0b28b8c",
+                "url": "https://api.github.com/repos/greenlion/PHP-SQL-Parser/zipball/e0262c0848d95c7f777d1a5aa6b0a42e7763e223",
+                "reference": "e0262c0848d95c7f777d1a5aa6b0a42e7763e223",
                 "shasum": ""
             },
             "require": {
-                "analog/analog": "^1.0.6",
                 "php": ">=5.3.2"
             },
             "require-dev": {
+                "analog/analog": "^1.0.6",
                 "phpunit/phpunit": "^4.0.14",
                 "squizlabs/php_codesniffer": "^1.5.1"
             },
@@ -279,7 +229,7 @@
                 "parser",
                 "sql"
             ],
-            "time": "2018-12-23T05:09:55+00:00"
+            "time": "2019-06-01T04:06:45+00:00"
         },
         {
             "name": "ircmaxell/random-lib",
@@ -388,12 +338,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnpbloch/wordpress-core.git",
-                "reference": "2ed7678e4f5a09af629560b78af1db5290f77e9b"
+                "reference": "6d9d227688429342096e0c32677e917781e32075"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/2ed7678e4f5a09af629560b78af1db5290f77e9b",
-                "reference": "2ed7678e4f5a09af629560b78af1db5290f77e9b",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/6d9d227688429342096e0c32677e917781e32075",
+                "reference": "6d9d227688429342096e0c32677e917781e32075",
                 "shasum": ""
             },
             "require": {
@@ -413,14 +363,14 @@
                     "homepage": "http://wordpress.org/about/"
                 }
             ],
-            "description": "WordPress is web software you can use to create a beautiful website or blog.",
+            "description": "WordPress is open source software you can use to create a beautiful website, blog, or app.",
             "homepage": "http://wordpress.org/",
             "keywords": [
                 "blog",
                 "cms",
                 "wordpress"
             ],
-            "time": "2019-03-13T01:13:06+00:00"
+            "time": "2019-12-12T20:31:01+00:00"
         },
         {
             "name": "johnpbloch/wordpress-core-installer",
@@ -524,64 +474,17 @@
             "time": "2017-08-14T19:50:19+00:00"
         },
         {
-            "name": "psr/log",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/php-fig/log.git",
-                "reference": "c4421fcac1edd5a324fda73e589a5cf96e52ffd0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/log/zipball/c4421fcac1edd5a324fda73e589a5cf96e52ffd0",
-                "reference": "c4421fcac1edd5a324fda73e589a5cf96e52ffd0",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.1.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Psr\\Log\\": "Psr/Log/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "PHP-FIG",
-                    "homepage": "http://www.php-fig.org/"
-                }
-            ],
-            "description": "Common interface for logging libraries",
-            "homepage": "https://github.com/php-fig/log",
-            "keywords": [
-                "log",
-                "psr",
-                "psr-3"
-            ],
-            "time": "2018-11-21T13:42:00+00:00"
-        },
-        {
             "name": "sitecrafting/conifer",
-            "version": "v0.5.4",
+            "version": "v0.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sitecrafting/conifer.git",
-                "reference": "9f8d0780d2a2c767950ad28b8010e535b9e86f8a"
+                "reference": "c2f90e6e77f3a4ee8d96bee21dc6030d97edd55d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sitecrafting/conifer/zipball/9f8d0780d2a2c767950ad28b8010e535b9e86f8a",
-                "reference": "9f8d0780d2a2c767950ad28b8010e535b9e86f8a",
+                "url": "https://api.github.com/repos/sitecrafting/conifer/zipball/c2f90e6e77f3a4ee8d96bee21dc6030d97edd55d",
+                "reference": "c2f90e6e77f3a4ee8d96bee21dc6030d97edd55d",
                 "shasum": ""
             },
             "require": {
@@ -629,7 +532,7 @@
                 }
             ],
             "description": "Powerful abstractions for serious WordPress theme development",
-            "time": "2019-03-29T22:45:44+00:00"
+            "time": "2019-12-10T01:44:39+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
@@ -637,12 +540,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "f0ff7919aba8fbd4b89393dd074ae2d29c5172bc"
+                "reference": "a4d4cc37242b1639bd77e7242d2be8e8c5b4d289"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/f0ff7919aba8fbd4b89393dd074ae2d29c5172bc",
-                "reference": "f0ff7919aba8fbd4b89393dd074ae2d29c5172bc",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/a4d4cc37242b1639bd77e7242d2be8e8c5b4d289",
+                "reference": "a4d4cc37242b1639bd77e7242d2be8e8c5b4d289",
                 "shasum": ""
             },
             "require": {
@@ -680,7 +583,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2019-03-26T22:19:30+00:00"
+            "time": "2020-01-21T21:47:15+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -688,12 +591,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-ctype.git",
-                "reference": "82ebae02209c21113908c229e9883c419720738a"
+                "reference": "fbdeaec0df06cf3d51c93de80c7eb76e271f5a38"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/82ebae02209c21113908c229e9883c419720738a",
-                "reference": "82ebae02209c21113908c229e9883c419720738a",
+                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/fbdeaec0df06cf3d51c93de80c7eb76e271f5a38",
+                "reference": "fbdeaec0df06cf3d51c93de80c7eb76e271f5a38",
                 "shasum": ""
             },
             "require": {
@@ -705,7 +608,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.11-dev"
+                    "dev-master": "1.14-dev"
                 }
             },
             "autoload": {
@@ -722,12 +625,12 @@
             ],
             "authors": [
                 {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
+                    "name": "Gert de Pagter",
+                    "email": "BackEndTea@gmail.com"
                 },
                 {
-                    "name": "Gert de Pagter",
-                    "email": "backendtea@gmail.com"
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
                 }
             ],
             "description": "Symfony polyfill for ctype functions",
@@ -738,7 +641,7 @@
                 "polyfill",
                 "portable"
             ],
-            "time": "2019-02-06T07:57:58+00:00"
+            "time": "2020-01-13T11:15:53+00:00"
         },
         {
             "name": "symfony/yaml",
@@ -746,12 +649,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "212a27b731e5bfb735679d1ffaac82bd6a1dc996"
+                "reference": "aa46bc2233097d5212332c907f9911533acfbf80"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/212a27b731e5bfb735679d1ffaac82bd6a1dc996",
-                "reference": "212a27b731e5bfb735679d1ffaac82bd6a1dc996",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/aa46bc2233097d5212332c907f9911533acfbf80",
+                "reference": "aa46bc2233097d5212332c907f9911533acfbf80",
                 "shasum": ""
             },
             "require": {
@@ -797,7 +700,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2019-03-25T07:48:46+00:00"
+            "time": "2020-01-13T08:00:59+00:00"
         },
         {
             "name": "wp-coding-standards/wpcs",
@@ -841,17 +744,15 @@
         },
         {
             "name": "wpackagist-plugin/timber-library",
-            "version": "1.9.3",
+            "version": "1.14.0",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/timber-library/",
-                "reference": "tags/1.9.3"
+                "reference": "tags/1.14.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/timber-library.1.9.3.zip",
-                "reference": null,
-                "shasum": null
+                "url": "https://downloads.wordpress.org/plugin/timber-library.1.14.0.zip"
             },
             "require": {
                 "composer/installers": "~1.0"
