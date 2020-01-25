@@ -7,15 +7,13 @@
 // -------------------------
 //
 // Theme path - use this for referring to other, non-LESS/CSS resources
+// The value is automatically passed in to this file via webpack at build time,
+// and will be formatted '/wp-content/themes/{theme-directory-name}/'
 //
 // Example usage:
 //
 // * { background-image: url('@{theme-path}img/icons/my-icon.svg'); }
-//
-// TODO update this to your project-specific name
-// This step will go away once
-// https://github.com/sitecrafting/wp-cli-scaffold-groot-command/issues/2 is implemented
-@theme-path: '/wp-content/themes/groot/';
+@theme-path: '';
 
 
 // Grays

@@ -19,6 +19,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const DeleteAfterBuildPlugin = require('./js/webpack-plugins/delete-after-build-plugin.js')
 const AssetsVersionPlugin = require('./js/webpack-plugins/assets-version-plugin.js')
+const getThemePath = require('./js/webpack-plugins/get-theme-path.js');
 
 const sharedConfig = {
   mode: 'production',
@@ -166,6 +167,9 @@ const cssConfig = Object.assign({}, sharedConfig, {
           loader: 'less-loader',
           options: {
             sourceMap: true,
+            modifyVars: {
+              "theme-path": getThemePath()
+            }, 
           },
         }],
       },
