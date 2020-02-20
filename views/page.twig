@@ -15,12 +15,21 @@
             {# MAIN COLUMN #}
             <div class="col-main-content{{ post.meta('include_sidebar') and primary_menu.get_current_top_level_item().get_children() ? ' middle-content' }}">
 
-                <h1>{{ post.meta('main_headline') ? post.meta('main_headline') : post.title }}</h1>
-                <div class="rtecontent">{{ post.content }}</div>
+                <div class="flex-patterns">
+                    {% include 'partials/content-layouts/standard_content.twig'
+                        with {
+                            layout : {
+                                isH1 : true,
+                                title : post.meta('main_headline') ? post.meta('main_headline') : post.title,
+                                content : post.content
+                            }
+                        }
+                    %}
 
-                {# FLEXIBLE LAYOUTS #}
-                {% include 'partials/content-layouts.twig' with { layouts: post.meta('layouts') } only %}
-
+                    {# FLEXIBLE LAYOUTS #}
+                    {% include 'partials/content-layouts.twig' with { layouts: post.meta('layouts') } only %}
+                </div>
+                
             </div>
 
             {# SIDE COLUMN #}
@@ -32,13 +41,5 @@
 
     </div><!-- END .container -->
 </section>
-
-{% include 'partials/call-to-action.twig' with {
-    pattern : {
-        title : post.meta('cta_title'),
-        subtext : post.meta('cta_subtext'),
-        button : post.meta('cta_link')
-    }
-} %}
 
 {% endblock %}

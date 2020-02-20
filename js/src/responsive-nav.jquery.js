@@ -125,7 +125,7 @@ export default (($) => {
     }
 
     const sublevelNav = function() {
-		$this.find('span.dropper').each(function(){
+		$this.find('span.main-nav__dropper').each(function(){
 			$(this).bind('touchstart, click', function(event) {
 
 				event.stopPropagation();
@@ -185,7 +185,7 @@ export default (($) => {
     //ADD EXPANDER ICON
     $this.find('li.menu-item-has-children > a').each(function(){
       if( $(this).next('ul').length ) {
-        $(this).append('<span class="dropper"></span>')
+        $(this).append('<span class="main-nav__dropper"></span>')
       }
     })
 

@@ -19,6 +19,9 @@
 </head>
 <body class="{{ body_classes | join(' ') }}">
 
+{# necessary for tag manager plugin custom setting #}
+{{ gtm4wp_the_gtm_tag() }}
+
 <div class="site-wrapper"><div class="site-pusher">
 
 	{% block header %}
@@ -54,11 +57,18 @@
 	</main>
 
 	{% block footer %}
-		<footer class="site-footer">
-
-				&copy; {{ 'now' | date('Y') }} {{ site.name }}<br>
-				<a href="https://www.sitecrafting.com" target="_blank">Website Design and Development by SiteCrafting</a>
-
+		<footer class="site-footer outer-gutter">
+			<div class="container">
+				<p>&copy; {{ 'now' | date('Y') }} {{ site.name }}</p>
+				<div class="social">
+					<a href="#">{{ source('img/social-icons/icon-facebook.svg') }}</a>
+					<a href="#">{{ source('img/social-icons/icon-linkedin.svg') }}</a>
+					<a href="#">{{ source('img/social-icons/icon-twitter.svg') }}</a>
+					<a href="#">{{ source('img/social-icons/icon-youtube.svg') }}</a>
+					<a href="#">{{ source('img/social-icons/icon-instagram.svg') }}</a>
+				</div>
+				<p><a href="https://www.sitecrafting.com" target="_blank">Website Design and Development by SiteCrafting</a></p>
+			</div>
 		</footer>
 	{% endblock %}
 

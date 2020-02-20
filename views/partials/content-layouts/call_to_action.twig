@@ -1,0 +1,18 @@
+{% if layout.title and layout.button %}
+<section class="pattern pattern--cta">
+    <div class="container mx700">
+
+        <div class="cta__content">
+
+            <h3 class="title">{{ layout.title }}</h3>
+            {% if layout.subtext %}
+                <div class="subtext">{{ layout.subtext }}</div>
+            {% endif %}
+            {% if layout.button.url %}
+                <a class="btn" href="{{ layout.button.url }}"{{ layout.button.target ? ' target="_blank"' }}>{{ layout.button.title|default('Learn More') }}</a>
+            {% endif %}
+        </div>
+
+    </div>
+</section>
+{% endif %}
