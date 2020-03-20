@@ -58,17 +58,7 @@ $site->configure(function() {
   add_editor_style();
 
   //add template name to admin center list view
-  Page::add_admin_column('_wp_page_template', 'Template', function($id) {
-    // get mapping of Template File => Template Name
-    static $templates = null;
-    $templates = $templates ?: array_flip(get_page_templates());
-
-    // get the template file for this page
-    $templateFile = get_post_meta($id, '_wp_page_template', true) ?: '';
-
-    // return the template name for this page
-    return $templates[$templateFile] ?? 'Default Template';
-  });
+  Page::add_admin_column('_wp_page_template', 'Template');
 
     //remove read more tag
     add_filter( 'mce_buttons', 'sc_remove_tiny_mce_buttons_from_row1');
