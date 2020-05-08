@@ -21,13 +21,13 @@ For client projects built on top of Groot, there are a few new ways of doing thi
 
 Webpack handles image paths differently. The simplest way to refer to theme files is to use the absolute path from the webroot.
 
-Put something like this in `base/variables.less`:
+At build time, webpack will update the `@theme-path` variable in `base/variables.less` based on your theme's directory name:
 
 ```less
 @theme-path: '/wp-content/themes/<theme-dir-name>/';
 ```
 
-Replace `<theme-dir-name>` with the actual theme directory name. Now you can use the `@theme-path` variable like this:
+This will enable you to use the `@theme-path` variable like this:
 
 ```less
 * { background-image: url(~'@{theme-path}img/icons/my-icon.svg'); }
