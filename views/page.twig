@@ -2,40 +2,29 @@
 
 {% block main_content %}
 
-<section class="pattern column-layout outer-gutter">
-    <div class="container">
+<section class="pattern">
+    <div class="container" style="outline: 1px solid red">
 
       <div class="flex-row center-lg gutter-lg-fat gutter-md-default">
 
             {# SIDE NAV | col-side-nav #}
-            {% block side_nav %}
+            <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12" style="outline: 1px solid green">
                 {% include 'partials/side-nav.twig' with { menu: primary_menu, post: post } only %}
-            {% endblock %}
+			</div>
 
             {# MAIN COLUMN #}
-            <div class="col-main-content{{ post.meta('include_sidebar') and primary_menu.get_current_top_level_item().get_children() ? ' middle-content' }}">
+            <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12" style="outline: 1px solid green">
 
-                <div class="flex-patterns">
-                    {% include 'partials/content-layouts/standard_content.twig'
-                        with {
-                            layout : {
-                                isH1 : true,
-                                title : post.meta('main_headline') ? post.meta('main_headline') : post.title,
-                                content : post.content
-                            }
-                        }
-                    %}
-
-                    {# FLEXIBLE LAYOUTS #}
+				<h1>{{ post.meta('main_headline')|default(post.title) }}</h1>
+               
+			    <div class="flex-patterns flex-patterns--remove-outer-gutter">
+					{# FLEXIBLE LAYOUTS #}
                     {% include 'partials/content-layouts.twig' with { layouts: post.meta('layouts') } only %}
+
                 </div>
                 
             </div>
 
-            {# SIDE COLUMN #}
-            {% if post.meta('include_sidebar') %}
-                {% include 'partials/side-bar.twig' with { blocks : post.meta('sidebar_content') } %}
-            {% endif %}
 
         </div><!-- //flex-row -->
 

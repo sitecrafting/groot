@@ -18,6 +18,7 @@
 @import "base/variables.less";
 @import "base/mixins.less";
 @import "base/flexslider-base.less"; //core required flexslider styles
+//@import "base/magnific-popup.less"; 
 
 /* ====================
     STRUCTURE FILES
@@ -26,11 +27,13 @@
 @import "structure/structure.less"; //gutters and other structural elements
 
 @import "structure/header.less";
-@import "structure/navigation.less";
-@import "structure/side-nav.less";
 @import "structure/footer.less";
 
-@import "structure/page.less"; // general interior 3 column structure
+/* =====================
+	NAVIGATION
+====================*/
+@import "structure/navigation.less"; //main header navigation
+@import "structure/subnav.less"; //secondary subnavgation
 
 /* ====================
     ELEMENT/PIECES
@@ -39,9 +42,10 @@
 
 @import "elements/pieces/flexslider-pieces.less"; //prev/next arrows, paging notes, thumbnails
 @import "elements/pieces/buttons.less";
-@import "elements/pieces/datepicker.less";
+
+//@import "elements/pieces/datepicker.less"; //STARTER FOR IF DATEPICKER IS NEEDED/IN USE
 @import "elements/pieces/forms.less";
-//@import "elements/pieces/gravityforms.less"; ONLY USE THIS IF GRAVITY FORMS IS IN USE
+//@import "elements/pieces/gravityforms.less"; //ONLY USE THIS IF GRAVITY FORMS IS IN USE
 @import "elements/pieces/post-pagination.less"; //prev/next button pagination
 @import "elements/pieces/social.less";
 
