@@ -3,17 +3,17 @@
 {% block main_content %}
 
 <section class="pattern">
-    <div class="container" style="outline: 1px solid red">
+    <div class="container">
 
       <div class="flex-row center-lg gutter-lg-fat gutter-md-default">
 
             {# SIDE NAV | col-side-nav #}
-            <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12" style="outline: 1px solid green">
+            <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
                 {% include 'partials/subnav.twig' with { menu: primary_menu, post: post } only %}
 			</div>
 
             {# MAIN COLUMN #}
-            <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12" style="outline: 1px solid green">
+            <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
 
 				<h1>{{ post.meta('main_headline')|default(post.title) }}</h1>
                
