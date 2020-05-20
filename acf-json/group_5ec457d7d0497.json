@@ -1,0 +1,52 @@
+{
+    "key": "group_5ec457d7d0497",
+    "title": "Main Headline",
+    "fields": [
+        {
+            "key": "field_5ec457df66719",
+            "label": "Main Headline",
+            "name": "main_headline",
+            "type": "text",
+            "instructions": "This is the H1, if left empty it will default to the page title",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "default"
+            }
+        ],
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "template-landing.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "acf_after_title",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content"
+    ],
+    "active": 1,
+    "description": "Default Template | Landing Template",
+    "modified": 1589986345
+}
