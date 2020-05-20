@@ -7,7 +7,7 @@
 use Conifer\Post\Page;
 
 // Get common/site-wide data
-$data = $site->get_context_with_post( new Page() );
+$data = $site->context(['post' => new Page()]);
 
 // Render the default view
 Timber::render( 'template-landing.twig', $data );
