@@ -1,0 +1,16 @@
+{% extends 'layouts/main.twig' %}
+
+{% block main_content %}
+
+<section class="pattern">
+    <div class="container">
+
+		<h1>{{ post.meta('main_headline')|default(post.title) }}</h1>
+	</div><!-- END .container -->
+</section>               
+		
+{# FLEXIBLE LAYOUTS #}
+{% include 'partials/content-layouts.twig' with { layouts: post.meta('layouts') } only %}
+
+
+{% endblock %}

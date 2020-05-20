@@ -1,9 +1,9 @@
 
-<article class="card-article {{ post.class }}" itemscope itemtype="http://schema.org/BlogPosting">
+<article class="card-article {{ cardModifier }}" itemscope itemtype="http://schema.org/BlogPosting">
 	{% if post.thumbnail() %}
 		{# Rich Snippet markup for the Featured Image. Note: Google won't display a Rich Snippet without one of these #}
 		<div class="card-article__image" itemscope itemprop="image" itemtype="http://schema.org/ImageObject">
-			<img src="{{ post.thumbnail().src('thumbnail') }}" alt="{{ post.thumbnail().alt() | default(post.title) }}" itemprop="url">
+			<img src="{{ Image(post.thumbnail()).src(cardCrop|default('thumbnail')) }}" alt="{{  Image(post.thumbnail()).alt() | default(post.title) }}" itemprop="url">
 			<meta itemprop="width" content="{{ post.thumbnail().width('large') }}">
 			<meta itemprop="height" content="{{ post.thumbnail().height('large') }}">
 		</div>

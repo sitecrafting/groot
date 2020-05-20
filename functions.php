@@ -189,16 +189,15 @@ $site->configure(function() {
     ]);
   }
 
-  // used for Gallery ACF layout option in flexible content
-  add_image_size( 'gallery', 900, 600, true );
+  
+  
 
   // disable default Gallery
   add_filter( 'use_default_gallery_style', '__return_false' );
 
-  // Image-Row ACF layout option in flexible content
-  add_image_size( 'image-row-small', 300, 235, true );
-  add_image_size( 'image-row-medium', 450, 350, true );
-  add_image_size( 'image-row-large', 900, 450, true );
+  // CUSTOM IMAGE CROPS
+  add_image_size( 'gallery', 900, 600, true ); //gallery slideshow flex pattern
+  add_image_size( 'article-card', 380, 250, true ); //article-card partial
 
   // Make certain custom sizes available in the RTE
   // use this to unset or add image size options for RTE insert

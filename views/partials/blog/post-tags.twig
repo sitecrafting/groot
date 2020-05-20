@@ -1,8 +1,10 @@
 {% if post.get_tags %}
 <div class="post-categories">
-	<span>Tags:</span>
+	<h6 class="post-categories__label">Tags:</h6>
+	<div class="post-categories__list">
 	{% for tag in post.get_tags %}
 		<a href="{{ tag.link }}">{{ tag }}</a>{{ loop.last ? '' : ',' }}
 	{% endfor %}
+	</div>
 </div>
 {% endif %}

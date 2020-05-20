@@ -11,7 +11,7 @@
 
 				<div class="article-list">
 					{% for post in posts %}
-						{% include 'partials/blog/article-card.twig' %}
+						{% include 'partials/cards/article-card.twig' with { cardModifier : 'card-article--list' } %}
 					{% endfor %}
 				</div><!-- END .article-list -->
 
@@ -20,20 +20,18 @@
 			</div>
 			<div class="col-lg-4">
 
-				<div class="sidebar-box">
-					<h3 class="sidebar-box__title">Categories</h3>
-					<div class="sidebar-box__content">
-						<ul class="sidebar-box__menu">
-							<li{{ is_category == false ? ' class="active"' }}><a href="{{ get_blog_url() }}">All</a></li>
-							{% for cat in get_terms('category') %}
-							  <li{{ post.slug == cat.slug() ? ' class="active"' : '' }}><a href="{{ cat.link() }}">{{ cat.name }}</a></li>
-							{% endfor %}
-						</ul>
-					</div>
-				</div><!-- //sidebar-box -->
+				<nav class="subnav">
+					<h3 class="subnav__title">Categories</h3>
+					<ul class="subnav__menu">
+						<li{{ is_category == false ? ' class="current-menu-item"' }}><a href="{{ get_blog_url() }}">All</a></li>
+						{% for cat in get_terms('category') %}
+							<li{{ post.slug == cat.slug() ? ' class="current-menu-item"' : '' }}><a href="{{ cat.link() }}">{{ cat.name }}</a></li>
+						{% endfor %}
+					</ul>
+				</nav><!-- //sidebar-box -->
 
 				{#
-				<div class="sidebar-box">
+				<nav class="subnav">
 					<h3 class="sidebar-box__title">Archives</h3>
 					<div class="sidebar-box__content">
 						<ul class="sidebar-box__menu">
@@ -45,7 +43,7 @@
 	                    	{% endfor %}
 						</ul>
 					</div>
-				</div><!-- //sidebar-box -->
+				</nav><!-- //sidebar-box -->
 				#}
 			</div>
 		</div>
