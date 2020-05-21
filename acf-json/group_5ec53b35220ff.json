@@ -1,6 +1,6 @@
 {
     "key": "group_5ec53b35220ff",
-    "title": "Homepage Call To Action",
+    "title": "Call To Action",
     "fields": [
         {
             "key": "field_5ec53b4cb16fd",
@@ -75,6 +75,18 @@
                 "operator": "==",
                 "value": "front-page.php"
             }
+        ],
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "default"
+            },
+            {
+                "param": "page_type",
+                "operator": "!=",
+                "value": "posts_page"
+            }
         ]
     ],
     "menu_order": 5,
@@ -83,7 +95,7 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "active": true,
+    "active": 1,
     "description": "",
-    "modified": 1589984231
+    "modified": 1590073887
 }

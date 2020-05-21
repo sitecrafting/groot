@@ -32,4 +32,12 @@
     </div><!-- END .container -->
 </section>
 
+{% if post.meta('include_call_to_action') %}
+	{% include 'partials/content-layouts/call_to_action.twig'
+		with {
+			layout : post.meta('call_to_action')
+		}
+	%}
+{% endif %}
+
 {% endblock %}

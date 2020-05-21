@@ -25,19 +25,12 @@
     with {
         layout : {
             isH1 : true,
-            section_headline : post.title,
-            content : post.content
+            section_headline : post.meta('main_headline')|default(post.title),
+            content : post.meta('intro_content')
         }
     }
 %}
 
-{% if post.meta('include_testimonials') %}
-	{% include 'partials/content-layouts/testimonials.twig'
-		with {
-			layout : post.meta('testimonials')
-		}
-	%}
-{% endif %}
 
 <section class="pattern">
 	<div class="container">
@@ -61,11 +54,18 @@
 	</div>
 </section>
 
-
 {% if post.meta('include_call_to_action') %}
 	{% include 'partials/content-layouts/call_to_action.twig'
 		with {
 			layout : post.meta('call_to_action')
+		}
+	%}
+{% endif %}
+
+{% if post.meta('include_testimonials') %}
+	{% include 'partials/content-layouts/testimonials.twig'
+		with {
+			layout : post.meta('testimonials')
 		}
 	%}
 {% endif %}

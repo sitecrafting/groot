@@ -5,7 +5,7 @@
     <div class="container">
 
 		<div class="flex-row center-lg gutter-lg-fat gutter-md-default">
-		  <div class="col-lg-8">
+		  <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
 
               <h1>{{ post.title }}</h1>
 
@@ -18,9 +18,9 @@
 				{% include 'partials/post-pagination.twig' %}
 
 			</div>
-			<div class="col-lg-4">
+			<div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
 
-				<nav class="subnav">
+				<nav class="subnav subnav--filtering">
 					<h3 class="subnav__title">Categories</h3>
 					<ul class="subnav__menu">
 						<li{{ is_category == false ? ' class="current-menu-item"' }}><a href="{{ get_blog_url() }}">All</a></li>

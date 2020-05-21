@@ -1,5 +1,11 @@
 .subnav{ 
-	@media @tablet-sml, @mobile-all{ display: none; }
+	@media @tablet-sml, @mobile-all{ 
+		display: none; 
+		&.subnav--filtering{ 
+			margin-top: 40px;
+			display: block;
+		 }
+	}
 }
 
 .subnav__title{

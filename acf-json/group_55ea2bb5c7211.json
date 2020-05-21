@@ -257,37 +257,6 @@
                     ],
                     "min": "",
                     "max": ""
-                },
-                "layout_5ec53c35db466": {
-                    "key": "layout_5ec53c35db466",
-                    "name": "call_to_action",
-                    "label": "Call To Action",
-                    "display": "block",
-                    "sub_fields": [
-                        {
-                            "key": "field_5ec53c45db467",
-                            "label": "CTA",
-                            "name": "cta",
-                            "type": "clone",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "clone": [
-                                "group_5ec53aa5b09e9"
-                            ],
-                            "display": "seamless",
-                            "layout": "block",
-                            "prefix_label": 0,
-                            "prefix_name": 0
-                        }
-                    ],
-                    "min": "",
-                    "max": ""
                 }
             },
             "button_label": "Add Layout",
@@ -326,5 +295,5 @@
     ],
     "active": 1,
     "description": "Default Template | Landing Template",
-    "modified": 1589989106
+    "modified": 1590074130
 }
