@@ -5,10 +5,12 @@
 }
 
 .mx700{ max-width: 700px; }
+.mx950{ max-width: 950px; }
 
 .outer-gutter{
 	padding-left: @gutter;
 	padding-right: @gutter;
+
 	@media @tablet-all{
 		padding-left: @gutter-tablet;
 		padding-right: @gutter-tablet;
@@ -25,6 +27,7 @@
 	margin: 0 auto;
 	
 	@media @mobile-menu{
+		//overflow hidden prevents position sticky from working so use with care
 		overflow: hidden;
 	}
 }

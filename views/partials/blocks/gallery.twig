@@ -2,7 +2,7 @@
 	<div class="gallery-slideshow flexslider">
 		<ul class="slides">
 			{% for slide in slides %}
-				<li data-thumb="{{ TimberImage(slide.id).src('thumbnail') }}">
+				<li data-thumb="{{ TimberImage(slide.id).src('gallery') }}">
 					<img src="{{ TimberImage(slide.id).src('gallery') }}" alt="{{ slide.alt }}">
 					{% if slide.caption %}
 						<div class="slide-caption">{{ slide.caption | striptags }}</div>

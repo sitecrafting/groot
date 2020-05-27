@@ -1,7 +1,13 @@
 <section class="pattern pattern--gallery">
     <div class="container">
+
+		{% if layout.section_headline %}
+			<h2 class="pattern__headline">{{ layout.section_headline }}</h2>
+		{% endif %}
+
         {% include 'partials/blocks/gallery.twig' with {
           slides : layout.slideshow
         } %}
+		
     </div>
 </section>

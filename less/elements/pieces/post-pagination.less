@@ -1,11 +1,15 @@
+/* PREV/NEXT BUTTONS */
 .post-pagination{
+	margin: 40px 0;
     display: flex;
     justify-content: space-between;
 
     @media @mobile-all{
+		margin: 30px -0.5px;
 
         .nav-previous, .nav-next{
-            width: 50%;
+			width: 50%;
+			padding: 0 0.5px;
             display: flex;
             .btn{
                 min-width: 0;
@@ -17,19 +21,62 @@
                 justify-content: center;
                 font-size: 14px;
             }
-        }
-
-        /*.nav-previous{
-            border-right: 1.5px solid @primary-red;
-            &.disabled{ border-color: lighten(@text-color, 20%); }
-            .btn{ border-right: 0; border-radius: 300px 0 0 300px; }
-        }
-        .nav-next{
-            border-left: 1.5px solid @primary-red;
-            &.disabled{ border-color: lighten(@text-color, 20%); }
-            .btn{ border-left: 0; border-radius: 0 300px 300px 0; }
-        }*/
-
+		}
+		
     }
+
+}
+
+/* PAGINATE_LINKS() */
+.post-pagination--numbers{
+	display: block;
+	margin-left: 0;
+	margin-right: 0;
+	text-align: center;
+
+	.page-numbers{
+		display: inline-block;
+		padding: 0 5px;
+		font: 700 16px/20px @font-family-headings;
+		text-transform: uppercase;
+		letter-spacing: .5px;
+
+		&.prev, &.next{ 
+			position: relative;
+			svg{ 
+				display: block;
+				width: 15px; //height: 15px;
+				position: absolute;
+				top: 0; 
+				path{ fill: @blue; transition: all @trans-speed ease; }
+			}
+		}
+		&.prev{
+			padding-left: 20px;
+			svg{ left: 0; }
+		}
+		&.next{
+			padding-right: 20px;
+			svg{ right: 0; }
+		}
+
+		&:hover{
+			color: @black;
+			text-decoration: none;
+			svg path{ fill: @black; }
+		}
+
+		&.dots{ padding: 0; }
+
+	}//.page-numbers
+
+	@media @mobile-sml{
+		display: flex;
+		justify-content: space-between;
+		.page-numbers{ 
+			display: none; 
+			&.prev, &.next{ display: block; }
+		}
+	}
 
 }

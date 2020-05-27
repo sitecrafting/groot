@@ -1,7 +1,15 @@
+/* 
+* UNUSED IN THE STARTER
+*	- keeping this as an example custom 3 column structural layout
+*	- utilitizes flexbox grid and custom sized columns w/ media queries
+*/
+
 .column-layout{
 	position: relative;
 
-	> .container > .flex-row{ flex-flow: row nowrap; }
+	//keep columns from wrapping
+	> .container > .flex-row{ flex-flow: row nowrap; } 
+
 
 	// USES flexbox grid styles as a base
 	.col-side-nav,
@@ -10,21 +18,22 @@
 		flex: 1 0 auto;
 	}
 
+	//COLUMN 1 - LEFT SIDE
 	.col-side-nav{
 		.column-width(24%);
 		min-width: 260px;
 	}
 
+	//COLUMN 2 - MIDDLE PRIMARY CONTENT
 	.col-main-content{
 		flex: 1 1 980px;
 		//flex-basis: 54%;
-		max-width: 980px; //you dont want this to be smaller than what it would be with one side column
-		&.middle-content{ max-width: 54%; }
-		&.full-width{
-			max-width: 100%;
-		}
+		max-width: 980px; //you dont want this number to be smaller than what it would be with one side column
+		
+		&.middle-content{ max-width: 54%; } //want this class with all 3 columns
+		&.full-width{ max-width: 100%; } // or this one when its the only column
 
-		//remove gutter from patterns inside column
+		//remove gutter from patterns inside columns
 		.pattern{
 			padding-left: 0;
 			padding-right: 0;
@@ -32,10 +41,12 @@
 
 	}
 
+	//COLUMN 1 - RIGHT SIDE AD SPACE
 	.col-side-bar{
 		.column-width(22%);
 		min-width: 250px;
 	}
+
 
 	@media @tablet-all, @mobile-all{
 		.col-side-nav{ display: none; }
@@ -44,7 +55,9 @@
 		}
 	}
 	@media @mobile-all{
+		//allow columns to stack
 		> .container > .flex-row{ flex-flow: row wrap; }
+
 		.col-main-content, .col-main-content.middle-content{
 			.column-width(100%);
 		}

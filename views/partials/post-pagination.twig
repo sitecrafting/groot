@@ -7,5 +7,13 @@
     </div>
 </div><!-- post-navigation -->
 
-{# OPTION 2 - wordpress default function
-<div class="post-pagination">{{ paginate_links() }}</div> #}
+{# OPTION 2 - wordpress default function 
+<div class="post-pagination post-pagination--numbers">
+	{{ paginate_links(
+		{
+			'prev_text': source('img/arrows/streamline-icon-arrow-left@20x20.svg') ~ " Prev", 
+			'next_text': "Next " ~ source('img/arrows/streamline-icon-arrow-right@20x20.svg')
+		}
+	) }}
+</div> 
+#}

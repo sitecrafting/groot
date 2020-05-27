@@ -2,35 +2,17 @@
 
 {% block main_content %}
 
-{# SAMPLE DATA #}
-{% set slides =
-    [
-        {
-            image : 'http://placehold.it/1600x580?text=One',
-            caption : {
-                title : 'Slide Title One Goes Here',
-                link : { url : '#', title : 'Learn More' }
-            }
-        },
-        {
-            image : 'http://placehold.it/1600x580?text=Two',
-            caption : {
-                title : 'Slide Title Two Goes Here',
-                link : { url : '#', title : 'Learn More' }
-            }
-        }
-    ]
-%}
-
-<section class="slideshow{{ slides|length > 1 ? ' flexslider'}}">
+<section class="slideshow{{ post.meta('hero')|length > 1 ? ' flexslider'}}">
     <ul class="slides">
-        {% for slide in slides %}
-            <li class="hero" style="background-image: url({{ slide.image }});">
-                <div class="hero__caption">
-                    <div class="caption-text">
-                        <h2>{{ slide.caption.title }}</h2>
-                        {% if slide.caption.link.url %}
-                            <a class="btn" href="{{ slide.caption.link.url }}"{{ slide.caption.link.target ? ' target="_blank"' }}>{{ slide.caption.link.title|default('Learn More') }}</a>
+        {% for slide in post.meta('hero') %}
+            <li class="hero">
+				<div class="hero__background" style="background-image: url({{ Image(slide.background_image).src('large') }});"></div>
+                <div class="hero__content">
+                    <div class="content-block">
+                        <h2 class="title">{{ slide.headline }}</h2>
+						{% if slide.subtext %}<div class="subtext">{{ slide.subtext }}</div>{% endif %}
+                        {% if slide.button.url %}
+                            <a class="btn" href="{{ slide.button.url }}"{{ slide.button.target ? ' target="_blank"' }}>{{ slide.button.title|default('Learn More') }}</a>
                         {% endif %}
                     </div>
                 </div>
@@ -43,40 +25,12 @@
     with {
         layout : {
             isH1 : true,
-            title : post.meta('main_headline') ? post.meta('main_headline') : post.title,
-            content : post.content
+            section_headline : post.meta('main_headline')|default(post.title),
+            content : post.meta('intro_content')
         }
     }
 %}
 
-<section class="pattern">
-	<div class="container">
-
-        <header class="pattern__header">
-            <h2>Responsive Grid Example</h2>
-            <p>For our base grid styles look in <code>less/structure/flexboxgrid.less</code> and reference
-                <a href="http://flexboxgrid.com/" target="_blank">http://flexboxgrid.com/</a></p>
-        </header>
-
-		<div class="flex-row">
-			{% for i in 0..7 %}
-
-                <div class="col-lg-3 col-mdl-3 col-md-4 col-sm-6 col-xs-12">
-                  <div class="box">
-                    <img src="https://placehold.it/350x250" alt="" class="full-img" />
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</p>
-                  </div>
-                </div>
-
-			{% endfor %}
-		</div><!-- END .flex-row -->
-
-        <footer class="pattern__footer">
-            <a class="btn" href="#">Example Button</a>
-        </footer>
-
-    </div>
-</section>
 
 <section class="pattern">
 	<div class="container">
@@ -88,7 +42,7 @@
 		<div class="flex-row">
 		{% for postItem in get_latest_posts(3) %}
             <div class="col-flex col-lg-4 col-sm-12 col-xs-12">
-			    {% include 'partials/blog/article-card.twig' with { post : postItem } %}
+			    {% include 'partials/cards/article-card.twig' with { post : postItem, cardCrop : 'article-card' } %}
             </div>
 		{% endfor %}
         </div>
@@ -100,15 +54,20 @@
 	</div>
 </section>
 
+{% if post.meta('include_call_to_action') %}
+	{% include 'partials/content-layouts/call_to_action.twig'
+		with {
+			layout : post.meta('call_to_action')
+		}
+	%}
+{% endif %}
 
-{% include 'partials/content-layouts/call_to_action.twig'
-    with {
-        layout : {
-            title : 'Call to Action Title',
-            subtext : 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.',
-            button : { url : 'http://sitecrafting.com', target : true, title : 'Learn More' }
-        }
-    }
-%}
+{% if post.meta('include_testimonials') %}
+	{% include 'partials/content-layouts/testimonials.twig'
+		with {
+			layout : post.meta('testimonials')
+		}
+	%}
+{% endif %}
 
 {% endblock %}

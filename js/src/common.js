@@ -32,6 +32,11 @@ import accordion from './jquery.accordion.js'
     // Accordions
     $('dl.accordion').accordion();
 
+	//testimonials flexslider
+	$('.testimonials.flexslider').flexslider({
+		directionNav : false
+	});
+
     // gallery flexslider
     $('.gallery-slideshow.flexslider').flexslider({
         controlNav: 'thumbnails'

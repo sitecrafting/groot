@@ -1,0 +1,57 @@
+// potential modifiers for wrapping pattern containers
+.pattern--article{ 
+
+	.article__header{
+		margin-bottom: 50px;
+		.title{ margin: 0; }
+		.byline{ }
+	
+		.feature-image{
+			display: block;
+			margin: 30px 0 0;
+			img{
+				display: block;
+				width: 100%;
+			}
+		}
+	}//.article__header
+
+	.article__content{
+
+		.rtecontent{ }
+	
+		.article__taxonomies{
+			margin: 40px 0;
+		}
+	}
+
+}//.pattern--article
+
+.pattern--article-footer{
+	margin: 0;
+	padding-top: 80px;
+	padding-bottom: 80px;
+	background: @gray-f3;
+}
+
+
+//ARTICLE PIECES - if used elsewhere pull out into its own less file in pieces directory
+.post-categories{
+	font-size: 14px;
+	letter-spacing: 15px;
+
+	.post-categories__label{
+		display: inline-block;
+		margin: 0;
+		vertical-align: middle;
+		letter-spacing: normal;
+		font-size: 14px;
+		text-transform: uppercase;
+		color: @black;
+	}
+	.post-categories__list{
+		display: inline-block;
+		vertical-align: middle;
+		letter-spacing: normal;
+	}
+}
