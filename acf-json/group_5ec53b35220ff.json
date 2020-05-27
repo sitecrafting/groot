@@ -87,6 +87,13 @@
                 "operator": "!=",
                 "value": "posts_page"
             }
+        ],
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "template-landing.php"
+            }
         ]
     ],
     "menu_order": 5,
@@ -97,5 +104,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1590073887
+    "modified": 1590593286
 }

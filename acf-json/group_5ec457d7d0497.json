@@ -29,13 +29,6 @@
                 "operator": "==",
                 "value": "default"
             }
-        ],
-        [
-            {
-                "param": "page_template",
-                "operator": "==",
-                "value": "template-landing.php"
-            }
         ]
     ],
     "menu_order": 0,
@@ -47,6 +40,6 @@
         "the_content"
     ],
     "active": 1,
-    "description": "Default Template | Landing Template",
-    "modified": 1589986345
+    "description": "Default Template",
+    "modified": 1590593173
 }

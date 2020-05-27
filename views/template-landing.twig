@@ -2,15 +2,26 @@
 
 {% block main_content %}
 
-<section class="pattern">
-    <div class="container">
+{% include 'partials/content-layouts/standard_content.twig'
+    with {
+        layout : {
+            isH1 : true,
+            section_headline : post.meta('main_headline')|default(post.title),
+            content : post.meta('intro_content')
+        }
+    }
+%}
 
-		<h1>{{ post.meta('main_headline')|default(post.title) }}</h1>
-	</div><!-- END .container -->
-</section>               
-		
-{# FLEXIBLE LAYOUTS #}
-{% include 'partials/content-layouts.twig' with { layouts: post.meta('layouts') } only %}
+
+
+
+{% if post.meta('include_call_to_action') %}
+	{% include 'partials/content-layouts/call_to_action.twig'
+		with {
+			layout : post.meta('call_to_action')
+		}
+	%}
+{% endif %}
 
 
 {% endblock %}

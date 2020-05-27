@@ -276,13 +276,6 @@
                 "operator": "!=",
                 "value": "posts_page"
             }
-        ],
-        [
-            {
-                "param": "page_template",
-                "operator": "==",
-                "value": "template-landing.php"
-            }
         ]
     ],
     "menu_order": 0,
@@ -295,5 +288,5 @@
     ],
     "active": 1,
     "description": "Default Template | Landing Template",
-    "modified": 1590074130
+    "modified": 1590593047
 }
