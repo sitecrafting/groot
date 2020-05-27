@@ -148,7 +148,7 @@ ul.main-nav__menu{
 
 		}
 	}
-}//end ul.menu
+}//end ul.main-nav__menu
 
 //second level
 ul.main-nav__second{
@@ -221,6 +221,11 @@ ul.main-nav__second{
 					> a{
 						margin-right: 35px;
 						> span.main-nav__dropper{ &:before, &:after{ top: 14px; } }
+					}
+				}
+				&.toggle{
+					> a > span.main-nav__dropper{
+						&:after{ opacity: 0; transform: rotate(0deg); }
 					}
 				}
 			}
