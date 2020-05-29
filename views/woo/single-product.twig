@@ -1,0 +1,48 @@
+{% extends 'layouts/main.twig' %}
+
+{% block woocommerce_block %}
+
+<div class="pattern">
+
+	{% do action( 'woocommerce_before_main_content' ) %}
+
+	<article itemscope itemtype="http://schema.org/Product"  class="woocommmerce-wrapper single-product-details {{post.class}}">
+		<div class="container">
+
+			<div class="woocommerce-content">
+				{% do action('woocommerce_before_single_product') %}
+
+				<div itemscope itemtype="http://schema.org/Product" class="single-product-details {{post.class}}">
+					
+					<div class="single-product-details-top">
+						{% if post.thumbnail %}
+							<div class="single-product-details-top__image">
+								{# gallary images #}
+								{% do action('woocommerce_before_single_product_summary') %}
+								{# product image #}
+								<img src="{{ post.thumbnail.src|resize(shop_thumbnail_image_size) }}" />
+							</div>
+						{% endif %}
+
+						<div class="single-product-details-top__summary">
+							{% do action('woocommerce_single_product_summary') %}
+						</div>
+					</div>
+
+					{# tabs #}
+					{% do action('woocommerce_after_single_product_summary') %}
+
+					<meta itemprop="url" content="{{ post.link }}" />
+
+				</div><!-- //.single-product-details -->
+
+				{% do action('woocommerce_after_single_product') %}
+			</div><!-- //.woocommerce-content -->
+
+		</div>
+	</article>
+	
+</div>
+
+	{% do action( 'woocommerce_after_main_content' ) %}
+{% endblock  %}

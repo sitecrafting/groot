@@ -1,0 +1,22 @@
+{% extends 'layouts/main.twig' %}
+
+{% block main_content %}
+
+
+<section class="woocommmerce-wrapper">
+	<div class="container">
+
+	<div class="pattern">
+		<h1>{{ post.title }}</h1>
+		
+		{% filter shortcodes %}
+			[woocommerce_cart]
+		{% endfilter %}
+	</div>
+
+	</div><!-- END .container -->
+</section>
+
+{% endblock %}
+
+

@@ -1,0 +1,63 @@
+{% extends 'layouts/main.twig' %}
+
+{% block woocommerce_block %}
+
+<div class="pattern">
+    {#
+     # woocommerce_before_main_content hook.
+     #
+     # @hooked woocommerce_output_content_wrapper - 10 (outputs opening divs for the content)
+     # @hooked woocommerce_breadcrumb - 20
+     # @hooked WC_Structured_Data::generate_website_data() - 30
+     #}
+    {% do action('woocommerce_before_main_content') %}
+
+    <h1 class="woocommerce-products-header__title page-title">{{ post.meta('main_headline')|default('Shop') }}</h1>
+
+    {# Product categories #}
+    <nav>{% include 'woo/woo-product-categories.twig' %}</nav>
+    {#
+     # woocommerce_archive_description hook.
+     #
+     # @hooked woocommerce_taxonomy_archive_description - 10
+     # @hooked woocommerce_product_archive_description - 10
+     #}
+    {% do action('woocommerce_archive_description') %}
+
+    {#
+     # woocommerce_before_shop_loop hook.
+     #
+     # @hooked wc_print_notices - 10
+     # @hooked woocommerce_result_count - 20
+     # @hooked woocommerce_catalog_ordering - 30
+     #}
+    <div class="before-shop-loop">
+        {% do action('woocommerce_before_shop_loop') %}
+    </div>
+
+     <div class="loop">
+        <ul class="products">
+            {% for post in products %}
+                <li class="product">
+                    {% include 'woo/tease-product.twig' %}
+                </li>
+            {% endfor %}
+        <ul>
+    </div>
+
+    {#
+     # woocommerce_after_shop_loop hook.
+     #
+     # @hooked woocommerce_pagination - 10
+     #}
+    {% do action('woocommerce_after_shop_loop') %}
+
+    {#
+     # woocommerce_after_main_content hook.
+     #
+     # @hooked woocommerce_output_content_wrapper_end - 10 (outputs closing divs for the content)
+     #}
+    {% do action('woocommerce_after_main_content') %}
+</div>
+
+{% endblock %}

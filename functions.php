@@ -230,6 +230,33 @@ $site->configure(function() {
   });
 
 
+  /**
+   * Add Woocommerce support to the theme
+   * Source: https://timber.github.io/docs/guides/woocommerce/
+   */
+  function theme_add_woocommerce_support() {
+    add_theme_support( 'woocommerce' );
+  }
+  add_action( 'after_setup_theme', 'theme_add_woocommerce_support' );
+
+  /** Fix for products in the loop that do not get the right context by default. */
+  function timber_set_product( $currPost ) {
+    global $post, $product;
+    if ( is_woocommerce() ) {
+      $product = wc_get_product($currPost->ID);
+      $post = get_post($currPost->ID);
+    }
+  }
+
+  /** Woo Product Categories */
+  register_sidebar([
+    'name' => 'Woo Product Categories',
+    'id' => 'woo-product-categories'
+  ]);
+  
+  /** Woocommerce customized filters and hooks */
+  require_once(get_template_directory().'/functions/woocommerce-shop.php');
+  
   /*
    * Hide plugins that come with the custom SiteCrafting/WordPress upstream
    * https://bitbucket.org/sitecrafting/wordpress/src
