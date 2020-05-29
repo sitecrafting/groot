@@ -1,0 +1,27 @@
+/* ==========================
+    CUSTOM BASE FOR WOOCOMMERCE
+=============================*/
+
+.woocommerce{
+
+    // buttons
+    a.button.alt, button.button.alt{
+        background-color: @blue;
+        &:hover{
+            background-color: darken(@blue,5%);
+        }
+    }
+
+    // woo form
+    form{
+        .form-row.required {
+            color: @error;
+        }
+    }
+
+}//end .woocommerce
+
+// Optional store notice banner
+// .woocommerce-store-notice, p.demo_store {
+//     background-color: @blue;
+// }
