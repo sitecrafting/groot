@@ -504,7 +504,7 @@ Below are a few more steps needed for the woocommerce integration.
 
 
 
-#### Category Navigation (optional)
+#### Category Navigation
 
 Back to the theme’s **functions.php** file and registrer a sidebar for the category nav.
 
