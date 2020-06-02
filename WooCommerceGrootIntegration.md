@@ -747,8 +747,9 @@ Navigate to the admin center
 
 #### Other Woocommerce Settings need to be set up
 
+- Add pages to main Nav
+  - Admin Center > Apperance > Menus > Select the any/all Pages to be added (i.e. "Shop") > Order menu > Click "Save Menu"
 - Payment Processing
-- Terms and conditions (optional)
 - Privacy Policy (optional)
 - Taxes (optional)
 - Need to add svg arrow down for shop page: /wp-content/themes/groot/img/arrows/chevron-down.svg
