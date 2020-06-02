@@ -233,9 +233,22 @@ $site->configure(function() {
   /**
    * Add Woocommerce support to the theme
    * Source: https://timber.github.io/docs/guides/woocommerce/
+   * 
+   * Additionally, declaring what sizes (widths) should be used.
+   * Note: admin users will not be able to change these sizes.
+   * Source: https://docs.woocommerce.com/document/image-sizes-theme-developers/
+   * 
+   * Add theme support for single product gallery slideshow on product detail page
    */
   function theme_add_woocommerce_support() {
-    add_theme_support( 'woocommerce' );
+    add_theme_support( 'woocommerce', array(
+      'thumbnail_image_width' => 400,
+      'gallery_thumbnail_image_width' => 100,
+      'single_image_width' => 500,
+    ) );
+    add_theme_support( 'wc-product-gallery-zoom' );
+    add_theme_support( 'wc-product-gallery-lightbox' );
+    add_theme_support( 'wc-product-gallery-slider' );
   }
   add_action( 'after_setup_theme', 'theme_add_woocommerce_support' );
 
@@ -256,7 +269,7 @@ $site->configure(function() {
   
   /** Woocommerce customized filters and hooks */
   require_once(get_template_directory().'/functions/woocommerce-shop.php');
-  
+
   /*
    * Hide plugins that come with the custom SiteCrafting/WordPress upstream
    * https://bitbucket.org/sitecrafting/wordpress/src
