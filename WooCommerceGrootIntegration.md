@@ -498,6 +498,12 @@ Do the same for the checkout page but select the "Woocommerce Checkout" template
 
 
 
+### Wrapping up the loose ends
+
+Below are a few more steps needed for the woocommerce integration.
+
+
+
 #### Category Navigation (optional)
 
 Back to the theme’s **functions.php** file and registrer a sidebar for the category nav.
