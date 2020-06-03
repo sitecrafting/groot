@@ -86,6 +86,11 @@
                 "param": "page_type",
                 "operator": "!=",
                 "value": "posts_page"
+            },
+            {
+                "param": "page_type",
+                "operator": "!=",
+                "value": "woo_shop_page"
             }
         ],
         [
@@ -104,5 +109,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1590593286
+    "modified": 1591203229
 }

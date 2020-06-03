@@ -1,0 +1,50 @@
+
+.card-product{
+	position: relative;
+	display: flex;
+	flex-flow: row wrap;
+	width: 100%;
+	margin: 0 0 30px 0;
+
+	background: @gray-f3;
+
+	//within flexchild link
+	.card-product__media{
+		display: block;
+		width: 100%;
+		position: relative;
+		img{
+			display: block;
+			width: 100%;
+		}
+
+	}
+
+	//within flex child link
+	.card-product__details{
+		padding: 15px;
+
+		.entry-title{ margin: 0 0 5px; transition: all @trans-speed ease; }
+		.price{ 
+			display: block; 
+			font-size: 16px;
+			color: @text-color; 
+		}
+	}
+
+	//flex child
+	.card-product__link{
+		display: block;
+		width: 100%;
+		&:hover{
+			text-decoration: none;
+			.entry-title{ color: @black; }
+		}
+	}
+	//flex child
+	.card-product__footer{
+		align-self: flex-end;
+		padding: 0 15px 15px;
+	}
+
+}

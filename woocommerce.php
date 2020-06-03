@@ -8,6 +8,7 @@ if ( ! class_exists( 'Timber' ) ) {
 $context            = Timber::context();
 $context['sidebar'] = Timber::get_widgets( 'shop-sidebar' );
 
+/* SINGLE PRODUCT VIEW */
 if ( is_singular( 'product' ) ) {
     $context['post']    = Timber::get_post();
     $product            = wc_get_product( $context['post']->ID );
@@ -21,8 +22,10 @@ if ( is_singular( 'product' ) ) {
     // Restore the context and loop back to the main query loop.
     wp_reset_postdata();
 
-    Timber::render( 'views/woo/single-product.twig', $context );
+    Timber::render( 'views/woocommerce/single-product.twig', $context );
 } else {
+	
+	/* SHOP ARCHIVE VIEW */
     $posts               = Timber::get_posts();
     $context['products'] = $posts;
 
@@ -33,5 +36,5 @@ if ( is_singular( 'product' ) ) {
         $context['title'] = single_term_title( '', false );
     }
 
-    Timber::render( 'views/woo/archive.twig', $context );
+    Timber::render( 'views/woocommerce/store-archive.twig', $context );
 }

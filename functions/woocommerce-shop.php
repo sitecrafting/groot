@@ -1,7 +1,46 @@
 <?php
+
 /**
+   * Add Woocommerce support to the theme
+   * Source: https://timber.github.io/docs/guides/woocommerce/
+   * 
+   * Additionally, declaring what sizes (widths) should be used.
+   * Note: admin users will not be able to change these sizes.
+   * Source: https://docs.woocommerce.com/document/image-sizes-theme-developers/
+   * 
+   * Add theme support for single product gallery slideshow on product detail page
+   */
+  function theme_add_woocommerce_support() {
+    add_theme_support( 'woocommerce', array(
+      'thumbnail_image_width' => 400,
+      'gallery_thumbnail_image_width' => 100,
+      'single_image_width' => 500,
+    ) );
+    add_theme_support( 'wc-product-gallery-zoom' );
+    add_theme_support( 'wc-product-gallery-lightbox' );
+    add_theme_support( 'wc-product-gallery-slider' );
+  }
+  add_action( 'after_setup_theme', 'theme_add_woocommerce_support' );
+
+  /** Fix for products in the loop that do not get the right context by default. */
+  function timber_set_product( $currPost ) {
+    global $post, $product;
+    if ( is_woocommerce() ) {
+      $product = wc_get_product($currPost->ID);
+      $post = get_post($currPost->ID);
+    }
+  }
+
+  /** Woo Product Categories */
+  register_sidebar([
+    'name' => 'Woocommerce Sidebar',
+    'id' => 'woocommerce-sidebar'
+  ]);
+
+
+/*=====================
  * File for Woocommerce filters and hooks
- */
+ ====================*/
 
 /**
  * Change number of products that are displayed per page (shop page)
@@ -51,3 +90,20 @@ add_filter( 'acf/location/rule_match/page_type', function ( $match, $rule, $opti
   }
   return $match;
 }, 10, 3 );
+
+/* remove default related products */
+remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
+
+/**
+ * Remove Woocommerce Select2 - Woocommerce 3.2.1+
+ */
+function woo_dequeue_select2() {
+    if ( class_exists( 'woocommerce' ) ) {
+        wp_dequeue_style( 'select2' );
+        wp_deregister_style( 'select2' );
+
+        wp_dequeue_script( 'selectWoo');
+        wp_deregister_script('selectWoo');
+    } 
+}
+add_action( 'wp_enqueue_scripts', 'woo_dequeue_select2', 100 );

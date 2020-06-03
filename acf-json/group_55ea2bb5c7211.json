@@ -275,6 +275,11 @@
                 "param": "page_type",
                 "operator": "!=",
                 "value": "posts_page"
+            },
+            {
+                "param": "page_type",
+                "operator": "!=",
+                "value": "woo_shop_page"
             }
         ]
     ],
@@ -288,5 +293,5 @@
     ],
     "active": 1,
     "description": "Default Template | Landing Template",
-    "modified": 1590593047
+    "modified": 1591203211
 }

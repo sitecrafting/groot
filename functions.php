@@ -189,8 +189,6 @@ $site->configure(function() {
     ]);
   }
 
-  
-  
 
   // disable default Gallery
   add_filter( 'use_default_gallery_style', '__return_false' );
@@ -230,44 +228,7 @@ $site->configure(function() {
   });
 
 
-  /**
-   * Add Woocommerce support to the theme
-   * Source: https://timber.github.io/docs/guides/woocommerce/
-   * 
-   * Additionally, declaring what sizes (widths) should be used.
-   * Note: admin users will not be able to change these sizes.
-   * Source: https://docs.woocommerce.com/document/image-sizes-theme-developers/
-   * 
-   * Add theme support for single product gallery slideshow on product detail page
-   */
-  function theme_add_woocommerce_support() {
-    add_theme_support( 'woocommerce', array(
-      'thumbnail_image_width' => 400,
-      'gallery_thumbnail_image_width' => 100,
-      'single_image_width' => 500,
-    ) );
-    add_theme_support( 'wc-product-gallery-zoom' );
-    add_theme_support( 'wc-product-gallery-lightbox' );
-    add_theme_support( 'wc-product-gallery-slider' );
-  }
-  add_action( 'after_setup_theme', 'theme_add_woocommerce_support' );
-
-  /** Fix for products in the loop that do not get the right context by default. */
-  function timber_set_product( $currPost ) {
-    global $post, $product;
-    if ( is_woocommerce() ) {
-      $product = wc_get_product($currPost->ID);
-      $post = get_post($currPost->ID);
-    }
-  }
-
-  /** Woo Product Categories */
-  register_sidebar([
-    'name' => 'Woo Product Categories',
-    'id' => 'woo-product-categories'
-  ]);
-  
-  /** Woocommerce customized filters and hooks */
+  /** Woocommerce setup */
   require_once(get_template_directory().'/functions/woocommerce-shop.php');
 
   /*

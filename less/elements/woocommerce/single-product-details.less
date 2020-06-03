@@ -1,0 +1,40 @@
+
+
+.single-product-details-related{ 
+	margin-top: 50px; 
+	.single-product-details-related__title{ margin-top: 0; }
+}
+
+.single-product-details-top{
+	
+	margin-bottom: 30px;
+
+	// single product details product content
+    .single-product-details-top__summary{
+        @media @mobile-all{
+			margin-top: 30px;
+		}
+	}
+	
+	.single-product-details-top__image{
+
+
+		// single product details product gallery
+		.woocommerce-product-gallery.images{
+			margin: 0;
+			width: 100%;
+			float: none;
+
+			ol.flex-control-nav{
+				display: flex !important; //force to always show even on mobile
+				padding-top: 10px;
+				margin: 0 -5px;
+				li{ }
+			}
+		}
+
+
+	}
+	
+	
+}

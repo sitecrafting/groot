@@ -1,0 +1,75 @@
+{% extends 'layouts/main.twig' %}
+
+{% block woocommerce_block %}
+
+    {#
+     # woocommerce_before_main_content hook.
+     #
+     # @hooked woocommerce_output_content_wrapper - 10 (outputs opening divs for the content)
+     # @hooked woocommerce_breadcrumb - 20
+     # @hooked WC_Structured_Data::generate_website_data() - 30
+     #}
+    {% do action('woocommerce_before_main_content') %}
+
+	<section class="pattern">
+    	<div class="container">
+
+			<div class="flex-row gutter-lg-fat gutter-md-default">
+
+		 	 	<div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+
+    				<h1>{{ post.meta('main_headline')|default('Shop') }}</h1>
+
+					{#
+					# woocommerce_archive_description hook.
+					#
+					# @hooked woocommerce_taxonomy_archive_description - 10
+					# @hooked woocommerce_product_archive_description - 10
+					#}
+					{% do action('woocommerce_archive_description') %}
+
+					{#
+					# woocommerce_before_shop_loop hook.
+					#
+					# @hooked wc_print_notices - 10
+					# @hooked woocommerce_result_count - 20
+					# @hooked woocommerce_catalog_ordering - 30
+					#}
+					<div class="before-shop-loop">
+						{% do action('woocommerce_before_shop_loop') %}
+					</div>
+
+					<div class="product-grid flex-row">
+						{% for post in products %}
+							<div class="col-flex col-lg-4 col-mdl-6 col-md-6 col-sm-6 col-xs-12">
+								{% include 'woocommerce/partials/card-product.twig' %}
+							</div>
+						{% endfor %}
+					</div>
+
+					{#
+					# woocommerce_after_shop_loop hook.
+					#
+					# @hooked woocommerce_pagination - 10
+					#}
+					{% do action('woocommerce_after_shop_loop') %}
+				</div>
+				<div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+
+					{# Product categories #}
+    				{% include 'woocommerce/partials/widget-sidebar.twig' %}
+
+				</div>
+			</div><!-- //.flex-row -->
+		</div>
+	</section>
+
+    {#
+     # woocommerce_after_main_content hook.
+     #
+     # @hooked woocommerce_output_content_wrapper_end - 10 (outputs closing divs for the content)
+     #}
+    {% do action('woocommerce_after_main_content') %}
+
+
+{% endblock %}

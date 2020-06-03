@@ -1,0 +1,39 @@
+<article {{ fn('post_class', ['card-product'] ) }}>
+
+    {{ fn('timber_set_product', post) }}
+
+	{##
+	# woocommerce_before_shop_loop_item_title hook.
+	#
+	# @hooked woocommerce_show_product_loop_sale_flash - 10
+	# @hooked woocommerce_template_loop_product_thumbnail - 10
+	#}
+	<a href="{{ post.link }}" class="card-product__link">
+
+		<div class="card-product__media">
+			{% do action('woocommerce_before_shop_loop_item_title') %}
+		</div>
+		<div class="card-product__details">
+			<h3 class="entry-title">{{ post.title }}</h3>
+			{##
+			# woocommerce_after_shop_loop_item_title hook.
+			#
+			# @hooked woocommerce_template_loop_rating - 5
+			# @hooked woocommerce_template_loop_price - 10
+			#}
+			{% do action( 'woocommerce_after_shop_loop_item_title' ) %}
+		</div>
+	</a>
+	<div class="card-product__footer">
+		{##
+		# woocommerce_after_shop_loop_item hook.
+		#
+		# The second parameter is currently needed to prevent an issue with Timber action calls.
+		#
+		# @hooked woocommerce_template_loop_product_link_close - 5
+		# @hooked woocommerce_template_loop_add_to_cart - 10
+		#}
+		{% do action( 'woocommerce_after_shop_loop_item' ) %}
+	</div>
+
+</article>
