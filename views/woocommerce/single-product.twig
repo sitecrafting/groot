@@ -66,6 +66,7 @@
 					{% do action('woocommerce_after_single_product_summary') %}
 
 
+					{% if related_products %}
 					<div class="single-product-details-related">
 						<h3 class="h2 single-product-details-related__title">Related Products</h3>
 
@@ -77,6 +78,7 @@
 							{% endfor %}
 						</div>
 					</div>
+					{% endif %}
 
 					<meta itemprop="url" content="{{ post.link }}" />
 

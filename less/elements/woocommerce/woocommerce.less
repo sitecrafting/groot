@@ -26,6 +26,9 @@
 		border-radius: 0;
 	}
 
+	// MESSAGING/NOTICES
+	.woocommerce-message, .woocommerce-error, .woocommerce-info { background-color: @gray-f3; }
+
 	/* ARCHIVE SORTING */
 	.before-shop-loop{
 		display: flex;
@@ -48,7 +51,9 @@
     button.button, a.button, a.button.alt, button.button.alt{
 		
 		.btn();
-		
+
+		&:hover { color: @white; }
+
         &:disabled{
             padding: 15px 40px !important;
             background: @gray-f3 !important;
@@ -56,9 +61,20 @@
             cursor: not-allowed;
             &:hover{ background: @gray-f3; }
         }
-    }
+	}
+	
+	// variable product button
+	button.button.alt.disabled{
+		padding: 15px 40px !important;
+		background: @gray-f3 !important;
+		color: @black;
+		cursor: not-allowed;
+		&:hover{ background: @gray-f3; color: @black; }
+	}
 
-    // woo form
+	/* CART/CHECKOUT */
+
+    // woocommerce form
     form{
         .form-row.required {
             color: @error;
@@ -69,6 +85,35 @@
 	.cart.woocommerce-cart-form__contents{
 		.coupon{
 			.input-text{ width: 50%; }
+		}
+	}
+
+	// shipping link
+	.woocommerce-shipping-fields {
+		h3 label{
+			font-size: @font-size-h3;
+			text-decoration: underline;
+
+			&:hover{ color: darken(@blue,5%); }
+
+			@media @mobile-all {
+				font-size: @font-size-h3-m;
+			}
+		}
+	}
+
+	// payment box
+	.woocommerce-checkout-payment{
+		background:  @gray-f3 !important;
+		border-radius: 5px;
+		.payment_box{
+			background-color: @white !important;
+			&:before{ 
+				border: 1em solid @white !important;
+				border-right-color: transparent !important;
+				border-left-color: transparent !important;
+				border-top-color: transparent !important;
+			}
 		}
 	}
 
