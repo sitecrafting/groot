@@ -72,6 +72,66 @@
 		&:hover{ background: @gray-f3; color: @black; }
 	}
 
+	/* WOO FORMS */
+	.form-row{
+
+		// Form checkboxes
+		.woocommerce-form__input-checkbox + span{
+			position: relative;
+			display: inline-block;
+			margin: 0 5px @input-bottom-margin 0;
+			padding: 0 0 0 30px;
+			font-weight: normal;
+
+			&:before{
+				content: "";
+				display: block;
+				width: 20px;
+				height: 20px;
+				position: absolute;
+				top: 4px;
+				left: 0;
+				background: @input-bg;
+				border: 1px solid @input-border;
+
+				font-size: 20px;
+				line-height: 20px;
+				text-align: center;
+			}
+
+		}
+
+		.woocommerce-form__input-checkbox:checked + span{
+			&:before{ content: "\2713"; }
+		}
+
+		// Apply same disabled cursor tweak as for inputs
+		// Note: checkboxes can be read only.
+		.woocommerce-form__input-checkbox{
+			&[disabled]{
+				cursor: not-allowed;
+
+				//if customized styles
+				& + span:before{
+				cursor: not-allowed;
+				}
+			}
+		}
+
+		// Checkbox validation
+		.woocommerce-invalid{
+			.woocommerce-form__input-checkbox + span{
+				&:before{ border-color: #a00; }
+			}
+		}
+
+	}//END .form-row
+
+	// Radio checkboxes
+	input[type=radio] + label{
+		&:before{ top: 0; }
+	}
+
 	/* WOO CART */
 	.woocommerce-cart-form{
 
@@ -148,9 +208,8 @@
 			}
 		}//END #ship-to-different-address
 
-		// Create an account checkbox
-		.create-account{
-			.woocommerce-form__input-checkbox{ position: unset; opacity: unset; }
+		#shipping_method{
+			li{ margin-top: .5em; }
 		}
 
 		// Payment box
@@ -166,6 +225,9 @@
 					border-top-color: transparent ;
 				}
 				p{ margin-top: 0; }
+			}
+			input[type=radio] + label{
+				&:before{ top: 4px; }
 			}
 		}
 	}//END .woocommerce-checkout
