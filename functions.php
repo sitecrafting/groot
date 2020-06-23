@@ -168,16 +168,22 @@ $site->configure(function() {
       [],
       true,
       false
-    );
+	);
+		  
+	  $this->enqueue_script(
+		'search',
+		'search.js',
+		['project-common']
+	  );
 
     /*
      * NOTE: If you do need to enqueue additional scripts here,
      * it's probably best to enqueue them in the footer unless
      * there's a very good reason not to.
-     */
-
+     */	  
     $this->enqueue_style('project-css', 'style.css', [], true);
-    $this->enqueue_style('project-print-css', 'print.css', [], true, 'print');
+	$this->enqueue_style('project-print-css', 'print.css', [], true, 'print');
+	
 
   });
 
