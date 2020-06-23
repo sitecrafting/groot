@@ -170,12 +170,6 @@ $site->configure(function() {
       false
 	);
 		  
-	  $this->enqueue_script(
-		'search',
-		'search.js',
-		['project-common']
-	  );
-
     /*
      * NOTE: If you do need to enqueue additional scripts here,
      * it's probably best to enqueue them in the footer unless
