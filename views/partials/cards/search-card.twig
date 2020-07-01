@@ -1,0 +1,6 @@
+<div class="search-card">
+	{% if card.label %}<div class="search-card__label">{{ card.label }}</div>{% endif %}
+	<h3 class="search-card__title">{{ card.title }}</h3>
+	{% if card.snippet %}<div class="search-card__snippet">{{ card.snippet }}</div>{% endif %}
+	<a class="search-card__link" href="{{ card.link }}">Read More</a>
+</div>
