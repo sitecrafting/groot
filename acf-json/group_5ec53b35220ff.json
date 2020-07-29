@@ -86,11 +86,6 @@
                 "param": "page_type",
                 "operator": "!=",
                 "value": "posts_page"
-            },
-            {
-                "param": "page_type",
-                "operator": "!=",
-                "value": "woo_shop_page"
             }
         ],
         [
@@ -98,6 +93,13 @@
                 "param": "page_template",
                 "operator": "==",
                 "value": "template-landing.php"
+            }
+        ],
+        [
+            {
+                "param": "page_type",
+                "operator": "==",
+                "value": "woo_shop_page"
             }
         ]
     ],
@@ -109,5 +111,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1591203229
+    "modified": 1596059521
 }

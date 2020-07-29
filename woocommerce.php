@@ -23,17 +23,27 @@ if ( is_singular( 'product' ) ) {
     wp_reset_postdata();
 
     Timber::render( 'views/woocommerce/single-product.twig', $context );
+
 } else {
-	
-	/* SHOP ARCHIVE VIEW */
+
+    /* SHOP ARCHIVE VIEW */
     $posts               = Timber::get_posts();
     $context['products'] = $posts;
 
     if ( is_product_category() ) {
-        $queried_object = get_queried_object();
-        $term_id = $queried_object->term_id;
+        $queried_object      = get_queried_object();
+        $term_id             = $queried_object->term_id;
         $context['category'] = get_term( $term_id, 'product_cat' );
-        $context['title'] = single_term_title( '', false );
+        $context['title']    = single_term_title( '', false );
+    } else {
+        $post                 = Timber::get_post(get_option('woocommerce_shop_page_id'));
+        $context['title']     = $post->title;
+        $context['content']   = $post->content;
+
+        // ACF(s) for store archive page
+        $context['main_headline']          = get_field('main_headline');
+        $context['include_call_to_action'] = get_field('include_call_to_action');
+        $context['call_to_action']         = get_field('call_to_action');
     }
 
     Timber::render( 'views/woocommerce/store-archive.twig', $context );

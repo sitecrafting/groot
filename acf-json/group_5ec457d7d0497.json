@@ -29,6 +29,13 @@
                 "operator": "==",
                 "value": "default"
             }
+        ],
+        [
+            {
+                "param": "page_type",
+                "operator": "==",
+                "value": "woo_shop_page"
+            }
         ]
     ],
     "menu_order": 0,
@@ -41,5 +48,5 @@
     ],
     "active": 1,
     "description": "Default Template",
-    "modified": 1590593173
+    "modified": 1596059471
 }

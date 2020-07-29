@@ -18,7 +18,7 @@
 
 		 	 	<div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
 
-    				<h1>{{ post.meta('main_headline')|default('Shop') }}</h1>
+    				<h1>{{ main_headline|default(title) }}</h1>
 
 					{#
 					# woocommerce_archive_description hook.
@@ -61,6 +61,16 @@
 
 				</div>
 			</div><!-- //.flex-row -->
+
+			{# CTA #}
+			{% if include_call_to_action %}
+				{% include 'partials/content-layouts/call_to_action.twig'
+					with {
+						layout : call_to_action
+					}
+				%}
+			{% endif %}
+
 		</div>
 	</section>
 
