@@ -55,6 +55,19 @@ lando webpack --watch
 
 ### Building a new release
 
+Start by updating the Groot release number in the `style.less` header comment. This is not strictly necessary, but can make things easier to troubleshoot:
+
+```css
+/*!
+ * Theme Name: Groot
+ * ...
+ * Copyright 2020 SiteCrafting, Inc.
+ * Based on Groot release: vX.X.X     // <-- UPDATE THIS NUMBER
+ */
+```
+
+Make sure you commit this change before creating the actual release. Otherwise your release download will not include this update.
+
 Groot includes a script for building itself and creating a release. To create a tag and corresponding release called `vX.Y.Z`:
 
 ```bash
