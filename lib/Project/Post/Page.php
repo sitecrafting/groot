@@ -3,7 +3,7 @@
 /**
  * Project\Post\Page class
  *
- * @copyright 2018 SiteCrafting, Inc.
+ * @copyright 2020 SiteCrafting, Inc.
  * @author    SiteCrafting
  */
 
