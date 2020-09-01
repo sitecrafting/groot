@@ -69,7 +69,10 @@ const jsConfig = Object.assign({}, sharedConfig, {
      *
      * Learn more: https://www.sitecrafting.com/issues-cached-css-js-files-wordpress/
      */
-    new AssetsVersionPlugin([]),
+    new AssetsVersionPlugin({
+      versionFile: 'scripts.version',
+      useHash: true,
+    }),
     /*
      * Tell Webpack that jQuery is a thing that exists globally.
      */
@@ -145,7 +148,10 @@ const cssConfig = Object.assign({}, sharedConfig, {
         },
       },
     }),
-    new AssetsVersionPlugin([]),
+    new AssetsVersionPlugin({
+      versionFile: 'styles.version',
+      useHash: true,
+    }),
     new DeleteAfterBuildPlugin({
       paths: ['print.js*', 'style.js*', 'editor-style.js*'],
     }),

@@ -158,7 +158,8 @@ $site->configure(function() {
     $this->enqueue_script(
       'project-common',
       'common.js',
-      ['jquery']
+      ['jquery'],
+      ['file' => 'scripts.version']
     );
 
     //modernizr
@@ -166,18 +167,17 @@ $site->configure(function() {
       'project-modernizr',
       'modernizr/modernizr.custom.53630.js',
       [],
-      true,
+      ['file' => 'scripts.version'],
       false
-	);
+    );
 		  
     /*
      * NOTE: If you do need to enqueue additional scripts here,
      * it's probably best to enqueue them in the footer unless
      * there's a very good reason not to.
      */	  
-    $this->enqueue_style('project-css', 'style.css', [], true);
-	$this->enqueue_style('project-print-css', 'print.css', [], true, 'print');
-	
+    $this->enqueue_style('project-css', 'style.css', [], ['file' => 'styles.version']);
+    $this->enqueue_style('project-print-css', 'print.css', [], ['file' => 'styles.version'], 'print');
 
   });
 
