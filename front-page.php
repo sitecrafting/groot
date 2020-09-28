@@ -4,6 +4,8 @@
  * Author: Coby Tamayo
  */
 
+use Timber\Timber;
+
 use Conifer\Post\FrontPage;
 
 // Get common/site-wide data

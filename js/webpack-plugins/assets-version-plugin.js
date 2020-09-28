@@ -7,9 +7,9 @@ class AssetsVersionPlugin {
   }
 
   apply(compiler) {
-    compiler.hooks.done.tap('asdf', stats => {
+    compiler.hooks.done.tap('assets_version', stats => {
       const versionFile = this.options.versionFile || 'assets.version'
-      const version     = Date.now().toString()
+      const version     = this.options.useHash ? stats.hash : Date.now().toString()
       fs.writeFileSync(versionFile, version)
       console.log(`⌚ Overwrote ${versionFile}  ⬅️  ${version}`)
     })
