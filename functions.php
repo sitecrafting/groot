@@ -5,6 +5,8 @@ use Conifer\Post\Image;
 use Conifer\Site;
 use Conifer\Navigation\Menu;
 
+use Project\Post\BlogPost;
+use Project\Post\FrontPage;
 use Project\Post\Page;
 use Project\Twig\ThemeTwigHelper;
 
@@ -49,7 +51,31 @@ $site->configure(function() {
    * @groot config_callback
    */
 
-   $this->add_twig_helper(new ThemeTwigHelper());
+  /**
+   * Define our Timber Post Class Maps, telling Timber which class to instantiate
+   * for each given post_type.
+   *
+   * This is new in Timber 2.0.
+   * @see https://github.com/timber/timber/blob/2.x-docs-api/docs/v2/guides/class-maps.md
+   * @todo update this link to the official guide URL once Factories are merged into Timber 2.x
+   */
+  add_filter('timber/post/classmap', function(array $map) {
+    return array_merge($map, [
+      // For pages, instantiate a FrontPage for the globally configured home page,
+      // otherwise return a regular Page.
+      'page' => function(WP_Post $page) {
+        static $homeId;
+        $homeId = $homeId ?? get_option('page_on_front');
+        return $page->ID === $homeId ? FrontPage::class : Page::class;
+      },
+      'post' => BlogPost::class,
+
+      // Custom post type mappings go here
+
+    ]);
+  });
+
+  $this->add_twig_helper(new ThemeTwigHelper());
 
   add_theme_support( 'post-thumbnails' );
   add_theme_support( 'menus' );
