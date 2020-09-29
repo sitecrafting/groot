@@ -14,7 +14,7 @@
 	<link rel="apple-touch-icon" href="{{ img_url('favicon-120.png') }}" sizes="120x120">
 	<link rel="apple-touch-icon" href="{{ img_url('favicon-152.png') }}" sizes="152x152">
 
-	{{ wp_head }}
+	{{ fn('wp_head') }}
 
 </head>
 <body class="{{ body_classes | join(' ') }}">
@@ -77,7 +77,7 @@
 </div></div><!-- //.site-pusher //.site-wrapper -->
 
 {# everything below here is included automagically by WP #}
-{{ wp_footer }}
+{{ fn('wp_footer') }}
 
 
 </body>
