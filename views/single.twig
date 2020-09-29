@@ -60,7 +60,7 @@
 				</div>
 
 				<div class="flex-row">
-				{% for postItem in related %}
+				{% for postItem in post.get_related(3) %}
 					<div class="col-flex col-lg-4 col-sm-12 col-xs-12">
 						{% include 'partials/cards/article-card.twig' with { post : postItem, cardCrop : 'article-card' } %}
 					</div>
