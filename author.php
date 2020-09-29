@@ -5,13 +5,16 @@
 
 use Timber\Timber;
 use Timber\User;
-use Conifer\Post\Post;
+
+$authorId = $GLOBALS['wp_query']->query_vars['author'];
+$user     = Timber::get_user($authorId);
 
 // Get common/site-wide data
-$data = $site->get_context_with_posts( Post::get_all() );
-
-// Treat author as "post" for navigation purposes
-$data['post'] = new User( $GLOBALS['wp_query']->query_vars['author'] );
+$data = $site->context([
+  'posts' => Timber::get_posts(),
+  // Treat author as "post" for navigation purposes
+  'post'  => $user,
+]);
 
 // Render the archive view
 Timber::render( 'index.twig', $data );
