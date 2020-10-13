@@ -15,6 +15,9 @@ use Project\Twig\ThemeTwigHelper;
 if (file_exists(__DIR__ . '/vendor/autoload.php')) {
   require_once __DIR__ . '/vendor/autoload.php';
 }
+if (file_exists(realpath(ABSPATH . '/vendor/autoload.php'))) {
+  require_once realpath(ABSPATH . '/vendor/autoload.php');
+}
 
 // autoload library files
 spl_autoload_register(function(string $class) {
