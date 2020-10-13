@@ -6,7 +6,7 @@
 <article itemscope itemtype="http://schema.org/BlogPosting">
 
 	<div class="pattern pattern--article">
-		
+
 		<header class="article__header">
 			<div class="container mx950">
 				<h1 class="title" itemprop="headline">{{ post.title }}</h1>
@@ -38,7 +38,7 @@
 
 		<div class="article__content">
 			<div class="container mx950">
-				
+
 
 				<div class="rtecontent">{{ post.content }}</div>
 
@@ -60,7 +60,7 @@
 				</div>
 
 				<div class="flex-row">
-				{% for postItem in post.get_related(3) %}
+				{% for postItem in post.related(3) %}
 					<div class="col-flex col-lg-4 col-sm-12 col-xs-12">
 						{% include 'partials/cards/article-card.twig' with { post : postItem, cardCrop : 'article-card' } %}
 					</div>
@@ -74,7 +74,7 @@
 		</div>
 	</footer>
 	{# function( 'comments_template' ) #}
-		
+
 </article>
 
 

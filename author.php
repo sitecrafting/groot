@@ -11,7 +11,6 @@ $user     = Timber::get_user($authorId);
 
 // Get common/site-wide data
 $data = $site->context([
-  'posts' => Timber::get_posts(),
   // Treat author as "post" for navigation purposes
   'post'  => $user,
 ]);
