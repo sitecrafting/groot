@@ -4,6 +4,7 @@ use Groot\PluginManager;
 use Conifer\Post\Image;
 use Conifer\Site;
 use Conifer\Navigation\Menu;
+use Timber\Timber;
 
 use Project\Post\BlogPost;
 use Project\Post\FrontPage;
@@ -250,7 +251,7 @@ $site->configure(function() {
     'utility'  => 'Utility Navigation',
   ]);
 
-  add_filter('timber_context', function(array $context) : array {
+  add_filter('timber/context', function(array $context) : array {
 
     $context['primary_menu']     = new Menu('primary');
     $context['utility_menu']      = new Menu('utility');
