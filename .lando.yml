@@ -2,7 +2,7 @@ name: groot
 recipe: wordpress
 config:
   webroot: wp
-  php: '7.0'
+  php: '7.4'
 
 services:
   appserver:

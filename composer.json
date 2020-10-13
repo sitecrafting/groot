@@ -28,9 +28,9 @@
         "johnpbloch/wordpress-core-installer": "^1.0",
         "johnpbloch/wordpress-core": "^5.4",
         "mnsami/composer-custom-directory-installer": "^1.1",
-        "sitecrafting/conifer": "^0.7.1",
+        "sitecrafting/conifer": "dev-timber-2.x",
         "squizlabs/php_codesniffer": "3.*",
-        "wpackagist-plugin/timber-library": "^1.7",
+        "timber/timber": "dev-2.x-factories",
         "wp-coding-standards/wpcs": "^0.14"
     },
     "extra": {

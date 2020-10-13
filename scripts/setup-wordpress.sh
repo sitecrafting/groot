@@ -116,15 +116,8 @@ EOF
 
   # install/activate plugins and theme
   uninstall_plugins hello akismet
-  wp --quiet plugin install --activate timber-library
   wp --quiet plugin activate conifer
   wp --quiet theme activate groot
-
-  # install a specific version of Timber if necessary
-  if [[ "$TIMBER_VERSION" ]]
-  then
-    composer require --dev timber/timber:"$TIMBER_VERSION"
-  fi
 
   # uninstall stock themes
   wp theme uninstall twentyten twentyeleven twentytwelve \
