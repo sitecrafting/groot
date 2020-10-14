@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8324cd21d5a67edcdef71c63f7aa5622",
+    "content-hash": "a45b0ad4a5d65e6831e9c56faad2ab4f",
     "packages": [],
     "packages-dev": [
         {
@@ -339,16 +339,16 @@
         },
         {
             "name": "johnpbloch/wordpress-core",
-            "version": "5.5.x-dev",
+            "version": "5.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnpbloch/wordpress-core.git",
-                "reference": "ff9354e749b9e9b7cc2535cc90a92a1ec4ee19ee"
+                "reference": "fa5bcb1579eae33baef6c04355f8d6657e5bd349"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/ff9354e749b9e9b7cc2535cc90a92a1ec4ee19ee",
-                "reference": "ff9354e749b9e9b7cc2535cc90a92a1ec4ee19ee",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/fa5bcb1579eae33baef6c04355f8d6657e5bd349",
+                "reference": "fa5bcb1579eae33baef6c04355f8d6657e5bd349",
                 "shasum": ""
             },
             "require": {
@@ -356,7 +356,7 @@
                 "php": ">=5.6.20"
             },
             "provide": {
-                "wordpress/core-implementation": "5.5.x-dev"
+                "wordpress/core-implementation": "5.5.1"
             },
             "type": "wordpress-core",
             "notification-url": "https://packagist.org/downloads/",
@@ -376,7 +376,7 @@
                 "cms",
                 "wordpress"
             ],
-            "time": "2020-09-08T23:07:17+00:00"
+            "time": "2020-09-01T19:07:35+00:00"
         },
         {
             "name": "johnpbloch/wordpress-core-installer",
@@ -481,35 +481,35 @@
         },
         {
             "name": "sitecrafting/conifer",
-            "version": "dev-timber-2.x",
+            "version": "v1.0.0-alpha.01",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sitecrafting/conifer.git",
-                "reference": "83b8524574b8f90ef2a4ca4628bc68c1e202d200"
+                "reference": "3d4fb450f98834c9fd8f8cef7476c37f1bb102cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sitecrafting/conifer/zipball/83b8524574b8f90ef2a4ca4628bc68c1e202d200",
-                "reference": "83b8524574b8f90ef2a4ca4628bc68c1e202d200",
+                "url": "https://api.github.com/repos/sitecrafting/conifer/zipball/3d4fb450f98834c9fd8f8cef7476c37f1bb102cd",
+                "reference": "3d4fb450f98834c9fd8f8cef7476c37f1bb102cd",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.1"
+                "php": "^7.4"
             },
             "require-dev": {
                 "10up/wp_mock": "dev-dev",
                 "acobster/wp-cli-yaml-fixtures": "^0.5.0",
                 "behat/behat": "^3.4",
-                "johnpbloch/wordpress-core": "4.9.8",
+                "johnpbloch/wordpress-core": "5.5.1",
                 "johnpbloch/wordpress-core-installer": "^1.0",
                 "mikey179/vfsstream": "~1",
                 "mnsami/composer-custom-directory-installer": "^1.1",
                 "paulthewalton/acf-stubs": "^5.8.7",
                 "phpunit/phpunit": "^6.0",
-                "sitecrafting/groot": "dev-master",
+                "sitecrafting/groot": "dev-timber-2.x",
                 "squizlabs/php_codesniffer": "3.*",
                 "szepeviktor/phpstan-wordpress": "^0.6.5",
-                "timber/timber": "^1.7",
+                "timber/timber": "dev-2.x-factories",
                 "victorjonsson/markdowndocs": "dev-master",
                 "wp-coding-standards/wpcs": "^0.14"
             },
@@ -540,7 +540,7 @@
                 }
             ],
             "description": "Powerful abstractions for serious WordPress theme development",
-            "time": "2020-10-12T21:01:34+00:00"
+            "time": "2020-10-13T17:29:49+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
@@ -752,12 +752,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "f67f57d777e8076c0cb6fffb7d3f25d135ff73c9"
+                "reference": "482fcb68096949357bab9a8a0e0bf3327560fe61"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/f67f57d777e8076c0cb6fffb7d3f25d135ff73c9",
-                "reference": "f67f57d777e8076c0cb6fffb7d3f25d135ff73c9",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/482fcb68096949357bab9a8a0e0bf3327560fe61",
+                "reference": "482fcb68096949357bab9a8a0e0bf3327560fe61",
                 "shasum": ""
             },
             "require": {
@@ -774,6 +774,9 @@
                 "symfony/console": "For validating YAML files using the lint command"
             },
             "type": "library",
+            "extra": {
+                "branch-version": "3.4"
+            },
             "autoload": {
                 "psr-4": {
                     "Symfony\\Component\\Yaml\\": ""
@@ -812,7 +815,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-10-06T15:25:25+00:00"
+            "time": "2020-10-13T13:20:16+00:00"
         },
         {
             "name": "timber/timber",
@@ -1066,7 +1069,6 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "sitecrafting/conifer": 20,
         "timber/timber": 20
     },
     "prefer-stable": false,
