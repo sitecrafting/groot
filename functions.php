@@ -4,6 +4,7 @@ use Groot\PluginManager;
 use Conifer\Post\Image;
 use Conifer\Site;
 use Conifer\Navigation\Menu;
+use Conifer\Navigation\MenuItem;
 use Timber\Timber;
 
 use Project\Post\BlogPost;
@@ -77,6 +78,16 @@ $site->configure(function() {
       // Custom post type mappings go here
 
     ]);
+  });
+
+  /*
+   * Do the same thing for Menus and MenuItems.
+   */
+  add_filter('timber/menu/classmap', function() {
+    return Menu::class;
+  });
+  add_filter('timber/menuitem/classmap', function() {
+    return MenuItem::class;
   });
 
   $this->add_twig_helper(new ThemeTwigHelper());
@@ -200,12 +211,12 @@ $site->configure(function() {
       ['file' => 'scripts.version'],
       false
     );
-		  
+
     /*
      * NOTE: If you do need to enqueue additional scripts here,
      * it's probably best to enqueue them in the footer unless
      * there's a very good reason not to.
-     */	  
+     */
     $this->enqueue_style('project-css', 'style.css', [], ['file' => 'styles.version']);
     $this->enqueue_style('project-print-css', 'print.css', [], ['file' => 'styles.version'], 'print');
 
@@ -219,8 +230,8 @@ $site->configure(function() {
     ]);
   }
 
-  
-  
+
+
 
   // disable default Gallery
   add_filter( 'use_default_gallery_style', '__return_false' );
@@ -245,7 +256,7 @@ $site->configure(function() {
     ]);
   });*/
 
-  // register common nav menus
+  // register common nav Timber::get_menu
   register_nav_menus([
     'primary' => 'Main Navigation', // main page/nav structure
     'utility'  => 'Utility Navigation',
@@ -253,8 +264,8 @@ $site->configure(function() {
 
   add_filter('timber/context', function(array $context) : array {
 
-    $context['primary_menu']     = new Menu('primary');
-    $context['utility_menu']      = new Menu('utility');
+    $context['primary_menu'] = Timber::get_menu('primary');
+    $context['utility_menu'] = Timber::get_menu('utility');
 
     return $context;
   });
