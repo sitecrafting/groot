@@ -1,27 +1,27 @@
 <nav class="main-nav">
     <ul class="main-nav__menu" itemscope itemtype="http://schema.org/SiteNavigationElement">
-        {% for top in menu.get_items %}
+        {% for top in menu.items %}
             <li class="{{ top.classes | join(' ') }}">
 
-                <a href="{{ top.get_path() }}" itemprop="url">
+                <a href="{{ top.path }}" itemprop="url">
                     <span itemprop="name">{{ top.title }}</span>
                 </a>
 
                 {# SECOND LEVEL #}
-                {% if top.get_children %}
+                {% if top.children %}
                     <ul class="main-nav__second">
-                      {% for second in top.get_children %}
+                      {% for second in top.children %}
                         <li class="{{ second.classes | join(' ') }}">
-                            <a href="{{ second.get_path() }}">{{ second.title }}</a>
+                            <a href="{{ second.path }}">{{ second.title }}</a>
 
                                 {# THIRD LEVEL
                                     - typically used for mobile in off canvas navigation when sidenav is hidden
                                 #}
-                                {% if second.get_children %}
+                                {% if second.children %}
                                     <ul class="main-nav__third">
-                                      {% for third in second.get_children %}
+                                      {% for third in second.children %}
                                         <li class="{{third.classes | join(' ')}}">
-                                            <a href="{{ third.get_path() }}">{{third.title}}</a>
+                                            <a href="{{ third.path }}">{{third.title}}</a>
                                         </li>
                                       {% endfor %}
                                     </ul>
