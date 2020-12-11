@@ -2,6 +2,7 @@
 import 'fitvids.1.1.0'
 import 'flexslider'
 import 'magnific-popup'
+import Swiper from 'swiper/bundle'; // import Swiper bundle with all modules installed
 //import objectFitImages from 'object-fit-images';
 
 import responsiveNav from './responsive-nav.jquery.js'
@@ -37,10 +38,32 @@ import accordion from './jquery.accordion.js'
 		directionNav : false
 	});
 
-    // gallery flexslider
-    $('.gallery-slideshow.flexslider').flexslider({
-        controlNav: 'thumbnails'
+	// gallery thumbnails
+	var galleryThumbs = new Swiper('.gallery-swiper-thumbs', {
+		spaceBetween: 10,
+		slidesPerView: 'auto',
+		loop: false,
+		freeMode: true,
+		watchSlidesVisibility: true,
+		watchSlidesProgress: true,
 	});
+	// gallery swiper
+	var galleryTop = new Swiper('.gallery-swiper-top', {
+		loop: false,
+		fadeEffect: { crossFade: true },
+		effect: 'fade',
+		autoplay: {
+			delay: 7000,
+			disableOnInteraction: false,
+		},
+		navigation: {
+		  nextEl: '.swiper-button-next',
+		  prevEl: '.swiper-button-prev',
+		},
+		thumbs: {
+		  swiper: galleryThumbs,
+		},
+	  });
 	
 	//SEARCH POPUP
     $('.js-open-search').magnificPopup({

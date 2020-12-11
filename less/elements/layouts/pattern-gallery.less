@@ -1,40 +1,112 @@
 // potential modifiers for wrapping pattern containers
 //.pattern--gallery{ }
 
-.gallery-slideshow.flexslider{
+/*===========================
+    Gallery Image/Caption
+=============================*/
+.gallery-swiper-top{
+	position: relative;
+
+	.swiper-slide{
     position: relative;
-    overflow: hidden;
+    transition: all @trans-speed ease;
 
-    margin: 20px 0;
+    img{ display: block; width: 100%;}
 
-    ul.slides{
-      > li{
-        position: relative;
-        .slide-caption{
-          padding: 20px;
-          width: 100%;
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          background: rgba(red(@black), green(@black), blue(@black), .5);
-          color: @white;
-        }
+    .slide-caption{
+      padding: 20px;
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      background: rgba(red(@black), green(@black), blue(@black), .5);
+      color: @white;
+    }
+  }
+  
+}//end .gallery-swiper-top
+
+
+/*===========================
+    PAGING - DOTS
+============================*/
+//TODO
+
+/*==========================
+    PAGING - THUMBNAILS
+===========================*/
+.gallery-swiper-thumbs{
+
+	.swiper-slide{
+    width: 150px;
+    margin-top: 10px;
+
+    img{
+      display: block;
+      width: 100%;
+      opacity: .5;
+      transition: all @trans-speed ease;
+      cursor: pointer;
+
+      &:hover,
+      &.swiper-slide-thumb-active{
+        opacity: 1;
       }
     }
-
-    ul.flex-direction-nav{
-        width: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        //set height to width/height ratio of the gallery slide
-        //this helps vertically center the direction arrows on the slide
-        //instead of the whole slideshow
-        &:before{
-            content: "";
-            display: block;
-            padding-top: 67%;
-        }
+    &.swiper-slide-thumb-active{
+      img{ opacity: 1; }
     }
+  }
 
-}//end .gallery-slideshow.flexslider
+	@media @mobile-sml{
+		.swiper-slide{ display: none; }
+	}
+}//end .gallery-swiper-thumbs
+
+
+/*===========================
+    DIRECTIONAL NAV - ARROWS
+=============================*/
+.gallery-controls{
+  display: block;
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  transform: translateY(-50%);
+  z-index: 20;
+  display: flex;
+  justify-content: space-between;
+
+	button{
+		position: relative;
+		display: block;
+    width: 50px;
+    height: 50px;
+    -webkit-appearance: none;
+    border: 0;
+		background: @blue;
+		transition: all @trans-speed ease;
+		cursor: pointer;
+
+		svg{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			g{ stroke: @white; }
+		}
+
+		&:hover{
+			background-color: darken(@blue, 10%);
+    }
+    
+    &.swiper-button-prev{left: 0;}
+    &.swiper-button-next{right: 0;}
+
+		&.swiper-button-disabled{
+      background-color: @blue;
+			cursor: not-allowed;
+		}
+	}//end button
+
+}//end gallery-controls

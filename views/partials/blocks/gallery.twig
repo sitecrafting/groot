@@ -1,14 +1,33 @@
 {% if slides %}
-	<div class="gallery-slideshow flexslider">
-		<ul class="slides">
+	<div class="swiper-container gallery-swiper-top">
+
+		<div class="swiper-wrapper">
 			{% for slide in slides %}
-				<li data-thumb="{{ TimberImage(slide.id).src('gallery') }}">
-					<img src="{{ TimberImage(slide.id).src('gallery') }}" alt="{{ slide.alt }}">
+				<div class="swiper-slide">
+					<img src="{{ Image(slide.id).src('gallery') }}" alt="{{ Image(slide.id).alt() }}">
 					{% if slide.caption %}
 						<div class="slide-caption">{{ slide.caption | striptags }}</div>
 					{% endif %}
-				</li>
+				</div>
 			{% endfor %}
-		</ul>
+		</div>
+
+		<div class="gallery-controls">
+			<button class="swiper-button-prev">{{ source('img/arrows/streamline-chevron-white-left@20x20.svg') }}</button>
+			<button class="swiper-button-next">{{ source('img/arrows/streamline-chevron-white-right@20x20.svg') }}</button>
+		</div>
+
+	</div>
+
+	<div class="swiper-container gallery-swiper-thumbs">
+
+		<div class="swiper-wrapper">
+			{% for slide in slides %}
+				<div class="swiper-slide">
+					<img src="{{ Image(slide.id).src('gallery') }}" alt="{{ Image(slide.id).alt() }}">
+				</div>
+			{% endfor %}
+		</div>
+
 	</div>
 {% endif %}
