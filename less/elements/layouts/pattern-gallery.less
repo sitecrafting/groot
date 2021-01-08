@@ -4,12 +4,9 @@
 /*===========================
     Gallery Image/Caption
 =============================*/
-.gallery-swiper-top{
-	position: relative;
+.gallery-slideshow{
 
 	.swiper-slide{
-    position: relative;
-    transition: all @trans-speed ease;
 
     img{ display: block; width: 100%;}
 
@@ -21,41 +18,32 @@
       left: 0;
       background: rgba(red(@black), green(@black), blue(@black), .5);
       color: @white;
+      font-size: 14px;
     }
   }
   
 }//end .gallery-swiper-top
 
-
-/*===========================
-    PAGING - DOTS
-============================*/
-//TODO
-
 /*==========================
-    PAGING - THUMBNAILS
+    GALLERY SWIPER - THUMBNAILS
 ===========================*/
-.gallery-swiper-thumbs{
+.gallery-thumbs{
+  margin-top: 10px;
 
 	.swiper-slide{
-    width: 150px;
-    margin-top: 10px;
+    
+    width: 140px;
+    opacity: .5;
+    transition: all @trans-speed ease;
+    cursor: pointer;
 
     img{
       display: block;
       width: 100%;
-      opacity: .5;
-      transition: all @trans-speed ease;
-      cursor: pointer;
+    }
 
-      &:hover,
-      &.swiper-slide-thumb-active{
-        opacity: 1;
-      }
-    }
-    &.swiper-slide-thumb-active{
-      img{ opacity: 1; }
-    }
+    &:hover,
+    &.swiper-slide-thumb-active{ opacity: 1; }
   }
 
 	@media @mobile-sml{
@@ -64,49 +52,3 @@
 }//end .gallery-swiper-thumbs
 
 
-/*===========================
-    DIRECTIONAL NAV - ARROWS
-=============================*/
-.gallery-controls{
-  display: block;
-  position: absolute;
-  top: 50%;
-  width: 100%;
-  transform: translateY(-50%);
-  z-index: 20;
-  display: flex;
-  justify-content: space-between;
-
-	button{
-		position: relative;
-		display: block;
-    width: 50px;
-    height: 50px;
-    -webkit-appearance: none;
-    border: 0;
-		background: @blue;
-		transition: all @trans-speed ease;
-		cursor: pointer;
-
-		svg{
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%,-50%);
-			g{ stroke: @white; }
-		}
-
-		&:hover{
-			background-color: darken(@blue, 10%);
-    }
-    
-    &.swiper-button-prev{left: 0;}
-    &.swiper-button-next{right: 0;}
-
-		&.swiper-button-disabled{
-      background-color: @blue;
-			cursor: not-allowed;
-		}
-	}//end button
-
-}//end gallery-controls

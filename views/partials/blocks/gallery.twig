@@ -1,5 +1,5 @@
 {% if slides %}
-	<div class="swiper-container gallery-swiper-top">
+	<div class="swiper-container gallery-slideshow">
 
 		<div class="swiper-wrapper">
 			{% for slide in slides %}
@@ -12,14 +12,12 @@
 			{% endfor %}
 		</div>
 
-		<div class="gallery-controls">
-			<button class="swiper-button-prev">{{ source('img/arrows/streamline-chevron-white-left@20x20.svg') }}</button>
-			<button class="swiper-button-next">{{ source('img/arrows/streamline-chevron-white-right@20x20.svg') }}</button>
-		</div>
+		<div class="swiper-button-prev"></div>
+   		<div class="swiper-button-next"></div>
 
 	</div>
 
-	<div class="swiper-container gallery-swiper-thumbs">
+	<div class="swiper-container gallery-thumbs">
 
 		<div class="swiper-wrapper">
 			{% for slide in slides %}

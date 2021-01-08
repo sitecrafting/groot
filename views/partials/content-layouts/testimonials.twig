@@ -5,10 +5,13 @@
 			<h2 class="pattern__headline">{{ layout.section_headline }}</h2>
 			{% endif %}
 
-			<div class="testimonials flexslider">
-				<ul class="slides">
+
+			<div class="slideshow-testimonial swiper-container">
+
+				<div class="swiper-wrapper">
+					<!-- Slides -->
 					{% for slide in layout.testimonials %}
-					<li class="testimonial">
+					<div class="swiper-slide testimonial">
 						<div class="container mx950">
 							
 							<q class="testimonial__quote">{{ slide.quote }}</q>
@@ -19,9 +22,12 @@
 							</div>
 
 						</div>
-					</li>
+					</div><!-- //.swiper-slide.hero -->
 					{% endfor %}
-				</ul>
+				</div>
+
+				<div class="swiper-pagination"></div>
+
 			</div>
 
 	</div>

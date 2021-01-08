@@ -21,8 +21,6 @@
 // Core variables and mixins
 @import "base/variables.less";
 @import "base/mixins.less";
-@import "base/flexslider-base.less"; //core required flexslider styles
-@import "../node_modules/swiper/swiper.less"; //core required swiper styles
 @import "base/magnific-popup.less"; 
 
 /* ====================
@@ -41,11 +39,19 @@
 @import "structure/subnav.less"; //secondary subnavgation
 
 /* ====================
+    SLIDESHOW/SWIPER
+======================= */
+@import "../node_modules/swiper/swiper.less"; //core required swiper styles
+@import "../node_modules/swiper/components/effect-fade/effect-fade.less"; //required for fade effect
+@import "../node_modules/swiper/components/navigation/navigation.less"; //core navigation arrow styles
+@import "../node_modules/swiper/components/pagination/pagination.less"; //core pagination styles
+@import "elements/pieces/swiper-customize-pieces.less"; //CUSTOMIZE SWIPER MODULES
+
+/* ====================
     ELEMENT/PIECES
 =======================*/
 @import "elements/global.less"; //global utility styles
 
-@import "elements/pieces/flexslider-pieces.less"; //prev/next arrows, paging notes, thumbnails
 @import "elements/pieces/popup-search.less"; //basic inline search popup styles
 @import "elements/pieces/buttons.less";
 
@@ -70,7 +76,7 @@
 
 //specific patterns wrapped in pattern with optional modifiers
 @import "elements/layouts/pattern-accordion.less";
-@import "elements/layouts/pattern-gallery.less"; //gallery slideshow [flexslider]
+@import "elements/layouts/pattern-gallery.less"; //gallery slideshow [swiper]
 @import "elements/layouts/pattern-testimonials.less";
 @import "elements/layouts/pattern-cta.less"; //specific pattern layout modifiers
 
