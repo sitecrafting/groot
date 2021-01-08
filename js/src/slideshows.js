@@ -1,3 +1,4 @@
+//https://swiperjs.com/
 import Swiper from 'swiper/bundle'; // import Swiper bundle with all modules installed
 
 (($) => {
