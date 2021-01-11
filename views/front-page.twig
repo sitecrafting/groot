@@ -2,24 +2,32 @@
 
 {% block main_content %}
 
-<section class="slideshow{{ post.meta('hero')|length > 1 ? ' flexslider'}}">
-    <ul class="slides">
+<div class="slideshow swiper-container">
+
+    <div class="swiper-wrapper">
+        <!-- Slides -->
         {% for slide in post.meta('hero') %}
-            <li class="hero">
-				<div class="hero__background" style="background-image: url({{ Image(slide.background_image).src('large') }});"></div>
-                <div class="hero__content">
-                    <div class="content-block">
-                        <h2 class="title">{{ slide.headline }}</h2>
-						{% if slide.subtext %}<div class="subtext">{{ slide.subtext }}</div>{% endif %}
-                        {% if slide.button.url %}
-                            <a class="btn" href="{{ slide.button.url }}"{{ slide.button.target ? ' target="_blank"' }}>{{ slide.button.title|default('Learn More') }}</a>
-                        {% endif %}
-                    </div>
+        <div class="swiper-slide hero">
+            <div class="hero__background" style="background-image: url({{ Image(slide.background_image).src('large') }});"></div>
+            <div class="hero__content">
+                <div class="content-block" data-swiper-parallax-y="-100" >
+                    <h2 class="title">{{ slide.headline }}</h2>
+                    {% if slide.subtext %}<div class="subtext">{{ slide.subtext }}</div>{% endif %}
+                    {% if slide.button.url %}
+                        <a class="btn" href="{{ slide.button.url }}"{{ slide.button.target ? ' target="_blank"' }}>{{ slide.button.title|default('Learn More') }}</a>
+                    {% endif %}
                 </div>
-            </li>
-      {% endfor %}
-    </ul>
-</section>
+            </div>
+        </div><!-- //.swiper-slide.hero -->
+        {% endfor %}
+    </div>
+
+    <div class="swiper-pagination"></div>
+
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+
+</div>
 
 {% include 'partials/content-layouts/standard_content.twig'
     with {
