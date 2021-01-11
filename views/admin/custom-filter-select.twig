@@ -1,6 +1,0 @@
-<select name="{{ name }}">
-	{% for value, label in options %}
-		<option {{ filtered_value == value ? 'selected' : '' }}
-			value="{{ value }}">{{ label }}</option>
-	{% endfor %}
-</select>
