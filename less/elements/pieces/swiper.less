@@ -1,6 +1,13 @@
+@import "../../../node_modules/swiper/swiper.less"; //core required swiper styles
+@import "../../../node_modules/swiper/components/effect-fade/effect-fade.less"; //required for fade effect
+@import "../../../node_modules/swiper/components/navigation/navigation.less"; //core navigation arrow styles
+@import "../../../node_modules/swiper/components/pagination/pagination.less"; //core pagination styles
+
 /*===========================
-    DIRECTIONAL NAV - ARROWS
+    CUSTOMIZATIONS OF SWIPER MODULES
 =============================*/
+
+/* Arrow Styles */
 .swiper-button-prev,
 .swiper-button-next{
     width: 50px;
@@ -19,9 +26,7 @@
 .swiper-button-prev{ left: 0; }
 .swiper-button-next{ right: 0; }
 
-/*===========================
-    PAGING - DOTS
-============================*/
+/* Pagination Bullets */
 .swiper-pagination-bullets{
     .swiper-pagination-bullet{
         opacity: 1;
@@ -42,41 +47,3 @@
     }
 
 }
-
-
-/*===========================
-    PAGING - THUMBNAILS
-===========================*/
-ol.flex-control-thumbs{
-   display: flex;
-   flex-flow: row wrap;
-   justify-content: flex-start;
-   margin-left: -5px;
-   margin-right: -5px;
-
-   li{
-     position: relative;
-     padding-left: 5px;
-     padding-right: 5px;
-     flex-basis: 20%;
-     max-width: 20%;
-
-     img{
-       display: block;
-       margin: 10px 0 0 0;
-       width: 100%;
-       opacity: .5;
-       transition: all @trans-speed ease;
-       cursor: pointer;
-
-       &:hover,
-       &.flex-active{
-         opacity: 1;
-       }
-     }
-
-   }//end li
-
-   @media @mobile-sml{ display: none; }
-
- } //end ol.flex-control-thumbs
