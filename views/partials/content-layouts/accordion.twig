@@ -1,7 +1,11 @@
 <section class="pattern pattern--accordion">
     <div class="container">
+		{% if layout.section_headline %}
+			<h2 class="pattern__headline">{{ layout.section_headline }}</h2>
+		{% endif %}
         {% include 'partials/blocks/accordion.twig' with {
           acc_layout : layout.acc_panel
         } %}
+
     </div>
 </section>

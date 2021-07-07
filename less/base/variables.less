@@ -7,15 +7,13 @@
 // -------------------------
 //
 // Theme path - use this for referring to other, non-LESS/CSS resources
+// The value is automatically passed in to this file via webpack at build time,
+// and will be formatted '/wp-content/themes/{theme-directory-name}/'
 //
 // Example usage:
 //
 // * { background-image: url('@{theme-path}img/icons/my-icon.svg'); }
-//
-// TODO update this to your project-specific name
-// This step will go away once
-// https://github.com/sitecrafting/wp-cli-scaffold-groot-command/issues/2 is implemented
-@theme-path: '/wp-content/themes/groot/';
+@theme-path: '';
 
 
 // Grays
@@ -58,7 +56,7 @@
 @font-family-headings:          'Roboto Condensed',  arial, sans-serif;
 
 @font-size-base:                16px;
-@line-height:        	        1.8;
+@line-height:        	        1.6;
 
 @font-size-h1:                  42px;
 @font-size-h2:                  35px;
@@ -90,7 +88,7 @@
 
 @input-border-focus:             @blue;
 
-@input-color-placeholder:        @text-color;
+@input-color-placeholder:        darken(@gray-f3,15%);
 @input-font-size:                16px;
 
 @input-height:                   56px;
@@ -106,12 +104,12 @@
 @mobile-lg:                 ~"only screen and (min-width: 530px) and (max-width: 767px)";
 @mobile-all:                ~"only screen and (max-width: 767px)";
 
-@tablet-sml:                ~"only screen and (min-width: 768px) and (max-width: 819px)";
-@tablet-lg:                 ~"only screen and (min-width: 820px) and (max-width: 1023px)";
+@tablet-sml:                ~"only screen and (min-width: 768px) and (max-width: 889px)";
+@tablet-lg:                 ~"only screen and (min-width: 890px) and (max-width: 1023px)";
 @tablet-all:                ~"only screen and (min-width: 768px) and (max-width: 1023px)";
 
-@desktop-sml:               ~"only screen and (min-width: 1024px) and (max-width: 1249px)";
-@desktop-lg:                ~"only screen and (min-width: 1250px)";
+@desktop-sml:               ~"only screen and (min-width: 1024px) and (max-width: 1299px)";
+@desktop-lg:                ~"only screen and (min-width: 1300px)";
 @desktop-all:               ~"only screen and (min-width: 1024px)";
 
 @mobile-menu:               @tablet-all, @mobile-all;

@@ -1,0 +1,59 @@
+// potential modifiers for wrapping pattern containers
+//.pattern--accordion{ }
+
+.accordion {
+  .clearfix();
+  margin: 25px 0;
+
+    dt {
+      .clearfix;
+      margin-top: 4px;
+      position: relative;
+      background: @blue;
+      transition: all .25s ease;
+
+        &:first-child { margin-top: 0; }
+
+        .accordion__title {
+          margin: 0;
+          position: relative;
+          z-index: 5;
+          color: @white;
+
+            > a {
+              display: block;
+              padding: 20px 20px 20px 45px;
+              color: @white;
+              &:hover{ text-decoration: none; }
+            }
+        }
+
+        &:before,&:after{
+          content: "";
+          display: block;
+          position: absolute;
+          top: 32px;
+          left: 15px;
+          width: 16px;
+          height: 2px;
+          background: @white;
+        }
+
+        &:after {
+          transform: rotate(90deg);
+          transition: all .25s ease;
+        }
+
+        &.active {
+          &:after{ transform: rotate(0); }
+        }
+    }//end dt
+
+    dd.accordion__content{
+      .clearfix;
+      display: none;
+      background: #f3f3f3;
+      margin: 0;
+      padding: 25px 20px 25px 45px;
+    }
+}

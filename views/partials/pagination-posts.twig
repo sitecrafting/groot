@@ -1,0 +1,19 @@
+<div class="post-pagination">
+    <div class="nav-previous{{ pagination.prev is empty ? ' disabled' : '' }}">
+        <a class="btn{{ pagination.prev is empty ? ' btn--disabled' : '' }}" {% if pagination.prev is not empty %}href="{{pagination.prev.link}}"{% endif %} title="{{pagination.prev.title}}">Newer Articles</a>
+    </div>
+    <div class="nav-next{{ pagination.next is empty ? ' disabled' : '' }}">
+        <a class="btn{{ pagination.next is empty ? ' btn--disabled' : '' }}" {% if pagination.next is not empty %}href="{{pagination.next.link}}"{% endif %} title="{{pagination.next.title}}">Older Articles</a>
+    </div>
+</div><!-- post-navigation -->
+
+{# OPTION 2 - wordpress default function 
+<div class="post-pagination post-pagination--numbers">
+	{{ paginate_links(
+		{
+			'prev_text': source('img/arrows/streamline-icon-arrow-left@20x20.svg') ~ " Prev", 
+			'next_text': "Next " ~ source('img/arrows/streamline-icon-arrow-right@20x20.svg')
+		}
+	) }}
+</div> 
+#}

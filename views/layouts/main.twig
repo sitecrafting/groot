@@ -28,10 +28,10 @@
 		<header class="site-header" itemscope itemtype="http://schema.org/Organization">
 			<div class="container">
 
-				<a class="logo" href="/" title="{{ site.name }}" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+				<a class="logo" href="/" title="{{ site.name }}" itemscope itemtype="http://schema.org/ImageObject">
 					<img src="{{ img_url('logo.svg') }}" alt="{{ site.name }}" />
 					<!-- Rich Snippet/schema.org markup about this Organization -->
-					<meta itemprop="url" content="{{ img_url('logo.svg') }}">
+					<meta itemprop="logo" content="{{ img_url('logo@2x.png') }}">
 					<meta itemprop="name" content="{{ site.name }}">
 					<meta itemprop="url" content="{{ site.url }}">
 					<meta itemprop="description" content="{{ site.description }}">
@@ -61,16 +61,18 @@
 			<div class="container">
 				<p>&copy; {{ 'now' | date('Y') }} {{ site.name }}</p>
 				<div class="social">
-					<a href="#">{{ source('img/social-icons/icon-facebook.svg') }}</a>
-					<a href="#">{{ source('img/social-icons/icon-linkedin.svg') }}</a>
-					<a href="#">{{ source('img/social-icons/icon-twitter.svg') }}</a>
-					<a href="#">{{ source('img/social-icons/icon-youtube.svg') }}</a>
-					<a href="#">{{ source('img/social-icons/icon-instagram.svg') }}</a>
+					<a href="#" title="facebook" target="_blank">{{ source('img/social-icons/streamline-social-facebook@20x20.svg') }}</a>
+					<a href="#" title="linkedin" target="_blank">{{ source('img/social-icons/streamline-social-linkedin@20x20.svg') }}</a>
+					<a href="#" title="twitter" target="_blank">{{ source('img/social-icons/streamline-social-twitter-bird@20x20.svg') }}</a>
+					<a href="#" title="youtube" target="_blank">{{ source('img/social-icons/streamline-social-youtube@20x20.svg') }}</a>
+					<a href="#" title="instagram" target="_blank">{{ source('img/social-icons/streamline-social-instagram@20x20.svg') }}</a>
 				</div>
 				<p><a href="https://www.sitecrafting.com" target="_blank">Website Design and Development by SiteCrafting</a></p>
 			</div>
 		</footer>
 	{% endblock %}
+
+	{% include 'partials/popup-search.twig' %}
 
 </div></div><!-- //.site-pusher //.site-wrapper -->
 

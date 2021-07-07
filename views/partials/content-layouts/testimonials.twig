@@ -1,0 +1,34 @@
+<section class="pattern pattern--testimonials">
+	<div class="container">
+	
+			{% if layout.section_headline %}
+			<h2 class="pattern__headline">{{ layout.section_headline }}</h2>
+			{% endif %}
+
+
+			<div class="slideshow-testimonial swiper-container">
+
+				<div class="swiper-wrapper">
+					<!-- Slides -->
+					{% for slide in layout.testimonials %}
+					<div class="swiper-slide testimonial">
+						<div class="container mx950">
+							
+							<q class="testimonial__quote">{{ slide.quote }}</q>
+							<div class="testimonial__author">
+								{% if slide.author.image %}<img src="{{ Image(slide.author.image).src('thumbnail') }}" alt="{{ Image(slide.author.image).alt() }}" />{% endif %}
+								<h6>{{ slide.author.name }}</h6>
+								<span>{{ slide.author.title }}</span>
+							</div>
+
+						</div>
+					</div><!-- //.swiper-slide.hero -->
+					{% endfor %}
+				</div>
+
+				<div class="swiper-pagination"></div>
+
+			</div>
+
+	</div>
+</section>

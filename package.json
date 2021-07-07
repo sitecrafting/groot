@@ -23,9 +23,10 @@
   "license": "MIT",
   "dependencies": {
     "fitvids.1.1.0": "^1.1.0",
-    "flexslider": "^2.7.0",
+    "jquery": "^3.5.1",
     "magnific-popup": "^1.1.0",
     "object-fit-images": "^3.2.4",
+    "swiper": "^6.5.1",
     "throttle-debounce": "^1.0.1",
     "typescript": "^3.4.1"
   }

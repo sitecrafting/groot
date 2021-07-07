@@ -19,6 +19,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const DeleteAfterBuildPlugin = require('./js/webpack-plugins/delete-after-build-plugin.js')
 const AssetsVersionPlugin = require('./js/webpack-plugins/assets-version-plugin.js')
+const getThemePath = require('./js/webpack-plugins/get-theme-path.js');
 
 const sharedConfig = {
   mode: 'production',
@@ -68,7 +69,10 @@ const jsConfig = Object.assign({}, sharedConfig, {
      *
      * Learn more: https://www.sitecrafting.com/issues-cached-css-js-files-wordpress/
      */
-    new AssetsVersionPlugin([]),
+    new AssetsVersionPlugin({
+      versionFile: 'scripts.version',
+      useHash: true,
+    }),
     /*
      * Tell Webpack that jQuery is a thing that exists globally.
      */
@@ -144,7 +148,10 @@ const cssConfig = Object.assign({}, sharedConfig, {
         },
       },
     }),
-    new AssetsVersionPlugin([]),
+    new AssetsVersionPlugin({
+      versionFile: 'styles.version',
+      useHash: true,
+    }),
     new DeleteAfterBuildPlugin({
       paths: ['print.js*', 'style.js*', 'editor-style.js*'],
     }),
@@ -166,6 +173,9 @@ const cssConfig = Object.assign({}, sharedConfig, {
           loader: 'less-loader',
           options: {
             sourceMap: true,
+            modifyVars: {
+              "theme-path": getThemePath()
+            }, 
           },
         }],
       },

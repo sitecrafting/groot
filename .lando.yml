@@ -2,17 +2,11 @@ name: groot
 recipe: wordpress
 config:
   webroot: wp
-  php: '7.0'
+  php: '7.2'
 
 services:
   appserver:
     run_as_root:
-      # Temporary hack to get a Debian package to install
-      # https://github.com/lando/lando/issues/1554
-      - echo 'Acquire::Check-Valid-Until "false";' > /etc/apt/apt.conf
-      - echo "deb [check-valid-until=no] http://archive.debian.org/debian jessie-backports main" > /etc/apt/sources.list.d/jessie-backports.list
-      - sed -i '/deb http:\/\/deb.debian.org\/debian jessie-updates main/d' /etc/apt/sources.list
-
       - apt-get update
       - apt-get install zip
 
@@ -38,19 +32,6 @@ services:
 
     run:
       - yarn
-
-  phpmyadmin:
-    type: phpmyadmin:4.7
-
-  mailhog:
-    type: mailhog:v1.0.0
-    hogfrom:
-      - appserver
-
-  docs:
-    type: nginx
-    ssl: true
-    webroot: docs/_book
 
 tooling:
   install:
@@ -91,21 +72,7 @@ tooling:
     cmd: '/app/scripts/build-release.sh'
     description: 'Build a downloadable release archive of Groot'
 
-  # TODO
-  docs:
-    service: node
-    cmd: '/app/scripts/build-docs.sh /app/docs'
-    description: 'Build documentation in _book folder using Gitbook'
-
-  # TODO
-  gitbook:
-    service: node
-    cmd: 'yarn gitbook'
-    description: 'Run arbitrary gitbook commands'
-
 proxy:
   appserver:
     - groot.lndo.site
 
-  mailhog:
-    - mail.groot.lndo.site

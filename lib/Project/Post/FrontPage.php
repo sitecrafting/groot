@@ -3,7 +3,7 @@
 /**
  * Project\Post\FrontPage class
  *
- * @copyright 2018 SiteCrafting, Inc.
+ * @copyright 2020 SiteCrafting, Inc.
  * @author    Coby Tamayo <ctamayo@sitecrafting.com>
  */
 

@@ -17,20 +17,6 @@
     text-decoration: underline;
   }
 
-  a[href]:after {
-    content: " (" attr(href) ")";
-  }
-
-  abbr[title]:after {
-    content: " (" attr(title) ")";
-  }
-
-  // Don't show links for images, or javascript/internal links
-  a[href^="javascript:"]:after,
-  a[href^="#"]:after {
-    content: "";
-  }
-
   pre,
   blockquote {
     border: 1px solid #999;
@@ -72,39 +58,17 @@
     background: #fff !important;
   }
 
-  // Bootstrap components
-  .navbar {
-    display: none;
-  }
-  .table {
-    td,
-    th {
-      background-color: #fff !important;
-    }
-  }
-  .btn,
-  .dropup > .btn {
-    > .caret {
-      border-top-color: #000 !important;
-    }
-  }
-  .label {
-    border: 1px solid #000;
-  }
-
-  .table {
-    border-collapse: collapse !important;
-  }
-  .table-bordered {
-    th,
-    td {
-      border: 1px solid #ddd !important;
-    }
-  }
-
-
+  header{ border-bottom: 1px solid #ccc; }
+  header, header .container{ height: auto; }
   header nav{ display: none; }
+  nav.subnav{ display: none; }
+  footer .social{ display: none; }
 
+  .btn{ border: 1px solid #ccc; }
 
+  .accordion dt{ border: 1px solid #ccc; }
+  .accordion .accordion__content{ display: block !important; }
+
+  .gallery-slideshow.flexslider ul.slides>li .slide-caption{ position: relative; padding-left: 0; padding-right: 0; }
 
 }

@@ -103,7 +103,8 @@ $site->configure(function() {
     $this->enqueue_script(
       'project-common',
       'common.js',
-      ['jquery']
+      ['jquery'],
+      ['file' => 'scripts.version']
     );
 
     //modernizr
@@ -111,18 +112,17 @@ $site->configure(function() {
       'project-modernizr',
       'modernizr/modernizr.custom.53630.js',
       [],
-      true,
+      ['file' => 'scripts.version'],
       false
     );
-
+		  
     /*
      * NOTE: If you do need to enqueue additional scripts here,
      * it's probably best to enqueue them in the footer unless
      * there's a very good reason not to.
-     */
-
-    $this->enqueue_style('project-css', 'style.css', [], true);
-    $this->enqueue_style('project-print-css', 'print.css', [], true, 'print');
+     */	  
+    $this->enqueue_style('project-css', 'style.css', [], ['file' => 'styles.version']);
+    $this->enqueue_style('project-print-css', 'print.css', [], ['file' => 'styles.version'], 'print');
 
   });
 
@@ -134,16 +134,15 @@ $site->configure(function() {
     ]);
   }
 
-  // used for Gallery ACF layout option in flexible content
-  add_image_size( 'gallery', 900, 600, true );
+  
+  
 
   // disable default Gallery
   add_filter( 'use_default_gallery_style', '__return_false' );
 
-  // Image-Row ACF layout option in flexible content
-  add_image_size( 'image-row-small', 300, 235, true );
-  add_image_size( 'image-row-medium', 450, 350, true );
-  add_image_size( 'image-row-large', 900, 450, true );
+  // CUSTOM IMAGE CROPS
+  add_image_size( 'gallery', 900, 600, true ); //gallery slideshow flex pattern
+  add_image_size( 'article-card', 380, 250, true ); //article-card partial
 
   // Make certain custom sizes available in the RTE
   // use this to unset or add image size options for RTE insert

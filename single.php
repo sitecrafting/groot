@@ -6,6 +6,11 @@
 use Timber\Timber;
 use Conifer\Post\BlogPost;
 
-$data = $site->get_context_with_post(new BlogPost());
+$post = new BlogPost();
+
+$data = $site->context([
+	'post' => $post,
+	'related' => $post->get_related(3)
+]);
 
 Timber::render( 'single.twig', $data );

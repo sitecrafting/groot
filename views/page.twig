@@ -2,44 +2,42 @@
 
 {% block main_content %}
 
-<section class="pattern column-layout outer-gutter">
+<section class="pattern">
     <div class="container">
 
       <div class="flex-row center-lg gutter-lg-fat gutter-md-default">
 
             {# SIDE NAV | col-side-nav #}
-            {% block side_nav %}
-                {% include 'partials/side-nav.twig' with { menu: primary_menu, post: post } only %}
-            {% endblock %}
+            <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                {% include 'partials/subnav.twig' with { menu: primary_menu, post: post } only %}
+			</div>
 
             {# MAIN COLUMN #}
-            <div class="col-main-content{{ post.meta('include_sidebar') and primary_menu.get_current_top_level_item().get_children() ? ' middle-content' }}">
+            <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
 
-                <div class="flex-patterns">
-                    {% include 'partials/content-layouts/standard_content.twig'
-                        with {
-                            layout : {
-                                isH1 : true,
-                                title : post.meta('main_headline') ? post.meta('main_headline') : post.title,
-                                content : post.content
-                            }
-                        }
-                    %}
-
-                    {# FLEXIBLE LAYOUTS #}
+				<h1>{{ post.meta('main_headline')|default(post.title) }}</h1>
+               
+			    <div class="flex-patterns flex-patterns--remove-outer-gutter sitka-search-content-container">
+					
+					{# FLEXIBLE LAYOUTS #}
                     {% include 'partials/content-layouts.twig' with { layouts: post.meta('layouts') } only %}
+
                 </div>
                 
             </div>
 
-            {# SIDE COLUMN #}
-            {% if post.meta('include_sidebar') %}
-                {% include 'partials/side-bar.twig' with { blocks : post.meta('sidebar_content') } %}
-            {% endif %}
 
         </div><!-- //flex-row -->
 
     </div><!-- END .container -->
 </section>
+
+{% if post.meta('include_call_to_action') %}
+	{% include 'partials/content-layouts/call_to_action.twig'
+		with {
+			layout : post.meta('call_to_action')
+		}
+	%}
+{% endif %}
 
 {% endblock %}

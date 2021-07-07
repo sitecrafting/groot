@@ -1,0 +1,49 @@
+@import "../../../node_modules/swiper/swiper.less"; //core required swiper styles
+@import "../../../node_modules/swiper/components/effect-fade/effect-fade.less"; //required for fade effect
+@import "../../../node_modules/swiper/components/navigation/navigation.less"; //core navigation arrow styles
+@import "../../../node_modules/swiper/components/pagination/pagination.less"; //core pagination styles
+
+/*===========================
+    CUSTOMIZATIONS OF SWIPER MODULES
+=============================*/
+
+/* Arrow Styles */
+.swiper-button-prev,
+.swiper-button-next{
+    width: 50px;
+    height: 50px;
+    background: @blue;
+    transition: all @trans-speed ease;
+    &:after{
+        color: @white;
+        font-size: 20px;
+        line-height: 1;
+    }
+    &:hover{
+        background-color: darken(@blue, 10%);
+    }
+}
+.swiper-button-prev{ left: 0; }
+.swiper-button-next{ right: 0; }
+
+/* Pagination Bullets */
+.swiper-pagination-bullets{
+    .swiper-pagination-bullet{
+        opacity: 1;
+        width: 10px;
+        height: 10px;
+        background: @gray-cc;
+        transition: all @trans-speed ease;
+
+        &-active{ background: @blue; }
+
+    }
+
+    //if bullets are clickable add a hover state
+    &.swiper-pagination-clickable{
+        .swiper-pagination-bullet{
+            &:hover{ background: @blue; }
+        }
+    }
+
+}

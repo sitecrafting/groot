@@ -2,7 +2,7 @@
 
 {% block main_content %}
 
-<section class="pattern column-layout outer-gutter">
+<section class="pattern">
     <div class="container">
 
             <h1>Search</h1>
@@ -11,8 +11,24 @@
 				<p>{{ posts | length }} {{ 'result' | pluralize(posts|length)}} for <strong>{{ search_query }}</strong>:</p>
 
 				{% for post in posts %}
-					{% include 'partials/blog/article-card.twig' %}
+					{% include 'partials/cards/search-card.twig' with {
+						card : {
+							label : post.post_type,
+							title : post.title,
+							snippet : post.preview.length(50).read_more(false),
+							link : post.link
+						}
+					} %}
 				{% endfor %}
+
+				<div class="post-pagination post-pagination--numbers">
+					{{ paginate_links(
+						{
+							'prev_text': source('img/arrows/streamline-chevron-left@20x20.svg') ~ " Prev", 
+							'next_text': "Next " ~ source('img/arrows/streamline-chevron-right@20x20.svg')
+						}
+					) }}
+				</div> 
 
 			{% else %}
 				<p>Sorry, we couldn't find anything about <strong>{{ search_query }}</strong></p>

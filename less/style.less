@@ -5,8 +5,12 @@
  * Author URI: https://www.sitecrafting.com/
  * Description: The official SiteCrafting WordPress starter theme
  *
- * Copyright 2019 SiteCrafting, Inc.
+ * Copyright 2020 SiteCrafting, Inc.
+ * Based on Groot release: v0.7.0
  */
+
+ /* Icon Reference:
+ https://app.streamlineicons.com/ - see designers for access */
 
 //FONT IMPORTS
 @import (css) url('///fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i|Roboto+Condensed:700');
@@ -17,7 +21,7 @@
 // Core variables and mixins
 @import "base/variables.less";
 @import "base/mixins.less";
-@import "base/flexslider-base.less"; //core required flexslider styles
+@import "base/magnific-popup.less"; 
 
 /* ====================
     STRUCTURE FILES
@@ -26,22 +30,25 @@
 @import "structure/structure.less"; //gutters and other structural elements
 
 @import "structure/header.less";
-@import "structure/navigation.less";
-@import "structure/side-nav.less";
 @import "structure/footer.less";
 
-@import "structure/page.less"; // general interior 3 column structure
+/* =====================
+	NAVIGATION
+====================*/
+@import "structure/navigation.less"; //main header navigation
+@import "structure/subnav.less"; //secondary subnavgation
 
 /* ====================
     ELEMENT/PIECES
 =======================*/
 @import "elements/global.less"; //global utility styles
 
-@import "elements/pieces/flexslider-pieces.less"; //prev/next arrows, paging notes, thumbnails
+@import "elements/pieces/swiper.less"; //CUSTOMIZE SWIPER MODULES
+@import "elements/pieces/popup-search.less"; //basic inline search popup styles
 @import "elements/pieces/buttons.less";
-@import "elements/pieces/datepicker.less";
+//@import "elements/pieces/datepicker.less"; //STARTER FOR IF DATEPICKER IS NEEDED/IN USE
 @import "elements/pieces/forms.less";
-//@import "elements/pieces/gravityforms.less"; ONLY USE THIS IF GRAVITY FORMS IS IN USE
+//@import "elements/pieces/gravityforms.less"; //ONLY USE THIS IF GRAVITY FORMS IS IN USE
 @import "elements/pieces/post-pagination.less"; //prev/next button pagination
 @import "elements/pieces/social.less";
 
@@ -49,13 +56,22 @@
     CARDS
 =======================*/
 @import "elements/cards/card-article.less";
+@import "elements/cards/card-search.less";
 
 /* ====================
     LAYOUTS/PATTERNS
 =======================*/
 @import "elements/layouts/hero.less"; //hero/hero slideshow
-@import "elements/layouts/accordion.less";
-@import "elements/layouts/gallery-flexslider.less"; //gallery slideshow
 
 @import "elements/layouts/pattern.less"; //primary pattern styles and modifiers
+
+//specific patterns wrapped in pattern with optional modifiers
+@import "elements/layouts/pattern-accordion.less";
+@import "elements/layouts/pattern-gallery.less"; //gallery slideshow [swiper]
+@import "elements/layouts/pattern-testimonials.less";
 @import "elements/layouts/pattern-cta.less"; //specific pattern layout modifiers
+
+@import "elements/layouts/pattern-article.less"; //blog article pattern
+
+//SITKA
+//@import "elements/layouts/sitka-feedback-collector.less";

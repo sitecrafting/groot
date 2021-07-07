@@ -1,10 +1,12 @@
 <section class="pattern pattern--standard-content">
     <div class="container">
-        {% if layout.isH1 %}
-            <h1>{{ layout.title }}</h1>
+        
+		{% if layout.isH1 %}
+            <h1 class="pattern__headline">{{ layout.section_headline }}</h1>
         {% else %}
-            <h2>{{ layout.title }}</h2>
+            <h2 class="pattern__headline">{{ layout.section_headline }}</h2>
         {% endif %}
         <div class="rtecontent"> {{ layout.content }}</div>
+		
     </div>
 </section>
