@@ -26,7 +26,7 @@
     "jquery": "^3.5.1",
     "magnific-popup": "^1.1.0",
     "object-fit-images": "^3.2.4",
-    "swiper": "^6.4.1",
+    "swiper": "^6.5.1",
     "throttle-debounce": "^1.0.1",
     "typescript": "^3.4.1"
   }
