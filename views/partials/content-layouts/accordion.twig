@@ -1,11 +1,26 @@
-<section class="pattern pattern--accordion">
+{#
+  ACCORDION
+  * less/elements/layouts/pattern-accordion.less
+  * js/src/jquery.accordion.js
+#}
+<section class="pattern">
     <div class="container">
-		{% if layout.section_headline %}
-			<h2 class="pattern__headline">{{ layout.section_headline }}</h2>
-		{% endif %}
-        {% include 'partials/blocks/accordion.twig' with {
-          acc_layout : layout.acc_panel
-        } %}
+
+      {% if layout.section_headline %}
+        <h2 class="pattern__headline">{{ layout.section_headline }}</h2>
+      {% endif %}
+    
+      <dl class="accordion">
+        {% for panel in layout.acc_panel %}
+          {% set panelId = fn('sanitize_title', panel.acc_title) %}
+
+          <dt data-id="{{ panelId }}">
+            <h3 class="accordion__title h4"><a href="#{{ panelId }}">{{ panel.acc_title }}</a></h3>
+          </dt>
+          <dd class="accordion__content rtecontent">{{ panel.acc_content }}</dd>
+
+        {% endfor %}
+      </dl>
 
     </div>
 </section>
