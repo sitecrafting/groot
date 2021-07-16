@@ -1,7 +1,6 @@
 
 <article class="card-article {{ cardModifier }}">
 	{% if post.thumbnail() %}
-		{# Rich Snippet markup for the Featured Image. Note: Google won't display a Rich Snippet without one of these #}
 		<div class="card-article__image">
 			<img src="{{ Image(post.thumbnail()).src(cardCrop|default('thumbnail')) }}" alt="{{  Image(post.thumbnail()).alt() | default(post.title) }}">
 		</div>

@@ -11,13 +11,13 @@
       {% endif %}
     
       <dl class="accordion">
-        {% for panel in layout.acc_panel %}
+        {% for panel in layout.accordion_panels %}
           {% set panelId = fn('sanitize_title', panel.acc_title) %}
 
           <dt data-id="{{ panelId }}">
-            <h3 class="accordion__title h4"><a href="#{{ panelId }}">{{ panel.acc_title }}</a></h3>
+            <h3 class="accordion__title h4"><a href="#{{ panelId }}">{{ panel.panel_headline }}</a></h3>
           </dt>
-          <dd class="accordion__content rtecontent">{{ panel.acc_content }}</dd>
+          <dd class="accordion__content rtecontent">{{ panel.panel_content }}</dd>
 
         {% endfor %}
       </dl>

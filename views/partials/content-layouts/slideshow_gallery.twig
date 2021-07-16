@@ -1,13 +1,42 @@
-<section class="pattern pattern--gallery">
-    <div class="container">
+<section class="pattern">
+  <div class="container">
 
 		{% if layout.section_headline %}
 			<h2 class="pattern__headline">{{ layout.section_headline }}</h2>
 		{% endif %}
 
-        {% include 'partials/blocks/gallery.twig' with {
-          slides : layout.slideshow
-        } %}
-		
-    </div>
+    <div class="gallery">
+      <div class="swiper-container gallery__slideshow js-gallery-slides">
+
+        <div class="swiper-wrapper">
+          {% for slide in layout.gallery %}
+            <div class="swiper-slide">
+              <img src="{{ Image(slide.id).src('gallery') }}" alt="{{ Image(slide.id).alt() }}">
+              {% if slide.caption %}
+                <div class="slide-caption">{{ slide.caption | striptags }}</div>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+
+      </div><!-- //.swiper-container.gallery-slideshow -->
+
+      <div class="swiper-container gallery__thumbs js-gallery-thumbs">
+
+        <div class="swiper-wrapper">
+          {% for slide in layout.gallery %}
+            <div class="swiper-slide">
+              <img src="{{ Image(slide.id).src('gallery') }}" alt="{{ Image(slide.id).alt() }}">
+            </div>
+          {% endfor %}
+        </div>
+
+      </div><!-- //.swiper-container.gallery-thumbs -->
+		</div><!-- //.gallery -->
+
+
+  </div>
 </section>

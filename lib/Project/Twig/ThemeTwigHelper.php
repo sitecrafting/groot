@@ -9,6 +9,8 @@
 
 namespace Project\Twig;
 
+use Timber\Timber;
+use Timber\Term;
 use Conifer\Twig\HelperInterface;
 
 /**
@@ -27,6 +29,7 @@ class ThemeTwigHelper implements HelperInterface {
     // add your project-specific Twig functions here
     return [
         'gtm4wp_the_gtm_tag' => [$this, 'gtm4wp_the_gtm_tag'],
+        'get_posts_pattern' => [$this, 'get_posts_pattern']
     ];
   }
 
@@ -43,6 +46,30 @@ class ThemeTwigHelper implements HelperInterface {
       else{
           return false;
       }
+  }
+
+  public function get_posts_pattern($post_type, $count = 3, $taxonomy, $taxonomy_id ){
+
+    $taxQuery = '';
+
+    if( !empty($taxonomy) && !empty($taxonomy_id) ){
+      $taxQuery = array(
+        'taxonomy' => $taxonomy,
+        'terms' => $taxonomy_id
+      );
+    }
+
+    $posts = Timber::get_posts([
+              'post_type' => $post_type,
+              'posts_per_page' => $count,
+              'tax_query' => array(
+                  'relation' => 'AND',
+                  $taxQuery
+              ),
+            ]);
+
+    return $posts;
+
   }
 
 }
