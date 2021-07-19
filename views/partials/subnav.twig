@@ -1,4 +1,5 @@
 {% if menu.get_current_top_level_item().get_children() %}
+<div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
 	<nav class="subnav">
 
 		<h3 class="subnav__title"><a href="{{ menu.get_current_top_level_item().get_path }}">{{ menu.get_current_top_level_item().title }}</a></h3>
@@ -29,4 +30,5 @@
 
 
 	</nav>
+</div>
 {% endif %}

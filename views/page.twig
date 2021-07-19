@@ -2,28 +2,24 @@
 
 {% block main_content %}
 
+{% include 'partials/hero-interior.twig' with { page_title : post.meta('main_headline')|default(post.title) } %}
+
 <section class="pattern">
     <div class="container">
 
-      <div class="flex-row center-lg gutter-lg-fat gutter-md-default">
+        <div class="flex-row center-lg gutter-lg-fat gutter-md-default">
 
-            {# SIDE NAV | col-side-nav #}
-            <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
-                {% include 'partials/subnav.twig' with { menu: primary_menu, post: post } only %}
-			</div>
+            {# SIDE NAV #}
+            {% include 'partials/subnav.twig' with { menu: primary_menu } %}
 
             {# MAIN COLUMN #}
             <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
-
-				<h1>{{ post.meta('main_headline')|default(post.title) }}</h1>
-               
-			    <div class="flex-patterns flex-patterns--remove-outer-gutter sitka-search-content-container">
+                <div class="flex-patterns flex-patterns--remove-outer-gutter sitka-search-content-container">
 					
 					{# FLEXIBLE LAYOUTS #}
                     {% include 'partials/content-layouts.twig' with { layouts: post.meta('default_layouts') } %}
 
                 </div>
-                
             </div>
 
 

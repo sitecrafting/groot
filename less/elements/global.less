@@ -108,7 +108,7 @@ object {
   visibility: hidden !important;
 }
 
-::selection { background-color: @blue; }
+//::selection { background-color: @blue; color: @white; }
 
 
 /*===========================
@@ -118,12 +118,20 @@ object {
 	display: block;
 	float: left;
 	margin-right: 30px;
+	@media @mobile-all{
+		margin-right: 15px;
+		max-width: 50%;
+	}
 }
 
 .alignright {
 	display: block;
 	float: right;
 	margin-left: 30px;
+	@media @mobile-all{
+		margin-left: 15px;
+		max-width: 50%;
+	}
 }
 
 .aligncenter {
@@ -155,150 +163,35 @@ object {
 /*===========================
 ## Wordpress Galleries
 ===========================*/
-.gallery {
+.rtecontent .gallery {
 	margin-top: 20px;
-	display: flex;
-	flex: 0 1 auto;
-	flex-direction: row;
-	flex-wrap: wrap;
-
-	margin-right: -20px;
-	margin-left: -20px;
+	display: grid;
+	gap: 20px;
 
 	br{ display: none !important; }
 
-	&.gallery-columns-5,
-	&.gallery-columns-6,
-	&.gallery-columns-7,
-	&.gallery-columns-8,
-	&.gallery-columns-9{
-		margin-right: -10px;
-		margin-left: -10px;
+	&.gallery-columns-2{ grid-template-columns: repeat(2, 1fr); }
+	&.gallery-columns-3{ grid-template-columns: repeat(3, 1fr); }
+	&.gallery-columns-4{ grid-template-columns: repeat(4, 1fr); }
+	&.gallery-columns-5{ grid-template-columns: repeat(5, 1fr); }
+	&.gallery-columns-6{ grid-template-columns: repeat(6, 1fr); }
+	&.gallery-columns-7{ grid-template-columns: repeat(7, 1fr); }
+	&.gallery-columns-8{ grid-template-columns: repeat(8, 1fr); }
+	&.gallery-columns-9{ grid-template-columns: repeat(9, 1fr); }
+
+	.gallery-item{
+		img{
+			display: block;
+			width: 100%;
+		}
 	}
 
-	@media @tablet-all, @mobile-all{
-		margin-right: -10px;
-		margin-left: -10px;
-	}
-}
-
-.gallery-item {
-	display: inline-block;
-	text-align: center;
-	vertical-align: top;
-	width: 100%;
-	padding-left: 20px;
-	padding-right: 20px;
-	padding-bottom: 40px;
-
-	img{ display: block; width: 100% !important; height: auto !important; }
-
-	@media @tablet-all, @mobile-all{
-		padding-left: 10px;
-		padding-right: 10px;
-		padding-bottom: 20px;
-	}
-}
-
-.gallery-columns-5 .gallery-item ,
-.gallery-columns-6 .gallery-item ,
-.gallery-columns-7 .gallery-item ,
-.gallery-columns-8 .gallery-item ,
-.gallery-columns-9 .gallery-item {
-	padding-left: 10px;
-	padding-right: 10px;
-	padding-bottom: 20px;
-}
-
-.gallery-columns-2 .gallery-item {
-	flex: 0 0 50%;
-	max-width: 50%;
-}
-
-.gallery-columns-3 .gallery-item {
-	flex: 0 0 33.33%;
-	max-width: 33.33%;
 	@media @mobile-all{
-		flex-basis: 50%;
-		max-width: 50%;
+		&[class*='gallery-columns-']{ grid-template-columns: repeat(2, 1fr); }
 	}
-}
 
-.gallery-columns-4 .gallery-item {
-	flex: 0 0 25%;
-	max-width: 25%;
-	@media @mobile-all{
-		flex-basis: 50%;
-		max-width: 50%;
-	}
 }
-
-.gallery-columns-5 .gallery-item {
-	flex: 0 0 20%;
-	max-width: 20%;
-	@media @tablet-all{
-		flex-basis: 33.33%;
-		max-width: 33.33%;
-	}
-	@media @mobile-all{
-		flex-basis: 50%;
-		max-width: 50%;
-	}
-}
-
-.gallery-columns-6 .gallery-item {
-	flex: 0 0 16.66%;
-	max-width: 16.66%;
-	@media @tablet-all{
-		flex-basis: 33.33%;
-		max-width: 33.33%;
-	}
-	@media @mobile-all{
-		flex-basis: 50%;
-		max-width: 50%;
-	}
-}
-
-.gallery-columns-7 .gallery-item {
-	flex: 0 0 14.28%;
-	max-width: 14.28%;
-	@media @tablet-all{
-		flex-basis: 33.33%;
-		max-width: 33.33%;
-	}
-	@media @mobile-all{
-		flex-basis: 50%;
-		max-width: 50%;
-	}
-}
-
-.gallery-columns-8 .gallery-item {
-	flex: 0 0 12.5%;
-	max-width: 12.5%;
-	@media @tablet-all{
-		flex-basis: 33.33%;
-		max-width: 33.33%;
-	}
-	@media @mobile-all{
-		flex-basis: 50%;
-		max-width: 50%;
-	}
-}
-
-.gallery-columns-9 .gallery-item {
-	flex: 0 0 11.11%;
-	max-width: 11.11%;
-	@media @tablet-all{
-		flex-basis: 33.33%;
-		max-width: 33.33%;
-	}
-	@media @mobile-all{
-		flex-basis: 50%;
-		max-width: 50%;
-	}
-}
-
-.gallery-caption {
+.rtecontent .gallery-caption {
 	display: block;
 	margin: 0;
 	padding: 10px 5px 0 5px;
