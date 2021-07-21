@@ -205,7 +205,7 @@
             }
         ]
     ],
-    "menu_order": 0,
+    "menu_order": 1,
     "position": "normal",
     "style": "default",
     "label_placement": "top",
@@ -216,5 +216,5 @@
     ],
     "active": true,
     "description": "LANDING TEMPLATE",
-    "modified": 1626468347
+    "modified": 1626875829
 }
