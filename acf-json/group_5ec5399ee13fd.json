@@ -1,6 +1,6 @@
 {
     "key": "group_5ec5399ee13fd",
-    "title": "Testimonials",
+    "title": "[FLEX PATTERN] Testimonials",
     "fields": [
         {
             "key": "field_5ec53a2255ab7",
@@ -38,7 +38,9 @@
                     "placeholder": "",
                     "maxlength": "",
                     "rows": 4,
-                    "new_lines": "br"
+                    "new_lines": "br",
+                    "readonly": 0,
+                    "disabled": 0
                 },
                 {
                     "key": "field_5ec53a4055ab9",
@@ -64,7 +66,7 @@
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "33",
+                                "width": 33,
                                 "class": "",
                                 "id": ""
                             },
@@ -88,7 +90,7 @@
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "33",
+                                "width": 33,
                                 "class": "",
                                 "id": ""
                             },
@@ -107,7 +109,7 @@
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "33",
+                                "width": 33,
                                 "class": "",
                                 "id": ""
                             },
@@ -131,7 +133,7 @@
             }
         ]
     ],
-    "menu_order": 0,
+    "menu_order": 200,
     "position": "normal",
     "style": "default",
     "label_placement": "top",
@@ -140,6 +142,6 @@
         "the_content"
     ],
     "active": false,
-    "description": "USED FOR CLONING | homepage, flex layouts",
-    "modified": 1589984231
+    "description": "USED FOR CLONING",
+    "modified": 1626875829
 }

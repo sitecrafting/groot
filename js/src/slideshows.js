@@ -5,7 +5,7 @@ import Swiper from 'swiper/bundle'; // import Swiper bundle with all modules ins
 (($) => {
 
     //MAIN HERO SLIDESHOW
-    var mainSwiper = new Swiper('.slideshow', {
+    var mainSwiper = new Swiper('.js-home-slideshow', {
 		effect: 'fade',
 		loop: true,
 		parallax: true,
@@ -43,14 +43,14 @@ import Swiper from 'swiper/bundle'; // import Swiper bundle with all modules ins
 
     //INTERIOR GALLERY w/ THUMBNAILS
     // gallery thumbnails
-	var galleryThumbs = new Swiper('.gallery-thumbs', {
+	var galleryThumbs = new Swiper('.js-gallery-thumbs', {
 		spaceBetween: 10,
 		slidesPerView: 'auto',
 		loop: false,
 		freeMode: true
 	});
 	// gallery swiper
-	var galleryTop = new Swiper('.gallery-slideshow', {
+	var galleryTop = new Swiper('.js-gallery-slides', {
 		loop: false,
 		fadeEffect: { crossFade: true },
 		effect: 'fade',

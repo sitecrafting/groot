@@ -1,0 +1,7 @@
+{% if get_theme_setting('social') %}
+    <div class="social">
+        {% for social in get_theme_setting('social') %}
+            <a href="{{ social.url }}" title="{{ social.type }}" target="_blank">{{ source('img/social-icons/social-'~ social.type ~'.svg', ignore_missing = true) }}</a>
+        {% endfor %}
+    </div>
+{% endif %}

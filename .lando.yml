@@ -21,7 +21,7 @@ services:
         CI: ${CI:-''}
 
   database:
-    type: mysql:5.7
+    type: mysql
 
   node:
     type: node

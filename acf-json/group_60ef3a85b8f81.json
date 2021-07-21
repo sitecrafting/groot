@@ -1,12 +1,12 @@
 {
-    "key": "group_5ec543a2ad0a2",
-    "title": "Homepage Testimonials",
+    "key": "group_60ef3a85b8f81",
+    "title": "[FLEX PATTERN] Accordion",
     "fields": [
         {
-            "key": "field_5ec543a2b3697",
-            "label": "Include Testimonials",
-            "name": "include_testimonials",
-            "type": "true_false",
+            "key": "field_60ef3aa7c2020",
+            "label": "Section Headline",
+            "name": "section_headline",
+            "type": "text",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -15,42 +15,38 @@
                 "class": "",
                 "id": ""
             },
-            "message": "",
-            "default_value": 0,
-            "ui": 1,
-            "ui_on_text": "",
-            "ui_off_text": ""
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
         },
         {
-            "key": "field_5ec543a2b37b7",
-            "label": "Testimonials",
-            "name": "testimonials",
-            "type": "group",
+            "key": "field_60ef3ac8c2021",
+            "label": "Accordion Panels",
+            "name": "accordion_panels",
+            "type": "repeater",
             "instructions": "",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_5ec543a2b3697",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
+            "collapsed": "field_60ef3ad1c2022",
+            "min": 1,
+            "max": 0,
             "layout": "block",
+            "button_label": "Add Accordion Panel",
             "sub_fields": [
                 {
-                    "key": "field_5ec543d588711",
-                    "label": "Section Headline",
-                    "name": "section_headline",
+                    "key": "field_60ef3ad1c2022",
+                    "label": "Panel Headline",
+                    "name": "panel_headline",
                     "type": "text",
                     "instructions": "",
-                    "required": 0,
+                    "required": 1,
                     "conditional_logic": 0,
                     "wrapper": {
                         "width": "",
@@ -64,10 +60,10 @@
                     "maxlength": ""
                 },
                 {
-                    "key": "field_5ec543a2b7852",
-                    "label": "Testimonials",
-                    "name": "testimonials",
-                    "type": "clone",
+                    "key": "field_60ef3adbc2023",
+                    "label": "Panel Content",
+                    "name": "panel_content",
+                    "type": "wysiwyg",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -76,13 +72,11 @@
                         "class": "",
                         "id": ""
                     },
-                    "clone": [
-                        "group_5ec5399ee13fd"
-                    ],
-                    "display": "seamless",
-                    "layout": "block",
-                    "prefix_label": 0,
-                    "prefix_name": 0
+                    "default_value": "",
+                    "tabs": "all",
+                    "toolbar": "full",
+                    "media_upload": 1,
+                    "delay": 0
                 }
             ]
         }
@@ -90,19 +84,19 @@
     "location": [
         [
             {
-                "param": "page_template",
+                "param": "post_type",
                 "operator": "==",
-                "value": "front-page.php"
+                "value": "post"
             }
         ]
     ],
-    "menu_order": 2,
+    "menu_order": 200,
     "position": "normal",
     "style": "default",
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "active": 1,
-    "description": "",
-    "modified": 1589986417
+    "active": false,
+    "description": "USED FOR CLONING",
+    "modified": 1626875829
 }

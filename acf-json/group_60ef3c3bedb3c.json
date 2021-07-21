@@ -1,9 +1,9 @@
 {
-    "key": "group_55ea2bb5c7211",
-    "title": "Default Interior",
+    "key": "group_60ef3c3bedb3c",
+    "title": "Landing Page",
     "fields": [
         {
-            "key": "field_60f1d9d7d208f",
+            "key": "field_60f1dacf15987",
             "label": "Main Headline",
             "name": "main_headline",
             "type": "text",
@@ -22,9 +22,9 @@
             "maxlength": ""
         },
         {
-            "key": "field_55ea2bbc4ac0a",
+            "key": "field_60ef3c3bf0587",
             "label": "Layouts",
-            "name": "default_layouts",
+            "name": "landing_layouts",
             "type": "flexible_content",
             "instructions": "",
             "required": 0,
@@ -42,7 +42,7 @@
                     "display": "block",
                     "sub_fields": [
                         {
-                            "key": "field_60ef3b5e86fc7",
+                            "key": "field_60ef3c3bf1d47",
                             "label": "Standard Content Pattern",
                             "name": "standard_content_pattern",
                             "type": "clone",
@@ -73,7 +73,7 @@
                     "display": "block",
                     "sub_fields": [
                         {
-                            "key": "field_60ef3b8686fc8",
+                            "key": "field_60ef3c3bf1db3",
                             "label": "Accordion Pattern",
                             "name": "accordion_pattern",
                             "type": "clone",
@@ -104,7 +104,7 @@
                     "display": "block",
                     "sub_fields": [
                         {
-                            "key": "field_5ec4577c50d0f",
+                            "key": "field_60ef3c3bf1e1e",
                             "label": "Gallery Pattern",
                             "name": "gallery_pattern",
                             "type": "clone",
@@ -135,7 +135,7 @@
                     "display": "block",
                     "sub_fields": [
                         {
-                            "key": "field_5ec53c02db465",
+                            "key": "field_60ef3c3bf1e88",
                             "label": "Testimonials Pattern",
                             "name": "testimonials_pattern",
                             "type": "clone",
@@ -158,76 +158,42 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_60ef3c5f0518d": {
+                    "key": "layout_60ef3c5f0518d",
+                    "name": "call_to_action",
+                    "label": "Call To Action",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_60ef3c660518e",
+                            "label": "CTA Pattern",
+                            "name": "cta_pattern",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_5ec53aa5b09e9"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "button_label": "Add Layout",
             "min": "",
             "max": ""
-        },
-        {
-            "key": "field_60f1d9f7d2090",
-            "label": "Call To Action",
-            "name": "call_to_action_toggle",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "ui": 1,
-            "ui_on_text": "On",
-            "ui_off_text": "Off"
-        },
-        {
-            "key": "field_60f1da49d2091",
-            "label": "Call To Action",
-            "name": "call_to_action",
-            "type": "group",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_60f1d9f7d2090",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "layout": "block",
-            "sub_fields": [
-                {
-                    "key": "field_60f1da50d2092",
-                    "label": "CTA Pattern",
-                    "name": "cta_pattern",
-                    "type": "clone",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "clone": [
-                        "group_5ec53aa5b09e9"
-                    ],
-                    "display": "seamless",
-                    "layout": "block",
-                    "prefix_label": 0,
-                    "prefix_name": 0
-                }
-            ]
         }
     ],
     "location": [
@@ -235,16 +201,11 @@
             {
                 "param": "page_template",
                 "operator": "==",
-                "value": "default"
-            },
-            {
-                "param": "page_type",
-                "operator": "!=",
-                "value": "posts_page"
+                "value": "template-landing.php"
             }
         ]
     ],
-    "menu_order": 2,
+    "menu_order": 1,
     "position": "normal",
     "style": "default",
     "label_placement": "top",
@@ -254,6 +215,6 @@
         "featured_image"
     ],
     "active": true,
-    "description": "DEFAULT TEMPLATE",
+    "description": "LANDING TEMPLATE",
     "modified": 1626875829
 }

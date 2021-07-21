@@ -161,15 +161,6 @@ $site->configure(function() {
       ['jquery'],
       ['file' => 'scripts.version']
     );
-
-    //modernizr
-    $this->enqueue_script(
-      'project-modernizr',
-      'modernizr/modernizr.custom.53630.js',
-      [],
-      ['file' => 'scripts.version'],
-      false
-    );
 		  
     /*
      * NOTE: If you do need to enqueue additional scripts here,
@@ -189,8 +180,6 @@ $site->configure(function() {
     ]);
   }
 
-  
-  
 
   // disable default Gallery
   add_filter( 'use_default_gallery_style', '__return_false' );
@@ -228,29 +217,6 @@ $site->configure(function() {
 
     return $context;
   });
-
-
-  /*
-   * Hide plugins that come with the custom SiteCrafting/WordPress upstream
-   * https://bitbucket.org/sitecrafting/wordpress/src
-   *
-   * NOTE: when you do this, you should also make sure the following is in
-   * your /pantheon.yml file:
-   *
-   * ```
-   * protected_web_paths:
-   *   - /wp-content/plugins/the-events-calendar/
-   *   - /wp-content/plugins/events-calendar-pro/
-   *   # ...any other protected web paths you like here...
-   * ```
-   */
-
-  /*add_action('pre_current_active_plugins', function() {
-    global $wp_list_table;
-
-    unset($wp_list_table->items['the-events-calendar/the-events-calendar.php']);
-    unset($wp_list_table->items['events-calendar-pro/events-calendar-pro.php']);
-  });*/
 
 });
 

@@ -2,7 +2,7 @@
 
 {% block main_content %}
 
-<div class="slideshow swiper-container">
+<div class="slideshow swiper-container{{ post.meta('hero')|length > 1 ? ' js-home-slideshow' }}">
 
     <div class="swiper-wrapper">
         <!-- Slides -->
@@ -21,61 +21,34 @@
         </div><!-- //.swiper-slide.hero -->
         {% endfor %}
     </div>
-
+    {% if post.meta('hero')|length > 1 %}
     <div class="swiper-pagination"></div>
 
     <div class="swiper-button-prev"></div>
     <div class="swiper-button-next"></div>
-
+    {% endif %}
 </div>
 
+{# HOMEPAGE INTRO #}
 {% include 'partials/content-layouts/standard_content.twig'
     with {
-        layout : {
-            isH1 : true,
-            section_headline : post.meta('main_headline')|default(post.title),
-            content : post.meta('intro_content')
-        }
+        layout : post.meta('intro_content')
     }
 %}
 
+{# HOMEPAGE POSTS #}
+{% include 'partials/content-layouts/feature_posts.twig'
+    with {
+        layout : post.meta('latest_posts')
+    }
+%}
 
-<section class="pattern">
-	<div class="container">
+{# HOMEPAGE CTA #}
+{% include 'partials/content-layouts/call_to_action.twig'
+    with {
+        layout : post.meta('call_to_action')
+    }
+%}
 
-        <header class="pattern__header">
-		    <h2>Latest Posts</h2>
-        </header>
-
-		<div class="flex-row">
-		{% for postItem in get_latest_posts(3) %}
-            <div class="col-flex col-lg-4 col-sm-12 col-xs-12">
-			    {% include 'partials/cards/article-card.twig' with { post : postItem, cardCrop : 'article-card' } %}
-            </div>
-		{% endfor %}
-        </div>
-
-        <footer class="pattern__footer">
-            <a class="btn" href="{{ get_blog_url() }}">View All</a>
-        </footer>
-
-	</div>
-</section>
-
-{% if post.meta('include_call_to_action') %}
-	{% include 'partials/content-layouts/call_to_action.twig'
-		with {
-			layout : post.meta('call_to_action')
-		}
-	%}
-{% endif %}
-
-{% if post.meta('include_testimonials') %}
-	{% include 'partials/content-layouts/testimonials.twig'
-		with {
-			layout : post.meta('testimonials')
-		}
-	%}
-{% endif %}
 
 {% endblock %}
