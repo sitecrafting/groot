@@ -58,17 +58,7 @@ $site->configure(function() {
   add_editor_style();
 
   //add template name to admin center list view
-  Page::add_admin_column('_wp_page_template', 'Template', function($id) {
-    // get mapping of Template File => Template Name
-    static $templates = null;
-    $templates = $templates ?: array_flip(get_page_templates());
-
-    // get the template file for this page
-    $templateFile = get_post_meta($id, '_wp_page_template', true) ?: '';
-
-    // return the template name for this page
-    return $templates[$templateFile] ?? 'Default Template';
-  });
+  Page::add_admin_column('_wp_page_template', 'Template');
 
     //remove read more tag
     add_filter( 'mce_buttons', 'sc_remove_tiny_mce_buttons_from_row1');
@@ -100,52 +90,7 @@ $site->configure(function() {
   /*
    * Disable comments across the site
    */
-
-  add_action('admin_init', function() {
-    global $pagenow;
-
-    if ($pagenow === 'edit-comments.php') {
-      wp_redirect(admin_url());
-      exit;
-    }
-
-    // Remove comments metabox from dashboard
-    remove_meta_box('dashboard_recent_comments', 'dashboard', 'normal');
-
-    // Disable support for comments and trackbacks in post types
-    foreach (get_post_types() as $post_type) {
-      if (post_type_supports($post_type, 'comments')) {
-        remove_post_type_support($post_type, 'comments');
-        remove_post_type_support($post_type, 'trackbacks');
-      }
-    }
-  });
-
-  // hide comment menu item from WP Dashboard menu
-  add_action('admin_menu', function() {
-    remove_menu_page('edit-comments.php');
-  });
-
-  // hide comment menu items in WP Admin bar
-  add_action('wp_before_admin_bar_render', function() {
-    global $wp_admin_bar;
-    $wp_admin_bar->remove_menu('comments');
-  });
-
-  // hide comments column in WP Admin
-  add_filter('manage_page_columns', function(array $columns) {
-    unset($columns['comments']);
-    return $columns;
-  });
-
-  // hide all existing comments
-  add_filter('comments_array', '__return_empty_array', 10, 2);
-
-  // Close comments on the frontend
-  add_filter('comments_open', '__return_false', 20, 2);
-  add_filter('pings_open', '__return_false', 20, 2);
-
-  /* ^^^ end disable comment code ^^^ */
+  $this->disable_comments();
 
 
   add_action('wp_enqueue_scripts', function() {
