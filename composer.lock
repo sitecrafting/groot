@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "07605c9b3f1970fb38a275a77cfa6696",
+    "content-hash": "d1f207e21e658133de1627f91aa72549",
     "packages": [],
     "packages-dev": [
         {
@@ -59,16 +59,16 @@
         },
         {
             "name": "composer/installers",
-            "version": "dev-main",
+            "version": "1.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/installers.git",
-                "reference": "7f3c618fcbfc787cca2bb7a127e7eb3a146c7046"
+                "reference": "1e8a1614adc33d455f81e9b5381d4f661565fe90"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/7f3c618fcbfc787cca2bb7a127e7eb3a146c7046",
-                "reference": "7f3c618fcbfc787cca2bb7a127e7eb3a146c7046",
+                "url": "https://api.github.com/repos/composer/installers/zipball/1e8a1614adc33d455f81e9b5381d4f661565fe90",
+                "reference": "1e8a1614adc33d455f81e9b5381d4f661565fe90",
                 "shasum": ""
             },
             "require": {
@@ -86,7 +86,6 @@
                 "symfony/phpunit-bridge": "^4.2 || ^5",
                 "symfony/process": "^2.3"
             },
-            "default-branch": true,
             "type": "composer-plugin",
             "extra": {
                 "class": "Composer\\Installers\\Plugin",
@@ -129,6 +128,7 @@
                 "Porto",
                 "RadPHP",
                 "SMF",
+                "Starbug",
                 "Thelia",
                 "Whmcs",
                 "WolfCMS",
@@ -162,6 +162,7 @@
                 "majima",
                 "mako",
                 "mediawiki",
+                "miaoxing",
                 "modulework",
                 "modx",
                 "moodle",
@@ -169,6 +170,7 @@
                 "phpbb",
                 "piwik",
                 "ppi",
+                "processwire",
                 "puppet",
                 "pxcms",
                 "reindex",
@@ -178,6 +180,7 @@
                 "sydes",
                 "sylius",
                 "symfony",
+                "tastyigniter",
                 "typo3",
                 "wordpress",
                 "yawik",
@@ -186,7 +189,7 @@
             ],
             "support": {
                 "issues": "https://github.com/composer/installers/issues",
-                "source": "https://github.com/composer/installers/tree/main"
+                "source": "https://github.com/composer/installers/tree/1.x"
             },
             "funding": [
                 {
@@ -202,7 +205,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-12-08T15:13:21+00:00"
+            "time": "2021-07-23T09:01:08+00:00"
         },
         {
             "name": "greenlion/php-sql-parser",
@@ -210,12 +213,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/greenlion/PHP-SQL-Parser.git",
-                "reference": "d534d36d16b204133dc7c3ca154300c918acb512"
+                "reference": "e38d6f0f500d4d86bee7722e2e89262eeaab7e59"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/greenlion/PHP-SQL-Parser/zipball/d534d36d16b204133dc7c3ca154300c918acb512",
-                "reference": "d534d36d16b204133dc7c3ca154300c918acb512",
+                "url": "https://api.github.com/repos/greenlion/PHP-SQL-Parser/zipball/e38d6f0f500d4d86bee7722e2e89262eeaab7e59",
+                "reference": "e38d6f0f500d4d86bee7722e2e89262eeaab7e59",
                 "shasum": ""
             },
             "require": {
@@ -263,7 +266,7 @@
                 "issues": "https://github.com/greenlion/PHP-SQL-Parser/issues",
                 "source": "https://github.com/greenlion/PHP-SQL-Parser"
             },
-            "time": "2020-10-01T13:54:16+00:00"
+            "time": "2021-03-28T23:13:55+00:00"
         },
         {
             "name": "ircmaxell/random-lib",
@@ -376,16 +379,16 @@
         },
         {
             "name": "johnpbloch/wordpress-core",
-            "version": "5.6.x-dev",
+            "version": "5.8.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnpbloch/wordpress-core.git",
-                "reference": "b458c3314d81d31425a2bff57d57cb0a2f148627"
+                "reference": "2d7e6bdb71a1102b2ac31ace1262f8924b818e70"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/b458c3314d81d31425a2bff57d57cb0a2f148627",
-                "reference": "b458c3314d81d31425a2bff57d57cb0a2f148627",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/2d7e6bdb71a1102b2ac31ace1262f8924b818e70",
+                "reference": "2d7e6bdb71a1102b2ac31ace1262f8924b818e70",
                 "shasum": ""
             },
             "require": {
@@ -393,7 +396,7 @@
                 "php": ">=5.6.20"
             },
             "provide": {
-                "wordpress/core-implementation": "5.6.x-dev"
+                "wordpress/core-implementation": "5.8.x-dev"
             },
             "type": "wordpress-core",
             "notification-url": "https://packagist.org/downloads/",
@@ -420,7 +423,7 @@
                 "source": "https://core.trac.wordpress.org/browser",
                 "wiki": "https://codex.wordpress.org/"
             },
-            "time": "2020-12-22T21:10:56+00:00"
+            "time": "2021-07-30T12:51:19+00:00"
         },
         {
             "name": "johnpbloch/wordpress-core-installer",
@@ -482,12 +485,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mnsami/composer-custom-directory-installer.git",
-                "reference": "6f54c7bcf9a065cace45e3664b612d53ae6adb92"
+                "reference": "f8bcf249ec4bafa12cc4f1b405f7754bae0574b1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mnsami/composer-custom-directory-installer/zipball/6f54c7bcf9a065cace45e3664b612d53ae6adb92",
-                "reference": "6f54c7bcf9a065cace45e3664b612d53ae6adb92",
+                "url": "https://api.github.com/repos/mnsami/composer-custom-directory-installer/zipball/f8bcf249ec4bafa12cc4f1b405f7754bae0574b1",
+                "reference": "f8bcf249ec4bafa12cc4f1b405f7754bae0574b1",
                 "shasum": ""
             },
             "require": {
@@ -503,7 +506,7 @@
                     "Composer\\CustomDirectoryInstaller\\PluginPlugin"
                 ],
                 "branch-alias": {
-                    "dev-master": "1.1.x-dev"
+                    "dev-master": "2.0.x-dev"
                 }
             },
             "autoload": {
@@ -537,20 +540,20 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-12-07T15:04:18+00:00"
+            "time": "2021-03-22T07:53:44+00:00"
         },
         {
             "name": "sitecrafting/conifer",
-            "version": "v0.7.1",
+            "version": "v0.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sitecrafting/conifer.git",
-                "reference": "afebc2eda65def37dae37fded5107cbddc796e34"
+                "reference": "253004e8a3c564ff62d0d7c45744726444ecbce1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sitecrafting/conifer/zipball/afebc2eda65def37dae37fded5107cbddc796e34",
-                "reference": "afebc2eda65def37dae37fded5107cbddc796e34",
+                "url": "https://api.github.com/repos/sitecrafting/conifer/zipball/253004e8a3c564ff62d0d7c45744726444ecbce1",
+                "reference": "253004e8a3c564ff62d0d7c45744726444ecbce1",
                 "shasum": ""
             },
             "require": {
@@ -571,7 +574,7 @@
                 "victorjonsson/markdowndocs": "dev-master",
                 "wp-coding-standards/wpcs": "^0.14"
             },
-            "type": "wordpress-plugin",
+            "type": "library",
             "extra": {
                 "wordpress-install-dir": {
                     "johnpbloch/wordpress-core": "wp"
@@ -600,9 +603,9 @@
             "description": "Powerful abstractions for serious WordPress theme development",
             "support": {
                 "issues": "https://github.com/sitecrafting/conifer/issues",
-                "source": "https://github.com/sitecrafting/conifer/tree/v0.7.1"
+                "source": "https://github.com/sitecrafting/conifer/tree/v0.9.0"
             },
-            "time": "2020-01-23T02:31:33+00:00"
+            "time": "2020-10-12T20:54:06+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
@@ -610,12 +613,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "9bcb29cce831a8f9b2c8aee0bba1a57445f9dbf1"
+                "reference": "d35d320ffb5e26047891bdf874a67c48d1e57f75"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/9bcb29cce831a8f9b2c8aee0bba1a57445f9dbf1",
-                "reference": "9bcb29cce831a8f9b2c8aee0bba1a57445f9dbf1",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/d35d320ffb5e26047891bdf874a67c48d1e57f75",
+                "reference": "d35d320ffb5e26047891bdf874a67c48d1e57f75",
                 "shasum": ""
             },
             "require": {
@@ -659,7 +662,7 @@
                 "source": "https://github.com/squizlabs/PHP_CodeSniffer",
                 "wiki": "https://github.com/squizlabs/PHP_CodeSniffer/wiki"
             },
-            "time": "2020-12-15T02:38:00+00:00"
+            "time": "2021-07-29T05:01:10+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -667,12 +670,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-ctype.git",
-                "reference": "c6c942b1ac76c82448322025e084cadc56048b4e"
+                "reference": "46cd95797e9df938fdd2b03693b5fca5e64b01ce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/c6c942b1ac76c82448322025e084cadc56048b4e",
-                "reference": "c6c942b1ac76c82448322025e084cadc56048b4e",
+                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/46cd95797e9df938fdd2b03693b5fca5e64b01ce",
+                "reference": "46cd95797e9df938fdd2b03693b5fca5e64b01ce",
                 "shasum": ""
             },
             "require": {
@@ -685,7 +688,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "1.22-dev"
+                    "dev-main": "1.23-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -723,7 +726,7 @@
                 "portable"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-ctype/tree/v1.22.0"
+                "source": "https://github.com/symfony/polyfill-ctype/tree/v1.23.0"
             },
             "funding": [
                 {
@@ -739,7 +742,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-01-07T16:49:33+00:00"
+            "time": "2021-02-19T12:13:01+00:00"
         },
         {
             "name": "symfony/yaml",
