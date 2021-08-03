@@ -44,6 +44,8 @@ lando start
 
 This will prompt you for site info admin credentials to set up. Then it does some setup/cleanup. After this, you should have a fully functional WordPress site running Groot!
 
+__NOTE: For now, we don't import the SiteCrafting WP starter database when spinning up Groot locally. This can be imported manually, if desired. Note that this database expected ACF Pro to be in place, which is also not installed automatically for local development. ACF Pro will need to be installed manually if you require it.__
+
 ## SITKA Support
 * Template content is required to be wrapped with an element with the class of `sitka-search-content-container` in order to crawl with sitka insights
 * Feedback collector partial and starter custom styles have been provided. Include this partial at locations where the feedback collector should appear
