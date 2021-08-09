@@ -17,7 +17,9 @@ p,
 figure,
 blockquote,
 dl,
-dd {
+dd,
+ol,
+ul {
   margin: 0;
 }
 
@@ -35,6 +37,7 @@ html:focus-within {
 /* Set core body defaults */
 body {
   min-height: 100vh;
+  font-family: system-ui, sans-serif;
   text-rendering: optimizeSpeed;
 }
 
@@ -45,12 +48,17 @@ a:not([class]) {
   text-underline-offset: 0.15em;
 }
 
+//prevent default italics on address tags
+address{ font-style: normal; }
+
 /* Make images easier to work with */
 img,
 picture {
   max-width: 100%;
   display: block;
 }
+
+img[width]{ height: auto; }
 
 /* Inherit fonts for inputs and buttons */
 input,
