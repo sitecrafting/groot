@@ -1,0 +1,10 @@
+<div class="hero">
+    <div class="hero__background" style="background-image: url({{ Image(hero.background_image).src('large') }});"></div>
+    <div class="hero__content" data-swiper-parallax-y="-100">
+        <h2 class="h1 title">{{ hero.headline }}</h2>
+        {% if hero.subtext %}<div class="subtext">{{ hero.subtext }}</div>{% endif %}
+        {% if hero.button.url %}
+            <a class="btn" href="{{ hero.button.url }}"{{ hero.button.target ? ' target="_blank"' }}>{{ hero.button.title|default('Learn More') }}</a>
+        {% endif %}
+    </div>
+</div><!-- //.swiper-slide.hero -->
