@@ -4,26 +4,16 @@
 
 {% include 'partials/hero-interior.twig' with { page_title : post.meta('main_headline')|default(post.title) } %}
 
+{# SIDE NAV #}
+{% include 'partials/subnav.twig' with { menu: primary_menu } %}
+
 <section class="pattern">
     <div class="container">
 
-        <div class="flex-row center-lg gutter-lg-fat gutter-md-default">
-
-            {# SIDE NAV #}
-            {% include 'partials/subnav.twig' with { menu: primary_menu } %}
-
-            {# MAIN COLUMN #}
-            <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
-                <div class="flex-patterns flex-patterns--remove-outer-gutter sitka-search-content-container">
-					
-					{# FLEXIBLE LAYOUTS #}
-                    {% include 'partials/content-layouts.twig' with { layouts: post.meta('default_layouts') } %}
-
-                </div>
-            </div>
-
-
-        </div><!-- //flex-row -->
+		{# FLEXIBLE LAYOUTS #}
+        <div class="flex-patterns flex-patterns--remove-outer-gutter sitka-search-content-container">
+            {% include 'partials/content-layouts.twig' with { layouts: post.meta('default_layouts') } %}
+        </div>
 
     </div><!-- END .container -->
 </section>
