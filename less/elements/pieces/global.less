@@ -1,0 +1,217 @@
+/*==============================
+	# TABLE OF CONTENTS
+		# Global styles
+		# Alignments
+		# Captions
+		# Default WP Gallery
+		# RTECONTENT - global Overrides
+================================*/
+
+/*===========================
+# GLOBAL STYLES
+===========================*/
+body{
+	background-color: @body-bg;
+	font: 400 @font-size-base/@line-height @font-family-base;
+	color: @text-color;
+}
+
+//for use to apply body copy styles to other elements
+.body-copy(){
+    font: 400 @font-size-base/@line-height @font-family-base;
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6{
+	font-family: @font-family-headings;
+	font-weight: @headings-font-weight;
+	color: @headings-color;
+	line-height: 1.2;
+	margin-bottom: .5em;
+}
+
+//key/value pairs
+@type-levels: {
+	h1: @font-size-h1; 
+	h2: @font-size-h2;
+	h3: @font-size-h3;
+	h4: @font-size-h4;
+}
+
+each(@type-levels,{
+
+	@{key}, .@{key}{
+		font-size: @value;
+
+		// Remove unit for calculations
+		@level-unitless: @value / (@value * 0 + 1);
+
+		// Set minimum size to a percentage less than unitless @value
+		@level-min: @level-unitless - (0.33 * @level-unitless);
+
+		// Prevent dropping lower than 1rem (body font-size)
+		@fluid-min: if((@level-min > 1), @level-min, 1);
+
+		//scaler - adjust 4vw as necessary through testing
+		@fluid-scaler: (@level-unitless - @fluid-min) + 4vw;
+
+		font-size: ~'clamp(@{fluid-min}, @{fluid-scaler} + 1rem, @{value})';
+
+	}
+
+});
+//output =
+// h1, .h1{ font-size: clamp(min-size, scaler, primary-size); }
+// h2, .h2{ font-size: clamp(min-size, scaler, primary-size); }
+// h3, .h3{ font-size: clamp(min-size, scaler, primary-size); }
+// h4, .h4{ font-size: clamp(min-size, scaler, primary-size); }
+h5, .h5{ font-size: @font-size-h5; }
+h6, .h6{ font-size: @font-size-h6; }
+
+p,li,h1,h2,h3,h4,
+.h1,.h2,.h3,.h4{
+	// Help prevent overflow of long words/names/URLs
+	overflow-wrap: break-word;
+
+	// Optional, not supported for all languages
+	hyphens: auto;
+}
+
+a {
+    color: @link-color;
+    text-decoration: none;
+    transition: all @trans-speed ease;
+
+	&:not([class]){ 
+        display: inline-block; 
+        &:hover{ text-decoration: underline; }
+    }
+}
+
+@content-spacer: 1.25em;
+.rtecontent{
+	//make sure floats are cleared
+	.clearfix();
+
+	> * + *{ margin-top: @content-spacer; }
+
+    ol, ul{ 
+        padding-left: 20px; 
+        li{
+            &::marker{ color: @blue; font-weight: 700; }
+            + li{ margin-top: .5em; }
+        }
+    }
+
+	ul + p,
+	ol + p{ margin-top: 2em; }
+
+	pre,blockquote{
+		margin-top: 2em;
+		margin-bottom: 2em;
+		padding: 0.5em 1.5em;
+		border-left: 2px solid @blue;
+		font-size: 1.333rem;
+	}
+
+	hr{ margin: 5vh 0; border-color: @gray-f3; }
+
+}
+
+/* Text meant only for screen readers. */
+.screen-reader-text {
+	.visuallyhidden();
+}
+
+/* content selection highlighting */
+::selection{
+	background-color: @blue;
+	color: @black;
+}
+
+/*===========================
+# WP Alignments
+===========================*/
+.alignleft {
+	display: block;
+	float: left;
+	margin-right: 30px;
+	@media @mobile-all{
+		margin-right: 15px;
+		max-width: 50%;
+	}
+}
+
+.alignright {
+	display: block;
+	float: right;
+	margin-left: 30px;
+	@media @mobile-all{
+		margin-left: 15px;
+		max-width: 50%;
+	}
+}
+
+.aligncenter {
+	clear: both;
+	display: block;
+	margin: 20px auto;
+}
+
+
+/*===========================
+## WP Captions
+===========================*/
+.wp-caption { max-width: 100%; }
+
+.wp-caption img[class*="wp-image-"] {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.wp-caption-text {
+	margin: 5px 0 0;
+	text-align: center;
+	font-size: @font-size-base - 4px;
+}
+
+/*===========================
+## Wordpress Galleries
+===========================*/
+.rtecontent .gallery {
+	margin-top: 20px;
+	display: grid;
+	gap: 20px;
+
+	br{ display: none !important; }
+
+	&.gallery-columns-2{ grid-template-columns: repeat(2, 1fr); }
+	&.gallery-columns-3{ grid-template-columns: repeat(3, 1fr); }
+	&.gallery-columns-4{ grid-template-columns: repeat(4, 1fr); }
+	&.gallery-columns-5{ grid-template-columns: repeat(5, 1fr); }
+	&.gallery-columns-6{ grid-template-columns: repeat(6, 1fr); }
+	&.gallery-columns-7{ grid-template-columns: repeat(7, 1fr); }
+	&.gallery-columns-8{ grid-template-columns: repeat(8, 1fr); }
+	&.gallery-columns-9{ grid-template-columns: repeat(9, 1fr); }
+
+	.gallery-item{
+		img{
+			display: block;
+			width: 100%;
+		}
+	}
+
+	@media @mobile-all{
+		&[class*='gallery-columns-']{ grid-template-columns: repeat(2, 1fr); }
+	}
+
+}
+.rtecontent .gallery-caption {
+	display: block;
+	margin: 0;
+	padding: 10px 5px 0 5px;
+	font-size: @font-size-base - 4px;
+}
+
+

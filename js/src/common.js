@@ -22,6 +22,13 @@ import accordion from './jquery.accordion.js'
         closeOnOutsideClick: true, //set to false if using dropdown type
         showTabsOnFocus: true,
     });
+	$('nav.subnav').responsiveNav({
+		navType: 'dropdown',
+		closeOnOutsideClick: false,
+		showTabsOnFocus: false,
+		menuButtonSelector: '.subnav__mobile-toggle',
+		dropdownSelector: '.subnav__menu'
+	});
 
     // Responsive Videos
     $('.rtecontent').fitVids();

@@ -13,7 +13,7 @@
 // Example usage:
 //
 // * { background-image: url('@{theme-path}img/icons/my-icon.svg'); }
-@theme-path: '';
+@theme-path: '/wp-content/themes/groot/';
 
 
 // Grays
@@ -23,7 +23,7 @@
 
 // Brand colors
 // -------------------------
-@blue:                          #00aeef;
+@blue:                          darken(#00aeef, 5%);
 @error:                         red;
 
 @black:				            #000;
@@ -55,28 +55,19 @@
 @font-family-base:              'Open Sans', arial, sans-serif;
 @font-family-headings:          'Roboto Condensed',  arial, sans-serif;
 
-@font-size-base:                16px;
+@font-size-base:                1rem;
 @line-height:        	        1.6;
 
-@font-size-h1:                  42px;
-@font-size-h2:                  35px;
-@font-size-h3:                  30px;
-@font-size-h4:                  25px;
-@font-size-h5:                  20px;
-@font-size-h6:                  18px;
+@font-size-h1:                  4.25rem; //68px
+@font-size-h2:                  3.125rem; //50px
+@font-size-h3:                  2.375rem; //38px
+@font-size-h4:                  1.75rem; //28px
+@font-size-h5:                  1.25rem; //20px
+@font-size-h6:                  1.125rem; //18px
 
 @headings-font-weight:          700;
 @headings-line-height:          1.1;
 @headings-color:                @blue;
-
-//MOBILE FONT CHANGES
-@font-size-base-m:              14px;
-@font-size-h1-m:                38px;
-@font-size-h2-m:                32px;
-@font-size-h3-m:                28px;
-@font-size-h4-m:                22px;
-@font-size-h5-m:                18px;
-@font-size-h6-m:                16px;
 
 // Forms
 // -------------------------
@@ -89,11 +80,10 @@
 @input-border-focus:             @blue;
 
 @input-color-placeholder:        darken(@gray-f3,15%);
-@input-font-size:                16px;
+@input-font-size:                1rem;
 
-@input-height:                   56px;
+@input-height:                   3.5rem;
 @input-padding:                  10px;
-@input-bottom-margin:            20px;
 
 
 // Media queries breakpoints

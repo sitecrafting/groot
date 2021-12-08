@@ -5,9 +5,9 @@
     <div class="container">
 
 		<div class="flex-row center-lg gutter-lg-fat gutter-md-default">
-		  <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+			<div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
 
-              <h1>{{ post.title }}</h1>
+				<h1>{{ post.title }}</h1>
 
 				<div class="article-list">
 					{% for post in posts %}
@@ -20,30 +20,28 @@
 			</div>
 			<div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
 
-				<nav class="subnav subnav--filtering">
-					<h3 class="subnav__title">Categories</h3>
-					<ul class="subnav__menu">
+				<nav class="subnav-filter">
+					<h3 class="subnav-filter__title">Categories</h3>
+					<ul class="subnav-filter__menu">
 						<li{{ is_category == false ? ' class="current-menu-item"' }}><a href="{{ get_blog_url() }}">All</a></li>
 						{% for cat in get_terms('category') %}
 							<li{{ post.slug == cat.slug() ? ' class="current-menu-item"' : '' }}><a href="{{ cat.link() }}">{{ cat.name }}</a></li>
 						{% endfor %}
 					</ul>
-				</nav><!-- //sidebar-box -->
+				</nav><!-- //subnav-filter -->
 
 				{#
-				<nav class="subnav">
-					<h3 class="sidebar-box__title">Archives</h3>
-					<div class="sidebar-box__content">
-						<ul class="sidebar-box__menu">
+				<nav class="subnav-filter">
+					<h3 class="subnav-filter__title">Archives</h3>
+						<ul class="subnav-filter__menu">
 							<li><a href="{{ get_blog_url() }}">All</a></li>
-                    		{% for archive in archives.items %}
-		                        {% for month in archive.children %}
-		                            <li><a href="{{ month.link }}">{{ month.name }} {{ archive.name }}</a></li>
-		                        {% endfor %}
-	                    	{% endfor %}
+							{% for archive in archives.items %}
+								{% for month in archive.children %}
+									<li><a href="{{ month.link }}">{{ month.name }} {{ archive.name }}</a></li>
+								% endfor %}
+							{% endfor %}
 						</ul>
-					</div>
-				</nav><!-- //sidebar-box -->
+				</nav><!-- //subnav-filter -->
 				#}
 			</div>
 		</div>

@@ -64,7 +64,7 @@
   white-space: nowrap;
 }
 
-.hide-text{
+.hide-text(){
   overflow: hidden;
   white-space: nowrap;
   text-indent: 101%;
@@ -75,15 +75,14 @@
   padding: 0;
 }
 
-.visuallyhidden {
-  position: absolute;
+.visuallyhidden(){
+  clip: rect(0 0 0 0); 
+  clip-path: inset(50%);
+  height: 1px; 
+  width: 1px;
   overflow: hidden;
-  clip: rect(0 0 0 0);
-  height: 0px;
-  width: 0px;
-  margin: -1px;
-  padding: 0;
-  border: 0;
+  position: absolute;
+  white-space: nowrap;
 }
 
 // Form control focus state

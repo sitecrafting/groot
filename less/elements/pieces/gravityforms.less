@@ -1,321 +1,139 @@
 /* ==========================
-    CUSTOM BASE FOR GRAVITY FORMS
-    # required - flexboxgrid included prior to this less file
+    GRAVITY FORMS
+    - Adjustment to built in gravity form styles
+    - gravity form stylehsheet is enqueued after our styles so we have to make sure our specificity is up really high
 =============================*/
+body .gform_wrapper.gravity-theme{
 
-/* ----------------------
-    FORM HEADING
-        # Title
-        # Description
-    FORM BODY
-    FORM FOOTER
---------------------------*/
-.gform_heading{
-    margin-bottom: 25px;
+    .gform_validation_errors{
+        background: transparent;
+        border-radius: 0;
+        border: 0;
+        border-left: 2px solid @error;
+        box-shadow: none;
+        margin: 0 0 20px 0;
+        padding: 0 0 0 15px;
 
-    //h3
-    .gform_title{ margin: 0; }
-    .gform_description{
-        display: block;
-        margin-top: 10px;
-    }
-}
-
-.gform_body{ overflow: hidden; }
-
-.gform_page_footer{
-    .clearfix();
-    .gform_previous_button{ float: left; }
-    .gform_next_button, .gform_button{ float: right; }
-}
-.gform_footer{
-    margin-top: 20px;
-}
-
-/* -------------------------
-    Some Global Elements
-    * hidden fields
-    * required color
-    * ajax spinner
-    * buttons
------------------------------ */
-
-.gf_hidden, .gform_hidden, input.gform_hidden, input[type=hidden], .gfield_visibility_hidden{ display: none; max-height: 1px; overflow: hidden; }
-
-.gfield_required{ color: @error; }
-
-.gform_ajax_spinner {
-    display: inline-block;
-    vertical-align: bottom;
-	margin-left: 10px;				/* give it some space from the Submit button */
-}
-
-//buttons
-.gform_button,
-.gform_previous_button,
-.gform_next_button{
-    .btn;
-}
-
-
-/*----------------------------------
-    PAGING OPTION - progress bar
-------------------------------------*/
-.gf_progressbar_wrapper{
-    margin: 20px 0;
-    padding: 20px 0;
-    border-top: 1px solid @gray-f3;
-    border-bottom: 1px solid @gray-f3;
-
-    //h3
-    .gf_progressbar_title{
-        .h5;
-        margin-top: 0;
-    }
-    .gf_progressbar{
-        background-color: @gray-f3;
-        border: 1px solid @input-border;
-        border-radius: 5px;
-        overflow: hidden;
-
-        .gf_progressbar_percentage{
-            height: 30px;
-            background: @blue;
-            color: @white;
-            font-size: 12px;
-
-            span{
-                display: block;
-                width: auto;
-                float: right;
-                margin-right: 5px;
-                margin-left: 5px;
-                line-height: 30px;
-            }
-            &.percentbar_0{
-                span{
-                    color: @text-color;
-                    float: none;
-                    margin-left: 12px;
-                }
-            }
-        }
-
-    }
-
-}//.gf_progressbar_wrapper
-/*----------------------------------
-    PAGING OPTION - steps
-------------------------------------*/
-.gf_page_steps{
-    margin: 20px 0;
-    padding: 20px 0;
-    border-top: 1px solid @gray-f3;
-    border-bottom: 1px solid @gray-f3;
-
-    font-size: 14px;
-    .gf_step{
-        display: inline-block;
-        &.gf_step_active{ color: @blue; }
-
-        &:after{
-            content: ">";
-            display: inline-block;
-            margin: 0 5px;
+        > h2{
+            font-size: 1.5rem;
+            line-height: 1.2;
+            font-weight: 400;
             color: @text-color;
-        }
 
-        &.gf_step_last:after{ display: none; }
+            .gform-icon{ display: none; }
+        }
     }
+
+    .gform_heading{
+        margin-bottom: 2rem;
+
+        //h2
+        .gform_title{ margin: 0; }
+        .gform_description{
+            display: block;
+            margin-top: 1rem;
+        }
+
+        .gform_required_legend{ 
+            margin-top: 1rem;
+            font-size: .875rem;
+        }
+
+    }
+
+    .gfield_required{
+        color: @error;
+        font-size: inherit;
+    }
+
+    .gform_fields{
+        grid-row-gap: 2rem;
+    }
+
+    .gfield_label{
+        .field-label();
+        color: @text-color;
+    }
+
+
+    input[type=color],
+    input[type=date], 
+    input[type=datetime-local], 
+    input[type=datetime], 
+    input[type=email], 
+    input[type=month], 
+    input[type=number], 
+    input[type=password], 
+    input[type=search], 
+    input[type=tel], 
+    input[type=text], 
+    input[type=time], 
+    input[type=url], 
+    input[type=week], 
+    select, 
+    textarea{
+        .form-control();
+    }
+
+    select{
+        .form-control--select();
+    }
+
+    //correction for custom styled radio/checkboxes
+    .gchoice{
+        position: relative;
+    }
+    .gfield_error{
+        input[type="checkbox"] + label, input[type="radio"] + label{
+            color: inherit;
+        }
+    }
+
+    //section field
+    .gsection{
+        padding: 0 0 1.5rem;
+
+        //h3
+        .gsection_title{ margin: 0; }
+        .gsection_description{ 
+            display: block;
+            margin: .5rem 0 0 0;
+            padding: 0;
+            .body-copy();
+        }
+    }
+
+    //time field corrections
+    .ginput_container_time{
+        flex-basis: auto;
+        max-width: none;
+    }
+    .hour_minute_colon{ align-self: center; }
+
+    //file upload
+    .gform_fileupload_rules{
+        font-size: .875rem;
+    }
+
+    .ginput_complex label{
+        font-size: .875rem;
+        font-weight: 400;
+    }
+
+
+    //FIELD ERRORS
+    .gfield_error [aria-invalid=true]{
+        border-color: @error;
+        background-color: lighten(@error, 48%);
+    }
+    .gfield_validation_message{
+        background: transparent;
+        border: 0;
+        padding: 0;
+        font-size: .75rem;
+        color: @error;
+        font-weight: 700;
+    }
+
+
 }
-
-
-/* ---------------------------
-    FORM FIELDS
-------------------------------*/
-    ul.gform_fields{
-        .plain-list();
-        //see flexboxgrid.less for flex styles
-        .flex-row;
-        margin-left: -15px;
-        margin-right: -15px;
-
-        .gfield{
-            padding-left: 15px;
-            padding-right: 15px;
-            margin-top: 0;
-            margin-bottom: 25px;
-
-            input[type=text],
-            input[type=password],
-            input[type="email"],
-            input[type="tel"],
-            input[type="url"],
-            input[type="number"],
-            select,
-            textarea{
-                margin: 0;
-                + label{ font-size: 12px; }
-            }
-
-            .gfield_description, .instruction{
-                font-size: 12px;
-                &.validation_message{ color: @error; }
-            }
-
-            /* SECTIONS */
-            &.gsection{
-                padding-bottom: 25px;
-                border-bottom: 1px solid @gray-cc;
-                .gsection_title{
-                    .h4;
-                    margin: 0;
-                }
-                .gsection_description{
-                    margin-top: 8px;
-                }
-            }
-
-            /* HTML BLOCK */
-            &.gfield_html_formatted > *:first-child{ margin-top: 0; }
-
-            &.gform_validation_container{ display: none; }
-        }//.gfield
-
-
-        /* RADIO AND CHECKBOXES */
-        .gfield_radio, .gfield_checkbox{
-            .plain-list();
-            li{
-                margin: 5px 0;
-                label{ margin-bottom: 0; }
-            }
-        }
-        //add this class to the radio/checkboxes field in gravitforms to make them inline each other
-        .choices-inline{
-            .gfield_radio li,
-            .gfield_checkbox li{
-                display: inline-block;
-                vertical-align: middle;
-                margin-right: 15px;
-            }
-        }
-
-        /*  DATE FIELD */
-        .ginput_container_date{
-            position: relative;
-            img.ui-datepicker-trigger{
-                display: block;
-                width: 20px;
-                position: absolute;
-                top: 16px;
-                right: 10px;
-            }
-            .datepicker_no_icon{
-                background-image: url('@{theme-path}img/icons/icon-calendar.svg');
-                background-size: 20px auto;
-                background-position: top 16px right 10px;
-                background-repeat: no-repeat;
-            }
-        }
-
-        //table
-        .gfield_list{
-            width: 100%;
-
-            .gfield_list_icons{ width: 40px; }
-
-        }
-
-        //COMPLEX NAME or ADDRESS
-        .ginput_container_name, .ginput_container_address{
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            margin-left: -15px;
-            margin-right: -15px;
-            > span{
-                padding-left: 15px;
-                padding-right: 15px;
-                margin-bottom: 10px;
-                flex: 0 0 auto;
-                .column-width(100%);
-            }
-            .name_prefix, .name_middle, .name_suffix{
-                max-width: 25%;
-                flex-basis: 25%;
-            }
-            .name_first, .name_last{ max-width: 50%; flex-basis: 50%; }
-
-            .address_city{ max-width: 50%; flex-basis: 50%; }
-            .address_state{ max-width: 25%; flex-basis: 25%; }
-            .address_zip{ max-width: 25%; flex-basis: 25%; }
-
-            @media @mobile-all{
-
-                .address_city{ max-width: 100%; flex-basis: 100%; }
-                .address_state{ max-width: 50%; flex-basis: 50%; }
-                .address_zip{ max-width: 50%; flex-basis: 50%; }
-            }
-            @media @mobile-sml{
-                .name_prefix, .name_middle, .name_suffix,.name_first, .name_last{
-                    max-width: 100%;
-                    flex-basis: 100%;
-                }
-                .address_state, .address_zip{ max-width: 100%; flex-basis: 100%; }
-            }
-
-        }//.ginput_container_name, .ginput_container_address
-
-        //TIME FIELD
-        .clear-multi{
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            margin-left: -5px;
-            margin-right: -5px;
-            .ginput_container_time{
-                position: relative;
-                padding-left: 5px;
-                padding-right: 5px;
-                margin-bottom: 5px;
-                flex: 0 0 auto;
-                .column-width(33.333%);
-
-                i{
-                    // : between hour and minute
-                    display: block;
-                    font-style: normal;
-                    position: absolute;
-                    top: 13px;
-                    right: -2px;
-                }
-                label{ font-size: 12px; }
-
-            }
-        }
-
-        //file uploads
-        .gform_fileupload_multifile .gform_drop_area{
-            padding: 24px;
-            border: 1px dashed @input-border;
-            text-align: center;
-            color: @input-color-placeholder;
-            background: @input-bg;
-            border-radius: 5px;
-
-            span.gform_drop_instructions{
-                display: block;
-                margin: 0 0 10px 0;
-            }
-        }
-        .ginput_preview{
-            img.gform_delete{
-                display: inline-block;
-                vertical-align: middle;
-                margin: 0 10px 0 0;
-                cursor: pointer;
-            }
-        }
-
-    }//ul.gform_fields
