@@ -9,15 +9,12 @@ body{
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6{
-	line-height: @headings-line-height;
 	font-family: @font-family-headings;
 	font-weight: @headings-font-weight;
 	color: @headings-color;
+    line-height: 1.2;
+	margin-bottom: .5em;
 }
-
-h1, .h1{ margin: 0 0 30px 0; }
-h2, h3, .h2, .h3{ margin: 20px 0; }
-h4, h5, h6, .h4, .h5, .h6{ margin: 10px 0; }
 
 h1, .h1{ font-size: @font-size-h1; }
 h2, .h2{ font-size: @font-size-h2; }
@@ -42,22 +39,23 @@ img{ max-width: 100%; height: auto !important; }
 p { margin: 20px 0; }
 
 ol, ul{
-	margin: 25px;
+	padding-left: 20px; 
 	li{
-		margin: 10px 0;
-		> ul,
-		> ol {
-			margin: 5px 0 10px 25px;
-		}
+		+ li{ margin-top: .5em; }
+        &::marker{ color: @blue; font-weight: 700; }
 	}
 }
 
 dd{ margin: 20px; }
 
-hr { border: 0; border-bottom: 1px solid @gray-f3; height: 0px; margin: 30px 0; padding: 0; width: 100%; }
-pre, code, blockquote {
-    padding: 30px;
-    background: @gray-f3;
+hr { margin: 30px 0; border-color: @gray-f3; }
+
+pre,blockquote{
+    margin-top: 2em;
+    margin-bottom: 2em;
+    padding: 0.5em 1.5em;
+    border-left: 2px solid @blue;
+    font-size: 1.333rem;
 }
 
 *:first-child{ margin-top: 0; }

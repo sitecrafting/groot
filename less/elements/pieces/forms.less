@@ -1,15 +1,10 @@
 //
 // Forms
 // --------------------------------------------------
-label {
-  display: block;
-  font-weight: bold;
-  font-size: 14px;
-}
-
-form {
-
-    button{ margin: 25px 0 0 0; }
+label, .field-label {
+    margin-bottom: 5px;
+    font-weight: 700;
+    font-size: .875rem;
 }
 
 // Common form controls
@@ -23,54 +18,52 @@ input[type="tel"],
 input[type="url"],
 input[type="number"],
 select,
-textarea{
-  -webkit-appearance: none; //to make sure IOS default styling is removed
-  -moz-appearance: none;
-  -webkit-border-radius: 0; //to make sure IOS default round corners is removed - this can be removed if there are supposed to be rounded corners
-  border-radius: 0;
+textarea,
+.form-control{
+    -webkit-appearance: none; //to make sure IOS default styling is removed
+    -moz-appearance: none;
+    -webkit-border-radius: 0; //to make sure IOS default round corners is removed - this can be removed if there are supposed to be rounded corners
+    border-radius: 0;
 
-  display: block;
-  box-sizing: border-box;
-  width: 100%;
-  height: @input-height; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
+    display: block;
+    box-sizing: border-box;
+    height: @input-height; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
 
-  padding: @input-padding;
-  margin-bottom: @input-bottom-margin;
+    padding: @input-padding;
 
-  font-size: @input-font-size;
-  line-height: @input-font-size+3;
+    font-size: @input-font-size;
+    line-height: 1.2;
 
-  color: @input-color;
-  vertical-align: middle;
+    color: @input-color;
 
-  background-color: @input-bg;
-  background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
+    background-color: @input-bg;
+    background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
 
-  border: 1px solid @input-border;
+    border: 1px solid @input-border;
 
-  // Customize the `:focus` state to imitate native WebKit styles.
-  .form-control-focus();
+    // Customize the `:focus` state to imitate native WebKit styles.
+    .form-control-focus();
 
-  // Placeholder
-  // Placeholder text gets special styles because when browsers invalidate entire
-  // lines if it doesn't understand a selector/
-  .placeholder();
+    // Placeholder
+    // Placeholder text gets special styles because when browsers invalidate entire
+    // lines if it doesn't understand a selector/
+    .placeholder();
 
-  // Disabled and read-only inputs
-  &[disabled],
-  &[readonly]{
-    cursor: not-allowed;
-    background-color: @input-bg-disabled;
-  }
-
+    // Disabled and read-only inputs
+    &[disabled],
+    &[readonly]{
+        cursor: not-allowed;
+        background-color: @input-bg-disabled;
+    }
 }
 
-select{
-    padding-right: 25px;
-    background-image: url('@{theme-path}img/arrows/chevron-down.svg');
+select,
+.form-control--select{
+    padding-right: 45px;
+    background-image: url('@{theme-path}img/arrows/streamline-chevron-down@20x20.svg');
     background-repeat: no-repeat;
     background-size: 20px auto;
-    background-position: right 5px top (@input-height/2 - 7px);
+    background-position: right 10px center;
 }
 select::-ms-expand{
     /* for IE 10+ */
@@ -95,56 +88,45 @@ input[type=checkbox] + label,
 input[type=radio] + label{
 	position: relative;
 	display: inline-block;
-	margin: 0 5px @input-bottom-margin 0;
+	margin: 0 5px 0 0;
 	padding: 0 0 0 30px;
 	font-weight: normal;
 
 	&:before{
-    	content: "";
-    	display: block;
-    	width: 20px;
-    	height: 20px;
-    	position: absolute;
-    	top: 2px;
-    	left: 0;
-    	background: @input-bg;
+        content: "";
+        display: block;
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        top: 2px;
+        left: 0;
+        background: @input-bg;
         border: 1px solid @input-border;
-
-        font-size: 20px;
-        line-height: 20px;
-        text-align: center;
-    }
-
-}
-
-input[type=radio] + label{
-    &:before{
-        border-radius: 50%;
         box-shadow: inset 0 0 0 4px @input-bg;
     }
 }
 
-input[type=radio]:checked + label{
-    &:before{
-        background-color: @text-color;
-    }
+input[type=radio] + label{
+    &:before{ border-radius: 50%; }
 }
 
+input[type=radio]:focus + label,
+input[type=checkbox]:focus + label{
+    &:before{ border-color: @blue; }
+}
+
+input[type=radio]:checked + label,
 input[type=checkbox]:checked + label{
-	&:before{ content: "\2713"; }
+    &:before{ background-color: @blue; }
 }
 
 // Apply same disabled cursor tweak as for inputs
 // Note: Neither radios nor checkboxes can be readonly.
 input[type="radio"],
 input[type="checkbox"]{
-  &[disabled]{
-    cursor: not-allowed;
-
-    //if customized styles
-    & + label:before{
-      cursor: not-allowed;
+    &[disabled]{
+        cursor: not-allowed;
+        //if customized styles
+        & + label:before{ cursor: not-allowed; }
     }
-  }
-
 }
