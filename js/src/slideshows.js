@@ -28,10 +28,6 @@ import Swiper from 'swiper/bundle'; // import Swiper bundle with all modules ins
     //TESTIMONIAL SLIDESHOW
 	var testimonialSwiper = new Swiper('.slideshow-testimonial', {
 		loop: true,
-        autoplay:{
-            delay: 7000, //7 seconds per slide
-            disableOnInteraction: false
-		},
 		pagination: {
 			el: '.swiper-pagination',
 			type: 'bullets',
@@ -42,27 +38,34 @@ import Swiper from 'swiper/bundle'; // import Swiper bundle with all modules ins
     
 
     //INTERIOR GALLERY w/ THUMBNAILS
-    // gallery thumbnails
-	var galleryThumbs = new Swiper('.js-gallery-thumbs', {
-		spaceBetween: 10,
-		slidesPerView: 'auto',
-		loop: false,
-		freeMode: true
-	});
-	// gallery swiper
-	var galleryTop = new Swiper('.js-gallery-slides', {
-		loop: false,
-		fadeEffect: { crossFade: true },
-		effect: 'fade',
-		navigation: {
-		  nextEl: '.swiper-button-next',
-		  prevEl: '.swiper-button-prev',
-		},
-		thumbs: {
-		  swiper: galleryThumbs,
-		},
-      });
-      
+    const galleries = document.querySelectorAll('.gallery');
 
+    galleries.forEach((gallery, index) => {
+
+        let slider = gallery.querySelector('.js-gallery-slides');
+        let thumbs = gallery.querySelector('.js-gallery-thumbs');
+
+        const galleryThumbs = new Swiper(thumbs, {
+            spaceBetween: 10,
+            slidesPerView: 'auto',
+            loop: false,
+            freeMode: true
+        });
+
+        const galleryTop = new Swiper(slider, {
+            loop: false,
+            fadeEffect: { crossFade: true },
+            effect: 'fade',
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            thumbs: {
+                swiper: galleryThumbs,
+            },
+        });
+
+    });
+    
 
 })(jQuery)

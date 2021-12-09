@@ -5,44 +5,41 @@
 .gallery__slideshow{
 
 	.swiper-slide{
+        width: 100% !important; //fix swiper for when its inside of a grid without this it breaks outside
+        img{ display: block; width: 100%;}
 
-    img{ display: block; width: 100%;}
-
-    .slide-caption{
-      padding: 20px;
-      width: 100%;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      background: rgba(red(@black), green(@black), blue(@black), .5);
-      color: @white;
-      font-size: 14px;
+        .slide-caption{
+        padding: 20px;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background: rgba(red(@black), green(@black), blue(@black), .5);
+        color: @white;
+        font-size: 14px;
+        }
     }
-  }
-  
+
 }//end .gallery-swiper-top
 
 /*==========================
     GALLERY SWIPER - THUMBNAILS
 ===========================*/
 .gallery__thumbs{
-  margin-top: 10px;
+    margin-top: 10px;
 
 	.swiper-slide{
     
-    width: 140px;
-    opacity: .5;
-    transition: all @trans-speed ease;
-    cursor: pointer;
+        width: 140px;
+        opacity: .5;
+        transition: all @trans-speed ease;
+        cursor: pointer;
 
-    img{
-      display: block;
-      width: 100%;
+        img{ display: block; width: 100%; }
+
+        &:hover,
+        &.swiper-slide-thumb-active{ opacity: 1; }
     }
-
-    &:hover,
-    &.swiper-slide-thumb-active{ opacity: 1; }
-  }
 
 	@media @mobile-sml{
 		.swiper-slide{ display: none; }
