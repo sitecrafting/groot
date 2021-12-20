@@ -1,32 +1,34 @@
 /* globals jQuery */
 //https://swiperjs.com/
-import Swiper from 'swiper/bundle'; // import Swiper bundle with all modules installed
+import Swiper, {Navigation, Pagination, EffectFade, Parallax, A11y,} from 'swiper';
+
+Swiper.use([Navigation,Pagination,EffectFade,Parallax,A11y]);
 
 (($) => {
 
     //MAIN HERO SLIDESHOW
-    var mainSwiper = new Swiper('.js-home-slideshow', {
-		effect: 'fade',
-		loop: true,
-		parallax: true,
+    const mainSwiper = new Swiper('.js-home-slideshow', {
+        effect: 'fade',
+        loop: true,
+        parallax: true,
         autoplay:{
             delay: 7000, //7 seconds per slide
             disableOnInteraction: false
-		},
-		navigation: {
-			nextEl: '.swiper-button-next',
-			prevEl: '.swiper-button-prev'
-		},
-		pagination: {
-			el: '.swiper-pagination',
-			type: 'bullets',
-			hideOnclick: false,
-			clickable: true
-		}
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev'
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            type: 'bullets',
+            hideOnclick: false,
+            clickable: true
+        }
     });
 
     //TESTIMONIAL SLIDESHOW
-	var testimonialSwiper = new Swiper('.slideshow-testimonial', {
+	const testimonialSwiper = new Swiper('.slideshow-testimonial', {
 		loop: true,
 		pagination: {
 			el: '.swiper-pagination',
@@ -35,9 +37,8 @@ import Swiper from 'swiper/bundle'; // import Swiper bundle with all modules ins
 			clickable: true
 		}
     });
-    
 
-    //INTERIOR GALLERY w/ THUMBNAILS
+    // //INTERIOR GALLERY w/ THUMBNAILS
     const galleries = document.querySelectorAll('.gallery');
 
     galleries.forEach((gallery, index) => {

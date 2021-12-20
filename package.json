@@ -25,9 +25,7 @@
     "fitvids.1.1.0": "^1.1.0",
     "jquery": "^3.5.1",
     "magnific-popup": "^1.1.0",
-    "object-fit-images": "^3.2.4",
-    "swiper": "^6.7.5",
-    "throttle-debounce": "^1.0.1",
-    "typescript": "^3.4.1"
+    "swiper": "^7.3.3",
+    "throttle-debounce": "^1.0.1"
   }
 }
