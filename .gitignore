@@ -20,3 +20,7 @@ config.codekit
 /*.tar
 /*.tar.gz
 /groot-v*/
+
+# ignore webpack css js files
+/*.js
+/*.js.map
