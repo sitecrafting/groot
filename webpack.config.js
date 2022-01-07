@@ -14,174 +14,131 @@
  */
 const path = require('path')
 const webpack = require('webpack');
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+
+const MiniCssExtractPlugin = require("mini-css-extract-plugin"); //extracts css from js into css
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 const DeleteAfterBuildPlugin = require('./js/webpack-plugins/delete-after-build-plugin.js')
 const AssetsVersionPlugin = require('./js/webpack-plugins/assets-version-plugin.js')
 const getThemePath = require('./js/webpack-plugins/get-theme-path.js');
 
 const sharedConfig = {
-  mode: 'production',
-  devtool: 'source-map',
-  stats: 'errors-only',
+    mode: 'production',
+    devtool: 'source-map',
+    stats: 'errors-only',
 }
 
 const jsConfig = Object.assign({}, sharedConfig, {
-
-  /*
-   * This tells Webpack where to find the main JS file for your bundles.
-   * By default, there is only one bundle, called `common`. You can add more
-   * by adding a key pointing to your file below.
-   */
-  entry: {
-    common: './js/src/common.js',
-    /*
-     * Adding this here:
-     *
-     *   example: './js/src/example.js',
-     *
-     * will tell Webpack to parse js/src/example.js when you run
-     * `webpack` and compile it to dist/example.js.
-     */
-  },
-
-  output: {
-    /*
-     * Here, the [name] part corresponds to the `common` and `example` keys
-     * in the `entry` object above. In most cases you shouldn't have to change
-     * this part to add new bundles.
-     */
-    filename: '[name].js',
-  },
-
-  /*
-   * Webpack plugins are special pieces of code that run at various times
-   * during Webpack's bundling process.
-   *
-   * Learn more: https://webpack.js.org/concepts/plugins/
-   */
-  plugins: [
-    /*
-     * The AssetsVersionPlugin produces an extra file called assets.version
-     * which WordPress uses to tell end-users' browsers to load new versions
-     * of our frontend code using a technique called cache-busting.
-     *
-     * Learn more: https://www.sitecrafting.com/issues-cached-css-js-files-wordpress/
-     */
-    new AssetsVersionPlugin({
-      versionFile: 'scripts.version',
-      useHash: true,
-    }),
-    /*
-     * Tell Webpack that jQuery is a thing that exists globally.
-     */
-    new webpack.ProvidePlugin({
-      '$':             'jquery',
-      'jQuery':        'jquery',
-      'window.jQuery': 'jquery',
-    }),
-  ],
-
-  module: {
-    rules: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-
+    entry: {
         /*
-         * NOTE ABOUT TYPESCRIPT SUPPORT:
-         *
-         * To add TypeScript support, run `yarn add --dev ts-loader`.
-         * Then add:
-         *
-         * {
-         *   loader: 'ts-loader'
-         * }
-         *
-         * to the array below.
+        * will tell Webpack to parse js/src/common.js when you run
+        * `webpack` and compile it to dist/common.js.
+        */
+        common: './js/src/common.js',
+    },
+    output: {
+        /*
+         * Here, the [name] part corresponds to the `common` keys
+         * in the `entry` object above. In most cases you shouldn't have to change
+         * this part to add new bundles.
          */
-
-        use: [{
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env'],
-          },
-        }],
-      },
+        filename: '[name].js',
+    },
+    plugins: [
+        /*
+        * The AssetsVersionPlugin produces an extra file called assets.version
+        * which WordPress uses to tell end-users' browsers to load new versions
+        * of our frontend code using a technique called cache-busting.
+        *
+        * Learn more: https://www.sitecrafting.com/issues-cached-css-js-files-wordpress/
+        */
+        new AssetsVersionPlugin({
+            versionFile: 'scripts.version',
+            useHash: true,
+        }),
+        /*
+        * Tell Webpack that jQuery is a thing that exists globally.
+        */
+        new webpack.ProvidePlugin({
+            '$': 'jquery',
+            'jQuery': 'jquery',
+            'window.jQuery': 'jquery',
+        }),
     ],
-  },
-
-})
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: [
+                    {
+                        loader: 'babel-loader',
+                        options: {
+                            presets: ['@babel/preset-env'],
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+});
 
 const cssConfig = Object.assign({}, sharedConfig, {
 
-  /*
-   * Same deal as the `entry` object above. Tells Webpack where to find your
-   * main LESS file and what its bundle is called.
-   */
-  entry: {
-    style: './less/style.less',
-    'editor-style': './less/editor-style.less',
-    print: './less/style-print.less',
-  },
+    /*
+    * Tells Webpack where to find your LESS file and what its bundle is called.
+    */
+    entry: {
+        style: './less/style.less',
+        'editor-style': './less/editor-style.less',
+        print: './less/style-print.less',
+    },
 
-  /*
-   * WordPress expects CSS files to go in the theme directory, not dist.
-   * To do that, we need to tell it explicitly to put CSS files in the same
-   * directory as this file, AKA `__dirname`.
-   */
-  output: {
-    path: path.resolve(__dirname, '.'),
-  },
+    /*
+    * WordPress expects CSS files to go in the theme directory, not dist.
+    * To do that, we need to tell it explicitly to put CSS files in the same
+    * directory as this file, AKA `__dirname`.
+    */
+    output: {
+        path: path.resolve(__dirname, '.'),
+    },
 
-  plugins: [
-    new MiniCssExtractPlugin({
-      filename: '[name].css',
-    }),
-    // Tell optimizer explicitly to generate source maps.
-    new OptimizeCssAssetsPlugin({
-      cssProcessorOptions: {
-        map: {
-          inline: false,
-          annotation: true,
-        },
-      },
-    }),
-    new AssetsVersionPlugin({
-      versionFile: 'styles.version',
-      useHash: true,
-    }),
-    new DeleteAfterBuildPlugin({
-      paths: ['print.js*', 'style.js*', 'editor-style.js*'],
-    }),
-  ],
-
-  module: {
-    rules: [
-      {
-        test: /\.(less|css)/,
-        use: [{
-          // Compile just the CSS as a non-JS asset
-          loader: MiniCssExtractPlugin.loader
-        }, {
-          loader: 'css-loader',
-          options: {
-            sourceMap: true,
-          },
-        }, {
-          loader: 'less-loader',
-          options: {
-            sourceMap: true,
-            modifyVars: {
-              "theme-path": getThemePath()
-            }, 
-          },
-        }],
-      },
+    plugins: [
+        new MiniCssExtractPlugin(),
+        new AssetsVersionPlugin({
+            versionFile: 'styles.version',
+            useHash: true,
+        }),
+        new DeleteAfterBuildPlugin({
+            paths: ['print.js*', 'style.js*', 'editor-style.js*'],
+        })
     ],
-  },
+    module: {
+        rules: [
+            {
+                test: /\.(less)/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: "css-loader",
+                        options: {
+                            sourceMap: true,
+                        }
+                    },
+                    {
+                        loader: "less-loader",
+                        options: {
+                            sourceMap: true,
+                            additionalData: `@theme-path: ${getThemePath()};`,
+                        }
+                    }
+                ]
+            },
+        ],
+    },
+    optimization: {
+        minimizer: [new CssMinimizerPlugin()]
+    }
+});
 
-})
-
-module.exports = [jsConfig, cssConfig]
+module.exports = [jsConfig, cssConfig];
