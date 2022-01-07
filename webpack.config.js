@@ -18,7 +18,7 @@ const webpack = require('webpack');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin"); //extracts css from js into css
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
-//const DeleteAfterBuildPlugin = require('./js/webpack-plugins/delete-after-build-plugin.js')
+const DeleteAfterBuildPlugin = require('./js/webpack-plugins/delete-after-build-plugin.js')
 const AssetsVersionPlugin = require('./js/webpack-plugins/assets-version-plugin.js')
 const getThemePath = require('./js/webpack-plugins/get-theme-path.js');
 
@@ -29,7 +29,7 @@ const sharedConfig = {
 }
 
 const jsConfig = Object.assign({}, sharedConfig, {
-    entry : {
+    entry: {
         /*
         * will tell Webpack to parse js/src/common.js when you run
         * `webpack` and compile it to dist/common.js.
@@ -60,13 +60,13 @@ const jsConfig = Object.assign({}, sharedConfig, {
         * Tell Webpack that jQuery is a thing that exists globally.
         */
         new webpack.ProvidePlugin({
-            '$':             'jquery',
-            'jQuery':        'jquery',
+            '$': 'jquery',
+            'jQuery': 'jquery',
             'window.jQuery': 'jquery',
         }),
     ],
     module: {
-        rules : [
+        rules: [
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
@@ -109,9 +109,9 @@ const cssConfig = Object.assign({}, sharedConfig, {
             versionFile: 'styles.version',
             useHash: true,
         }),
-        // new DeleteAfterBuildPlugin({
-        //     paths: ['print.js*', 'style.js*', 'editor-style.js*'],
-        // })
+        new DeleteAfterBuildPlugin({
+            paths: ['print.js*', 'style.js*', 'editor-style.js*'],
+        })
     ],
     module: {
         rules: [
@@ -119,26 +119,26 @@ const cssConfig = Object.assign({}, sharedConfig, {
                 test: /\.(less)/,
                 use: [
                     MiniCssExtractPlugin.loader,
-                    { 
-                        loader: "css-loader", 
-                        options: { 
-                            sourceMap: true, 
+                    {
+                        loader: "css-loader",
+                        options: {
+                            sourceMap: true,
                         }
                     },
                     {
                         loader: "less-loader",
-                        options: { 
+                        options: {
                             sourceMap: true,
-                            additionalData: `@theme-path: ${getThemePath()};`,  
+                            additionalData: `@theme-path: ${getThemePath()};`,
                         }
                     }
                 ]
             },
         ],
     },
-    optimization : {
-        minimizer : [ new CssMinimizerPlugin() ]
+    optimization: {
+        minimizer: [new CssMinimizerPlugin()]
     }
 });
 
-module.exports = [jsConfig,cssConfig];
+module.exports = [jsConfig, cssConfig];
