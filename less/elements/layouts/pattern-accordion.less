@@ -4,50 +4,50 @@
 .accordion {
 
     dt {
-      position: relative;
-      margin-top: 5px;
-      background: @blue;
-      transition: all .25s ease;
+        position: relative;
+        margin-top: 5px;
+        background: @blue;
+        transition: all .25s ease;
 
         .accordion__title {
-          position: relative;
-          margin: 0;
-          z-index: 5;
+            position: relative;
+            margin: 0;
+            z-index: 5;
 
             > a {
-              display: block;
-              padding: 20px 20px 20px 45px;
-              color: @white;
-              &:hover{ text-decoration: none; }
+                display: block;
+                padding: 20px 20px 20px 45px;
+                color: @white;
+                &:hover{ text-decoration: none; }
             }
         }
 
         &:before,&:after{
-          content: "";
-          display: block;
-          position: absolute;
-          top: 32px;
-          left: 15px;
-          width: 16px;
-          height: 2px;
-          background: @white;
+            content: "";
+            display: block;
+            position: absolute;
+            top: 32px;
+            left: 15px;
+            width: 16px;
+            height: 2px;
+            background: @white;
         }
 
         &:after {
-          transform: rotate(90deg);
-          transition: all @trans-speed ease;
+            transform: rotate(90deg);
+            transition: all @trans-speed ease;
         }
 
         &.active {
-          &:after{ transform: rotate(0); }
+            &:after{ transform: rotate(0); }
         }
     }//end dt
 
     dd.accordion__content{
-      .clearfix();
-      display: none;
-      margin: 0;
-      padding: 25px 20px 25px 45px;
-      background: #f3f3f3;
+        .clearfix();
+        display: none;
+        margin: 0;
+        padding: 25px 20px 25px 45px;
+        background: #f3f3f3;
     }
 }

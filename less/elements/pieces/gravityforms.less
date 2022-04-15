@@ -9,15 +9,16 @@ body .gform_wrapper.gravity-theme{
         background: transparent;
         border-radius: 0;
         border: 0;
+        background: @gray-f3;
         border-left: 2px solid @error;
         box-shadow: none;
         margin: 0 0 20px 0;
-        padding: 0 0 0 15px;
+        padding: 25px 25px 25px 25px;
 
         > h2{
-            font-size: 1.5rem;
+            font-size: 2.4rem;
             line-height: 1.2;
-            font-weight: 400;
+            font-weight: @headings-font-weight;
             color: @text-color;
 
             .gform-icon{ display: none; }
@@ -36,7 +37,7 @@ body .gform_wrapper.gravity-theme{
 
         .gform_required_legend{ 
             margin-top: 1rem;
-            font-size: .875rem;
+            font-size: 1.4rem;
         }
 
     }
@@ -47,7 +48,7 @@ body .gform_wrapper.gravity-theme{
     }
 
     .gform_fields{
-        grid-row-gap: 2rem;
+        grid-row-gap: 3rem;
     }
 
     .gfield_label{
@@ -83,6 +84,11 @@ body .gform_wrapper.gravity-theme{
     .gchoice{
         position: relative;
     }
+    .gfield_checkbox label, 
+    .gfield_radio label{
+        font-size: @input-font-size;
+    }
+
     .gfield_error{
         input[type="checkbox"] + label, input[type="radio"] + label{
             color: inherit;
@@ -112,11 +118,11 @@ body .gform_wrapper.gravity-theme{
 
     //file upload
     .gform_fileupload_rules{
-        font-size: .875rem;
+        font-size: 1.4rem;
     }
 
     .ginput_complex label{
-        font-size: .875rem;
+        font-size: 1.4rem;
         font-weight: 400;
     }
 
@@ -124,16 +130,35 @@ body .gform_wrapper.gravity-theme{
     //FIELD ERRORS
     .gfield_error [aria-invalid=true]{
         border-color: @error;
-        background-color: lighten(@error, 48%);
+        //background-color: lighten(@error, 48%);
     }
     .gfield_validation_message{
         background: transparent;
         border: 0;
         padding: 0;
-        font-size: .75rem;
+        font-size: 1.4rem;
         color: @error;
         font-weight: 700;
+        &:before{
+            content: "*";
+        }
     }
+}
 
+//CONFIRMATION
+.gform_confirmation_wrapper{
+    margin: 40px 0;
+    .gform_confirmation_message{
+        position: relative;
+        background: @gray-f3;
+        border: 0;
+        border-left: 2px solid @blue;
+        overflow: hidden;
+        box-shadow: none;
+        margin: 0;
+        padding: 17px 15px 17px 25px;
 
+        font-size: 1.6rem;
+        line-height: 1.7;
+    }
 }

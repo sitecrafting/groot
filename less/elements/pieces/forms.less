@@ -1,10 +1,25 @@
-//
+// Forms
+// -------------------------
+@input-bg:                       @white;
+@input-bg-disabled:              @gray-f3;
+
+@input-color:                    @text-color;
+@input-border:                   @gray-cc;
+
+@input-border-focus:             @blue;
+
+@input-color-placeholder:        darken(@gray-f3,15%);
+@input-font-size:                1.6rem;
+
+@input-height:                   5.0rem;
+@input-padding:                  10px;
+
 // Forms
 // --------------------------------------------------
 label, .field-label {
     margin-bottom: 5px;
     font-weight: 700;
-    font-size: .875rem;
+    font-size: 1.4rem;
 }
 
 // Common form controls
@@ -81,44 +96,23 @@ textarea{
 
 
 // CUSTSOMIZE STYLED - Checkboxes and radios
+input[type=checkbox],
+input[type=radio],
+input[type=range],
+input[type=progress]{
+    accent-color: @blue;
+}
 
-input[type=checkbox],input[type=radio]{ position: absolute; left: -9999em; opacity: 0; }
+input[type=checkbox],
+input[type=radio]{
+    width: 20px;
+    height: 20px;
 
-input[type=checkbox] + label,
-input[type=radio] + label{
-	position: relative;
-	display: inline-block;
-	margin: 0 5px 0 0;
-	padding: 0 0 0 30px;
-	font-weight: normal;
-
-	&:before{
-        content: "";
-        display: block;
-        width: 20px;
-        height: 20px;
-        position: absolute;
-        top: 2px;
-        left: 0;
-        background: @input-bg;
-        border: 1px solid @input-border;
-        box-shadow: inset 0 0 0 4px @input-bg;
+    + label{ 
+        font-weight: 400; 
+        font-size: @input-font-size;
     }
-}
-
-input[type=radio] + label{
-    &:before{ border-radius: 50%; }
-}
-
-input[type=radio]:focus + label,
-input[type=checkbox]:focus + label{
-    &:before{ border-color: @blue; }
-}
-
-input[type=radio]:checked + label,
-input[type=checkbox]:checked + label{
-    &:before{ background-color: @blue; }
-}
+} 
 
 // Apply same disabled cursor tweak as for inputs
 // Note: Neither radios nor checkboxes can be readonly.
@@ -126,7 +120,5 @@ input[type="radio"],
 input[type="checkbox"]{
     &[disabled]{
         cursor: not-allowed;
-        //if customized styles
-        & + label:before{ cursor: not-allowed; }
     }
 }

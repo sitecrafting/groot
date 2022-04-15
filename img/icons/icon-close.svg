@@ -1,3 +1,4 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
-  <polygon fill="#000" fill-rule="evenodd" points="20 2 18 0 10 8 2 0 0 2 8 10 0 18 2 20 10 12 18 20 20 18 12 10"/>
+    <title>Close</title>
+    <polygon fill="#000" fill-rule="evenodd" points="20 2 18 0 10 8 2 0 0 2 8 10 0 18 2 20 10 12 18 20 20 18 12 10"/>
 </svg>

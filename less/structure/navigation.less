@@ -79,16 +79,31 @@ ul.main-nav__menu{
 		position: relative;
 		padding-bottom: 15px;
 
-		> a{
+		> a, .nav-search-button{
 			display: block;
 			padding: 15px 20px;
-			font: 700 16px/1.2 @font-family-headings;
+			font: 700 1.6rem/1.2 @font-family-headings;
 			text-transform: uppercase;
-			letter-spacing: .5px;
+            color: @blue;
+            cursor: pointer;
 
-			&:hover{ text-decoration: none; }
+			&:hover{ text-decoration: none;}
 
 		}
+
+        .nav-search-button{
+            -webkit-appearance: none;
+            background: transparent;
+            border: 0;
+            svg{
+                display: block;
+                width: 24px; height: 24px;
+                path{ transition: all @trans-speed ease; }
+            }
+            &:hover{
+                svg path{ fill: @white; }
+            }
+        }
 
 		//TOP ACTIVE STYLES
 		&.current-menu-item, &.current-menu-ancestor{

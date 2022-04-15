@@ -1,11 +1,5 @@
 .pattern--testimonials{ 
-	//margin: 0;
-	//padding-top: 100px;
-    //padding-bottom: 100px;
-	//background: @gray-f3;
-
-	.pattern__headline{ text-align: center; }
-	
+	.pattern__headline{ text-align: center; }	
 }
 
 //swiper slideshow
@@ -30,7 +24,7 @@
 
 		quotes: "\201C" "\201D" "\2019" "\201A";
 		
-		font-size: 22px;
+		font-size: 2.2rem;
 		
 		&:before,&:after{
 			display: block;
@@ -51,6 +45,16 @@
 			right: 0;
 			margin-top: -38px;
 		}
+
+        @media @mobile-all{
+            font-size: 1.8rem;
+            padding: 0 30px;
+            &:before,&:after{
+                font-size: 90px;
+                line-height: 73px;
+            }
+            &:after{ margin-top: -25px; }
+        }
 	}//.quote
 
 	.testimonial__author{
@@ -72,9 +76,18 @@
 
 		h6{
 			margin-bottom: 0;
-			font-size: 24px;
+			font-size: 2.4rem;
 		}
-		span{ font-size: 16px; }
+		span{ font-size: 1.6rem; }
+        
+        @media @mobile-all{
+            img{ 
+                width: 50px; 
+                ~ * { margin-left: 50px; }
+            }
+            h6{ font-size: 1.8rem; }
+            span{ font-size: 1.2rem; }
+        }
 	}
 
 }

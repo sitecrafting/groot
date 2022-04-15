@@ -1,22 +1,26 @@
 .popup-search{
 	position: relative;
     margin: 0;
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding-top: 80px;
+    padding-bottom: 80px;
     .outer-gutter();
 	width: 100%;
 	
 	> .container{
 		position: relative;
+        max-width: 1000px;
 	}
 
 }
 
 .popup-search__close{
+    -webkit-appearance: none;
+    background: transparent;
+    border: 0;
 	display: block;
 	position: absolute;
 	right: 0;
-	font: 700 16px/1.2 @font-family-headings;
+	font: 700 1.6rem/1.2 @font-family-headings;
 	text-transform: uppercase;
 	letter-spacing: 5px;
 	color: @blue;
@@ -27,7 +31,7 @@
 		vertical-align: middle;
 		letter-spacing: normal;
 	}
-	span{ letter-spacing: .5px; }
+	span{ letter-spacing: normal; }
 	svg polygon{ fill: @blue; transition: all @trans-speed ease; }
 	&:hover{
 		text-decoration: none;
@@ -39,7 +43,6 @@
 .searchform{
     padding-top: 100px;
     padding-bottom: 100px;
-    max-width: 1000px;
     margin: 0 auto;
 
     .search-fields{
@@ -52,7 +55,7 @@
             border-right: 0;
 
             padding: 20px 30px;
-            font: 400 24px/30px @font-family-base;
+            font: 400 2.4rem/1.2 @font-family-base;
 
             background: @white;
 
@@ -67,12 +70,12 @@
             input[type="text"]{
                 flex: 1 1 auto;
                 padding: 10px 15px;
-                font-size: 16px;
+                font-size: 1.6rem;
             }
             button.btn{
                 flex: 0 0 95px;
                 padding: 10px 10px;
-                font-size: 12px;
+                font-size: 1.2rem;
             }
         }
     }
