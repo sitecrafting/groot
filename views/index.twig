@@ -19,7 +19,7 @@
 
         <div class="article-list">
             {% for post in posts %}
-                {% include 'partials/cards/article-card.twig' with { cardModifier : 'card-article--list' } %}
+                {% include 'partials/cards/article-card.twig' with { cardModifier : 'card-article--list', cardCrop : 'article-list-card' } %}
             {% endfor %}
         </div><!-- END .article-list -->
 

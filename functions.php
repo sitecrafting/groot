@@ -104,6 +104,7 @@ $site->configure(function() {
     // CUSTOM IMAGE CROPS
     add_image_size( 'gallery', 950, 600, true ); //gallery slideshow flex pattern
     add_image_size( 'article-card', 380, 250, true ); //article-card partial
+    add_image_size( 'article-list-card', 276, 200, true ); //article-card partial
 
     // use this to unset or add image size options for RTE image insert
     /*add_filter( 'image_size_names_choose', function($sizes) {

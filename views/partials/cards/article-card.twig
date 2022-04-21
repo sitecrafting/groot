@@ -1,8 +1,18 @@
 
 <article class="card-article {{ cardModifier }}">
 	{% if post.thumbnail() %}
+        {% if cardCrop == 'article-card' %}
+            {% set imgW = '380px' %}
+            {% set imgH = '250px' %}
+        {% elseif cardCrop == 'article-card-list' %}
+            {% set imgW = '276px' %}
+            {% set imgH = '200px' %}
+        {% else %}
+            {% set imgW = '150px' %}
+            {% set imgH = '150px' %}
+        {% endif %}
 		<div class="card-article__image">
-			<img src="{{ Image(post.thumbnail()).src(cardCrop|default('thumbnail')) }}" alt="{{  Image(post.thumbnail()).alt() | default(post.title) }}" width="380px" height="250px">
+			<img src="{{ Image(post.thumbnail()).src(cardCrop|default('thumbnail')) }}" alt="{{  Image(post.thumbnail()).alt() | default(post.title) }}" width="{{ imgW }}" height="{{ imgH }}">
 		</div>
 	{% endif %}
 	<div class="card-article__content">
