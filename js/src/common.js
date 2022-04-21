@@ -31,6 +31,10 @@ import accordion from './jquery.accordion.js'
     // Accordions
     $('dl.accordion').accordion();
 
+    $('#categoryFilter').on('change',function(){
+		var catLink = $(this).val();
+		window.location = catLink;
+	});
 
 	//SEARCH POPUP
     $('.js-open-search').magnificPopup({
