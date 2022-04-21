@@ -431,5 +431,6 @@
     ],
     "active": true,
     "description": "HOMEPAGE",
-    "modified": 1626875828
+    "show_in_rest": 0,
+    "modified": 1650476122
 }

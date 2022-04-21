@@ -28,7 +28,7 @@ Swiper.use([Navigation,Pagination,EffectFade,Parallax,A11y]);
     });
 
     //TESTIMONIAL SLIDESHOW
-	const testimonialSwiper = new Swiper('.slideshow-testimonial', {
+	const testimonialSwiper = new Swiper('.js-testimonial-slideshow', {
 		loop: true,
 		pagination: {
 			el: '.swiper-pagination',

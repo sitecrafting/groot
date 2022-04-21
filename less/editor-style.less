@@ -1,7 +1,7 @@
 @import "base/variables.less";
 
 *, *:before, *:after{ margin: 0; padding: 0; box-sizing: border-box; }
-
+html{ font-size: 62.5%; }
 body{
     font: normal @font-size-base/@line-height @font-family-base;
     color: @text-color;
@@ -24,44 +24,51 @@ h5, .h5{ font-size: @font-size-h5; }
 h6, .h6{ font-size: @font-size-h6; }
 
 a {
+    display: inline-block;
     color: @link-color;
     text-decoration: none;
     transition: all @trans-speed ease;
 
-	&:hover{ text-decoration: underline; }
-
+    &:hover{ 
+        text-decoration: underline; 
+        text-decoration-thickness: ~"max(0.03em, 1px)";
+    }
+    
 	img{ border: 0; }
 
 }
 
 img{ max-width: 100%; height: auto !important; }
 
-p { margin: 20px 0; }
+@content-spacer: 1.25em;
 
-ol, ul{
-	padding-left: 20px; 
-	li{
-		+ li{ margin-top: .5em; }
-        &::marker{ color: @blue; font-weight: 700; }
-	}
+* + *{ margin-top: @content-spacer; }
+
+h1,h2,h3,h4,h5,h6{
+    //let headline margin bottom control spacing
+    + p{ margin-top: 0; }
 }
 
-dd{ margin: 20px; }
+ol, ul{ 
+    padding-left: 20px; 
+    li{
+        &::marker{ color: @blue; font-weight: 700; }
+        + li{ margin-top: .5em; }
+    }
+}
 
-hr { margin: 30px 0; border-color: @gray-f3; }
+ul + p,
+ol + p{ margin-top: 2em; }
 
 pre,blockquote{
     margin-top: 2em;
     margin-bottom: 2em;
-    padding: 0.5em 1.5em;
+    padding: 0 0 0 20px;
     border-left: 2px solid @blue;
-    font-size: 1.333rem;
+    font-size: 2.0rem;
 }
 
-*:first-child{ margin-top: 0; }
-*:last-child{ margin-bottom: 0; }
-
-.mceTemp + *{ margin-top: 0; } //anything after image insert
+hr{ margin: 1.875em 0; border: 0; border-top: 1px solid @gray-f3; }
 
 .alignleft {
 	display: block;
@@ -84,6 +91,6 @@ pre,blockquote{
 .wp-caption-dd{
     padding: 0;
     margin: 5px 0 0;
-    text-align: center;
-	font-size: @font-size-base - 4px;
+	text-align: center;
+	font-size: 1.4rem;
 }

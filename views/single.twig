@@ -48,11 +48,11 @@
 					<h2>Related Articles</h2>
 				</div>
 
-				<div class="flex-row">
+				<div class="grid-container">
 				{% for postItem in related %}
-					<div class="col-flex col-lg-4 col-sm-12 col-xs-12">
+					
 						{% include 'partials/cards/article-card.twig' with { post : postItem, cardCrop : 'article-card' } %}
-					</div>
+					
 				{% endfor %}
 				</div>
 

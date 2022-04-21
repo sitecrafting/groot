@@ -17,6 +17,11 @@
             background: rgba(red(@black), green(@black), blue(@black), .5);
             color: @white;
             font-size: 1.4rem;
+
+            @media print{
+                //background: rgba(red(@black), green(@black), blue(@black), .5) !important;
+                //color: @white !important;
+            }
         }
     }
 
@@ -41,8 +46,8 @@
         &.swiper-slide-thumb-active{ opacity: 1; }
     }
 
-	@media @mobile-sml{
-		.swiper-slide{ display: none; }
+	@media @mobile-sml, print{
+		display: none;
 	}
 }//end .gallery-swiper-thumbs
 
