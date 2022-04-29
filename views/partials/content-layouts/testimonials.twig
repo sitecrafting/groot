@@ -6,7 +6,7 @@
 			{% endif %}
 
 
-			<div class="slideshow-testimonial swiper">
+			<div class="slideshow-testimonial swiper{{ layout.testimonials|length > 1 ? ' js-testimonial-slideshow' }}">
 
 				<div class="swiper-wrapper">
 					<!-- Slides -->

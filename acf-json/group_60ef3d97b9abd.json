@@ -427,9 +427,11 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": [
-        "the_content"
+        "the_content",
+        "featured_image"
     ],
     "active": true,
     "description": "HOMEPAGE",
-    "modified": 1626875828
+    "show_in_rest": 0,
+    "modified": 1650580544
 }

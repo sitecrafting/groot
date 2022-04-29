@@ -16,9 +16,8 @@
 				</div><!-- //byline -->
 
 				{% if post.thumbnail() %}
-					{# Rich Snippet markup for the Featured Image. Note: Google won't display a Rich Snippet without one of these #}
 					<div class="feature-image">
-						<img src="{{ Image(post.thumbnail()).src('gallery') }}" alt="{{ Image(post.thumbnail()).alt() | default(post.title) }}">
+						<img src="{{ Image(post.thumbnail()).src('gallery') }}" alt="{{ Image(post.thumbnail()).alt() | default(post.title) }}" width="950px" height="600px">
 					</div>
 				{% endif %}
 
@@ -48,11 +47,11 @@
 					<h2>Related Articles</h2>
 				</div>
 
-				<div class="flex-row">
+				<div class="grid-container">
 				{% for postItem in related %}
-					<div class="col-flex col-lg-4 col-sm-12 col-xs-12">
+					
 						{% include 'partials/cards/article-card.twig' with { post : postItem, cardCrop : 'article-card' } %}
-					</div>
+					
 				{% endfor %}
 				</div>
 

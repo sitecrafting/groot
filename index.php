@@ -37,6 +37,21 @@ if( is_tag() || is_category() ) {
 //filter by archive date
 //$archives = new Archives();
 
+//TWIG
+/*
+<nav class="subnav-filter">
+    <h3 class="subnav-filter__title">Archives</h3>
+    <ul class="subnav-filter__menu">
+        <li><a href="{{ get_blog_url() }}">All</a></li>
+        {% for archive in archives.items %}
+            {% for month in archive.children %}
+                <li><a href="{{ month.link }}">{{ month.name }} {{ archive.name }}</a></li>
+            % endfor %}
+        {% endfor %}
+    </ul>
+</nav><!-- //subnav-filter -->
+*/
+
 //get pagination
 $pagination = Timber::get_pagination();
 

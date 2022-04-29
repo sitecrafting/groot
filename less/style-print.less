@@ -5,70 +5,33 @@
 
 @media print {
 
-  * {
-    text-shadow: none !important;
-    color: #000 !important; // Black prints faster: h5bp.com/s
-    background: transparent !important;
-    box-shadow: none !important;
-  }
+    * {
+        text-shadow: none !important;
+        color: #000 !important; // Black prints faster: h5bp.com/s
+        background: transparent !important;
+        box-shadow: none !important;
+    }
 
-  a,
-  a:visited {
-    text-decoration: underline;
-  }
+    @page { margin: 2cm .5cm; }
 
-  pre,
-  blockquote {
-    border: 1px solid #999;
-    page-break-inside: avoid;
-  }
+    a, a:visited { text-decoration: underline; }
 
-  thead {
-    display: table-header-group; // h5bp.com/t
-  }
+    pre, 
+    blockquote,
+    tr,
+    img { page-break-inside: avoid; }
 
-  tr,
-  img {
-    page-break-inside: avoid;
-  }
+    h2, h3 { page-break-after: avoid; }
 
-  img {
-    max-width: 100% !important;
-  }
+    p, h2, h3 { orphans: 3; widows: 3; }
 
-  @page {
-    margin: 2cm .5cm;
-  }
+    header{ border-bottom: 1px solid #ccc; }
+    header, header .container{ height: auto; }
+    header nav{ display: none; }
+    nav.subnav{ display: none; }
+    footer .social{ display: none; }
 
-  p,
-  h2,
-  h3 {
-    orphans: 3;
-    widows: 3;
-  }
+    .btn{ border: 1px solid #ccc; }
 
-  h2,
-  h3 {
-    page-break-after: avoid;
-  }
-
-  // Chrome (OSX) fix for https://github.com/twbs/bootstrap/issues/11245
-  // Once fixed, we can just straight up remove this.
-  select {
-    background: #fff !important;
-  }
-
-  header{ border-bottom: 1px solid #ccc; }
-  header, header .container{ height: auto; }
-  header nav{ display: none; }
-  nav.subnav{ display: none; }
-  footer .social{ display: none; }
-
-  .btn{ border: 1px solid #ccc; }
-
-  .accordion dt{ border: 1px solid #ccc; }
-  .accordion .accordion__content{ display: block !important; }
-
-  .gallery-slideshow.flexslider ul.slides>li .slide-caption{ position: relative; padding-left: 0; padding-right: 0; }
 
 }

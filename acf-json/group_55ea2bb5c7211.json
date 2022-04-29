@@ -1,6 +1,6 @@
 {
     "key": "group_55ea2bb5c7211",
-    "title": "Default Interior",
+    "title": "Default Template Content",
     "fields": [
         {
             "key": "field_60f1d9d7d208f",
@@ -244,7 +244,7 @@
             }
         ]
     ],
-    "menu_order": 2,
+    "menu_order": 0,
     "position": "normal",
     "style": "default",
     "label_placement": "top",
@@ -255,5 +255,6 @@
     ],
     "active": true,
     "description": "DEFAULT TEMPLATE",
-    "modified": 1626875829
+    "show_in_rest": 0,
+    "modified": 1650476159
 }

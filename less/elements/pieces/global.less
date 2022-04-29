@@ -10,6 +10,7 @@
 /*===========================
 # GLOBAL STYLES
 ===========================*/
+html{ font-size: 62.5%; }
 body{
 	background-color: @body-bg;
 	font: 400 @font-size-base/@line-height @font-family-base;
@@ -30,51 +31,17 @@ h1, h2, h3, h4, h5, h6,
 	margin-bottom: .5em;
 }
 
-//key/value pairs
-@type-levels: {
-	h1: @font-size-h1; 
-	h2: @font-size-h2;
-	h3: @font-size-h3;
-	h4: @font-size-h4;
-}
+h1, .h1{ font-size: ~'clamp(@{font-size-h1-m}, 4vw + 1rem, @{font-size-h1})'; }
+h2, .h2{ font-size: ~'clamp(@{font-size-h2-m}, 3.3vw + 1rem, @{font-size-h2})'; }
+h3, .h3{ font-size: ~'clamp(@{font-size-h3-m}, 2.7vw + 1rem, @{font-size-h3})';  }
+h4, .h4{ font-size: ~'clamp(@{font-size-h4-m}, 2.2vw + 1rem, @{font-size-h4})';  }
+h5, .h5{ font-size: ~'clamp(@{font-size-h5-m}, 1.8vw + 1rem, @{font-size-h5})'; }
+h6, .h6{ font-size: ~'clamp(@{font-size-h6-m}, 1.8vw + 1rem, @{font-size-h6})'; }
 
-each(@type-levels,{
-
-	@{key}, .@{key}{
-		font-size: @value;
-
-		// Remove unit for calculations
-		@level-unitless: @value / (@value * 0 + 1);
-
-		// Set minimum size to a percentage less than unitless @value
-		@level-min: @level-unitless - (0.33 * @level-unitless);
-
-		// Prevent dropping lower than 1rem (body font-size)
-		@fluid-min: if((@level-min > 1), @level-min, 1);
-
-		//scaler - adjust 4vw as necessary through testing
-		@fluid-scaler: (@level-unitless - @fluid-min) + 4vw;
-
-		font-size: ~'clamp(@{fluid-min}, @{fluid-scaler} + 1rem, @{value})';
-
-	}
-
-});
-//output =
-// h1, .h1{ font-size: clamp(min-size, scaler, primary-size); }
-// h2, .h2{ font-size: clamp(min-size, scaler, primary-size); }
-// h3, .h3{ font-size: clamp(min-size, scaler, primary-size); }
-// h4, .h4{ font-size: clamp(min-size, scaler, primary-size); }
-h5, .h5{ font-size: @font-size-h5; }
-h6, .h6{ font-size: @font-size-h6; }
-
-p,li,h1,h2,h3,h4,
+h1,h2,h3,h4,
 .h1,.h2,.h3,.h4{
-	// Help prevent overflow of long words/names/URLs
-	overflow-wrap: break-word;
-
-	// Optional, not supported for all languages
-	hyphens: auto;
+	overflow-wrap: break-word; // Help prevent overflow of long words/names/URLs
+	hyphens: auto; // Optional, not supported for all languages
 }
 
 a {
@@ -84,7 +51,10 @@ a {
 
 	&:not([class]){ 
         display: inline-block; 
-        &:hover{ text-decoration: underline; }
+        &:hover{ 
+            text-decoration: underline; 
+            text-decoration-thickness: ~"max(0.03em, 1px)";
+        }
     }
 }
 
@@ -94,6 +64,11 @@ a {
 	.clearfix();
 
 	> * + *{ margin-top: @content-spacer; }
+
+    h1,h2,h3,h4,h5,h6{
+        //let headline margin bottom control spacing
+        + p{ margin-top: 0; }
+    }
 
     ol, ul{ 
         padding-left: 20px; 
@@ -111,10 +86,10 @@ a {
 		margin-bottom: 2em;
 		padding: 0.5em 1.5em;
 		border-left: 2px solid @blue;
-		font-size: 1.333rem;
+		font-size: 2.0rem;
 	}
 
-	hr{ margin: 5vh 0; border-color: @gray-f3; }
+	hr{ margin: 1.875em 0; border: 0; border-top: 1px solid @gray-f3; }
 
 }
 
@@ -173,7 +148,7 @@ a {
 .wp-caption-text {
 	margin: 5px 0 0;
 	text-align: center;
-	font-size: @font-size-base - 4px;
+	font-size: 1.4rem;
 }
 
 /*===========================
@@ -211,7 +186,7 @@ a {
 	display: block;
 	margin: 0;
 	padding: 10px 5px 0 5px;
-	font-size: @font-size-base - 4px;
+	font-size: 1.4rem;
 }
 
 

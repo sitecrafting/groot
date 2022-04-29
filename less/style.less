@@ -6,14 +6,11 @@
  * Description: The official SiteCrafting WordPress starter theme
  *
  * Copyright 2021 SiteCrafting, Inc.
- * Based on Groot release: v0.7.4
+ * Based on Groot release: v0.7.5
  */
 
  /* Icon Reference:
  https://app.streamlineicons.com/ - see designers for access */
-
-//FONT IMPORTS
-@import (css) url('///fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i|Roboto+Condensed:700');
 
 // Reset
 @import "base/reset.less";
@@ -26,7 +23,8 @@
 /* ====================
     STRUCTURE FILES
 =======================*/
-@import "structure/flexboxgrid.less"; //grid layouts
+@import "structure/flexboxgrid.less"; //flexbox layouts [OPTIONAL - use based on needs of the project]
+@import "structure/grid-layouts.less"; //grid layouts [OPTIONAL - use based on needs of the project]
 @import "structure/structure.less"; //gutters and other structural elements
 
 @import "structure/header.less";
@@ -37,7 +35,6 @@
 ====================*/
 @import "structure/navigation.less"; //main header navigation
 @import "structure/subnav.less"; //secondary subnavgation
-@import "structure/subnav-filter.less"; //secondary subnavgation filter - blog landing
 
 /* ====================
     ELEMENT/PIECES
@@ -49,6 +46,7 @@
 @import "elements/pieces/buttons.less";
 //@import "elements/pieces/datepicker.less"; //STARTER FOR IF DATEPICKER IS NEEDED/IN USE
 @import "elements/pieces/forms.less";
+@import "elements/pieces/category-filter.less";
 @import "elements/pieces/gravityforms.less"; //Gravity form customizations
 @import "elements/pieces/post-pagination.less"; //prev/next button pagination
 @import "elements/pieces/social.less";

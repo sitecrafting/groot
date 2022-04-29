@@ -20,17 +20,17 @@
 	<div class="container">
 
         <header class="pattern__header">
-		    <h2>{{ layout.section_headline }}</h2>
+            <h2>{{ layout.section_headline }}</h2>
         </header>
         
-		<div class="flex-row">
+		<div class="grid-container">
 		{% for item in posts %}
-            <div class="col-flex col-lg-4 col-sm-12 col-xs-12">
-			    {% include 'partials/cards/article-card.twig' with { 
-                    post : layout.type_of_posts == 'custom' ? item.card : item, 
-                    cardCrop : 'article-card' 
-                } %}
-            </div>
+
+            {% include 'partials/cards/article-card.twig' with { 
+                post : layout.type_of_posts == 'custom' ? item.card : item, 
+                cardCrop : 'article-card' 
+            } %}
+
 		{% endfor %}
         </div>
 

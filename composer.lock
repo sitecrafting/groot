@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d1f207e21e658133de1627f91aa72549",
+    "content-hash": "ca9c3a4cb4e447d974147486ca387726",
     "packages": [],
     "packages-dev": [
         {
@@ -59,39 +59,38 @@
         },
         {
             "name": "composer/installers",
-            "version": "1.x-dev",
+            "version": "dev-main",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/installers.git",
-                "reference": "1e8a1614adc33d455f81e9b5381d4f661565fe90"
+                "reference": "af93ba6e52236418f07a278033eba6959ee5b983"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/1e8a1614adc33d455f81e9b5381d4f661565fe90",
-                "reference": "1e8a1614adc33d455f81e9b5381d4f661565fe90",
+                "url": "https://api.github.com/repos/composer/installers/zipball/af93ba6e52236418f07a278033eba6959ee5b983",
+                "reference": "af93ba6e52236418f07a278033eba6959ee5b983",
                 "shasum": ""
             },
             "require": {
-                "composer-plugin-api": "^1.0 || ^2.0"
-            },
-            "replace": {
-                "roundcube/plugin-installer": "*",
-                "shama/baton": "*"
+                "composer-plugin-api": "^1.0 || ^2.0",
+                "php": "^7.2 || ^8.0"
             },
             "require-dev": {
                 "composer/composer": "1.6.* || ^2.0",
                 "composer/semver": "^1 || ^3",
                 "phpstan/phpstan": "^0.12.55",
                 "phpstan/phpstan-phpunit": "^0.12.16",
-                "symfony/phpunit-bridge": "^4.2 || ^5",
-                "symfony/process": "^2.3"
+                "symfony/phpunit-bridge": "^5.3",
+                "symfony/process": "^5"
             },
+            "default-branch": true,
             "type": "composer-plugin",
             "extra": {
                 "class": "Composer\\Installers\\Plugin",
                 "branch-alias": {
-                    "dev-main": "1.x-dev"
-                }
+                    "dev-main": "2.x-dev"
+                },
+                "plugin-modifies-install-path": true
             },
             "autoload": {
                 "psr-4": {
@@ -112,7 +111,6 @@
             "description": "A multi-framework Composer library installer",
             "homepage": "https://composer.github.io/installers/",
             "keywords": [
-                "Craft",
                 "Dolibarr",
                 "Eliasis",
                 "Hurad",
@@ -133,7 +131,6 @@
                 "Whmcs",
                 "WolfCMS",
                 "agl",
-                "aimeos",
                 "annotatecms",
                 "attogram",
                 "bitrix",
@@ -152,7 +149,6 @@
                 "grav",
                 "installer",
                 "itop",
-                "joomla",
                 "known",
                 "kohana",
                 "laravel",
@@ -167,6 +163,7 @@
                 "modx",
                 "moodle",
                 "osclass",
+                "pantheon",
                 "phpbb",
                 "piwik",
                 "ppi",
@@ -179,9 +176,7 @@
                 "silverstripe",
                 "sydes",
                 "sylius",
-                "symfony",
                 "tastyigniter",
-                "typo3",
                 "wordpress",
                 "yawik",
                 "zend",
@@ -189,7 +184,7 @@
             ],
             "support": {
                 "issues": "https://github.com/composer/installers/issues",
-                "source": "https://github.com/composer/installers/tree/1.x"
+                "source": "https://github.com/composer/installers/tree/v2.1.1"
             },
             "funding": [
                 {
@@ -205,7 +200,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-07-23T09:01:08+00:00"
+            "time": "2022-04-13T09:13:00+00:00"
         },
         {
             "name": "greenlion/php-sql-parser",
@@ -213,12 +208,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/greenlion/PHP-SQL-Parser.git",
-                "reference": "e38d6f0f500d4d86bee7722e2e89262eeaab7e59"
+                "reference": "a5d5c292d97271c95140192e6f0e962916e39b50"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/greenlion/PHP-SQL-Parser/zipball/e38d6f0f500d4d86bee7722e2e89262eeaab7e59",
-                "reference": "e38d6f0f500d4d86bee7722e2e89262eeaab7e59",
+                "url": "https://api.github.com/repos/greenlion/PHP-SQL-Parser/zipball/a5d5c292d97271c95140192e6f0e962916e39b50",
+                "reference": "a5d5c292d97271c95140192e6f0e962916e39b50",
                 "shasum": ""
             },
             "require": {
@@ -226,7 +221,7 @@
             },
             "require-dev": {
                 "analog/analog": "^1.0.6",
-                "phpunit/phpunit": "^4.0.14",
+                "phpunit/phpunit": "^9.5.13",
                 "squizlabs/php_codesniffer": "^1.5.1"
             },
             "default-branch": true,
@@ -266,7 +261,7 @@
                 "issues": "https://github.com/greenlion/PHP-SQL-Parser/issues",
                 "source": "https://github.com/greenlion/PHP-SQL-Parser"
             },
-            "time": "2021-03-28T23:13:55+00:00"
+            "time": "2022-02-01T09:26:56+00:00"
         },
         {
             "name": "ircmaxell/random-lib",
@@ -379,16 +374,16 @@
         },
         {
             "name": "johnpbloch/wordpress-core",
-            "version": "5.8.x-dev",
+            "version": "5.9.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnpbloch/wordpress-core.git",
-                "reference": "2d7e6bdb71a1102b2ac31ace1262f8924b818e70"
+                "reference": "cbfb574b2b565217e3b399b7b6aa788693294bb4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/2d7e6bdb71a1102b2ac31ace1262f8924b818e70",
-                "reference": "2d7e6bdb71a1102b2ac31ace1262f8924b818e70",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/cbfb574b2b565217e3b399b7b6aa788693294bb4",
+                "reference": "cbfb574b2b565217e3b399b7b6aa788693294bb4",
                 "shasum": ""
             },
             "require": {
@@ -396,7 +391,7 @@
                 "php": ">=5.6.20"
             },
             "provide": {
-                "wordpress/core-implementation": "5.8.x-dev"
+                "wordpress/core-implementation": "5.9.x-dev"
             },
             "type": "wordpress-core",
             "notification-url": "https://packagist.org/downloads/",
@@ -423,7 +418,7 @@
                 "source": "https://core.trac.wordpress.org/browser",
                 "wiki": "https://codex.wordpress.org/"
             },
-            "time": "2021-07-30T12:51:19+00:00"
+            "time": "2022-04-05T20:13:29+00:00"
         },
         {
             "name": "johnpbloch/wordpress-core-installer",
@@ -544,16 +539,16 @@
         },
         {
             "name": "sitecrafting/conifer",
-            "version": "v0.9.0",
+            "version": "v0.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sitecrafting/conifer.git",
-                "reference": "253004e8a3c564ff62d0d7c45744726444ecbce1"
+                "reference": "8d553d5bd2ee93bd893522964bb5f0b0ba0c3396"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sitecrafting/conifer/zipball/253004e8a3c564ff62d0d7c45744726444ecbce1",
-                "reference": "253004e8a3c564ff62d0d7c45744726444ecbce1",
+                "url": "https://api.github.com/repos/sitecrafting/conifer/zipball/8d553d5bd2ee93bd893522964bb5f0b0ba0c3396",
+                "reference": "8d553d5bd2ee93bd893522964bb5f0b0ba0c3396",
                 "shasum": ""
             },
             "require": {
@@ -563,16 +558,16 @@
                 "10up/wp_mock": "dev-dev",
                 "acobster/wp-cli-yaml-fixtures": "^0.5.0",
                 "behat/behat": "^3.4",
-                "johnpbloch/wordpress-core": "4.9.8",
-                "johnpbloch/wordpress-core-installer": "^1.0",
+                "johnpbloch/wordpress-core": "^5.8",
+                "johnpbloch/wordpress-core-installer": "^2.0",
                 "mikey179/vfsstream": "~1",
-                "mnsami/composer-custom-directory-installer": "^1.1",
+                "mnsami/composer-custom-directory-installer": "^2.0",
                 "phpunit/phpunit": "^6.0",
                 "sitecrafting/groot": "dev-master",
                 "squizlabs/php_codesniffer": "3.*",
                 "timber/timber": "^1.7",
                 "victorjonsson/markdowndocs": "dev-master",
-                "wp-coding-standards/wpcs": "^0.14"
+                "wp-coding-standards/wpcs": "^2.3"
             },
             "type": "library",
             "extra": {
@@ -603,9 +598,9 @@
             "description": "Powerful abstractions for serious WordPress theme development",
             "support": {
                 "issues": "https://github.com/sitecrafting/conifer/issues",
-                "source": "https://github.com/sitecrafting/conifer/tree/v0.9.0"
+                "source": "https://github.com/sitecrafting/conifer/tree/v0.9.1"
             },
-            "time": "2020-10-12T20:54:06+00:00"
+            "time": "2022-03-10T16:12:31+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
@@ -613,12 +608,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "d35d320ffb5e26047891bdf874a67c48d1e57f75"
+                "reference": "b314140057170a81075556a71764f2f302e3b8be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/d35d320ffb5e26047891bdf874a67c48d1e57f75",
-                "reference": "d35d320ffb5e26047891bdf874a67c48d1e57f75",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/b314140057170a81075556a71764f2f302e3b8be",
+                "reference": "b314140057170a81075556a71764f2f302e3b8be",
                 "shasum": ""
             },
             "require": {
@@ -662,29 +657,31 @@
                 "source": "https://github.com/squizlabs/PHP_CodeSniffer",
                 "wiki": "https://github.com/squizlabs/PHP_CodeSniffer/wiki"
             },
-            "time": "2021-07-29T05:01:10+00:00"
+            "time": "2022-04-18T00:25:09+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
-            "version": "dev-main",
+            "version": "v1.25.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-ctype.git",
-                "reference": "46cd95797e9df938fdd2b03693b5fca5e64b01ce"
+                "reference": "30885182c981ab175d4d034db0f6f469898070ab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/46cd95797e9df938fdd2b03693b5fca5e64b01ce",
-                "reference": "46cd95797e9df938fdd2b03693b5fca5e64b01ce",
+                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/30885182c981ab175d4d034db0f6f469898070ab",
+                "reference": "30885182c981ab175d4d034db0f6f469898070ab",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1"
             },
+            "provide": {
+                "ext-ctype": "*"
+            },
             "suggest": {
                 "ext-ctype": "For best performance"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -696,12 +693,12 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Symfony\\Polyfill\\Ctype\\": ""
-                },
                 "files": [
                     "bootstrap.php"
-                ]
+                ],
+                "psr-4": {
+                    "Symfony\\Polyfill\\Ctype\\": ""
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -726,7 +723,7 @@
                 "portable"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-ctype/tree/v1.23.0"
+                "source": "https://github.com/symfony/polyfill-ctype/tree/v1.25.0"
             },
             "funding": [
                 {
@@ -742,7 +739,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-02-19T12:13:01+00:00"
+            "time": "2021-10-20T20:35:02+00:00"
         },
         {
             "name": "symfony/yaml",
@@ -862,18 +859,18 @@
         },
         {
             "name": "wpackagist-plugin/timber-library",
-            "version": "1.18.2",
+            "version": "1.19.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/timber-library/",
-                "reference": "tags/1.18.2"
+                "reference": "tags/1.19.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/timber-library.1.18.2.zip"
+                "url": "https://downloads.wordpress.org/plugin/timber-library.1.19.1.zip"
             },
             "require": {
-                "composer/installers": "~1.0"
+                "composer/installers": "^1.0 || ^2.0"
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/timber-library/"

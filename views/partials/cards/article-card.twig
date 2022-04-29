@@ -1,12 +1,22 @@
 
 <article class="card-article {{ cardModifier }}">
 	{% if post.thumbnail() %}
+        {% if cardCrop == 'article-card' %}
+            {% set imgW = '380px' %}
+            {% set imgH = '250px' %}
+        {% elseif cardCrop == 'article-card-list' %}
+            {% set imgW = '276px' %}
+            {% set imgH = '200px' %}
+        {% else %}
+            {% set imgW = '150px' %}
+            {% set imgH = '150px' %}
+        {% endif %}
 		<div class="card-article__image">
-			<img src="{{ Image(post.thumbnail()).src(cardCrop|default('thumbnail')) }}" alt="{{  Image(post.thumbnail()).alt() | default(post.title) }}">
+			<img src="{{ Image(post.thumbnail()).src(cardCrop|default('thumbnail')) }}" alt="{{  Image(post.thumbnail()).alt() | default(post.title) }}" width="{{ imgW }}" height="{{ imgH }}">
 		</div>
 	{% endif %}
 	<div class="card-article__content">
-		<h2 class="h3 title"><a href="{{ post.link }}" title="{{ post.title }}">{{ post.title }}</a></h2>
+		<h2 class="h4 title"><a href="{{ post.link }}" title="{{ post.title }}">{{ post.title }}</a></h2>
 		<div class="byline">
 			<span class="post-author">By <a href="{{ post.author.link() }}">{{ post.author.display_name }}</a></span>
 			<span class="post-date">On {{ post.date }}</span>
