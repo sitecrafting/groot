@@ -38,11 +38,15 @@ h4, .h4{ font-size: ~'clamp(@{font-size-h4-m}, 2.2vw + 1rem, @{font-size-h4})'; 
 h5, .h5{ font-size: ~'clamp(@{font-size-h5-m}, 1.8vw + 1rem, @{font-size-h5})'; }
 h6, .h6{ font-size: ~'clamp(@{font-size-h6-m}, 1.8vw + 1rem, @{font-size-h6})'; }
 
-h1,h2,h3,h4,
-.h1,.h2,.h3,.h4{
-	overflow-wrap: break-word; // Help prevent overflow of long words/names/URLs
-	hyphens: auto; // Optional, not supported for all languages
-}
+/* 
+    May want something like this for very large headlines that might 
+    overflow the screen can also be used on links showing long urls 
+*/
+// h1,h2,h3,h4,
+// .h1,.h2,.h3,.h4{
+// 	overflow-wrap: break-word; // Help prevent overflow of long words/names/URLs
+// 	hyphens: auto; // Optional, not supported for all languages
+// }
 
 a {
     color: @link-color;
