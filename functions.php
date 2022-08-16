@@ -167,6 +167,77 @@ $site->configure(function() {
         return $buttons;
     }
 
+    /** CROP THUMBNAILS PLUGIN - RETINA SUPPORT **/
+    /**
+ * 
+ * Action for Crop Thumbnails plugin
+ * Uses input crop data to generate retina size
+ * 
+ */
+function add_retina_for_cropped_thumbnails( $input, $croppedSize, $temporaryCopyFile, $currentFilePath ) {
+
+    $temporaryCopyFile = generate_retina_filename( $temporaryCopyFile, '@2x' );
+    $retina_file = generate_retina_filename( $currentFilePath, '@2x' );
+
+    $currentFilePathInfo = pathinfo($retina_file);
+    $currentFilePathInfo['basename'] = wp_basename($retina_file);//uses the i18n version of the file-basename
+    
+    $retina_w = $croppedSize['width'] * 2;
+    $retina_h = $croppedSize['height'] * 2;
+    
+    $cropped = wp_crop_image(						    // * @return string|WP_Error|false New filepath on success, WP_Error or false on failure.
+        $input->sourceImageId,							// * @param string|int $src The source file or Attachment ID.
+        $input->selection->x,							// * @param int $src_x The start x position to crop from.
+        $input->selection->y,							// * @param int $src_y The start y position to crop from.
+        $input->selection->x2 - $input->selection->x,	// * @param int $src_w The width to crop.
+        $input->selection->y2 - $input->selection->y,	// * @param int $src_h The height to crop.
+        $retina_w,							            // * @param int $dst_w The destination width.
+        $retina_h,							            // * @param int $dst_h The destination height.
+        false,											// * @param int $src_abs Optional. If the source crop points are absolute.
+        $temporaryCopyFile								// * @param string $dst_file Optional. The destination file to write to.
+    );
+    
+    // delete old file
+    $should_delete = apply_filters('crop_thumbnails_should_delete_old_file',
+        false, // default value
+        $input->activeImageSizes->name,
+        $input->activeImageSizes,
+        $cropped
+    );
+
+    $_error = false;
+    if( !empty($cropped) ) {
+        if( $should_delete ) {
+            @unlink($currentFilePathInfo['dirname'].DIRECTORY_SEPARATOR.$currentFilePathInfo['basename']);
+        }
+        if(!@copy($cropped, $retina_file)) {
+            $_error = true;
+        }
+        if(!@unlink($cropped)) {
+            $_error = true;
+        }
+    }    
+}
+add_action( 'crop_thumbnails_before_crop', 'add_retina_for_cropped_thumbnails', 10, 4 );
+
+function generate_retina_filename( $file, $suffix ) {
+    $dir = pathinfo( $file, PATHINFO_DIRNAME );
+    $ext = pathinfo( $file, PATHINFO_EXTENSION );
+ 
+    $name    = wp_basename( $file, ".$ext" );
+    $new_ext = strtolower( $extension ? $extension : $ext );
+ 
+    if ( ! is_null( $dest_path ) ) {
+        $_dest_path = realpath( $dest_path );
+        if ( $_dest_path ) {
+            $dir = $_dest_path;
+        }
+    }
+ 
+    return trailingslashit( $dir ) . "{$name}{$suffix}.{$new_ext}";
+}
+/** END CROP THUMBNAILS PLUGIN - RETINA SUPPORT */
+
 });
 
 
