@@ -8,7 +8,7 @@
             <h1>Search</h1>
 
 			{% if posts %}
-				<p>{{ posts | length }} {{ 'result' | pluralize(posts|length)}} for <strong>{{ search_query }}</strong>:</p>
+				<p>{{ search_total }} {{ 'result' | pluralize(search_total)}} for <strong>{{ search_query }}</strong>:</p>
 
 				{% for post in posts %}
 					{% include 'partials/cards/search-card.twig' with {
