@@ -12,7 +12,7 @@
             {% set imgH = '150px' %}
         {% endif %}
 		<div class="card-article__image">
-			<img src="{{ Image(post.thumbnail()).src(cardCrop|default('thumbnail')) }}" alt="{{  Image(post.thumbnail()).alt() | default(post.title) }}" width="{{ imgW }}" height="{{ imgH }}">
+			<img loading="lazy" src="{{ Image(post.thumbnail()).src(cardCrop|default('thumbnail')) }}" alt="{{  Image(post.thumbnail()).alt() | default(post.title) }}" width="{{ imgW }}" height="{{ imgH }}">
 		</div>
 	{% endif %}
 	<div class="card-article__content">
