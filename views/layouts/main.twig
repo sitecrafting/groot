@@ -24,32 +24,13 @@
 </head>
 <body class="{{ body_classes | join(' ') }}">
 
-{# necessary for tag manager plugin custom setting #}
-{{ gtm4wp_the_gtm_tag() }}
+{# necessary for tag manager plugin manually coded custom setting #}
+{# {{ gtm4wp_the_gtm_tag() }} #}
 
 <div class="site-wrapper"><div class="site-pusher">
 
 	{% block header %}
-		<header class="site-header" itemscope itemtype="http://schema.org/Organization">
-			<div class="container">
-
-				<a class="logo" href="/" title="{{ site.name }}" itemscope itemtype="http://schema.org/ImageObject">
-					{{ source('img/logo.svg') }}
-					<meta itemprop="logo" content="{{ img_url('logo@2x.png') }}">
-					<meta itemprop="name" content="{{ site.name }}">
-					<meta itemprop="url" content="{{ site.url }}">
-					<meta itemprop="description" content="{{ site.description }}">
-				</a>
-
-				<button class="menu-btn">
-				    <div class="toggle"><span></span><span></span><span></span><span></span></div>
-				    <span>Menu</span>
-				</button>
-
-				{% include 'partials/nav.twig' with { menu: primary_menu } only %}
-
-			</div>
-		</header>
+		{% include 'partials/blocks/header.twig' %}
 	{% endblock %}
 
 	<main class="site-main">
@@ -59,19 +40,7 @@
 	</main>
 
 	{% block footer %}
-		<footer class="site-footer outer-gutter">
-			<div class="container">
-				{% include 'partials/social.twig' %}
-				<p>&copy; {{ 'now' | date('Y') }} {{ site.name }}
-				{% for cplinks in get_theme_setting('copyright_links') %}
-					<a href="{{ cplinks.link.url }}" target="{{ cplinks.link.target }}">{{ cplinks.link.title }}</a>{{ loop.last ? '' : ' | ' }}
-				{% endfor %}
-				</p>
-				<p>
-					<a href="https://www.sitecrafting.com" target="_blank">Website Design and Development by SiteCrafting</a>
-				</p>
-			</div>
-		</footer>
+		{% include 'partials/blocks/footer.twig' %}
 	{% endblock %}
 
 	{% include 'partials/popup-search.twig' %}

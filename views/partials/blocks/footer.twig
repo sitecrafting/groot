@@ -1,0 +1,13 @@
+<footer class="site-footer outer-gutter">
+    <div class="container">
+        {% include 'partials/social.twig' %}
+        <p>&copy; {{ 'now' | date('Y') }} {{ site.name }}
+        {% for cplinks in get_theme_setting('copyright_links') %}
+            <a href="{{ cplinks.link.url }}" target="{{ cplinks.link.target }}">{{ cplinks.link.title }}</a>{{ loop.last ? '' : ' | ' }}
+        {% endfor %}
+        </p>
+        <p>
+            <a href="https://www.sitecrafting.com" target="_blank">Website Design and Development by SiteCrafting</a>
+        </p>
+    </div>
+</footer>

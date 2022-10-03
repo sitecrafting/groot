@@ -17,7 +17,7 @@
 
 				{% if post.thumbnail() %}
 					<div class="feature-image">
-						<img src="{{ Image(post.thumbnail()).src('gallery') }}" alt="{{ Image(post.thumbnail()).alt() | default(post.title) }}" width="950px" height="600px">
+						<img loading="lazy" src="{{ Image(post.thumbnail()).src('gallery') }}" alt="{{ Image(post.thumbnail()).alt() | default(post.title) }}" width="950px" height="600px">
 					</div>
 				{% endif %}
 

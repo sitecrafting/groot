@@ -1,7 +1,7 @@
 @import "base/variables.less";
 
 *, *:before, *:after{ margin: 0; padding: 0; box-sizing: border-box; }
-html{ font-size: 62.5%; }
+
 body{
     font: normal @font-size-base/@line-height @font-family-base;
     color: @text-color;
@@ -24,17 +24,20 @@ h5, .h5{ font-size: @font-size-h5; }
 h6, .h6{ font-size: @font-size-h6; }
 
 a {
-    display: inline-block;
     color: @link-color;
     text-decoration: none;
     transition: all @trans-speed ease;
 
-    &:hover{ 
-        text-decoration: underline; 
-        text-decoration-thickness: ~"max(0.03em, 1px)";
+	&:not([class]){ 
+        display: inline-block; 
+        
+        &:hover{ 
+            text-decoration: underline;
+            text-decoration-skip-ink: auto;
+            text-underline-offset: 0.15em; 
+            text-decoration-thickness: ~"max(0.03em, 1px)";
+        }
     }
-    
-	img{ border: 0; }
 
 }
 
@@ -63,9 +66,9 @@ ol + p{ margin-top: 2em; }
 pre,blockquote{
     margin-top: 2em;
     margin-bottom: 2em;
-    padding: 0 0 0 20px;
+    padding: 0.5em 1.5em;
     border-left: 2px solid @blue;
-    font-size: 2.0rem;
+    font-size: (18/16rem);
 }
 
 hr{ margin: 1.875em 0; border: 0; border-top: 1px solid @gray-f3; }
@@ -92,5 +95,5 @@ hr{ margin: 1.875em 0; border: 0; border-top: 1px solid @gray-f3; }
     padding: 0;
     margin: 5px 0 0;
 	text-align: center;
-	font-size: 1.4rem;
+	font-size: (14/16rem);
 }

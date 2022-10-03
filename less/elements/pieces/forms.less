@@ -9,9 +9,9 @@
 @input-border-focus:             @blue;
 
 @input-color-placeholder:        darken(@gray-f3,15%);
-@input-font-size:                1.6rem;
+@input-font-size:                1rem;
 
-@input-height:                   5.0rem;
+@input-height:                   (50/16rem);
 @input-padding:                  10px;
 
 // Forms
@@ -19,7 +19,7 @@
 label, .field-label {
     margin-bottom: 5px;
     font-weight: 700;
-    font-size: 1.4rem;
+    font-size: (14/16rem);
 }
 
 // Common form controls
@@ -35,33 +35,28 @@ input[type="number"],
 select,
 textarea,
 .form-control{
-    -webkit-appearance: none; //to make sure IOS default styling is removed
+    -webkit-appearance: none;
     -moz-appearance: none;
-    -webkit-border-radius: 0; //to make sure IOS default round corners is removed - this can be removed if there are supposed to be rounded corners
+    -webkit-border-radius: 0;
     border-radius: 0;
 
     display: block;
     box-sizing: border-box;
-    height: @input-height; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
-
+    height: @input-height;
     padding: @input-padding;
 
     font-size: @input-font-size;
     line-height: 1.2;
 
     color: @input-color;
-
-    background-color: @input-bg;
-    background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
+    background: @input-bg;
 
     border: 1px solid @input-border;
 
     // Customize the `:focus` state to imitate native WebKit styles.
     .form-control-focus();
 
-    // Placeholder
-    // Placeholder text gets special styles because when browsers invalidate entire
-    // lines if it doesn't understand a selector/
+    // Placeholder styles
     .placeholder();
 
     // Disabled and read-only inputs
