@@ -1,11 +1,12 @@
 {
-    "key": "group_55ea2bb5c7211",
+    "key": "group_646689652d93c",
     "title": "Default Template Content",
     "fields": [
         {
-            "key": "field_60f1d9d7d208f",
+            "key": "field_6466896530330",
             "label": "Main Headline",
             "name": "main_headline",
+            "aria-label": "",
             "type": "text",
             "instructions": "This is the H1, if left empty it will default to the page title",
             "required": 0,
@@ -22,9 +23,10 @@
             "maxlength": ""
         },
         {
-            "key": "field_55ea2bbc4ac0a",
+            "key": "field_64668965303c0",
             "label": "Layouts",
             "name": "default_layouts",
+            "aria-label": "",
             "type": "flexible_content",
             "instructions": "",
             "required": 0,
@@ -42,9 +44,10 @@
                     "display": "block",
                     "sub_fields": [
                         {
-                            "key": "field_60ef3b5e86fc7",
+                            "key": "field_646689653259c",
                             "label": "Standard Content Pattern",
                             "name": "standard_content_pattern",
+                            "aria-label": "",
                             "type": "clone",
                             "instructions": "",
                             "required": 0,
@@ -73,9 +76,10 @@
                     "display": "block",
                     "sub_fields": [
                         {
-                            "key": "field_60ef3b8686fc8",
+                            "key": "field_6466896532608",
                             "label": "Accordion Pattern",
                             "name": "accordion_pattern",
+                            "aria-label": "",
                             "type": "clone",
                             "instructions": "",
                             "required": 0,
@@ -104,9 +108,10 @@
                     "display": "block",
                     "sub_fields": [
                         {
-                            "key": "field_5ec4577c50d0f",
+                            "key": "field_6466896532673",
                             "label": "Gallery Pattern",
                             "name": "gallery_pattern",
+                            "aria-label": "",
                             "type": "clone",
                             "instructions": "",
                             "required": 0,
@@ -135,9 +140,10 @@
                     "display": "block",
                     "sub_fields": [
                         {
-                            "key": "field_5ec53c02db465",
+                            "key": "field_64668965326df",
                             "label": "Testimonials Pattern",
                             "name": "testimonials_pattern",
+                            "aria-label": "",
                             "type": "clone",
                             "instructions": "",
                             "required": 0,
@@ -165,9 +171,10 @@
             "max": ""
         },
         {
-            "key": "field_60f1d9f7d2090",
+            "key": "field_6466896530455",
             "label": "Call To Action",
             "name": "call_to_action_toggle",
+            "aria-label": "",
             "type": "true_false",
             "instructions": "",
             "required": 0,
@@ -184,16 +191,17 @@
             "ui_off_text": "Off"
         },
         {
-            "key": "field_60f1da49d2091",
+            "key": "field_64668965304de",
             "label": "Call To Action",
             "name": "call_to_action",
+            "aria-label": "",
             "type": "group",
             "instructions": "",
             "required": 0,
             "conditional_logic": [
                 [
                     {
-                        "field": "field_60f1d9f7d2090",
+                        "field": "field_6466896530455",
                         "operator": "==",
                         "value": "1"
                     }
@@ -207,9 +215,10 @@
             "layout": "block",
             "sub_fields": [
                 {
-                    "key": "field_60f1da50d2092",
+                    "key": "field_646689653915a",
                     "label": "CTA Pattern",
                     "name": "cta_pattern",
+                    "aria-label": "",
                     "type": "clone",
                     "instructions": "",
                     "required": 0,
@@ -256,5 +265,5 @@
     "active": true,
     "description": "DEFAULT TEMPLATE",
     "show_in_rest": 0,
-    "modified": 1650476159
+    "modified": 1684441458
 }
