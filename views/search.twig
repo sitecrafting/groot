@@ -2,38 +2,45 @@
 
 {% block main_content %}
 
-<section class="pattern">
-    <div class="container">
+<div class="search-header">
+    <div class="container mx950">
 
-            <h1>Search</h1>
+        {% if search_query %}
+            <h1 class="title h2">Search Results for: {{ search_query }}</h1>
+        {% else %}
+            <h1 class="title">Search</h1>
+        {% endif %}
+        {{ get_search_form() }}
 
-			{% if posts %}
-				<p>{{ search_total }} {{ 'result' | pluralize(search_total)}} for <strong>{{ search_query }}</strong>:</p>
+    </div>
+</div>
 
-				{% for post in posts %}
-					{% include 'partials/cards/search-card.twig' with {
-						card : {
-							label : post.post_type,
-							title : post.title,
-							snippet : post.preview.length(50).read_more(false),
-							link : post.link
-						}
-					} %}
-				{% endfor %}
+<section class="pattern pattern--search-results">
+    <div class="container mx950">
 
-				<div class="post-pagination post-pagination--numbers">
-					{{ paginate_links(
-						{
-							'prev_text': source('img/arrows/streamline-chevron-left@20x20.svg') ~ " Prev", 
-							'next_text': "Next " ~ source('img/arrows/streamline-chevron-right@20x20.svg')
-						}
-					) }}
-				</div> 
+        {% for post in posts %}
+            {% include 'partials/cards/search-card.twig' with {
+                card : {
+                    label : post.post_type,
+                    title : post.title,
+                    snippet : post.meta('_yoast_wpseo_metadesc')|default('Sample default content right here. sample default content right here. sample default content right here. sample default content right here. sample default content right here. sample default content right here. sample default content right here.'),
+                    link : post.link
+                }
+            } %}
+        {% else %}
 
-			{% else %}
-				<p>Sorry, we couldn't find anything about <strong>{{ search_query }}</strong></p>
-			{% endif %}
+            <p>Sorry, we couldn't find anything about <strong>{{ search_query }}</strong>, please try again.</p>
 
+        {% endfor %}
+
+        <div class="post-pagination post-pagination--numbers">
+            {{ paginate_links(
+                {
+                    'prev_text': source('img/arrows/streamline-chevron-left@20x20.svg') ~ " Prev", 
+                    'next_text': "Next " ~ source('img/arrows/streamline-chevron-right@20x20.svg')
+                }
+            ) }}
+        </div> 
 
 	</div><!-- END .container -->
 </section>

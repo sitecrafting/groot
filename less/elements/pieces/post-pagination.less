@@ -3,13 +3,13 @@
 	margin: 40px 0;
     display: flex;
     justify-content: space-between;
+    column-gap: 5px;
 
     @media @mobile-all{
-		margin: 30px -0.5px;
+		margin: 30px 0;
 
         .nav-previous, .nav-next{
-			width: 50%;
-			padding: 0 0.5px;
+			flex: 1;
             display: flex;
             .btn{
                 min-width: 0;
@@ -29,40 +29,33 @@
 
 /* PAGINATE_LINKS() */
 .post-pagination--numbers{
-	display: block;
-	margin-left: 0;
-	margin-right: 0;
-	text-align: center;
+    justify-content: center;
+    align-items: center;
+    font: 700 1rem/1.1 @font-family-headings;
+    text-transform: uppercase;
 
 	.page-numbers{
 		display: inline-block;
 		padding: 0 5px;
-		font: 700 1rem/1.1 @font-family-headings;
-		text-transform: uppercase;
 
 		&.prev, &.next{ 
 			position: relative;
+            display: inline-grid;
+            align-items: center;
+            column-gap: 5px;
 			svg{ 
 				display: block;
-				width: 15px; //height: 15px;
-				position: absolute;
-				top: 0; 
-				path{ fill: @blue; transition: all @trans-speed ease; }
+				width: 15px;
+                height: auto;
+				path{ fill: currentColor; }
 			}
 		}
-		&.prev{
-			padding-left: 20px;
-			svg{ left: 0; }
-		}
-		&.next{
-			padding-right: 20px;
-			svg{ right: 0; }
-		}
+		&.prev{ grid-template-columns: auto 1fr; }
+		&.next{ grid-template-columns: 1fr auto; }
 
 		&:hover{
 			color: @black;
 			text-decoration: none;
-			svg path{ fill: @black; }
 		}
 
 		&.dots{ padding: 0; }
@@ -70,11 +63,10 @@
 	}//.page-numbers
 
 	@media @mobile-sml{
-		display: flex;
 		justify-content: space-between;
 		.page-numbers{ 
 			display: none; 
-			&.prev, &.next{ display: block; }
+			//&.prev, &.next{ display: block; }
 		}
 	}
 

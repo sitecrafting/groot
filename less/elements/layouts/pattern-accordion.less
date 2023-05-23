@@ -5,7 +5,7 @@
 
     dt {
         position: relative;
-        margin-top: 5px;
+        margin-top: 1px;
         background: @blue;
         transition: all .25s ease;
 
@@ -13,10 +13,11 @@
             position: relative;
             margin: 0;
             z-index: 5;
+            font-size: (20/16rem);
 
             > a {
                 display: block;
-                padding: 20px 20px 20px 45px;
+                padding: 20px 65px 20px 20px;
                 color: @white;
                 &:hover{ text-decoration: none; }
             }
@@ -26,9 +27,9 @@
             content: "";
             display: block;
             position: absolute;
-            top: 32px;
-            left: 15px;
-            width: 16px;
+            top: 34px;
+            right: 15px;
+            width: 20px;
             height: 2px;
             background: @white;
         }
@@ -47,8 +48,8 @@
         .clearfix();
         display: none;
         margin: 0;
-        padding: 25px 20px 25px 45px;
-        background: #f3f3f3;
+        padding: 25px 20px 25px 20px;
+        background: @gray-f3;
     }
 }
 
