@@ -11,16 +11,17 @@ import accordion from './jquery.accordion.js'
     $.fn.responsiveNav = responsiveNav
     $.fn.accordion = accordion
 
+    const html = document.querySelector('html');
+    html.classList.remove('no-js')
+    html.classList.add('js');
+
     // Make nav menu nice & responsive
     $('nav.main-nav').responsiveNav({
-        navType: 'offCanvas', //default option for dropdown type use 'dropdown'
-        closeOnOutsideClick: true, //set to false if using dropdown type
-        showTabsOnFocus: true,
+        navType: 'offCanvas',
+        closeOnOutsideClick: true
     });
 	$('nav.subnav').responsiveNav({
 		navType: 'dropdown',
-		closeOnOutsideClick: false,
-		showTabsOnFocus: false,
 		menuButtonSelector: '.subnav__mobile-toggle',
 		dropdownSelector: '.subnav__menu'
 	});
@@ -56,7 +57,7 @@ import accordion from './jquery.accordion.js'
 			  }
 		}
 	  });
-	  $(document).on('click', '.js-close-search', function (e) {
+	  $(document).on('click', '.js-close-popup', function (e) {
 		  e.preventDefault();
 		  $.magnificPopup.close();
 	  });

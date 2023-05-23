@@ -29,15 +29,15 @@
 }
 .site-pusher{
 	@media @mobile-menu{
-		position: relative;
-		height: 100%;
-		left: 0;
-		transition: transform .5s ease;
+		// position: relative;
+		// height: 100%;
+		// left: 0;
+		// transition: transform .5s ease;
 
 		//darken the page to better highlight off canvas navigation
 		&:after{
 			content: '';
-			z-index: 1000;
+			z-index: 999;
 			position: absolute;
 			top: 0;
 			right: 0;
@@ -49,7 +49,7 @@
 		}
 
 		.menu-open &{
-			transform: translate3d(-(@off-canvas-width), 0, 0);
+			//transform: translate3d(-(@off-canvas-width), 0, 0);
 
 			&:after{
 				width: 100%;

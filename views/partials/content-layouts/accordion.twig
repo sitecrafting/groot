@@ -6,21 +6,21 @@
 <section class="pattern pattern--accordion">
     <div class="container mx950">
 
-      {% if layout.section_headline %}
-        <h2 class="pattern__headline">{{ layout.section_headline }}</h2>
-      {% endif %}
+        {% if layout.section_headline %}
+            <h2 class="pattern__headline">{{ layout.section_headline }}</h2>
+        {% endif %}
     
-      <dl class="accordion">
+        <dl class="accordion">
         {% for panel in layout.accordion_panels %}
-          {% set panelId = fn('sanitize_title', panel.panel_headline) %}
+            {% set panelId = fn('sanitize_title', panel.panel_headline) %}
 
-          <dt data-id="{{ panelId }}">
+            <dt data-id="{{ panelId }}">
             <h3 class="accordion__title h4"><a href="#{{ panelId }}">{{ panel.panel_headline }}</a></h3>
-          </dt>
-          <dd class="accordion__content rtecontent">{{ panel.panel_content }}</dd>
+            </dt>
+            <dd class="accordion__content rtecontent">{{ panel.panel_content }}</dd>
 
         {% endfor %}
-      </dl>
+        </dl>
 
     </div>
 </section>

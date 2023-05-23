@@ -5,25 +5,21 @@
 {% include 'partials/hero-interior.twig' with { page_title : post.meta('main_headline')|default(post.title) } %}
 
 {# SIDE NAV #}
-{% include 'partials/subnav.twig' with { menu: primary_menu } %}
+{% include 'partials/blocks/subnav.twig' with { menu: primary_menu } %}
 
-<section class="pattern">
-    <div class="container">
+{# FLEXIBLE LAYOUTS #}
+<div class="flex-patterns sitka-search-content-container">
 
-		{# FLEXIBLE LAYOUTS #}
-        <div class="flex-patterns flex-patterns--remove-outer-gutter sitka-search-content-container">
-            {% include 'partials/content-layouts.twig' with { layouts: post.meta('default_layouts') } %}
-        </div>
+    {% include 'partials/content-layouts.twig' with { layouts: post.meta('default_layouts') } %}
 
-    </div><!-- END .container -->
-</section>
+    {% if post.meta('include_call_to_action') %}
+        {% include 'partials/content-layouts/call_to_action.twig'
+            with {
+                layout : post.meta('call_to_action')
+            }
+        %}
+    {% endif %}
 
-{% if post.meta('include_call_to_action') %}
-	{% include 'partials/content-layouts/call_to_action.twig'
-		with {
-			layout : post.meta('call_to_action')
-		}
-	%}
-{% endif %}
+</div>
 
 {% endblock %}

@@ -28,7 +28,7 @@ return function jQueryResponsiveNav( options ) {
         navType: 'offCanvas',
         debounceTime: 150,
         closeOnOutsideClick: false,
-        showTabsOnFocus: false,
+        showTabsOnFocus: true,
     }, options)
 
     const $this = $(this),
@@ -64,7 +64,7 @@ return function jQueryResponsiveNav( options ) {
     //set what type of closeNav we want
     const closeNavStrategy = closeNavStrategies[options.navType] || _closeOffCanvasNav
 
-    //THIS IS THE ACTUAL FUNCTIoN THAT GETS CALLED TO CLOSE THE NAV
+    //THIS IS THE ACTUAL FUNCTION THAT GETS CALLED TO CLOSE THE NAV
     function closeNav() {
         closeNavStrategy()
         $menuButton.removeClass( options.activeClass )
@@ -123,7 +123,7 @@ return function jQueryResponsiveNav( options ) {
     }
 
     const sublevelNav = function() {
-		$this.find('span.main-nav__dropper').each(function(){
+		$this.find('.nav-expander').each(function(){
 			$(this).on('touchstart, click', function(event) {
 
 				event.stopPropagation();
@@ -155,7 +155,7 @@ return function jQueryResponsiveNav( options ) {
         //on mobile check for active navigation and set open accordingly
         if( $menuButton.is(':visible') ){
 
-            $this.find('ul.menu li.current_page_item, ul.menu li.current_page_ancestor').each(function(){
+            $this.find('li.current_page_item, li.current_page_ancestor').each(function(){
                 if( !$(this).hasClass('toggle') ){
                     $(this).addClass('toggle');
                 }
@@ -179,18 +179,6 @@ return function jQueryResponsiveNav( options ) {
             openNav();
         }
     }) //end button on
-
-    //ADD EXPANDER ICON
-    $this.find('li.menu-item-has-children > a').each(function(){
-        if( $(this).next('ul').length ) {
-            $(this).append('<span class="main-nav__dropper"></span>');
-        }
-    });
-
-    //IF DROPDOWN TYPE SET CLASSNAME
-    if( options.navType === 'dropdown' ){
-        $dropdownElem.addClass('main-nav-dropdown');
-    }
 
     sublevelNav()
     activeToggleFn()

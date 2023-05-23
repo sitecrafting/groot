@@ -43,17 +43,15 @@ a {
     color: @link-color;
     text-decoration: none;
     transition: all @trans-speed ease;
-
-	&:not([class]){ 
-        display: inline-block; 
+    display: inline-block; 
         
-        &:hover{ 
-            text-decoration: underline;
-            text-decoration-skip-ink: auto;
-            text-underline-offset: 0.15em; 
-            text-decoration-thickness: ~"max(0.03em, 1px)";
-        }
+    &:hover{ 
+        text-decoration: underline;
+        text-decoration-skip-ink: auto;
+        text-underline-offset: 0.15em; 
+        text-decoration-thickness: ~"max(0.03em, 1px)";
     }
+
 }
 
 @content-spacer: 1.25em;

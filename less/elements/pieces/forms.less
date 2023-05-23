@@ -4,11 +4,11 @@
 @input-bg-disabled:              @gray-f3;
 
 @input-color:                    @text-color;
-@input-border:                   @gray-cc;
+@input-border:                   @black;
 
 @input-border-focus:             @blue;
 
-@input-color-placeholder:        darken(@gray-f3,15%);
+@input-color-placeholder:        lighten(@black,15%);
 @input-font-size:                1rem;
 
 @input-height:                   (50/16rem);
@@ -54,7 +54,10 @@ textarea,
     border: 1px solid @input-border;
 
     // Customize the `:focus` state to imitate native WebKit styles.
-    .form-control-focus();
+    &:focus {
+        border-color: @input-border-focus;
+        outline: 0;
+    }
 
     // Placeholder styles
     .placeholder();
@@ -116,4 +119,18 @@ input[type="checkbox"]{
     &[disabled]{
         cursor: not-allowed;
     }
+}
+
+.search-fields{
+    display: flex;
+
+    input{
+        height: auto;
+        flex: 1;
+        border-right: 0;
+    }
+    button{ 
+        flex: 0 0 auto;
+    }
+
 }

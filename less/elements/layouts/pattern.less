@@ -1,13 +1,11 @@
 .pattern{
     .outer-gutter();
 	margin-top: min(8vw, 90px); 
-	margin-bottom: min(8vw, 90px);
+	
+    &:last-child:not(.pattern--pad){ 
+        margin-bottom: min(8vw, 90px); 
+    }
 
-	//flex-patterns is wrapped around patterns that are within another pattern or layout
-	.flex-patterns &{
-		&:first-child{ margin-top: 0; }
-		&:last-child{ margin-bottom: 0; }
-	}
 	//if this class is on a parent there will be no outer gutter
 	//useful for when inside a structured column
 	.flex-patterns--remove-outer-gutter &{
@@ -19,8 +17,6 @@
 
 
 .pattern--pad{
-	margin-top: 0;
-	margin-bottom: 0;
 	padding-top: min(10vw, 100px);
 	padding-bottom: min(10vw, 100px);
 }

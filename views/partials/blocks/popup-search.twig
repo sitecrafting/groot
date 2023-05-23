@@ -1,0 +1,12 @@
+<div id="popup-search" class="popup popup--search mfp-hide">
+
+        <button class="popup__close js-close-popup"><span>Close</span> {{ source('img/icons/icon-close.svg') }}</button>
+        <form role="search" method="get" class="popup-search-form" action="/" autocomplete="off">
+            <label for="p-search" class="h2">Search</label>
+            <div class="search-fields">
+                <input type="text" value="{{ search_query }}" name="s" id="p-search" placeholder="Enter search term..." autocomplete="off" />
+                <button type="submit" id="searchsubmit" class="btn" />search</button>
+            </div>
+        </form>
+
+</div>

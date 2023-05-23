@@ -43,7 +43,9 @@
 		{% include 'partials/blocks/footer.twig' %}
 	{% endblock %}
 
-	{% include 'partials/popup-search.twig' %}
+    {% block inline_popups %}
+        {% include 'partials/blocks/popup-search.twig' %}
+    {% endblock %}
 
 </div></div><!-- //.site-pusher //.site-wrapper -->
 
