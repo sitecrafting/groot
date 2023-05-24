@@ -76,11 +76,14 @@ nav.main-nav--dropdown{
         top: 100%;
         left: 0;
         right: 0;
-        padding: 20px @gutter;
+        padding: 20px @outer-gutter;
         background: @white;
         border-top: 1px solid @gray-f3;
         box-shadow: 0 20px 20px 0 rgba(0,0,0,.5);
         z-index: 800;
+    }
+    @media @mobile-sml{
+        padding: 20px @outer-gutter-m;
     }
 }
 

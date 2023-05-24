@@ -3,7 +3,7 @@
 {% block main_content %}
 
 <div class="search-header">
-    <div class="container mx950">
+    <div class="container container--md">
 
         {% if search_query %}
             <h1 class="title h2">Search Results for: {{ search_query }}</h1>
@@ -16,7 +16,7 @@
 </div>
 
 <section class="pattern pattern--search-results">
-    <div class="container mx950">
+    <div class="container container--md">
 
         {% for post in posts %}
             {% include 'partials/cards/search-card.twig' with {

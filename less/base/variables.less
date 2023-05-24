@@ -15,66 +15,73 @@
 // * { background-image: url('@{theme-path}img/icons/my-icon.svg'); }
 @theme-path: '/wp-content/themes/groot/';
 
-
-// Grays
+// THEME COLORS
 // -------------------------
-@gray-cc:                       #ccc;
-@gray-f3:                       #f3f3f3;
+@gray-cc:                               #ccc;
+@gray-f3:                               #f3f3f3;
 
-// Brand colors
+@blue:                                    darken(#00aeef, 5%);
+@error:                                 red;
+
+@black:				                    #000;
+@white:				                    #fff;
+
+// SET ELEMENTS
+@body-bg:                               @white;
+@text-color:                            @black;
+
+@link-color:                            @blue;
+
+// OTHER
 // -------------------------
-@blue:                          darken(#00aeef, 5%);
-@error:                         red;
+@trans-speed:			                250ms;
 
-@black:				            #000;
-@white:				            #fff;
-
-// Scaffolding
+// STRUCTURAL
 // -------------------------
-@body-bg:                       @white;
-@text-color:                    @black;
+@max-width:                             100%;
+@container-default:                     1440px;
 
-@trans-speed:			        250ms;
+@outer-gutter:                          min(5vw, 80px);
+@outer-gutter-m:                        15px;
 
-@max-width:                     100%;
-@container-width:               1400px;
+@grid-gutter-xs:                        min(2vw, 32px);
+@grid-gutter-s:                         min(2.5vw, 40px);
+@grid-gutter-m:                         min(3vw, 48px);
+@grid-gutter-l:                         min(4vw, 65px);
 
-@gutter:                        min(100px, 6vw);
+//adjust this for the main gutter used in grid-layouts.less
+@grid-gutter:                           @grid-gutter-m;
 
-@off-canvas-width:		        350px;
-@header-height:                 90px;
+@off-canvas-width:		                350px;
 
-// Links
-// -------------------------
-@link-color:                    @blue;
 
 // Typography
 // dividing desired px size by 16 gives rem used - assumes root font size of 16px
 // -------------------------
-@font-family-base:              'Open Sans', arial, sans-serif;
-@font-family-headings:          'Open Sans',  arial, sans-serif;
+@font-family-base:                      'Open Sans', arial, sans-serif;
+@font-family-headings:                  'Open Sans',  arial, sans-serif;
 
-@font-size-base:                1rem;
-@line-height:        	        1.6;
+@font-size-base:                        1rem;
+@line-height:        	                1.6;
 
-@font-size-h1:                  (60/16rem); //60px
-@font-size-h2:                  (50/16rem); //50px
-@font-size-h3:                  (38/16rem); //38px
-@font-size-h4:                  (28/16rem); //28px
-@font-size-h5:                  (20/16rem); //20px
-@font-size-h6:                  (18/16rem); //18px
+@font-size-h1:                          (60/16rem);
+@font-size-h2:                          (50/16rem);
+@font-size-h3:                          (38/16rem);
+@font-size-h4:                          (28/16rem);
+@font-size-h5:                          (20/16rem);
+@font-size-h6:                          (18/16rem);
 
 //smallest scaled font size for headlines
-@font-size-h1-m:                  (48/16rem); //48px converted to rems;
-@font-size-h2-m:                  (30/16rem); //30px;
-@font-size-h3-m:                  (28/16rem); //28px
-@font-size-h4-m:                  (22/16rem); //22px
-@font-size-h5-m:                  (18/16rem); //18px
-@font-size-h6-m:                  1rem;         //16px
+@font-size-h1-m:                        (48/16rem);
+@font-size-h2-m:                        (30/16rem);
+@font-size-h3-m:                        (28/16rem);
+@font-size-h4-m:                        (22/16rem);
+@font-size-h5-m:                        (18/16rem);
+@font-size-h6-m:                        1rem;
 
-@headings-font-weight:          700;
-@headings-line-height:          1.1;
-@headings-color:                @blue;
+@headings-font-weight:                  700;
+@headings-line-height:                  1.1;
+@headings-color:                        @blue;
 
 
 // Media queries breakpoints
