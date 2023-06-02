@@ -132,43 +132,11 @@
                     ],
                     "min": "",
                     "max": ""
-                },
-                "layout_5ec53bf8db464": {
-                    "key": "layout_5ec53bf8db464",
-                    "name": "testimonials",
-                    "label": "Testimonials",
-                    "display": "block",
-                    "sub_fields": [
-                        {
-                            "key": "field_64668965326df",
-                            "label": "Testimonials Pattern",
-                            "name": "testimonials_pattern",
-                            "aria-label": "",
-                            "type": "clone",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "clone": [
-                                "group_5ec5399ee13fd"
-                            ],
-                            "display": "seamless",
-                            "layout": "block",
-                            "prefix_label": 0,
-                            "prefix_name": 0
-                        }
-                    ],
-                    "min": "",
-                    "max": ""
                 }
             },
-            "button_label": "Add Layout",
             "min": "",
-            "max": ""
+            "max": "",
+            "button_label": "Add Layout"
         },
         {
             "key": "field_6466896530455",
@@ -265,5 +233,5 @@
     "active": true,
     "description": "DEFAULT TEMPLATE",
     "show_in_rest": 0,
-    "modified": 1684441458
+    "modified": 1685733810
 }
