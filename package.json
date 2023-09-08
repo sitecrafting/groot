@@ -22,7 +22,6 @@
   "license": "MIT",
   "dependencies": {
     "fitvids.1.1.0": "^1.1.0",
-    "jquery": "^3.7.0",
     "magnific-popup": "^1.1.0",
     "swiper": "^9.3.2",
     "throttle-debounce": "^5.0.0"
