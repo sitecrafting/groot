@@ -21,6 +21,9 @@ const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const DeleteAfterBuildPlugin = require("./js/webpack-plugins/delete-after-build-plugin.js");
 const AssetsVersionPlugin = require("./js/webpack-plugins/assets-version-plugin.js");
 const getThemePath = require("./js/webpack-plugins/get-theme-path.js");
+const { WebpackManifestPlugin } = require("webpack-manifest-plugin");
+const DependencyExtractionWebpackPlugin = require( '@wordpress/dependency-extraction-webpack-plugin' );
+
 
 const sharedConfig = {
   mode: "production",
@@ -42,13 +45,19 @@ const jsConfig = Object.assign({}, sharedConfig, {
      * in the `entry` object above. In most cases you shouldn't have to change
      * this part to add new bundles.
      */
-    filename: "[name].js",
+    filename: "[name].[contenthash].js",
+    clean: true,
   },
   /*
    * Tell Webpack that jQuery is a thing that exists globally.
    */
   externals: {
     jquery: "jQuery",
+  },
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+    },
   },
   plugins: [
     /*
@@ -61,6 +70,17 @@ const jsConfig = Object.assign({}, sharedConfig, {
     new AssetsVersionPlugin({
       versionFile: "scripts.version",
       useHash: true,
+    }),
+    new WebpackManifestPlugin({
+        publicPath : '',
+        filter: (file) => {
+            //console.log(file.name.endsWith('.map'))
+            return !file.name.endsWith('.map');
+        }
+    }),
+    new DependencyExtractionWebpackPlugin({
+        outputFormat: 'json',
+        combineAssets: true,
     }),
   ],
   module: {

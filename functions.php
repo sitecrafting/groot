@@ -70,13 +70,19 @@ $site->configure(function() {
     add_action('wp_dashboard_setup', 'remove_dashboard_widgets');
 
     add_action('wp_enqueue_scripts', function() {
-        //Enqueue our own project-specific JavaScript, including dependencies.
-        $this->enqueue_script(
-            'project-common',
-            'common.js',
-            ['jquery'],
-            ['file' => 'scripts.version']
-        );
+        $file = file_get_contents(__DIR__ . '/dist/manifest.json');
+        
+        $manifest = json_decode($file, true) ?? [];
+
+        foreach ($manifest as $entrypoint => $filename) {
+            # Enqueue the file
+            //Enqueue our own project-specific JavaScript, including dependencies.
+            $this->enqueue_script(
+                    $entrypoint,
+                    $filename,
+                    ['jquery'],
+                );
+        }
         
         $this->enqueue_style('project-css', 'style.css', [], ['file' => 'styles.version']);
         $this->enqueue_style('project-print-css', 'print.css', [], ['file' => 'styles.version'], 'print');
