@@ -25,5 +25,10 @@
     "magnific-popup": "^1.1.0",
     "swiper": "^9.3.2",
     "throttle-debounce": "^5.0.0"
+  },
+  "scripts": {
+    "dev": "webpack --mode=development",
+    "dev:watch": "webpack --mode=development --watch",
+    "build": "webpack --mode=production"
   }
 }

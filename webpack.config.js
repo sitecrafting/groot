@@ -23,7 +23,7 @@ const AssetsVersionPlugin = require("./js/webpack-plugins/assets-version-plugin.
 const getThemePath = require("./js/webpack-plugins/get-theme-path.js");
 
 const sharedConfig = {
-  mode: "development",
+  mode: "production",
   devtool: "source-map",
   stats: "errors-only",
 };
