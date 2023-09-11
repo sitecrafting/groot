@@ -21,10 +21,16 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@wordpress/dependency-extraction-webpack-plugin": "^4.24.0",
     "fitvids.1.1.0": "^1.1.0",
-    "jquery": "^3.7.0",
     "magnific-popup": "^1.1.0",
     "swiper": "^9.3.2",
-    "throttle-debounce": "^5.0.0"
+    "throttle-debounce": "^5.0.0",
+    "webpack-manifest-plugin": "^5.0.0"
+  },
+  "scripts": {
+    "dev": "webpack --mode=development",
+    "dev:watch": "webpack --mode=development --watch",
+    "build": "webpack --mode=production"
   }
 }
