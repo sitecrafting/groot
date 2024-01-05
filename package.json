@@ -49,7 +49,8 @@
     },
     "appstyles": {
       "source": [
-        "less/style.less"
+        "less/style.less",
+        "less/style-print.less"
       ],
       "distDir": "."
     }
