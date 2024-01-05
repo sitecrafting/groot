@@ -9,6 +9,7 @@
   "devDependencies": {
     "@babel/core": "^7.16.5",
     "@babel/preset-env": "^7.16.5",
+    "@parcel/transformer-less": "2.10.3",
     "babel-loader": "^8.2.3",
     "css-loader": "^3.2.0",
     "css-minimizer-webpack-plugin": "^3.3.0",
@@ -23,12 +24,37 @@
   "dependencies": {
     "fitvids.1.1.0": "^1.1.0",
     "magnific-popup": "^1.1.0",
+    "parcel": "^2.10.3",
+    "parcel-resolver-ignore": "^2.2.0",
     "swiper": "^9.3.2",
     "throttle-debounce": "^5.0.0"
   },
   "scripts": {
     "dev": "webpack --mode=development",
     "dev:watch": "webpack --mode=development --watch",
-    "build": "webpack --mode=production"
-  }
+    "build": "webpack --mode=production",
+    "build:targets": "parcel build"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "> 1%",
+    "not dead"
+  ],
+  "targets": {
+    "appscripts": {
+      "source": [
+        "js/src/common.js"
+      ],
+      "distDir": "./dist"
+    },
+    "appstyles": {
+      "source": [
+        "less/style.less"
+      ],
+      "distDir": "."
+    }
+  },
+  "parcelIgnore": [
+    "wp-content\/themes\/groot\/img\/arrows\/*.*"
+  ]
 }

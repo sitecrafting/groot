@@ -47,6 +47,11 @@ tooling:
     cmd: 'tail -f /app/wp/wp-content/debug.log'
     description: 'Get real-time WP debug log output'
 
+  parcel:
+    service: node
+    cmd: 'node_modules/.bin/parcel'
+    description: 'Run parcel'
+
   webpack:
     service: node
     cmd: 'node_modules/.bin/webpack'
