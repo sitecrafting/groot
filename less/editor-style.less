@@ -25,20 +25,6 @@ h6, .h6{ font-size: @font-size-h6; }
 
 a {
     color: @link-color;
-    text-decoration: none;
-    transition: all @trans-speed ease;
-
-	&:not([class]){ 
-        display: inline-block; 
-        
-        &:hover{ 
-            text-decoration: underline;
-            text-decoration-skip-ink: auto;
-            text-underline-offset: 0.15em; 
-            text-decoration-thickness: ~"max(0.03em, 1px)";
-        }
-    }
-
 }
 
 img{ max-width: 100%; height: auto !important; }

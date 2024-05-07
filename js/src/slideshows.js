@@ -1,13 +1,13 @@
 /* globals jQuery */
 //https://swiperjs.com/
-import Swiper, {Navigation, Pagination, EffectFade, Parallax, A11y,} from 'swiper';
-
-Swiper.use([Navigation,Pagination,EffectFade,Parallax,A11y]);
+import Swiper from 'swiper';
+import {Navigation, Pagination, EffectFade, Parallax, A11y, Autoplay, FreeMode} from 'swiper/modules';
 
 (($) => {
 
     //MAIN HERO SLIDESHOW
     const mainSwiper = new Swiper('.js-home-slideshow', {
+        modules: [EffectFade,Pagination,Navigation,Parallax,A11y,Autoplay],
         effect: 'fade',
         loop: true,
         parallax: true,
@@ -27,16 +27,6 @@ Swiper.use([Navigation,Pagination,EffectFade,Parallax,A11y]);
         }
     });
 
-    //TESTIMONIAL SLIDESHOW
-	const testimonialSwiper = new Swiper('.js-testimonial-slideshow', {
-		loop: true,
-		pagination: {
-			el: '.swiper-pagination',
-			type: 'bullets',
-			hideOnclick: false,
-			clickable: true
-		}
-    });
 
     // //INTERIOR GALLERY w/ THUMBNAILS
     const galleries = document.querySelectorAll('.gallery');
@@ -45,8 +35,11 @@ Swiper.use([Navigation,Pagination,EffectFade,Parallax,A11y]);
 
         let slider = gallery.querySelector('.js-gallery-slides');
         let thumbs = gallery.querySelector('.js-gallery-thumbs');
+        let prev = gallery.querySelector('.swiper-button-prev');
+        let next = gallery.querySelector('.swiper-button-next');
 
         const galleryThumbs = new Swiper(thumbs, {
+            modules: [FreeMode],
             spaceBetween: 10,
             slidesPerView: 'auto',
             loop: false,
@@ -54,12 +47,13 @@ Swiper.use([Navigation,Pagination,EffectFade,Parallax,A11y]);
         });
 
         const galleryTop = new Swiper(slider, {
+            modules: [EffectFade,Navigation,A11y],
             loop: false,
             fadeEffect: { crossFade: true },
             effect: 'fade',
             navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
+                nextEl: next,
+                prevEl: prev,
             },
             thumbs: {
                 swiper: galleryThumbs,
