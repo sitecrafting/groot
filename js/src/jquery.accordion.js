@@ -24,16 +24,17 @@ export default (($) => {
 
     //FUNCTIONS
     const toggleAccPanelFn = function( $this_hash, $this_tab, $this_panel ){
-      if( $this_tab.hasClass('active') && $this_panel.is(':visible') ){
-        $this_panel.slideUp();
-        $this_tab.removeClass('active').addClass('inactive');
-      }
-      else{
-        $this_panel.slideDown();
-        $this_tab.addClass('active').removeClass('inactive');
-        window.location.hash = $this_hash;
-      }
-
+        if( $this_tab.hasClass('active') && $this_panel.is(':visible') ){
+            $this_panel.slideUp();
+            $this_tab.removeClass('active').addClass('inactive');
+            $this_tab.find('a').attr('aria-expanded', 'false');
+        }
+        else{
+            $this_panel.slideDown();
+            $this_tab.addClass('active').removeClass('inactive');
+            $this_tab.find('a').attr('aria-expanded', 'true');
+            window.location.hash = $this_hash;
+        }
     }
 
     //TAB ANCHOR CLICKS
