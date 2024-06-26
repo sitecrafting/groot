@@ -12,17 +12,6 @@
 
     {% include 'partials/content-layouts.twig' with { layouts: post.meta('default_layouts') } %}
 
-    <section class="pattern">
-        <div class="container container--md">
-            
-            <button popovertarget="popover-video1">Open Video</button>
-            <div popover id="popover-video1" class="popover popover--video video">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/opHu7HvFM60?si=lwwKisk76tY47Oyt" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            </div>
-
-        </div>
-    </section>
-
     {% if post.meta('include_call_to_action') %}
         {% include 'partials/content-layouts/call_to_action.twig'
             with {
