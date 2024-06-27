@@ -1,23 +1,27 @@
-.popup{
-	position: relative;
-    margin: 100px auto;
+.popover{
+	//position: relative;
+    //margin: 100px auto;
+    padding: 50px;
 	width: 100%;
     max-width: 900px;
+    background-color: @white;
+
+    &::backdrop{ background-color: rgba(0,0,0,.7); }
+    
 }
 
-.popup--search{
+.popover--search{
     max-width: 700px;
-
-    .popup__close{
-        top: min(30px, 2vw);
-    }
-    .popup-search-form{
-        label{ display: block; }
-    }
-
 }
 
-.popup__close{
+.popover-search-form{
+    label{ 
+        display: block;
+        margin: 0 0 15px; 
+    }
+}
+
+.popover__close{
     -webkit-appearance: none;
     background: transparent;
     border: 0;
@@ -26,7 +30,8 @@
     column-gap: 10px;
     align-items: center;
 	position: absolute;
-	right: 0;
+    top: 20px;
+	right: 20px;
 	font: 700 1rem/1.2 @font-family-headings;
 	color: @black;
     transition: all @trans-speed ease;
