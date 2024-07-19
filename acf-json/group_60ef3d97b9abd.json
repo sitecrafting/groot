@@ -1,0 +1,437 @@
+{
+    "key": "group_60ef3d97b9abd",
+    "title": "Homepage",
+    "fields": [
+        {
+            "key": "field_60ef3d9d0db43",
+            "label": "Homepage Hero",
+            "name": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 1,
+            "multi_expand": 1,
+            "endpoint": 0
+        },
+        {
+            "key": "field_60ef3dbb0db44",
+            "label": "Hero",
+            "name": "hero",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "field_60ef3e040db46",
+            "min": 1,
+            "max": 5,
+            "layout": "block",
+            "button_label": "Add Hero Slide",
+            "sub_fields": [
+                {
+                    "key": "field_60ef3de60db45",
+                    "label": "Background Image",
+                    "name": "background_image",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "preview_size": "large",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": ""
+                },
+                {
+                    "key": "field_60ef3e040db46",
+                    "label": "Headline",
+                    "name": "headline",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_60ef3e0e0db47",
+                    "label": "Subtext",
+                    "name": "subtext",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_60ef3e120db48",
+                    "label": "Button",
+                    "name": "button",
+                    "type": "link",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array"
+                }
+            ]
+        },
+        {
+            "key": "field_60ef3e4b0db49",
+            "label": "Homepage Intro Content",
+            "name": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 1,
+            "multi_expand": 1,
+            "endpoint": 0
+        },
+        {
+            "key": "field_60ef3e5d0db4a",
+            "label": "Intro Content",
+            "name": "intro_content",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_60ef3e750db4b",
+                    "label": "Standard Content Pattern",
+                    "name": "standard_content_pattern",
+                    "type": "clone",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "clone": [
+                        "group_60ef39e2aaca8"
+                    ],
+                    "display": "seamless",
+                    "layout": "block",
+                    "prefix_label": 0,
+                    "prefix_name": 0
+                }
+            ]
+        },
+        {
+            "key": "field_60ef3eb90db4c",
+            "label": "Homepage Posts",
+            "name": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 1,
+            "multi_expand": 1,
+            "endpoint": 0
+        },
+        {
+            "key": "field_60ef3ed10db4d",
+            "label": "Latest Posts",
+            "name": "latest_posts",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_60ef3efa0db4e",
+                    "label": "Section Headline",
+                    "name": "section_headline",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_60ef3f060db4f",
+                    "label": "Type of Posts",
+                    "name": "type_of_posts",
+                    "type": "radio",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "latest": "Most Recent Posts",
+                        "category": "Latest by Category Selected",
+                        "custom": "Custom Selected"
+                    },
+                    "allow_null": 0,
+                    "other_choice": 0,
+                    "default_value": "lastest",
+                    "layout": "horizontal",
+                    "return_format": "value",
+                    "save_other_choice": 0
+                },
+                {
+                    "key": "field_60ef3fd80db50",
+                    "label": "Latest Posts",
+                    "name": "",
+                    "type": "message",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_60ef3f060db4f",
+                                "operator": "==",
+                                "value": "latest"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "No action needed, will dynamically display the 3 most recent published posts.",
+                    "new_lines": "wpautop",
+                    "esc_html": 0
+                },
+                {
+                    "key": "field_60ef409a0db51",
+                    "label": "Posts by Category",
+                    "name": "posts_by_category",
+                    "type": "taxonomy",
+                    "instructions": "Will dynamically display the 3 most recent published posts from the category selected.",
+                    "required": 1,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_60ef3f060db4f",
+                                "operator": "==",
+                                "value": "category"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "taxonomy": "category",
+                    "field_type": "select",
+                    "allow_null": 0,
+                    "add_term": 0,
+                    "save_terms": 0,
+                    "load_terms": 0,
+                    "return_format": "id",
+                    "multiple": 0
+                },
+                {
+                    "key": "field_60ef40d90db52",
+                    "label": "Custom Posts",
+                    "name": "custom_posts",
+                    "type": "repeater",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_60ef3f060db4f",
+                                "operator": "==",
+                                "value": "custom"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "collapsed": "",
+                    "min": 3,
+                    "max": 3,
+                    "layout": "block",
+                    "button_label": "Add Post",
+                    "sub_fields": [
+                        {
+                            "key": "field_60ef41160db53",
+                            "label": "Card",
+                            "name": "card",
+                            "type": "post_object",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "post_type": [
+                                "post"
+                            ],
+                            "taxonomy": "",
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "return_format": "object",
+                            "ui": 1
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "field_60ef41d60db54",
+            "label": "Homepage Call To Action",
+            "name": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 1,
+            "multi_expand": 1,
+            "endpoint": 0
+        },
+        {
+            "key": "field_60ef41f00db55",
+            "label": "Call To Action",
+            "name": "call_to_action",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_60ef41fb0db56",
+                    "label": "CTA Pattern",
+                    "name": "cta_pattern",
+                    "type": "clone",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "clone": [
+                        "group_5ec53aa5b09e9"
+                    ],
+                    "display": "seamless",
+                    "layout": "block",
+                    "prefix_label": 0,
+                    "prefix_name": 0
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "front-page.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content",
+        "featured_image"
+    ],
+    "active": true,
+    "description": "HOMEPAGE",
+    "show_in_rest": 0,
+    "modified": 1650580544
+}

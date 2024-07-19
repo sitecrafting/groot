@@ -6,35 +6,32 @@ config:
 
 services:
   appserver:
+    run_as_root:
+      - apt-get update
+      - apt-get install zip
+
     run:
-      - composer install
-      - scripts/setup-wordpress.sh
+      - cd $LANDO_MOUNT && composer install
+      - cd $LANDO_MOUNT && scripts/setup-wordpress.sh
+
+    overrides:
+      environment:
+        # Pass any non-empty CI envvar from the host into Lando
+        # This is so we can force non-interactive mode setting up WP
+        CI: ${CI:-''}
 
   database:
-    type: mysql:5.7
+    type: mysql
 
   node:
-    type: node
+    type: node:14
 
     globals:
       webpack: "^4.28"
-      yarn: "^1.6"
+      yarn: "^1.22.5"
 
     run:
       - yarn
-
-  phpmyadmin:
-    type: phpmyadmin:4.7
-
-  mailhog:
-    type: mailhog:v1.0.0
-    hogfrom:
-      - appserver
-
-  docs:
-    type: nginx
-    ssl: true
-    webroot: docs/_book
 
 tooling:
   install:
@@ -70,9 +67,12 @@ tooling:
     cmd: 'composer sniff-fix'
     description: 'Fix coding standards issues that are automatically fixable'
 
+  release:
+    service: appserver
+    cmd: '/app/scripts/build-release.sh'
+    description: 'Build a downloadable release archive of Groot'
+
 proxy:
   appserver:
     - groot.lndo.site
 
-  mailhog:
-    - mail.groot.lndo.site

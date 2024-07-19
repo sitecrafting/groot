@@ -8,8 +8,7 @@
     color: @white;
     text-align: center;
     text-transform: uppercase;
-    letter-spacing: .5px;
-    font: 700 16px/1.1 @font-family-headings;
+    font: 700 1rem/1.1 @font-family-headings;
 
     background: @blue;
     -webkit-appearance: none;
@@ -21,6 +20,14 @@
         background: darken(@blue,5%);
     }
 
+}
+
+.btn--dark{
+    background: @black;
+    &:hover{ 
+        background: @black;
+        color: @blue;
+    }
 }
 
 .btn--disabled{

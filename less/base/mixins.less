@@ -3,24 +3,15 @@
 // --------------------------------------------------
 
 // Clearfix
-// Source: http://nicolasgallagher.com/micro-clearfix-hack/
-//
-// For modern browsers
-// 1. The space content is one way to avoid an Opera bug when the
-//    contenteditable attribute is included anywhere else in the document.
-//    Otherwise it causes space to appear at the top and bottom of elements
-//    that are clearfixed.
-// 2. The use of `table` rather than `block` is only necessary if using
-//    `:before` to contain the top-margins of child elements.
 .clearfix() {
-  &:before,
-  &:after {
-    content: " "; /* 1 */
-    display: table; /* 2 */
-  }
-  &:after {
-    clear: both;
-  }
+    &:after { content: ""; display: block; clear: both; }
+}
+
+.text-underline(){
+    text-decoration: underline;
+    text-decoration-skip-ink: auto;
+    text-underline-offset: 0.15em; 
+    text-decoration-thickness: ~"max(0.03em, 1px)";
 }
 
 //helps smooth out text keeping it from looking to chunky especially light text on dark background
@@ -43,61 +34,51 @@
 
 // Center-align a block level element
 .center-block() {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 // Placeholder text
 .placeholder(@color: @input-color-placeholder) {
-  &:-moz-placeholder            { color: @color; } // Firefox 4-18
-  &::-moz-placeholder           { color: @color; } // Firefox 19+
-  &:-ms-input-placeholder       { color: @color; } // Internet Explorer 10+
-  &::-webkit-input-placeholder  { color: @color; } // Safari and Chrome
+    &::placeholder{ color: @color; }
 }
 
 // Text overflow
 // Requires inline-block or block for proper styling
 .text-overflow() {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
-.hide-text{
-  overflow: hidden;
-  white-space: nowrap;
-  text-indent: 101%;
+.hide-text(){
+    overflow: hidden;
+    white-space: nowrap;
+    text-indent: 105%;
 }
 .plain-list(){
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
-.visuallyhidden {
-  position: absolute;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  height: 0px;
-  width: 0px;
-  margin: -1px;
-  padding: 0;
-  border: 0;
+//screen reader text
+.visuallyhidden(){
+    clip: rect(0 0 0 0); 
+    clip-path: inset(50%);
+    height: 1px; 
+    width: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
 }
 
-// Form control focus state
-//
-// Generate a customized focus state and for any input with the specified color,
-// which defaults to the `@input-focus-border` variable.
-.form-control-focus(@color: @input-border-focus) {
-
-  @color-rgba: rgba(red(@color), green(@color), blue(@color), .6);
-
-  &:focus {
-    border-color: @color;
-    outline: 0;
-    //box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px @color-rgba;
-  }
-
+.undo-visuallyhidden(){
+    clip-path: none;
+    width: auto;
+    height: auto;
+    position: relative;
+    overflow: auto;
+    white-space: normal;
 }

@@ -2,72 +2,45 @@
 
 {% block main_content %}
 
-<section class="slideshow{{ post.meta('hero')|length > 1 ? ' flexslider'}}">
-    <ul class="slides">
-        {% for slide in post.meta('hero') %}
-            <li class="hero">
-				<div class="hero__background" style="background-image: url({{ Image(slide.background_image).src('large') }});"></div>
-                <div class="hero__content">
-                    <div class="content-block">
-                        <h2 class="title">{{ slide.headline }}</h2>
-						{% if slide.subtext %}<div class="subtext">{{ slide.subtext }}</div>{% endif %}
-                        {% if slide.button.url %}
-                            <a class="btn" href="{{ slide.button.url }}"{{ slide.button.target ? ' target="_blank"' }}>{{ slide.button.title|default('Learn More') }}</a>
-                        {% endif %}
-                    </div>
-                </div>
-            </li>
-      {% endfor %}
-    </ul>
-</section>
+<div class="slideshow-home-hero swiper{{ post.meta('hero')|length > 1 ? ' js-home-slideshow' }}">
+    <div class="swiper-wrapper">
 
+        <!-- Slides -->
+        {% for slide in post.meta('hero') %}
+        <div class="swiper-slide">
+            {% include 'partials/hero.twig' with { hero : slide } %}
+        </div><!-- //.swiper-slide -->
+        {% endfor %}
+
+    </div>
+    {% if post.meta('hero')|length > 1 %}
+    <div class="swiper-pagination"></div>
+
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+    {% endif %}
+</div>
+
+{# HOMEPAGE INTRO #}
 {% include 'partials/content-layouts/standard_content.twig'
     with {
-        layout : {
-            isH1 : true,
-            section_headline : post.meta('main_headline')|default(post.title),
-            content : post.meta('intro_content')
-        }
+        layout : post.meta('intro_content')
     }
 %}
 
+{# HOMEPAGE POSTS #}
+{% include 'partials/content-layouts/feature_posts.twig'
+    with {
+        layout : post.meta('latest_posts')
+    }
+%}
 
-<section class="pattern">
-	<div class="container">
+{# HOMEPAGE CTA #}
+{% include 'partials/content-layouts/call_to_action.twig'
+    with {
+        layout : post.meta('call_to_action')
+    }
+%}
 
-        <header class="pattern__header">
-		    <h2>Latest Posts</h2>
-        </header>
-
-		<div class="flex-row">
-		{% for postItem in get_latest_posts(3) %}
-            <div class="col-flex col-lg-4 col-sm-12 col-xs-12">
-			    {% include 'partials/cards/article-card.twig' with { post : postItem, cardCrop : 'article-card' } %}
-            </div>
-		{% endfor %}
-        </div>
-
-        <footer class="pattern__footer">
-            <a class="btn" href="{{ get_blog_url() }}">View All</a>
-        </footer>
-
-	</div>
-</section>
-
-{% if post.meta('include_call_to_action') %}
-	{% include 'partials/content-layouts/call_to_action.twig'
-		with {
-			layout : post.meta('call_to_action')
-		}
-	%}
-{% endif %}
-
-{% if post.meta('include_testimonials') %}
-	{% include 'partials/content-layouts/testimonials.twig'
-		with {
-			layout : post.meta('testimonials')
-		}
-	%}
-{% endif %}
 
 {% endblock %}

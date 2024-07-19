@@ -1,40 +1,25 @@
 .pattern{
     .outer-gutter();
-	margin-top: 90px;
-	margin-bottom: 90px;
+	margin-top: min(8vw, 90px); 
+	
+    &:last-child:not(.pattern--pad){ 
+        margin-bottom: min(8vw, 90px); 
+    }
 
-	//flex-patterns is wrapped around patterns that are within another pattern or layout
-	.flex-patterns &{
-		&:first-child{ margin-top: 0; }
-		&:last-child{ margin-bottom: 0; }
-	}
-	//if this class is on a parent there will be no outer gutter useful for when inside a structured column
+	//if this class is on a parent there will be no outer gutter
+	//useful for when inside a structured column
 	.flex-patterns--remove-outer-gutter &{
 		padding-left: 0;
 		padding-right: 0;
 	}
 	
-
-    @media @tablet-all, @mobile-all{
-		margin-top: 50px;
-		margin-bottom: 50px;
-	}
 }//.pattern
 
 
 .pattern--pad{
-	margin-top: 0;
-	margin-bottom: 0;
-	padding-top: 100px;
-	padding-bottom: 100px;
-
-	@media @tablet-all, @mobile-all{
-		padding-top: 60px;
-		padding-bottom: 60px;
-	}
+	padding-top: min(10vw, 100px);
+	padding-bottom: min(10vw, 100px);
 }
-
-
 
 .pattern--no-gutter{
     padding-left: 0;
@@ -58,9 +43,10 @@
     margin: 0 0 40px;
 
     .headline{ margin: 0; }
+    .center-headline{ text-align: center; }
 
 	@media @tablet-all, @mobile-all{
-		margin: 0 0 50px;
+		margin: 0 0 30px;
 	}
 }
 
@@ -71,6 +57,6 @@
     .btn{ }
 
 	@media @tablet-all, @mobile-all{
-		margin-top: 50px;
+		margin-top: 30px;
 	}
 }

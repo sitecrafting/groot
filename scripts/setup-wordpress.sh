@@ -116,6 +116,9 @@ EOF
 
   # install/activate plugins and theme
   uninstall_plugins hello akismet
+
+  wp --quiet plugin install --activate advanced-custom-fields
+  wp --quiet plugin install --activate classic-editor
   wp --quiet plugin activate conifer
   wp --quiet theme activate groot
 

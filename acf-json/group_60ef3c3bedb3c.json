@@ -1,0 +1,220 @@
+{
+    "key": "group_60ef3c3bedb3c",
+    "title": "Landing Page",
+    "fields": [
+        {
+            "key": "field_60f1dacf15987",
+            "label": "Main Headline",
+            "name": "main_headline",
+            "type": "text",
+            "instructions": "This is the H1, if left empty it will default to the page title",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_60ef3c3bf0587",
+            "label": "Layouts",
+            "name": "landing_layouts",
+            "type": "flexible_content",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layouts": {
+                "5850715f04d8a": {
+                    "key": "5850715f04d8a",
+                    "name": "standard_content",
+                    "label": "Standard Content",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_60ef3c3bf1d47",
+                            "label": "Standard Content Pattern",
+                            "name": "standard_content_pattern",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_60ef39e2aaca8"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "5850718e602ef": {
+                    "key": "5850718e602ef",
+                    "name": "accordion",
+                    "label": "Accordion",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_60ef3c3bf1db3",
+                            "label": "Accordion Pattern",
+                            "name": "accordion_pattern",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_60ef3a85b8f81"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "585073607be21": {
+                    "key": "585073607be21",
+                    "name": "slideshow_gallery",
+                    "label": "Slideshow Gallery",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_60ef3c3bf1e1e",
+                            "label": "Gallery Pattern",
+                            "name": "gallery_pattern",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_60ef3a1967a0b"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_5ec53bf8db464": {
+                    "key": "layout_5ec53bf8db464",
+                    "name": "testimonials",
+                    "label": "Testimonials",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_60ef3c3bf1e88",
+                            "label": "Testimonials Pattern",
+                            "name": "testimonials_pattern",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_5ec5399ee13fd"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_60ef3c5f0518d": {
+                    "key": "layout_60ef3c5f0518d",
+                    "name": "call_to_action",
+                    "label": "Call To Action",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_60ef3c660518e",
+                            "label": "CTA Pattern",
+                            "name": "cta_pattern",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_5ec53aa5b09e9"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                }
+            },
+            "button_label": "Add Layout",
+            "min": "",
+            "max": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "template-landing.php"
+            }
+        ]
+    ],
+    "menu_order": 1,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content",
+        "featured_image"
+    ],
+    "active": true,
+    "description": "LANDING TEMPLATE",
+    "modified": 1626875829
+}

@@ -1,52 +1,29 @@
 {% extends 'layouts/main.twig' %}
 
 {% block main_content %}
-<section class="pattern column-layout outer-gutter">
-    <div class="container">
 
-		<div class="flex-row center-lg gutter-lg-fat gutter-md-default">
-		  <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+{% include 'partials/hero-interior.twig' with { page_title : newsPage.title } %}
 
-              <h1>{{ post.title }}</h1>
+<section class="pattern sitka-search-content-container">
+    <div class="container container--md">
 
-				<div class="article-list">
-					{% for post in posts %}
-						{% include 'partials/cards/article-card.twig' with { cardModifier : 'card-article--list' } %}
-					{% endfor %}
-				</div><!-- END .article-list -->
+		<nav class="category-filter">
+            <label for="categoryFilter">Categories</label>
+            <select id="categoryFilter">
+                <option{{ is_category == false ? ' selected="selected"' }} value="{{ get_blog_url() }}">All Articles</option>
+                {% for cat in get_terms('category') %}
+                    <option{{ post.slug == cat.slug() ? ' selected="selected"' }} value="{{ cat.link() }}">{{ cat.name }}</option>
+                {% endfor %}
+            </select>
+        </nav><!-- //subnav-filter -->
 
-				{% include 'partials/post-pagination.twig' with { pagination: posts.pagination } %}
+        <div class="article-list">
+            {% for post in posts %}
+                {% include 'partials/cards/article-card.twig' with { cardModifier : 'card-article--list', cardCrop : 'article-list-card' } %}
+            {% endfor %}
+        </div><!-- END .article-list -->
 
-			</div>
-			<div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
-
-				<nav class="subnav subnav--filtering">
-					<h3 class="subnav__title">Categories</h3>
-					<ul class="subnav__menu">
-						<li{{ is_category == false ? ' class="current-menu-item"' }}><a href="{{ get_blog_url() }}">All</a></li>
-						{% for cat in get_terms('category') %}
-							<li{{ post.slug == cat.slug() ? ' class="current-menu-item"' : '' }}><a href="{{ cat.link() }}">{{ cat.name }}</a></li>
-						{% endfor %}
-					</ul>
-				</nav><!-- //sidebar-box -->
-
-				{#
-				<nav class="subnav">
-					<h3 class="sidebar-box__title">Archives</h3>
-					<div class="sidebar-box__content">
-						<ul class="sidebar-box__menu">
-							<li><a href="{{ get_blog_url() }}">All</a></li>
-                    		{% for archive in archives.items %}
-		                        {% for month in archive.children %}
-		                            <li><a href="{{ month.link }}">{{ month.name }} {{ archive.name }}</a></li>
-		                        {% endfor %}
-	                    	{% endfor %}
-						</ul>
-					</div>
-				</nav><!-- //sidebar-box -->
-				#}
-			</div>
-		</div>
+		{% include 'partials/blocks/pagination-posts.twig' %}
 
 	</div><!-- //.container -->
 </section>

@@ -1,0 +1,102 @@
+{
+    "key": "group_60ef3a85b8f81",
+    "title": "[FLEX PATTERN] Accordion",
+    "fields": [
+        {
+            "key": "field_60ef3aa7c2020",
+            "label": "Section Headline",
+            "name": "section_headline",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_60ef3ac8c2021",
+            "label": "Accordion Panels",
+            "name": "accordion_panels",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "field_60ef3ad1c2022",
+            "min": 1,
+            "max": 0,
+            "layout": "block",
+            "button_label": "Add Accordion Panel",
+            "sub_fields": [
+                {
+                    "key": "field_60ef3ad1c2022",
+                    "label": "Panel Headline",
+                    "name": "panel_headline",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_60ef3adbc2023",
+                    "label": "Panel Content",
+                    "name": "panel_content",
+                    "type": "wysiwyg",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "tabs": "all",
+                    "toolbar": "full",
+                    "media_upload": 1,
+                    "delay": 0
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 200,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": false,
+    "description": "USED FOR CLONING",
+    "modified": 1626875829
+}

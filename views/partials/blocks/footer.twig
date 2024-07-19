@@ -1,0 +1,35 @@
+<footer class="site-footer">
+    <div class="container">
+
+        <div class="footer-top">
+            <div class="footer-top__info">
+                <a class="footer-logo" href="/" title="{{ site.name }}">{{ source('img/logo-onwhite.svg') }}</a>
+                {% if get_theme_setting('social') %}
+                    <div class="footer-social">
+                        {% for social in get_theme_setting('social') %}
+                            <a href="{{ social.url }}" title="{{ social.type }}" target="_blank">{{ source('img/social-icons/social-'~ social.type ~'.svg', ignore_missing = true) }}</a>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="footer-top__nav">
+                <ul>
+                    {% for top in primary_menu.get_items %}
+                        <li><a href="{{ top.get_path() }}">{{ top.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p class="copyright-line">&copy; {{ 'now' | date('Y') }} {{ site.name }}, All Rights Reserved. <a href="https://www.sitecrafting.com" target="_blank">Website Design and Development by SiteCrafting</a></p>
+            {% if get_theme_setting('copyright_links') %}
+            <p class="copyright-links">
+            {% for cplinks in get_theme_setting('copyright_links') %}
+                <a href="{{ cplinks.link.url }}" target="{{ cplinks.link.target }}">{{ cplinks.link.title }}</a>{{ loop.last ? '' : ' | ' }}
+            {% endfor %}
+            </p>
+            {% endif %}
+        </div>
+    </div>
+</footer>

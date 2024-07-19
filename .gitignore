@@ -19,4 +19,5 @@ config.codekit
 /*.zip
 /*.tar
 /*.tar.gz
+/*.sql.gz
 /groot-v*/

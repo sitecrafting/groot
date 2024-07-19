@@ -1,0 +1,13 @@
+<div popover role="dialog" id="popover-search" class="popover popover--search">
+        
+        <form role="search" method="get" class="popover-search-form" action="/" autocomplete="off">
+            <label for="p-search" class="h2">Search</label>
+            <div class="search-fields">
+                <input autofocus type="text" value="{{ search_query }}" name="s" id="p-search" placeholder="Enter search term..." autocomplete="off" />
+                <button type="submit" id="searchsubmit" class="btn" />search</button>
+            </div>
+        </form>
+
+        <button class="popover__close" popovertarget="popover-search" popovertargetaction="hide"><span>Close</span> {{ source('img/icons/icon-close.svg') }}</button>
+
+</div>

@@ -17,23 +17,23 @@ import { debounce } from 'throttle-debounce'
  */
 export default (($) => {
 
-  return function jQueryResponsiveNav( options ) {
+return function jQueryResponsiveNav( options ) {
 
     options = $.extend({}, {
-      wrapperSelector: '.site-wrapper',
-      menuButtonSelector: '.menu-btn',
-      menuOpenWrapperClass: 'menu-open',
-      activeClass: 'active',
-      dropdownSelector: '',
-      navType: 'offCanvas',
-      debounceTime: 150,
-      closeOnOutsideClick: false,
-      showTabsOnFocus: false,
+        wrapperSelector: '.site-wrapper',
+        menuButtonSelector: '.menu-btn',
+        menuOpenWrapperClass: 'menu-open',
+        activeClass: 'active',
+        dropdownSelector: '',
+        navType: 'offCanvas',
+        debounceTime: 150,
+        closeOnOutsideClick: false,
+        showTabsOnFocus: true,
     }, options)
 
     const $this = $(this),
-      $wrapper = $( options.wrapperSelector ),
-      $menuButton = $( options.menuButtonSelector )
+        $wrapper = $( options.wrapperSelector ),
+        $menuButton = $( options.menuButtonSelector )
 
     // target dropdown element, which may be distinct from $this
     const $dropdownElem = options.dropdownSelector ?
@@ -41,49 +41,49 @@ export default (($) => {
                             $this
 
     function _menuIsOpen() {
-      //site wrapper has the menu-open class
-      return $menuButton.hasClass( options.activeClass )
+        //site wrapper has the menu-open class
+        return $menuButton.hasClass( options.activeClass )
     }
 
     /*
     * CLOSE NAVIGATION SETUP
     */
     function _closeDropdownNav() {
-      $dropdownElem.slideUp()
+        $dropdownElem.slideUp()
     }
 
     function _closeOffCanvasNav() {
-      $wrapper.removeClass( options.menuOpenWrapperClass )
+        $wrapper.removeClass( options.menuOpenWrapperClass )
     }
 
     const closeNavStrategies = {
-      dropdown: _closeDropdownNav,
-      offCanvas: _closeOffCanvasNav,
+        dropdown: _closeDropdownNav,
+        offCanvas: _closeOffCanvasNav,
     }
 
     //set what type of closeNav we want
     const closeNavStrategy = closeNavStrategies[options.navType] || _closeOffCanvasNav
 
-    //THIS IS THE ACTUAL FUNCTIoN THAT GETS CALLED TO CLOSE THE NAV
+    //THIS IS THE ACTUAL FUNCTION THAT GETS CALLED TO CLOSE THE NAV
     function closeNav() {
-      closeNavStrategy()
-      $menuButton.removeClass( options.activeClass )
+        closeNavStrategy()
+        $menuButton.removeClass( options.activeClass )
     }
 
     /*
     * OPEN NAVIGATION SETUP
     */
     function _openDropdownNav() {
-      $dropdownElem.slideDown()
+        $dropdownElem.slideDown()
     }
 
     function _openOffCanvasNav() {
-      $wrapper.addClass( options.menuOpenWrapperClass )
+        $wrapper.addClass( options.menuOpenWrapperClass )
     }
 
     const openNavStrategies = {
-      dropdown: _openDropdownNav,
-      offCanvas: _openOffCanvasNav,
+        dropdown: _openDropdownNav,
+        offCanvas: _openOffCanvasNav,
     }
     //set what type of closeNav we want
     const openNavStrategy = openNavStrategies[options.navType] || _openOffCanvasNav
@@ -91,42 +91,40 @@ export default (($) => {
     //THIS IS THE ACTUAL FUNCTION THAT GETS CALLED TO OPEN THE NAV
     function openNav() {
 
-      openNavStrategy()
-      $menuButton.addClass( options.activeClass )
+        openNavStrategy();
+        $menuButton.addClass( options.activeClass );
 
-      if (options.closeOnOutsideClick) {
-        // close the menu when the user clicks anywhere outside it
-        $(options.wrapperSelector).on(
-          'touchstart, click',
-          function _onOutsideClick(evt) {
-            //if not nav container or a decendant of nav container
-            if( !$this.is(evt.target) && $this.has(evt.target).length === 0 ) {
-              closeNav()
-            }
-          })
-      }
+        if (options.closeOnOutsideClick) {
+            // close the menu when the user clicks anywhere outside it
+            $(options.wrapperSelector).on('touchstart, click', function _onOutsideClick(evt) {
+                //if not nav container or a decendant of nav container
+                if( !$this.is(evt.target) && $this.has(evt.target).length === 0 ) {
+                    closeNav();
+                }
+            });
+        }
     }
 
     //KEYBOARD FUNCTIONALITY
-    if (options.showTabsOnFocus) {
-      // Adding quick Tab Functionality for Navigation
-      $('nav.main-nav > ul > li.menu-item-has-children > a').focus( function () {
-        $(this).siblings('ul').addClass('tab-show')
-      }).blur(function(){
-        $(this).siblings('ul').removeClass('tab-show')
-      })
+    if( options.showTabsOnFocus ) {
+        // Adding quick Tab Functionality for Navigation
+        $('nav.main-nav > ul > li.menu-item-has-children > a').on('focus', function () {
+            $(this).siblings('ul').addClass('tab-show');
+        }).on('blur',function(){
+            $(this).siblings('ul').removeClass('tab-show');
+        });
 
       // focusing on sub menu item show its dropdown
-      $('nav.main-nav > ul > li.menu-item-has-children > ul > li > a').focus( function () {
-        $(this).parent().parent('ul').addClass('tab-show')
-      }).blur(function(){
-        $(this).parent().parent('ul').removeClass('tab-show')
-      })
+        $('nav.main-nav > ul > li.menu-item-has-children > ul > li > a').on('focus', function () {
+            $(this).parent().parent('ul').addClass('tab-show');
+        }).on('blur',function(){
+            $(this).parent().parent('ul').removeClass('tab-show');
+        });
     }
 
     const sublevelNav = function() {
-		$this.find('span.main-nav__dropper').each(function(){
-			$(this).bind('touchstart, click', function(event) {
+		$this.find('.nav-expander').each(function(){
+			$(this).on('touchstart, click', function(event) {
 
 				event.stopPropagation();
 				event.preventDefault();
@@ -154,70 +152,59 @@ export default (($) => {
 	};//end sublevelNav
 
     const activeToggleFn = function(){
-      //on mobile check for active navigation and set open accordingly
-      if( $menuButton.is(':visible') ){
+        //on mobile check for active navigation and set open accordingly
+        if( $menuButton.is(':visible') ){
 
-        $this.find('ul.menu li.current_page_item, ul.menu li.current_page_ancestor').each(function(){
-          if( !$(this).hasClass('toggle') ){
-            $(this).addClass('toggle')
-          }
-          if( !$(this).children('ul').is(':visible') ){
-            $(this).children('ul').show()
-          }
-        })
-      }
+            $this.find('li.current_page_item, li.current_page_ancestor').each(function(){
+                if( !$(this).hasClass('toggle') ){
+                    $(this).addClass('toggle');
+                }
+                if( !$(this).children('ul').is(':visible') ){
+                    $(this).children('ul').show();
+                }
+            });
+        }
     } //end activeToggleFn
 
 
     $menuButton.on( 'touchstart, click', function(event) {
 
-      event.stopPropagation()
-      event.preventDefault()
+        event.stopPropagation();
+        event.preventDefault();
 
-      if ( _menuIsOpen() ) {
-        closeNav()
-      }
-      else{
-        openNav()
-      }
+        if ( _menuIsOpen() ) {
+            closeNav();
+        }
+        else{
+            openNav();
+        }
     }) //end button on
-
-    //ADD EXPANDER ICON
-    $this.find('li.menu-item-has-children > a').each(function(){
-      if( $(this).next('ul').length ) {
-        $(this).append('<span class="main-nav__dropper"></span>')
-      }
-    })
-
-    //IF DROPDOWN TYPE SET CLASSNAME
-    if( options.navType === 'dropdown' ){
-        $dropdownElem.addClass('main-nav-dropdown');
-    }
 
     sublevelNav()
     activeToggleFn()
 
-    $(window).resize( debounce(options.debounceTime, function() {
+    $(window).on('resize', debounce(options.debounceTime, function() {
 
-      if( !$menuButton.is(':visible') ) {
-        //close mobile menu
-        if ( _menuIsOpen() ) {
-          //closeNav() - we dont want to run the function cause we dont want all transitions with the dropdown
-          $menuButton.removeClass( options.activeClass );
-          $wrapper.removeClass( options.menuOpenWrapperClass );
-          $this.removeAttr('style');
+        if( !$menuButton.is(':visible') ) {
+            //close mobile menu
+            if ( _menuIsOpen() ) {
+                //closeNav() - we dont want to run the function cause we dont want all transitions with the dropdown
+                $menuButton.removeClass( options.activeClass );
+                $wrapper.removeClass( options.menuOpenWrapperClass );
+                $this.removeAttr('style');
+            }
+            //remove any inline styles from subnavigation
+            $this.find( 'ul' ).removeAttr( 'style' )
+            $this.find('.menu-item-has-children').removeClass('toggle')
+            $this.removeAttr('style')
         }
-        //remove any inline styles from subnavigation
-        $this.find( 'ul' ).removeAttr( 'style' )
-        $this.find('.menu-item-has-children').removeClass('toggle')
-        $this.removeAttr('style')
-      }
-      else{
-        activeToggleFn()
-      }
-    }))
+        else{
+            activeToggleFn()
+        }
 
-    return this
-  }
+    }));
+
+    return this;
+}
 
 })(jQuery)

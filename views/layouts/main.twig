@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html lang="en" class="no-js">
 <head>
 
 	<meta charset="utf-8" />
@@ -7,47 +7,30 @@
 
 	<title>{% block title %}{{ wp_title }}{% endblock %}</title>
 
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 	<link rel="shortcut icon" type="image/png" href="{{ img_url('favicon.png') }}">
 	<link rel="apple-touch-icon" href="{{ img_url('favicon-76.png') }}" sizes="76x76">
 	<link rel="apple-touch-icon" href="{{ img_url('favicon-120.png') }}" sizes="120x120">
 	<link rel="apple-touch-icon" href="{{ img_url('favicon-152.png') }}" sizes="152x152">
 
-	{{ fn('wp_head') }}
+    {# GOOGLE FONT #}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+	{{ wp_head }}
 
 </head>
 <body class="{{ body_classes | join(' ') }}">
 
-{# necessary for tag manager plugin custom setting #}
+{# necessary for tag manager plugin manually coded custom setting #}
 {{ gtm4wp_the_gtm_tag() }}
 
 <div class="site-wrapper"><div class="site-pusher">
 
 	{% block header %}
-		<header class="site-header" itemscope itemtype="http://schema.org/Organization">
-			<div class="container">
-
-				<a class="logo" href="/" title="{{ site.name }}" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-					<img src="{{ img_url('logo.svg') }}" alt="{{ site.name }}" />
-					<!-- Rich Snippet/schema.org markup about this Organization -->
-					<meta itemprop="url" content="{{ img_url('logo.svg') }}">
-					<meta itemprop="name" content="{{ site.name }}">
-					<meta itemprop="url" content="{{ site.url }}">
-					<meta itemprop="description" content="{{ site.description }}">
-				</a>
-
-				{# {{ get_search_form() }} #}
-
-				<a class="menu-btn">
-				    <div class="toggle"><span></span><span></span><span></span><span></span></div>
-				    <span>Menu</span>
-				</a>
-
-				{% include 'partials/nav.twig' with { menu: primary_menu } only %}
-
-			</div>
-		</header>
+		{% include 'partials/blocks/header.twig' %}
 	{% endblock %}
 
 	<main class="site-main">
@@ -57,22 +40,12 @@
 	</main>
 
 	{% block footer %}
-		<footer class="site-footer outer-gutter">
-			<div class="container">
-				<p>&copy; {{ 'now' | date('Y') }} {{ site.name }}</p>
-				<div class="social">
-					<a href="#" title="facebook" target="_blank">{{ source('img/social-icons/streamline-social-facebook@20x20.svg') }}</a>
-					<a href="#" title="linkedin" target="_blank">{{ source('img/social-icons/streamline-social-linkedin@20x20.svg') }}</a>
-					<a href="#" title="twitter" target="_blank">{{ source('img/social-icons/streamline-social-twitter-bird@20x20.svg') }}</a>
-					<a href="#" title="youtube" target="_blank">{{ source('img/social-icons/streamline-social-youtube@20x20.svg') }}</a>
-					<a href="#" title="instagram" target="_blank">{{ source('img/social-icons/streamline-social-instagram@20x20.svg') }}</a>
-				</div>
-				<p><a href="https://www.sitecrafting.com" target="_blank">Website Design and Development by SiteCrafting</a></p>
-			</div>
-		</footer>
+		{% include 'partials/blocks/footer.twig' %}
 	{% endblock %}
 
-	{% include 'partials/popup-search.twig' %}
+    {% block inline_popups %}
+        {% include 'partials/blocks/popup-search.twig' %}
+    {% endblock %}
 
 </div></div><!-- //.site-pusher //.site-wrapper -->
 

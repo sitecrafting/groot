@@ -1,0 +1,80 @@
+.popover{
+	//position: relative;
+    //margin: 100px auto;
+    padding: 50px;
+	width: 100%;
+    max-width: 900px;
+    background-color: @white;
+
+    &::backdrop{ background-color: rgba(0,0,0,.7); }
+    
+}
+
+.popover--search{
+    max-width: 700px;
+}
+
+.popover-search-form{
+    label{ 
+        display: block;
+        margin: 0 0 15px; 
+    }
+}
+
+.popover__close{
+    -webkit-appearance: none;
+    background: transparent;
+    border: 0;
+	display: grid;
+    grid-template-columns: 1fr auto;
+    column-gap: 10px;
+    align-items: center;
+	position: absolute;
+    top: 20px;
+	right: 20px;
+	font: 700 1rem/1.2 @font-family-headings;
+	color: @black;
+    transition: all @trans-speed ease;
+    cursor: pointer;
+    z-index: 500;
+
+	svg polygon{ fill: currentColor; }
+	&:hover{
+		text-decoration: none;
+		color: @blue;
+	}
+}
+
+
+/*
+	JQUERY UI AUTOCOMPLETE HELP
+	USED IF SITKA SEARCH PLUGIN IS IN PLACE FOR SEARCHING
+*/
+//ul dropdown
+.ui-autocomplete{
+	z-index: 9999;
+	max-height: 200px;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+    overflow-x: hidden;
+}
+.ui-widget-content{
+	border: 1px solid @gray-cc;
+	background: @white;
+}
+.ui-widget{
+	font: 400 16px/1.4 @font-family-base;
+}
+.ui-menu{
+	padding: 5px;
+	.ui-menu-item{ padding: 5px; }
+}
+.ui-state-hover, 
+.ui-widget-content .ui-state-hover, 
+.ui-widget-header .ui-state-hover, 
+.ui-state-focus, 
+.ui-widget-content .ui-state-focus, 
+.ui-widget-header .ui-state-focus{
+	border: 0;
+	background: @gray-f3;
+}

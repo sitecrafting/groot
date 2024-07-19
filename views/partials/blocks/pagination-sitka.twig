@@ -1,0 +1,31 @@
+{#
+    Sitka Insights Pagination Theme Override
+    https://github.com/sitecrafting/sitka-insights-wordpress#pagination
+    To use this must have sitka-insights/pagination.php
+    <?php
+    use Timber\Timber;
+
+    return Timber::render('sitka-insights/pagination.twig', $data);
+    ?>
+#}
+<div class="post-pagination post-pagination--numbers">
+  {% for marker in paginator.page_markers(url_params) %}
+
+    {% if marker.previous %}
+      <a class="prev page-numbers" href="{{ paginator.previous_page_url(url_params) }}" rel="prev">{{ source('img/arrows/streamline-icon-arrow-left@20x20.svg') }} Previous</a>
+    {% endif %}
+
+    {% if marker.current %}
+      <span aria-current="page" class="page-numbers current">{{ marker.page_num }}</span>
+    {% elseif marker.filler %}
+      <span class="page-numbers dots">…</span>
+    {% elseif marker.page_num %}
+      <a class="page-numbers" href="{{ marker.url }}">{{ marker.page_num }}</a>
+    {% endif %}
+
+    {% if marker.next %}
+      <a class="next page-numbers" href="{{ paginator.next_page_url(url_params) }}" rel="next">Next {{ source('img/arrows/streamline-icon-arrow-right@20x20.svg') }}</a>
+    {% endif %}
+
+  {% endfor %}
+</div>

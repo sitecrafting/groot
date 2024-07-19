@@ -9,15 +9,12 @@ body{
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6{
-	line-height: @headings-line-height;
 	font-family: @font-family-headings;
 	font-weight: @headings-font-weight;
 	color: @headings-color;
+    line-height: 1.2;
+	margin-bottom: .5em;
 }
-
-h1, .h1{ margin: 0 0 30px 0; }
-h2, h3, .h2, .h3{ margin: 20px 0; }
-h4, h5, h6, .h4, .h5, .h6{ margin: 10px 0; }
 
 h1, .h1{ font-size: @font-size-h1; }
 h2, .h2{ font-size: @font-size-h2; }
@@ -28,42 +25,39 @@ h6, .h6{ font-size: @font-size-h6; }
 
 a {
     color: @link-color;
-    text-decoration: none;
-    transition: all @trans-speed ease;
-
-	&:hover{ text-decoration: underline; }
-
-	img{ border: 0; }
-
 }
 
 img{ max-width: 100%; height: auto !important; }
 
-p { margin: 20px 0; }
+@content-spacer: 1.25em;
 
-ol, ul{
-	margin: 25px;
-	li{
-		margin: 10px 0;
-		> ul,
-		> ol {
-			margin: 5px 0 10px 25px;
-		}
-	}
+* + *{ margin-top: @content-spacer; }
+
+h1,h2,h3,h4,h5,h6{
+    //let headline margin bottom control spacing
+    + p{ margin-top: 0; }
 }
 
-dd{ margin: 20px; }
-
-hr { border: 0; border-bottom: 1px solid @gray-f3; height: 0px; margin: 30px 0; padding: 0; width: 100%; }
-pre, code, blockquote {
-    padding: 30px;
-    background: @gray-f3;
+ol, ul{ 
+    padding-left: 20px; 
+    li{
+        &::marker{ color: @blue; font-weight: 700; }
+        + li{ margin-top: .5em; }
+    }
 }
 
-*:first-child{ margin-top: 0; }
-*:last-child{ margin-bottom: 0; }
+ul + p,
+ol + p{ margin-top: 2em; }
 
-.mceTemp + *{ margin-top: 0; } //anything after image insert
+pre,blockquote{
+    margin-top: 2em;
+    margin-bottom: 2em;
+    padding: 0.5em 1.5em;
+    border-left: 2px solid @blue;
+    font-size: (18/16rem);
+}
+
+hr{ margin: 1.875em 0; border: 0; border-top: 1px solid @gray-f3; }
 
 .alignleft {
 	display: block;
@@ -86,6 +80,6 @@ pre, code, blockquote {
 .wp-caption-dd{
     padding: 0;
     margin: 5px 0 0;
-    text-align: center;
-	font-size: @font-size-base - 4px;
+	text-align: center;
+	font-size: (14/16rem);
 }

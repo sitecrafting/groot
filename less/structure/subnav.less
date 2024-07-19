@@ -1,62 +1,87 @@
 .subnav{ 
-	@media @tablet-sml, @mobile-all{ 
-		display: none; 
+	position: relative;
+	background: @black;
+    z-index: 50;
 
-		&.subnav--filtering{ 
-			//margin-top: 30px;
-			padding-top: 30px;
-			border-top: 1px solid #ccc;
-			display: block;
-		 }
+	@media @mobile-all{
+		padding-top: 0;
+		padding-bottom: 0;
 	}
+
+	@media print{ display: none; }
 }
 
-.subnav__title{
-	margin: 0;
-	padding-bottom: 20px;
+.subnav__mobile-toggle{
+	display: none;
+	position: relative;
+	.outer-gutter();
+	padding-top: 15px;
+	padding-bottom: 15px;
+	color: @white;
+	font: 500 (18/16rem)/1.2 @font-family-headings;
+
+	svg{
+		float: right;
+		transition: all @trans-speed ease;
+		g path{ fill: @white; }
+	}
+
+	&:hover{ text-decoration: none; }
+	&.active{
+		svg{ transform: translateY(-50%) rotate(180deg); }
+	}
+
+	@media @mobile-all{ display: block; }
 }
 
 ul.subnav__menu{
 	.plain-list();
+	padding-top: 20px;
+	padding-bottom: 20px;
+	.outer-gutter();
+	text-align: center;
+	letter-spacing: 30px;
 	li{
-		margin: 0;
+		display: inline-block;
 		a{
 			display: block;
-			padding: 8px 0;
-			font: 700 16px/1.2 @font-family-headings;
-			text-transform: uppercase;
-			letter-spacing: .5px;
+			position: relative;
+			padding: 5px 0;
+			font: 700 1rem/1.2 @font-family-headings;
+			letter-spacing: normal;
+			color: @blue;
+
+			&:hover{
+				color: @white;
+				text-decoration: none;
+			}
 		}
 		&.current-menu-item, &.current-menu-ancestor, &:hover{
 			> a{ 
-				color: @black; 
+				color: @white;
 				text-decoration: none; 
 			}
 		}
 
-		//tertiary/3rd level nav
-		ul{
-			.plain-list();
-			margin-bottom: 10px;
-			li{
-				padding-left: 20px;
-
-				a{
-					font: 700 14px/1.2 @font-family-headings;
-					text-transform: none;
-				}
-
-				&.current-menu-item, &.current-menu-ancestor, &:hover {
-					> a {
-					background: none;
-					color: @blue;
-					text-decoration: underline;
-					}
-
-				}
-			}
-		}//end ul
-
 	}//end li
 
-}//end ul.side-menu
+	@media @mobile-all{
+		display: none;
+		text-align: left;
+		letter-spacing: normal;
+		padding-bottom: 15px;
+		background: @blue;
+		li{
+			display: block;
+			a{
+				padding: 8px 0;
+				color: @white;
+				&:before{ display: none; }
+			}
+			&.current-menu-item, &.current-menu-ancestor, &:hover{
+				a{ color: @black; }
+			}
+		}
+	}
+
+}//end ul.subnav__menu

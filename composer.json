@@ -21,16 +21,16 @@
         }
     ],
     "require": {
-        "php": ">=7.0"
+        "php": ">=7.0",
+        "timber/timber": "^2.1"
     },
     "require-dev": {
         "acobster/wp-cli-yaml-fixtures": "^0.6.0",
-        "johnpbloch/wordpress-core-installer": "^1.0",
-        "johnpbloch/wordpress-core": "5.5.1",
-        "mnsami/composer-custom-directory-installer": "^1.1",
-        "sitecrafting/conifer": "v1.0.0-alpha.01",
+        "johnpbloch/wordpress-core-installer": "^2.0",
+        "johnpbloch/wordpress-core": "^6.5.1",
+        "mnsami/composer-custom-directory-installer": "^2.0",
+        "sitecrafting/conifer": "v1.0.0-alpha.03",
         "squizlabs/php_codesniffer": "3.*",
-        "timber/timber": "dev-2.x-factories",
         "wp-coding-standards/wpcs": "^0.14"
     },
     "extra": {
@@ -41,6 +41,13 @@
     "autoload": {
         "psr-4": {
             "Project\\": "lib/Project/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true,
+            "johnpbloch/wordpress-core-installer": true,
+            "mnsami/composer-custom-directory-installer": true
         }
     }
 }

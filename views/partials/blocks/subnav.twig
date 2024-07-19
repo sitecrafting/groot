@@ -1,0 +1,15 @@
+{% if menu.get_current_top_level_item().get_children() %}
+<nav class="subnav">
+	<a href="javascript:void(0);" class="subnav__mobile-toggle">Sections {{ source('img/arrows/streamline-chevron-down@20x20.svg') }}</a>
+	<ul class="subnav__menu">
+		{% for item in menu.get_current_top_level_item().get_children() %}
+
+			<li class="{{ item.classes | join(' ') }}">
+				<a href="{{ item.get_path }}">{{ item.title }}</a>
+			</li>
+
+		{% endfor %}
+	</ul>
+
+</nav>
+{% endif %}
