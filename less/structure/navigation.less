@@ -73,6 +73,14 @@ ul.main-nav__third{
                     opacity: 1;
                 }
             }
+            &:nth-last-child(2) {
+                &:hover, &:focus-within{
+                    .main-nav__second{
+                        left: auto;
+                        right: -20px;
+                    }
+                }
+            }
         }
     }
     ul.main-nav__second{
@@ -89,7 +97,7 @@ ul.main-nav__third{
         > li{
             > a{
                 padding: 10px;
-			    &:hover{ background-color: @gray-f3; }
+                &:hover{ background-color: @gray-f3; }
             }
         }
     }
