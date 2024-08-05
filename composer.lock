@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a1dffb14d0814eb7098889637f33e9d1",
+    "content-hash": "9837f8ab3ce612c66bd2b6547db14a0e",
     "packages": [],
     "packages-dev": [
         {
@@ -63,12 +63,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/installers.git",
-                "reference": "2a9170263fcd9cc4fd0b50917293c21d6c1a5bfe"
+                "reference": "12fb2dfe5e16183de69e784a7b84046c43d97e8e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/2a9170263fcd9cc4fd0b50917293c21d6c1a5bfe",
-                "reference": "2a9170263fcd9cc4fd0b50917293c21d6c1a5bfe",
+                "url": "https://api.github.com/repos/composer/installers/zipball/12fb2dfe5e16183de69e784a7b84046c43d97e8e",
+                "reference": "12fb2dfe5e16183de69e784a7b84046c43d97e8e",
                 "shasum": ""
             },
             "require": {
@@ -76,12 +76,12 @@
                 "php": "^7.2 || ^8.0"
             },
             "require-dev": {
-                "composer/composer": "1.6.* || ^2.0",
-                "composer/semver": "^1 || ^3",
-                "phpstan/phpstan": "^0.12.55",
-                "phpstan/phpstan-phpunit": "^0.12.16",
-                "symfony/phpunit-bridge": "^5.3",
-                "symfony/process": "^5"
+                "composer/composer": "^1.10.27 || ^2.7",
+                "composer/semver": "^1.7.2 || ^3.4.0",
+                "phpstan/phpstan": "^1.11",
+                "phpstan/phpstan-phpunit": "^1",
+                "symfony/phpunit-bridge": "^7.1.1",
+                "symfony/process": "^5 || ^6 || ^7"
             },
             "default-branch": true,
             "type": "composer-plugin",
@@ -139,6 +139,7 @@
                 "cockpit",
                 "codeigniter",
                 "concrete5",
+                "concreteCMS",
                 "croogo",
                 "dokuwiki",
                 "drupal",
@@ -185,7 +186,7 @@
             ],
             "support": {
                 "issues": "https://github.com/composer/installers/issues",
-                "source": "https://github.com/composer/installers/tree/main"
+                "source": "https://github.com/composer/installers/tree/v2.3.0"
             },
             "funding": [
                 {
@@ -201,7 +202,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-10-12T12:07:30+00:00"
+            "time": "2024-06-24T20:46:46+00:00"
         },
         {
             "name": "greenlion/php-sql-parser",
@@ -209,12 +210,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/greenlion/PHP-SQL-Parser.git",
-                "reference": "c6cf851333c0c1968a9980672b1ecd91eeff4603"
+                "reference": "dec667f2d603d9461e0f193d5fa4d640674a8b0c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/greenlion/PHP-SQL-Parser/zipball/c6cf851333c0c1968a9980672b1ecd91eeff4603",
-                "reference": "c6cf851333c0c1968a9980672b1ecd91eeff4603",
+                "url": "https://api.github.com/repos/greenlion/PHP-SQL-Parser/zipball/dec667f2d603d9461e0f193d5fa4d640674a8b0c",
+                "reference": "dec667f2d603d9461e0f193d5fa4d640674a8b0c",
                 "shasum": ""
             },
             "require": {
@@ -262,7 +263,7 @@
                 "issues": "https://github.com/greenlion/PHP-SQL-Parser/issues",
                 "source": "https://github.com/greenlion/PHP-SQL-Parser"
             },
-            "time": "2023-03-13T19:13:30+00:00"
+            "time": "2023-12-18T00:03:32+00:00"
         },
         {
             "name": "ircmaxell/random-lib",
@@ -375,24 +376,24 @@
         },
         {
             "name": "johnpbloch/wordpress-core",
-            "version": "6.2.x-dev",
+            "version": "6.6.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnpbloch/wordpress-core.git",
-                "reference": "71e956f60e421efc4c099737fc6811b567849737"
+                "reference": "e2577b65804b4b0ed72b5b19fea78a935d8fb434"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/71e956f60e421efc4c099737fc6811b567849737",
-                "reference": "71e956f60e421efc4c099737fc6811b567849737",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/e2577b65804b4b0ed72b5b19fea78a935d8fb434",
+                "reference": "e2577b65804b4b0ed72b5b19fea78a935d8fb434",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "php": ">=5.6.20"
+                "php": ">=7.2.24"
             },
             "provide": {
-                "wordpress/core-implementation": "6.2.x-dev"
+                "wordpress/core-implementation": "6.6.x-dev"
             },
             "type": "wordpress-core",
             "notification-url": "https://packagist.org/downloads/",
@@ -419,7 +420,7 @@
                 "source": "https://core.trac.wordpress.org/browser",
                 "wiki": "https://codex.wordpress.org/"
             },
-            "time": "2023-05-20T06:21:44+00:00"
+            "time": "2024-07-18T19:45:58+00:00"
         },
         {
             "name": "johnpbloch/wordpress-core-installer",
@@ -608,13 +609,13 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "2dc7b5981488502fed92df99c1460530d741e666"
+                "url": "https://github.com/PHPCSStandards/PHP_CodeSniffer.git",
+                "reference": "9e73d47881eac6f66b4992d9cc53a8e3396b0897"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/2dc7b5981488502fed92df99c1460530d741e666",
-                "reference": "2dc7b5981488502fed92df99c1460530d741e666",
+                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/9e73d47881eac6f66b4992d9cc53a8e3396b0897",
+                "reference": "9e73d47881eac6f66b4992d9cc53a8e3396b0897",
                 "shasum": ""
             },
             "require": {
@@ -624,12 +625,12 @@
                 "php": ">=5.4.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^4.0 || ^5.0 || ^6.0 || ^7.0"
+                "phpunit/phpunit": "^4.0 || ^5.0 || ^6.0 || ^7.0 || ^8.0 || ^9.3.4"
             },
             "default-branch": true,
             "bin": [
-                "bin/phpcs",
-                "bin/phpcbf"
+                "bin/phpcbf",
+                "bin/phpcs"
             ],
             "type": "library",
             "extra": {
@@ -644,35 +645,58 @@
             "authors": [
                 {
                     "name": "Greg Sherwood",
-                    "role": "lead"
+                    "role": "Former lead"
+                },
+                {
+                    "name": "Juliette Reinders Folmer",
+                    "role": "Current lead"
+                },
+                {
+                    "name": "Contributors",
+                    "homepage": "https://github.com/PHPCSStandards/PHP_CodeSniffer/graphs/contributors"
                 }
             ],
             "description": "PHP_CodeSniffer tokenizes PHP, JavaScript and CSS files and detects violations of a defined set of coding standards.",
-            "homepage": "https://github.com/squizlabs/PHP_CodeSniffer",
+            "homepage": "https://github.com/PHPCSStandards/PHP_CodeSniffer",
             "keywords": [
                 "phpcs",
                 "standards",
                 "static analysis"
             ],
             "support": {
-                "issues": "https://github.com/squizlabs/PHP_CodeSniffer/issues",
-                "source": "https://github.com/squizlabs/PHP_CodeSniffer",
-                "wiki": "https://github.com/squizlabs/PHP_CodeSniffer/wiki"
+                "issues": "https://github.com/PHPCSStandards/PHP_CodeSniffer/issues",
+                "security": "https://github.com/PHPCSStandards/PHP_CodeSniffer/security/policy",
+                "source": "https://github.com/PHPCSStandards/PHP_CodeSniffer",
+                "wiki": "https://github.com/PHPCSStandards/PHP_CodeSniffer/wiki"
             },
-            "time": "2023-05-18T08:37:09+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/PHPCSStandards",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/jrfnl",
+                    "type": "github"
+                },
+                {
+                    "url": "https://opencollective.com/php_codesniffer",
+                    "type": "open_collective"
+                }
+            ],
+            "time": "2024-07-21T23:52:43+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
-            "version": "dev-main",
+            "version": "1.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-ctype.git",
-                "reference": "ea208ce43cbb04af6867b4fdddb1bdbf84cc28cb"
+                "reference": "0424dff1c58f028c451efff2045f5d92410bd540"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/ea208ce43cbb04af6867b4fdddb1bdbf84cc28cb",
-                "reference": "ea208ce43cbb04af6867b4fdddb1bdbf84cc28cb",
+                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/0424dff1c58f028c451efff2045f5d92410bd540",
+                "reference": "0424dff1c58f028c451efff2045f5d92410bd540",
                 "shasum": ""
             },
             "require": {
@@ -687,9 +711,6 @@
             "default-branch": true,
             "type": "library",
             "extra": {
-                "branch-alias": {
-                    "dev-main": "1.28-dev"
-                },
                 "thanks": {
                     "name": "symfony/polyfill",
                     "url": "https://github.com/symfony/polyfill"
@@ -726,7 +747,7 @@
                 "portable"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-ctype/tree/main"
+                "source": "https://github.com/symfony/polyfill-ctype/tree/v1.30.0"
             },
             "funding": [
                 {
@@ -742,7 +763,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-01-26T09:26:14+00:00"
+            "time": "2024-05-31T15:07:36+00:00"
         },
         {
             "name": "symfony/yaml",
@@ -862,15 +883,15 @@
         },
         {
             "name": "wpackagist-plugin/timber-library",
-            "version": "1.22.1",
+            "version": "1.23.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/timber-library/",
-                "reference": "tags/1.22.1"
+                "reference": "tags/1.23.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/timber-library.1.22.1.zip"
+                "url": "https://downloads.wordpress.org/plugin/timber-library.1.23.1.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
