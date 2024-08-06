@@ -4,12 +4,12 @@
 
         <a class="logo" href="/" title="{{ site.name }}">{{ source('img/logo-onwhite.svg') }}</a>
 
-        <button class="menu-btn">
+        <button aria-controls="main-navigation" aria-expanded="false" class="menu-btn">
             <div class="toggle"><span></span><span></span><span></span><span></span></div>
             <span>Menu</span>
         </button>
 
-        {% include 'partials/nav.twig' with { menu: primary_menu } only %}
+        {% include 'partials/blocks/nav.twig' with { menu: primary_menu } only %}
 
     </div>
 </header>
