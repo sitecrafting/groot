@@ -24,6 +24,7 @@ if (file_exists(realpath(ABSPATH.'../vendor/autoload.php'))) {
     require_once realpath(ABSPATH.'../vendor/autoload.php');
 }
 
+Timber::init();
 
 // autoload library files
 spl_autoload_register(function(string $class) {
@@ -81,14 +82,21 @@ $site->configure(function() {
         ]);
     });
 
-    /*
-    * Do the same thing for Menus and MenuItems.
-    */
-    add_filter('timber/menu/classmap', function() {
-        return Menu::class;
-    });
-    add_filter('timber/menuitem/classmap', function() {
-        return MenuItem::class;
+    add_filter('timber/menu/classmap', function ($classmap) {
+        $custom_classmap = [
+            'primary' => Menu::class,
+            'utility' => Menu::class,
+        ];
+        return array_merge($classmap, $custom_classmap);
+    }, 10);
+
+    add_filter('timber/menuitem/classmap', function ($classmap) {
+        $custom_classmap = [
+            'primary' => MenuItem::class,
+            'utility' => MenuItem::class, 
+        ];
+    
+        return array_merge($classmap, $custom_classmap);
     });
 
     $this->add_twig_helper(new ThemeTwigHelper());

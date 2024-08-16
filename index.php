@@ -3,11 +3,9 @@
  * Author: Coby Tamayo
  */
 
-use Timber\Archives;
 use Timber\Timber;
 
 use Conifer\Post\Page;
-use Conifer\Post\BlogPost;
 
 
 //blog page
@@ -52,12 +50,10 @@ if( is_tag() || is_category() ) {
 </nav><!-- //subnav-filter -->
 */
 
-//get pagination
-$pagination = Timber::get_pagination();
 
 
 // GET CONTEXT DATA
-$data = $site->context([
+$data = Timber::context([
 	'newsPage' => $newsPage,
 	'post' => $post,
 	'is_category' => $is_category,

@@ -10,7 +10,7 @@ $authorId = $GLOBALS['wp_query']->query_vars['author'];
 $user     = Timber::get_user($authorId);
 
 // Get common/site-wide data
-$data = $site->context([
+$data = Timber::context([
   // Treat author as "post" for navigation purposes
   'post'  => $user,
 ]);

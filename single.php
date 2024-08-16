@@ -5,6 +5,6 @@
 
 use Timber\Timber;
 
-$data = $site->context();
+$data = Timber::context();
 
 Timber::render( 'single.twig', $data );
