@@ -16,16 +16,17 @@
 				</div><!-- //byline -->
 
 				{% if post.thumbnail() %}
-<<<<<<< HEAD
+
 					{# Rich Snippet markup for the Featured Image. Note: Google won't display a Rich Snippet without one of these #}
-					<div class="feature-image" itemscope itemprop="image" itemtype="http://schema.org/ImageObject">
-						<img src="{{ post.thumbnail().src('gallery') }}" alt="{{ post.thumbnail().alt() | default(post.title) }}" itemprop="url">
-						<meta itemprop="width" content="{{ post.thumbnail().width('large') }}">
-						<meta itemprop="height" content="{{ post.thumbnail().height('large') }}">
-=======
+					{# <div class="feature-image" itemscope itemprop="image" itemtype="http://schema.org/ImageObject">
+						{% set image = get_image(post.thumbnail()) %}
+						<img src="{{ image.src('gallery') }}" srcset="{{ image.src('gallery')|retina(1) }} 1x, {{ image.src('gallery')|retina(2) }} 2x" alt="{{ image.alt() | default(post.title) }}" itemprop="url">
+						<meta itemprop="width" content="{{ image.width }}">
+						<meta itemprop="height" content="{{ image.height }}"> #}
+
 					<div class="feature-image">
-						<img loading="lazy" src="{{ Image(post.thumbnail()).src('gallery') }}" alt="{{ Image(post.thumbnail()).alt() | default(post.title) }}" width="950px" height="600px">
->>>>>>> master
+						{% set image = get_image(post.thumbnail()) %}
+						<img loading="lazy" src="{{ image.src('gallery') }}" srcset="{{ image.src('gallery')|retina(1) }} 1x, {{ image.src('gallery')|retina(2) }} 2x" alt="{{ image.alt() | default(post.title) }}" width="950px" height="600px">
 					</div>
 				{% endif %}
 

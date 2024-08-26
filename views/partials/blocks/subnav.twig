@@ -5,7 +5,7 @@
 		{% for item in menu.get_current_top_level_item().get_children() %}
 
 			<li class="{{ item.classes | join(' ') }}">
-				<a href="{{ item.get_path }}">{{ item.title }}</a>
+				<a href="{{ item.link }}">{{ item.title }}</a>
 			</li>
 
 		{% endfor %}

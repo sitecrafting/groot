@@ -15,7 +15,7 @@
             <div class="footer-top__nav">
                 <ul>
                     {% for top in primary_menu.get_items %}
-                        <li><a href="{{ top.get_path() }}">{{ top.title }}</a></li>
+                        <li><a href="{{ top.link }}">{{ top.title }}</a></li>
                     {% endfor %}
                 </ul>
             </div>

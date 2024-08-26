@@ -5,20 +5,20 @@
         {% for top in menu.get_items %}
             <li class="{{ top.classes | join(' ') }}">
 
-                <a href="{{ top.get_path() }}">{{ top.title }}{{ top.get_children ? '<button class="nav-expander"></button>' }}</a>
+                <a href="{{ top.link }}">{{ top.title }}{{ top.get_children ? '<button class="nav-expander"></button>' }}</a>
 
                 {# SECOND LEVEL #}
                 {% if top.children %}
                     <ul class="main-nav__second">
                         {% for second in top.get_children %}
                         <li class="{{ second.classes | join(' ') }}">
-                            <a href="{{ second.get_path() }}">{{ second.title }}{{ second.get_children ? '<button class="nav-expander"></button>' }}</a>
+                            <a href="{{ second.link }}">{{ second.title }}{{ second.get_children ? '<button class="nav-expander"></button>' }}</a>
 
                                 {# THIRD LEVEL - typically only displayed on mobile #}
                                 {% if second.get_children %}
                                     <ul class="main-nav__third">
                                         {% for third in second.get_children %}
-                                        <li class="{{third.classes | join(' ')}}"><a href="{{ third.get_path() }}">{{third.title}}</a></li>
+                                        <li class="{{third.classes | join(' ')}}"><a href="{{ third.link }}">{{third.title}}</a></li>
                                         {% endfor %}
                                     </ul>
                                 {% endif %}

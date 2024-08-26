@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bbe66b45788050a925c38b36004a930c",
+    "content-hash": "783b36a6cd629c6cb69c5fe1691fdc5c",
     "packages": [
         {
             "name": "composer/installers",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/installers.git",
-                "reference": "12fb2dfe5e16183de69e784a7b84046c43d97e8e"
+                "reference": "fad14ce68dd95e341b7768a311320a2c956ca42e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/12fb2dfe5e16183de69e784a7b84046c43d97e8e",
-                "reference": "12fb2dfe5e16183de69e784a7b84046c43d97e8e",
+                "url": "https://api.github.com/repos/composer/installers/zipball/fad14ce68dd95e341b7768a311320a2c956ca42e",
+                "reference": "fad14ce68dd95e341b7768a311320a2c956ca42e",
                 "shasum": ""
             },
             "require": {
@@ -25,12 +25,12 @@
                 "php": "^7.2 || ^8.0"
             },
             "require-dev": {
-                "composer/composer": "^1.10.27 || ^2.7",
-                "composer/semver": "^1.7.2 || ^3.4.0",
-                "phpstan/phpstan": "^1.11",
-                "phpstan/phpstan-phpunit": "^1",
-                "symfony/phpunit-bridge": "^7.1.1",
-                "symfony/process": "^5 || ^6 || ^7"
+                "composer/composer": "^1.10.27 || ^2.7.8",
+                "composer/semver": "^1.7.2 || ^3.4.2",
+                "phpstan/phpstan": "^1.11.11",
+                "phpstan/phpstan-phpunit": "^1.4",
+                "phpunit/phpunit": "^8.5.39 || ^9.6.20",
+                "symfony/process": "^5 || ^6 || ^7.1.3"
             },
             "default-branch": true,
             "type": "composer-plugin",
@@ -135,7 +135,7 @@
             ],
             "support": {
                 "issues": "https://github.com/composer/installers/issues",
-                "source": "https://github.com/composer/installers/tree/v2.3.0"
+                "source": "https://github.com/composer/installers/tree/main"
             },
             "funding": [
                 {
@@ -151,7 +151,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-06-24T20:46:46+00:00"
+            "time": "2024-08-23T14:47:58+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -639,16 +639,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "3.x-dev",
+            "version": "v3.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "1377f2da4efa020d2ad9b8fb8b722d688ab297ad"
+                "reference": "e80fb8ebba85c7341a97a9ebf825d7fd4b77708d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/1377f2da4efa020d2ad9b8fb8b722d688ab297ad",
-                "reference": "1377f2da4efa020d2ad9b8fb8b722d688ab297ad",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/e80fb8ebba85c7341a97a9ebf825d7fd4b77708d",
+                "reference": "e80fb8ebba85c7341a97a9ebf825d7fd4b77708d",
                 "shasum": ""
             },
             "require": {
@@ -663,7 +663,6 @@
                 "psr/container": "^1.0|^2.0",
                 "symfony/phpunit-bridge": "^5.4.9|^6.4|^7.0"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "files": [
@@ -704,7 +703,7 @@
             ],
             "support": {
                 "issues": "https://github.com/twigphp/Twig/issues",
-                "source": "https://github.com/twigphp/Twig/tree/3.x"
+                "source": "https://github.com/twigphp/Twig/tree/v3.11.0"
             },
             "funding": [
                 {
@@ -716,7 +715,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-07-14T11:59:09+00:00"
+            "time": "2024-08-08T16:15:16+00:00"
         }
     ],
     "packages-dev": [
@@ -946,12 +945,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnpbloch/wordpress-core.git",
-                "reference": "e2577b65804b4b0ed72b5b19fea78a935d8fb434"
+                "reference": "b1bde20a5af4a306e672df84be01d1ca7c548f5d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/e2577b65804b4b0ed72b5b19fea78a935d8fb434",
-                "reference": "e2577b65804b4b0ed72b5b19fea78a935d8fb434",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/b1bde20a5af4a306e672df84be01d1ca7c548f5d",
+                "reference": "b1bde20a5af4a306e672df84be01d1ca7c548f5d",
                 "shasum": ""
             },
             "require": {
@@ -986,7 +985,7 @@
                 "source": "https://core.trac.wordpress.org/browser",
                 "wiki": "https://codex.wordpress.org/"
             },
-            "time": "2024-07-18T19:45:58+00:00"
+            "time": "2024-08-20T14:26:56+00:00"
         },
         {
             "name": "johnpbloch/wordpress-core-installer",
@@ -1107,35 +1106,35 @@
         },
         {
             "name": "sitecrafting/conifer",
-            "version": "v1.0.0-alpha.03",
+            "version": "dev-timber-2.x",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sitecrafting/conifer.git",
-                "reference": "1bc63cc7cb8bdd0a9dc7d337a3384e1aa1c08f99"
+                "reference": "64f525d16a383aac829c648320dd8b811a12a334"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sitecrafting/conifer/zipball/1bc63cc7cb8bdd0a9dc7d337a3384e1aa1c08f99",
-                "reference": "1bc63cc7cb8bdd0a9dc7d337a3384e1aa1c08f99",
+                "url": "https://api.github.com/repos/sitecrafting/conifer/zipball/64f525d16a383aac829c648320dd8b811a12a334",
+                "reference": "64f525d16a383aac829c648320dd8b811a12a334",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.4"
+                "php": ">=7.2",
+                "timber/timber": "^2.1"
             },
             "require-dev": {
                 "10up/wp_mock": "dev-dev",
                 "acobster/wp-cli-yaml-fixtures": "^0.5.0",
                 "behat/behat": "^3.4",
-                "johnpbloch/wordpress-core": "5.5.1",
-                "johnpbloch/wordpress-core-installer": "^1.0",
+                "johnpbloch/wordpress-core": "6.5.5",
+                "johnpbloch/wordpress-core-installer": "dev-master",
                 "mikey179/vfsstream": "~1",
-                "mnsami/composer-custom-directory-installer": "^1.1",
+                "mnsami/composer-custom-directory-installer": "^2.0",
                 "paulthewalton/acf-stubs": "^5.8.7",
-                "phpunit/phpunit": "^6.0",
+                "phpunit/phpunit": "^8",
                 "sitecrafting/groot": "dev-timber-2.x",
                 "squizlabs/php_codesniffer": "3.*",
-                "szepeviktor/phpstan-wordpress": "^0.6.5",
-                "timber/timber": "dev-2.x-factories",
+                "szepeviktor/phpstan-wordpress": "^1.3",
                 "victorjonsson/markdowndocs": "dev-master",
                 "wp-coding-standards/wpcs": "^2.3"
             },
@@ -1168,9 +1167,9 @@
             "description": "Powerful abstractions for serious WordPress theme development",
             "support": {
                 "issues": "https://github.com/sitecrafting/conifer/issues",
-                "source": "https://github.com/sitecrafting/conifer/tree/v1.0.0-alpha.03"
+                "source": "https://github.com/sitecrafting/conifer/tree/timber-2.x"
             },
-            "time": "2020-12-03T00:28:30+00:00"
+            "time": "2024-08-16T17:18:56+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
@@ -1178,12 +1177,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPCSStandards/PHP_CodeSniffer.git",
-                "reference": "eb3454ffb8571db63515c400f84f62dfb3e46735"
+                "reference": "41a426cac70d410183189bc31c63f474f6f53548"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/eb3454ffb8571db63515c400f84f62dfb3e46735",
-                "reference": "eb3454ffb8571db63515c400f84f62dfb3e46735",
+                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/41a426cac70d410183189bc31c63f474f6f53548",
+                "reference": "41a426cac70d410183189bc31c63f474f6f53548",
                 "shasum": ""
             },
             "require": {
@@ -1251,7 +1250,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2024-07-19T18:50:09+00:00"
+            "time": "2024-08-17T17:43:40+00:00"
         },
         {
             "name": "symfony/yaml",
@@ -1372,7 +1371,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "sitecrafting/conifer": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
