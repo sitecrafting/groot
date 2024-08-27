@@ -2,12 +2,12 @@
 import 'fitvids.1.1.0'
 
 import './slideshows.js'
-import responsiveNav from './responsive-nav.jquery.js'
+import responsiveNav from './responsive-nav.js'
 import accordion from './jquery.accordion.js'
 
 (($) => {
 
-    $.fn.responsiveNav = responsiveNav
+    //$.fn.responsiveNav = responsiveNav
     $.fn.accordion = accordion
 
     const html = document.querySelector('html');
@@ -15,15 +15,23 @@ import accordion from './jquery.accordion.js'
     html.classList.add('js');
 
     // Make nav menu nice & responsive
-    $('nav.main-nav').responsiveNav({
-        navType: 'offCanvas',
-        closeOnOutsideClick: true
-    });
-	$('nav.subnav').responsiveNav({
-		navType: 'dropdown',
-		menuButtonSelector: '.subnav__mobile-toggle',
-		dropdownSelector: '.subnav__menu'
-	});
+    const mainNav = document.querySelector('nav.main-nav');
+    if( mainNav ){
+        responsiveNav(mainNav,{
+            navType: 'offCanvas',
+            closeOnOutsideClick: true
+        });
+    }
+
+    //Make subnav menu responsive
+    const subNav = document.querySelector('nav.subnav');
+    if(subNav){
+        responsiveNav(subNav,{
+            wrapperSelector: '.subnav-wrapper',
+            navType: 'dropdown',
+            menuButtonSelector: '.subnav-mobile-toggle'
+        });
+    }
 
     // Responsive Videos
     $('.rtecontent, .video').fitVids();
@@ -31,6 +39,7 @@ import accordion from './jquery.accordion.js'
     // Accordions
     $('dl.accordion').accordion();
 
+    //filter on change
     $('#categoryFilter').on('change',function(){
 		var catLink = $(this).val();
 		window.location = catLink;

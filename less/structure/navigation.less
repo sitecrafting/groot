@@ -1,274 +1,234 @@
-/****************
-*	1. mixin for showing desktop dropdown
-*	2. mobile menu dropper element +
-*	3. MAIN NAV (parent wrapper)
-*	4. First Level Menu
-*	5. Second Level Menu
-*	6. Third Level Menu (should only show for mobile when necessary)
-*******************/
-//styles for showing dropdown
-.show-dropdown(){
-	left: -20px;
-	opacity: 1;
-}
+button.nav-expander{ display: none; }
 
-//piece for mobile nav
-button.nav-expander{
-	display: none;
-	position: absolute;
-	top: 0;
-	right: -35px;
-	width: 35px;
-	height: 100%;
-	cursor: pointer;
-	z-index: 1050;
-    -webkit-appearance: none;
-    border: 0;
-    padding: 0;
-    background: transparent;
-
-	&:before, &:after{
-		content: "";
-		display: block;
-		position: absolute;
-		top: 45%;
-		right: 0;
-		width: 16px;
-		height: 2px;
-		background: @blue;
-	}
-	&:after{
-		transform: rotate(-90deg);
-		transition: all @trans-speed ease;
-	}
-	@media @mobile-menu{ display: block; }
-}//button.nav-expander
-
-
-//MAIN NAV WRAPPER
-nav.main-nav{
-    //off canvas - default
-	@media @mobile-menu{
-		position: absolute;
-		width: @off-canvas-width;
-		height: 100vh;
-        padding: 90px 20px 30px;
-		top: 0;
-		right: -(@off-canvas-width);
-		background: @white;
-        transition: transform .5s ease;
-        z-index: 1000;
-
-        .menu-open &{ transform: translateX(-100%); }
-	}
-    @media @mobile-all{
-        width: 80%;
-        right: -80%;
-    }
-}//nav.main-nav
-
-nav.main-nav--dropdown{
-    //modifier for when switching to dropdown style
-    @media @mobile-menu{
-        display: none;
-        width: 100%;
-        height: auto;
-        top: 100%;
-        left: 0;
-        right: 0;
-        padding: 20px @outer-gutter;
-        background: @white;
-        border-top: 1px solid @gray-f3;
-        box-shadow: 0 20px 20px 0 rgba(0,0,0,.5);
-        z-index: 800;
-    }
-    @media @mobile-sml{
-        padding: 20px @outer-gutter-m;
-    }
-}
-
-//FIRST LEVEL MENU
 ul.main-nav__menu{
-	.plain-list();
+    .plain-list();
+    display: flex;
+    gap: var(--gap, 2rem);
 
-	display: flex;
-	justify-content: flex-end;
-    column-gap: min(50px, 3.5vw);
-
-	> li{ //top level li
-		position: relative;
-
-		> a, &.nav-search-button button{
-			display: block;
-			padding: 10px 0;
-			font: 700 1rem/1.2 @font-family-headings;
+    > li{
+        position: relative;
+    
+        > a, &.nav-search-button button{
+            position: relative; 
+            display: block;
+            padding: 10px 0;
+            font: 700 1rem/1.2 @font-family-headings;
             color: @black;
             cursor: pointer;
-
-			&:hover{ text-decoration: none;}
-
-		}
-
-        &.nav-search-button{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            
-            button{
-                padding: 0;
-                -webkit-appearance: none;
-                background: transparent;
-                border: 0;
-                color: @black;
-                display: grid;
-                align-items: center;
-                grid-template-columns: auto 1fr;
-                column-gap: 10px;
-
-                svg{
-                    display: block;
-                    width: 24px; height: auto;
-                    path{ fill: currentColor; }
-                }
-                span{
-                    .visuallyhidden();
-                }
-                &:hover{ color: @blue; }
-            }
+    
+            &:hover{ text-decoration: none;}
+    
         }
-
-		//TOP ACTIVE STYLES
-		&:hover, &.current-menu-item, &.current-menu-ancestor{
-			> a{ color: @blue; }
-		}
-
-		//TOP HOVER STYLES
-		&:hover{
-			.main-nav__second{
-				.show-dropdown();
-			}
-		}
-
-		//LAST CHILD DROPDOWN FAVOR RIGHT EDGE SO IT DOESNT RUN OF SCREEN
-		&:last-child{
-			.main-nav__second.tab-show,
-			&:hover > .main-nav__second{ left: auto; right: 0; }
-		}
-
-	}//end li
-
-	@media @mobile-menu{
-		display: block;
-		> li{
-			padding: 0;
-			> a{
-				position: relative;
-				padding: 10px 0;
-			}
-            
-			&.menu-item-has-children{
-				> a{ margin-right: 35px; }
-				&.toggle{
-					> a > .nav-expander{
-						&:after{ opacity: 0; transform: rotate(0deg); }
-					}
-				}
-			}//end &.menu-item-has-children
-
-            &.nav-search-button{
-                justify-content: flex-start;
-                padding: 10px 0;
-                button{
-                    span{
-                        .undo-visuallyhidden();
-                    }
-                    svg{ width: 20px; }
-                }
+        &.nav-search-button button{
+            padding: 0;
+            border: 0;
+            background: transparent;
+            cursor: pointer;
+            svg{
+                display: block;
+                width: 24px; height: auto;
+                path{ fill: currentColor; }
             }
-		}
-	}
-}//end ul.main-nav__menu
+            &:hover{ color: @blue; }
+        }
+    
+        //TOP ACTIVE STYLES
+        &:hover, &.current-menu-item, &.current-menu-ancestor{
+            > a{ color: @blue; }
+        }
+    }
+}
 
-//second level
+
 ul.main-nav__second{
-	.plain-list();
-	position: absolute;
-	left: -9999em;
-	width: 240px;
-	margin: 0;
-	padding: 10px;
-
-	background: @white;
-	opacity: 0;
-	transition: opacity @trans-speed ease;
-	z-index: 1060;
-
-	> li{
+    .plain-list();
+    > li{
 		display: block;
 		> a{
 			position: relative;
 			display: block;
 			font: 700 (14/16rem)/1.2 @font-family-headings;
-			padding: 10px;
 			color: @black;
-			&:hover{ color: @blue; background-color: @gray-f3; text-decoration: none; }
+
+			&:hover{ color: @blue; text-decoration: none; }
 		}
 	}
+}
 
-	ul{ display: none; } //hide all other levels
+ul.main-nav__third{
+    display: none;
+}
 
-	&.tab-show{
-		.show-dropdown();
-	}
+//DESKTOP MENU VIEW
+@media @desktop-menu{
+    ul.main-nav__menu{
+        align-items: center;
+		> li{
+            &.nav-search-button button{
+                span{ .visuallyhidden(); }
+            }
+            &:hover, &:focus-within{
+                .main-nav__second{
+                    left: -20px;
+                    opacity: 1;
+                }
+            }
+            &:nth-last-child(2) {
+                &:hover, &:focus-within{
+                    .main-nav__second{
+                        left: auto;
+                        right: -20px;
+                    }
+                }
+            }
+        }
+    }
+    ul.main-nav__second{
+        position: absolute;
+        left: -9999em;
+        width: 240px;
+        padding: 10px;
 
-	@media @mobile-menu{
-        position: relative;
-        left: auto !important;
-        width: auto;
-        opacity: 1;
-        padding: 0 0 0 0;
-        margin: 0 0 10px 0;
-        background: none;
-        transform: none !important;
+        background: @white;
+        opacity: 0;
+        transition: opacity @trans-speed ease;
+        z-index: 1060;
 
+        > li{
+            > a{
+                padding: 10px;
+                &:hover{ background-color: @gray-f3; }
+            }
+        }
+    }
+}
+
+//MOBILE MENU VIEW
+@media @mobile-menu{
+
+    button.nav-expander{
+        display: block;
+        position: absolute;
+        top: 0;
+        right: -35px;
+        width: 35px;
+        height: 100%;
+        cursor: pointer;
+        z-index: 1050;
+        -webkit-appearance: none;
+        border: 0;
+        padding: 0;
+        background: transparent;
+    
+        &:before, &:after{
+            content: "";
+            display: block;
+            position: absolute;
+            top: 45%;
+            right: 0;
+            width: 16px;
+            height: 2px;
+            background: @blue;
+        }
+        &:after{
+            transform: rotate(-90deg);
+            transition: all @trans-speed ease;
+        }
+
+        &[aria-expanded="true"]{
+            &:after{ opacity: 0; transform: rotate(0deg); }
+        }
+
+    }//button.nav-expander
+
+    .main-nav{
+        padding: 120px 0;
+        position: absolute;
+        inset: 0 0 0 auto;
+        width: 0;
+        overflow: clip;
+        background: @white;
+        transition: width 350ms ease-out;
+        z-index: 9998;
+
+        &[data-visible="true"]{
+            width: 400px;
+        }
+
+    }
+    ul.main-nav__menu{
+        width: 400px;
+        padding: 0 25px;
+        flex-direction: column;
+        --gap: 1rem;
+
+        > li{
+            &.menu-item-has-children{
+				> a{ margin-right: 35px; }
+			}//end &.menu-item-has-children
+            &.nav-search-button button{
+                display: grid;
+                gap: 8px;
+                grid-template-columns: auto 1fr;
+                align-items: center;
+            }
+        }
+
+    }
+
+    ul.main-nav__second{
         //initial hide
         display: none;
+        height: 0;
+        overflow: hidden;
+        transition: height 300ms ease-in-out;
 
         > li{
             > a{
                 padding: 10px 0;
-                &:hover{ background-color: transparent; }
             }
             &.menu-item-has-children{
-                > a{
-                    margin-right: 35px;
-                    //> .nav-expander{ &:before, &:after{ top: 14px; } }
-                }
-            }
-            &.toggle{
-                > a > .nav-expander{
-                    &:after{ opacity: 0; transform: rotate(0deg); }
-                }
+				> a{ margin-right: 35px; }
             }
         }
 
-	}
-
-}//end second level ul
-
-
-//third level
-ul.main-nav__third{
-	.plain-list();
-    margin: 0 0 10px;
-	border-left: 2px solid @blue;
-	li{
-		a{
+        &[data-visible="true"]{
             display: block;
-			padding: 5px 0 5px 10px;
-			font: 700 (12/16rem)/1.2 @font-family-headings;
-			color: @black;
-			text-decoration: none;
-		}
-	}
+            height: auto;
+        }
+    }
+
+    //only shows on mobile
+    ul.main-nav__third{
+        .plain-list();
+        padding-left: 15px;
+        border-left: 2px solid @blue;
+
+        //initial hide
+        display: none;
+        height: 0;
+        overflow: hidden;
+        transition: height 300ms ease-in-out;
+
+        &[data-visible="true"]{
+            display: block;
+            height: auto;
+        }
+
+        > li{
+            a{
+                display: block;
+                font: 700 (14/16rem)/1.2 @font-family-headings;
+                padding: 5px 10px;
+                color: @black;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 28.4375em){
+    .main-nav[data-visible="true"],
+    ul.main-nav__menu{
+        width: 100vw;
+    }
 }

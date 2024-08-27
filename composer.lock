@@ -1110,12 +1110,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sitecrafting/conifer.git",
-                "reference": "64f525d16a383aac829c648320dd8b811a12a334"
+                "reference": "bfe52f9dc89fb3fdfa1d50c21acb72cf5ae731eb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sitecrafting/conifer/zipball/64f525d16a383aac829c648320dd8b811a12a334",
-                "reference": "64f525d16a383aac829c648320dd8b811a12a334",
+                "url": "https://api.github.com/repos/sitecrafting/conifer/zipball/bfe52f9dc89fb3fdfa1d50c21acb72cf5ae731eb",
+                "reference": "bfe52f9dc89fb3fdfa1d50c21acb72cf5ae731eb",
                 "shasum": ""
             },
             "require": {
@@ -1169,7 +1169,7 @@
                 "issues": "https://github.com/sitecrafting/conifer/issues",
                 "source": "https://github.com/sitecrafting/conifer/tree/timber-2.x"
             },
-            "time": "2024-08-16T17:18:56+00:00"
+            "time": "2024-08-27T14:29:45+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
