@@ -5,7 +5,7 @@
 
 use Timber\Timber;
 
-$data = Timber::get_context();
+$data = Timber::context();
 Timber::render( 'partials/blocks/searchform.twig', $data );
 
 ?>

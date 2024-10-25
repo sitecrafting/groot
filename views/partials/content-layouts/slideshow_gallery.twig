@@ -10,7 +10,8 @@
                 <div class="swiper-wrapper">
                     {% for slide in layout.gallery %}
                         <div class="swiper-slide">
-                            <img src="{{ Image(slide.id).src('gallery') }}" alt="{{ Image(slide.id).alt() }}" width="950px" height="600px">
+                            {% set slideImage = get_image(slide.id) %}
+                            <img src="{{ slideImage.src('gallery') }}" srcset="{{ slideImage.src('gallery')|retina(1) }} 1x, {{ slideImage.src('gallery')|retina(2) }} 2x" alt="{{ slideImage.alt() }}" width="950px" height="600px">
                             {% if slide.caption %}
                             <div class="slide-caption">{{ slide.caption | striptags }}</div>
                             {% endif %}
@@ -26,7 +27,8 @@
 
                 <div class="swiper-wrapper">
                     {% for slide in layout.gallery %}
-                        <div class="swiper-slide"><img src="{{ Image(slide.id).src('thumbnail') }}" alt="{{ Image(slide.id).alt() }}" width="140px" height="140px"></div>
+                        {% set slideImage = get_image(slide.id) %}
+                        <div class="swiper-slide"><img src="{{ slideImage.src('thumbnail') }}" srcset="{{ slideImage.src('thumbnail')|retina(1) }} 1x, {{ slideImage.src('thumbnail')|retina(2) }} 2x" alt="{{ slideImage.alt() }}" width="140px" height="140px"></div>
                     {% endfor %}
                 </div>
 

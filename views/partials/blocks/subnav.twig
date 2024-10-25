@@ -1,12 +1,12 @@
-{% if menu.get_current_top_level_item().get_children() %}
+{% if menu.get_current_top_level_item().children() %}
 <div class="subnav-wrapper">
     <button class="subnav-mobile-toggle">Sections {{ source('img/arrows/streamline-chevron-down@20x20.svg') }}</button>
     <nav class="subnav" data-visible="false">
         <ul class="subnav__menu">
-            {% for item in menu.get_current_top_level_item().get_children() %}
+            {% for item in menu.get_current_top_level_item().children() %}
 
                 <li class="{{ item.classes | join(' ') }}">
-                    <a href="{{ item.get_path }}">{{ item.title }}</a>
+                    <a href="{{ item.link }}">{{ item.title }}</a>
                 </li>
 
             {% endfor %}

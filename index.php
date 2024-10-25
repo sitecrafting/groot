@@ -3,11 +3,9 @@
  * Author: Coby Tamayo
  */
 
-use Timber\Archives;
 use Timber\Timber;
 
 use Conifer\Post\Page;
-use Conifer\Post\BlogPost;
 
 
 //blog page
@@ -20,7 +18,7 @@ $catQuery = '';
 if( is_tag() || is_category() ) {
 
 	// tag/category archive page
-	$post = new TimberTerm();
+	$post = Timber::get_term();
 	$is_category = true;
 
 	$catQuery = get_query_var('cat');
@@ -52,20 +50,17 @@ if( is_tag() || is_category() ) {
 </nav><!-- //subnav-filter -->
 */
 
-//get pagination
-$pagination = Timber::get_pagination();
 
 
 // GET CONTEXT DATA
-$data = $site->context([
+$data = Timber::context([
 	'newsPage' => $newsPage,
 	'post' => $post,
 	'is_category' => $is_category,
-	'posts' => BlogPost::get_all([
+	'posts' => Timber::get_posts([
 		'category__in'	=> $catQuery, 
 		'paged'			=> get_query_var('paged'),
 	]),
-	'pagination' => $pagination,
 	//'archives' => $archives
 ]);
 

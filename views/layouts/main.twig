@@ -19,7 +19,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
-	{{ wp_head }}
+	{{ fn('wp_head') }}
 
 </head>
 <body class="{{ body_classes | join(' ') }}">
@@ -50,7 +50,7 @@
 </div></div><!-- //.site-pusher //.site-wrapper -->
 
 {# everything below here is included automagically by WP #}
-{{ wp_footer }}
+{{ fn('wp_footer') }}
 
 
 </body>
