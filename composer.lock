@@ -4,8 +4,75 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5ad553baa156012d01c072afb34059b4",
+    "content-hash": "1cd300588e9be1f07afa3280d318a376",
     "packages": [
+        {
+            "name": "sitecrafting/conifer",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sitecrafting/conifer.git",
+                "reference": "2c5f921a610d690083d3a27c5a28e541e9f44831"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sitecrafting/conifer/zipball/2c5f921a610d690083d3a27c5a28e541e9f44831",
+                "reference": "2c5f921a610d690083d3a27c5a28e541e9f44831",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1",
+                "timber/timber": "^2.2"
+            },
+            "require-dev": {
+                "10up/wp_mock": "dev-dev",
+                "acobster/wp-cli-yaml-fixtures": "^0.5.0",
+                "behat/behat": "^3.4",
+                "johnpbloch/wordpress-core": "6.5.5",
+                "johnpbloch/wordpress-core-installer": "dev-master",
+                "mikey179/vfsstream": "~1",
+                "mnsami/composer-custom-directory-installer": "^2.0",
+                "paulthewalton/acf-stubs": "^5.8.7",
+                "phpunit/phpunit": "^8",
+                "sitecrafting/groot": "dev-timber-2.x",
+                "squizlabs/php_codesniffer": "3.*",
+                "szepeviktor/phpstan-wordpress": "^1.3",
+                "victorjonsson/markdowndocs": "dev-master",
+                "wp-coding-standards/wpcs": "^2.3"
+            },
+            "type": "library",
+            "extra": {
+                "wordpress-install-dir": {
+                    "johnpbloch/wordpress-core": "wp"
+                },
+                "installer-paths": {
+                    "wp/wp-content/themes/groot": [
+                        "sitecrafting/groot"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Conifer\\": "lib/Conifer/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Coby Tamayo",
+                    "email": "ctamayo@sitecrafting.com"
+                }
+            ],
+            "description": "Powerful abstractions for serious WordPress theme development",
+            "support": {
+                "issues": "https://github.com/sitecrafting/conifer/issues",
+                "source": "https://github.com/sitecrafting/conifer/tree/v1.0.0"
+            },
+            "time": "2024-10-25T19:57:53+00:00"
+        },
         {
             "name": "symfony/deprecation-contracts",
             "version": "dev-main",
@@ -421,12 +488,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "f3db1d1a0c5cc21fad255bd6690bbde16d378459"
+                "reference": "494f010d29bf86e600fed21ce1d8477b66c475da"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/f3db1d1a0c5cc21fad255bd6690bbde16d378459",
-                "reference": "f3db1d1a0c5cc21fad255bd6690bbde16d378459",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/494f010d29bf86e600fed21ce1d8477b66c475da",
+                "reference": "494f010d29bf86e600fed21ce1d8477b66c475da",
                 "shasum": ""
             },
             "require": {
@@ -493,7 +560,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-10-24T15:55:22+00:00"
+            "time": "2024-10-25T14:01:04+00:00"
         }
     ],
     "packages-dev": [
@@ -883,84 +950,17 @@
             "time": "2021-03-22T07:53:44+00:00"
         },
         {
-            "name": "sitecrafting/conifer",
-            "version": "dev-timber-2.x",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/sitecrafting/conifer.git",
-                "reference": "62a6abc7091a32d6dbcf2aa03229ec300089ef7d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/sitecrafting/conifer/zipball/62a6abc7091a32d6dbcf2aa03229ec300089ef7d",
-                "reference": "62a6abc7091a32d6dbcf2aa03229ec300089ef7d",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=8.1",
-                "timber/timber": "^2.2"
-            },
-            "require-dev": {
-                "10up/wp_mock": "dev-dev",
-                "acobster/wp-cli-yaml-fixtures": "^0.5.0",
-                "behat/behat": "^3.4",
-                "johnpbloch/wordpress-core": "6.5.5",
-                "johnpbloch/wordpress-core-installer": "dev-master",
-                "mikey179/vfsstream": "~1",
-                "mnsami/composer-custom-directory-installer": "^2.0",
-                "paulthewalton/acf-stubs": "^5.8.7",
-                "phpunit/phpunit": "^8",
-                "sitecrafting/groot": "dev-timber-2.x",
-                "squizlabs/php_codesniffer": "3.*",
-                "szepeviktor/phpstan-wordpress": "^1.3",
-                "victorjonsson/markdowndocs": "dev-master",
-                "wp-coding-standards/wpcs": "^2.3"
-            },
-            "type": "library",
-            "extra": {
-                "wordpress-install-dir": {
-                    "johnpbloch/wordpress-core": "wp"
-                },
-                "installer-paths": {
-                    "wp/wp-content/themes/groot": [
-                        "sitecrafting/groot"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Conifer\\": "lib/Conifer/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Coby Tamayo",
-                    "email": "ctamayo@sitecrafting.com"
-                }
-            ],
-            "description": "Powerful abstractions for serious WordPress theme development",
-            "support": {
-                "issues": "https://github.com/sitecrafting/conifer/issues",
-                "source": "https://github.com/sitecrafting/conifer/tree/timber-2.x"
-            },
-            "time": "2024-10-24T18:03:29+00:00"
-        },
-        {
             "name": "squizlabs/php_codesniffer",
             "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPCSStandards/PHP_CodeSniffer.git",
-                "reference": "9e60f9f8748736d3d06fea8ef26dccbdc5ba4902"
+                "reference": "3ba1affc58f5d493b1ff5bd3ca6ecbf683b9ac2a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/9e60f9f8748736d3d06fea8ef26dccbdc5ba4902",
-                "reference": "9e60f9f8748736d3d06fea8ef26dccbdc5ba4902",
+                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/3ba1affc58f5d493b1ff5bd3ca6ecbf683b9ac2a",
+                "reference": "3ba1affc58f5d493b1ff5bd3ca6ecbf683b9ac2a",
                 "shasum": ""
             },
             "require": {
@@ -1028,7 +1028,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2024-10-16T22:25:17+00:00"
+            "time": "2024-10-25T20:10:15+00:00"
         },
         {
             "name": "symfony/yaml",
@@ -1149,9 +1149,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "sitecrafting/conifer": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
