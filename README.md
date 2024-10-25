@@ -1,7 +1,5 @@
 # Groot
 
-> **THIS REPO IS IN ALPHA STATUS. ITS USE IN PRODUCTION IS NOT RECOMMENDED.**
-
 The official SiteCrafting WordPress starter theme.
 
 [![Build Status](https://travis-ci.org/sitecrafting/groot.svg?branch=master)](https://travis-ci.org/sitecrafting/groot)
