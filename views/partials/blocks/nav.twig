@@ -5,19 +5,19 @@
         {% for top in menu.get_items %}
             <li class="{{ top.classes | join(' ') }}">
 
-                <a href="{{ top.link }}">{{ top.title }}{{ top.get_children ? '<button class="nav-expander" aria-controls="sub-nav' ~ loop.index ~'" aria-expanded="false"><span class="sr-only">Expand Subnav</button>' }}</a>
+                <a href="{{ top.link }}">{{ top.title }}{{ top.children ? '<button class="nav-expander" aria-controls="sub-nav' ~ loop.index ~'" aria-expanded="false"><span class="sr-only">Expand Subnav</button>' }}</a>
 
                 {# SECOND LEVEL #}
-                {% if top.get_children %}
+                {% if top.children %}
                     <ul id="sub-nav{{ loop.index }}" class="main-nav__second" data-visible="false">
-                        {% for second in top.get_children %}
+                        {% for second in top.children %}
                         <li class="{{ second.classes | join(' ') }}">
-                            <a href="{{ second.link }}">{{ second.title }}{{ second.get_children ? '<button class="nav-expander"></button>' }}</a>
+                            <a href="{{ second.link }}">{{ second.title }}{{ second.children ? '<button class="nav-expander"></button>' }}</a>
 
                             {# THIRD LEVEL #}
-                            {% if second.get_children %}
+                            {% if second.children %}
                                 <ul id="sub-nav{{ loop.index }}" class="main-nav__third" data-visible="false">
-                                    {% for third in second.get_children %}
+                                    {% for third in second.children %}
                                     <li class="{{ third.classes | join(' ') }}">
                                         <a href="{{ third.link }}">{{ third.title }}</a>
                                     </li>
