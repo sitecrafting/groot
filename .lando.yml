@@ -27,8 +27,8 @@ services:
     type: node:14
 
     globals:
-      webpack: "^4.28"
-      yarn: "^1.22.5"
+      webpack: "latest"
+      yarn: "latest"
 
     run:
       - yarn
