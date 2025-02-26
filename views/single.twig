@@ -26,7 +26,7 @@
 
 					<div class="feature-image">
 						{% set image = get_image(post.thumbnail()) %}
-						<img loading="lazy" src="{{ image.src('gallery') }}" srcset="{{ image.src('gallery')|retina(1) }} 1x, {{ image.src('gallery')|retina(2) }} 2x" alt="{{ image.alt() | default(post.title) }}" width="950px" height="600px">
+						{% include 'partials/blocks/image.twig' with { image : image, crop: 'gallery' } %}
 					</div>
 				{% endif %}
 

@@ -13,7 +13,7 @@
         {% endif %}
 		<div class="card-article__image">
 			{% set image = get_image(post.thumbnail()) %}
-			<img loading="lazy" src="{{ image.src(cardCrop|default('thumbnail')) }}" srcset="{{ image.src(cardCrop|default('thumbnail'))|retina(1) }} 1x, {{ image.src(cardCrop|default('thumbnail'))|retina(2) }} 2x" alt="{{  image.alt() | default(post.title) }}" width="{{ imgW }}" height="{{ imgH }}">
+            {% include 'partials/blocks/image.twig' with { image : image, crop: cardCrop|default('thumbnail') } %}
 		</div>
 	{% endif %}
 	<div class="card-article__content">

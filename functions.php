@@ -278,14 +278,7 @@ $site->configure(function() {
         $ext = pathinfo( $file, PATHINFO_EXTENSION );
     
         $name    = wp_basename( $file, ".$ext" );
-        $new_ext = strtolower( $extension ? $extension : $ext );
-    
-        if ( ! is_null( $dest_path ) ) {
-            $_dest_path = realpath( $dest_path );
-            if ( $_dest_path ) {
-                $dir = $_dest_path;
-            }
-        }
+        $new_ext = $ext;
     
         return trailingslashit( $dir ) . "{$name}{$suffix}.{$new_ext}";
     }

@@ -11,7 +11,7 @@
                     {% for slide in layout.gallery %}
                         <div class="swiper-slide">
                             {% set slideImage = get_image(slide.id) %}
-                            <img src="{{ slideImage.src('gallery') }}" srcset="{{ slideImage.src('gallery')|retina(1) }} 1x, {{ slideImage.src('gallery')|retina(2) }} 2x" alt="{{ slideImage.alt() }}" width="950px" height="600px">
+                            {% include 'partials/blocks/image.twig' with { image : slideImage, crop: 'gallery' } %}
                             {% if slide.caption %}
                             <div class="slide-caption">{{ slide.caption | striptags }}</div>
                             {% endif %}
