@@ -6,18 +6,15 @@ ul.main-nav__menu{
     gap: var(--gap, 2rem);
 
     > li{
-        position: relative;
-    
-        > a, &.nav-search-button button{
-            position: relative; 
+        div{ position: relative; }
+        > div > a, &.nav-search-button button{
+            position: relative;
             display: block;
             padding: 10px 0;
             font: 700 1rem/1.2 @font-family-headings;
             color: @black;
             cursor: pointer;
-    
             &:hover{ text-decoration: none;}
-    
         }
         &.nav-search-button button{
             padding: 0;
@@ -34,7 +31,7 @@ ul.main-nav__menu{
     
         //TOP ACTIVE STYLES
         &:hover, &.current-menu-item, &.current-menu-ancestor{
-            > a{ color: @blue; }
+            > div > a{ color: @blue; }
         }
     }
 }
@@ -44,7 +41,7 @@ ul.main-nav__second{
     .plain-list();
     > li{
 		display: block;
-		> a{
+		> div > a{
 			position: relative;
 			display: block;
 			font: 700 (14/16rem)/1.2 @font-family-headings;
@@ -95,7 +92,7 @@ ul.main-nav__third{
         z-index: 1060;
 
         > li{
-            > a{
+            > div > a{
                 padding: 10px;
                 &:hover{ background-color: @gray-f3; }
             }
@@ -110,7 +107,7 @@ ul.main-nav__third{
         display: block;
         position: absolute;
         top: 0;
-        right: -35px;
+        right: 0;
         width: 35px;
         height: 100%;
         cursor: pointer;
@@ -164,7 +161,7 @@ ul.main-nav__third{
 
         > li{
             &.menu-item-has-children{
-				> a{ margin-right: 35px; }
+				> div > a{ margin-right: 35px; }
 			}//end &.menu-item-has-children
             &.nav-search-button button{
                 display: grid;
@@ -184,11 +181,11 @@ ul.main-nav__third{
         transition: height 300ms ease-in-out;
 
         > li{
-            > a{
+            > div > a{
                 padding: 10px 0;
             }
             &.menu-item-has-children{
-				> a{ margin-right: 35px; }
+				> div > a{ margin-right: 35px; }
             }
         }
 

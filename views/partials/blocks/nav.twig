@@ -4,16 +4,19 @@
     <ul class="main-nav__menu">
         {% for top in menu.get_items %}
             <li class="{{ top.classes | join(' ') }}">
-
-                <a href="{{ top.link }}">{{ top.title }}{{ top.children ? '<button class="nav-expander" aria-controls="sub-nav' ~ loop.index ~'" aria-expanded="false"><span class="sr-only">Expand Subnav</button>' }}</a>
-
+                <div>
+                    <a href="{{ top.link }}">{{ top.title }}</a>
+                    {{ top.children ? '<button class="nav-expander" aria-controls="sub-nav' ~ loop.index ~'" aria-expanded="false"><span class="sr-only">Expand Subnav</button>' }}
+                </div>
                 {# SECOND LEVEL #}
                 {% if top.children %}
                     <ul id="sub-nav{{ loop.index }}" class="main-nav__second" data-visible="false">
                         {% for second in top.children %}
                         <li class="{{ second.classes | join(' ') }}">
-                            <a href="{{ second.link }}">{{ second.title }}{{ second.children ? '<button class="nav-expander"></button>' }}</a>
-
+                            <div>
+                                <a href="{{ second.link }}">{{ second.title }}</a>
+                                {{ second.children ? '<button class="nav-expander" aria-controls="sub-nav' ~ loop.index ~'" aria-expanded="false"><span class="sr-only">Expand Subnav</button>' }}
+                            </div>
                             {# THIRD LEVEL #}
                             {% if second.children %}
                                 <ul id="sub-nav{{ loop.index }}" class="main-nav__third" data-visible="false">
