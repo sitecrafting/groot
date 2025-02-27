@@ -6,6 +6,7 @@
             "key": "field_60ef3aa7c2020",
             "label": "Section Headline",
             "name": "section_headline",
+            "aria-label": "",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -22,9 +23,31 @@
             "maxlength": ""
         },
         {
+            "key": "field_67c0e1df2c861",
+            "label": "Section Content",
+            "name": "section_content",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "allow_in_bindings": 0,
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
             "key": "field_60ef3ac8c2021",
             "label": "Accordion Panels",
             "name": "accordion_panels",
+            "aria-label": "",
             "type": "repeater",
             "instructions": "",
             "required": 0,
@@ -39,11 +62,13 @@
             "max": 0,
             "layout": "block",
             "button_label": "Add Accordion Panel",
+            "rows_per_page": 20,
             "sub_fields": [
                 {
                     "key": "field_60ef3ad1c2022",
                     "label": "Panel Headline",
                     "name": "panel_headline",
+                    "aria-label": "",
                     "type": "text",
                     "instructions": "",
                     "required": 1,
@@ -57,12 +82,14 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "maxlength": ""
+                    "maxlength": "",
+                    "parent_repeater": "field_60ef3ac8c2021"
                 },
                 {
                     "key": "field_60ef3adbc2023",
                     "label": "Panel Content",
                     "name": "panel_content",
+                    "aria-label": "",
                     "type": "wysiwyg",
                     "instructions": "",
                     "required": 0,
@@ -76,7 +103,8 @@
                     "tabs": "all",
                     "toolbar": "full",
                     "media_upload": 1,
-                    "delay": 0
+                    "delay": 0,
+                    "parent_repeater": "field_60ef3ac8c2021"
                 }
             ]
         }
@@ -98,5 +126,6 @@
     "hide_on_screen": "",
     "active": false,
     "description": "USED FOR CLONING",
-    "modified": 1626875829
+    "show_in_rest": 0,
+    "modified": 1740694018
 }
