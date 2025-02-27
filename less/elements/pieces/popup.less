@@ -22,9 +22,7 @@
 }
 
 .popover__close{
-    -webkit-appearance: none;
-    background: transparent;
-    border: 0;
+    .button-reset();
 	display: grid;
     grid-template-columns: 1fr auto;
     column-gap: 10px;
@@ -35,7 +33,6 @@
 	font: 700 1rem/1.2 @font-family-headings;
 	color: @black;
     transition: all @trans-speed ease;
-    cursor: pointer;
     z-index: 500;
 
 	svg polygon{ fill: currentColor; }

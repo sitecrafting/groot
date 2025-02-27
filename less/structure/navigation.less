@@ -105,19 +105,14 @@ ul.main-nav__third{
 @media @mobile-menu{
 
     button.nav-expander{
+        .button-reset();
         display: block;
         position: absolute;
         top: 0;
         right: 0;
         width: 35px;
         height: 100%;
-        cursor: pointer;
         z-index: 1050;
-        -webkit-appearance: none;
-        border: 0;
-        padding: 0;
-        background: transparent;
-    
         &:before, &:after{
             content: "";
             display: block;
