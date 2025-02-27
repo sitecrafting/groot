@@ -6,6 +6,7 @@ ul.main-nav__menu{
     gap: var(--gap, 2rem);
 
     > li{
+        position: relative;
         div{ position: relative; }
         > div > a, &.nav-search-button button{
             position: relative;
@@ -14,7 +15,7 @@ ul.main-nav__menu{
             font: 700 1rem/1.2 @font-family-headings;
             color: @black;
             cursor: pointer;
-            &:hover{ text-decoration: none;}
+            &:hover{ text-decoration: none; }
         }
         &.nav-search-button button{
             padding: 0;
@@ -30,7 +31,7 @@ ul.main-nav__menu{
         }
     
         //TOP ACTIVE STYLES
-        &:hover, &.current-menu-item, &.current-menu-ancestor{
+        &:hover, &.current-menu-item, &.current-page-ancestor{
             > div > a{ color: @blue; }
         }
     }
