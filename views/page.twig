@@ -12,7 +12,7 @@
 
     {% include 'partials/content-layouts.twig' with { layouts: post.meta('default_layouts') } %}
 
-    {% if post.meta('include_call_to_action') %}
+    {% if post.meta('call_to_action_toggle') %}
         {% include 'partials/content-layouts/call_to_action.twig'
             with {
                 layout : post.meta('call_to_action')
