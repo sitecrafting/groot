@@ -1,7 +1,7 @@
 /* globals jQuery */
 //https://swiperjs.com/
 import Swiper from 'swiper';
-import {Navigation, Pagination, EffectFade, Parallax, A11y, Autoplay, FreeMode} from 'swiper/modules';
+import {Navigation, Pagination, EffectFade, Parallax, A11y, Autoplay, FreeMode, Thumbs} from 'swiper/modules';
 
 (($) => {
 
@@ -28,7 +28,7 @@ import {Navigation, Pagination, EffectFade, Parallax, A11y, Autoplay, FreeMode} 
     });
 
 
-    // //INTERIOR GALLERY w/ THUMBNAILS
+    //INTERIOR GALLERY w/ THUMBNAILS
     const galleries = document.querySelectorAll('.gallery');
 
     galleries.forEach((gallery, index) => {
@@ -47,7 +47,7 @@ import {Navigation, Pagination, EffectFade, Parallax, A11y, Autoplay, FreeMode} 
         });
 
         const galleryTop = new Swiper(slider, {
-            modules: [EffectFade,Navigation,A11y],
+            modules: [EffectFade,Navigation,A11y,Thumbs],
             loop: false,
             fadeEffect: { crossFade: true },
             effect: 'fade',
@@ -61,6 +61,5 @@ import {Navigation, Pagination, EffectFade, Parallax, A11y, Autoplay, FreeMode} 
         });
 
     });
-    
 
 })(jQuery)

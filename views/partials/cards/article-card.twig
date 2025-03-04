@@ -12,8 +12,7 @@
             {% set imgH = '150px' %}
         {% endif %}
 		<div class="card-article__image">
-			{% set image = get_image(post.thumbnail()) %}
-            {% include 'partials/blocks/image.twig' with { image : image, crop: cardCrop|default('thumbnail') } %}
+            {% include 'partials/blocks/image.twig' with { image : post.thumbnail(), crop: cardCrop|default('thumbnail') } %}
 		</div>
 	{% endif %}
 	<div class="card-article__content">
