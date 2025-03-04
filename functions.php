@@ -271,7 +271,7 @@ $site->configure(function() {
             }
         }    
     }
-    add_action( 'crop_thumbnails_before_crop', 'add_retina_for_cropped_thumbnails', 10, 4 );
+    add_action( 'crop_thumbnails_after_crop', 'add_retina_for_cropped_thumbnails', 10, 4 );
 
     function generate_retina_filename( $file, $suffix ) {
         $dir = pathinfo( $file, PATHINFO_DIRNAME );
