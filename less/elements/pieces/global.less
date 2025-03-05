@@ -43,11 +43,28 @@ a {
     color: @link-color;
     text-decoration: none;
     transition: all @trans-speed ease;
-        
+
     &:hover{ 
         .text-underline();
     }
+}
 
+.skip-to-content-link{
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 15px;
+    z-index: 101;
+    transform: translateY(-101%);
+
+    color: @white;
+    text-align: center;
+    font: 400 1rem/normal @font-family-base;
+    background: @blue;
+    text-decoration: none;
+    border-radius: 0 0 8px 0;
+
+    &:focus{ transform: translateY(0%); }
 }
 
 @content-spacer: 1.25em;

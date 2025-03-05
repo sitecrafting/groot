@@ -1,17 +1,16 @@
 <section class="pattern pattern--gallery">
     <div class="container container--md">
 
-		{% if layout.section_headline %}
-			<h2 class="pattern__headline">{{ layout.section_headline }}</h2>
-		{% endif %}
+        {% if layout.section_headline %}
+            <h2 class="pattern__headline">{{ layout.section_headline }}</h2>
+        {% endif %}
 
         <div class="gallery">
             <div class="swiper gallery__slideshow {{ layout.gallery|length > 1 ? ' js-gallery-slides' }}">
                 <div class="swiper-wrapper">
                     {% for slide in layout.gallery %}
                         <div class="swiper-slide">
-                            {% set slideImage = get_image(slide.id) %}
-                            <img src="{{ slideImage.src('gallery') }}" srcset="{{ slideImage.src('gallery')|retina(1) }} 1x, {{ slideImage.src('gallery')|retina(2) }} 2x" alt="{{ slideImage.alt() }}" width="950px" height="600px">
+                            {% include 'partials/blocks/image.twig' with { image : slide, crop: 'gallery' } %}
                             {% if slide.caption %}
                             <div class="slide-caption">{{ slide.caption | striptags }}</div>
                             {% endif %}
@@ -24,17 +23,15 @@
             </div><!-- //.swiper-container.gallery-slideshow -->
 
             <div class="swiper gallery__thumbs {{ layout.gallery|length > 1 ? ' js-gallery-thumbs' }}">
-
                 <div class="swiper-wrapper">
                     {% for slide in layout.gallery %}
-                        {% set slideImage = get_image(slide.id) %}
-                        <div class="swiper-slide"><img src="{{ slideImage.src('thumbnail') }}" srcset="{{ slideImage.src('thumbnail')|retina(1) }} 1x, {{ slideImage.src('thumbnail')|retina(2) }} 2x" alt="{{ slideImage.alt() }}" width="140px" height="140px"></div>
+                        <div class="swiper-slide">
+                            {% include 'partials/blocks/image.twig' with { image : slide, crop: 'thumbnail' } %}
+                        </div>
                     {% endfor %}
                 </div>
+            </div><!-- //.swiper-container.gallery-thumbs -->
+        </div><!-- //.gallery -->
 
-      </div><!-- //.swiper-container.gallery-thumbs -->
-		</div><!-- //.gallery -->
-
-
-  </div>
+    </div>
 </section>

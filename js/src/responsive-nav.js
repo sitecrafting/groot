@@ -161,7 +161,7 @@ export default function responsiveNav( thisNav, overwrites ) {
                     //close the sibling subnav
                     //siblingLi.querySelector(':scope > ul').setAttribute('data-visible', false);
                     _closeDropdownNav(siblingLi.querySelector(':scope > ul'));
-                    siblingLi.querySelector(':scope > a > .nav-expander').setAttribute('aria-expanded', false);
+                    siblingLi.querySelector(':scope > div > .nav-expander').setAttribute('aria-expanded', false);
                 }
             }
 

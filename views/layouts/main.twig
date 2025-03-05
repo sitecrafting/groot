@@ -27,13 +27,15 @@
 {# necessary for tag manager plugin manually coded custom setting #}
 {{ gtm4wp_the_gtm_tag() }}
 
+<a class="skip-to-content-link" href="#main">Skip to main content</a>
+
 <div class="site-wrapper"><div class="site-pusher">
 
 	{% block header %}
 		{% include 'partials/blocks/header.twig' %}
 	{% endblock %}
 
-	<main class="site-main">
+	<main id="main" class="site-main">
 		{% block main_content %}
 			Default main content
 		{% endblock %}

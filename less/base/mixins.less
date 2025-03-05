@@ -14,6 +14,15 @@
     text-decoration-thickness: ~"max(0.03em, 1px)";
 }
 
+.button-reset(){
+    background: transparent;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    cursor: pointer;
+}
+
 //helps smooth out text keeping it from looking to chunky especially light text on dark background
 .text-rendering(){
     text-rendering: optimizelegibility;
@@ -30,6 +39,15 @@
     left: 0;
     background: @color;
     opacity: @opacity;
+}
+
+//will need to add `position: relative;` to the card
+.card-hover(){
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+    }
 }
 
 // Center-align a block level element
