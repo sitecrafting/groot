@@ -18,7 +18,9 @@ export default (($) => {
     return function() {
 
         //VARIABLES
-        const $tabs = $('dl.accordion dt')
+        const $tabs = $('dl.accordion dt'),
+                    hashtag = window.location.hash,
+                    hashPanelId = window.location.hash.replace('#','');
 
         //FUNCTIONS
         const toggleAccPanelFn = function( $this_tab, $this_panel ){
@@ -41,6 +43,20 @@ export default (($) => {
             const this_panel = this_tab.next();
             toggleAccPanelFn(this_tab, this_panel);
         });
+
+        if( hashtag && $('dl.accordion dt button#'+hashPanelId).length>0 ){
+
+            const selected_tab = $('dl.accordion dt button#'+hashPanelId).closest('dt');
+            const selected_panel = selected_tab.next();
+            
+            //open panel
+            toggleAccPanelFn(selected_tab, selected_panel);
+
+            //we dont need to control the scroll, the hash/id set will do that for us
+
+        }
+
+
     }
 
 })(jQuery)
