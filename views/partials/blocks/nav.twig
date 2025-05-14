@@ -1,21 +1,23 @@
+{% set navCaret = source('img/arrows/streamline-chevron-down@20x20.svg') %}
+
 <nav id="main-navigation" data-visible="false" class="main-nav">
 {# <nav class="main-nav main-nav--dropdown"> #}
 
     <ul class="main-nav__menu">
         {% for top in menu.get_items %}
             <li class="{{ top.classes | join(' ') }}">
-                <div>
+                <div class="menu-item-wrapper">
                     <a href="{{ top.link }}"{{ top.target ? 'target="' ~ top.target ~'"' : '' }}>{{ top.title }}</a>
-                    {{ top.children ? '<button class="nav-expander" aria-controls="sub-nav' ~ loop.index ~'" aria-expanded="false"><span class="sr-only">Expand Subnav</button>' }}
+                    {{ top.children ? '<button class="nav-expander" aria-controls="sub-nav' ~ loop.index ~'" aria-expanded="false">' ~ navCaret ~'<span class="sr-only">Expand ' ~ top.title ~' Links</button>' }}
                 </div>
                 {# SECOND LEVEL #}
                 {% if top.children %}
                     <ul id="sub-nav{{ loop.index }}" class="main-nav__second" data-visible="false">
                         {% for second in top.children %}
                         <li class="{{ second.classes | join(' ') }}">
-                            <div>
+                            <div class="menu-item-wrapper">
                                 <a href="{{ second.link }}"{{ second.target ? 'target="' ~ second.target ~'"' : '' }}>{{ second.title }}</a>
-                                {{ second.children ? '<button class="nav-expander" aria-controls="sub-nav' ~ loop.index ~'" aria-expanded="false"><span class="sr-only">Expand Subnav</button>' }}
+                                {{ second.children ? '<button class="nav-expander" aria-controls="sub-nav' ~ loop.index ~'" aria-expanded="false">' ~ navCaret ~'<span class="sr-only">Expand '~ second.title ~' Links</button>' }}
                             </div>
                             {# THIRD LEVEL #}
                             {% if second.children %}
@@ -35,7 +37,7 @@
                 {# END SECOND LEVEL #}
             </li>
         {% endfor %}
-        <li class="nav-search-button"><button popovertarget="popover-search">{{ source('img/icons/icon-search.svg') }}<span>Search</span></button></li>
+        {# <li class="nav-search-button"><button popovertarget="popover-search">{{ source('img/icons/icon-search.svg') }}<span>Search</span></button></li> #}
     </ul>
 
 </nav>
