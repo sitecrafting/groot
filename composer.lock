@@ -56,7 +56,7 @@
             "description": "A generic function and convention to trigger deprecation notices",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/deprecation-contracts/tree/main"
+                "source": "https://github.com/symfony/deprecation-contracts/tree/v3.6.0-BETA1"
             },
             "funding": [
                 {
@@ -136,7 +136,7 @@
                 "portable"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-ctype/tree/v1.31.0"
+                "source": "https://github.com/symfony/polyfill-ctype/tree/v1.32.0"
             },
             "funding": [
                 {
@@ -218,7 +218,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-mbstring/tree/1.x"
+                "source": "https://github.com/symfony/polyfill-mbstring/tree/v1.32.0"
             },
             "funding": [
                 {
@@ -242,17 +242,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/timber/timber.git",
-                "reference": "b7e72e3fcb574ef2762d3d7620a7055760e2e971"
+                "reference": "08ce601167a03ed7a4fa7da740481c17ed650ef0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/timber/timber/zipball/b7e72e3fcb574ef2762d3d7620a7055760e2e971",
-                "reference": "b7e72e3fcb574ef2762d3d7620a7055760e2e971",
+                "url": "https://api.github.com/repos/timber/timber/zipball/08ce601167a03ed7a4fa7da740481c17ed650ef0",
+                "reference": "08ce601167a03ed7a4fa7da740481c17ed650ef0",
                 "shasum": ""
             },
             "require": {
                 "php": "^8.1",
-                "twig/twig": "^3.17"
+                "twig/twig": "^3.19"
             },
             "require-dev": {
                 "ergebnis/composer-normalize": "^2.28",
@@ -337,7 +337,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2025-02-07T09:19:46+00:00"
+            "time": "2025-05-13T13:41:56+00:00"
         },
         {
             "name": "twig/twig",
@@ -345,12 +345,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "fde4de9fd981912e702e205d54f52586b9840d03"
+                "reference": "b49e1cd401c37e49e7f9171f2eb7598be3775f0b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/fde4de9fd981912e702e205d54f52586b9840d03",
-                "reference": "fde4de9fd981912e702e205d54f52586b9840d03",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/b49e1cd401c37e49e7f9171f2eb7598be3775f0b",
+                "reference": "b49e1cd401c37e49e7f9171f2eb7598be3775f0b",
                 "shasum": ""
             },
             "require": {
@@ -417,7 +417,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-03-30T07:52:47+00:00"
+            "time": "2025-05-16T10:29:43+00:00"
         }
     ],
     "packages-dev": [
@@ -647,12 +647,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnpbloch/wordpress-core.git",
-                "reference": "073269b7ca874c4c833ac2d0624a2ccd1102ed3d"
+                "reference": "2cb1a97e9df9a96f0b5aacf4e40a3f01531805ca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/073269b7ca874c4c833ac2d0624a2ccd1102ed3d",
-                "reference": "073269b7ca874c4c833ac2d0624a2ccd1102ed3d",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/2cb1a97e9df9a96f0b5aacf4e40a3f01531805ca",
+                "reference": "2cb1a97e9df9a96f0b5aacf4e40a3f01531805ca",
                 "shasum": ""
             },
             "require": {
@@ -687,7 +687,7 @@
                 "source": "https://core.trac.wordpress.org/browser",
                 "wiki": "https://codex.wordpress.org/"
             },
-            "time": "2025-04-01T16:10:17+00:00"
+            "time": "2025-05-06T03:25:16+00:00"
         },
         {
             "name": "johnpbloch/wordpress-core-installer",
@@ -879,12 +879,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPCSStandards/PHP_CodeSniffer.git",
-                "reference": "eb6b059f6189e5e5fb45aec9bacf7c129b34581b"
+                "reference": "f5e7943d08c21e1e6537c3c8e911642bf9e2bbd9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/eb6b059f6189e5e5fb45aec9bacf7c129b34581b",
-                "reference": "eb6b059f6189e5e5fb45aec9bacf7c129b34581b",
+                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/f5e7943d08c21e1e6537c3c8e911642bf9e2bbd9",
+                "reference": "f5e7943d08c21e1e6537c3c8e911642bf9e2bbd9",
                 "shasum": ""
             },
             "require": {
@@ -956,7 +956,7 @@
                     "type": "thanks_dev"
                 }
             ],
-            "time": "2025-04-01T16:49:30+00:00"
+            "time": "2025-05-15T00:11:16+00:00"
         },
         {
             "name": "symfony/yaml",

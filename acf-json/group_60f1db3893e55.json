@@ -87,10 +87,11 @@
                 "class": "",
                 "id": ""
             },
-            "collapsed": "",
-            "min": 0,
-            "max": 3,
             "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
             "button_label": "Add Link",
             "rows_per_page": 20,
             "sub_fields": [
@@ -101,7 +102,7 @@
                     "aria-label": "",
                     "type": "link",
                     "instructions": "",
-                    "required": 0,
+                    "required": 1,
                     "conditional_logic": 0,
                     "wrapper": {
                         "width": "",
@@ -109,6 +110,7 @@
                         "id": ""
                     },
                     "return_format": "array",
+                    "allow_in_bindings": 1,
                     "parent_repeater": "field_60f1dc18c4a71"
                 }
             ]
@@ -132,5 +134,5 @@
     "active": true,
     "description": "THEME SETTINGS",
     "show_in_rest": 0,
-    "modified": 1740692067
+    "modified": 1747412059
 }
