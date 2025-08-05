@@ -37,38 +37,6 @@
                 "id": ""
             },
             "layouts": {
-                "5850715f04d8a": {
-                    "key": "5850715f04d8a",
-                    "name": "standard_content",
-                    "label": "Standard Content",
-                    "display": "block",
-                    "sub_fields": [
-                        {
-                            "key": "field_646689653259c",
-                            "label": "Standard Content Pattern",
-                            "name": "standard_content_pattern",
-                            "aria-label": "",
-                            "type": "clone",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "clone": [
-                                "group_60ef39e2aaca8"
-                            ],
-                            "display": "seamless",
-                            "layout": "block",
-                            "prefix_label": 0,
-                            "prefix_name": 0
-                        }
-                    ],
-                    "min": "",
-                    "max": ""
-                },
                 "5850718e602ef": {
                     "key": "5850718e602ef",
                     "name": "accordion",
@@ -101,16 +69,16 @@
                     "min": "",
                     "max": ""
                 },
-                "585073607be21": {
-                    "key": "585073607be21",
-                    "name": "slideshow_gallery",
-                    "label": "Slideshow Gallery",
+                "layout_6827647fa2346": {
+                    "key": "layout_6827647fa2346",
+                    "name": "call_to_action",
+                    "label": "Call To Action",
                     "display": "block",
                     "sub_fields": [
                         {
-                            "key": "field_6466896532673",
-                            "label": "Gallery Pattern",
-                            "name": "gallery_pattern",
+                            "key": "field_68276486a2349",
+                            "label": "Cloned Call To Action",
+                            "name": "cloned_call_to_action",
                             "aria-label": "",
                             "type": "clone",
                             "instructions": "",
@@ -122,7 +90,39 @@
                                 "id": ""
                             },
                             "clone": [
-                                "group_60ef3a1967a0b"
+                                "group_5ec53aa5b09e9"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "5850715f04d8a": {
+                    "key": "5850715f04d8a",
+                    "name": "standard_content",
+                    "label": "Standard Content",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_646689653259c",
+                            "label": "Standard Content Pattern",
+                            "name": "standard_content_pattern",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_60ef39e2aaca8"
                             ],
                             "display": "seamless",
                             "layout": "block",
@@ -137,74 +137,6 @@
             "min": "",
             "max": "",
             "button_label": "Add Layout"
-        },
-        {
-            "key": "field_6466896530455",
-            "label": "Call To Action",
-            "name": "call_to_action_toggle",
-            "aria-label": "",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "ui": 1,
-            "ui_on_text": "On",
-            "ui_off_text": "Off"
-        },
-        {
-            "key": "field_64668965304de",
-            "label": "Call To Action",
-            "name": "call_to_action",
-            "aria-label": "",
-            "type": "group",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_6466896530455",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "layout": "block",
-            "sub_fields": [
-                {
-                    "key": "field_646689653915a",
-                    "label": "CTA Pattern",
-                    "name": "cta_pattern",
-                    "aria-label": "",
-                    "type": "clone",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "clone": [
-                        "group_5ec53aa5b09e9"
-                    ],
-                    "display": "seamless",
-                    "layout": "block",
-                    "prefix_label": 0,
-                    "prefix_name": 0
-                }
-            ]
         }
     ],
     "location": [
@@ -233,5 +165,5 @@
     "active": true,
     "description": "DEFAULT TEMPLATE",
     "show_in_rest": 0,
-    "modified": 1685733810
+    "modified": 1747412138
 }
