@@ -145,7 +145,7 @@ export default function responsiveNav( thisNav, overwrites ) {
     }); //end button on
 
 
-    //funciton used for mobile only
+    //function used for mobile only
     function handleSubnavExpander(event){
         event.stopPropagation();
         event.preventDefault();

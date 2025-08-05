@@ -11,12 +11,13 @@ button.nav-expander{
         display: block; 
         width: 12px;
         height: auto;
+        transition: all @trans-speed ease-in-out;
         path{ fill: currentColor; }
     }
     
     &[aria-expanded="true"]{
         svg{
-            svg{ transform: scaleY(-1); }
+            transform: scaleY(-1);
         }
     }
 }//button.nav-expander
