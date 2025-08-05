@@ -201,21 +201,31 @@ ul.main-nav__third{
 @media @mobile-menu{
 
     .main-nav{
+        display: none;
         padding: 100px 0;
         position: absolute;
         inset: 0 0 0 auto;
         width: 0;
         overflow: clip;
         background: @white;
-        transition: width 350ms ease-out;
+        transition: display @trans-speed allow-discrete,
+                        width @trans-speed ease-in-out;
         z-index: 9998;
 
         &[data-visible="true"]{
+            display: block;
             width: 400px;
         }
     }
 
+    @starting-style{
+        .main-nav[data-visible="true"]{
+            width: 0;
+        }
+    }
+
     .main-nav--mobile-drop{
+        display: none;
         padding: 0;
         position: absolute;
         inset: 100% 0 auto 0;
@@ -323,5 +333,11 @@ ul.main-nav__third{
     .main-nav[data-visible="true"],
     ul.main-nav__menu{
         width: 100vw;
+    }
+
+    @starting-style{
+        .main-nav[data-visible="true"]{
+            width: 0;
+        }
     }
 }
