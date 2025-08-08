@@ -72,11 +72,6 @@ ul.main-nav__menu{
                 }
             }
         }
-    
-        //TOP ACTIVE STYLES
-        // &:hover, &.current-menu-item, &.current-page-ancestor{
-        //     > .menu-item-wrapper{ color: @blue; }
-        // }
     }//li
 }//ul.main-nav__menu
 
@@ -94,8 +89,6 @@ ul.main-nav__second{
                 padding: 8px 0;
                 font: 700 (14/16rem)/1.2 @font-family-headings;
                 color: @black;
-    
-                &:hover{ color: @blue; .text-underline(); }
             }
         } 
 	}
@@ -186,6 +179,14 @@ ul.main-nav__third{
         //make sure 3rd level expander is hidden if there is one
         .nav-expander{ display: none; }
 
+        > li{
+            > .menu-item-wrapper{
+                > a{
+                    &:hover{ .text-underline(); }
+                }
+            }
+        }
+
     }
 
     @starting-style{
@@ -273,6 +274,14 @@ ul.main-nav__third{
                 grid-template-columns: auto 1fr;
                 align-items: center;
             }
+
+            //TOP ACTIVE STYLES
+            &.current-menu-item, &.current-menu-ancestor{
+                > .menu-item-wrapper{
+                    > a{ .text-underline(); }
+                }
+            }
+
         }
 
 
@@ -293,6 +302,13 @@ ul.main-nav__third{
         > li{
             > .menu-item-wrapper > a{
                 padding: 10px 0;
+                &:hover{ text-decoration: none; }
+            }
+            //TOP ACTIVE STYLES
+            &.current-menu-item, &.current-menu-ancestor{
+                > .menu-item-wrapper{
+                    > a{ .text-underline(); }
+                }
             }
         }
 
@@ -325,6 +341,13 @@ ul.main-nav__third{
                 font: 700 (14/16rem)/1.2 @font-family-headings;
                 padding: 5px 10px;
                 color: @black;
+                &:hover{ text-decoration: none; }
+            }
+            //TOP ACTIVE STYLES
+            &.current-menu-item, &.current-menu-ancestor{
+                > .menu-item-wrapper{
+                    > a{ .text-underline(); }
+                }
             }
         }
     }

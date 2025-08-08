@@ -234,6 +234,35 @@ export default function responsiveNav( thisNav, overwrites ) {
         }
     }
 
+    // Helper to open subnavs for current-menu-ancestor items on mobile
+    function openCurrentAncestors() {
+        const ancestorItems = thisNav.querySelectorAll('li.current-menu-ancestor, li.current-menu-item');
+        ancestorItems.forEach(li => {
+            const expanderBtn = li.querySelector('.nav-expander');
+            const subNav = expanderBtn ? expanderBtn.parentElement.nextElementSibling : null;
+            if (expanderBtn && subNav && subNav.getAttribute('data-visible') === 'false') {
+                _openDropdownNav(subNav);
+                expanderBtn.setAttribute('aria-expanded', true);
+            }
+        });
+    }
+
+    // On resize, check menu type and act accordingly
+    function handleResize() {
+        if (mediaQuery.matches) {
+            // Desktop: close all subnavs
+            closeAllSubnavs();
+        } else {
+            // Mobile: open current-menu-ancestor subnavs
+            openCurrentAncestors();
+        }
+    }
+
+    // Listen for window resize
+    window.addEventListener('resize', handleResize);
+    // Initial check
+    handleResize();
+
     //button that controls subnav
     const subnavExpanders = thisNav.querySelectorAll('.nav-expander');
 
