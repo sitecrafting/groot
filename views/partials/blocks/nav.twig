@@ -16,6 +16,7 @@
                         <button class="nav-expander" aria-controls="sub-nav{{ top_index }}" aria-expanded="false">{{ navExpander }}<span class="sr-only">Expand {{ top.title }} Links</span></button>
                     {% endif %}
                 </div>
+
                 {# SECOND LEVEL #}
                 {% if top.children %}
                     <ul id="sub-nav{{ top_index }}" class="main-nav__second" data-visible="false">
@@ -27,6 +28,7 @@
                                     <button class="nav-expander" aria-controls="tertiary-nav{{ top_index }}_{{ loop.index }}" aria-expanded="false">{{ navExpander }}<span class="sr-only">Expand {{ second.title }} Links</span></button>
                                 {% endif %}
                             </div>
+
                             {# THIRD LEVEL #}
                             {% if second.children %}
                                 <ul id="tertiary-nav{{ top_index }}_{{ loop.index }}" class="main-nav__third" data-visible="false">
@@ -40,11 +42,13 @@
                                 </ul>
                             {% endif %}
                             {# END THIRD LEVEL #}
+                            
                         </li>
                         {% endfor %}
                     </ul>
                 {% endif %}
                 {# END SECOND LEVEL #}
+
             </li>
         {% endfor %}
         <li class="nav-search-button">
