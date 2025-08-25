@@ -11,10 +11,18 @@ import {Navigation, Pagination, EffectFade, Parallax, A11y, Autoplay, FreeMode, 
         effect: 'fade',
         loop: true,
         parallax: true,
-        autoplay:{
-            delay: 7000, //7 seconds per slide
-            disableOnInteraction: false
+        a11y: {
+            enabled: true,
+            prevSlideMessage: 'Previous slide',
+            nextSlideMessage: 'Next slide',
+            firstSlideMessage: 'First slide',
+            lastSlideMessage: 'Last slide',
+            paginationBulletMessage: 'Go to slide {{index}}'
         },
+        // autoplay:{
+        //     delay: 7000, //7 seconds per slide
+        //     disableOnInteraction: false
+        // },
         navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev'
@@ -51,6 +59,14 @@ import {Navigation, Pagination, EffectFade, Parallax, A11y, Autoplay, FreeMode, 
             loop: false,
             fadeEffect: { crossFade: true },
             effect: 'fade',
+            a11y: {
+                enabled: true,
+                prevSlideMessage: 'Previous slide',
+                nextSlideMessage: 'Next slide',
+                firstSlideMessage: 'First slide',
+                lastSlideMessage: 'Last slide',
+                paginationBulletMessage: 'Go to slide {{index}}'
+            },
             navigation: {
                 nextEl: next,
                 prevEl: prev,
