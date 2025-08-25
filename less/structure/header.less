@@ -2,19 +2,23 @@
 // HEADER STYLES
 //--------------------
 header.site-header{
+    //position: relative; //only use this if doing dropdown version of mobile menu
 	width: 100%;
 	background: @white;
 	.outer-gutter();
 
 	> .container{
 		display: flex;
-		align-items: center;
+        align-items: center;
 		justify-content: space-between;
-        padding: 30px 0;
 	}
 
 	.logo{
+        position: relative;
 		display: block;
+        margin: 24px 0;
+        z-index: 9999;
+        
 		img,svg{ display: block; }
 		&:hover{ text-decoration: none; }
 	}

@@ -18,6 +18,8 @@ import accordion from './jquery.accordion.js'
     const mainNav = document.querySelector('nav.main-nav');
     if( mainNav ){
         responsiveNav(mainNav,{
+            desktopEms: '81.25em', // size of screen for desktop menu, should match less media query for @desktop-menu
+            wrapperSelector: '.main-nav',
             navType: 'offCanvas',
             closeOnOutsideClick: true
         });

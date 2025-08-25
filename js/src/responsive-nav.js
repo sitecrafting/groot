@@ -1,5 +1,5 @@
 /**
-jQueryResponsiveNav module
+ResponsiveNav module
 
 Usage:
 
@@ -15,6 +15,7 @@ if( mainNav ){
 export default function responsiveNav( thisNav, overwrites ) {
 
     const defaultOptions = {
+        desktopEms: '81.25em', // 1240px
         wrapperSelector: '.site-wrapper',
         menuOpenWrapperClass: 'menu-open',
         menuButtonSelector: '.menu-btn',
@@ -22,20 +23,22 @@ export default function responsiveNav( thisNav, overwrites ) {
         dropdownSelector: '',
         closeOnOutsideClick: false,
     };
-
     let options = Object.assign({}, defaultOptions, overwrites);
+
+    // Define the media query for when we are on the desktop menu - used to control events on the subnav expander
+    const mediaQuery = window.matchMedia(`only screen and (min-width: ${options.desktopEms})`);
 
     let wrapper = document.querySelector(options.wrapperSelector ),
         menuButton = document.querySelector(options.menuButtonSelector);
         
-
     // target dropdown element (element that slides open), which may be distinct from thisNav
     let dropdownElem = options.dropdownSelector ? document.querySelector(options.dropdownSelector) : thisNav;
 
     function _menuIsOpen() {
-        //if the menubutton is marked as expended the menu is open
+        //if the menubutton is marked as expanded the menu is open
         return menuButton.getAttribute('aria-expanded') == 'true' ? true : false;
     }
+
 
     /*
     * CLOSE NAVIGATION SETUP
@@ -142,6 +145,7 @@ export default function responsiveNav( thisNav, overwrites ) {
     }); //end button on
 
 
+    //function used for mobile only
     function handleSubnavExpander(event){
         event.stopPropagation();
         event.preventDefault();
@@ -149,41 +153,150 @@ export default function responsiveNav( thisNav, overwrites ) {
         const expanderBtn = event.currentTarget;
         const subNav = expanderBtn.parentElement.nextElementSibling; //traverse up to the top level <a> tag then get the subnav ul which is a sibling
         const parentLi = expanderBtn.parentElement.parentElement;
-        const siblingLis = parentLi.parentElement.children; //gets all the siblings LIs including the current parent LI
         
-        //if its not visible - close other subnav - open this subnav
+        //if its not visible - open this subnav
         if( subNav.getAttribute('data-visible') == 'false' ){
-            //loop through and close siblings
-            for (let i = 0; i < siblingLis.length; i++) {
-                const siblingLi = siblingLis[i];
-                //check if subnav ul exists and its not our currently click subnav li
-                if( siblingLi !== parentLi && siblingLi.querySelector(':scope > ul') ){
-                    //close the sibling subnav
-                    //siblingLi.querySelector(':scope > ul').setAttribute('data-visible', false);
-                    _closeDropdownNav(siblingLi.querySelector(':scope > ul'));
-                    siblingLi.querySelector(':scope > div > .nav-expander').setAttribute('aria-expanded', false);
-                }
-            }
-
             //expand the current
-            //subNav.setAttribute('data-visible', true);
+
             _openDropdownNav(subNav);
+            //subNav.setAttribute('data-visible', true); this is already done in the _openDropdownNav function
             expanderBtn.setAttribute('aria-expanded', true);
 
         } else {
             //close the subnav
-            //subNav.setAttribute('data-visible', false);
             _closeDropdownNav(subNav);
+            //subNav.setAttribute('data-visible', false);
             expanderBtn.setAttribute('aria-expanded', false);
         }
 
     }
 
-    const subnavExpanders = thisNav.querySelectorAll('.nav-expander');
-    subnavExpanders.forEach(expander => {
-        expander.addEventListener('click', handleSubnavExpander);
-    });
+    // Function to close all subnavs
+    function closeAllSubnavs() {
+        const allSubnavs = thisNav.querySelectorAll('[data-visible="true"]');
+        allSubnavs.forEach(openSubNav => {
+            openSubNav.setAttribute('data-visible', false);
+            const siblingExpander = openSubNav.previousElementSibling.querySelector('.nav-expander');
+            if (siblingExpander) {
+                siblingExpander.setAttribute('aria-expanded', false);
+            }
+        });
 
+        // Remove event listeners after closing all subnavs
+        document.removeEventListener('keydown', handleEscapeKey);
+        document.removeEventListener('click', handleOutsideClick);
+    }
+    // Function to handle the escape key press
+    function handleEscapeKey(event) {
+        if (event.key === 'Escape') {
+            closeAllSubnavs();
+        }
+    }
+    // Function to handle clicking outside the navigation area
+    function handleOutsideClick(event) {
+        if (!thisNav.contains(event.target)) {
+            closeAllSubnavs();
+        }
+    }
+    function handleSubnavExpanderDesktop(event){
+        
+        if( event.key !== 'Enter' && event.key !== ' ') {
+            return;
+        }
+
+        event.stopPropagation();
+        event.preventDefault();
+
+        const expanderBtn = event.currentTarget;
+        const subNav = expanderBtn.parentElement.nextElementSibling;
+
+        //if its not visible - open this subnav
+        if( subNav.getAttribute('data-visible') == 'false' ){
+            //expand the current
+
+            //Close all other subnav and expanders
+            closeAllSubnavs();
+
+            document.addEventListener('keydown', handleEscapeKey);
+            document.addEventListener('click', handleOutsideClick);
+
+            //open this subnav
+            subNav.setAttribute('data-visible', true);
+            expanderBtn.setAttribute('aria-expanded', true);
+
+        } else {
+            //close the subnav
+            subNav.setAttribute('data-visible', false);
+            expanderBtn.setAttribute('aria-expanded', false);
+
+            document.removeEventListener('keydown', handleEscapeKey);
+            document.removeEventListener('click', handleOutsideClick);
+        }
+    }
+
+    // Helper to open subnavs for current-menu-ancestor items on mobile
+    function openCurrentAncestors() {
+        const ancestorItems = thisNav.querySelectorAll('li.current-menu-ancestor, li.current-menu-item');
+        ancestorItems.forEach(li => {
+            const expanderBtn = li.querySelector('.nav-expander');
+            const subNav = expanderBtn ? expanderBtn.parentElement.nextElementSibling : null;
+            if (expanderBtn && subNav && subNav.getAttribute('data-visible') === 'false') {
+                _openDropdownNav(subNav);
+                expanderBtn.setAttribute('aria-expanded', true);
+            }
+        });
+    }
+
+    // On resize, check menu type and act accordingly
+    function handleResize() {
+        if (mediaQuery.matches) {
+            // Desktop: close all subnavs
+            closeAllSubnavs();
+        } else {
+            // Mobile: open current-menu-ancestor subnavs
+            openCurrentAncestors();
+        }
+    }
+
+    // Listen for window resize
+    window.addEventListener('resize', handleResize);
+    // Initial check
+    handleResize();
+
+    //button that controls subnav
+    const subnavExpanders = thisNav.querySelectorAll('.nav-expander');
+
+    // Function to handle the behavior based on the media query
+    function handleMediaQueryChange(e) {
+        if (e.matches) {
+            // Media query matches Screen Size is desktop menu
+            
+            subnavExpanders.forEach(expander => {
+                /*
+                For each expander add the keydown listenter for desktop expanding
+                remove the click listener
+                */
+                expander.addEventListener('keydown', handleSubnavExpanderDesktop);
+                expander.removeEventListener('click', handleSubnavExpander);
+            });
+
+        } else {
+            // Media query does not match so its the mobile menu
+            subnavExpanders.forEach(expander => {
+                /*
+                for each expander remove the keydown listener for desktop
+                add the click listener for mobile
+                */
+                expander.removeEventListener('keydown', handleSubnavExpanderDesktop);
+                expander.addEventListener('click', handleSubnavExpander);
+            });
+        }
+    }
+
+    // Initial check for the media query
+    handleMediaQueryChange(mediaQuery);
+    // Listen for changes to the media query
+    mediaQuery.addEventListener('change', handleMediaQueryChange);
 
     return this;
 }
