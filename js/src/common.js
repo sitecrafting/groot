@@ -1,7 +1,6 @@
 /* globals jQuery */
 import 'fitvids.1.1.0'
 
-import './slideshows.js'
 import responsiveNav from './responsive-nav.js'
 import accordion from './jquery.accordion.js'
 
