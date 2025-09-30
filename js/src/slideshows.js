@@ -1,81 +1,38 @@
-/* globals jQuery */
 //https://swiperjs.com/
 import Swiper from 'swiper';
-import {Navigation, Pagination, EffectFade, Parallax, A11y, Autoplay, FreeMode, Thumbs} from 'swiper/modules';
+import {Navigation, Pagination, EffectFade, Parallax, A11y} from 'swiper/modules';
 
-(($) => {
+//import swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/effect-fade';
+import 'swiper/css/parallax';
+import 'swiper/css/a11y';
 
+const heroSlideshow = document.querySelector('.js-home-slideshow');
+
+if( heroSlideshow ){
     //MAIN HERO SLIDESHOW
-    const mainSwiper = new Swiper('.js-home-slideshow', {
-        modules: [EffectFade,Pagination,Navigation,Parallax,A11y,Autoplay],
+    const mainSwiper = new Swiper(heroSlideshow, {
+        modules: [EffectFade,Pagination,Navigation,Parallax,A11y],
         effect: 'fade',
-        loop: true,
+        loop: false,
         parallax: true,
         a11y: {
             enabled: true,
-            prevSlideMessage: 'Previous slide',
-            nextSlideMessage: 'Next slide',
-            firstSlideMessage: 'First slide',
-            lastSlideMessage: 'Last slide',
-            paginationBulletMessage: 'Go to slide {{index}}'
+            slideLabelMessage: 'Slide {{index}} of {{slidesLength}}',
         },
-        // autoplay:{
-        //     delay: 7000, //7 seconds per slide
-        //     disableOnInteraction: false
-        // },
         navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev'
+            addIcons: false,
+            nextEl: heroSlideshow.querySelector('.swiper-button-next'),
+            prevEl: heroSlideshow.querySelector('.swiper-button-prev')
         },
         pagination: {
-            el: '.swiper-pagination',
+            el: heroSlideshow.querySelector('.swiper-pagination'),
             type: 'bullets',
             hideOnclick: false,
             clickable: true
         }
     });
-
-
-    //INTERIOR GALLERY w/ THUMBNAILS
-    const galleries = document.querySelectorAll('.gallery');
-
-    galleries.forEach((gallery, index) => {
-
-        let slider = gallery.querySelector('.js-gallery-slides');
-        let thumbs = gallery.querySelector('.js-gallery-thumbs');
-        let prev = gallery.querySelector('.swiper-button-prev');
-        let next = gallery.querySelector('.swiper-button-next');
-
-        const galleryThumbs = new Swiper(thumbs, {
-            modules: [FreeMode],
-            spaceBetween: 10,
-            slidesPerView: 'auto',
-            loop: false,
-            freeMode: true
-        });
-
-        const galleryTop = new Swiper(slider, {
-            modules: [EffectFade,Navigation,A11y,Thumbs],
-            loop: false,
-            fadeEffect: { crossFade: true },
-            effect: 'fade',
-            a11y: {
-                enabled: true,
-                prevSlideMessage: 'Previous slide',
-                nextSlideMessage: 'Next slide',
-                firstSlideMessage: 'First slide',
-                lastSlideMessage: 'Last slide',
-                paginationBulletMessage: 'Go to slide {{index}}'
-            },
-            navigation: {
-                nextEl: next,
-                prevEl: prev,
-            },
-            thumbs: {
-                swiper: galleryThumbs,
-            },
-        });
-
-    });
-
-})(jQuery)
+}

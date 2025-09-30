@@ -1,2 +1,56 @@
-@media print{*{background:transparent!important;box-shadow:none!important;color:#000!important;text-shadow:none!important}@page{margin:2cm .5cm}a,a:visited{text-decoration:underline}blockquote,img,pre,tr{page-break-inside:avoid}h2,h3{page-break-after:avoid}h2,h3,p{orphans:3;widows:3}header{border-bottom:1px solid #ccc}header,header .container{height:auto}footer .social,header nav,nav.subnav{display:none}.btn{border:1px solid #ccc}}
+/*!************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/less-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./less/style-print.less ***!
+  \************************************************************************************************************************************************************************/
+@media print {
+  * {
+    text-shadow: none !important;
+    color: #000 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+  @page {
+    margin: 2cm 0.5cm;
+  }
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+  pre,
+  blockquote,
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+  header {
+    border-bottom: 1px solid #ccc;
+  }
+  header,
+  header .container {
+    height: auto;
+  }
+  header nav {
+    display: none;
+  }
+  nav.subnav {
+    display: none;
+  }
+  footer .social {
+    display: none;
+  }
+  .btn {
+    border: 1px solid #ccc;
+  }
+}
+
+
 /*# sourceMappingURL=print.css.map*/

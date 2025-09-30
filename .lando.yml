@@ -24,7 +24,7 @@ services:
     type: mysql
 
   node:
-    type: node:14
+    type: node:22
 
     globals:
       webpack: "latest"
