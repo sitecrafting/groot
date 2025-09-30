@@ -138,7 +138,7 @@ $site->configure(function() {
             ['file' => 'scripts.version']
         );
         
-        $this->enqueue_style('swiper-css', 'dist/slideshows.css', [], ['file' => 'scripts.version']);
+        $this->enqueue_style('swiper-css', 'dist/slideshows.css', [], ['file' => 'styles.version']);
         $this->enqueue_style('project-css', 'style.css', [], ['file' => 'styles.version']);
         $this->enqueue_style('project-print-css', 'print.css', [], ['file' => 'styles.version'], 'print');
 
