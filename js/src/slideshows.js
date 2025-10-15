@@ -1,72 +1,38 @@
-/* globals jQuery */
 //https://swiperjs.com/
-import Swiper, {Navigation, Pagination, EffectFade, Parallax, A11y,} from 'swiper';
+import Swiper from 'swiper';
+import {Navigation, Pagination, EffectFade, Parallax, A11y} from 'swiper/modules';
 
-Swiper.use([Navigation,Pagination,EffectFade,Parallax,A11y]);
+//import swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/effect-fade';
+import 'swiper/css/parallax';
+import 'swiper/css/a11y';
 
-(($) => {
+const heroSlideshow = document.querySelector('.js-home-slideshow');
 
+if( heroSlideshow ){
     //MAIN HERO SLIDESHOW
-    const mainSwiper = new Swiper('.js-home-slideshow', {
+    const mainSwiper = new Swiper(heroSlideshow, {
+        modules: [EffectFade,Pagination,Navigation,Parallax,A11y],
         effect: 'fade',
-        loop: true,
+        loop: false,
         parallax: true,
-        autoplay:{
-            delay: 7000, //7 seconds per slide
-            disableOnInteraction: false
+        a11y: {
+            enabled: true,
+            slideLabelMessage: 'Slide {{index}} of {{slidesLength}}',
         },
         navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev'
+            addIcons: false,
+            nextEl: heroSlideshow.querySelector('.swiper-button-next'),
+            prevEl: heroSlideshow.querySelector('.swiper-button-prev')
         },
         pagination: {
-            el: '.swiper-pagination',
+            el: heroSlideshow.querySelector('.swiper-pagination'),
             type: 'bullets',
             hideOnclick: false,
             clickable: true
         }
     });
-
-    //TESTIMONIAL SLIDESHOW
-	const testimonialSwiper = new Swiper('.js-testimonial-slideshow', {
-		loop: true,
-		pagination: {
-			el: '.swiper-pagination',
-			type: 'bullets',
-			hideOnclick: false,
-			clickable: true
-		}
-    });
-
-    // //INTERIOR GALLERY w/ THUMBNAILS
-    const galleries = document.querySelectorAll('.gallery');
-
-    galleries.forEach((gallery, index) => {
-
-        let slider = gallery.querySelector('.js-gallery-slides');
-        let thumbs = gallery.querySelector('.js-gallery-thumbs');
-
-        const galleryThumbs = new Swiper(thumbs, {
-            spaceBetween: 10,
-            slidesPerView: 'auto',
-            loop: false,
-            freeMode: true
-        });
-
-        const galleryTop = new Swiper(slider, {
-            loop: false,
-            fadeEffect: { crossFade: true },
-            effect: 'fade',
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            thumbs: {
-                swiper: galleryThumbs,
-            },
-        });
-
-    });
-    
-
-})(jQuery)
+}

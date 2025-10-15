@@ -7,19 +7,12 @@
 {# SIDE NAV #}
 {% include 'partials/blocks/subnav.twig' with { menu: primary_menu } %}
 
-{# FLEXIBLE LAYOUTS #}
-<div class="flex-patterns sitka-search-content-container">
+{# FLEXIBLE LAYOUTS 
+    * Standard Content
+    * Accordion
+    * CTA
+#}
+{% include 'partials/content-layouts.twig' with { layouts: post.meta('default_layouts') } %}
 
-    {% include 'partials/content-layouts.twig' with { layouts: post.meta('default_layouts') } %}
-
-    {% if post.meta('include_call_to_action') %}
-        {% include 'partials/content-layouts/call_to_action.twig'
-            with {
-                layout : post.meta('call_to_action')
-            }
-        %}
-    {% endif %}
-
-</div>
 
 {% endblock %}

@@ -1,52 +1,22 @@
-@import "../../../node_modules/swiper/swiper.less"; //core required swiper styles
-@import "../../../node_modules/swiper/modules/a11y/a11y.less"; //accessibility
-@import "../../../node_modules/swiper/modules/effect-fade/effect-fade.less"; //required for fade effect
-@import "../../../node_modules/swiper/modules/navigation/navigation.less"; //core navigation arrow styles
-@import "../../../node_modules/swiper/modules/pagination/pagination.less"; //core pagination styles
 
 /*===========================
     CUSTOMIZATIONS OF SWIPER MODULES
 =============================*/
+.swiper{
+    --swiper-theme-color: @blue;
 
-/* Arrow Styles */
-.swiper-button-prev,
-.swiper-button-next{
-    width: 50px;
-    height: 50px;
-    background: @blue;
-    transition: all @trans-speed ease;
-    color: @white;
-    &:after{
-        color: @white;
-        font-size: 20px;
-        line-height: 1;
-        font-family: 'swiper-icons';
-    }
-    &:hover{
-        background-color: darken(@blue, 10%);
-    }
-}
-.swiper-button-prev{ left: 0; }
-.swiper-button-next{ right: 0; }
+    //NAVIGATION
+    --swiper-navigation-size: 32px;
+    --swiper-navigation-sides-offset: 16px;
 
-/* Pagination Bullets */
-.swiper-pagination-bullets{
-    .swiper-pagination-bullet{
-        opacity: 1;
-        width: 10px;
-        height: 10px;
-        background: @gray-cc;
-        transition: all @trans-speed ease;
 
-        &-active{ background: @blue; }
-
-    }
-
-    //if bullets are clickable add a hover state
-    &.swiper-pagination-clickable{
-        .swiper-pagination-bullet{
-            &:hover{ background: @blue; }
-        }
-    }
+    //PAGINATION
+    //--swiper-pagination-top: auto; //default is auto, needed only if different
+    --swiper-pagination-bottom: 16px; //default is 8px
+    --swiper-pagination-bullet-inactive-color: @white; //default #000
+    --swiper-pagination-bullet-inactive-opacity: 0.8; //default 0.2
+    --swiper-pagination-bullet-size: 12px; //default 8
+    --swiper-pagination-bullet-horizontal-gap: 6px; //default 4
+    //--swiper-pagination-color: @blue; //default is theme color, needed only if different
 
 }

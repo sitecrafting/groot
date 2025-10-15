@@ -4,11 +4,10 @@
  */
 
 use Timber\Timber;
-use Conifer\Post\Post;
 
 global $wp_query;
 
-$data = $site->context([
+$data = Timber::context([
     'posts' => Timber::get_posts(),
     'search_total' => $wp_query->found_posts
 ]);

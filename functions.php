@@ -3,7 +3,11 @@ use Groot\PluginManager;
 use Conifer\Post\Image;
 use Conifer\Site;
 use Conifer\Navigation\Menu;
+use Conifer\Navigation\MenuItem;
+use Timber\Timber;
 
+use Project\Post\BlogPost;
+use Project\Post\FrontPage;
 use Project\Post\Page;
 use Project\Twig\ThemeTwigHelper;
 
@@ -11,6 +15,16 @@ use Project\Twig\ThemeTwigHelper;
 if (file_exists(__DIR__ . '/vendor/autoload.php')) {
     require_once __DIR__ . '/vendor/autoload.php';
 }
+
+if (file_exists(realpath(ABSPATH . '/vendor/autoload.php'))) {
+    require_once realpath(ABSPATH . '/vendor/autoload.php');
+}
+
+if (file_exists(realpath(ABSPATH.'../vendor/autoload.php'))) {
+    require_once realpath(ABSPATH.'../vendor/autoload.php');
+}
+
+Timber::init();
 
 // autoload library files
 spl_autoload_register(function(string $class) {
@@ -46,6 +60,45 @@ $site->configure(function() {
     * @groot config_callback
     */
 
+    /*
+     * Define our Timber Post Class Maps, telling Timber which class to instantiate
+     * for each given post_type.
+     *
+     * This is new in Timber 2.0.
+     * @see https://timber.github.io/docs/v2/guides/class-maps/
+     */
+    add_filter('timber/post/classmap', function(array $map) {
+        return array_merge($map, [
+            // For pages, instantiate a FrontPage for the globally configured home page,
+            // otherwise return a regular Page.
+            'page' => function(\WP_Post $page) {
+                static $homeId;
+                $homeId = $homeId ?? get_option('page_on_front');
+                return $page->ID === $homeId ? FrontPage::class : Page::class;
+            },
+            'post' => BlogPost::class,
+
+            // Custom post type mappings go here
+        ]);
+    });
+
+    add_filter('timber/menu/classmap', function ($classmap) {
+        $custom_classmap = [
+            'primary' => Menu::class,
+            'utility' => Menu::class,
+        ];
+        return array_merge($classmap, $custom_classmap);
+    }, 10);
+
+    add_filter('timber/menuitem/classmap', function ($classmap) {
+        $custom_classmap = [
+            'primary' => MenuItem::class,
+            'utility' => MenuItem::class, 
+        ];
+    
+        return array_merge($classmap, $custom_classmap);
+    });
+
     $this->add_twig_helper(new ThemeTwigHelper());
 
     add_theme_support( 'post-thumbnails' );
@@ -77,7 +130,15 @@ $site->configure(function() {
             ['jquery'],
             ['file' => 'scripts.version']
         );
+
+        $this->enqueue_script(
+            'project-slideshows',
+            'slideshows.js',
+            [],
+            ['file' => 'scripts.version']
+        );
         
+        $this->enqueue_style('swiper-css', 'dist/slideshows.css', [], ['file' => 'styles.version']);
         $this->enqueue_style('project-css', 'style.css', [], ['file' => 'styles.version']);
         $this->enqueue_style('project-print-css', 'print.css', [], ['file' => 'styles.version'], 'print');
 
@@ -89,14 +150,6 @@ $site->configure(function() {
     //remove unneccesary additional emoji scripts
     remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
     remove_action( 'wp_print_styles', 'print_emoji_styles' );
-
-    // Add an ACF-driven options page
-    if ( is_admin() && function_exists('acf_add_options_page') ) {
-        acf_add_options_page([
-            'page_title' => 'Theme Settings',
-            'menu_slug' => 'theme-settings',
-        ]);
-    }
 
     // disable default Gallery
     add_filter( 'use_default_gallery_style', '__return_false' );
@@ -125,10 +178,10 @@ $site->configure(function() {
         'utility'  => 'Utility Navigation',
     ]);
 
-    add_filter('timber_context', function(array $context) : array {
+    add_filter('timber/context', function(array $context) : array {
 
-        $context['primary_menu']     = new Menu('primary');
-        $context['utility_menu']      = new Menu('utility');
+        $context['primary_menu']    = Timber::get_menu('primary');
+        $context['utility_menu']    = Timber::get_menu('utility');
 
         return $context;
     });
@@ -169,74 +222,67 @@ $site->configure(function() {
 
     /** CROP THUMBNAILS PLUGIN - RETINA SUPPORT **/
     /**
- * 
- * Action for Crop Thumbnails plugin
- * Uses input crop data to generate retina size
- * 
- */
-function add_retina_for_cropped_thumbnails( $input, $croppedSize, $temporaryCopyFile, $currentFilePath ) {
+     * 
+     * Action for Crop Thumbnails plugin
+     * Uses input crop data to generate retina size
+     * 
+     */
+    function add_retina_for_cropped_thumbnails( $input, $croppedSize, $temporaryCopyFile, $currentFilePath ) {
 
-    $temporaryCopyFile = generate_retina_filename( $temporaryCopyFile, '@2x' );
-    $retina_file = generate_retina_filename( $currentFilePath, '@2x' );
+        $temporaryCopyFile = generate_retina_filename( $temporaryCopyFile, '@2x' );
+        $retina_file = generate_retina_filename( $currentFilePath, '@2x' );
 
-    $currentFilePathInfo = pathinfo($retina_file);
-    $currentFilePathInfo['basename'] = wp_basename($retina_file);//uses the i18n version of the file-basename
-    
-    $retina_w = $croppedSize['width'] * 2;
-    $retina_h = $croppedSize['height'] * 2;
-    
-    $cropped = wp_crop_image(						    // * @return string|WP_Error|false New filepath on success, WP_Error or false on failure.
-        $input->sourceImageId,							// * @param string|int $src The source file or Attachment ID.
-        $input->selection->x,							// * @param int $src_x The start x position to crop from.
-        $input->selection->y,							// * @param int $src_y The start y position to crop from.
-        $input->selection->x2 - $input->selection->x,	// * @param int $src_w The width to crop.
-        $input->selection->y2 - $input->selection->y,	// * @param int $src_h The height to crop.
-        $retina_w,							            // * @param int $dst_w The destination width.
-        $retina_h,							            // * @param int $dst_h The destination height.
-        false,											// * @param int $src_abs Optional. If the source crop points are absolute.
-        $temporaryCopyFile								// * @param string $dst_file Optional. The destination file to write to.
-    );
-    
-    // delete old file
-    $should_delete = apply_filters('crop_thumbnails_should_delete_old_file',
-        false, // default value
-        $input->activeImageSizes->name,
-        $input->activeImageSizes,
-        $cropped
-    );
+        $currentFilePathInfo = pathinfo($retina_file);
+        $currentFilePathInfo['basename'] = wp_basename($retina_file);//uses the i18n version of the file-basename
+        
+        $retina_w = $croppedSize['width'] * 2;
+        $retina_h = $croppedSize['height'] * 2;
+        
+        $cropped = wp_crop_image(						    // * @return string|WP_Error|false New filepath on success, WP_Error or false on failure.
+            $input->sourceImageId,							// * @param string|int $src The source file or Attachment ID.
+            $input->selection->x,							// * @param int $src_x The start x position to crop from.
+            $input->selection->y,							// * @param int $src_y The start y position to crop from.
+            $input->selection->x2 - $input->selection->x,	// * @param int $src_w The width to crop.
+            $input->selection->y2 - $input->selection->y,	// * @param int $src_h The height to crop.
+            $retina_w,							            // * @param int $dst_w The destination width.
+            $retina_h,							            // * @param int $dst_h The destination height.
+            false,											// * @param int $src_abs Optional. If the source crop points are absolute.
+            $temporaryCopyFile								// * @param string $dst_file Optional. The destination file to write to.
+        );
+        
+        // delete old file
+        $should_delete = apply_filters('crop_thumbnails_should_delete_old_file',
+            false, // default value
+            $input->activeImageSizes->name,
+            $input->activeImageSizes,
+            $cropped
+        );
 
-    $_error = false;
-    if( !empty($cropped) ) {
-        if( $should_delete ) {
-            @unlink($currentFilePathInfo['dirname'].DIRECTORY_SEPARATOR.$currentFilePathInfo['basename']);
-        }
-        if(!@copy($cropped, $retina_file)) {
-            $_error = true;
-        }
-        if(!@unlink($cropped)) {
-            $_error = true;
-        }
-    }    
-}
-add_action( 'crop_thumbnails_before_crop', 'add_retina_for_cropped_thumbnails', 10, 4 );
-
-function generate_retina_filename( $file, $suffix ) {
-    $dir = pathinfo( $file, PATHINFO_DIRNAME );
-    $ext = pathinfo( $file, PATHINFO_EXTENSION );
- 
-    $name    = wp_basename( $file, ".$ext" );
-    $new_ext = strtolower( $extension ? $extension : $ext );
- 
-    if ( ! is_null( $dest_path ) ) {
-        $_dest_path = realpath( $dest_path );
-        if ( $_dest_path ) {
-            $dir = $_dest_path;
-        }
+        $_error = false;
+        if( !empty($cropped) ) {
+            if( $should_delete ) {
+                @unlink($currentFilePathInfo['dirname'].DIRECTORY_SEPARATOR.$currentFilePathInfo['basename']);
+            }
+            if(!@copy($cropped, $retina_file)) {
+                $_error = true;
+            }
+            if(!@unlink($cropped)) {
+                $_error = true;
+            }
+        }    
     }
- 
-    return trailingslashit( $dir ) . "{$name}{$suffix}.{$new_ext}";
-}
-/** END CROP THUMBNAILS PLUGIN - RETINA SUPPORT */
+    add_action( 'crop_thumbnails_after_crop', 'add_retina_for_cropped_thumbnails', 10, 4 );
+
+    function generate_retina_filename( $file, $suffix ) {
+        $dir = pathinfo( $file, PATHINFO_DIRNAME );
+        $ext = pathinfo( $file, PATHINFO_EXTENSION );
+    
+        $name    = wp_basename( $file, ".$ext" );
+        $new_ext = $ext;
+    
+        return trailingslashit( $dir ) . "{$name}{$suffix}.{$new_ext}";
+    }
+    /** END CROP THUMBNAILS PLUGIN - RETINA SUPPORT */
 
 });
 

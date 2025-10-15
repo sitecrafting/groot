@@ -3,10 +3,10 @@
  *
  * ### Markup:
  * <dl class="accordion">
- *   <dt data-id="tab1"><h3><a href="#tab1">Tab Title</a></h3></dt>
- *   <dd>Panel Content</dd>
- *   <dt data-id="tab1"><h3><a href="#tab2">Tab Title</a></h3></dt>
- *   <dd>Panel Content</dd>
+ *   <dt data-id="tab1"><h3><button id="accordion_panel_title_1">Tab Title</button></h3></dt>
+ *   <dd id="accordion_panel_1">Panel Content</dd>
+ *   <dt data-id="tab1"><h3><button id="accordion_panel_title_2">Tab Title</button></h3></dt>
+ *   <dd id="accordion_panel_2">Panel Content</dd>
  * </dl>
  *
  * ### JS:
@@ -15,52 +15,48 @@
  */
 export default (($) => {
 
-  return function() {
+    return function() {
 
-    //VARIABLES
-    const $tabs = $('dl.accordion dt'),
-        hashtag = window.location.hash,
-        panelId = window.location.hash.replace('#','');
+        //VARIABLES
+        const $tabs = $('dl.accordion dt'),
+                    hashtag = window.location.hash,
+                    hashPanelId = window.location.hash.replace('#','');
 
-    //FUNCTIONS
-    const toggleAccPanelFn = function( $this_hash, $this_tab, $this_panel ){
-      if( $this_tab.hasClass('active') && $this_panel.is(':visible') ){
-        $this_panel.slideUp();
-        $this_tab.removeClass('active').addClass('inactive');
-      }
-      else{
-        $this_panel.slideDown();
-        $this_tab.addClass('active').removeClass('inactive');
-        window.location.hash = $this_hash;
-      }
+        //FUNCTIONS
+        const toggleAccPanelFn = function( $this_tab, $this_panel ){
+            if( $this_tab.hasClass('active') && $this_panel.is(':visible') ){
+                $this_panel.slideUp();
+                $this_tab.removeClass('active').addClass('inactive');
+                $this_tab.find('button').attr('aria-expanded', 'false');
+            }
+            else{
+                $this_panel.slideDown();
+                $this_tab.addClass('active').removeClass('inactive');
+                $this_tab.find('button').attr('aria-expanded', 'true');
+            }
+        }
 
-    }
+        //TAB ANCHOR CLICKS
+        $tabs.find('button').on('click', function(e){
+            e.preventDefault()
+            const this_tab = $(this).closest('dt');
+            const this_panel = this_tab.next();
+            toggleAccPanelFn(this_tab, this_panel);
+        });
 
-    //TAB ANCHOR CLICKS
-    $tabs.find('a').on('click', function(e){
-      e.preventDefault()
-      const this_hash = $(this).attr('href');
-      const this_tab = $(this).closest('dt');
-      const this_panel = this_tab.next();
+        if( hashtag && $('dl.accordion dt button#'+hashPanelId).length>0 ){
 
-      toggleAccPanelFn(this_hash, this_tab, this_panel);
-    });
+            const selected_tab = $('dl.accordion dt button#'+hashPanelId).closest('dt');
+            const selected_panel = selected_tab.next();
+            
+            //open panel
+            toggleAccPanelFn(selected_tab, selected_panel);
 
-    //PRESELECTED OPEN PANEL (USE OF HASHTAGS)
-    if( hashtag && $('dl.accordion dt[data-id="'+panelId+'"]').length>0 ){
-      
-      const selected_tab = $('dl.accordion dt[data-id="'+panelId+'"]');
-      const selected_panel = selected_tab.next();
-      const accordionPos = selected_tab.offset().top;
-      
-      //open panel
-      toggleAccPanelFn(hashtag, selected_tab, selected_panel)
+            //we dont need to control the scroll, the hash/id set will do that for us
 
-      //set scroll position to the open accordion panel
-      $(document).scrollTop(accordionPos);
-      //$('html, body').animate({ scrollTop: accordionPos }, 500);
+        }
+
 
     }
-  }
 
 })(jQuery)

@@ -2,7 +2,7 @@ name: groot
 recipe: wordpress
 config:
   webroot: wp
-  php: '7.4'
+  php: '8.2'
 
 services:
   appserver:
@@ -24,11 +24,11 @@ services:
     type: mysql
 
   node:
-    type: node:14
+    type: node:22
 
     globals:
-      webpack: "^4.28"
-      yarn: "^1.22.5"
+      webpack: "latest"
+      yarn: "latest"
 
     run:
       - yarn

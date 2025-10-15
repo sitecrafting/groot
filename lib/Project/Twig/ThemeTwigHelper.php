@@ -48,7 +48,7 @@ class ThemeTwigHelper implements HelperInterface {
       }
   }
 
-  public function get_posts_pattern($post_type, $count = 3, $taxonomy, $taxonomy_id ){
+  public function get_posts_pattern($post_type, $count, $taxonomy, $taxonomy_id ){
 
     $taxQuery = '';
 

@@ -30,6 +30,9 @@ h1, h2, h3, h4, h5, h6,
 	margin-bottom: .5em;
 }
 
+h1,h2,h3,
+.h1,.h2,.h3{ text-wrap: pretty; }
+
 //https://min-max-calculator.9elements.com/
 //max fontsize value at 800px, min fontsize value at 400px
 h1, .h1{ font-size: ~'clamp(@{font-size-h1-m}, 2.25rem + 3vw, @{font-size-h1})'; }
@@ -43,15 +46,28 @@ a {
     color: @link-color;
     text-decoration: none;
     transition: all @trans-speed ease;
-    display: inline-block; 
-        
-    &:hover{ 
-        text-decoration: underline;
-        text-decoration-skip-ink: auto;
-        text-underline-offset: 0.15em; 
-        text-decoration-thickness: ~"max(0.03em, 1px)";
-    }
 
+    &:hover{ 
+        .text-underline();
+    }
+}
+
+.skip-to-content-link{
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 15px;
+    z-index: 101;
+    transform: translateY(-101%);
+
+    color: @white;
+    text-align: center;
+    font: 400 1rem/normal @font-family-base;
+    background: @blue;
+    text-decoration: none;
+    border-radius: 0 0 8px 0;
+
+    &:focus{ transform: translateY(0%); }
 }
 
 @content-spacer: 1.25em;
@@ -90,7 +106,7 @@ a {
 }
 
 /* Text meant only for screen readers. */
-.screen-reader-text {
+.sr-only{
 	.visuallyhidden();
 }
 

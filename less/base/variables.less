@@ -5,15 +5,10 @@
 
 // Public paths
 // -------------------------
-//
-// Theme path - use this for referring to other, non-LESS/CSS resources
-// The value is automatically passed in to this file via webpack at build time,
-// and will be formatted '/wp-content/themes/{theme-directory-name}/'
-//
-// Example usage:
-//
-// * { background-image: url('@{theme-path}img/icons/my-icon.svg'); }
+// update to use theme directory name or remove if not needed
 @theme-path: '/wp-content/themes/groot/';
+// Example usage:
+// * { background-image: url('@{theme-path}img/icons/my-icon.svg'); }
 
 // THEME COLORS
 // -------------------------
@@ -39,7 +34,6 @@
 // STRUCTURAL
 // -------------------------
 @max-width:                             100%;
-@container-default:                     1440px;
 
 @outer-gutter:                          min(5vw, 80px);
 @outer-gutter-m:                        15px;
@@ -89,8 +83,8 @@
 // Breakpoints
 // -------------------------
 @mobile-sml:                ~"only screen and (max-width: 33.063em) "; // smaller than 529
-@mobile-lg:                 ~"only screen and (min-width: 33.125em) and (max-width: 47.938em)"; //between 530 - 767
-@mobile-all:                ~"only screen and (max-width: 47.938em)"; //small than 767
+@mobile-lg:                 ~"only screen and (min-width: 33.125em) and (max-width: 47.9375em)"; //between 530 - 767
+@mobile-all:                ~"only screen and (max-width: 47.9375em)"; //smaller than 767
 
 @tablet-sml:                ~"only screen and (min-width: 48em) and (max-width: 55.563em)"; //768 - 889
 @tablet-lg:                 ~"only screen and (min-width: 55.625em) and (max-width: 63.938em)"; //890 - 1023
@@ -100,4 +94,8 @@
 @desktop-lg:                ~"only screen and (min-width: 81.25em)"; //anything larger than 1300
 @desktop-all:               ~"only screen and (min-width: 64em)"; //anything larger than 1024px
 
-@mobile-menu:               @desktop-sml, @tablet-all, @mobile-all;
+@mobile-subnav:             @mobile-all;
+@desktop-subnav:            ~"only screen and (min-width: 48em)"; //768 and larger
+
+@mobile-menu:               ~"only screen and (max-width: 81.188em)"; //anything smaller than 1299
+@desktop-menu:              ~"only screen and (min-width: 81.25em)"; //anything larger than 1300

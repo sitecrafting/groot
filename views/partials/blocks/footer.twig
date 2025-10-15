@@ -3,7 +3,7 @@
 
         <div class="footer-top">
             <div class="footer-top__info">
-                <a class="footer-logo" href="/" title="{{ site.name }}">{{ source('img/logo-onwhite.svg') }}</a>
+                <a class="footer-logo" href="/" title="{{ site.name }}">{{ source('img/logo-ondark.svg') }}</a>
                 {% if get_theme_setting('social') %}
                     <div class="footer-social">
                         {% for social in get_theme_setting('social') %}
@@ -15,7 +15,7 @@
             <div class="footer-top__nav">
                 <ul>
                     {% for top in primary_menu.get_items %}
-                        <li><a href="{{ top.get_path() }}">{{ top.title }}</a></li>
+                        <li><a href="{{ top.link }}"{{ top.target  ? ' target="_blank"' }}>{{ top.title }}</a></li>
                     {% endfor %}
                 </ul>
             </div>
@@ -26,7 +26,7 @@
             {% if get_theme_setting('copyright_links') %}
             <p class="copyright-links">
             {% for cplinks in get_theme_setting('copyright_links') %}
-                <a href="{{ cplinks.link.url }}" target="{{ cplinks.link.target }}">{{ cplinks.link.title }}</a>{{ loop.last ? '' : ' | ' }}
+                <a href="{{ cplinks.link.url }}"{{ cplinks.link.target ? ' target="_blank"' }}>{{ cplinks.link.title }}</a>{{ loop.last ? '' : ' | ' }}
             {% endfor %}
             </p>
             {% endif %}

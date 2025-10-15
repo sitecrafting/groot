@@ -1,5 +1,5 @@
 <div class="hero">
-    <div class="hero__background" style="background-image: url({{ Image(hero.background_image).src('large') }});"></div>
+    <div class="hero__background" style="background-image: url({{ get_image(hero.background_image).src('large') }});"></div>
     <div class="hero__content" data-swiper-parallax-y="-100">
         <h2 class="h1 title">{{ hero.headline }}</h2>
         {% if hero.subtext %}<div class="subtext">{{ hero.subtext }}</div>{% endif %}

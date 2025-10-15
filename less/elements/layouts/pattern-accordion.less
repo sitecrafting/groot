@@ -1,5 +1,8 @@
 // potential modifiers for wrapping pattern containers
-//.pattern--accordion{ }
+.pattern--accordion{
+    .pattern__headline, .rtecontent{ margin-bottom: 30px; }
+    .pattern__headline:has(+ .rtecontent){ margin-bottom: .2em; }
+}
 
 .accordion {
 
@@ -15,9 +18,11 @@
             z-index: 5;
             font-size: (20/16rem);
 
-            > a {
+            > button {
+                .button-reset();
                 display: block;
-                padding: 20px 65px 20px 20px;
+                padding: 20px 50px 20px 20px;
+                width: 100%;
                 color: @white;
                 &:hover{ text-decoration: none; }
             }

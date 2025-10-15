@@ -5,6 +5,17 @@
     box-sizing: border-box;
 }
 
+/* 
+    Prevent font size inflation 
+    https://kilianvalkhof.com/2022/css-html/your-css-reset-needs-text-size-adjust-probably/
+*/
+html {
+    -moz-text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+    interpolate-size: allow-keywords;
+}
+
 /* Remove default margin */
 body,
 h1,
@@ -56,11 +67,19 @@ input,
 button,
 textarea,
 select {
-    font: inherit;
+    font-family: inherit;
+    font-size: inherit;
 }
 
-/* Scroll margin allowance above anchor links */
-[id] { scroll-margin-top: 2rem; }
+/* Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) {
+    min-height: 10em;
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+    scroll-margin-block: 5ex;
+}
 
 /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {

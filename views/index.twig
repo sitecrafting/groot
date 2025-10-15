@@ -12,7 +12,7 @@
             <select id="categoryFilter">
                 <option{{ is_category == false ? ' selected="selected"' }} value="{{ get_blog_url() }}">All Articles</option>
                 {% for cat in get_terms('category') %}
-                    <option{{ post.slug == cat.slug() ? ' selected="selected"' }} value="{{ cat.link() }}">{{ cat.name }}</option>
+                    <option{{ post.slug == cat.slug ? ' selected="selected"' }} value="{{ cat.link() }}">{{ cat.name }}</option>
                 {% endfor %}
             </select>
         </nav><!-- //subnav-filter -->

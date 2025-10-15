@@ -1,9 +1,9 @@
 <div class="post-pagination">
-    <div class="nav-previous{{ pagination.prev is empty ? ' disabled' : '' }}">
-        <a class="btn{{ pagination.prev is empty ? ' btn--disabled' : '' }}" {% if pagination.prev is not empty %}href="{{pagination.prev.link}}"{% endif %} title="{{pagination.prev.title}}">Newer Articles</a>
+    <div class="nav-previous{{ posts.pagination.prev is empty ? ' disabled' : '' }}">
+        <a class="btn{{ posts.pagination.prev is empty ? ' btn--disabled' : '' }}" {% if posts.pagination.prev is not empty %}href="{{posts.pagination.prev.link}}"{% endif %} title="{{posts.pagination.prev.title}}">Newer Articles</a>
     </div>
-    <div class="nav-next{{ pagination.next is empty ? ' disabled' : '' }}">
-        <a class="btn{{ pagination.next is empty ? ' btn--disabled' : '' }}" {% if pagination.next is not empty %}href="{{pagination.next.link}}"{% endif %} title="{{pagination.next.title}}">Older Articles</a>
+    <div class="nav-next{{ posts.pagination.next is empty ? ' disabled' : '' }}">
+        <a class="btn{{ posts.pagination.next is empty ? ' btn--disabled' : '' }}" {% if posts.pagination.next is not empty %}href="{{posts.pagination.next.link}}"{% endif %} title="{{posts.pagination.next.title}}">Older Articles</a>
     </div>
 </div><!-- post-navigation -->
 

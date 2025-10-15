@@ -6,10 +6,8 @@
 
 use Timber\Timber;
 
-use Conifer\Post\FrontPage;
-
 // Get common/site-wide data
-$data = $site->context(['post' => new FrontPage()]);
+$data = Timber::context();
 
 // Render the default view
 Timber::render( 'front-page.twig', $data );

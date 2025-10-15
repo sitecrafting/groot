@@ -1,0 +1,61 @@
+{% set navExpander = source('img/arrows/nav-expander.svg') %}
+
+{#
+    set header to position relative and add main-nav--mobile-drop class to nav
+    change option on responsiveNav to navType: 'dropdown'
+#}
+<nav id="main-navigation" data-visible="false" class="main-nav">
+
+    <ul class="main-nav__menu">
+        {% for top in menu.get_items %}
+            {% set top_index = loop.index %}
+            <li class="{{ top.classes | join(' ') }}">
+                <div class="menu-item-wrapper">
+                    <a{{ top.current ? ' aria-current="page"' : '' }} href="{{ top.link }}"{{ top.target ? 'target="' ~ top.target ~'"' : '' }}>{{ top.title }}</a>
+                    {% if top.children %}
+                        <button class="nav-expander" aria-controls="sub-nav{{ top_index }}" aria-expanded="false">{{ navExpander }}<span class="sr-only">Expand {{ top.title }} Links</span></button>
+                    {% endif %}
+                </div>
+
+                {# SECOND LEVEL #}
+                {% if top.children %}
+                    <ul id="sub-nav{{ top_index }}" class="main-nav__second" data-visible="false">
+                        {% for second in top.children %}
+                        <li class="{{ second.classes | join(' ') }}">
+                            <div class="menu-item-wrapper">
+                                <a{{ second.current ? ' aria-current="page"' : '' }} href="{{ second.link }}"{{ second.target ? 'target="' ~ second.target ~'"' : '' }}>{{ second.title }}</a>
+                                {% if second.children %}
+                                    <button class="nav-expander" aria-controls="tertiary-nav{{ top_index }}_{{ loop.index }}" aria-expanded="false">{{ navExpander }}<span class="sr-only">Expand {{ second.title }} Links</span></button>
+                                {% endif %}
+                            </div>
+
+                            {# THIRD LEVEL #}
+                            {% if second.children %}
+                                <ul id="tertiary-nav{{ top_index }}_{{ loop.index }}" class="main-nav__third" data-visible="false">
+                                    {% for third in second.children %}
+                                    <li class="{{ third.classes | join(' ') }}">
+                                        <div class="menu-item-wrapper">
+                                            <a{{ third.current ? ' aria-current="page"' : '' }} href="{{ third.link }}"{{ third.target ? 'target="' ~ third.target ~'"' : '' }}>{{ third.title }}</a>
+                                        </div>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                            {# END THIRD LEVEL #}
+                            
+                        </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                {# END SECOND LEVEL #}
+
+            </li>
+        {% endfor %}
+        <li class="nav-search-button">
+            <div class="menu-item-wrapper">
+                <button popovertarget="popover-search">{{ source('img/icons/icon-search.svg') }}<span>Search</span></button>
+            </div>
+        </li>
+    </ul>
+
+</nav>

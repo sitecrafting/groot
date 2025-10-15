@@ -5,6 +5,7 @@ config.codekit
 *.swp
 *.swo
 *.swn
+.config
 
 # Ignore dev dependencies
 /node_modules
