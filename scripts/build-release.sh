@@ -116,7 +116,7 @@ function create_github_release() {
     if [[ "$create" = "y" ]] ; then
       echo 'pushing latest changes and tags...'
       git push origin master
-      git push --tags
+      git push origin "$1"
       hub release create --prerelease \
         --attach="$2" \
         --attach="$3" \
