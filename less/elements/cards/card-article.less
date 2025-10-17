@@ -2,6 +2,9 @@
     margin: 0 0 20px 0;
     width: 100%;
 	background: @gray-f3;
+
+    display: flex;
+    flex-flow: column;
 	
 	.pattern--article-footer &{
 		//article-footer has a gray background so we want to reverse out the cards
@@ -14,11 +17,15 @@
 
     .card-article__content{
         padding: 30px;
+        flex: 1;
+        display: flex;
+        flex-flow: column;
+        align-items: start;
 
         .title{ margin: 0 0 5px; }
         .byline{ font-size: (12/16rem); }
-        .excerpt{ margin-top: 15px; }
-        .btn{ margin-top: 20px; }
+        .excerpt{ margin-top: 15px; margin-bottom: 20px; }
+        .btn{ margin-top: auto; }
 
     }
 
@@ -26,14 +33,9 @@
 
 .card-article--list{
 	padding: 15px;
-	.clearfix();
-
-	.card-article__image{
-		width: 30%;
-		float: left;
-
-		+ .card-article__content{ margin-left: 30%; padding-left: 15px; }
-	}
+    display: grid;
+    grid-template-columns: 30% 1fr;
+    column-gap: 20px;
 
 	.card-article__content{ padding: 0; }
 }
