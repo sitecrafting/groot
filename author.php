@@ -1,8 +1,4 @@
 <?php
-/**
- * Author: Coby Tamayo
- */
-
 use Timber\Timber;
 use Timber\User;
 
@@ -11,8 +7,7 @@ $user     = Timber::get_user($authorId);
 
 // Get common/site-wide data
 $data = Timber::context([
-  // Treat author as "post" for navigation purposes
-  'post'  => $user,
+    'post'  => $user,
 ]);
 
 // Render the archive view

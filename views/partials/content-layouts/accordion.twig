@@ -14,18 +14,14 @@
             <div class="rtecontent">{{ layout.section_content }}</div>
         {% endif %}
 
-        <dl class="accordion">
+        <div class="accordion">
         {% for panel in layout.accordion_panels %}
-
-            <dt><h3 class="accordion__title">
-                <button id="accordion_panel_title_{{ parent_loop.index ~'_'~ loop.index }}" aria-controls="accordion_panel_{{ parent_loop.index ~'_'~ loop.index }}" aria-expanded="false" >
-                    <span>{{ panel.panel_headline }}</span>
-                </button>
-            </h3></dt>
-            <dd class="accordion__content rtecontent" id="accordion_panel_{{ parent_loop.index ~'_'~ loop.index }}" aria-labeledby="accordion_panel_title_{{ parent_loop.index ~'_'~ loop.index }}">{{ panel.panel_content }}</dd>
-
+            <details id="accordion-panel{{ parent_loop.index ~'_'~ loop.index }}">
+                <summary>{{ panel.panel_headline }}</summary>
+                <div class="rtecontent">{{ panel.panel_content }}</div>
+            </details>
         {% endfor %}
-        </dl>
+        </div>
 
     </div>
 </section>

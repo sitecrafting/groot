@@ -1,12 +1,7 @@
 <?php
-/**
- * Author: Coby Tamayo
- */
-
 use Timber\Timber;
 
 use Conifer\Post\Page;
-
 
 //blog page
 $newsPage = Page::get_blog_page();
@@ -29,28 +24,6 @@ if( is_tag() || is_category() ) {
 	$post = $newsPage;
 
 }
-
-//get archives
-//This is not currently in a functioning state to be able to
-//filter by archive date
-//$archives = new Archives();
-
-//TWIG
-/*
-<nav class="subnav-filter">
-    <h3 class="subnav-filter__title">Archives</h3>
-    <ul class="subnav-filter__menu">
-        <li><a href="{{ get_blog_url() }}">All</a></li>
-        {% for archive in archives.items %}
-            {% for month in archive.children %}
-                <li><a href="{{ month.link }}">{{ month.name }} {{ archive.name }}</a></li>
-            % endfor %}
-        {% endfor %}
-    </ul>
-</nav><!-- //subnav-filter -->
-*/
-
-
 
 // GET CONTEXT DATA
 $data = Timber::context([

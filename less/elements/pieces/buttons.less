@@ -1,14 +1,18 @@
-.btn, .gform_button{
-    display: inline-block;
-    padding: 15px 40px;
+.btn{
+    display: inline-grid;
+    align-items: center;
+    justify-items: center;
+    min-height: @input-height;
+    padding: 10px 40px;
     cursor: pointer;
     border-radius: 0;
     border: 0;
 
-    color: @white;
+    color: @black;
     text-align: center;
     text-transform: uppercase;
     font: 700 1rem/1.1 @font-family-headings;
+    text-decoration: none;
 
     background: @blue;
     -webkit-appearance: none;
@@ -24,9 +28,10 @@
 
 .btn--dark{
     background: @black;
+    color: @white;
     &:hover{ 
-        background: @black;
         color: @blue;
+        background: @black;
     }
 }
 

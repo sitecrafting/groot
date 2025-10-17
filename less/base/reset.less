@@ -41,6 +41,7 @@ ol[role='list'] {
 }
 
 /* Set core root defaults */
+html,
 html:focus-within {
     scroll-behavior: smooth;
 }
@@ -83,7 +84,7 @@ textarea:not([rows]) {
 
 /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
-    html:focus-within {
+    html, html:focus-within {
         scroll-behavior: auto;
     }
 

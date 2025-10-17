@@ -18,7 +18,7 @@
 	<div class="card-article__content">
 		<h2 class="h4 title"><a href="{{ post.link }}" title="{{ post.title }}">{{ post.title }}</a></h2>
 		<div class="byline">
-			<span class="post-author">By <a href="{{ post.author.link() }}">{{ post.author.display_name }}</a></span>
+			<span class="post-author">By <a href="{{ post.author.link() }}" aria-label="Articles by {{ post.author.display_name }}">{{ post.author.display_name }}</a></span>
 			<span class="post-date">On {{ post.date }}</span>
 		</div><!-- //byline -->
 		<div class="excerpt">{{ post.content | excerpt(20) }}</div>
@@ -26,6 +26,6 @@
 		{# {% include 'partials/blog/post-categories.twig' %} #}
 		{# {% include 'partials/blog/post-tags.twig' %} #}
 
-		<a class="btn" href="{{ post.link }}">Read More</a>
+		<a class="btn" href="{{ post.link }}" aria-label="{{ post.title }}">Read More</a>
 	</div>
 </article>

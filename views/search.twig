@@ -2,7 +2,7 @@
 
 {% block main_content %}
 
-<div class="search-header">
+<section class="hero-interior hero-interior--search-header">
     <div class="container container--md">
 
         {% if search_query %}
@@ -10,10 +10,16 @@
         {% else %}
             <h1 class="title">Search</h1>
         {% endif %}
-        {{ get_search_form() }}
+        <form role="search" method="get" class="searchform" action="/" autocomplete="off">
+            <label for="s" class="sr-only">Search</label>
+            <div class="search-fields">
+                <input type="text" value="{{ search_query }}" name="s" id="s" placeholder="Enter search term..." autocomplete="off" />
+                <button type="submit" class="btn" />Search</button>
+            </div>
+        </form>
 
     </div>
-</div>
+</section>
 
 <section class="pattern pattern--search-results">
     <div class="container container--md">

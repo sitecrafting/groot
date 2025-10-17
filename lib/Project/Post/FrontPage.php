@@ -4,7 +4,6 @@
  * Project\Post\FrontPage class
  *
  * @copyright 2020 SiteCrafting, Inc.
- * @author    Coby Tamayo <ctamayo@sitecrafting.com>
  */
 
 namespace Project\Post;

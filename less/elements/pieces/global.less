@@ -10,6 +10,16 @@
 /*===========================
 # GLOBAL STYLES
 ===========================*/
+:focus-visible {
+    /* 1. The inner, primary ring (e.g., white) using box-shadow */
+    box-shadow: 0 0 0 3px #FFFFFF, 
+                0 0 0 6px #000000; /* 2. The outer, secondary ring (e.g., black) on top of the white ring */
+
+    /* 3. A transparent outline to support Forced Colors Mode */
+    outline: 2px solid transparent; 
+    outline-offset: 2px; /* Pushes the outline out slightly for better separation */
+}
+
 body{
 	background-color: @body-bg;
 	font: 400 @font-size-base/@line-height @font-family-base;
@@ -44,11 +54,13 @@ h6, .h6{ font-size: ~'clamp(@{font-size-h6-m}, 0.875rem + 0.5vw, @{font-size-h6}
 
 a {
     color: @link-color;
-    text-decoration: none;
+    .text-underline();
     transition: all @trans-speed ease;
+    text-decoration-color: @blue;
 
     &:hover{ 
         .text-underline();
+        text-decoration-color: @black;
     }
 }
 
@@ -60,7 +72,7 @@ a {
     z-index: 101;
     transform: translateY(-101%);
 
-    color: @white;
+    color: @black;
     text-align: center;
     font: 400 1rem/normal @font-family-base;
     background: @blue;

@@ -8,5 +8,17 @@
     padding-bottom: 50px;
     .outer-gutter();
 
-    h1{ color: @white; margin: 0; }
+    h1{ color: @black; margin: 0; }
+}
+
+.hero-interior--search-header{
+    background: @black;
+
+    h1{ color: @white; margin-bottom: 25px; }
+    input[type="text"]{ 
+        border-color: @white; 
+        &:focus-visible {
+            .form-focus-state();
+        }
+    }
 }

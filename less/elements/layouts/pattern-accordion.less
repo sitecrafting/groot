@@ -1,65 +1,68 @@
 // potential modifiers for wrapping pattern containers
 .pattern--accordion{
-    .pattern__headline, .rtecontent{ margin-bottom: 30px; }
+    .pattern__headline, .pattern__headline + .rtecontent{ margin-bottom: 30px; }
     .pattern__headline:has(+ .rtecontent){ margin-bottom: .2em; }
 }
 
-.accordion {
-
-    dt {
-        position: relative;
+.accordion{
+    details{
         margin-top: 1px;
-        background: @blue;
-        transition: all .25s ease;
-
-        .accordion__title {
+        summary{
             position: relative;
-            margin: 0;
-            z-index: 5;
-            font-size: (20/16rem);
+            list-style: none;
 
-            > button {
-                .button-reset();
+            .h5();
+            padding: 20px 50px 20px 20px;
+            margin: 0;
+            background: @blue;
+            cursor: pointer;
+
+            //required to hide the default arrow marker in safari
+            &::-webkit-details-marker{ display: none; }
+
+            &:before,&:after{
+                content: "";
                 display: block;
-                padding: 20px 50px 20px 20px;
-                width: 100%;
-                color: @white;
-                &:hover{ text-decoration: none; }
+                position: absolute;
+                top: 34px;
+                right: 15px;
+                width: 20px;
+                height: 2px;
+                background: @black;
+            }
+
+            &:after {
+                transform: rotate(90deg);
+                transition: all @trans-speed ease;
+            }
+
+            + div{
+                padding: 25px 20px 25px 20px;
+                background: @gray-f3;
+            }
+
+        }//summary
+        
+        &[open]{
+            summary{
+                &:after{ transform: rotate(0); }
             }
         }
 
-        &:before,&:after{
-            content: "";
-            display: block;
-            position: absolute;
-            top: 34px;
-            right: 15px;
-            width: 20px;
-            height: 2px;
-            background: @white;
+        //smooth affect - this works because interpolate-size: allow-keywords; is set in the reset
+        //currently only works in chrome and edge, safari and firefox will just do a hide/show of the content
+        &::details-content {
+            opacity: 0;
+            block-size: 0;
+            overflow-y: clip; 
+            transition: content-visibility @trans-speed allow-discrete,
+                        opacity @trans-speed ease-in-out,
+                        block-size @trans-speed ease-in-out;
         }
-
-        &:after {
-            transform: rotate(90deg);
-            transition: all @trans-speed ease;
+        
+        &[open]::details-content {
+            opacity: 1;
+            block-size: auto;
         }
-
-        &.active {
-            &:after{ transform: rotate(0); }
-        }
-    }//end dt
-
-    dd.accordion__content{
-        .clearfix();
-        display: none;
-        margin: 0;
-        padding: 25px 20px 25px 20px;
-        background: @gray-f3;
-    }
-}
-
-//base print styles
-@media print{
-    .accordion dt{ border: 1px solid #ccc; }
-    .accordion .accordion__content{ display: block !important; }
+    }//details
 }

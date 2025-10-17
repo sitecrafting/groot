@@ -6,12 +6,8 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Coby Tamayo",
-            "email": "ctamayo@sitecrafting.com"
-        },
-        {
-            "name": "Reena Hensley",
-            "email": "rhensley@sitecrafting.com"
+            "name": "SiteCrafting, Inc.",
+            "email": "hello@sitecrafting.com"
         }
     ],
     "repositories": [

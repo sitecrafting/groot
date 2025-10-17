@@ -4,7 +4,6 @@
  * Project\Twig\TwigHelper class
  *
  * @copyright 2019 SiteCrafting, Inc.
- * @author    Coby Tamayo <ctamayo@sitecrafting.com>
  */
 
 namespace Project\Twig;
@@ -29,7 +28,8 @@ class ThemeTwigHelper implements HelperInterface {
     // add your project-specific Twig functions here
     return [
         'gtm4wp_the_gtm_tag' => [$this, 'gtm4wp_the_gtm_tag'],
-        'get_posts_pattern' => [$this, 'get_posts_pattern']
+        'get_posts_pattern' => [$this, 'get_posts_pattern'],
+        'get_related_posts' => [$this, 'get_related_posts'],
     ];
   }
 
@@ -46,6 +46,11 @@ class ThemeTwigHelper implements HelperInterface {
       else{
           return false;
       }
+  }
+
+  public function get_related_posts($post, $postCount = 3){
+
+    return $post->get_related_by_category($postCount);
   }
 
   public function get_posts_pattern($post_type, $count, $taxonomy, $taxonomy_id ){
