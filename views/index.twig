@@ -8,13 +8,14 @@
     <div class="container container--md">
 
 		<nav class="category-filter">
-            <label for="categoryFilter">Categories</label>
+            <label class="h4" for="categoryFilter">Categories</label>
             <select id="categoryFilter">
                 <option{{ is_category == false ? ' selected="selected"' }} value="{{ get_blog_url() }}">All Articles</option>
                 {% for cat in get_terms('category') %}
                     <option{{ post.slug == cat.slug ? ' selected="selected"' }} value="{{ cat.link() }}">{{ cat.name }}</option>
                 {% endfor %}
             </select>
+            <button class="btn" onclick="location.href=document.getElementById('categoryFilter').value;">Go</button>
         </nav><!-- //subnav-filter -->
 
         <div class="article-list">

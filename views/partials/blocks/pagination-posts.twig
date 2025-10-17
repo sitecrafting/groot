@@ -1,19 +1,19 @@
-<div class="post-pagination">
+{# <div class="post-pagination">
     <div class="nav-previous{{ posts.pagination.prev is empty ? ' disabled' : '' }}">
         <a class="btn{{ posts.pagination.prev is empty ? ' btn--disabled' : '' }}" {% if posts.pagination.prev is not empty %}href="{{posts.pagination.prev.link}}"{% endif %} title="{{posts.pagination.prev.title}}">Newer Articles</a>
     </div>
     <div class="nav-next{{ posts.pagination.next is empty ? ' disabled' : '' }}">
         <a class="btn{{ posts.pagination.next is empty ? ' btn--disabled' : '' }}" {% if posts.pagination.next is not empty %}href="{{posts.pagination.next.link}}"{% endif %} title="{{posts.pagination.next.title}}">Older Articles</a>
     </div>
-</div><!-- post-navigation -->
+</div><!-- post-navigation --> #}
 
-{# OPTION 2 - wordpress default function 
-<div class="post-pagination post-pagination--numbers">
+{# OPTION 2 - wordpress default function #}
+<div class="post-pagination-numbers">
 	{{ paginate_links(
 		{
-			'prev_text': source('img/arrows/streamline-icon-arrow-left@20x20.svg') ~ " Prev", 
-			'next_text': "Next " ~ source('img/arrows/streamline-icon-arrow-right@20x20.svg')
+            'type': 'list',
+			'prev_text': source('img/arrows/streamline-chevron-left@20x20.svg') ~ " Prev", 
+			'next_text': "Next " ~ source('img/arrows/streamline-chevron-right@20x20.svg')
 		}
 	) }}
 </div> 
-#}

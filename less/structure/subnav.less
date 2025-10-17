@@ -8,6 +8,10 @@ ul.subnav__menu{
         position: relative;
         a{
             font: 700 1rem/1.2 @font-family-headings;
+            text-decoration: none;
+            &:hover{
+                .text-underline();
+            }
         }
         &.current-menu-item, &.current-menu-ancestor{
             > a{ 
@@ -26,6 +30,11 @@ ul.subnav__menu{
     }
     ul.subnav__menu{
         justify-content: center;
+        > li{
+            a{
+                color: @blue;
+            }
+        }
     }
 }
 

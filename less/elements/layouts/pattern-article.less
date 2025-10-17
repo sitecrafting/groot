@@ -16,16 +16,11 @@
 		}
 	}//.article__header
 
-	.article__content{
-
-		.rtecontent{ }
-	
-		.article__taxonomies{
-			margin: 40px 0;
-		}
-	}
-
 }//.pattern--article
+
+.article__taxonomies{
+    margin: 40px 0;
+}
 
 .pattern--article-footer{
 	margin: 0;
@@ -37,21 +32,17 @@
 
 //ARTICLE PIECES - if used elsewhere pull out into its own less file in pieces directory
 .post-categories{
-	font-size: 14px;
-	letter-spacing: 15px;
+    display: flex;
+    flex-flow: row wrap;
+    column-gap: 10px;
 
 	.post-categories__label{
-		display: inline-block;
-		margin: 0;
-		vertical-align: middle;
-		letter-spacing: normal;
-		font-size: 14px;
-		text-transform: uppercase;
-		color: @black;
+        margin: 0;
+        font-weight: 700;
 	}
 	.post-categories__list{
-		display: inline-block;
-		vertical-align: middle;
-		letter-spacing: normal;
+        display: flex;
+        flex-flow: row wrap;
+        gap: 10px;
 	}
 }

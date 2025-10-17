@@ -254,12 +254,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/timber/timber.git",
-                "reference": "7644b5446ed40f8979207d5e007db078d1cd5fa3"
+                "reference": "d99c151d2bc3988ad3cee9a0f00a6732838b6ac8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/timber/timber/zipball/7644b5446ed40f8979207d5e007db078d1cd5fa3",
-                "reference": "7644b5446ed40f8979207d5e007db078d1cd5fa3",
+                "url": "https://api.github.com/repos/timber/timber/zipball/d99c151d2bc3988ad3cee9a0f00a6732838b6ac8",
+                "reference": "d99c151d2bc3988ad3cee9a0f00a6732838b6ac8",
                 "shasum": ""
             },
             "require": {
@@ -348,7 +348,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2025-09-17T06:46:36+00:00"
+            "time": "2025-09-25T07:30:40+00:00"
         },
         {
             "name": "twig/twig",
@@ -356,12 +356,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "8832f6327cbde1cdf49650e8e2eee2d58e33884c"
+                "reference": "a895a3f00d015159caf4759a4ee12c2fa4ebb432"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/8832f6327cbde1cdf49650e8e2eee2d58e33884c",
-                "reference": "8832f6327cbde1cdf49650e8e2eee2d58e33884c",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/a895a3f00d015159caf4759a4ee12c2fa4ebb432",
+                "reference": "a895a3f00d015159caf4759a4ee12c2fa4ebb432",
                 "shasum": ""
             },
             "require": {
@@ -428,7 +428,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-08-25T19:44:53+00:00"
+            "time": "2025-09-25T10:20:18+00:00"
         }
     ],
     "packages-dev": [
@@ -658,12 +658,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnpbloch/wordpress-core.git",
-                "reference": "e0c533e9a4a44801138ce4b22ee99a441e60c219"
+                "reference": "f6ee4cb39ca440b14443b94bc00b728fd391e55f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/e0c533e9a4a44801138ce4b22ee99a441e60c219",
-                "reference": "e0c533e9a4a44801138ce4b22ee99a441e60c219",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/f6ee4cb39ca440b14443b94bc00b728fd391e55f",
+                "reference": "f6ee4cb39ca440b14443b94bc00b728fd391e55f",
                 "shasum": ""
             },
             "require": {
@@ -698,7 +698,7 @@
                 "source": "https://core.trac.wordpress.org/browser",
                 "wiki": "https://codex.wordpress.org/"
             },
-            "time": "2025-09-17T03:01:35+00:00"
+            "time": "2025-09-30T17:38:05+00:00"
         },
         {
             "name": "johnpbloch/wordpress-core-installer",
@@ -894,12 +894,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPCSStandards/PHP_CodeSniffer.git",
-                "reference": "38163292ae5ba2d491850d19941711a8067dcbdb"
+                "reference": "c7c1e54a5bf617b1f2231b07e2d776ff284fc871"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/38163292ae5ba2d491850d19941711a8067dcbdb",
-                "reference": "38163292ae5ba2d491850d19941711a8067dcbdb",
+                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/c7c1e54a5bf617b1f2231b07e2d776ff284fc871",
+                "reference": "c7c1e54a5bf617b1f2231b07e2d776ff284fc871",
                 "shasum": ""
             },
             "require": {
@@ -965,7 +965,7 @@
                     "type": "thanks_dev"
                 }
             ],
-            "time": "2025-09-19T18:14:21+00:00"
+            "time": "2025-10-06T11:35:02+00:00"
         },
         {
             "name": "symfony/yaml",

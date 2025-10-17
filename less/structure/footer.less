@@ -1,17 +1,8 @@
 footer.site-footer{
-    border-top: @gray-f3;
+    border-top: 1px solid @gray-f3;
     .outer-gutter();
 	padding-top: 50px;
 	padding-bottom: 50px;
-
-    a{ 
-        color: @black; 
-        text-decoration: underline;
-        text-decoration-skip-ink: auto;
-        text-underline-offset: 0.15em; 
-        text-decoration-thickness: ~"max(0.03em, 1px)";
-    }
-
 }
 
 .footer-top{
@@ -51,6 +42,7 @@ footer.site-footer{
 }
 
 .footer-social{
+    .plain-list();
     margin: 20px 0;
     display: flex;
     align-items: center;

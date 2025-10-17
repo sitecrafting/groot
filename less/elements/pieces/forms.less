@@ -5,6 +5,7 @@
 
 @input-color:                    @text-color;
 @input-border:                   @black;
+@input-border-width:             2px;
 
 @input-border-focus:             @blue;
 
@@ -14,12 +15,19 @@
 @input-height:                   (50/16rem);
 @input-padding:                  10px;
 
+.form-focus-state(){
+    box-shadow: 0 0 8px 0 fade(@blue, 40%);
+    border-color: @input-border-focus;
+    outline: 0;
+}
+
 // Forms
 // --------------------------------------------------
 label, .field-label {
     margin-bottom: 5px;
     font-weight: 700;
     font-size: (14/16rem);
+    color: @black;
 }
 
 // Common form controls
@@ -51,12 +59,11 @@ textarea,
     color: @input-color;
     background: @input-bg;
 
-    border: 1px solid @input-border;
+    border: @input-border-width solid @input-border;
 
-    // Customize the `:focus` state to imitate native WebKit styles.
-    &:focus {
-        border-color: @input-border-focus;
-        outline: 0;
+    // Customize focus for form elements
+    &:focus-visible {
+        .form-focus-state();
     }
 
     // Placeholder styles

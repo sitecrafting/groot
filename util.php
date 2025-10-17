@@ -4,7 +4,7 @@
  * Conifer utility functions
  * 
  * @copyright 2018 SiteCrafting, Inc.
- * @author  	Coby Tamayo <ctamayo@sitecrafting.com>
+ * @author  	SiteCrafting <hello@sitecrafting.com>
  */
 
 /**

@@ -5,11 +5,11 @@
             <div class="footer-top__info">
                 <a class="footer-logo" href="/" title="{{ site.name }}">{{ source('img/logo-ondark.svg') }}</a>
                 {% if get_theme_setting('social') %}
-                    <div class="footer-social">
+                    <ul class="footer-social">
                         {% for social in get_theme_setting('social') %}
-                            <a href="{{ social.url }}" title="{{ social.type }}" target="_blank">{{ source('img/social-icons/social-'~ social.type ~'.svg', ignore_missing = true) }}</a>
+                            <li><a href="{{ social.url }}" target="_blank"><span aria-hidden="true">{{ source('img/social-icons/social-'~ social.type ~'.svg', ignore_missing = true) }}</span><span class="sr-only">{{ social.type }}</span></a></li>
                         {% endfor %}
-                    </div>
+                    </ul>
                 {% endif %}
             </div>
             <div class="footer-top__nav">

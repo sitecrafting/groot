@@ -1,10 +1,8 @@
-{% if post.get_categories %}
+{% if post.categories %}
 <div class="post-categories">
-	<h6 class="post-categories__label">Categories:</h6>
+	<div class="post-categories__label">Posted in:</div>
 	<div class="post-categories__list">
-	{% for category in post.get_categories %}
-		<a href="{{ category.link }}">{{ category }}</a>{{ loop.last ? '' : ',' }}
-	{% endfor %}
+	{% for category in post.categories %}<a href="{{ category.link }}">{{ category }}</a>{% endfor %}
 	</div>
 </div>
 {% endif %}
