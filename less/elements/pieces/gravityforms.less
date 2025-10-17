@@ -44,14 +44,24 @@ body .gform_wrapper.gravity-theme{
     .gform_validation_errors{
         border-color: @error;
         padding: 16px;
+        box-shadow: none;
+        border-radius: 0;
+        
         > h2{
             .h5();
             color: @error;
+
+            .gform-icon{ display: none; }
         }
         ol>li{
             &::marker{ color: @error; }
             a{ color: @error; }
         }
+
+        &:focus{
+            outline: 0;
+        }
+
     }
     .gfield_error .gfield_repeater_cell label, 
     .gfield_error label, 
