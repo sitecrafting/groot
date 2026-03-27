@@ -1,9 +1,12 @@
 /* globals jQuery */
 import 'fitvids.1.1.0'
 
+//uncomment this if dropdown animation is needed
+//import { openDropdown, closeDropdown } from './dropdown-animation-plugin.js'
 import responsiveNav from './responsive-nav.js'
 
 (($) => {
+
 
     // Make nav menu nice & responsive
     const mainNav = document.querySelector('nav.main-nav');
