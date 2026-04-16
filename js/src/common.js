@@ -34,22 +34,5 @@ import responsiveNav from './responsive-nav.js'
     // Responsive Videos
     $('.rtecontent, .video').fitVids();
 
-    // Search Dialog
-    const searchDialog = document.getElementById('searchDialog');
-    const btnOpenSearch = document.getElementById('btnOpenSearch');
-    const btnCloseSearch = document.getElementById('btnCloseSearch');
-
-    if (searchDialog && btnOpenSearch && btnCloseSearch) {
-        btnOpenSearch.addEventListener('click', () => {
-            searchDialog.showModal();
-            btnOpenSearch.setAttribute('aria-expanded', 'true');
-        });
-
-        btnCloseSearch.addEventListener('click', () => {
-            searchDialog.close();
-            btnOpenSearch.setAttribute('aria-expanded', 'false');
-        });
-    }
-
 
 })(jQuery)
