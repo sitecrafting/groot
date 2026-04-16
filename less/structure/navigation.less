@@ -1,14 +1,19 @@
+/*
+    Button Expander styles for both desktop and mobile. 
+    applies to both desktop and mobile
+*/
 button.nav-expander{
     .button-reset();
-    display: block;
+    position: absolute;
+    display: none;
     z-index: 1050;
     width: 24px;
     color: currentColor;
     transition: all @trans-speed ease-in-out;
 
     svg{ 
-        margin: 0 0 0 auto;
         display: block; 
+        margin: 0 0 0 auto;
         width: 12px;
         height: auto;
         transition: all @trans-speed ease-in-out;
@@ -22,23 +27,20 @@ button.nav-expander{
     }
 }//button.nav-expander
 
+
+/*
+    Search Button in the top level main nav - applies to both desktop and mobile
+    .nav-search-button class is on the li
+*/
 .nav-search-button button{
     .button-reset();
     display: block;
     svg{ display: block; }
 }
 
-//handle caret layout for expander
-.menu-item-has-children{
-    > .menu-item-wrapper{
-        display: grid;
-        grid-template-columns: auto auto;
-        align-items: center;
-        gap: 6px;
-    }
-}
-
-
+/*
+    Top Level Menu Styles - applies to both desktop and mobile
+*/
 ul.main-nav__menu{
     .plain-list();
     display: flex;
@@ -49,13 +51,14 @@ ul.main-nav__menu{
         > .menu-item-wrapper{
             position: relative;
 
-            > a,
-            > button{
+            > a, > button:not(.nav-expander){
+                .button-reset();
                 display: block;
+                position: relative;
                 font: 700 1rem/1.2 @font-family-headings;
                 color: @black;
-                cursor: pointer;
                 text-decoration: none;
+                cursor: pointer;
 
                 &:hover{ text-decoration: none; }
             }
@@ -63,7 +66,6 @@ ul.main-nav__menu{
 
         &.nav-search-button{
             button{
-                .button-reset();
                 position: relative;
 
                 svg{ 
@@ -75,7 +77,9 @@ ul.main-nav__menu{
     }//li
 }//ul.main-nav__menu
 
-
+/*
+    Second Level Menu Styles - applies to both desktop and mobile
+*/
 ul.main-nav__second{
     .plain-list();
     display: none;
@@ -83,6 +87,7 @@ ul.main-nav__second{
     > li{
 		display: block;
 		> .menu-item-wrapper{
+            position: relative;
             > a{
                 position: relative;
                 display: block;
@@ -95,36 +100,63 @@ ul.main-nav__second{
 	}
 }
 
+/*
+    Third Level Menu Styles - applies to both desktop and mobile
+*/
 ul.main-nav__third{
     .plain-list();
     display: none;
 }
 
-//DESKTOP MENU VIEW
+//DESKTOP VIEW
 @media @desktop-menu{
     ul.main-nav__menu{
         align-items: center;
 		> li{
-            padding: 10px 0;
+            padding-bottom: 24px;
+            padding-top: 24px;
             > .menu-item-wrapper{
-                padding: 8px 0;
-                &:before{
-                    content: "";
-                    display: block;
-                    position: absolute;
-                    bottom: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 3px;
-                    background-color: @blue;
-                    opacity: 0;
-                    transform: translateY(6px);
-                    transition: all @trans-speed ease-in-out;
+                > a, > button:not(.nav-expander){
+                    padding: 12px 0;
+                    position: relative;
+
+                    &:after{
+                        content: "";
+                        position: absolute;
+                        display: block;
+                        width: 0;
+                        height: 3px;
+                        bottom: 0;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        background-color: @blue;
+                        transition: all @trans-speed ease;
+                    }
                 }
 
-                > a{ white-space: nowrap; }
-                button.nav-expander{ pointer-events: none; }
-            }
+                button.nav-expander{
+                    display: block;
+                    top: 50%;
+                    left: 100%;
+                    margin-left: 4px;
+                    width: 12px;
+                    pointer-events: none;
+                    transform: translateY(-50%);
+
+                    svg{
+                        display: block;
+                        width: 100%;
+                        opacity: 0;
+                        transition: all @trans-speed ease-in-out;
+                        path{ stroke: currentColor; }
+                    }
+                    
+                    &:focus-visible{
+                        svg{ opacity: 1; }
+                    }
+                }
+
+            }//.menu-item-wrapper
 
             &.nav-search-button{
                 button{
@@ -137,8 +169,9 @@ ul.main-nav__third{
 
             //TOP ACTIVE STYLES
             &:hover, &.current-menu-item, &.current-menu-ancestor,&:focus-within{
-                > .menu-item-wrapper{
-                    &:before{ opacity: 1; transform: translateY(0); }
+                > .menu-item-wrapper > a,
+                > .menu-item-wrapper > button {
+                    &:after{ opacity: 1; width: 100%; }
                 }
             }
             
@@ -173,8 +206,7 @@ ul.main-nav__third{
         opacity: 0;
         transform: translateY(20px);
         transition: display @trans-speed allow-discrete,
-                        opacity @trans-speed ease-in-out,
-                        transform @trans-speed ease-in-out;
+                        opacity @trans-speed ease-in-out;
         z-index: 1060;
 
         //make sure 3rd level expander is hidden if there is one
@@ -194,26 +226,39 @@ ul.main-nav__third{
         ul.main-nav__menu > li:hover{
             .main-nav__second{
                 opacity: 0;
-                transform: translateY(20px);
             }
         }
     }
 }
 
-//MOBILE MENU VIEW
+//MOBILE VIEW
 @media @mobile-menu{
 
+    button.nav-expander{
+        display: block;
+        top: 0;
+        right: -35px;
+        width: 35px;
+        height: 100%;
+        cursor: pointer;
+        svg{
+            top: 5px;
+            right: 0;
+            transition: all @trans-speed ease-in-out;
+        }
+    }//button.nav-expander
+
     .main-nav{
-        display: none;
-        padding: 100px 0;
         position: absolute;
         inset: 0 0 0 auto;
+        display: none;
         width: 0;
+        padding: 100px 0;
         overflow: clip;
+        z-index: 9998;
         background: @white;
         transition: display @trans-speed allow-discrete,
                         width @trans-speed ease-in-out;
-        z-index: 9998;
 
         &[data-visible="true"]{
             display: block;
@@ -228,30 +273,22 @@ ul.main-nav__third{
     }
 
     .main-nav--mobile-drop{
-        display: none;
-        padding: 0;
         position: absolute;
         inset: 100% 0 auto 0;
+        display: none;
         width: 100%;
-        overflow: clip;
+        height: 0;
+        padding: 0;
+        overflow: hidden;
+        z-index: 9998;
         background: @white;
         box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.09);
-        z-index: 9998;
-
-        height: 0;
-        overflow: hidden;
         transition: height 300ms ease-in-out;
 
         &[data-visible="true"]{
             display: block;
             height: auto;
             width: 100%;
-        }
-    }
-
-    .menu-item-has-children{
-        > .menu-item-wrapper{
-            grid-template-columns: 1fr auto;
         }
     }
 
@@ -265,15 +302,20 @@ ul.main-nav__third{
             border-bottom: 1px solid @gray-f3;
 
             > .menu-item-wrapper{
-                > a, > button{
+                > a, > button:not(.nav-expander){
                     padding: 20px 0;
                 }
             }
-            &.nav-search-button button{
+
+            &.menu-item-has-children{
+				> .menu-item-wrapper{ margin-right: 35px; }
+			}//end &.menu-item-has-children
+
+            &.nav-search-button > .menu-item-wrapper > button{
                 display: grid;
-                gap: 8px;
                 grid-template-columns: auto 1fr;
                 align-items: center;
+                gap: 8px;
             }
 
             //TOP ACTIVE STYLES
@@ -293,18 +335,47 @@ ul.main-nav__third{
 
     }
 
-    ul.main-nav__second{
-        //initial hide
+    // Shared mobile accordion behavior for nested submenu levels
+    ul.main-nav__second,
+    ul.main-nav__third{
         display: none;
-        height: 0;
-        overflow: hidden;
-        transition: height 300ms ease-in-out;
+        block-size: 0;
+        overflow-y: clip;
+        opacity: 0;
 
+        transition: display @trans-speed allow-discrete,
+                    opacity @trans-speed ease-in-out,
+                    block-size @trans-speed ease-in-out;
+
+        &[data-visible="true"]{
+            display: block;
+            opacity: 1;
+            block-size: auto;
+        }
+    }
+
+    @starting-style {
+        ul.main-nav__second[data-visible="true"],
+        ul.main-nav__third[data-visible="true"] {
+            opacity: 0;
+            block-size: 0;
+        }
+    }
+
+    ul.main-nav__second{
         > li{
+            &:first-child{ padding-top: 6px; }
+            &:last-child{ padding-bottom: 6px; }
+
             > .menu-item-wrapper > a{
-                padding: 10px 0;
+                padding: 8px 0;
+                outline-offset: -2px;
                 &:hover{ text-decoration: none; }
             }
+            &.menu-item-has-children{
+				> .menu-item-wrapper{ margin-right: 35px; }
+			}//end &.menu-item-has-children
+
             //TOP ACTIVE STYLES
             &.current-menu-item, &.current-menu-ancestor{
                 > .menu-item-wrapper{
@@ -312,36 +383,21 @@ ul.main-nav__third{
                 }
             }
         }
-
-        &[data-visible="true"]{
-            display: block;
-            height: auto;
-        }
     }
 
     //only shows on mobile
     ul.main-nav__third{
-        .plain-list();
-        padding-left: 15px;
         border-left: 2px solid @blue;
-
-        //initial hide
-        display: none;
-        height: 0;
-        overflow: hidden;
-        transition: height 300ms ease-in-out;
-
-        &[data-visible="true"]{
-            display: block;
-            height: auto;
-        }
+        padding-left: 15px;
 
         > li{
+            padding: 6px 0;
             a{
                 display: block;
+                padding: 3px 0;
                 font: 700 (14/16rem)/1.2 @font-family-headings;
-                padding: 5px 10px;
                 color: @black;
+                text-decoration: none;
                 &:hover{ text-decoration: none; }
             }
             //TOP ACTIVE STYLES
@@ -354,6 +410,7 @@ ul.main-nav__third{
     }
 }
 
+//extra small mobile view - when the menu becomes a full screen takeover
 @media only screen and (max-width: 28.4375em){
     .main-nav[data-visible="true"],
     ul.main-nav__menu{

@@ -13,8 +13,9 @@ import responsiveNav from './responsive-nav.js'
     if( mainNav ){
         responsiveNav(mainNav,{
             desktopEms: '81.25em', // size of screen for desktop menu, should match less media query for @desktop-menu
-            wrapperSelector: '.main-nav',
+            wrapperSelector: '.site-wrapper',
             navType: 'offCanvas',
+            offCanvasInertSelectors: ['main', '.site-footer', '.logo'],
             closeOnOutsideClick: true
         });
     }
@@ -23,6 +24,7 @@ import responsiveNav from './responsive-nav.js'
     const subNav = document.querySelector('nav.subnav');
     if(subNav){
         responsiveNav(subNav,{
+            desktopEms: '48em', // size of screen for desktop menu, should match less media query for @desktop-subnav
             wrapperSelector: '.subnav-wrapper',
             navType: 'dropdown',
             menuButtonSelector: '.subnav-mobile-toggle'

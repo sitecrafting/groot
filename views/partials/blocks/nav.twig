@@ -4,7 +4,7 @@
     set header to position relative and add main-nav--mobile-drop class to nav
     change option on responsiveNav to navType: 'dropdown'
 #}
-<nav id="main-navigation" data-visible="false" class="main-nav">
+<nav id="main-navigation" aria-label="Main" data-visible="false" class="main-nav">
 
     <ul class="main-nav__menu">
         {% for top in menu.get_items %}

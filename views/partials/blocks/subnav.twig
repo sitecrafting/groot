@@ -1,7 +1,7 @@
 {% if menu.get_current_top_level_item().children() %}
 <div class="subnav-wrapper">
-    <button class="subnav-mobile-toggle">Sections {{ source('img/arrows/streamline-chevron-down@20x20.svg') }}</button>
-    <nav class="subnav" data-visible="false">
+    <button class="subnav-mobile-toggle" aria-controls="subnavigation" aria-expanded="false">Sections {{ source('img/arrows/nav-expander.svg') }}</button>
+    <nav aria-label="Sections" id="subnavigation" class="subnav" data-visible="false">
         <ul class="subnav__menu">
             {% for item in menu.get_current_top_level_item().children() %}
 
