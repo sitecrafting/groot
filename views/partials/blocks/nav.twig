@@ -53,9 +53,10 @@
         {% endfor %}
         <li class="nav-search-button">
             <div class="menu-item-wrapper">
-                <button popovertarget="popover-search">{{ source('img/icons/icon-search.svg') }}<span>Search</span></button>
+                <button id="btnOpenSearch" aria-haspopup="dialog">{{ source('img/icons/icon-search.svg') }}<span>Search</span></button>
             </div>
         </li>
     </ul>
-
+    
+    {% include 'partials/blocks/popup-search.twig' %}
 </nav>
