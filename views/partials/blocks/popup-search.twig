@@ -1,13 +1,13 @@
-<div popover role="dialog" id="popover-search" class="popover popover--search">
+<dialog id="searchDialog" aria-label="Search Site" class="popup">
         
-        <form role="search" method="get" class="popover-search-form" action="/" autocomplete="off">
+        <form role="search" method="get" class="popup-search-form" action="/" autocomplete="off">
             <label for="p-search" class="h3">Search</label>
             <div class="search-fields">
                 <input autofocus type="text" value="{{ search_query }}" name="s" id="p-search" placeholder="Enter search term..." autocomplete="off" />
-                <button type="submit" id="searchsubmit" class="btn" />search</button>
+                <button type="submit" id="searchsubmit" class="btn">search</button>
             </div>
         </form>
 
-        <button class="popover__close" popovertarget="popover-search" popovertargetaction="hide"><span>Close</span> {{ source('img/icons/icon-close.svg') }}</button>
+        <button id="btnCloseSearch" class="popup__close" aria-label="Close Search Dialog"><span aria-hidden="true">{{ source('img/icons/icon-close.svg') }}</span><span>Close</span></button>
 
-</div>
+</dialog>

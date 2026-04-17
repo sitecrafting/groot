@@ -1,18 +1,44 @@
 /**
-ResponsiveNav module
-
-Usage:
-
-const mainNav = document.querySelector('nav.main-nav');
-if( mainNav ){
-    responsiveNav(mainNav,{
-        navType: 'offCanvas',
-        closeOnOutsideClick: true
-    });
-}
-
+ * Responsive navigation controller for main nav and subnav instances.
+ *
+ * Features:
+ * - Supports two nav strategies:
+ *   - offCanvas: toggles visibility with data-visible for overlay menus
+ *   - dropdown: uses shared open/close height animation helpers
+ * - Keeps aria-expanded in sync for menu toggle buttons and subnav expanders
+ * - Handles desktop and mobile behavior via configurable media query breakpoint
+ * - Desktop subnav behavior:
+ *   - keyboard open/close (Enter/Space)
+ *   - Escape closes open subnavs and restores focus to triggering expander
+ *   - click outside closes open subnavs
+ *   - tabbing focus out of a top-level item closes its subnav
+ *   - hover listeners keep aria-expanded aligned with CSS :hover visibility
+ * - Mobile behavior:
+ *   - click + keyboard support for expanders
+ *   - nested menus keep ancestor path open while closing same-level siblings
+ *   - Escape closes all subnavs and the nav wrapper
+ *   - current-menu-ancestor paths auto-open on mobile
+ * - Optional outside-click close for the main nav wrapper
+ * - Offcanvas accessibility support using inert on non-nav page regions
+ * - Optional nav-owned search dialog sync (close search when nav closes)
+ *   - If hasSearchInNav is false, keep dialog behavior managed outside this module
+ *
+ * Usage:
+ * const mainNav = document.querySelector('nav.main-nav');
+ * if (mainNav) {
+ *   responsiveNav(mainNav, {
+ *     navType: 'offCanvas',
+ *     closeOnOutsideClick: true,
+ *   });
+ * }
  */
+import { openDropdown, closeDropdown } from './dropdown-animation-plugin.js';
+
 export default function responsiveNav( thisNav, overwrites ) {
+
+    // ---------------------------------------------------------------------
+    // Configuration
+    // ---------------------------------------------------------------------
 
     const defaultOptions = {
         desktopEms: '81.25em', // 1240px
@@ -22,116 +48,151 @@ export default function responsiveNav( thisNav, overwrites ) {
         navType: 'offCanvas',
         dropdownSelector: '',
         closeOnOutsideClick: false,
+        // If true, search dialog is considered part of this nav and syncs with nav open/close state.
+        hasSearchInNav: false,
+        searchDialogSelector: '#searchDialog',
+        searchTriggerSelector: '#btnOpenSearch',
+        // Elements outside nav that should be made inert when offCanvas is open.
+        offCanvasInertSelectors: ['main', '.site-footer', '.logo'],
     };
     let options = Object.assign({}, defaultOptions, overwrites);
 
-    // Define the media query for when we are on the desktop menu - used to control events on the subnav expander
+    // Desktop breakpoint controls expander behavior and listener wiring.
     const mediaQuery = window.matchMedia(`only screen and (min-width: ${options.desktopEms})`);
 
+    // Core elements for the configured nav instance.
     let wrapper = document.querySelector(options.wrapperSelector ),
-        menuButton = document.querySelector(options.menuButtonSelector);
-        
-    // target dropdown element (element that slides open), which may be distinct from thisNav
-    let dropdownElem = options.dropdownSelector ? document.querySelector(options.dropdownSelector) : thisNav;
+        menuButton = document.querySelector(options.menuButtonSelector),
+        dropdownElem = options.dropdownSelector ? document.querySelector(options.dropdownSelector) : thisNav;
+
+    // Collections used across helper functions.
+    const subnavExpanders = thisNav.querySelectorAll('.nav-expander');
+    const topLevelItems = thisNav.querySelectorAll(':scope > ul > li');
+
+    const navSearchDialog = options.hasSearchInNav && options.searchDialogSelector
+        ? document.querySelector(options.searchDialogSelector)
+        : null;
+
+    const navSearchTrigger = options.hasSearchInNav && options.searchTriggerSelector
+        ? document.querySelector(options.searchTriggerSelector)
+        : null;
+
+    // Resolve inert targets once from the centralized selector list.
+    // Take this list of CSS selectors, find every element on the page that matches them, make sure no element is listed twice, and give me the final result as an array.
+    const offCanvasInertTargets = [
+        ...new Set(
+            (Array.isArray(options.offCanvasInertSelectors) ? options.offCanvasInertSelectors : [])
+                .flatMap(selector => Array.from(document.querySelectorAll(selector)))
+        ),
+    ];
+
+    // Tracks the last desktop expander so Escape can restore focus.
+    let _activeSubnavExpander = null;
+    let _previousMediaQueryMatch = mediaQuery.matches;
+
+    // ---------------------------------------------------------------------
+    // Strategy helpers
+    // ---------------------------------------------------------------------
+
+    function _closeNavSearchDialog() {
+        if (navSearchDialog && navSearchDialog.open) {
+            navSearchDialog.close();
+
+            // Keep keyboard users oriented when dialog is closed programmatically.
+            if (navSearchTrigger) {
+                navSearchTrigger.focus();
+            } else if (menuButton) {
+                menuButton.focus();
+            }
+        }
+    }
 
     function _menuIsOpen() {
-        //if the menubutton is marked as expanded the menu is open
-        return menuButton.getAttribute('aria-expanded') == 'true' ? true : false;
-    }
-
-
-    /*
-    * CLOSE NAVIGATION SETUP
-    */
-    function _closeDropdownNav(elem) {
-        // Give the element a height to change from
-        elem.style.height = elem.scrollHeight + 'px';
-        elem.style.overflow = 'hidden';
-
-        // Set the height back to 0
-        window.setTimeout(function () {
-            elem.style.height = '0';
-        }, 1);
-
-        // When the transition is complete, hide it
-        window.setTimeout(function () {
-            elem.setAttribute('data-visible', false);
-            elem.style.height = '';
-            elem.style.overflow = '';
-        }, 350);
-
-    }
-
-    function _closeOffCanvasNav() {
-        thisNav.setAttribute('data-visible', false);
-    }
-
-    const closeNavStrategies = {
-        dropdown: _closeDropdownNav,
-        offCanvas: _closeOffCanvasNav,
-    }
-
-    //set what type of closeNav we want
-    const closeNavStrategy = closeNavStrategies[options.navType] || _closeOffCanvasNav;
-
-    //THIS IS THE ACTUAL FUNCTION THAT GETS CALLED TO CLOSE THE NAV
-    function closeNav() {
-        closeNavStrategy(dropdownElem);
-        wrapper.classList.remove( options.menuOpenWrapperClass );
-        menuButton.setAttribute('aria-expanded', false);
-    }
-
-    /*
-    * OPEN NAVIGATION SETUP
-    */
-    function _openDropdownNav(elem) {
-        
-        // Get the natural height of the element
-        // Even though we’re showing and then re-hiding our content, it never shows visibly for users because 
-        // the function runs so quickly (just a few milliseconds) and thus never actually renders visually in the DOM.
-        elem.style.display = 'block'; // Make it visible
-        var height = elem.scrollHeight + 'px'; // Get it's height
-        elem.style.display = ''; //  Hide it again
-        elem.setAttribute('data-visible', true);
-        elem.style.height = height; // Update the max-height
-        elem.style.overflow = 'hidden';
-
-        // Once the transition is complete, remove the inline max-height so the content can scale responsively
-        window.setTimeout(function () {
-            elem.style.height = '';
-            elem.style.overflow = '';
-        }, 350);
+        // If the menu button reports expanded, nav is treated as open.
+        return menuButton.getAttribute('aria-expanded') === 'true' ? true : false;
     }
 
     function _openOffCanvasNav() {
         thisNav.setAttribute('data-visible', true);
     }
+    function _closeOffCanvasNav() {
+        thisNav.setAttribute('data-visible', false);
+    }
 
+    const closeNavStrategies = {
+        dropdown: closeDropdown, //imported function
+        offCanvas: _closeOffCanvasNav,
+    }
     const openNavStrategies = {
-        dropdown: _openDropdownNav,
+        dropdown: openDropdown, //imported function
         offCanvas: _openOffCanvasNav,
     }
-    //set what type of closeNav we want
-    const openNavStrategy = openNavStrategies[options.navType] || _openOffCanvasNav
 
-    //THIS IS THE ACTUAL FUNCTION THAT GETS CALLED TO OPEN THE NAV
+    // Fallback to offCanvas if a navType key is missing.
+    const closeNavStrategy = closeNavStrategies[options.navType] || _closeOffCanvasNav;
+    const openNavStrategy = openNavStrategies[options.navType] || _openOffCanvasNav;
+
+    // ---------------------------------------------------------------------
+    // Main nav open/close handlers
+    // ---------------------------------------------------------------------
+
+    // Named handler allows proper add/remove without accumulating anonymous listeners.
+    function _handleNavOutsideClick(event) {
+        if( !thisNav.contains(event.target) ){
+            closeNav();
+        }
+    }
+
+    // Mobile-only Escape behavior closes entire nav and restores trigger focus.
+    function _handleMobileEscape(event) {
+        // If nav-owned search is open, let the dialog consume Escape first.
+        if (navSearchDialog && navSearchDialog.open) {
+            return;
+        }
+
+        if (event.key === 'Escape') {
+            closeAllSubnavs();
+            closeNav();
+            menuButton.focus();
+        }
+    }
+
+    // Calls the active strategy and then wires global nav state/listeners.
     function openNav() {
-
         openNavStrategy(dropdownElem);
         wrapper.classList.add( options.menuOpenWrapperClass );
         menuButton.setAttribute('aria-expanded', true);
 
+        // Offcanvas only: remove non-nav content from keyboard focus order.
+        if (options.navType === 'offCanvas') {
+            offCanvasInertTargets.forEach(target => target.setAttribute('inert', ''));
+        }
+
         if (options.closeOnOutsideClick) {
-            // close the menu when the user clicks anywhere outside it
-            wrapper.addEventListener('click', function (event) {
-                if( !thisNav.contains(event.target) ){
-                    closeNav();
-                }
-            });
+            // Close menu when user clicks outside the nav element.
+            wrapper.addEventListener('click', _handleNavOutsideClick);
+        }
+
+        if (!mediaQuery.matches) {
+            document.addEventListener('keydown', _handleMobileEscape);
         }
     }
+    function closeNav() {
+        closeNavStrategy(dropdownElem);
+        wrapper.classList.remove( options.menuOpenWrapperClass );
+        menuButton.setAttribute('aria-expanded', false);
 
-    //Toggle Menu
+        // Keep nav-owned search dialog state in sync with nav close.
+        _closeNavSearchDialog();
+
+        // Restore normal document focusability.
+        offCanvasInertTargets.forEach(target => target.removeAttribute('inert'));
+
+        wrapper.removeEventListener('click', _handleNavOutsideClick);
+        document.removeEventListener('keydown', _handleMobileEscape);
+    }
+    
+    // Main trigger toggle.
     menuButton.addEventListener('click', function(event) {
         event.stopPropagation();
         event.preventDefault();
@@ -144,63 +205,34 @@ export default function responsiveNav( thisNav, overwrites ) {
         }
     }); //end button on
 
+    // ---------------------------------------------------------------------
+    // Subnav behavior helpers
+    // ---------------------------------------------------------------------
 
-    //function used for mobile only
-    function handleSubnavExpander(event){
-        event.stopPropagation();
-        event.preventDefault();
-
-        const expanderBtn = event.currentTarget;
-        const subNav = expanderBtn.parentElement.nextElementSibling; //traverse up to the top level <a> tag then get the subnav ul which is a sibling
-        const parentLi = expanderBtn.parentElement.parentElement;
-        
-        //if its not visible - open this subnav
-        if( subNav.getAttribute('data-visible') == 'false' ){
-            //expand the current
-
-            _openDropdownNav(subNav);
-            //subNav.setAttribute('data-visible', true); this is already done in the _openDropdownNav function
-            expanderBtn.setAttribute('aria-expanded', true);
-
-        } else {
-            //close the subnav
-            _closeDropdownNav(subNav);
-            //subNav.setAttribute('data-visible', false);
-            expanderBtn.setAttribute('aria-expanded', false);
+    // Close same-level sibling subnavs while preserving open ancestors.
+    function _closeSiblingSubnavs(expanderBtn) {
+        const parentLi = expanderBtn.parentElement ? expanderBtn.parentElement.parentElement : null;
+        const parentUl = parentLi ? parentLi.parentElement : null;
+        if (!parentUl) {
+            return;
         }
 
-    }
+        parentUl.querySelectorAll(':scope > li > [data-visible="true"]').forEach(openSubNav => {
+            const siblingExpander = openSubNav.previousElementSibling
+                ? openSubNav.previousElementSibling.querySelector('.nav-expander')
+                : null;
 
-    // Function to close all subnavs
-    function closeAllSubnavs() {
-        const allSubnavs = thisNav.querySelectorAll('[data-visible="true"]');
-        allSubnavs.forEach(openSubNav => {
             openSubNav.setAttribute('data-visible', false);
-            const siblingExpander = openSubNav.previousElementSibling.querySelector('.nav-expander');
             if (siblingExpander) {
                 siblingExpander.setAttribute('aria-expanded', false);
             }
         });
+    }
 
-        // Remove event listeners after closing all subnavs
-        document.removeEventListener('keydown', handleEscapeKey);
-        document.removeEventListener('click', handleOutsideClick);
-    }
-    // Function to handle the escape key press
-    function handleEscapeKey(event) {
-        if (event.key === 'Escape') {
-            closeAllSubnavs();
-        }
-    }
-    // Function to handle clicking outside the navigation area
-    function handleOutsideClick(event) {
-        if (!thisNav.contains(event.target)) {
-            closeAllSubnavs();
-        }
-    }
-    function handleSubnavExpanderDesktop(event){
-        
-        if( event.key !== 'Enter' && event.key !== ' ') {
+    // Handles expander activation for both keyboard and click paths.
+    function handleSubnavExpander(event){
+        // Keydown path: only respond to Enter and Space.
+        if( event.type === 'keydown' && event.key !== 'Enter' && event.key !== ' ' ) {
             return;
         }
 
@@ -208,93 +240,190 @@ export default function responsiveNav( thisNav, overwrites ) {
         event.preventDefault();
 
         const expanderBtn = event.currentTarget;
-        const subNav = expanderBtn.parentElement.nextElementSibling;
+        const subNav = expanderBtn.parentElement.nextElementSibling; //traverse up to the parent then get the next sibling which is the subnav
 
-        //if its not visible - open this subnav
-        if( subNav.getAttribute('data-visible') == 'false' ){
-            //expand the current
+        if( subNav.getAttribute('data-visible') === 'false' ){
+            if (mediaQuery.matches) {
+                // Desktop: only one open branch at a time.
+                closeAllSubnavs();
+            } else {
+                // Mobile: preserve ancestors, collapse siblings.
+                _closeSiblingSubnavs(expanderBtn);
+            }
 
-            //Close all other subnav and expanders
-            closeAllSubnavs();
-
-            document.addEventListener('keydown', handleEscapeKey);
-            document.addEventListener('click', handleOutsideClick);
-
-            //open this subnav
+            // Open target subnav.
             subNav.setAttribute('data-visible', true);
             expanderBtn.setAttribute('aria-expanded', true);
+            _activeSubnavExpander = expanderBtn;
 
+            if (mediaQuery.matches) {
+                document.addEventListener('keydown', handleEscapeKey);
+                document.addEventListener('click', handleOutsideClick);
+            }
         } else {
-            //close the subnav
+            // Close target subnav.
             subNav.setAttribute('data-visible', false);
             expanderBtn.setAttribute('aria-expanded', false);
+            _activeSubnavExpander = null;
 
-            document.removeEventListener('keydown', handleEscapeKey);
-            document.removeEventListener('click', handleOutsideClick);
+            if (mediaQuery.matches) {
+                document.removeEventListener('keydown', handleEscapeKey);
+                document.removeEventListener('click', handleOutsideClick);
+            }
         }
     }
 
-    // Helper to open subnavs for current-menu-ancestor items on mobile
+    // Close all open subnav branches for this nav instance.
+    function closeAllSubnavs() {
+        const allOpenSubnavs = thisNav.querySelectorAll('[data-visible="true"]');
+        allOpenSubnavs.forEach(openSubNav => {
+            openSubNav.setAttribute('data-visible', false);
+            const siblingExpander = openSubNav.previousElementSibling
+                ? openSubNav.previousElementSibling.querySelector('.nav-expander')
+                : null;
+            if (siblingExpander) {
+                siblingExpander.setAttribute('aria-expanded', false);
+            }
+        });
+
+        // Remove desktop-only close listeners.
+        document.removeEventListener('keydown', handleEscapeKey);
+        document.removeEventListener('click', handleOutsideClick);
+    }
+
+    // Escape closes all desktop subnavs and restores focus to opener.
+    function handleEscapeKey(event) {
+        if (event.key === 'Escape') {
+            closeAllSubnavs();
+            if (_activeSubnavExpander) {
+                _activeSubnavExpander.focus();
+                _activeSubnavExpander = null;
+            }
+        }
+    }
+
+    // Clicking outside this nav closes open subnavs.
+    function handleOutsideClick(event) {
+        if (!thisNav.contains(event.target)) {
+            closeAllSubnavs();
+        }
+    }
+
+    // Mobile-only: auto-open current ancestor path for context.
     function openCurrentAncestors() {
-        const ancestorItems = thisNav.querySelectorAll('li.current-menu-ancestor, li.current-menu-item');
+        const ancestorItems = thisNav.querySelectorAll('li.current-menu-ancestor');
         ancestorItems.forEach(li => {
             const expanderBtn = li.querySelector('.nav-expander');
             const subNav = expanderBtn ? expanderBtn.parentElement.nextElementSibling : null;
+            // Open only when an ancestor branch is currently collapsed.
             if (expanderBtn && subNav && subNav.getAttribute('data-visible') === 'false') {
-                _openDropdownNav(subNav);
+                subNav.setAttribute('data-visible', true);
                 expanderBtn.setAttribute('aria-expanded', true);
             }
         });
     }
 
-    // On resize, check menu type and act accordingly
+    // ---------------------------------------------------------------------
+    // Responsive mode wiring
+    // ---------------------------------------------------------------------
+
+    // On resize, reconcile branch state with active breakpoint mode.
     function handleResize() {
         if (mediaQuery.matches) {
-            // Desktop: close all subnavs
+            // Desktop: reset to collapsed state.
             closeAllSubnavs();
         } else {
-            // Mobile: open current-menu-ancestor subnavs
+            // Mobile: expose current section path.
             openCurrentAncestors();
         }
     }
 
-    // Listen for window resize
-    window.addEventListener('resize', handleResize);
+    // Listen for window resize with debounce
+    let resizeTimeout;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(handleResize, 150);
+    });
+
     // Initial check
     handleResize();
 
-    //button that controls subnav
-    const subnavExpanders = thisNav.querySelectorAll('.nav-expander');
+    // Desktop: close subnav when focus leaves the top-level item via Tab.
+    function _handleTopLevelItemFocusout(event) {
+        // Focus is still within this item (moving between subnav links) — do nothing.
+        if (event.currentTarget.contains(event.relatedTarget)) {
+            return;
+        }
+        closeAllSubnavs();
+        _activeSubnavExpander = null;
+    }
 
-    // Function to handle the behavior based on the media query
+    // Keep aria-expanded accurate when submenu is shown by CSS :hover.
+    function _handleItemMouseenter() {
+        const expander = this.querySelector(':scope > .menu-item-wrapper > .nav-expander');
+        if (expander) expander.setAttribute('aria-expanded', true);
+    }
+
+    function _handleItemMouseleave() {
+        const expander = this.querySelector(':scope > .menu-item-wrapper > .nav-expander');
+        const subNav = expander ? expander.parentElement.nextElementSibling : null;
+        // Keep aria-expanded true if keyboard opened the submenu.
+        if (expander && subNav && subNav.getAttribute('data-visible') !== 'true') {
+            expander.setAttribute('aria-expanded', false);
+        }
+    }
+
+    function _addHoverListeners() {
+        topLevelItems.forEach(li => {
+            li.addEventListener('mouseenter', _handleItemMouseenter);
+            li.addEventListener('mouseleave', _handleItemMouseleave);
+            li.addEventListener('focusout', _handleTopLevelItemFocusout);
+        });
+    }
+
+    function _removeHoverListeners() {
+        topLevelItems.forEach(li => {
+            li.removeEventListener('mouseenter', _handleItemMouseenter);
+            li.removeEventListener('mouseleave', _handleItemMouseleave);
+            li.removeEventListener('focusout', _handleTopLevelItemFocusout);
+        });
+    }
+
+    // Apply proper listeners when crossing desktop/mobile breakpoint.
     function handleMediaQueryChange(e) {
+
+        const hasBreakpointChanged = e.matches !== _previousMediaQueryMatch;
+        _previousMediaQueryMatch = e.matches;
+
+        // Only sync-close search on actual breakpoint transitions, not every resize tick.
+        if (hasBreakpointChanged && !_menuIsOpen()) {
+            _closeNavSearchDialog();
+        }
+
         if (e.matches) {
-            // Media query matches Screen Size is desktop menu
-            
+            // Desktop: keyboard-only expander activation, plus hover aria sync.
             subnavExpanders.forEach(expander => {
-                /*
-                For each expander add the keydown listenter for desktop expanding
-                remove the click listener
-                */
-                expander.addEventListener('keydown', handleSubnavExpanderDesktop);
                 expander.removeEventListener('click', handleSubnavExpander);
+                expander.addEventListener('keydown', handleSubnavExpander);
             });
 
+            document.removeEventListener('keydown', _handleMobileEscape);
+            _addHoverListeners();
         } else {
-            // Media query does not match so its the mobile menu
+            // Mobile: support click and keyboard activation, no hover sync.
             subnavExpanders.forEach(expander => {
-                /*
-                for each expander remove the keydown listener for desktop
-                add the click listener for mobile
-                */
-                expander.removeEventListener('keydown', handleSubnavExpanderDesktop);
+                expander.removeEventListener('keydown', handleSubnavExpander);
                 expander.addEventListener('click', handleSubnavExpander);
+                expander.addEventListener('keydown', handleSubnavExpander);
             });
+
+            _removeHoverListeners();
         }
     }
 
     // Initial check for the media query
     handleMediaQueryChange(mediaQuery);
+
     // Listen for changes to the media query
     mediaQuery.addEventListener('change', handleMediaQueryChange);
 

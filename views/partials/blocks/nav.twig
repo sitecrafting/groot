@@ -4,7 +4,7 @@
     set header to position relative and add main-nav--mobile-drop class to nav
     change option on responsiveNav to navType: 'dropdown'
 #}
-<nav id="main-navigation" data-visible="false" class="main-nav">
+<nav id="main-navigation" aria-label="Main" data-visible="false" class="main-nav">
 
     <ul class="main-nav__menu">
         {% for top in menu.get_items %}
@@ -53,9 +53,10 @@
         {% endfor %}
         <li class="nav-search-button">
             <div class="menu-item-wrapper">
-                <button popovertarget="popover-search">{{ source('img/icons/icon-search.svg') }}<span>Search</span></button>
+                <button id="btnOpenSearch" aria-haspopup="dialog">{{ source('img/icons/icon-search.svg') }}<span>Search</span></button>
             </div>
         </li>
     </ul>
 
+    {% include 'partials/blocks/popup-search.twig' %}
 </nav>

@@ -1,37 +1,72 @@
-.popover{
-    padding: 100px;
-	width: 100%;
-    max-width: 1040px;
-    background-color: @white;
-    border: 0;
+dialog.popup{
+    width: min(90%, 840px);
+    padding: 32px;
+    border: 1px solid @black;
+    background: @white;
+    box-shadow: 0 4px 6px rgba(0,0,0,.1);
 
-    &::backdrop{ background-color: rgba(0,0,0,.7); }
-    
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+        display @trans-speed ease allow-discrete,
+        overlay @trans-speed ease allow-discrete,
+        opacity @trans-speed ease,
+        transform @trans-speed ease;
+
+    &::backdrop{
+        background-color: rgba(0,0,0,0);
+        transition:
+            display @trans-speed allow-discrete,
+            overlay @trans-speed allow-discrete,
+            background-color @trans-speed;
+    }
+
+    &[open] {
+        opacity: 1;
+        transform: translateY(0);
+
+        &::backdrop {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+    }
+
 }
 
-.popover-search-form{
-    label{ 
-        display: block;
-        margin: 0 0 15px; 
+// Define the "starting style" for when it first opens
+@starting-style {
+    dialog.popup[open] {
+        opacity: 0;
+        transform: translateY(20px);
+        &::backdrop{
+            background-color: rgba(0,0,0,0);
+        }
     }
 }
 
-.popover__close{
+.popup__close{
     .button-reset();
-	display: grid;
-    grid-template-columns: 1fr auto;
-    column-gap: 10px;
-    align-items: center;
-	position: absolute;
+    position: absolute;
     top: 20px;
-	right: 20px;
-	font: 700 1rem/1.2 @font-family-headings;
-	color: @black;
-    transition: all @trans-speed ease;
+    right: 20px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    column-gap: 5px;
     z-index: 500;
+    font: 700 1rem/1.2 @font-family-headings;
+    color: @black;
+    transition: all @trans-speed ease;
 
-	svg polygon{ fill: currentColor; }
-	&:hover{
-		.text-underline();
-	}
+    svg{
+        display: block;
+        polygon{ fill: currentColor; }
+    }
+
+    &:hover{
+        .text-underline();
+    }
+}
+
+.popup-search-form{
+    label{ display: block; margin: 0 0 15px; }
 }
