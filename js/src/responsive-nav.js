@@ -20,6 +20,7 @@
  * - Optional outside-click close for the main nav wrapper
  * - Offcanvas accessibility support using inert on non-nav page regions
  * - Optional nav-owned search dialog sync (close search when nav closes)
+ *   - If hasSearchInNav is false, keep dialog behavior managed outside this module
  *
  * Usage:
  * const mainNav = document.querySelector('nav.main-nav');
@@ -49,6 +50,7 @@ export default function responsiveNav( thisNav, overwrites ) {
         // If true, search dialog is considered part of this nav and syncs with nav open/close state.
         hasSearchInNav: false,
         searchDialogSelector: '#searchDialog',
+        searchTriggerSelector: '#btnOpenSearch',
         // Elements outside nav that should be made inert when offCanvas is open.
         offCanvasInertSelectors: ['main', '.site-footer', '.logo'],
     };
@@ -70,6 +72,10 @@ export default function responsiveNav( thisNav, overwrites ) {
         ? document.querySelector(options.searchDialogSelector)
         : null;
 
+    const navSearchTrigger = options.hasSearchInNav && options.searchTriggerSelector
+        ? document.querySelector(options.searchTriggerSelector)
+        : null;
+
     // Resolve inert targets once from the centralized selector list.
     // Take this list of CSS selectors, find every element on the page that matches them, make sure no element is listed twice, and give me the final result as an array.
     const offCanvasInertTargets = [
@@ -81,6 +87,7 @@ export default function responsiveNav( thisNav, overwrites ) {
 
     // Tracks the last desktop expander so Escape can restore focus.
     let _activeSubnavExpander = null;
+    let _previousMediaQueryMatch = mediaQuery.matches;
 
     // ---------------------------------------------------------------------
     // Strategy helpers
@@ -89,6 +96,13 @@ export default function responsiveNav( thisNav, overwrites ) {
     function _closeNavSearchDialog() {
         if (navSearchDialog && navSearchDialog.open) {
             navSearchDialog.close();
+
+            // Keep keyboard users oriented when dialog is closed programmatically.
+            if (navSearchTrigger) {
+                navSearchTrigger.focus();
+            } else if (menuButton) {
+                menuButton.focus();
+            }
         }
     }
 
@@ -130,6 +144,11 @@ export default function responsiveNav( thisNav, overwrites ) {
 
     // Mobile-only Escape behavior closes entire nav and restores trigger focus.
     function _handleMobileEscape(event) {
+        // If nav-owned search is open, let the dialog consume Escape first.
+        if (navSearchDialog && navSearchDialog.open) {
+            return;
+        }
+
         if (event.key === 'Escape') {
             closeAllSubnavs();
             closeNav();
@@ -309,11 +328,6 @@ export default function responsiveNav( thisNav, overwrites ) {
 
     // On resize, reconcile branch state with active breakpoint mode.
     function handleResize() {
-        // If nav is closed during resize, close nav-owned search to avoid desynced hidden modal state.
-        if (!_menuIsOpen()) {
-            _closeNavSearchDialog();
-        }
-
         if (mediaQuery.matches) {
             // Desktop: reset to collapsed state.
             closeAllSubnavs();
@@ -364,6 +378,14 @@ export default function responsiveNav( thisNav, overwrites ) {
 
     // Apply proper listeners when crossing desktop/mobile breakpoint.
     function handleMediaQueryChange(e) {
+
+        const hasBreakpointChanged = e.matches !== _previousMediaQueryMatch;
+        _previousMediaQueryMatch = e.matches;
+
+        // Only sync-close search on actual breakpoint transitions, not every resize tick.
+        if (hasBreakpointChanged && !_menuIsOpen()) {
+            _closeNavSearchDialog();
+        }
 
         if (e.matches) {
             // Desktop: keyboard-only expander activation, plus hover aria sync.
