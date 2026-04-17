@@ -11,6 +11,7 @@
  *   - keyboard open/close (Enter/Space)
  *   - Escape closes open subnavs and restores focus to triggering expander
  *   - click outside closes open subnavs
+ *   - tabbing focus out of a top-level item closes its subnav
  *   - hover listeners keep aria-expanded aligned with CSS :hover visibility
  * - Mobile behavior:
  *   - click + keyboard support for expanders
@@ -347,6 +348,16 @@ export default function responsiveNav( thisNav, overwrites ) {
     // Initial check
     handleResize();
 
+    // Desktop: close subnav when focus leaves the top-level item via Tab.
+    function _handleTopLevelItemFocusout(event) {
+        // Focus is still within this item (moving between subnav links) — do nothing.
+        if (event.currentTarget.contains(event.relatedTarget)) {
+            return;
+        }
+        closeAllSubnavs();
+        _activeSubnavExpander = null;
+    }
+
     // Keep aria-expanded accurate when submenu is shown by CSS :hover.
     function _handleItemMouseenter() {
         const expander = this.querySelector(':scope > .menu-item-wrapper > .nav-expander');
@@ -366,6 +377,7 @@ export default function responsiveNav( thisNav, overwrites ) {
         topLevelItems.forEach(li => {
             li.addEventListener('mouseenter', _handleItemMouseenter);
             li.addEventListener('mouseleave', _handleItemMouseleave);
+            li.addEventListener('focusout', _handleTopLevelItemFocusout);
         });
     }
 
@@ -373,6 +385,7 @@ export default function responsiveNav( thisNav, overwrites ) {
         topLevelItems.forEach(li => {
             li.removeEventListener('mouseenter', _handleItemMouseenter);
             li.removeEventListener('mouseleave', _handleItemMouseleave);
+            li.removeEventListener('focusout', _handleTopLevelItemFocusout);
         });
     }
 
