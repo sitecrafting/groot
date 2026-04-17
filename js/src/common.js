@@ -15,6 +15,8 @@ import responsiveNav from './responsive-nav.js'
             desktopEms: '81.25em', // size of screen for desktop menu, should match less media query for @desktop-menu
             wrapperSelector: '.site-wrapper',
             navType: 'offCanvas',
+            hasSearchInNav: true,
+            searchDialogSelector: '#searchDialog',
             offCanvasInertSelectors: ['main', '.site-footer', '.logo'],
             closeOnOutsideClick: true
         });

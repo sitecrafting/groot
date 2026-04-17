@@ -19,6 +19,7 @@
  *   - current-menu-ancestor paths auto-open on mobile
  * - Optional outside-click close for the main nav wrapper
  * - Offcanvas accessibility support using inert on non-nav page regions
+ * - Optional nav-owned search dialog sync (close search when nav closes)
  *
  * Usage:
  * const mainNav = document.querySelector('nav.main-nav');
@@ -45,6 +46,9 @@ export default function responsiveNav( thisNav, overwrites ) {
         navType: 'offCanvas',
         dropdownSelector: '',
         closeOnOutsideClick: false,
+        // If true, search dialog is considered part of this nav and syncs with nav open/close state.
+        hasSearchInNav: false,
+        searchDialogSelector: '#searchDialog',
         // Elements outside nav that should be made inert when offCanvas is open.
         offCanvasInertSelectors: ['main', '.site-footer', '.logo'],
     };
@@ -62,6 +66,10 @@ export default function responsiveNav( thisNav, overwrites ) {
     const subnavExpanders = thisNav.querySelectorAll('.nav-expander');
     const topLevelItems = thisNav.querySelectorAll(':scope > ul > li');
 
+    const navSearchDialog = options.hasSearchInNav && options.searchDialogSelector
+        ? document.querySelector(options.searchDialogSelector)
+        : null;
+
     // Resolve inert targets once from the centralized selector list.
     // Take this list of CSS selectors, find every element on the page that matches them, make sure no element is listed twice, and give me the final result as an array.
     const offCanvasInertTargets = [
@@ -77,6 +85,12 @@ export default function responsiveNav( thisNav, overwrites ) {
     // ---------------------------------------------------------------------
     // Strategy helpers
     // ---------------------------------------------------------------------
+
+    function _closeNavSearchDialog() {
+        if (navSearchDialog && navSearchDialog.open) {
+            navSearchDialog.close();
+        }
+    }
 
     function _menuIsOpen() {
         // If the menu button reports expanded, nav is treated as open.
@@ -147,6 +161,9 @@ export default function responsiveNav( thisNav, overwrites ) {
         closeNavStrategy(dropdownElem);
         wrapper.classList.remove( options.menuOpenWrapperClass );
         menuButton.setAttribute('aria-expanded', false);
+
+        // Keep nav-owned search dialog state in sync with nav close.
+        _closeNavSearchDialog();
 
         // Restore normal document focusability.
         offCanvasInertTargets.forEach(target => target.removeAttribute('inert'));
@@ -292,6 +309,11 @@ export default function responsiveNav( thisNav, overwrites ) {
 
     // On resize, reconcile branch state with active breakpoint mode.
     function handleResize() {
+        // If nav is closed during resize, close nav-owned search to avoid desynced hidden modal state.
+        if (!_menuIsOpen()) {
+            _closeNavSearchDialog();
+        }
+
         if (mediaQuery.matches) {
             // Desktop: reset to collapsed state.
             closeAllSubnavs();
