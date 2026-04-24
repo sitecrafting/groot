@@ -193,6 +193,27 @@ $site->configure(function() {
     //     remove_menu_page('edit.php');
     // });
 
+    // Hide Tags from admin menu and post editor
+    add_action('admin_menu', function() {
+        remove_submenu_page('edit.php', 'edit-tags.php?taxonomy=post_tag');
+    });
+    add_action('init', function() {
+        //Hide tags for posts and all cpts
+        $types = get_post_types(['public' => true], 'names');
+
+        // Keep tags enabled for The Events Calendar post type(s).
+        $excluded_types = [
+            'tribe_events',
+        ];
+
+        foreach ($types as $type) {
+            if (in_array($type, $excluded_types, true)) {
+                continue;
+            }
+            unregister_taxonomy_for_object_type('post_tag', $type);
+        }
+    });
+
     //remove read more tag
     add_filter( 'mce_buttons', 'sc_remove_tiny_mce_buttons_from_row1');
     function sc_remove_tiny_mce_buttons_from_row1( $buttons ) {
