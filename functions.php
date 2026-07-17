@@ -193,6 +193,18 @@ $site->configure(function() {
     //     remove_menu_page('edit.php');
     // });
 
+    //REMOVE UNUSED MENU ITEMS
+    function remove_unused_admin_menu_items() {
+        remove_submenu_page( 'themes.php', 'font-library.php' );
+        remove_submenu_page( 'themes.php', 'site-editor.php' );
+        remove_submenu_page( 'themes.php', 'theme-editor.php' ); 
+
+        // Appearance > Patterns (slug varies by WP/Gutenberg context)
+        remove_submenu_page( 'themes.php', 'site-editor.php?p=/pattern' );
+        remove_submenu_page( 'themes.php', 'site-editor.php?p=%2Fpattern' );
+    }
+    add_action( 'admin_menu', 'remove_unused_admin_menu_items', 999 );
+
     // Hide Tags from admin menu and post editor
     add_action('admin_menu', function() {
         remove_submenu_page('edit.php', 'edit-tags.php?taxonomy=post_tag');
