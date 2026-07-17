@@ -53,7 +53,7 @@ export default function responsiveNav( thisNav, overwrites ) {
         searchDialogSelector: '#searchDialog',
         searchTriggerSelector: '#btnOpenSearch',
         // Elements outside nav that should be made inert when offCanvas is open.
-        offCanvasInertSelectors: ['main', '.site-footer', '.logo'],
+        offCanvasInertSelectors: ['main', '.site-footer', '.logo', '.skip-to-content-link'],
     };
     let options = Object.assign({}, defaultOptions, overwrites);
 
@@ -68,6 +68,7 @@ export default function responsiveNav( thisNav, overwrites ) {
     // Collections used across helper functions.
     const subnavExpanders = thisNav.querySelectorAll('.nav-expander');
     const topLevelItems = thisNav.querySelectorAll(':scope > ul > li');
+    const hoverSuppressClass = 'is-hover-suppressed';
 
     const navSearchDialog = options.hasSearchInNav && options.searchDialogSelector
         ? document.querySelector(options.searchDialogSelector)
@@ -291,9 +292,26 @@ export default function responsiveNav( thisNav, overwrites ) {
         document.removeEventListener('click', handleOutsideClick);
     }
 
+    // Temporarily disable hover-opened submenus after Escape without requiring pointer movement.
+    function _suppressHoveredSubnavs() {
+        topLevelItems.forEach(li => {
+            if (!li.matches(':hover')) {
+                return;
+            }
+
+            const expander = li.querySelector(':scope > .menu-item-wrapper > .nav-expander');
+            if (expander) {
+                li.classList.add(hoverSuppressClass);
+                expander.setAttribute('aria-expanded', false);
+            }
+        });
+    }
+
     // Escape closes all desktop subnavs and restores focus to opener.
     function handleEscapeKey(event) {
         if (event.key === 'Escape') {
+            // Ensure CSS :hover cannot immediately re-open submenu while pointer remains over item.
+            _suppressHoveredSubnavs();
             closeAllSubnavs();
             if (_activeSubnavExpander) {
                 _activeSubnavExpander.focus();
@@ -361,15 +379,22 @@ export default function responsiveNav( thisNav, overwrites ) {
     // Keep aria-expanded accurate when submenu is shown by CSS :hover.
     function _handleItemMouseenter() {
         const expander = this.querySelector(':scope > .menu-item-wrapper > .nav-expander');
-        if (expander) expander.setAttribute('aria-expanded', true);
+        if (expander) {
+            expander.setAttribute('aria-expanded', true);
+            // Allow dismissing hover-opened desktop submenus with Escape (WCAG 1.4.13).
+            document.addEventListener('keydown', handleEscapeKey);
+        }
     }
 
     function _handleItemMouseleave() {
+        this.classList.remove(hoverSuppressClass);
+
         const expander = this.querySelector(':scope > .menu-item-wrapper > .nav-expander');
         const subNav = expander ? expander.parentElement.nextElementSibling : null;
         // Keep aria-expanded true if keyboard opened the submenu.
         if (expander && subNav && subNav.getAttribute('data-visible') !== 'true') {
             expander.setAttribute('aria-expanded', false);
+            document.removeEventListener('keydown', handleEscapeKey);
         }
     }
 
@@ -417,6 +442,7 @@ export default function responsiveNav( thisNav, overwrites ) {
                 expander.addEventListener('keydown', handleSubnavExpander);
             });
 
+            topLevelItems.forEach(li => li.classList.remove(hoverSuppressClass));
             _removeHoverListeners();
         }
     }
