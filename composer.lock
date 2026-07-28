@@ -4,21 +4,22 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "53ff708410b75ba3531904d8573531c4",
+    "content-hash": "7d7b32aef7a92937fa0d654815005ed5",
     "packages": [
         {
             "name": "symfony/deprecation-contracts",
             "version": "dev-main",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/deprecation-contracts.git",
-                "reference": "f3202fa1b5097b0af062dc978b32ecf63404e31d"
-            },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/f3202fa1b5097b0af062dc978b32ecf63404e31d",
                 "reference": "f3202fa1b5097b0af062dc978b32ecf63404e31d",
-                "shasum": ""
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://repo.packagist.com/sitecrafting/dists/%package%/%version%/r%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
             },
             "require": {
                 "php": ">=8.1"
@@ -39,7 +40,7 @@
                     "function.php"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://repo.packagist.com/sitecrafting/downloads/",
             "license": [
                 "MIT"
             ],
@@ -81,16 +82,17 @@
         {
             "name": "symfony/polyfill-ctype",
             "version": "1.x-dev",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/polyfill-ctype.git",
-                "reference": "141046a8f9477948ff284fa65be2095baafb94f2"
-            },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/141046a8f9477948ff284fa65be2095baafb94f2",
                 "reference": "141046a8f9477948ff284fa65be2095baafb94f2",
-                "shasum": ""
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://repo.packagist.com/sitecrafting/dists/%package%/%version%/r%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
             },
             "require": {
                 "php": ">=7.2"
@@ -117,7 +119,7 @@
                     "Symfony\\Polyfill\\Ctype\\": ""
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://repo.packagist.com/sitecrafting/downloads/",
             "license": [
                 "MIT"
             ],
@@ -165,16 +167,17 @@
         {
             "name": "symfony/polyfill-mbstring",
             "version": "1.x-dev",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "d3d318bad5e7a1bfbd026009c8bfb8d8f99ae6b6"
-            },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/d3d318bad5e7a1bfbd026009c8bfb8d8f99ae6b6",
                 "reference": "d3d318bad5e7a1bfbd026009c8bfb8d8f99ae6b6",
-                "shasum": ""
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://repo.packagist.com/sitecrafting/dists/%package%/%version%/r%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
             },
             "require": {
                 "ext-iconv": "*",
@@ -202,7 +205,7 @@
                     "Symfony\\Polyfill\\Mbstring\\": ""
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://repo.packagist.com/sitecrafting/downloads/",
             "license": [
                 "MIT"
             ],
@@ -251,16 +254,17 @@
         {
             "name": "timber/timber",
             "version": "2.x-dev",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/timber/timber.git",
-                "reference": "282285c3fb19be10ad8f71090ebd4e43c86f958b"
-            },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/timber/timber/zipball/282285c3fb19be10ad8f71090ebd4e43c86f958b",
                 "reference": "282285c3fb19be10ad8f71090ebd4e43c86f958b",
-                "shasum": ""
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://repo.packagist.com/sitecrafting/dists/%package%/%version%/r%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
             },
             "require": {
                 "php": "^8.2",
@@ -310,7 +314,7 @@
                     "Timber\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://repo.packagist.com/sitecrafting/downloads/",
             "license": [
                 "MIT"
             ],
@@ -369,16 +373,17 @@
         {
             "name": "twig/twig",
             "version": "3.x-dev",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/twigphp/Twig.git",
-                "reference": "da8bd407000b6ef1adfce829ac9921f12b544617"
-            },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/da8bd407000b6ef1adfce829ac9921f12b544617",
-                "reference": "da8bd407000b6ef1adfce829ac9921f12b544617",
-                "shasum": ""
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/239cf253627b85ee5ba2cbb0eca84c6d64ae4121",
+                "reference": "239cf253627b85ee5ba2cbb0eca84c6d64ae4121",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://repo.packagist.com/sitecrafting/dists/%package%/%version%/r%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
             },
             "require": {
                 "php": ">=8.1.0",
@@ -405,7 +410,7 @@
                     "Twig\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://repo.packagist.com/sitecrafting/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -445,243 +450,167 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-07-13T10:17:57+00:00"
+            "time": "2026-07-27T16:57:15+00:00"
         }
     ],
     "packages-dev": [
         {
-            "name": "acobster/wp-cli-yaml-fixtures",
-            "version": "v0.6.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/acobster/wp-yaml-fixtures.git",
-                "reference": "d3d8c3402f39a11475f49ce86a92eb2da25515dd"
-            },
+            "name": "composer/installers",
+            "version": "dev-main",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/acobster/wp-yaml-fixtures/zipball/d3d8c3402f39a11475f49ce86a92eb2da25515dd",
-                "reference": "d3d8c3402f39a11475f49ce86a92eb2da25515dd",
-                "shasum": ""
+                "url": "https://api.github.com/repos/composer/installers/zipball/634ba02afdc5a961e0633e63c2c9afd1f6ba3a6d",
+                "reference": "634ba02afdc5a961e0633e63c2c9afd1f6ba3a6d",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://repo.packagist.com/sitecrafting/dists/%package%/%version%/r%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
             },
             "require": {
-                "greenlion/php-sql-parser": "dev-master",
-                "ircmaxell/random-lib": "^1.1@dev",
-                "php": ">=7.0",
-                "symfony/yaml": "^3.4"
+                "composer-plugin-api": "^1.0 || ^2.0",
+                "php": "^7.2 || ^8.0"
             },
             "require-dev": {
-                "10up/wp_mock": "^0.3",
-                "behat/behat": "^3.4",
-                "phpunit/phpunit": "^6.5",
-                "squizlabs/php_codesniffer": "3.*",
-                "wp-coding-standards/wpcs": "^0.14"
-            },
-            "type": "wp-cli-command",
-            "autoload": {
-                "psr-4": {
-                    "YamlFixtures\\": "src/YamlFixtures"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Coby Tamayo",
-                    "email": "ctamayo@sitecrafting.com"
-                }
-            ],
-            "description": "Define WordPress database snapshots as simple YAML files",
-            "support": {
-                "issues": "https://github.com/acobster/wp-yaml-fixtures/issues",
-                "source": "https://github.com/acobster/wp-yaml-fixtures/tree/master"
-            },
-            "time": "2019-09-20T18:03:32+00:00"
-        },
-        {
-            "name": "greenlion/php-sql-parser",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/greenlion/PHP-SQL-Parser.git",
-                "reference": "0cd49149efc5868db9c32d1a09558ea516892586"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/greenlion/PHP-SQL-Parser/zipball/0cd49149efc5868db9c32d1a09558ea516892586",
-                "reference": "0cd49149efc5868db9c32d1a09558ea516892586",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.2"
-            },
-            "require-dev": {
-                "analog/analog": "^1.0.6",
-                "phpunit/phpunit": "^9.5.13",
-                "squizlabs/php_codesniffer": "^2.8.1"
+                "composer/composer": "^1.10.27 || ^2.7.8",
+                "composer/semver": "^1.7.2 || ^3.4.2",
+                "phpstan/phpstan": "^1.11.11",
+                "phpstan/phpstan-phpunit": "^1.4",
+                "phpunit/phpunit": "^8.5.39 || ^9.6.20",
+                "symfony/process": "^5 || ^6 || ^7.1.3"
             },
             "default-branch": true,
-            "type": "library",
+            "type": "composer-plugin",
+            "extra": {
+                "class": "Composer\\Installers\\Plugin",
+                "branch-alias": {
+                    "dev-main": "2.x-dev"
+                },
+                "plugin-modifies-install-path": true
+            },
             "autoload": {
-                "psr-0": {
-                    "PHPSQLParser\\": "src/"
+                "psr-4": {
+                    "Composer\\Installers\\": "src/Composer/Installers"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://repo.packagist.com/sitecrafting/downloads/",
             "license": [
-                "BSD-3-Clause"
+                "MIT"
             ],
             "authors": [
                 {
-                    "name": "Justin Swanhart",
-                    "email": "greenlion@gmail.com",
-                    "homepage": "http://code.google.com/u/greenlion@gmail.com/",
-                    "role": "Owner"
+                    "name": "Kyle Robinson Young",
+                    "email": "kyle@dontkry.com",
+                    "homepage": "https://github.com/shama"
+                }
+            ],
+            "description": "A multi-framework Composer library installer",
+            "keywords": [
+                "Dolibarr",
+                "Eliasis",
+                "Hurad",
+                "ImageCMS",
+                "Kanboard",
+                "Lan Management System",
+                "MODX Evo",
+                "MantisBT",
+                "Mautic",
+                "Maya",
+                "OXID",
+                "Plentymarkets",
+                "Porto",
+                "RadPHP",
+                "SMF",
+                "Starbug",
+                "Thelia",
+                "Whmcs",
+                "WolfCMS",
+                "agl",
+                "annotatecms",
+                "attogram",
+                "bitrix",
+                "cakephp",
+                "chef",
+                "cockpit",
+                "codeigniter",
+                "concrete5",
+                "concreteCMS",
+                "croogo",
+                "dokuwiki",
+                "drupal",
+                "eZ Platform",
+                "elgg",
+                "expressionengine",
+                "fuelphp",
+                "grav",
+                "installer",
+                "itop",
+                "known",
+                "kohana",
+                "laravel",
+                "lavalite",
+                "lithium",
+                "magento",
+                "majima",
+                "mako",
+                "matomo",
+                "mediawiki",
+                "miaoxing",
+                "modulework",
+                "modx",
+                "moodle",
+                "osclass",
+                "pantheon",
+                "phpbb",
+                "piwik",
+                "ppi",
+                "processwire",
+                "puppet",
+                "pxcms",
+                "reindex",
+                "roundcube",
+                "shopware",
+                "silverstripe",
+                "sydes",
+                "sylius",
+                "tastyigniter",
+                "wordpress",
+                "yawik",
+                "zend",
+                "zikula"
+            ],
+            "support": {
+                "issues": "https://github.com/composer/installers/issues",
+                "source": "https://github.com/composer/installers/tree/main"
+            },
+            "funding": [
+                {
+                    "url": "https://packagist.com",
+                    "type": "custom"
                 },
                 {
-                    "name": "André Rothe",
-                    "email": "phosco@gmx.de",
-                    "homepage": "https://www.phosco.info",
-                    "role": "Committer"
+                    "url": "https://github.com/composer",
+                    "type": "github"
                 }
             ],
-            "description": "A pure PHP SQL (non validating) parser w/ focus on MySQL dialect of SQL",
-            "homepage": "https://github.com/greenlion/PHP-SQL-Parser",
-            "keywords": [
-                "creator",
-                "mysql",
-                "parser",
-                "sql"
-            ],
-            "support": {
-                "issues": "https://github.com/greenlion/PHP-SQL-Parser/issues",
-                "source": "https://github.com/greenlion/PHP-SQL-Parser"
-            },
-            "time": "2024-12-02T12:14:07+00:00"
-        },
-        {
-            "name": "ircmaxell/random-lib",
-            "version": "v1.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ircmaxell/RandomLib.git",
-                "reference": "e9e0204f40e49fa4419946c677eccd3fa25b8cf4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ircmaxell/RandomLib/zipball/e9e0204f40e49fa4419946c677eccd3fa25b8cf4",
-                "reference": "e9e0204f40e49fa4419946c677eccd3fa25b8cf4",
-                "shasum": ""
-            },
-            "require": {
-                "ircmaxell/security-lib": "^1.1",
-                "php": ">=5.3.2"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "^1.11",
-                "mikey179/vfsstream": "^1.6",
-                "phpunit/phpunit": "^4.8|^5.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.1.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "RandomLib": "lib"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Anthony Ferrara",
-                    "email": "ircmaxell@ircmaxell.com",
-                    "homepage": "http://blog.ircmaxell.com"
-                }
-            ],
-            "description": "A Library For Generating Secure Random Numbers",
-            "homepage": "https://github.com/ircmaxell/RandomLib",
-            "keywords": [
-                "cryptography",
-                "random",
-                "random-numbers",
-                "random-strings"
-            ],
-            "support": {
-                "issues": "https://github.com/ircmaxell/RandomLib/issues",
-                "source": "https://github.com/ircmaxell/RandomLib/tree/master"
-            },
-            "time": "2016-09-07T15:52:06+00:00"
-        },
-        {
-            "name": "ircmaxell/security-lib",
-            "version": "v1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ircmaxell/SecurityLib.git",
-                "reference": "f3db6de12c20c9bcd1aa3db4353a1bbe0e44e1b5"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ircmaxell/SecurityLib/zipball/f3db6de12c20c9bcd1aa3db4353a1bbe0e44e1b5",
-                "reference": "f3db6de12c20c9bcd1aa3db4353a1bbe0e44e1b5",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.2"
-            },
-            "require-dev": {
-                "mikey179/vfsstream": "1.1.*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "SecurityLib": "lib"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Anthony Ferrara",
-                    "email": "ircmaxell@ircmaxell.com",
-                    "homepage": "http://blog.ircmaxell.com"
-                }
-            ],
-            "description": "A Base Security Library",
-            "homepage": "https://github.com/ircmaxell/SecurityLib",
-            "support": {
-                "issues": "https://github.com/ircmaxell/SecurityLib/issues",
-                "source": "https://github.com/ircmaxell/SecurityLib/tree/master"
-            },
-            "time": "2015-03-20T14:31:23+00:00"
+            "time": "2026-07-01T21:02:25+00:00"
         },
         {
             "name": "johnpbloch/wordpress-core",
             "version": "7.0.x-dev",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/johnpbloch/wordpress-core.git",
-                "reference": "6df8b58d08df28612f32584bd82195d5f9dc3687"
-            },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/6df8b58d08df28612f32584bd82195d5f9dc3687",
-                "reference": "6df8b58d08df28612f32584bd82195d5f9dc3687",
-                "shasum": ""
+                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/1a1dbbf7defd05e48d97c3cb828adaacb443821f",
+                "reference": "1a1dbbf7defd05e48d97c3cb828adaacb443821f",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://repo.packagist.com/sitecrafting/dists/%package%/%version%/r%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
             },
             "require": {
                 "ext-json": "*",
@@ -691,7 +620,7 @@
                 "wordpress/core-implementation": "7.0.x-dev"
             },
             "type": "wordpress-core",
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://repo.packagist.com/sitecrafting/downloads/",
             "license": [
                 "GPL-2.0-or-later"
             ],
@@ -715,21 +644,22 @@
                 "source": "https://core.trac.wordpress.org/browser",
                 "wiki": "https://codex.wordpress.org/"
             },
-            "time": "2026-07-09T17:30:43+00:00"
+            "time": "2026-07-27T20:58:20+00:00"
         },
         {
             "name": "johnpbloch/wordpress-core-installer",
             "version": "2.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/johnpbloch/wordpress-core-installer.git",
-                "reference": "237faae9a60a4a2e1d45dce1a5836ffa616de63e"
-            },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/johnpbloch/wordpress-core-installer/zipball/237faae9a60a4a2e1d45dce1a5836ffa616de63e",
                 "reference": "237faae9a60a4a2e1d45dce1a5836ffa616de63e",
-                "shasum": ""
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://repo.packagist.com/sitecrafting/dists/%package%/%version%/r%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
             },
             "require": {
                 "composer-plugin-api": "^1.0 || ^2.0",
@@ -751,7 +681,7 @@
                     "johnpbloch\\Composer\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://repo.packagist.com/sitecrafting/downloads/",
             "license": [
                 "GPL-2.0-or-later"
             ],
@@ -765,25 +695,22 @@
             "keywords": [
                 "wordpress"
             ],
-            "support": {
-                "issues": "https://github.com/johnpbloch/wordpress-core-installer/issues",
-                "source": "https://github.com/johnpbloch/wordpress-core-installer/tree/master"
-            },
             "time": "2020-04-16T21:44:57+00:00"
         },
         {
             "name": "mnsami/composer-custom-directory-installer",
             "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mnsami/composer-custom-directory-installer.git",
-                "reference": "23b7039ea7cf18b5846faae2b9f4d9c9445e0039"
-            },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/mnsami/composer-custom-directory-installer/zipball/23b7039ea7cf18b5846faae2b9f4d9c9445e0039",
                 "reference": "23b7039ea7cf18b5846faae2b9f4d9c9445e0039",
-                "shasum": ""
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://repo.packagist.com/sitecrafting/dists/%package%/%version%/r%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
             },
             "require": {
                 "composer-plugin-api": "^2.0",
@@ -811,7 +738,7 @@
                     "Composer\\CustomDirectoryInstaller\\": "src/Composer/CustomDirectoryInstaller"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://repo.packagist.com/sitecrafting/downloads/",
             "license": [
                 "MIT"
             ],
@@ -845,18 +772,54 @@
             "time": "2026-05-20T07:57:55+00:00"
         },
         {
-            "name": "sitecrafting/conifer",
-            "version": "v1.0.3",
+            "name": "sitecrafting/advanced-custom-fields-pro",
+            "version": "6.8.6",
             "source": {
                 "type": "git",
-                "url": "https://github.com/sitecrafting/conifer.git",
-                "reference": "df678e24d80740073d122c93535da4ece3394af5"
+                "url": "git@bitbucket.org:sitecrafting/advanced-custom-fields-pro.git",
+                "reference": "f23c4cff660c88cf06364d35b392cccab885e835"
             },
+            "dist": {
+                "type": "zip",
+                "url": "https://bitbucket.org/sitecrafting/advanced-custom-fields-pro/get/f23c4cff660c88cf06364d35b392cccab885e835.zip",
+                "reference": "f23c4cff660c88cf06364d35b392cccab885e835",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://repo.packagist.com/sitecrafting/dists/%package%/%version%/r%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "type": "wordpress-plugin",
+            "notification-url": "https://repo.packagist.com/sitecrafting/downloads/",
+            "authors": [
+                {
+                    "name": "SiteCrafting Team",
+                    "email": "sysadmin@sitecrafting.com"
+                }
+            ],
+            "description": "Internal canonical repo for tracking Advanced Custom Fields Pro updates",
+            "homepage": "https://bitbucket.org/sitecrafting/advanced-custom-fields-pro",
+            "support": {
+                "source": "https://bitbucket.org/sitecrafting/advanced-custom-fields-pro/src/f23c4cff660c88cf06364d35b392cccab885e835/?at=6.8.6"
+            },
+            "time": "2026-07-20T21:56:44+00:00"
+        },
+        {
+            "name": "sitecrafting/conifer",
+            "version": "v1.0.3",
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/sitecrafting/conifer/zipball/df678e24d80740073d122c93535da4ece3394af5",
                 "reference": "df678e24d80740073d122c93535da4ece3394af5",
-                "shasum": ""
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://repo.packagist.com/sitecrafting/dists/%package%/%version%/r%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
             },
             "require": {
                 "php": ">=8.1",
@@ -894,7 +857,7 @@
                     "Conifer\\": "lib/Conifer/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://repo.packagist.com/sitecrafting/downloads/",
             "license": [
                 "MIT"
             ],
@@ -914,16 +877,17 @@
         {
             "name": "squizlabs/php_codesniffer",
             "version": "3.x-dev",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/PHPCSStandards/PHP_CodeSniffer.git",
-                "reference": "c552c7089df12b72ed254907be3b40bd4c2e1977"
-            },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/c552c7089df12b72ed254907be3b40bd4c2e1977",
-                "reference": "c552c7089df12b72ed254907be3b40bd4c2e1977",
-                "shasum": ""
+                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/20d0f55e6bbaca7dba506f9fb200644e8f3aebb0",
+                "reference": "20d0f55e6bbaca7dba506f9fb200644e8f3aebb0",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://repo.packagist.com/sitecrafting/dists/%package%/%version%/r%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
             },
             "require": {
                 "ext-simplexml": "*",
@@ -939,7 +903,7 @@
                 "bin/phpcs"
             ],
             "type": "library",
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://repo.packagist.com/sitecrafting/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -988,92 +952,22 @@
                     "type": "thanks_dev"
                 }
             ],
-            "time": "2026-07-06T14:09:11+00:00"
-        },
-        {
-            "name": "symfony/yaml",
-            "version": "3.4.x-dev",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/yaml.git",
-                "reference": "88289caa3c166321883f67fe5130188ebbb47094"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/88289caa3c166321883f67fe5130188ebbb47094",
-                "reference": "88289caa3c166321883f67fe5130188ebbb47094",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^5.5.9|>=7.0.8",
-                "symfony/polyfill-ctype": "~1.8"
-            },
-            "conflict": {
-                "symfony/console": "<3.4"
-            },
-            "require-dev": {
-                "symfony/console": "~3.4|~4.0"
-            },
-            "suggest": {
-                "symfony/console": "For validating YAML files using the lint command"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Component\\Yaml\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony Yaml Component",
-            "homepage": "https://symfony.com",
-            "support": {
-                "source": "https://github.com/symfony/yaml/tree/3.4"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2020-10-24T10:57:07+00:00"
+            "time": "2026-07-26T20:55:06+00:00"
         },
         {
             "name": "wp-coding-standards/wpcs",
             "version": "0.14.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/WordPress/WordPress-Coding-Standards.git",
-                "reference": "cf6b310caad735816caef7573295f8a534374706"
-            },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/WordPress/WordPress-Coding-Standards/zipball/cf6b310caad735816caef7573295f8a534374706",
                 "reference": "cf6b310caad735816caef7573295f8a534374706",
-                "shasum": ""
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://repo.packagist.com/sitecrafting/dists/%package%/%version%/r%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
             },
             "require": {
                 "php": ">=5.3",
@@ -1083,7 +977,7 @@
                 "dealerdirect/phpcodesniffer-composer-installer": "^0.4.3"
             },
             "type": "phpcodesniffer-standard",
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://repo.packagist.com/sitecrafting/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1099,11 +993,6 @@
                 "standards",
                 "wordpress"
             ],
-            "support": {
-                "issues": "https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/issues",
-                "source": "https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards",
-                "wiki": "https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/wiki"
-            },
             "time": "2018-02-16T01:57:48+00:00"
         }
     ],

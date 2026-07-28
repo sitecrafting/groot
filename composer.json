@@ -10,26 +10,47 @@
             "email": "hello@sitecrafting.com"
         }
     ],
-    "repositories": [
-        {
+    "repositories": {
+        "repo.packagist.com/sitecrafting/": {
+            "type": "composer",
+            "url": "https://repo.packagist.com/sitecrafting/"
+        },
+        "0": {
             "type": "composer",
             "url": "https://wpackagist.org"
-        }
-    ],
+        },
+        "1": {
+            "type": "composer",
+            "url": "https://repo.packagist.com/sitecrafting/"
+        },
+        "packagist.org": false
+    },
     "require": {
         "php": ">=8.1",
         "timber/timber": "^2.2"
     },
     "require-dev": {
-        "acobster/wp-cli-yaml-fixtures": "^0.6.0",
+        "composer/installers": "^2.0",
         "johnpbloch/wordpress-core-installer": "^2.0",
         "johnpbloch/wordpress-core": "^7.0.1",
         "mnsami/composer-custom-directory-installer": "^2.0",
         "squizlabs/php_codesniffer": "3.*",
         "wp-coding-standards/wpcs": "^0.14",
-        "sitecrafting/conifer": "^1.0"
+        "sitecrafting/conifer": "^1.0",
+        "sitecrafting/advanced-custom-fields-pro": "^6.8"
     },
     "extra": {
+        "installer-paths":
+        {
+            "wp/wp-content/mu-plugins/{$name}":
+            [
+                "type:wordpress-muplugin"
+            ],
+            "wp/wp-content/plugins/{$name}":
+            [
+                "type:wordpress-plugin"
+            ]
+        },
         "wordpress-install-dir": {
             "johnpbloch/wordpress-core": "wp"
         }

@@ -19,6 +19,7 @@ services:
         # Pass any non-empty CI envvar from the host into Lando
         # This is so we can force non-interactive mode setting up WP
         CI: ${CI:-''}
+        COMPOSER_AUTH: $COMPOSER_AUTH
 
   database:
     type: mysql
