@@ -14,3 +14,5 @@ if (getenv('WP_MULTISITE')) {
     define('MULTISITE', true);
     define('SUBDOMAIN_INSTALL', false);
 }
+
+\WP_Mock::bootstrap();

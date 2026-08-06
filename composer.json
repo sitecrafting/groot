@@ -28,7 +28,8 @@
         "squizlabs/php_codesniffer": "3.*",
         "wp-coding-standards/wpcs": "^0.14",
         "sitecrafting/conifer": "^1.0",
-        "phpunit/phpunit": "11.5.x-dev"
+        "phpunit/phpunit": "11.5.x-dev",
+        "10up/wp_mock": "^0.4.2"
     },
     "extra": {
         "wordpress-install-dir": {
