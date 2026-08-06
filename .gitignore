@@ -6,6 +6,7 @@ config.codekit
 *.swo
 *.swn
 .config
+.phpunit.result.cache
 
 # Ignore dev dependencies
 /node_modules
@@ -22,3 +23,6 @@ config.codekit
 /*.tar.gz
 /*.sql.gz
 /groot-v*/
+
+# .vscode settings
+.vscode
