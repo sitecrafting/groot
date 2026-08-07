@@ -58,6 +58,15 @@ cd /path/to/groot
 lando webpack --watch
 ```
 
+### Testing
+
+Groot comes with PHPUnit for running unit tests. To run the unit tests
+
+```bash
+lando unit # Runs unit tests
+landu unit-multisite # Runs unit tests in multisite mode
+```
+
 ### Building a new release
 
 Start by updating the Groot release number in the `style.less` header comment. This is not strictly necessary, but can make things easier to troubleshoot:
