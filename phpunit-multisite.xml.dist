@@ -1,0 +1,20 @@
+<phpunit
+    bootstrap="./test/bootstrap.php"
+    backupGlobals="false"
+    colors="true"
+    beStrictAboutTestsThatDoNotTestAnything="true"
+    displayDetailsOnTestsThatTriggerDeprecations="true"
+    displayDetailsOnTestsThatTriggerErrors="true"
+    displayDetailsOnTestsThatTriggerNotices="true"
+    displayDetailsOnTestsThatTriggerWarnings="true"
+    displayDetailsOnPhpunitDeprecations="true"
+>
+    <php>
+		<env name="WP_MULTISITE" value="1"/>
+	</php>
+    <testsuites>
+        <testsuite name="unit">
+            <directory suffix=".php">./test/unit</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>
