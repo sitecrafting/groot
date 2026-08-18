@@ -46,6 +46,7 @@
             "composer/installers": true,
             "johnpbloch/wordpress-core-installer": true,
             "mnsami/composer-custom-directory-installer": true
-        }
+        },
+        "sort-packages": true
     }
 }
