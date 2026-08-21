@@ -321,12 +321,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/timber/timber.git",
-                "reference": "282285c3fb19be10ad8f71090ebd4e43c86f958b"
+                "reference": "bc1298fdb842903337ca550ce91710b99b9c265f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/timber/timber/zipball/282285c3fb19be10ad8f71090ebd4e43c86f958b",
-                "reference": "282285c3fb19be10ad8f71090ebd4e43c86f958b",
+                "url": "https://api.github.com/repos/timber/timber/zipball/bc1298fdb842903337ca550ce91710b99b9c265f",
+                "reference": "bc1298fdb842903337ca550ce91710b99b9c265f",
                 "shasum": ""
             },
             "require": {
@@ -431,7 +431,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2026-07-03T10:35:14+00:00"
+            "time": "2026-08-21T10:23:00+00:00"
         },
         {
             "name": "twig/twig",
@@ -439,12 +439,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "9036d8c5aae201a13450f4e60ce5536ac7c11070"
+                "reference": "84c50511513f4a522fd3c957b05c789f0960bea5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/9036d8c5aae201a13450f4e60ce5536ac7c11070",
-                "reference": "9036d8c5aae201a13450f4e60ce5536ac7c11070",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/84c50511513f4a522fd3c957b05c789f0960bea5",
+                "reference": "84c50511513f4a522fd3c957b05c789f0960bea5",
                 "shasum": ""
             },
             "require": {
@@ -512,7 +512,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-08-16T08:53:58+00:00"
+            "time": "2026-08-19T17:01:15+00:00"
         }
     ],
     "packages-dev": [
@@ -886,17 +886,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnpbloch/wordpress-core.git",
-                "reference": "ae25c932f7cc86a4394d1dfae0d3d956172bc284"
+                "reference": "484ee34a5855a5f4d3b74e2c6b7f76d1ef2d004d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/ae25c932f7cc86a4394d1dfae0d3d956172bc284",
-                "reference": "ae25c932f7cc86a4394d1dfae0d3d956172bc284",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/484ee34a5855a5f4d3b74e2c6b7f76d1ef2d004d",
+                "reference": "484ee34a5855a5f4d3b74e2c6b7f76d1ef2d004d",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "php": ">=5.3.2"
+                "php": ">=7.4"
             },
             "provide": {
                 "wordpress/core-implementation": "7.1.x-dev"
@@ -926,7 +926,7 @@
                 "source": "https://core.trac.wordpress.org/browser",
                 "wiki": "https://codex.wordpress.org/"
             },
-            "time": "2026-08-17T15:45:58+00:00"
+            "time": "2026-08-20T00:28:42+00:00"
         },
         {
             "name": "johnpbloch/wordpress-core-installer",
@@ -2821,12 +2821,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPCSStandards/PHP_CodeSniffer.git",
-                "reference": "2d143e9441ea0d3df5ec79b50179fa2f2a78b2aa"
+                "reference": "4682ac59887211d071b204054f6ba060c04b6a09"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/2d143e9441ea0d3df5ec79b50179fa2f2a78b2aa",
-                "reference": "2d143e9441ea0d3df5ec79b50179fa2f2a78b2aa",
+                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/4682ac59887211d071b204054f6ba060c04b6a09",
+                "reference": "4682ac59887211d071b204054f6ba060c04b6a09",
                 "shasum": ""
             },
             "require": {
@@ -2892,7 +2892,7 @@
                     "type": "thanks_dev"
                 }
             ],
-            "time": "2026-08-17T00:58:01+00:00"
+            "time": "2026-08-20T23:49:49+00:00"
         },
         {
             "name": "staabm/side-effects-detector",
