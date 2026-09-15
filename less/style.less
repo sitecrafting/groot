@@ -6,7 +6,7 @@
  * Description: The official SiteCrafting WordPress starter theme
  *
  * Copyright 2024 SiteCrafting, Inc.
- * Based on Groot release: v1.0.10
+ * Based on Groot release: v1.0.11
  */
 
  /* Icon Reference:
@@ -52,21 +52,20 @@
     CARDS
 =======================*/
 @import "elements/cards/card-article.less";
-@import "elements/cards/card-search.less";
 
 /* ====================
     LAYOUTS/PATTERNS
 =======================*/
+@import "elements/layouts/pattern.less"; //primary pattern styles and modifiers
+
 @import "elements/layouts/hero.less"; //hero/hero slideshow
 @import "elements/layouts/hero-interior.less";
 
-@import "elements/layouts/pattern.less"; //primary pattern styles and modifiers
-
-//specific patterns wrapped in pattern with optional modifiers
 @import "elements/layouts/pattern-accordion.less";
-@import "elements/layouts/pattern-cta.less"; //specific pattern layout modifiers
+@import "elements/layouts/pattern-cta.less";
+@import "elements/layouts/pattern-image-content-row.less";
 
-@import "elements/layouts/pattern-article.less"; //blog article pattern
+@import "elements/layouts/post-article.less";
 @import "elements/layouts/search.less";
 
 //SITKA

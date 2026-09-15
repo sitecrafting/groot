@@ -1,7 +1,25 @@
 {
     "key": "group_60f1db3893e55",
-    "title": "Footer Content",
+    "title": "Theme Settings",
     "fields": [
+        {
+            "key": "field_6aa8591f455c6",
+            "label": "Footer",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
         {
             "key": "field_60f1db50533b0",
             "label": "Social",
@@ -132,7 +150,10 @@
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": true,
-    "description": "THEME SETTINGS",
+    "description": "",
     "show_in_rest": 0,
-    "modified": 1747412059
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1789417779
 }

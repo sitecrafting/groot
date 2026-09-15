@@ -57,5 +57,52 @@ import responsiveNav from './responsive-nav.js'
         });
     }
 
+    //NEWS LANDING FILTER LINK LIST
+    const newsFilter = document.getElementById('categoryFilter');
+    if( newsFilter ){
+        const filterBtn = document.getElementById('category-nav-button');
+        const list = document.getElementById('category-nav-list');
+
+        const closeFilterMenu = ({ restoreFocus = false } = {}) => {
+            filterBtn.setAttribute('aria-expanded', 'false');
+            list.hidden = true;
+
+            if( restoreFocus ){
+                filterBtn.focus();
+            }
+        };
+
+        // 1. Toggle Menu Visibility
+        filterBtn.addEventListener('click', () => {
+            const isExpanded = filterBtn.getAttribute('aria-expanded') === 'true';
+            filterBtn.setAttribute('aria-expanded', !isExpanded);
+            list.hidden = isExpanded;
+        });
+
+        // 2. Close menu if clicking outside
+        document.addEventListener('click', (e) => {
+            if (!filterBtn.contains(e.target) && !list.contains(e.target)) {
+                closeFilterMenu();
+            }
+        });
+
+        // 3. Close menu on escape and return focus to trigger button
+        document.addEventListener('keydown', (e) => {
+            if( e.key !== 'Escape' ) return;
+
+            closeFilterMenu({ restoreFocus: true });
+        });
+
+        // 4. Close menu when keyboard focus tabs away from the filter
+        newsFilter.addEventListener('focusout', (e) => {
+            if( list.hidden ) return;
+
+            const nextFocusedElement = e.relatedTarget;
+            if( !nextFocusedElement || !newsFilter.contains(nextFocusedElement) ){
+                closeFilterMenu();
+            }
+        });
+    }
+
 
 })(jQuery)

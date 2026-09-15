@@ -1,5 +1,27 @@
 <section class="hero-interior">
-    <div class="container">
-        <h1>{{ page_title }}</h1>
+
+    <div class="hero-interior__page-title">
+        <div class="container {{ container_modifier }}">
+
+            <div>
+                {% if headline_label %}<div class="headline-label">{{ headline_label }}</div>{% endif %}
+                <h1>{{ page_title }}</h1>
+            </div>
+
+            {% if nav_category_filter %}
+                {% include 'partials/blocks/nav-category-filter.twig' %}
+            {% endif %}
+            
+        </div>
+        
     </div>
+
+    {% if post.thumbnail %}
+    <div class="hero-interior__feature-image">
+        <div class="container {{ container_modifier }}">
+            {% include 'partials/blocks/image.twig' with { class : 'featured-image', image : post.thumbnail, crop: 'featured-image' } %}
+        </div>
+    </div>
+    {% endif %}
+    
 </section>

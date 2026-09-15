@@ -1,0 +1,9 @@
+<nav aria-label="{{ pagination_nav_label|default('Pagination Navigation') }}" class="pagination post-numbers-pagination">
+	{{ paginate_links(
+		{
+            'type': 'list',
+			'prev_text': previous_text, 
+			'next_text': next_text
+		}
+	) }}
+</nav>

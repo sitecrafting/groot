@@ -2,29 +2,27 @@
 
 {% block main_content %}
 
-{% include 'partials/hero-interior.twig' with { page_title : newsPage.title } %}
+{% include 'partials/hero-interior.twig' with { 
+    page_title : newsPage.title, 
+    nav_category_filter: true
+} %}
 
 <section class="pattern sitka-search-content-container">
-    <div class="container container--md">
+    <div class="container">
 
-		<nav class="category-filter">
-            <label class="h4" for="categoryFilter">Categories</label>
-            <select id="categoryFilter">
-                <option{{ is_category == false ? ' selected="selected"' }} value="{{ get_blog_url() }}">All Articles</option>
-                {% for cat in get_terms('category') %}
-                    <option{{ post.slug == cat.slug ? ' selected="selected"' }} value="{{ cat.link() }}">{{ cat.name }}</option>
-                {% endfor %}
-            </select>
-            <button class="btn" onclick="location.href=document.getElementById('categoryFilter').value;">Go</button>
-        </nav><!-- //subnav-filter -->
-
-        <div class="article-list">
+        <div class="grid-container">
             {% for post in posts %}
-                {% include 'partials/cards/article-card.twig' with { cardModifier : 'card-article--list', cardCrop : 'article-list-card' } %}
+                {% include 'partials/cards/article-card.twig' %}
             {% endfor %}
-        </div><!-- END .article-list -->
+        </div><!-- END .grid-container -->
 
-		{% include 'partials/blocks/pagination-posts.twig' %}
+        {% if posts.pagination.current < posts.pagination.total %}
+            {% include 'partials/blocks/pagination-posts.twig' with {
+                'previous_text': 'Previous Articles',
+                'next_text': 'Next Articles'
+            } %}
+        {% endif %}
+
 
 	</div><!-- //.container -->
 </section>
