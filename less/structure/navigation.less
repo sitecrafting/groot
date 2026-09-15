@@ -181,7 +181,6 @@ ul.main-nav__third{
                 .main-nav__second{
                     display: block;
                     opacity: 1;
-                    transform: translateY(0);
                 }
             }
 
@@ -222,10 +221,9 @@ ul.main-nav__third{
     }
 
     @starting-style{
-        ul.main-nav__menu > li:hover{
-            .main-nav__second{
-                opacity: 0;
-            }
+        ul.main-nav__menu > li:hover:not(.is-hover-suppressed) .main-nav__second,
+        ul.main-nav__menu > li:has(.main-nav__second[data-visible="true"]) .main-nav__second{
+            opacity: 0;
         }
     }
 }

@@ -6,46 +6,54 @@
 
 .accordion{
     details{
-        margin-top: 1px;
+        border-bottom: 2px solid @gray-f3;
+        
         summary{
             position: relative;
             list-style: none;
 
-            .h5();
-            padding: 20px 50px 20px 20px;
+            .h6();
+            padding: 20px 0 20px 0;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: start;
+            column-gap: 20px;
             margin: 0;
-            background: @blue;
             cursor: pointer;
 
             //required to hide the default arrow marker in safari
             &::-webkit-details-marker{ display: none; }
-
-            &:before,&:after{
-                content: "";
+            .acc-toggle{
                 display: block;
-                position: absolute;
-                top: 34px;
-                right: 15px;
-                width: 20px;
-                height: 2px;
-                background: @black;
-            }
-
-            &:after {
-                transform: rotate(90deg);
+                position: relative;
+                width: 18px;
+                height: 18px;
                 transition: all @trans-speed ease;
+
+                &:before,&:after{
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    top: 50%;
+                    left: 0;
+                    width: 100%;
+                    height: 2px;
+                    background: @black;
+                }
+
+                &:after { transform: rotate(90deg); }
             }
+            
 
             + div{
-                padding: 25px 20px 25px 20px;
-                background: @gray-f3;
+                padding: 0 0 24px 0;
             }
 
         }//summary
         
         &[open]{
             summary{
-                &:after{ transform: rotate(0); }
+                .acc-toggle{ transform: rotate(-135deg); }
             }
         }
 
