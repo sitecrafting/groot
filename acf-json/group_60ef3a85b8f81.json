@@ -4,8 +4,8 @@
     "fields": [
         {
             "key": "field_60ef3aa7c2020",
-            "label": "Section Headline",
-            "name": "section_headline",
+            "label": "Pattern Headline",
+            "name": "pattern_headline",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -17,15 +17,16 @@
                 "id": ""
             },
             "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 1,
             "placeholder": "",
             "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "append": ""
         },
         {
             "key": "field_67c0e1df2c861",
-            "label": "Section Content",
-            "name": "section_content",
+            "label": "Pattern Content",
+            "name": "pattern_content",
             "aria-label": "",
             "type": "wysiwyg",
             "instructions": "",
@@ -125,7 +126,10 @@
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": false,
-    "description": "USED FOR CLONING",
+    "description": "",
     "show_in_rest": 0,
-    "modified": 1740694018
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1789417736
 }
