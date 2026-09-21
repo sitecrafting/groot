@@ -3,21 +3,21 @@
   * less/elements/layouts/pattern-accordion.less
   * js/src/jquery.accordion.js
 #}
-<section class="pattern pattern--accordion">
+<section id="accordion_{{ parent_loop.index|default(0) }}" class="pattern pattern--accordion">
     <div class="container container--md">
 
-        {% if layout.section_headline %}
-            <h2 class="pattern__headline">{{ layout.section_headline }}</h2>
+        {% if layout.pattern_headline %}
+            <h2 class="pattern__headline">{{ layout.pattern_headline }}</h2>
         {% endif %}
 
-        {% if layout.section_content %}
-            <div class="rtecontent">{{ layout.section_content }}</div>
+        {% if layout.pattern_content %}
+            <div class="rtecontent">{{ layout.pattern_content }}</div>
         {% endif %}
 
         <div class="accordion">
         {% for panel in layout.accordion_panels %}
             <details id="accordion-panel{{ parent_loop.index ~'_'~ loop.index }}">
-                <summary>{{ panel.panel_headline }}</summary>
+                <summary><span>{{ panel.panel_headline }}</span> <span class="acc-toggle"></span></summary>
                 <div class="rtecontent">{{ panel.panel_content }}</div>
             </details>
         {% endfor %}

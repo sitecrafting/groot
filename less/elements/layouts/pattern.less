@@ -1,9 +1,9 @@
 .pattern{
     .outer-gutter();
-	margin-top: min(8vw, 90px); 
+	margin-top: min(12vw, 80px); 
 	
     &:last-child:not(.pattern--pad){ 
-        margin-bottom: min(8vw, 90px); 
+        margin-bottom: min(12vw, 80px); 
     }
 
 	//if this class is on a parent there will be no outer gutter
@@ -37,9 +37,6 @@
 	padding-bottom: 0;
 }
 
-/* section headline - stand alone */
-.pattern__headline{ margin-top: 0; }
-
 /* more of a seperate sectional pattern header may contain other items */
 .pattern__header{
     margin: 0 0 40px;
@@ -48,7 +45,7 @@
     .center-headline{ text-align: center; }
 
 	@media @tablet-all, @mobile-all{
-		margin: 0 0 30px;
+		margin: 0 0 24px;
 	}
 }
 
@@ -56,9 +53,7 @@
     margin-top: 40px;
     text-align: center;
 
-    .btn{ }
-
 	@media @tablet-all, @mobile-all{
-		margin-top: 30px;
+		margin-top: 24px;
 	}
 }

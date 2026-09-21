@@ -1,18 +1,15 @@
 
-<article class="card-article {{ cardModifier }}">
-	{% if post.thumbnail() %}
-		<div class="card-article__image">
-            {% include 'partials/blocks/image.twig' with { image : post.thumbnail(), crop: cardCrop|default('thumbnail') } %}
-		</div>
-	{% endif %}
+<article class="card-article">
+    <div class="card-article__image">
+    {% if post.meta('post_card_image') %}
+        {% include 'partials/blocks/image.twig' with { image : post.meta('post_card_image'), crop: 'article-card' } %}
+    {% endif %}
+    </div>
 	<div class="card-article__content">
-		<h2 class="h4 title">{{ post.title }}</h2>
-		<div class="byline">
-			<span class="post-author">By <a href="{{ post.author.link() }}" aria-label="Articles by {{ post.author.display_name }}">{{ post.author.display_name }}</a></span>
-			<span class="post-date">On {{ post.date }}</span>
-		</div><!-- //byline -->
+		<h2 class="h4 title"><a href="{{ post.link }}">{{ post.title }}</a></h2>
+		<div class="date">{{ post.date }}</div>
 		<div class="excerpt">{{ post.content | excerpt(20) }}</div>
 
-		<a class="btn" href="{{ post.link }}" aria-label="{{ post.title }}">Read More</a>
+		<span class="btn">Read More</span>
 	</div>
 </article>
