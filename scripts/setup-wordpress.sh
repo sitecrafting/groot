@@ -40,7 +40,10 @@ main() {
 
   WP_DIR="$LANDO_MOUNT/wp"
 
-  if ! [[ -f "$WP_DIR"/wp-content/themes/groot ]]
+  # roots/wordpress-no-content doesn't ship a wp-content/themes dir, unlike johnpbloch
+  mkdir -p "$WP_DIR"/wp-content/themes
+
+  if ! [[ -e "$WP_DIR"/wp-content/themes/groot ]]
   then
     echo 'Linking groot theme directory...'
     ln -s "../../../" "$WP_DIR"/wp-content/themes/groot
