@@ -1,0 +1,28 @@
+{#
+    modifier: `image-content-row--reverse`
+#}
+<section id="image-content-row_{{ parent_loop.index|default(0) }}" class="pattern pattern--image-content-row">
+    <div class="container">
+    
+        <div class="image-content-row {{ layout.row_direction == 'image-right' ? 'image-content-row--reverse' }}">
+            <div class="image-content-row__asset">
+                {% include 'partials/blocks/image.twig' with { image: layout.image, crop: 'image-content-row' } %}
+            </div>
+            <div class="image-content-row__content">
+                <div>
+                    <h2 class="headline">{{ layout.content.headline }}</h2>
+                    {% if layout.content.text %}<div class="rtecontent">{{ layout.content.text }}</div>{% endif %}
+                    {% if layout.content.button.url %}
+                        <a class="btn" 
+                            href="{{ layout.content.button.url }}" 
+                            {{ layout.content.button.target ? ' target="_blank" rel="noopener noreferrer"' }}
+                            {{ layout.content.button.title is empty ? ' aria-label="Learn more about ' ~ layout.content.headline ~ '"' }}>
+                                {{ layout.content.button.title|default("Learn More") }}{{ layout.content.button.target ? '<span class="sr-only">(opens in new tab)</span>' }}
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

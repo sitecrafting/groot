@@ -1,7 +1,9 @@
-<section class="pattern pattern--standard-content">
+<section id="standard-content_{{ parent_loop.index|default(0) }}" class="pattern pattern--standard-content">
     <div class="container container--md">
         
-        <h2 class="pattern__headline">{{ layout.section_headline }}</h2>
+        {% if layout.pattern_headline %}
+        <h2 class="pattern__headline">{{ layout.pattern_headline }}</h2>
+        {% endif %}
         <div class="rtecontent"> {{ layout.content }}</div>
 		
     </div>

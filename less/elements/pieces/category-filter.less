@@ -1,20 +1,87 @@
+
 .category-filter{
-    margin: 0 0 30px 0;
-    display: flex;
-    flex-flow: row wrap;
-    align-items: center;
-    column-gap: 15px;
-    row-gap: 10px;
-
-    label{ margin: 0; }
-    select{ width: 250px; }
-    button{ height: @input-height; }
-
-    @media @mobile-all{
-        label{ width: 100%; }
-    }
-    @media @mobile-sml{
-        select{ width: auto; flex: 1; }
+    position: relative;
+    width: 300px;
+    
+    &:focus-within{
+        border-radius: 4px 4px 0 0; 
+        .category-filter__selector .selector-text{
+            border-color: @black;
+            outline: 0;
+        }
     }
 
+    &:has(ul[hidden]){
+        .category-filter__selector .selector-text{ 
+            border-radius: 4px;  
+        }
+    }
+}
+.category-filter__selector{
+    position: relative;
+
+    .selector-text{
+        .form-control();
+        .form-control--select();
+        min-height: @input-height;
+        padding: 8px 45px 8px 25px;
+        font-size: @input-font-size;
+        line-height: 1.2;
+        font-weight: 400;
+        color: @input-color;
+        
+        //when ul is open
+        border-radius: 4px 4px 0 0;
+
+        display: grid;
+        align-items: center;
+    }
+    button{
+        .button-reset();
+        position: absolute;
+        inset: 0;
+        cursor: pointer;
+        outline: 0;
+
+        //our focus state styles go on the parent element, so we need to override the default focus styles here
+        &:focus{
+            outline: 0;
+            box-shadow: none;
+        }
+    }
+
+    + ul{
+        .plain-list();
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: @input-bg;
+        border: 2px solid @black;
+        border-top: 0;
+        border-radius: 0 0 4px 4px;
+        padding: 10px;
+        max-height: 255px;
+        overflow-y: scroll;
+        z-index: 100;
+
+        li{
+            a{
+                display: block;
+                padding: 10px 20px;
+                border-radius: 4px;
+
+                font-size: 1rem;
+                font-weight: 700;
+                text-decoration: none;
+                color: @black;
+                text-decoration: none;
+
+                &:hover{
+                    .text-underline();
+                    background-color: @gray-f3;
+                }
+            }
+        }
+    }
 }

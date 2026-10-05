@@ -44,23 +44,28 @@ h1,h2,h3,
 .h1,.h2,.h3{ text-wrap: pretty; }
 
 //https://min-max-calculator.9elements.com/
-//max fontsize value at 800px, min fontsize value at 400px
-h1, .h1{ font-size: ~'clamp(@{font-size-h1-m}, 2.25rem + 3vw, @{font-size-h1})'; }
-h2, .h2{ font-size: ~'clamp(@{font-size-h2-m}, 0.625rem + 5vw, @{font-size-h2})'; }
-h3, .h3{ font-size: ~'clamp(@{font-size-h3-m}, 1.125rem + 2.5vw, @{font-size-h3})';  }
-h4, .h4{ font-size: ~'clamp(@{font-size-h4-m}, 1rem + 1.5vw, @{font-size-h4})';  }
-h5, .h5{ font-size: ~'clamp(@{font-size-h5-m}, 1rem + 0.5vw, @{font-size-h5})'; }
-h6, .h6{ font-size: ~'clamp(@{font-size-h6-m}, 0.875rem + 0.5vw, @{font-size-h6})'; }
+//max fontsize value at 1100px, min fontsize value at 700px
+h1, .h1{ font-size: ~'clamp(@{font-size-h1-m}, 0.781rem + 2.5vw, @{font-size-h1})'; } //clamp(1.875rem, 0.781rem + 2.5vw, 2.5rem)
+h2, .h2{ font-size: ~'clamp(@{font-size-h2-m}, 0.531rem + 2.5vw, @{font-size-h2})'; } //clamp(1.625rem, 0.531rem + 2.5vw, 2.25rem)
+h3, .h3{ font-size: ~'clamp(@{font-size-h3-m}, 0.844rem + 1.5vw, @{font-size-h3})';  } //clamp(1.5rem, 0.844rem + 1.5vw, 1.875rem)
+h4, .h4{ font-size: ~'clamp(@{font-size-h4-m}, 0.813rem + 1vw, @{font-size-h4})';  } //clamp(1.25rem, 0.813rem + 1vw, 1.5rem)
+h5, .h5{ font-size: ~'clamp(@{font-size-h5-m}, 0.906rem + 0.5vw, @{font-size-h5})'; } //clamp(1.125rem, 0.906rem + 0.5vw, 1.25rem)
+h6, .h6{ font-size: ~'clamp(@{font-size-h6-m}, 0.781rem + 0.5vw, @{font-size-h6})'; } //clamp(1rem, 0.781rem + 0.5vw, 1.125rem)
+
+.headline-label{
+    font-size: (14/16rem);
+    font-weight: 700;
+    @media @mobile-sml{ font-size: (12/16rem); }
+}
 
 a {
     color: @link-color;
     .text-underline();
     transition: all @trans-speed ease;
-    text-decoration-color: @blue;
 
     &:hover{ 
         .text-underline();
-        text-decoration-color: @black;
+        text-decoration-color: @gray-6e;
     }
 }
 

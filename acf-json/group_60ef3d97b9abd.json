@@ -129,8 +129,8 @@
             ]
         },
         {
-            "key": "field_60ef3e4b0db49",
-            "label": "Homepage Intro Content",
+            "key": "field_60ef41d60db54",
+            "label": "Homepage Content",
             "name": "",
             "aria-label": "",
             "type": "accordion",
@@ -147,11 +147,11 @@
             "endpoint": 0
         },
         {
-            "key": "field_60ef3e5d0db4a",
-            "label": "Intro Content",
-            "name": "intro_content",
+            "key": "field_6aa86438ad21b",
+            "label": "Homepage Content",
+            "name": "homepage_content",
             "aria-label": "",
-            "type": "group",
+            "type": "flexible_content",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -160,205 +160,19 @@
                 "class": "",
                 "id": ""
             },
-            "layout": "block",
-            "sub_fields": [
-                {
-                    "key": "field_60ef3e750db4b",
-                    "label": "Standard Content Pattern",
-                    "name": "standard_content_pattern",
-                    "aria-label": "",
-                    "type": "clone",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "clone": [
-                        "group_60ef39e2aaca8"
-                    ],
-                    "display": "seamless",
-                    "layout": "block",
-                    "prefix_label": 0,
-                    "prefix_name": 0
-                }
-            ]
-        },
-        {
-            "key": "field_60ef3eb90db4c",
-            "label": "Homepage Posts",
-            "name": "",
-            "aria-label": "",
-            "type": "accordion",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "open": 1,
-            "multi_expand": 1,
-            "endpoint": 0
-        },
-        {
-            "key": "field_60ef3ed10db4d",
-            "label": "Latest Posts",
-            "name": "latest_posts",
-            "aria-label": "",
-            "type": "group",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "layout": "block",
-            "sub_fields": [
-                {
-                    "key": "field_60ef3efa0db4e",
-                    "label": "Section Headline",
-                    "name": "section_headline",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 1,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
-                },
-                {
-                    "key": "field_60ef3f060db4f",
-                    "label": "Type of Posts",
-                    "name": "type_of_posts",
-                    "aria-label": "",
-                    "type": "radio",
-                    "instructions": "",
-                    "required": 1,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "choices": {
-                        "latest": "Most Recent Posts",
-                        "category": "Latest by Category Selected",
-                        "custom": "Custom Selected"
-                    },
-                    "allow_null": 0,
-                    "other_choice": 0,
-                    "default_value": "lastest",
-                    "layout": "horizontal",
-                    "return_format": "value",
-                    "save_other_choice": 0
-                },
-                {
-                    "key": "field_60ef3fd80db50",
-                    "label": "Latest Posts",
-                    "name": "",
-                    "aria-label": "",
-                    "type": "message",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": [
-                        [
-                            {
-                                "field": "field_60ef3f060db4f",
-                                "operator": "==",
-                                "value": "latest"
-                            }
-                        ]
-                    ],
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "message": "No action needed, will dynamically display the 3 most recent published posts.",
-                    "new_lines": "wpautop",
-                    "esc_html": 0
-                },
-                {
-                    "key": "field_60ef409a0db51",
-                    "label": "Posts by Category",
-                    "name": "posts_by_category",
-                    "aria-label": "",
-                    "type": "taxonomy",
-                    "instructions": "Will dynamically display the 3 most recent published posts from the category selected.",
-                    "required": 1,
-                    "conditional_logic": [
-                        [
-                            {
-                                "field": "field_60ef3f060db4f",
-                                "operator": "==",
-                                "value": "category"
-                            }
-                        ]
-                    ],
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "taxonomy": "category",
-                    "field_type": "select",
-                    "allow_null": 0,
-                    "add_term": 0,
-                    "save_terms": 0,
-                    "load_terms": 0,
-                    "return_format": "id",
-                    "multiple": 0,
-                    "bidirectional_target": []
-                },
-                {
-                    "key": "field_60ef40d90db52",
-                    "label": "Custom Posts",
-                    "name": "custom_posts",
-                    "aria-label": "",
-                    "type": "repeater",
-                    "instructions": "",
-                    "required": 1,
-                    "conditional_logic": [
-                        [
-                            {
-                                "field": "field_60ef3f060db4f",
-                                "operator": "==",
-                                "value": "custom"
-                            }
-                        ]
-                    ],
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "collapsed": "",
-                    "min": 3,
-                    "max": 3,
-                    "layout": "block",
-                    "button_label": "Add Post",
-                    "rows_per_page": 20,
+            "layouts": {
+                "layout_6aa864aaad221": {
+                    "key": "layout_6aa864aaad221",
+                    "name": "call_to_action",
+                    "label": "Call To Action",
+                    "display": "block",
                     "sub_fields": [
                         {
-                            "key": "field_60ef41160db53",
-                            "label": "Card",
-                            "name": "card",
+                            "key": "field_6aa864b0ad224",
+                            "label": "Cloned Call To Action",
+                            "name": "cloned_call_to_action",
                             "aria-label": "",
-                            "type": "post_object",
+                            "type": "clone",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -367,78 +181,118 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "post_type": [
-                                "post"
+                            "clone": [
+                                "group_5ec53aa5b09e9"
                             ],
-                            "taxonomy": "",
-                            "allow_null": 0,
-                            "multiple": 0,
-                            "return_format": "object",
-                            "ui": 1,
-                            "bidirectional_target": [],
-                            "parent_repeater": "field_60ef40d90db52"
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
                         }
-                    ]
-                }
-            ]
-        },
-        {
-            "key": "field_60ef41d60db54",
-            "label": "Homepage Call To Action",
-            "name": "",
-            "aria-label": "",
-            "type": "accordion",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "open": 1,
-            "multi_expand": 1,
-            "endpoint": 0
-        },
-        {
-            "key": "field_60ef41f00db55",
-            "label": "Call To Action",
-            "name": "call_to_action",
-            "aria-label": "",
-            "type": "group",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "layout": "block",
-            "sub_fields": [
-                {
-                    "key": "field_60ef41fb0db56",
-                    "label": "CTA Pattern",
-                    "name": "cta_pattern",
-                    "aria-label": "",
-                    "type": "clone",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "clone": [
-                        "group_5ec53aa5b09e9"
                     ],
-                    "display": "seamless",
-                    "layout": "block",
-                    "prefix_label": 0,
-                    "prefix_name": 0
+                    "min": "",
+                    "max": ""
+                },
+                "layout_6aa939d684b15": {
+                    "key": "layout_6aa939d684b15",
+                    "name": "image_content_row",
+                    "label": "Image Content Row",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_6aa939ef84b18",
+                            "label": "Cloned Image Content Row",
+                            "name": "cloned_image_content_row",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_608c3c35df0ff"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_6aa8646bad21d": {
+                    "key": "layout_6aa8646bad21d",
+                    "name": "latest_news",
+                    "label": "Latest News",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_6aa8647bad220",
+                            "label": "Cloned Latest News",
+                            "name": "cloned_latest_news",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_6aa8596c5e182"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_6aa8643b75ca9": {
+                    "key": "layout_6aa8643b75ca9",
+                    "name": "standard_content",
+                    "label": "Standard Content",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_6aa86453ad21c",
+                            "label": "Cloned Standard Content",
+                            "name": "cloned_standard_content",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_60ef39e2aaca8"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
-            ]
+            },
+            "min": "",
+            "max": "",
+            "button_label": "Add Row"
         }
     ],
     "location": [
@@ -462,5 +316,8 @@
     "active": true,
     "description": "HOMEPAGE",
     "show_in_rest": 0,
-    "modified": 1747412175
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1789475428
 }

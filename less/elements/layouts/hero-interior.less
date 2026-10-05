@@ -1,14 +1,43 @@
 .hero-interior{
-    display: grid;
-    place-content: center;
-    text-align: center;
-    background: @blue;
-    min-height: 30vh;
-    padding-top: 50px;
-    padding-bottom: 50px;
+    
+    //if no feature image set following fullbleed/padding patterns 
+    // to have no top margin so they butt up against the hero
+    &:not(:has(.hero-interior__feature-image)) {
+        + .pattern--pad { margin-top: 0; }
+    }
+
+}
+
+.hero-interior__page-title{
+    padding-top: 40px;
+    padding-bottom: 40px;
     .outer-gutter();
+    background: @blue;
+    color: @black;
 
     h1{ color: @black; margin: 0; }
+
+    &:has(.category-filter){
+        > .container{
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-between;
+            column-gap: 50px;
+            row-gap: 24px;
+        }
+    }
+
+}
+
+.hero-interior__feature-image{
+    .outer-gutter();
+    background: linear-gradient(180deg, @blue 50%, rgba(255,255,255,0) 50%);
+
+    img{
+        width: 100%;
+        aspect-ratio: 1440 / 616; //matches crop size in functions.php
+        object-fit: cover;
+    }
 }
 
 .hero-interior--search-header{

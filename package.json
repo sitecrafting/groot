@@ -20,7 +20,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "browserslist": "^4.28.6",
+    "browserslist": "^4.28.7",
     "caniuse-lite": "^1.0.30001806",
     "fitvids.1.1.0": "^1.1.0",
     "swiper": "^14.0.5"

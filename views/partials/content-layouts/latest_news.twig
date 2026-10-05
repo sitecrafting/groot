@@ -2,41 +2,46 @@
     Featured Posts Pattern
 
 #}
-
-{% if layout.type_of_posts == 'custom' %}
+{% if layout.get_related %}
+    {% set posts = get_related_posts(post, 3) %}
+    {% set showBtn = false %}
+{% elseif layout.type_of_posts == 'custom' %}
     {# get custom selected cards #}
     {% set posts = layout.custom_posts %}
+    {% set showBtn = true %}
 {% elseif layout.type_of_posts == 'category' %}
     {# project/Twig/ThemeTwigHelper.php
         get_posts_pattern(post type, count, taxonomy, taxonomy id) 
     #}
     {% set posts = get_posts_pattern('post',3,'category',layout.posts_by_category) %}
+    {% set showBtn = true %}
 {% else %}
     {# get latest 3 posts #}
     {% set posts = get_latest_posts(3) %}
+    {% set showBtn = true %}
 {% endif %}
 
-<section class="pattern">
+<section id="latest-news_{{ parent_loop.index|default(0) }}" class="pattern pattern--latest-news">
 	<div class="container">
 
         <header class="pattern__header">
-            <h2>{{ layout.section_headline }}</h2>
+            <h2>{{ layout.pattern_headline }}</h2>
         </header>
         
 		<div class="grid-container">
 		{% for item in posts %}
 
             {% include 'partials/cards/article-card.twig' with { 
-                post : layout.type_of_posts == 'custom' ? item.card : item, 
-                cardCrop : 'article-card' 
+                post : layout.type_of_posts == 'custom' ? item.card : item
             } %}
 
 		{% endfor %}
         </div>
-
+        {% if showBtn %}
         <footer class="pattern__footer">
             <a class="btn" href="{{ get_blog_url() }}">View All</a>
         </footer>
-
+        {% endif %}
+        
 	</div>
 </section>

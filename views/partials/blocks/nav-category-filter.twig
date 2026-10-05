@@ -1,0 +1,15 @@
+<nav id="categoryFilter" class="category-filter" aria-label="News Filtering">
+    {% set currentCat = get_terms('category')|find(cat => cat.slug == post.slug) %}
+    <div class="category-filter__selector">
+        <div aria-hidden="true" class="selector-text">{% if is_category %}{{ currentCat.name }}{% else %}Filter By Category{% endif %}</div>
+        <button aria-expanded="false" aria-controls="category-nav-list" id="category-nav-button"><span class="sr-only">Select Category</span></button>
+    </div>
+    <ul id="category-nav-list" hidden>
+        {% if is_category %}
+        <li><a href="{{ get_blog_url() }}">All Articles</a></li>
+        {% endif %}
+        {% for cat in get_terms('category') %}
+            <li{{ post.slug == cat.slug ? ' aria-current="page"' }}><a href="{{ cat.link() }}">{{ cat.name }}</a></li>
+        {% endfor %}
+    </ul>
+</nav><!-- //subnav-filter -->

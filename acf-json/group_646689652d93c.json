@@ -101,6 +101,38 @@
                     "min": "",
                     "max": ""
                 },
+                "layout_6aa941de0a68a": {
+                    "key": "layout_6aa941de0a68a",
+                    "name": "image_content_row",
+                    "label": "Image Content Row",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_6aa941e50a68d",
+                            "label": "Cloned Image Content Row",
+                            "name": "cloned_image_content_row",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_608c3c35df0ff"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
                 "5850715f04d8a": {
                     "key": "5850715f04d8a",
                     "name": "standard_content",
@@ -159,11 +191,13 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": [
-        "the_content",
-        "featured_image"
+        "the_content"
     ],
     "active": true,
     "description": "DEFAULT TEMPLATE",
     "show_in_rest": 0,
-    "modified": 1747412138
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1789500031
 }

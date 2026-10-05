@@ -24,6 +24,7 @@
 // Forms
 // --------------------------------------------------
 label, .field-label {
+    display: inline-block;
     margin-bottom: 5px;
     font-weight: 700;
     font-size: (14/16rem);
@@ -45,8 +46,7 @@ textarea,
 .form-control{
     -webkit-appearance: none;
     -moz-appearance: none;
-    -webkit-border-radius: 0;
-    border-radius: 0;
+    border-radius: 4px;
 
     display: block;
     box-sizing: border-box;
@@ -130,11 +130,11 @@ input[type="checkbox"]{
 
 .search-fields{
     display: flex;
+    gap: 5px;
 
     input{
         height: auto;
         flex: 1;
-        border-right: 0;
     }
     button{ 
         flex: 0 0 auto;

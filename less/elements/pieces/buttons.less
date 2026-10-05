@@ -1,3 +1,8 @@
+.btn-hover(){
+    text-decoration: none;
+    background: darken(@blue,5%);
+}
+
 .btn{
     display: inline-grid;
     align-items: center;
@@ -5,7 +10,7 @@
     min-height: @input-height;
     padding: 10px 40px;
     cursor: pointer;
-    border-radius: 0;
+    border-radius: 4px;
     border: 0;
 
     color: @black;
@@ -20,8 +25,7 @@
     transition: all @trans-speed ease;
 
     &:hover {
-        text-decoration: none;
-        background: darken(@blue,5%);
+        .btn-hover();
     }
 
 }
@@ -40,4 +44,9 @@
     color: @black;
     cursor: not-allowed;
     &:hover{ background: @gray-f3; }
+}
+
+.text-btn{
+    display: inline-block;
+    font-weight: 700;
 }

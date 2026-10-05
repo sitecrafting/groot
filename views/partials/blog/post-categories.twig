@@ -1,8 +1,0 @@
-{% if post.categories %}
-<div class="post-categories">
-	<div class="post-categories__label">Posted in:</div>
-	<div class="post-categories__list">
-	{% for category in post.categories %}<a href="{{ category.link }}">{{ category }}</a>{% endfor %}
-	</div>
-</div>
-{% endif %}

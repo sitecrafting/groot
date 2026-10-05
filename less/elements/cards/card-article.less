@@ -1,4 +1,5 @@
 .card-article{
+    position: relative;
     margin: 0 0 20px 0;
     width: 100%;
 	background: @gray-f3;
@@ -12,7 +13,17 @@
 	}
 
     .card-article__image{
-        img{ display: block; width: 100%; }
+        position: relative;
+        aspect-ratio: 380 / 250;
+        overflow: hidden;
+        background: @gray-6e;
+        img{ 
+            position: relative;
+            display: block; 
+            width: 100%; 
+            height: 100%;
+            object-fit: cover;
+        }
     }
 
     .card-article__content{
@@ -22,20 +33,31 @@
         flex-flow: column;
         align-items: start;
 
-        .title{ margin: 0 0 5px; }
-        .byline{ font-size: (12/16rem); }
+        .title{ 
+            margin: 0 0 5px; 
+            a{
+                text-decoration: none;
+                color: @headings-color;
+                &:hover{ color: @headings-color; }
+
+                //make whole card clickable
+                &:before{
+                    content: "";
+                    position: absolute;
+                    inset: 0;
+                }
+            }
+        }
+        .date{ font-size: (12/16rem); }
         .excerpt{ margin-top: 15px; margin-bottom: 20px; }
         .btn{ margin-top: auto; }
 
     }
 
-}
+    &:hover{
+        .btn{
+            .btn-hover();
+        }
+    }
 
-.card-article--list{
-	padding: 15px;
-    display: grid;
-    grid-template-columns: 30% 1fr;
-    column-gap: 20px;
-
-	.card-article__content{ padding: 0; }
 }

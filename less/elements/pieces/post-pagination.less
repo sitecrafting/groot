@@ -1,6 +1,12 @@
-/* PREV/NEXT BUTTONS */
-.post-pagination{
-	margin: 40px 0;
+.pagination{
+    margin-top: 40px;
+    padding-top: 40px;
+    border-top: 2px solid @gray-f3;
+}
+
+/* PREV/NEXT BUTTONS ONLY */
+.post-button-pagination{
+
     display: flex;
     justify-content: space-between;
     column-gap: 5px;
@@ -19,7 +25,6 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                font-size: (14/16rem);
             }
 		}
 		
@@ -28,17 +33,32 @@
 }
 
 /* PAGINATE_LINKS() */
-.post-pagination-numbers{
-    margin: 40px 0;
+.post-numbers-pagination{
 
 	ul.page-numbers{  
         .plain-list();
         display: flex;
 		justify-content: center;
         align-items: center;
-        column-gap: 8px;
+        column-gap: 12px;
         font: 700 1rem/1.1 @font-family-headings;
-        text-transform: uppercase;
+
+        .page-numbers:not(.prev):not(.next){
+            display: grid;
+            place-items: center;
+            width: (32/16rem);
+            height: (32/16rem);
+            border-radius: 50%;
+            background-color: @gray-f3;
+            text-decoration: none;
+
+            &:hover{ 
+                .text-underline();
+                background-color: darken(@gray-f3, 10%); 
+            }
+
+            &.current{ background-color: @blue; }
+        }
 
 		.prev, .next{ 
 			position: relative;

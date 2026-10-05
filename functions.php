@@ -155,9 +155,10 @@ $site->configure(function() {
     add_filter( 'use_default_gallery_style', '__return_false' );
 
     // CUSTOM IMAGE CROPS
-    add_image_size( 'gallery', 950, 600, true ); //gallery slideshow flex pattern
-    add_image_size( 'article-card', 380, 250, true ); //article-card partial
-    add_image_size( 'article-list-card', 276, 200, true ); //article-card partial
+    add_image_size( 'hero', 1600, 900, true );
+    add_image_size( 'hero-interior', 1440, 616, true );
+    add_image_size( 'image-content-row', 675, 400, true );
+    add_image_size( 'article-card', 450, 300, true );
 
     // use this to unset or add image size options for RTE image insert
     /*add_filter( 'image_size_names_choose', function($sizes) {

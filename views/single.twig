@@ -5,62 +5,41 @@
 
 <article class="sitka-search-content-container">
 
-	<div class="pattern pattern--article">
+    {% include 'partials/hero-interior.twig' with { 
+        container_modifier: 'container--md', 
+        headline_label: post.date('F j, Y'),
+        page_title : post.title
+    } %}
 
-		<header class="article__header">
-			<div class="container container--md">
-				<h1 class="title">{{ post.title }}</h1>
-				<div class="byline">
-					<span class="post-author">By <a href="{{ post.author.link() }}">{{ post.author }}</a></span>
-					<span class="post-date">On {{ post.date }}</span>
-				</div><!-- //byline -->
+    {% include 'partials/content-layouts/standard_content.twig' with {
+        layout : {
+            content: post.content
+        }
+    } %}
 
-				{% if post.thumbnail() %}
-					<div class="feature-image">
-						{% include 'partials/blocks/image.twig' with { image : post.thumbnail(), crop: 'gallery' } %}
-					</div>
-				{% endif %}
+    <div class="pattern"><div class="container container--md">
 
-			</div>
-		</header>
+            <div class="post-taxonomy-list">
+                <strong>Categories:</strong>
+                <div class="tax-list">
+                {% for category in post.categories %}
+                    <a href="{{ category.link }}">{{ category }}</a>
+                {% endfor %}
+                </div>
+            </div>
 
-		<div class="article__content">
-			<div class="container container--md">
-				
+            <div class="post-back text-center">
+                <a href="{{ get_blog_url() }}" class="btn">Back to News</a>
+            </div>
 
-				<div class="rtecontent">{{ post.content }}</div>
+	</div></div>
 
-				<div class="article__taxonomies">
-					{% include 'partials/blog/post-categories.twig' %}
-				</div>
-
-			</div>
-		</div>
-
-	</div><!-- //.pattern--article -->
-
-	<footer class="pattern pattern--article-footer">
-		<div class="container">
-
-				<div class="pattern__header">
-					<h2>Related Articles</h2>
-				</div>
-
-				<div class="grid-container">
-				{% for postItem in get_related_posts(post, 3) %}
-					
-						{% include 'partials/cards/article-card.twig' with { post : postItem, cardCrop : 'article-card' } %}
-					
-				{% endfor %}
-				</div>
-
-				<div class="pattern__footer">
-					<a href="{{ get_blog_url() }}" class="btn">Back to News</a>
-				</div>
-
-		</div>
-	</footer>
-	{# function( 'comments_template' ) #}
+	{% include 'partials/content-layouts/latest_news.twig' with {
+        layout: {
+            get_related: true,
+            pattern_headline: 'Related Articles'
+        }
+    } %}
 
 </article>
 

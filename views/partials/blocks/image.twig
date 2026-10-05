@@ -4,4 +4,4 @@
 {% set imageWidth = attribute(imageSizes, crop).width %}
 {% set imageHeight = attribute(imageSizes, crop).height %}
 
-<img loading="lazy"{{ class ? ' class="' ~ class ~ '"' }} src="{{ image.src(crop) }}" {{ generate_retina_srcset(image.src(crop), 2) }} alt="{{ image.alt() }}" width="{{ imageWidth }}px" height="{{ imageHeight }}px" />
+<img loading="lazy"{{ class ? ' class="' ~ class ~ '"' }} src="{{ image.src(crop) }}" {{ generate_retina_srcset(image.src(crop), 2) }} alt="{{ customAlt|default(image.alt()) }}" width="{{ imageWidth }}" height="{{ imageHeight }}" />
